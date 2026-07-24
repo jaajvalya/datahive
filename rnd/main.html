@@ -70,35 +70,36 @@
     background:var(--orange-500); border-radius:0 3px 3px 0; }
 
   /* ---------- Body ---------- */
-  main.body { flex:1 1 auto; width:99%; max-width:none; margin:0; padding:20px 22px 40px; }
+  main.body { flex:1 1 auto; width:99%; max-width:none; margin:0; padding:20px 1% 40px; }
 
-  .stage { width:100%; text-align:center; }
+  .stage { width:99%; margin:0 auto; text-align:center; }
   .eyebrow { margin:0 0 10px; font-size:12px; font-weight:700; letter-spacing:.08em;
     text-transform:uppercase; color:var(--navy-700); }
   .stage > h1 { margin:0 0 8px; font-size:clamp(26px,3.5vw,32px); font-weight:700; color:var(--ink-900); letter-spacing:-.02em; }
-  .sub { margin:0 auto 28px; max-width:520px; color:var(--ink-700); font-size:15px; line-height:1.5; }
+  .sub { margin:0 auto 28px; max-width:720px; color:var(--ink-700); font-size:15px; line-height:1.5; }
 
   .cloud-grid {
-    display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; margin:0 auto; max-width:920px;
+    display:grid; grid-template-columns:repeat(auto-fill,minmax(170px,1fr)); gap:14px;
+    margin:6px auto 0; width:99%; max-width:none;
   }
-  @media (max-width:900px) { .cloud-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
-  @media (max-width:520px) { .cloud-grid { grid-template-columns:1fr; max-width:280px; } }
 
   .cloud-btn {
     appearance:none; border:1px solid var(--gray-200); background:var(--white);
-    border-radius:var(--radius); padding:22px 16px 18px; cursor:pointer; box-shadow:var(--shadow);
-    transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
-    display:flex; flex-direction:column; align-items:center; gap:12px; width:100%;
+    border-radius:var(--radius); padding:24px 12px; cursor:pointer; box-shadow:var(--shadow);
+    transition:border-color .15s, box-shadow .15s, transform .15s;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; width:100%;
+    text-align:center;
   }
-  .cloud-btn:hover { transform:translateY(-2px); border-color:var(--orange-500); box-shadow:0 8px 24px rgba(1,8,24,.1); }
+  .cloud-btn:hover { transform:translateY(-1px); border-color:var(--orange-500); box-shadow:var(--shadow); }
   .cloud-btn:focus-visible { outline:3px solid rgba(255,103,31,.35); outline-offset:3px; }
-  .cloud-btn.open { border-color:var(--orange-500); box-shadow:0 8px 24px rgba(255,103,31,.12); }
-  .cloud-btn .cloud-logo { width:72px; height:58px; display:block; object-fit:contain; }
-  .cloud-btn .label { font-size:14px; font-weight:700; color:var(--ink-900); }
+  .cloud-btn.open { border-color:var(--orange-500); box-shadow:var(--shadow); }
+  .cloud-btn .cic { width:48px; height:48px; display:flex; align-items:center; justify-content:center; }
+  .cloud-btn .cic img { max-width:100%; max-height:100%; width:32px; height:32px; display:block; object-fit:contain; }
+  .cloud-btn .label { font-size:13px; font-weight:600; color:var(--ink-900); line-height:1.3; }
   .cloud-btn .hint { font-size:11.5px; color:#8a93a3; font-weight:500; }
 
   .panel {
-    margin:22px auto 0; max-width:920px; text-align:left; background:var(--white);
+    margin:22px auto 0; width:99%; max-width:none; text-align:left; background:var(--white);
     border:1px solid var(--gray-200); border-radius:var(--radius); box-shadow:var(--shadow);
     overflow:hidden; animation:rise .22s ease;
   }
@@ -169,7 +170,7 @@
   .btn-primary:disabled { opacity:.6; cursor:wait; }
 
   .status {
-    margin:24px auto 0; max-width:920px; text-align:left; background:var(--white);
+    margin:24px auto 0; width:99%; max-width:none; text-align:left; background:var(--white);
     border:1px solid var(--gray-200); border-radius:var(--radius); padding:16px 18px;
     box-shadow:var(--shadow);
   }
@@ -238,7 +239,7 @@
     <div class="stage">
       <p class="eyebrow">Source connectors</p>
       <h1>Connect your sources</h1>
-      <p class="sub">Choose GCP, AWS, Azure, or upload a file to configure connectivity and bring data into DataHive.</p>
+      <p class="sub">Choose a cloud, drive source, or upload a file to configure connectivity and bring data into DataHive.</p>
 
       <div class="cloud-grid" id="cloudGrid" role="group" aria-label="Cloud providers"></div>
 
@@ -278,7 +279,7 @@
                     <label for="cf_tenant_id">Tenant ID <span class="req">*</span></label>
                     <input id="cf_tenant_id" name="tenant_id" maxlength="128" autocomplete="off" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" />
                   </div>
-                  <div class="field" style="margin-bottom:0">
+                  <div class="field" style="margin-bottom:0" id="group_resource_group">
                     <label for="cf_resource_group">Resource group</label>
                     <input id="cf_resource_group" name="resource_group" maxlength="128" placeholder="rg-analytics (optional)" />
                   </div>
@@ -505,6 +506,93 @@ const CLOUDS = {
     saHelp: "",
     saPlaceholder: "",
     hint: "Upload a data file"
+  },
+  sharepoint: {
+    id: "sharepoint",
+    type: "microsoftsharepoint",
+    name: "SharePoint",
+    short: "SharePoint",
+    logo: "../images/logos/microsoftsharepoint.svg",
+    lead: "Connect a SharePoint site so DataHive can fetch document libraries, lists, and files.",
+    accountLabel: "Site URL",
+    accountPlaceholder: "https://contoso.sharepoint.com/sites/Analytics",
+    namePlaceholder: "Prod SharePoint — Analytics",
+    scopeLabel: "Library / folder scope",
+    scopePlaceholder: "Documents/*, Shared Documents/Reports (optional)",
+    scopeHelp: "Optional allow-list of libraries, lists, or folder paths.",
+    regions: ["global","nam","eur","apac"],
+    needsTenant: true,
+    auth: [
+      { value:"oauth2", label:"OAuth 2.0 (delegated)" },
+      { value:"service_principal", label:"App registration (Client ID + Secret)" }
+    ],
+    apis: [
+      { value:"document_libraries", label:"Document libraries", checked:true },
+      { value:"lists", label:"Lists", checked:true },
+      { value:"pages", label:"Site pages" },
+      { value:"subsites", label:"Subsites" }
+    ],
+    saLabel: "",
+    saHelp: "",
+    saPlaceholder: "",
+    hint: "Configure site connectivity"
+  },
+  googledrive: {
+    id: "googledrive",
+    type: "googledrive",
+    name: "Google Drive",
+    short: "Google Drive",
+    logo: "../images/logos/googledrive.svg",
+    lead: "Connect Google Drive so DataHive can fetch files and shared drives from your Google Workspace.",
+    accountLabel: "Google account / domain",
+    accountPlaceholder: "analytics@company.com or company.com",
+    namePlaceholder: "Prod Google Drive — Shared",
+    scopeLabel: "Folder / drive scope",
+    scopePlaceholder: "My Drive/Reports, Shared drives/Finance (optional)",
+    scopeHelp: "Optional allow-list of folders or shared drive names.",
+    regions: ["global"],
+    auth: [
+      { value:"oauth2", label:"OAuth 2.0 (Client ID + Secret)" },
+      { value:"service_account", label:"Service account (JSON key)" }
+    ],
+    apis: [
+      { value:"my_drive", label:"My Drive", checked:true },
+      { value:"shared_drives", label:"Shared drives", checked:true },
+      { value:"shared_with_me", label:"Shared with me" }
+    ],
+    saLabel: "Service account JSON",
+    saHelp: "Paste the JSON key with Drive API access. Domain-wide delegation may be required.",
+    saPlaceholder: '{"type":"service_account","project_id":"...","private_key":"..."}',
+    hint: "Configure Drive connectivity"
+  },
+  onedrive: {
+    id: "onedrive",
+    type: "microsoftonedrive",
+    name: "OneDrive",
+    short: "OneDrive",
+    logo: "../images/logos/microsoftonedrive.svg",
+    lead: "Connect OneDrive for Business so DataHive can fetch user and shared files via Microsoft Graph.",
+    accountLabel: "User / drive path",
+    accountPlaceholder: "user@contoso.com or /drives/{drive-id}",
+    namePlaceholder: "Prod OneDrive — Finance",
+    scopeLabel: "Folder scope",
+    scopePlaceholder: "Documents/Reports, Shared (optional)",
+    scopeHelp: "Optional allow-list of folders or path patterns.",
+    regions: ["global","nam","eur","apac"],
+    needsTenant: true,
+    auth: [
+      { value:"oauth2", label:"OAuth 2.0 (delegated)" },
+      { value:"service_principal", label:"App registration (Client ID + Secret)" }
+    ],
+    apis: [
+      { value:"files", label:"Files", checked:true },
+      { value:"shared", label:"Shared", checked:true },
+      { value:"recent", label:"Recent" }
+    ],
+    saLabel: "",
+    saHelp: "",
+    saPlaceholder: "",
+    hint: "Configure OneDrive connectivity"
   }
 };
 
@@ -524,7 +612,7 @@ Object.values(CLOUDS).forEach(cloud => {
   btn.setAttribute("aria-expanded", "false");
   btn.setAttribute("aria-controls", "connPanel");
   btn.innerHTML =
-    `<img class="cloud-logo" src="${cloud.logo}" alt="${cloud.name}" width="72" height="58" />` +
+    `<div class="cic"><img src="${cloud.logo}" alt="${cloud.name}" width="32" height="32" /></div>` +
     `<span class="label">${cloud.name}</span>` +
     `<span class="hint">${cloud.hint || "Configure API connectivity"}</span>`;
   btn.addEventListener("click", () => {
@@ -624,32 +712,33 @@ function configureForm(cloud){
     `<label class="check"><input type="checkbox" name="apis" value="${a.value}"${a.checked?" checked":""} /> ${a.label}</label>`
   ).join("");
 
-  $("#group_azure_extra").classList.toggle("hidden", cloud.id !== "azure");
+  const needsTenant = !!cloud.needsTenant || cloud.id === "azure";
+  $("#group_azure_extra").classList.toggle("hidden", !needsTenant);
+  $("#group_resource_group").classList.toggle("hidden", cloud.id !== "azure");
   $("#cf_sa_label").innerHTML = (cloud.saLabel || "Credential JSON") + ' <span class="req">*</span>';
   $("#cf_sa_help").textContent = cloud.saHelp || "";
   $("#cf_sa_json").placeholder = cloud.saPlaceholder || "";
 
-  if (cloud.id === "gcp") {
-    $("#cf_client_id_label").innerHTML = 'OAuth Client ID <span class="req">*</span>';
-    $("#cf_client_secret_label").innerHTML = 'Client secret <span class="req">*</span>';
-    $("#cf_api_key_label").innerHTML = 'API key <span class="req">*</span>';
-  } else if (cloud.id === "azure") {
+  const microsoftApp = cloud.id === "azure" || cloud.id === "sharepoint" || cloud.id === "onedrive";
+  if (microsoftApp) {
     $("#cf_client_id_label").innerHTML = 'Application (client) ID <span class="req">*</span>';
     $("#cf_client_secret_label").innerHTML = 'Client secret <span class="req">*</span>';
+  } else {
+    $("#cf_client_id_label").innerHTML = 'OAuth Client ID <span class="req">*</span>';
+    $("#cf_client_secret_label").innerHTML = 'Client secret <span class="req">*</span>';
   }
+  $("#cf_api_key_label").innerHTML = 'API key <span class="req">*</span>';
 
   toggleAuth(cloud.auth[0].value, cloud);
 }
 
 function toggleAuth(type, cloud = CLOUDS[activeCloud]){
   if (!cloud) return;
-  const showSa = (cloud.id === "gcp" && type === "service_account") ||
-                 (cloud.id === "azure" && type === "client_certificate");
-  const showApiKey = cloud.id === "gcp" && type === "api_key";
-  const showOauth = (cloud.id === "gcp" && type === "oauth2") ||
-                    (cloud.id === "azure" && type === "service_principal");
-  const showAccessKeys = cloud.id === "aws" && type === "access_keys";
-  const showRole = cloud.id === "aws" && (type === "iam_role" || type === "assume_role");
+  const showSa = type === "service_account" || type === "client_certificate";
+  const showApiKey = type === "api_key";
+  const showOauth = type === "oauth2" || type === "service_principal";
+  const showAccessKeys = type === "access_keys";
+  const showRole = type === "iam_role" || type === "assume_role";
 
   $("#group_sa").classList.toggle("hidden", !showSa);
   $("#group_api_key").classList.toggle("hidden", !showApiKey);
@@ -744,45 +833,35 @@ form.addEventListener("submit", async (e)=>{
     if (!accountId) return showError(cloud.accountLabel + " is required.");
     if (!apis.length) return showError("Select at least one service to fetch from.");
 
-    if (cloud.id === "azure" && (authType === "service_principal" || authType === "client_certificate" || authType === "managed_identity")) {
-      if (!tenantId) return showError("Tenant ID is required for Azure.");
+    if ((cloud.needsTenant || cloud.id === "azure") && !tenantId) {
+      return showError("Tenant ID is required.");
     }
 
-    if (cloud.id === "gcp") {
-      if (authType === "service_account") {
-        const raw = $("#cf_sa_json").value.trim();
-        if (!raw) return showError("Paste a service account JSON key.");
-        try {
-          const parsed = JSON.parse(raw);
-          if (parsed.type && parsed.type !== "service_account") {
-            return showError('JSON "type" should be "service_account".');
-          }
-        } catch {
-          return showError("Service account JSON is not valid JSON.");
+    if (authType === "service_account") {
+      const raw = $("#cf_sa_json").value.trim();
+      if (!raw) return showError("Paste a service account JSON key.");
+      try {
+        const parsed = JSON.parse(raw);
+        if (cloud.id === "gcp" && parsed.type && parsed.type !== "service_account") {
+          return showError('JSON "type" should be "service_account".');
         }
-      } else if (authType === "api_key") {
-        if (!$("#cf_api_key").value.trim()) return showError("API key is required.");
-      } else if (authType === "oauth2") {
-        if (!$("#cf_client_id").value.trim() || !$("#cf_client_secret").value.trim()) {
-          return showError("OAuth Client ID and secret are required.");
-        }
+      } catch {
+        return showError("Service account JSON is not valid JSON.");
       }
-    } else if (cloud.id === "aws") {
-      if (authType === "access_keys") {
-        if (!$("#cf_access_key_id").value.trim() || !$("#cf_secret_access_key").value.trim()) {
-          return showError("Access key ID and secret access key are required.");
-        }
-      } else if (authType === "iam_role" || authType === "assume_role") {
-        if (!$("#cf_role_arn").value.trim()) return showError("IAM role ARN is required.");
+    } else if (authType === "api_key") {
+      if (!$("#cf_api_key").value.trim()) return showError("API key is required.");
+    } else if (authType === "oauth2" || authType === "service_principal") {
+      if (!$("#cf_client_id").value.trim() || !$("#cf_client_secret").value.trim()) {
+        return showError("Client ID and secret are required.");
       }
-    } else if (cloud.id === "azure") {
-      if (authType === "service_principal") {
-        if (!$("#cf_client_id").value.trim() || !$("#cf_client_secret").value.trim()) {
-          return showError("Application (client) ID and secret are required.");
-        }
-      } else if (authType === "client_certificate") {
-        if (!$("#cf_sa_json").value.trim()) return showError("Client certificate / JSON is required.");
+    } else if (authType === "access_keys") {
+      if (!$("#cf_access_key_id").value.trim() || !$("#cf_secret_access_key").value.trim()) {
+        return showError("Access key ID and secret access key are required.");
       }
+    } else if (authType === "iam_role" || authType === "assume_role") {
+      if (!$("#cf_role_arn").value.trim()) return showError("IAM role ARN is required.");
+    } else if (authType === "client_certificate") {
+      if (!$("#cf_sa_json").value.trim()) return showError("Client certificate / JSON is required.");
     }
 
     payload = {
@@ -874,7 +953,7 @@ function showStatus(payload, pillText, pillKind){
   } else {
     const accountLabel = cloud ? cloud.accountLabel : "Account";
     $("#statusMeta").innerHTML =
-      "<strong>Cloud:</strong> " + escapeHtml(cloud ? cloud.short : payload.cloud) +
+      "<strong>Source:</strong> " + escapeHtml(cloud ? cloud.short : payload.cloud) +
       " · <strong>" + escapeHtml(accountLabel) + ":</strong> " + escapeHtml(payload.account_id) +
       " · <strong>Region:</strong> " + escapeHtml(payload.region) + "<br>" +
       "<strong>Auth:</strong> " + escapeHtml(authLabel(payload.cloud, payload.auth_type)) +
