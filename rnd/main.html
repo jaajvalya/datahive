@@ -24,13 +24,13 @@
       radial-gradient(700px 360px at 90% 0%, rgba(52,168,83,.12), transparent 50%),
       radial-gradient(600px 300px at 70% 100%, rgba(251,188,4,.10), transparent 45%),
       var(--bg);
-    display:flex; align-items:center; justify-content:center; padding:32px 20px;
+    display:flex; align-items:flex-start; justify-content:center; padding:48px 20px 64px;
   }
-  .stage { width:min(720px,100%); text-align:center; }
+  .stage { width:min(760px,100%); text-align:center; }
   .eyebrow { margin:0 0 10px; font-size:13px; font-weight:700; letter-spacing:.08em;
     text-transform:uppercase; color:var(--muted); }
   h1 { margin:0 0 8px; font-size:clamp(28px,4vw,36px); font-weight:800; letter-spacing:-.02em; }
-  .sub { margin:0 auto 36px; max-width:420px; color:var(--muted); font-size:15px; line-height:1.5; }
+  .sub { margin:0 auto 32px; max-width:420px; color:var(--muted); font-size:15px; line-height:1.5; }
 
   .gcp-btn {
     appearance:none; border:1px solid var(--line); background:var(--white);
@@ -41,49 +41,33 @@
   .gcp-btn:hover { transform:translateY(-3px); border-color:#c7d2fe;
     box-shadow:0 16px 48px rgba(66,133,244,.18); }
   .gcp-btn:focus-visible { outline:3px solid rgba(66,133,244,.45); outline-offset:4px; }
+  .gcp-btn.open { border-color:#93c5fd; box-shadow:0 12px 36px rgba(66,133,244,.16); }
   .gcp-btn .logo { width:96px; height:auto; display:block; object-fit:contain; }
-  .modal-hd .mini { width:36px; height:auto; flex:0 0 auto; object-fit:contain; }
   .gcp-btn .label { font-size:15px; font-weight:700; color:var(--ink); }
   .gcp-btn .hint { font-size:12px; color:var(--muted); font-weight:500; }
 
-  .status {
-    margin:28px auto 0; max-width:520px; text-align:left; background:var(--white);
-    border:1px solid var(--line); border-radius:var(--radius); padding:16px 18px;
-    box-shadow:0 1px 3px rgba(15,23,42,.06);
-  }
-  .status h2 { margin:0 0 8px; font-size:14px; font-weight:700; }
-  .status .meta { font-size:13px; color:var(--muted); line-height:1.55; }
-  .pill { display:inline-flex; align-items:center; gap:6px; margin-top:10px;
-    padding:4px 10px; border-radius:999px; font-size:12px; font-weight:700; }
-  .pill.ok { background:rgba(31,169,113,.12); color:var(--ok); }
-  .pill.pending { background:rgba(66,133,244,.10); color:var(--blue); }
-
-  .overlay {
-    position:fixed; inset:0; background:rgba(15,23,42,.48); backdrop-filter:blur(4px);
-    display:flex; align-items:center; justify-content:center; padding:20px; z-index:50;
-  }
-  .modal {
-    width:min(760px,100%); max-height:min(560px,92vh); background:var(--white); border-radius:16px;
-    box-shadow:0 24px 64px rgba(15,23,42,.28); overflow:hidden;
-    display:flex; flex-direction:column;
-    animation:rise .22s ease;
+  .panel {
+    margin:24px auto 0; text-align:left; background:var(--white);
+    border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow);
+    overflow:hidden; animation:rise .22s ease;
   }
   @keyframes rise {
-    from { opacity:0; transform:translateY(10px) scale(.98); }
+    from { opacity:0; transform:translateY(8px); }
     to { opacity:1; transform:none; }
   }
-  .modal-hd {
+  .panel-hd {
     display:flex; align-items:center; gap:12px; padding:14px 22px;
-    border-bottom:1px solid var(--line); flex:0 0 auto;
+    border-bottom:1px solid var(--line);
   }
-  .modal-hd h2 { margin:0; font-size:17px; font-weight:800; flex:1; text-align:left; }
+  .panel-hd .mini { width:28px; height:auto; flex:0 0 auto; object-fit:contain; }
+  .panel-hd h2 { margin:0; font-size:16px; font-weight:800; flex:1; }
   .icon-x {
     width:34px; height:34px; border:none; border-radius:8px; background:transparent;
     cursor:pointer; color:var(--muted); font-size:18px;
   }
   .icon-x:hover { background:var(--bg); color:var(--ink); }
-  .modal-bd { padding:14px 22px 16px; text-align:left; overflow:auto; flex:1 1 auto; }
-  .lead { margin:0 0 12px; font-size:13.5px; color:var(--muted); line-height:1.45; }
+  .panel-bd { padding:16px 22px 18px; }
+  .lead { margin:0 0 14px; font-size:13.5px; color:var(--muted); line-height:1.45; }
 
   .field { margin-bottom:10px; }
   .field label {
@@ -98,7 +82,7 @@
   .field input:focus, .field select:focus, .field textarea:focus {
     outline:none; border-color:var(--blue); box-shadow:0 0 0 3px rgba(66,133,244,.15);
   }
-  .field textarea { min-height:72px; max-height:120px; resize:vertical; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:12.5px; }
+  .field textarea { min-height:72px; max-height:140px; resize:vertical; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:12.5px; }
   .field .help { margin-top:4px; font-size:12px; color:var(--muted); }
   .row2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:10px; }
   .row3 { display:grid; grid-template-columns:1.1fr 1fr 1fr; gap:12px; margin-bottom:10px; }
@@ -135,6 +119,18 @@
   }
   .btn-primary:hover { filter:brightness(1.05); }
   .btn-primary:disabled { opacity:.6; cursor:wait; filter:none; }
+
+  .status {
+    margin:24px auto 0; max-width:100%; text-align:left; background:var(--white);
+    border:1px solid var(--line); border-radius:var(--radius); padding:16px 18px;
+    box-shadow:0 1px 3px rgba(15,23,42,.06);
+  }
+  .status h2 { margin:0 0 8px; font-size:14px; font-weight:700; }
+  .status .meta { font-size:13px; color:var(--muted); line-height:1.55; }
+  .pill { display:inline-flex; align-items:center; gap:6px; margin-top:10px;
+    padding:4px 10px; border-radius:999px; font-size:12px; font-weight:700; }
+  .pill.ok { background:rgba(31,169,113,.12); color:var(--ok); }
+  .pill.pending { background:rgba(66,133,244,.10); color:var(--blue); }
 </style>
 </head>
 <body>
@@ -143,27 +139,19 @@
     <h1>Connect Google Cloud</h1>
     <p class="sub">Click the GCP icon to enter API connectivity details and fetch data from your Google Cloud project.</p>
 
-    <button type="button" class="gcp-btn" id="gcpOpenBtn" aria-haspopup="dialog" aria-controls="gcpModal">
+    <button type="button" class="gcp-btn" id="gcpOpenBtn" aria-expanded="false" aria-controls="gcpPanel">
       <img class="logo" src="../images/logos/googlecloud-color.svg" alt="Google Cloud Platform" width="96" height="77" />
       <span class="label">Google Cloud Platform</span>
-      <span class="hint">Configure API connectivity</span>
+      <span class="hint" id="gcpHint">Configure API connectivity</span>
     </button>
 
-    <section class="status hidden" id="connStatus" aria-live="polite">
-      <h2 id="statusTitle">Connection saved</h2>
-      <div class="meta" id="statusMeta"></div>
-      <div class="pill pending" id="statusPill">Ready to fetch</div>
-    </section>
-  </main>
-
-  <div class="overlay hidden" id="gcpOverlay" role="presentation">
-    <div class="modal" id="gcpModal" role="dialog" aria-modal="true" aria-labelledby="gcpModalTitle">
-      <div class="modal-hd">
-        <img class="mini" src="../images/logos/googlecloud-color.svg" alt="" width="36" height="29" aria-hidden="true" />
-        <h2 id="gcpModalTitle">GCP API connectivity</h2>
+    <section class="panel hidden" id="gcpPanel" aria-labelledby="gcpPanelTitle">
+      <div class="panel-hd">
+        <img class="mini" src="../images/logos/googlecloud-color.svg" alt="" width="28" height="22" aria-hidden="true" />
+        <h2 id="gcpPanelTitle">GCP API connectivity</h2>
         <button type="button" class="icon-x" id="gcpCloseBtn" aria-label="Close">✕</button>
       </div>
-      <div class="modal-bd">
+      <div class="panel-bd">
         <p class="lead">Provide project credentials and the APIs you want DataHive to use when fetching assets from Google Cloud.</p>
         <form id="gcpForm" novalidate>
           <div class="field">
@@ -244,31 +232,47 @@
           </div>
         </form>
       </div>
-    </div>
-  </div>
+    </section>
+
+    <section class="status hidden" id="connStatus" aria-live="polite">
+      <h2 id="statusTitle">Connection saved</h2>
+      <div class="meta" id="statusMeta"></div>
+      <div class="pill pending" id="statusPill">Ready to fetch</div>
+    </section>
+  </main>
 
 <script>
 const $ = (sel, root=document) => root.querySelector(sel);
 const $$ = (sel, root=document) => [...root.querySelectorAll(sel)];
 
-const overlay = $("#gcpOverlay");
+const openBtn = $("#gcpOpenBtn");
+const panel = $("#gcpPanel");
 const form = $("#gcpForm");
 const errBox = $("#gcpFormError");
 const statusEl = $("#connStatus");
-let lastFocus = null;
+const hint = $("#gcpHint");
 
-function openModal(){
-  lastFocus = document.activeElement;
+function isPanelOpen(){
+  return !panel.classList.contains("hidden");
+}
+function openPanel(){
   form.reset();
   $("#gcp_auth_type").value = "service_account";
   toggleAuth("service_account");
   errBox.classList.add("hidden");
-  overlay.classList.remove("hidden");
+  panel.classList.remove("hidden");
+  openBtn.classList.add("open");
+  openBtn.setAttribute("aria-expanded", "true");
+  hint.textContent = "Editing connectivity details";
   $("#gcp_display_name").focus();
+  panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
-function closeModal(){
-  overlay.classList.add("hidden");
-  if (lastFocus) lastFocus.focus();
+function closePanel(){
+  panel.classList.add("hidden");
+  openBtn.classList.remove("open");
+  openBtn.setAttribute("aria-expanded", "false");
+  hint.textContent = "Configure API connectivity";
+  openBtn.focus();
 }
 function toggleAuth(type){
   $("#group_sa").classList.toggle("hidden", type !== "service_account");
@@ -276,12 +280,14 @@ function toggleAuth(type){
   $("#group_oauth").classList.toggle("hidden", type !== "oauth2");
 }
 
-$("#gcpOpenBtn").addEventListener("click", openModal);
-$("#gcpCloseBtn").addEventListener("click", closeModal);
-$("#gcpCancelBtn").addEventListener("click", closeModal);
-overlay.addEventListener("click", (e)=>{ if (e.target === overlay) closeModal(); });
+openBtn.addEventListener("click", ()=>{
+  if (isPanelOpen()) closePanel();
+  else openPanel();
+});
+$("#gcpCloseBtn").addEventListener("click", closePanel);
+$("#gcpCancelBtn").addEventListener("click", closePanel);
 document.addEventListener("keydown", (e)=>{
-  if (e.key === "Escape" && !overlay.classList.contains("hidden")) closeModal();
+  if (e.key === "Escape" && isPanelOpen()) closePanel();
 });
 $("#gcp_auth_type").addEventListener("change", (e)=> toggleAuth(e.target.value));
 
@@ -359,7 +365,7 @@ form.addEventListener("submit", async (e)=>{
 
   btn.disabled = false;
   btn.textContent = "Connect & fetch";
-  closeModal();
+  closePanel();
 
   const authLabel = {
     service_account: "Service account",
