@@ -16,6 +16,7 @@
   }
   * { box-sizing:border-box; }
   html,body { margin:0; padding:0; }
+  .hidden { display:none !important; }
   body {
     min-height:100vh; font-family:"Manrope",system-ui,sans-serif; color:var(--ink);
     background:
@@ -50,7 +51,6 @@
     border:1px solid var(--line); border-radius:var(--radius); padding:16px 18px;
     box-shadow:0 1px 3px rgba(15,23,42,.06);
   }
-  .status.hidden { display:none; }
   .status h2 { margin:0 0 8px; font-size:14px; font-weight:700; }
   .status .meta { font-size:13px; color:var(--muted); line-height:1.55; }
   .pill { display:inline-flex; align-items:center; gap:6px; margin-top:10px;
@@ -62,10 +62,10 @@
     position:fixed; inset:0; background:rgba(15,23,42,.48); backdrop-filter:blur(4px);
     display:flex; align-items:center; justify-content:center; padding:20px; z-index:50;
   }
-  .overlay.hidden { display:none; }
   .modal {
-    width:min(520px,100%); background:var(--white); border-radius:16px;
+    width:min(760px,100%); max-height:min(560px,92vh); background:var(--white); border-radius:16px;
     box-shadow:0 24px 64px rgba(15,23,42,.28); overflow:hidden;
+    display:flex; flex-direction:column;
     animation:rise .22s ease;
   }
   @keyframes rise {
@@ -73,8 +73,8 @@
     to { opacity:1; transform:none; }
   }
   .modal-hd {
-    display:flex; align-items:center; gap:12px; padding:18px 20px;
-    border-bottom:1px solid var(--line);
+    display:flex; align-items:center; gap:12px; padding:14px 22px;
+    border-bottom:1px solid var(--line); flex:0 0 auto;
   }
   .modal-hd h2 { margin:0; font-size:17px; font-weight:800; flex:1; text-align:left; }
   .icon-x {
@@ -82,31 +82,36 @@
     cursor:pointer; color:var(--muted); font-size:18px;
   }
   .icon-x:hover { background:var(--bg); color:var(--ink); }
-  .modal-bd { padding:18px 20px 20px; text-align:left; }
-  .lead { margin:0 0 16px; font-size:13.5px; color:var(--muted); line-height:1.5; }
+  .modal-bd { padding:14px 22px 16px; text-align:left; overflow:auto; flex:1 1 auto; }
+  .lead { margin:0 0 12px; font-size:13.5px; color:var(--muted); line-height:1.45; }
 
-  .field { margin-bottom:14px; }
+  .field { margin-bottom:10px; }
   .field label {
-    display:block; margin-bottom:6px; font-size:12.5px; font-weight:700; color:var(--ink);
+    display:block; margin-bottom:5px; font-size:12.5px; font-weight:700; color:var(--ink);
   }
   .field .req { color:var(--red); }
   .field input, .field select, .field textarea {
-    width:100%; border:1.5px solid var(--line); border-radius:10px; padding:10px 12px;
+    width:100%; border:1.5px solid var(--line); border-radius:10px; padding:9px 12px;
     font:inherit; font-size:14px; color:var(--ink); background:#fff;
     transition:border-color .15s, box-shadow .15s;
   }
   .field input:focus, .field select:focus, .field textarea:focus {
     outline:none; border-color:var(--blue); box-shadow:0 0 0 3px rgba(66,133,244,.15);
   }
-  .field textarea { min-height:110px; resize:vertical; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:12.5px; }
-  .field .help { margin-top:5px; font-size:12px; color:var(--muted); }
-  .row2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-  @media (max-width:560px) { .row2 { grid-template-columns:1fr; } }
+  .field textarea { min-height:72px; max-height:120px; resize:vertical; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:12.5px; }
+  .field .help { margin-top:4px; font-size:12px; color:var(--muted); }
+  .row2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:10px; }
+  .row3 { display:grid; grid-template-columns:1.1fr 1fr 1fr; gap:12px; margin-bottom:10px; }
+  .row2 > .field, .row3 > .field { margin-bottom:0; }
+  @media (max-width:700px) {
+    .row2, .row3 { grid-template-columns:1fr; }
+  }
 
-  .checks { display:grid; gap:8px; margin:4px 0 14px; }
+  .checks { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:4px 0 10px; }
+  @media (max-width:700px) { .checks { grid-template-columns:1fr 1fr; } }
   .check {
-    display:flex; align-items:center; gap:10px; padding:10px 12px;
-    border:1px solid var(--line); border-radius:10px; font-size:13.5px; font-weight:600;
+    display:flex; align-items:center; gap:8px; padding:8px 10px;
+    border:1px solid var(--line); border-radius:10px; font-size:13px; font-weight:600;
     cursor:pointer; user-select:none;
   }
   .check:has(input:checked) { border-color:#93c5fd; background:rgba(66,133,244,.06); }
@@ -116,7 +121,6 @@
     margin:0 0 12px; padding:10px 12px; border-radius:10px; background:#FDE7E1;
     color:var(--err); font-size:13px; font-weight:600;
   }
-  .err.hidden { display:none; }
 
   .actions { display:flex; justify-content:flex-end; gap:10px; margin-top:6px; }
   .btn {
@@ -167,7 +171,7 @@
             <input id="gcp_display_name" name="display_name" required maxlength="128" placeholder="Prod GCP — Analytics" />
           </div>
 
-          <div class="row2">
+          <div class="row3">
             <div class="field">
               <label for="gcp_project_id">Project ID <span class="req">*</span></label>
               <input id="gcp_project_id" name="project_id" required maxlength="128" placeholder="my-gcp-project" autocomplete="off" />
@@ -183,15 +187,14 @@
                 <option value="asia-southeast1">asia-southeast1</option>
               </select>
             </div>
-          </div>
-
-          <div class="field">
-            <label for="gcp_auth_type">Authentication</label>
-            <select id="gcp_auth_type" name="auth_type">
-              <option value="service_account">Service account (JSON key)</option>
-              <option value="api_key">API key</option>
-              <option value="oauth2">OAuth 2.0 (Client ID + Secret)</option>
-            </select>
+            <div class="field">
+              <label for="gcp_auth_type">Authentication</label>
+              <select id="gcp_auth_type" name="auth_type">
+                <option value="service_account">Service account (JSON key)</option>
+                <option value="api_key">API key</option>
+                <option value="oauth2">OAuth 2.0 (Client ID + Secret)</option>
+              </select>
+            </div>
           </div>
 
           <div class="field" id="group_sa">
@@ -205,11 +208,15 @@
             <input id="gcp_api_key" name="api_key" type="password" maxlength="4096" autocomplete="off" />
           </div>
 
-          <div class="field hidden" id="group_oauth">
-            <label for="gcp_client_id">OAuth Client ID <span class="req">*</span></label>
-            <input id="gcp_client_id" name="client_id" maxlength="512" autocomplete="off" />
-            <label for="gcp_client_secret" style="margin-top:10px">Client secret <span class="req">*</span></label>
-            <input id="gcp_client_secret" name="client_secret" type="password" maxlength="4096" autocomplete="off" />
+          <div class="row2 hidden" id="group_oauth">
+            <div class="field">
+              <label for="gcp_client_id">OAuth Client ID <span class="req">*</span></label>
+              <input id="gcp_client_id" name="client_id" maxlength="512" autocomplete="off" />
+            </div>
+            <div class="field">
+              <label for="gcp_client_secret">Client secret <span class="req">*</span></label>
+              <input id="gcp_client_secret" name="client_secret" type="password" maxlength="4096" autocomplete="off" />
+            </div>
           </div>
 
           <div class="field">
