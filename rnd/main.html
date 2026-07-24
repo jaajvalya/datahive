@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DataHive — GCP Connector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink:#0f172a; --muted:#64748b; --line:#e2e8f0; --bg:#f1f5f9;
+    --white:#fff; --blue:#4285F4; --green:#34A853; --yellow:#FBBC04; --red:#EA4335;
+    --accent:#182978; --ok:#1FA971; --err:#E4572E; --radius:14px;
+    --shadow:0 10px 40px rgba(15,23,42,.12);
+  }
+  * { box-sizing:border-box; }
+  html,body { margin:0; padding:0; }
+  body {
+    min-height:100vh; font-family:"Manrope",system-ui,sans-serif; color:var(--ink);
+    background:
+      radial-gradient(900px 420px at 10% -10%, rgba(66,133,244,.16), transparent 55%),
+      radial-gradient(700px 360px at 90% 0%, rgba(52,168,83,.12), transparent 50%),
+      radial-gradient(600px 300px at 70% 100%, rgba(251,188,4,.10), transparent 45%),
+      var(--bg);
+    display:flex; align-items:center; justify-content:center; padding:32px 20px;
+  }
+  .stage { width:min(720px,100%); text-align:center; }
+  .eyebrow { margin:0 0 10px; font-size:13px; font-weight:700; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--muted); }
+  h1 { margin:0 0 8px; font-size:clamp(28px,4vw,36px); font-weight:800; letter-spacing:-.02em; }
+  .sub { margin:0 auto 36px; max-width:420px; color:var(--muted); font-size:15px; line-height:1.5; }
+
+  .gcp-btn {
+    appearance:none; border:1px solid var(--line); background:var(--white);
+    border-radius:20px; padding:28px 36px 22px; cursor:pointer; box-shadow:var(--shadow);
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    display:inline-flex; flex-direction:column; align-items:center; gap:14px;
+  }
+  .gcp-btn:hover { transform:translateY(-3px); border-color:#c7d2fe;
+    box-shadow:0 16px 48px rgba(66,133,244,.18); }
+  .gcp-btn:focus-visible { outline:3px solid rgba(66,133,244,.45); outline-offset:4px; }
+  .gcp-btn .logo { width:96px; height:auto; display:block; object-fit:contain; }
+  .modal-hd .mini { width:36px; height:auto; flex:0 0 auto; object-fit:contain; }
+  .gcp-btn .label { font-size:15px; font-weight:700; color:var(--ink); }
+  .gcp-btn .hint { font-size:12px; color:var(--muted); font-weight:500; }
+
+  .status {
+    margin:28px auto 0; max-width:520px; text-align:left; background:var(--white);
+    border:1px solid var(--line); border-radius:var(--radius); padding:16px 18px;
+    box-shadow:0 1px 3px rgba(15,23,42,.06);
+  }
+  .status.hidden { display:none; }
+  .status h2 { margin:0 0 8px; font-size:14px; font-weight:700; }
+  .status .meta { font-size:13px; color:var(--muted); line-height:1.55; }
+  .pill { display:inline-flex; align-items:center; gap:6px; margin-top:10px;
+    padding:4px 10px; border-radius:999px; font-size:12px; font-weight:700; }
+  .pill.ok { background:rgba(31,169,113,.12); color:var(--ok); }
+  .pill.pending { background:rgba(66,133,244,.10); color:var(--blue); }
+
+  .overlay {
+    position:fixed; inset:0; background:rgba(15,23,42,.48); backdrop-filter:blur(4px);
+    display:flex; align-items:center; justify-content:center; padding:20px; z-index:50;
+  }
+  .overlay.hidden { display:none; }
+  .modal {
+    width:min(520px,100%); background:var(--white); border-radius:16px;
+    box-shadow:0 24px 64px rgba(15,23,42,.28); overflow:hidden;
+    animation:rise .22s ease;
+  }
+  @keyframes rise {
+    from { opacity:0; transform:translateY(10px) scale(.98); }
+    to { opacity:1; transform:none; }
+  }
+  .modal-hd {
+    display:flex; align-items:center; gap:12px; padding:18px 20px;
+    border-bottom:1px solid var(--line);
+  }
+  .modal-hd h2 { margin:0; font-size:17px; font-weight:800; flex:1; text-align:left; }
+  .icon-x {
+    width:34px; height:34px; border:none; border-radius:8px; background:transparent;
+    cursor:pointer; color:var(--muted); font-size:18px;
+  }
+  .icon-x:hover { background:var(--bg); color:var(--ink); }
+  .modal-bd { padding:18px 20px 20px; text-align:left; }
+  .lead { margin:0 0 16px; font-size:13.5px; color:var(--muted); line-height:1.5; }
+
+  .field { margin-bottom:14px; }
+  .field label {
+    display:block; margin-bottom:6px; font-size:12.5px; font-weight:700; color:var(--ink);
+  }
+  .field .req { color:var(--red); }
+  .field input, .field select, .field textarea {
+    width:100%; border:1.5px solid var(--line); border-radius:10px; padding:10px 12px;
+    font:inherit; font-size:14px; color:var(--ink); background:#fff;
+    transition:border-color .15s, box-shadow .15s;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus {
+    outline:none; border-color:var(--blue); box-shadow:0 0 0 3px rgba(66,133,244,.15);
+  }
+  .field textarea { min-height:110px; resize:vertical; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:12.5px; }
+  .field .help { margin-top:5px; font-size:12px; color:var(--muted); }
+  .row2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  @media (max-width:560px) { .row2 { grid-template-columns:1fr; } }
+
+  .checks { display:grid; gap:8px; margin:4px 0 14px; }
+  .check {
+    display:flex; align-items:center; gap:10px; padding:10px 12px;
+    border:1px solid var(--line); border-radius:10px; font-size:13.5px; font-weight:600;
+    cursor:pointer; user-select:none;
+  }
+  .check:has(input:checked) { border-color:#93c5fd; background:rgba(66,133,244,.06); }
+  .check input { width:16px; height:16px; accent-color:var(--blue); }
+
+  .err {
+    margin:0 0 12px; padding:10px 12px; border-radius:10px; background:#FDE7E1;
+    color:var(--err); font-size:13px; font-weight:600;
+  }
+  .err.hidden { display:none; }
+
+  .actions { display:flex; justify-content:flex-end; gap:10px; margin-top:6px; }
+  .btn {
+    font:inherit; font-weight:700; font-size:14px; border-radius:10px; padding:10px 16px;
+    cursor:pointer; border:1.5px solid transparent;
+  }
+  .btn-ghost { background:transparent; color:var(--muted); border-color:var(--line); }
+  .btn-ghost:hover { background:var(--bg); color:var(--ink); }
+  .btn-primary {
+    background:linear-gradient(135deg,#4285F4,#1a73e8); color:#fff;
+    box-shadow:0 6px 16px rgba(66,133,244,.28);
+  }
+  .btn-primary:hover { filter:brightness(1.05); }
+  .btn-primary:disabled { opacity:.6; cursor:wait; filter:none; }
+</style>
+</head>
+<body>
+  <main class="stage">
+    <p class="eyebrow">Source connector</p>
+    <h1>Connect Google Cloud</h1>
+    <p class="sub">Click the GCP icon to enter API connectivity details and fetch data from your Google Cloud project.</p>
+
+    <button type="button" class="gcp-btn" id="gcpOpenBtn" aria-haspopup="dialog" aria-controls="gcpModal">
+      <img class="logo" src="../images/logos/googlecloud-color.svg" alt="Google Cloud Platform" width="96" height="77" />
+      <span class="label">Google Cloud Platform</span>
+      <span class="hint">Configure API connectivity</span>
+    </button>
+
+    <section class="status hidden" id="connStatus" aria-live="polite">
+      <h2 id="statusTitle">Connection saved</h2>
+      <div class="meta" id="statusMeta"></div>
+      <div class="pill pending" id="statusPill">Ready to fetch</div>
+    </section>
+  </main>
+
+  <div class="overlay hidden" id="gcpOverlay" role="presentation">
+    <div class="modal" id="gcpModal" role="dialog" aria-modal="true" aria-labelledby="gcpModalTitle">
+      <div class="modal-hd">
+        <img class="mini" src="../images/logos/googlecloud-color.svg" alt="" width="36" height="29" aria-hidden="true" />
+        <h2 id="gcpModalTitle">GCP API connectivity</h2>
+        <button type="button" class="icon-x" id="gcpCloseBtn" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-bd">
+        <p class="lead">Provide project credentials and the APIs you want DataHive to use when fetching assets from Google Cloud.</p>
+        <form id="gcpForm" novalidate>
+          <div class="field">
+            <label for="gcp_display_name">Connection name <span class="req">*</span></label>
+            <input id="gcp_display_name" name="display_name" required maxlength="128" placeholder="Prod GCP — Analytics" />
+          </div>
+
+          <div class="row2">
+            <div class="field">
+              <label for="gcp_project_id">Project ID <span class="req">*</span></label>
+              <input id="gcp_project_id" name="project_id" required maxlength="128" placeholder="my-gcp-project" autocomplete="off" />
+            </div>
+            <div class="field">
+              <label for="gcp_region">Default region</label>
+              <select id="gcp_region" name="region">
+                <option value="us-central1">us-central1</option>
+                <option value="us-east1">us-east1</option>
+                <option value="us-west1">us-west1</option>
+                <option value="europe-west1">europe-west1</option>
+                <option value="asia-south1">asia-south1</option>
+                <option value="asia-southeast1">asia-southeast1</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="gcp_auth_type">Authentication</label>
+            <select id="gcp_auth_type" name="auth_type">
+              <option value="service_account">Service account (JSON key)</option>
+              <option value="api_key">API key</option>
+              <option value="oauth2">OAuth 2.0 (Client ID + Secret)</option>
+            </select>
+          </div>
+
+          <div class="field" id="group_sa">
+            <label for="gcp_sa_json">Service account JSON <span class="req">*</span></label>
+            <textarea id="gcp_sa_json" name="service_account_json" maxlength="65536" placeholder='{"type":"service_account","project_id":"...","private_key":"..."}'></textarea>
+            <div class="help">Paste the JSON key from IAM → Service Accounts. Never commit this file.</div>
+          </div>
+
+          <div class="field hidden" id="group_api_key">
+            <label for="gcp_api_key">API key <span class="req">*</span></label>
+            <input id="gcp_api_key" name="api_key" type="password" maxlength="4096" autocomplete="off" />
+          </div>
+
+          <div class="field hidden" id="group_oauth">
+            <label for="gcp_client_id">OAuth Client ID <span class="req">*</span></label>
+            <input id="gcp_client_id" name="client_id" maxlength="512" autocomplete="off" />
+            <label for="gcp_client_secret" style="margin-top:10px">Client secret <span class="req">*</span></label>
+            <input id="gcp_client_secret" name="client_secret" type="password" maxlength="4096" autocomplete="off" />
+          </div>
+
+          <div class="field">
+            <label>APIs to fetch from</label>
+            <div class="checks">
+              <label class="check"><input type="checkbox" name="apis" value="bigquery" checked /> BigQuery</label>
+              <label class="check"><input type="checkbox" name="apis" value="cloud_storage" checked /> Cloud Storage</label>
+              <label class="check"><input type="checkbox" name="apis" value="pubsub" /> Pub/Sub</label>
+              <label class="check"><input type="checkbox" name="apis" value="dataflow" /> Dataflow</label>
+              <label class="check"><input type="checkbox" name="apis" value="dataproc" /> Dataproc</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="gcp_dataset_scope">Dataset / bucket scope</label>
+            <input id="gcp_dataset_scope" name="dataset_scope" maxlength="512" placeholder="analytics.*, raw_events (optional filter)" />
+            <div class="help">Optional allow-list of datasets, buckets, or resource patterns.</div>
+          </div>
+
+          <div id="gcpFormError" class="err hidden"></div>
+
+          <div class="actions">
+            <button type="button" class="btn btn-ghost" id="gcpCancelBtn">Cancel</button>
+            <button type="submit" class="btn btn-primary" id="gcpSubmitBtn">Connect &amp; fetch</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<script>
+const $ = (sel, root=document) => root.querySelector(sel);
+const $$ = (sel, root=document) => [...root.querySelectorAll(sel)];
+
+const overlay = $("#gcpOverlay");
+const form = $("#gcpForm");
+const errBox = $("#gcpFormError");
+const statusEl = $("#connStatus");
+let lastFocus = null;
+
+function openModal(){
+  lastFocus = document.activeElement;
+  form.reset();
+  $("#gcp_auth_type").value = "service_account";
+  toggleAuth("service_account");
+  errBox.classList.add("hidden");
+  overlay.classList.remove("hidden");
+  $("#gcp_display_name").focus();
+}
+function closeModal(){
+  overlay.classList.add("hidden");
+  if (lastFocus) lastFocus.focus();
+}
+function toggleAuth(type){
+  $("#group_sa").classList.toggle("hidden", type !== "service_account");
+  $("#group_api_key").classList.toggle("hidden", type !== "api_key");
+  $("#group_oauth").classList.toggle("hidden", type !== "oauth2");
+}
+
+$("#gcpOpenBtn").addEventListener("click", openModal);
+$("#gcpCloseBtn").addEventListener("click", closeModal);
+$("#gcpCancelBtn").addEventListener("click", closeModal);
+overlay.addEventListener("click", (e)=>{ if (e.target === overlay) closeModal(); });
+document.addEventListener("keydown", (e)=>{
+  if (e.key === "Escape" && !overlay.classList.contains("hidden")) closeModal();
+});
+$("#gcp_auth_type").addEventListener("change", (e)=> toggleAuth(e.target.value));
+
+function showError(msg){
+  errBox.textContent = msg;
+  errBox.classList.remove("hidden");
+}
+
+form.addEventListener("submit", async (e)=>{
+  e.preventDefault();
+  errBox.classList.add("hidden");
+
+  const displayName = $("#gcp_display_name").value.trim();
+  const projectId = $("#gcp_project_id").value.trim();
+  const region = $("#gcp_region").value;
+  const authType = $("#gcp_auth_type").value;
+  const datasetScope = $("#gcp_dataset_scope").value.trim();
+  const apis = $$('input[name="apis"]:checked').map(el => el.value);
+
+  if (!displayName) return showError("Connection name is required.");
+  if (!projectId) return showError("Project ID is required.");
+  if (!apis.length) return showError("Select at least one GCP API to fetch from.");
+
+  if (authType === "service_account") {
+    const raw = $("#gcp_sa_json").value.trim();
+    if (!raw) return showError("Paste a service account JSON key.");
+    try {
+      const parsed = JSON.parse(raw);
+      if (parsed.type && parsed.type !== "service_account") {
+        return showError('JSON "type" should be "service_account".');
+      }
+    } catch {
+      return showError("Service account JSON is not valid JSON.");
+    }
+  } else if (authType === "api_key") {
+    if (!$("#gcp_api_key").value.trim()) return showError("API key is required.");
+  } else if (authType === "oauth2") {
+    if (!$("#gcp_client_id").value.trim() || !$("#gcp_client_secret").value.trim()) {
+      return showError("OAuth Client ID and secret are required.");
+    }
+  }
+
+  const payload = {
+    connector_type: "googlecloud",
+    display_name: displayName,
+    project_id: projectId,
+    region,
+    auth_type: authType,
+    apis,
+    dataset_scope: datasetScope,
+    // Credentials stay in-memory for this R&D page; wire to backend when ready.
+    api_key: $("#gcp_api_key").value,
+    client_id: $("#gcp_client_id").value,
+    client_secret: $("#gcp_client_secret").value,
+    service_account_json: $("#gcp_sa_json").value
+  };
+
+  const btn = $("#gcpSubmitBtn");
+  btn.disabled = true;
+  btn.textContent = "Connecting…";
+
+  // Prototype: simulate connectivity + fetch. Replace with real backend call later.
+  await new Promise(r => setTimeout(r, 700));
+  try {
+    sessionStorage.setItem("datahive_gcp_connection", JSON.stringify({
+      display_name: payload.display_name,
+      project_id: payload.project_id,
+      region: payload.region,
+      auth_type: payload.auth_type,
+      apis: payload.apis,
+      dataset_scope: payload.dataset_scope,
+      saved_at: new Date().toISOString()
+    }));
+  } catch { /* ignore quota */ }
+
+  btn.disabled = false;
+  btn.textContent = "Connect & fetch";
+  closeModal();
+
+  const authLabel = {
+    service_account: "Service account",
+    api_key: "API key",
+    oauth2: "OAuth 2.0"
+  }[payload.auth_type];
+
+  $("#statusTitle").textContent = payload.display_name;
+  $("#statusMeta").innerHTML =
+    "<strong>Project:</strong> " + escapeHtml(payload.project_id) +
+    " · <strong>Region:</strong> " + escapeHtml(payload.region) + "<br>" +
+    "<strong>Auth:</strong> " + escapeHtml(authLabel) +
+    " · <strong>APIs:</strong> " + escapeHtml(payload.apis.join(", ")) +
+    (payload.dataset_scope
+      ? "<br><strong>Scope:</strong> " + escapeHtml(payload.dataset_scope)
+      : "");
+  const pill = $("#statusPill");
+  pill.className = "pill ok";
+  pill.textContent = "Connected — fetch queued";
+  statusEl.classList.remove("hidden");
+
+  console.info("[GCP] connection configured", {
+    display_name: payload.display_name,
+    project_id: payload.project_id,
+    region: payload.region,
+    auth_type: payload.auth_type,
+    apis: payload.apis
+  });
+});
+
+function escapeHtml(s){
+  return String(s)
+    .replace(/&/g,"&amp;").replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+
+/* Restore last saved (non-secret) connection summary if present */
+try {
+  const saved = JSON.parse(sessionStorage.getItem("datahive_gcp_connection") || "null");
+  if (saved) {
+    $("#statusTitle").textContent = saved.display_name;
+    $("#statusMeta").innerHTML =
+      "<strong>Project:</strong> " + escapeHtml(saved.project_id) +
+      " · <strong>Region:</strong> " + escapeHtml(saved.region) + "<br>" +
+      "<strong>APIs:</strong> " + escapeHtml((saved.apis||[]).join(", "));
+    const pill = $("#statusPill");
+    pill.className = "pill pending";
+    pill.textContent = "Previously configured";
+    statusEl.classList.remove("hidden");
+  }
+} catch { /* ignore */ }
+</script>
+</body>
+</html>
