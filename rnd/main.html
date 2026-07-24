@@ -3,56 +3,103 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>DataHive — Cloud Connectors</title>
+<title>ID360 — Cloud Connectors</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --ink:#0f172a; --muted:#64748b; --line:#e2e8f0; --bg:#f1f5f9;
-    --white:#fff; --blue:#4285F4; --accent:#182978; --ok:#1FA971; --err:#E4572E;
-    --radius:14px; --shadow:0 10px 40px rgba(15,23,42,.12);
+    --navy-900:#182978; --navy-700:#0056A7; --blue-600:#046BD2;
+    --blue-500:#3375B3; --blue-800:#13547A;
+    --orange-500:#FF671F; --orange-600:#e85a15;
+    --white:#FFFFFF; --ink-900:#010818; --ink-700:#212529;
+    --gray-100:#F6F9FF; --gray-150:#F4F4F4; --gray-200:#F1F1F1;
+    --ok:#1FA971; --warn-bg:#FFF6DC; --warn-line:#F6C445;
+    --err-bg:#FDE7E1; --err-line:#E4572E;
+    --radius:12px; --shadow:0 1px 3px rgba(1,8,24,.08);
+    --rail:72px; --header:56px;
   }
   * { box-sizing:border-box; }
   html,body { margin:0; padding:0; }
-  .hidden { display:none !important; }
   body {
-    min-height:100vh; font-family:"Manrope",system-ui,sans-serif; color:var(--ink);
-    background:
-      radial-gradient(900px 420px at 10% -10%, rgba(66,133,244,.16), transparent 55%),
-      radial-gradient(700px 360px at 90% 0%, rgba(52,168,83,.12), transparent 50%),
-      radial-gradient(600px 300px at 70% 100%, rgba(251,188,4,.10), transparent 45%),
-      var(--bg);
-    display:flex; align-items:flex-start; justify-content:center; padding:48px 20px 64px;
+    font-family:"Manrope",-apple-system,"Segoe UI",Roboto,sans-serif;
+    color:var(--ink-700); background:var(--gray-150);
+    -webkit-font-smoothing:antialiased;
   }
-  .stage { width:min(820px,100%); text-align:center; }
-  .eyebrow { margin:0 0 10px; font-size:13px; font-weight:700; letter-spacing:.08em;
-    text-transform:uppercase; color:var(--muted); }
-  h1 { margin:0 0 8px; font-size:clamp(28px,4vw,36px); font-weight:800; letter-spacing:-.02em; }
-  .sub { margin:0 auto 28px; max-width:460px; color:var(--muted); font-size:15px; line-height:1.5; }
+  a { color:var(--blue-600); text-decoration:none; }
+  .hidden { display:none !important; }
+
+  /* ---------- Top bar ---------- */
+  header.topbar {
+    position:sticky; top:0; z-index:40; height:var(--header);
+    display:flex; align-items:center; gap:16px;
+    padding:0 20px; background:var(--white);
+    border-bottom:1px solid var(--gray-200);
+  }
+  .brand-logo { display:flex; align-items:center; }
+  .brand-logo-img { height:40px; width:auto; display:block; }
+  .spacer { flex:1 1 auto; }
+  .icon-btn { position:relative; width:38px; height:38px; border-radius:8px; border:none;
+    background:transparent; cursor:pointer; color:var(--ink-700); font-size:17px; }
+  .icon-btn:hover { background:var(--gray-100); color:var(--orange-500); }
+  .badge { position:absolute; top:4px; right:4px; min-width:16px; height:16px; padding:0 4px;
+    background:var(--orange-500); color:#fff; font-size:10px; font-weight:700; border-radius:999px;
+    display:flex; align-items:center; justify-content:center; }
+  .userchip { display:flex; align-items:center; gap:8px; padding:4px 10px 4px 4px;
+    border:1px solid var(--gray-200); border-radius:999px; cursor:pointer; background:#fff; }
+  .avatar { width:28px; height:28px; border-radius:999px; background:var(--navy-700); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:12px; }
+  .userchip .nm { font-size:13px; font-weight:600; color:var(--ink-900); }
+
+  /* ---------- Shell ---------- */
+  .shell { display:flex; min-height:calc(100vh - var(--header)); }
+
+  /* ---------- Left rail ---------- */
+  nav.rail { width:var(--rail); flex:0 0 auto; background:#fff; border-right:1px solid var(--gray-200);
+    display:flex; flex-direction:column; padding:12px 0; position:sticky; top:var(--header);
+    height:calc(100vh - var(--header)); }
+  .rail .grp { display:flex; flex-direction:column; gap:20px; }
+  .rail .grp.bottom { margin-top:auto; }
+  .rail a { position:relative; display:flex; flex-direction:column; align-items:center; gap:4px;
+    padding:10px 0; color:var(--ink-700); font-size:10px; font-weight:500; }
+  .rail a .ic { font-size:18px; line-height:1; filter:grayscale(1); }
+  .rail a:hover { background:var(--gray-100); }
+  .rail a.active { color:var(--orange-500); }
+  .rail a.active .ic { filter:none; }
+  .rail a.active::before { content:""; position:absolute; left:0; top:6px; bottom:6px; width:3px;
+    background:var(--orange-500); border-radius:0 3px 3px 0; }
+
+  /* ---------- Body ---------- */
+  main.body { flex:1 1 auto; width:99%; max-width:none; margin:0; padding:20px 22px 40px; }
+
+  .stage { width:100%; text-align:center; }
+  .eyebrow { margin:0 0 10px; font-size:12px; font-weight:700; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--navy-700); }
+  .stage > h1 { margin:0 0 8px; font-size:clamp(26px,3.5vw,32px); font-weight:700; color:var(--ink-900); letter-spacing:-.02em; }
+  .sub { margin:0 auto 28px; max-width:520px; color:var(--ink-700); font-size:15px; line-height:1.5; }
 
   .cloud-grid {
-    display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:0 auto;
+    display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; margin:0 auto; max-width:920px;
   }
-  @media (max-width:640px) { .cloud-grid { grid-template-columns:1fr; max-width:280px; } }
+  @media (max-width:900px) { .cloud-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+  @media (max-width:520px) { .cloud-grid { grid-template-columns:1fr; max-width:280px; } }
 
   .cloud-btn {
-    appearance:none; border:1px solid var(--line); background:var(--white);
-    border-radius:18px; padding:22px 16px 18px; cursor:pointer; box-shadow:var(--shadow);
-    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    appearance:none; border:1px solid var(--gray-200); background:var(--white);
+    border-radius:var(--radius); padding:22px 16px 18px; cursor:pointer; box-shadow:var(--shadow);
+    transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
     display:flex; flex-direction:column; align-items:center; gap:12px; width:100%;
   }
-  .cloud-btn:hover { transform:translateY(-3px); border-color:#c7d2fe;
-    box-shadow:0 16px 48px rgba(66,133,244,.16); }
-  .cloud-btn:focus-visible { outline:3px solid rgba(66,133,244,.45); outline-offset:4px; }
-  .cloud-btn.open { border-color:#93c5fd; box-shadow:0 12px 36px rgba(66,133,244,.16); }
-  .cloud-btn .logo { width:72px; height:58px; display:block; object-fit:contain; }
-  .cloud-btn .label { font-size:14px; font-weight:700; color:var(--ink); }
-  .cloud-btn .hint { font-size:11.5px; color:var(--muted); font-weight:500; }
+  .cloud-btn:hover { transform:translateY(-2px); border-color:var(--orange-500); box-shadow:0 8px 24px rgba(1,8,24,.1); }
+  .cloud-btn:focus-visible { outline:3px solid rgba(255,103,31,.35); outline-offset:3px; }
+  .cloud-btn.open { border-color:var(--orange-500); box-shadow:0 8px 24px rgba(255,103,31,.12); }
+  .cloud-btn .cloud-logo { width:72px; height:58px; display:block; object-fit:contain; }
+  .cloud-btn .label { font-size:14px; font-weight:700; color:var(--ink-900); }
+  .cloud-btn .hint { font-size:11.5px; color:#8a93a3; font-weight:500; }
 
   .panel {
-    margin:22px auto 0; text-align:left; background:var(--white);
-    border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow);
+    margin:22px auto 0; max-width:920px; text-align:left; background:var(--white);
+    border:1px solid var(--gray-200); border-radius:var(--radius); box-shadow:var(--shadow);
     overflow:hidden; animation:rise .22s ease;
   }
   @keyframes rise {
@@ -61,33 +108,33 @@
   }
   .panel-hd {
     display:flex; align-items:center; gap:12px; padding:14px 22px;
-    border-bottom:1px solid var(--line);
+    border-bottom:1px solid var(--gray-200);
   }
   .panel-hd .mini { width:28px; height:auto; flex:0 0 auto; object-fit:contain; }
-  .panel-hd h2 { margin:0; font-size:16px; font-weight:800; flex:1; }
+  .panel-hd h2 { margin:0; font-size:16px; font-weight:800; flex:1; color:var(--ink-900); }
   .icon-x {
     width:34px; height:34px; border:none; border-radius:8px; background:transparent;
-    cursor:pointer; color:var(--muted); font-size:18px;
+    cursor:pointer; color:var(--ink-700); font-size:18px;
   }
-  .icon-x:hover { background:var(--bg); color:var(--ink); }
+  .icon-x:hover { background:var(--gray-100); color:var(--orange-500); }
   .panel-bd { padding:16px 22px 18px; }
-  .lead { margin:0 0 14px; font-size:13.5px; color:var(--muted); line-height:1.45; }
+  .lead { margin:0 0 14px; font-size:13.5px; color:var(--ink-700); line-height:1.45; }
 
   .field { margin-bottom:10px; }
   .field label {
-    display:block; margin-bottom:5px; font-size:12.5px; font-weight:700; color:var(--ink);
+    display:block; margin-bottom:5px; font-size:12.5px; font-weight:700; color:var(--ink-900);
   }
-  .field .req { color:#EA4335; }
+  .field .req { color:var(--err-line); }
   .field input, .field select, .field textarea {
-    width:100%; border:1.5px solid var(--line); border-radius:10px; padding:9px 12px;
-    font:inherit; font-size:14px; color:var(--ink); background:#fff;
+    width:100%; border:1.5px solid var(--gray-200); border-radius:8px; padding:9px 12px;
+    font:inherit; font-size:14px; color:var(--ink-900); background:#fff;
     transition:border-color .15s, box-shadow .15s;
   }
   .field input:focus, .field select:focus, .field textarea:focus {
-    outline:none; border-color:var(--blue); box-shadow:0 0 0 3px rgba(66,133,244,.15);
+    outline:none; border-color:var(--orange-500); box-shadow:0 0 0 3px rgba(255,103,31,.15);
   }
   .field textarea { min-height:72px; max-height:140px; resize:vertical; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:12.5px; }
-  .field .help { margin-top:4px; font-size:12px; color:var(--muted); }
+  .field .help { margin-top:4px; font-size:12px; color:#8a93a3; }
   .row2 { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:10px; }
   .row3 { display:grid; grid-template-columns:1.1fr 1fr 1fr; gap:12px; margin-bottom:10px; }
   .row2 > .field, .row3 > .field { margin-bottom:0; }
@@ -99,160 +146,248 @@
   @media (max-width:700px) { .checks { grid-template-columns:1fr 1fr; } }
   .check {
     display:flex; align-items:center; gap:8px; padding:8px 10px;
-    border:1px solid var(--line); border-radius:10px; font-size:13px; font-weight:600;
-    cursor:pointer; user-select:none;
+    border:1px solid var(--gray-200); border-radius:8px; font-size:13px; font-weight:600;
+    cursor:pointer; user-select:none; color:var(--ink-900);
   }
-  .check:has(input:checked) { border-color:#93c5fd; background:rgba(66,133,244,.06); }
-  .check input { width:16px; height:16px; accent-color:var(--blue); }
+  .check:has(input:checked) { border-color:var(--orange-500); background:rgba(255,103,31,.06); }
+  .check input { width:16px; height:16px; accent-color:var(--orange-500); }
 
   .err {
-    margin:0 0 12px; padding:10px 12px; border-radius:10px; background:#FDE7E1;
-    color:var(--err); font-size:13px; font-weight:600;
+    margin:0 0 12px; padding:10px 12px; border-radius:8px; background:var(--err-bg);
+    color:var(--err-line); font-size:13px; font-weight:600;
   }
 
   .actions { display:flex; justify-content:flex-end; gap:10px; margin-top:6px; }
   .btn {
-    font:inherit; font-weight:700; font-size:14px; border-radius:10px; padding:10px 16px;
+    font:inherit; font-weight:600; font-size:14px; border-radius:8px; padding:10px 16px;
     cursor:pointer; border:1.5px solid transparent;
   }
-  .btn-ghost { background:transparent; color:var(--muted); border-color:var(--line); }
-  .btn-ghost:hover { background:var(--bg); color:var(--ink); }
-  .btn-primary {
-    background:linear-gradient(135deg,#4285F4,#1a73e8); color:#fff;
-    box-shadow:0 6px 16px rgba(66,133,244,.28);
-  }
-  .btn-primary:hover { filter:brightness(1.05); }
-  .btn-primary:disabled { opacity:.6; cursor:wait; filter:none; }
+  .btn-ghost { background:transparent; color:var(--ink-700); border-color:var(--gray-200); }
+  .btn-ghost:hover { background:var(--gray-100); color:var(--ink-900); }
+  .btn-primary { background:var(--orange-500); color:#fff; }
+  .btn-primary:hover { background:var(--orange-600); }
+  .btn-primary:disabled { opacity:.6; cursor:wait; }
 
   .status {
-    margin:24px auto 0; text-align:left; background:var(--white);
-    border:1px solid var(--line); border-radius:var(--radius); padding:16px 18px;
-    box-shadow:0 1px 3px rgba(15,23,42,.06);
+    margin:24px auto 0; max-width:920px; text-align:left; background:var(--white);
+    border:1px solid var(--gray-200); border-radius:var(--radius); padding:16px 18px;
+    box-shadow:var(--shadow);
   }
-  .status h2 { margin:0 0 8px; font-size:14px; font-weight:700; }
-  .status .meta { font-size:13px; color:var(--muted); line-height:1.55; }
+  .status h2 { margin:0 0 8px; font-size:14px; font-weight:700; color:var(--ink-900); }
+  .status .meta { font-size:13px; color:var(--ink-700); line-height:1.55; }
   .pill { display:inline-flex; align-items:center; gap:6px; margin-top:10px;
     padding:4px 10px; border-radius:999px; font-size:12px; font-weight:700; }
   .pill.ok { background:rgba(31,169,113,.12); color:var(--ok); }
-  .pill.pending { background:rgba(66,133,244,.10); color:var(--blue); }
+  .pill.pending { background:rgba(255,103,31,.10); color:var(--orange-500); }
+
+  .uploadzone {
+    border:2px dashed var(--gray-200); border-radius:var(--radius); padding:28px 20px;
+    text-align:center; cursor:pointer; transition:border-color .15s, background .15s;
+  }
+  .uploadzone:hover, .uploadzone.dragover {
+    border-color:var(--orange-500); background:rgba(255,103,31,.04);
+  }
+  .uploadzone .upimg { width:64px; height:auto; display:block; margin:0 auto 12px; object-fit:contain; }
+  .uploadzone .uptext { font-weight:600; color:var(--ink-900); margin-bottom:4px; }
+  .uploadzone .uphint { font-size:12.5px; color:#8a93a3; }
+  .selectedfile { display:flex; align-items:center; gap:10px; margin-top:14px; }
+  .selectedfile .sf-icon { width:28px; height:28px; object-fit:contain; flex:0 0 auto; }
+  .selectedfile .sf-meta { flex:1; min-width:0; text-align:left; }
+  .selectedfile .sf-name { font-weight:600; color:var(--ink-900); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .selectedfile .sf-size { font-size:12px; color:#8a93a3; }
 </style>
 </head>
 <body>
-  <main class="stage">
-    <p class="eyebrow">Source connectors</p>
-    <h1>Connect your cloud</h1>
-    <p class="sub">Choose GCP, AWS, or Azure to enter API connectivity details and fetch data from your cloud project.</p>
 
-    <div class="cloud-grid" id="cloudGrid" role="group" aria-label="Cloud providers"></div>
+<!-- ===== Top bar ===== -->
+<header class="topbar">
+  <div class="brand-logo" title="ACL Digital">
+    <img class="brand-logo-img" src="../images/ACL-Logo.webp" alt="ACL Digital — an ALTEN group company" />
+  </div>
+  <div class="spacer"></div>
+  <button class="icon-btn" id="bellBtn" aria-label="Notifications" type="button">🔔<span class="badge" id="bellCount">5</span></button>
+  <div class="userchip" id="userChip">
+    <span class="avatar" id="userAv">A</span>
+    <span class="nm" id="userNm">Admin</span>
+    <span>▾</span>
+  </div>
+</header>
 
-    <section class="panel hidden" id="connPanel" aria-labelledby="panelTitle">
-      <div class="panel-hd">
-        <img class="mini" id="panelLogo" src="" alt="" width="28" height="22" aria-hidden="true" />
-        <h2 id="panelTitle">API connectivity</h2>
-        <button type="button" class="icon-x" id="panelCloseBtn" aria-label="Close">✕</button>
-      </div>
-      <div class="panel-bd">
-        <p class="lead" id="panelLead"></p>
-        <form id="connForm" novalidate>
-          <div class="field">
-            <label for="cf_display_name">Connection name <span class="req">*</span></label>
-            <input id="cf_display_name" name="display_name" required maxlength="128" />
-          </div>
+<div class="shell">
+  <!-- ===== Left rail ===== -->
+  <nav class="rail" aria-label="Primary">
+    <div class="grp">
+      <a href="../frontend/index-v2.html"><span class="ic">🧭</span>Assets</a>
+      <a href="../frontend/index-v2.html"><span class="ic">📘</span>Glossary</a>
+      <a href="#"><span class="ic">⚡</span>Insights</a>
+    </div>
+    <div class="grp" style="margin-top:14px">
+      <a href="#" class="active" aria-current="page"><span class="ic">🔀</span>Connectors</a>
+      <a href="../frontend/index-v2.html"><span class="ic">🏛️</span>Governance</a>
+      <a href="../frontend/index-v2.html"><span class="ic">🛡️</span>Admin</a>
+      <a href="#"><span class="ic">📊</span>Reporting</a>
+    </div>
+    <div class="grp bottom">
+      <a href="#"><span class="ic">🎧</span>Support</a>
+      <a href="#"><span class="ic">📖</span>Docs</a>
+    </div>
+  </nav>
 
-          <div class="row3">
+  <!-- ===== Body ===== -->
+  <main class="body">
+    <div class="stage">
+      <p class="eyebrow">Source connectors</p>
+      <h1>Connect your sources</h1>
+      <p class="sub">Choose GCP, AWS, Azure, or upload a file to configure connectivity and bring data into DataHive.</p>
+
+      <div class="cloud-grid" id="cloudGrid" role="group" aria-label="Cloud providers"></div>
+
+      <section class="panel hidden" id="connPanel" aria-labelledby="panelTitle">
+        <div class="panel-hd">
+          <img class="mini" id="panelLogo" src="" alt="" width="28" height="22" aria-hidden="true" />
+          <h2 id="panelTitle">API connectivity</h2>
+          <button type="button" class="icon-x" id="panelCloseBtn" aria-label="Close">✕</button>
+        </div>
+        <div class="panel-bd">
+          <p class="lead" id="panelLead"></p>
+          <form id="connForm" novalidate>
             <div class="field">
-              <label for="cf_account_id" id="cf_account_label">Project / Account ID <span class="req">*</span></label>
-              <input id="cf_account_id" name="account_id" required maxlength="128" autocomplete="off" />
+              <label for="cf_display_name">Connection name <span class="req">*</span></label>
+              <input id="cf_display_name" name="display_name" required maxlength="128" />
             </div>
-            <div class="field">
-              <label for="cf_region">Default region</label>
-              <select id="cf_region" name="region"></select>
-            </div>
-            <div class="field">
-              <label for="cf_auth_type">Authentication</label>
-              <select id="cf_auth_type" name="auth_type"></select>
-            </div>
-          </div>
 
-          <div class="field hidden" id="group_azure_extra">
-            <div class="row2" style="margin-bottom:0">
-              <div class="field" style="margin-bottom:0">
-                <label for="cf_tenant_id">Tenant ID <span class="req">*</span></label>
-                <input id="cf_tenant_id" name="tenant_id" maxlength="128" autocomplete="off" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" />
+            <div id="cloudFields">
+              <div class="row3">
+                <div class="field">
+                  <label for="cf_account_id" id="cf_account_label">Project / Account ID <span class="req">*</span></label>
+                  <input id="cf_account_id" name="account_id" maxlength="128" autocomplete="off" />
+                </div>
+                <div class="field">
+                  <label for="cf_region">Default region</label>
+                  <select id="cf_region" name="region"></select>
+                </div>
+                <div class="field">
+                  <label for="cf_auth_type">Authentication</label>
+                  <select id="cf_auth_type" name="auth_type"></select>
+                </div>
               </div>
-              <div class="field" style="margin-bottom:0">
-                <label for="cf_resource_group">Resource group</label>
-                <input id="cf_resource_group" name="resource_group" maxlength="128" placeholder="rg-analytics (optional)" />
+
+              <div class="field hidden" id="group_azure_extra">
+                <div class="row2" style="margin-bottom:0">
+                  <div class="field" style="margin-bottom:0">
+                    <label for="cf_tenant_id">Tenant ID <span class="req">*</span></label>
+                    <input id="cf_tenant_id" name="tenant_id" maxlength="128" autocomplete="off" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" />
+                  </div>
+                  <div class="field" style="margin-bottom:0">
+                    <label for="cf_resource_group">Resource group</label>
+                    <input id="cf_resource_group" name="resource_group" maxlength="128" placeholder="rg-analytics (optional)" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="field" id="group_sa">
+                <label for="cf_sa_json" id="cf_sa_label">Service account JSON <span class="req">*</span></label>
+                <textarea id="cf_sa_json" name="service_account_json" maxlength="65536"></textarea>
+                <div class="help" id="cf_sa_help"></div>
+              </div>
+
+              <div class="field hidden" id="group_api_key">
+                <label for="cf_api_key" id="cf_api_key_label">API key <span class="req">*</span></label>
+                <input id="cf_api_key" name="api_key" type="password" maxlength="4096" autocomplete="off" />
+              </div>
+
+              <div class="row2 hidden" id="group_access_keys">
+                <div class="field">
+                  <label for="cf_access_key_id">Access key ID <span class="req">*</span></label>
+                  <input id="cf_access_key_id" name="access_key_id" maxlength="128" autocomplete="off" />
+                </div>
+                <div class="field">
+                  <label for="cf_secret_access_key">Secret access key <span class="req">*</span></label>
+                  <input id="cf_secret_access_key" name="secret_access_key" type="password" maxlength="4096" autocomplete="off" />
+                </div>
+              </div>
+
+              <div class="row2 hidden" id="group_oauth">
+                <div class="field">
+                  <label for="cf_client_id" id="cf_client_id_label">Client ID <span class="req">*</span></label>
+                  <input id="cf_client_id" name="client_id" maxlength="512" autocomplete="off" />
+                </div>
+                <div class="field">
+                  <label for="cf_client_secret" id="cf_client_secret_label">Client secret <span class="req">*</span></label>
+                  <input id="cf_client_secret" name="client_secret" type="password" maxlength="4096" autocomplete="off" />
+                </div>
+              </div>
+
+              <div class="field hidden" id="group_role_arn">
+                <label for="cf_role_arn">IAM role ARN <span class="req">*</span></label>
+                <input id="cf_role_arn" name="role_arn" maxlength="512" placeholder="arn:aws:iam::123456789012:role/DataHiveRole" autocomplete="off" />
+                <div class="help">Role DataHive should assume in your AWS account.</div>
+              </div>
+
+              <div class="field">
+                <label id="cf_apis_label">APIs / services to fetch from</label>
+                <div class="checks" id="cf_apis"></div>
+              </div>
+
+              <div class="field">
+                <label for="cf_scope" id="cf_scope_label">Dataset / bucket scope</label>
+                <input id="cf_scope" name="dataset_scope" maxlength="512" />
+                <div class="help" id="cf_scope_help">Optional allow-list of resources or patterns.</div>
               </div>
             </div>
-          </div>
 
-          <div class="field" id="group_sa">
-            <label for="cf_sa_json" id="cf_sa_label">Service account JSON <span class="req">*</span></label>
-            <textarea id="cf_sa_json" name="service_account_json" maxlength="65536"></textarea>
-            <div class="help" id="cf_sa_help"></div>
-          </div>
-
-          <div class="field hidden" id="group_api_key">
-            <label for="cf_api_key" id="cf_api_key_label">API key <span class="req">*</span></label>
-            <input id="cf_api_key" name="api_key" type="password" maxlength="4096" autocomplete="off" />
-          </div>
-
-          <div class="row2 hidden" id="group_access_keys">
-            <div class="field">
-              <label for="cf_access_key_id">Access key ID <span class="req">*</span></label>
-              <input id="cf_access_key_id" name="access_key_id" maxlength="128" autocomplete="off" />
+            <div id="uploadFields" class="hidden">
+              <div class="field">
+                <label>Upload data file <span class="req">*</span></label>
+                <div class="uploadzone" id="uploadDropzone" tabindex="0" role="button" aria-label="Upload data file">
+                  <img class="upimg" src="../images/upload.png" alt="" width="64" height="64" />
+                  <div class="uptext">Click to upload or drag &amp; drop</div>
+                  <div class="uphint">CSV, Excel (.xlsx, .xls), JSON, or Parquet — up to 50 MB</div>
+                </div>
+                <input type="file" id="uploadFileInput" class="hidden" accept=".csv,.xlsx,.xls,.json,.parquet,.tsv,.txt" />
+                <div id="uploadSelected" class="selectedfile hidden">
+                  <img class="sf-icon" src="../images/upload.png" alt="" width="28" height="28" />
+                  <div class="sf-meta">
+                    <div class="sf-name" id="uploadSelectedName"></div>
+                    <div class="sf-size" id="uploadSelectedSize"></div>
+                  </div>
+                  <button type="button" class="icon-btn" id="uploadClearBtn" aria-label="Remove selected file">✕</button>
+                </div>
+              </div>
+              <div class="field">
+                <label for="cf_upload_format">File format</label>
+                <select id="cf_upload_format" name="upload_format">
+                  <option value="auto">Detect automatically</option>
+                  <option value="csv">CSV / TSV</option>
+                  <option value="excel">Excel</option>
+                  <option value="json">JSON</option>
+                  <option value="parquet">Parquet</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="cf_upload_notes">Notes</label>
+                <input id="cf_upload_notes" name="upload_notes" maxlength="512" placeholder="Optional context for this dataset" />
+              </div>
             </div>
-            <div class="field">
-              <label for="cf_secret_access_key">Secret access key <span class="req">*</span></label>
-              <input id="cf_secret_access_key" name="secret_access_key" type="password" maxlength="4096" autocomplete="off" />
+
+            <div id="formError" class="err hidden"></div>
+
+            <div class="actions">
+              <button type="button" class="btn btn-ghost" id="cancelBtn">Cancel</button>
+              <button type="submit" class="btn btn-primary" id="submitBtn">Connect &amp; fetch</button>
             </div>
-          </div>
+          </form>
+        </div>
+      </section>
 
-          <div class="row2 hidden" id="group_oauth">
-            <div class="field">
-              <label for="cf_client_id" id="cf_client_id_label">Client ID <span class="req">*</span></label>
-              <input id="cf_client_id" name="client_id" maxlength="512" autocomplete="off" />
-            </div>
-            <div class="field">
-              <label for="cf_client_secret" id="cf_client_secret_label">Client secret <span class="req">*</span></label>
-              <input id="cf_client_secret" name="client_secret" type="password" maxlength="4096" autocomplete="off" />
-            </div>
-          </div>
-
-          <div class="field hidden" id="group_role_arn">
-            <label for="cf_role_arn">IAM role ARN <span class="req">*</span></label>
-            <input id="cf_role_arn" name="role_arn" maxlength="512" placeholder="arn:aws:iam::123456789012:role/DataHiveRole" autocomplete="off" />
-            <div class="help">Role DataHive should assume in your AWS account.</div>
-          </div>
-
-          <div class="field">
-            <label id="cf_apis_label">APIs / services to fetch from</label>
-            <div class="checks" id="cf_apis"></div>
-          </div>
-
-          <div class="field">
-            <label for="cf_scope" id="cf_scope_label">Dataset / bucket scope</label>
-            <input id="cf_scope" name="dataset_scope" maxlength="512" />
-            <div class="help" id="cf_scope_help">Optional allow-list of resources or patterns.</div>
-          </div>
-
-          <div id="formError" class="err hidden"></div>
-
-          <div class="actions">
-            <button type="button" class="btn btn-ghost" id="cancelBtn">Cancel</button>
-            <button type="submit" class="btn btn-primary" id="submitBtn">Connect &amp; fetch</button>
-          </div>
-        </form>
-      </div>
-    </section>
-
-    <section class="status hidden" id="connStatus" aria-live="polite">
-      <h2 id="statusTitle">Connection saved</h2>
-      <div class="meta" id="statusMeta"></div>
-      <div class="pill pending" id="statusPill">Ready to fetch</div>
-    </section>
+      <section class="status hidden" id="connStatus" aria-live="polite">
+        <h2 id="statusTitle">Connection saved</h2>
+        <div class="meta" id="statusMeta"></div>
+        <div class="pill pending" id="statusPill">Ready to fetch</div>
+      </section>
+    </div>
   </main>
+</div>
 
 <script>
 const $ = (sel, root=document) => root.querySelector(sel);
@@ -348,6 +483,28 @@ const CLOUDS = {
     saLabel: "Client certificate / JSON",
     saHelp: "Paste the certificate or credential JSON for the app registration.",
     saPlaceholder: '{"clientId":"...","tenantId":"...","certificate":"..."}'
+  },
+  upload: {
+    id: "upload",
+    type: "manualupload",
+    mode: "upload",
+    name: "File Upload",
+    short: "Upload",
+    logo: "../images/upload.png",
+    lead: "Upload a local data file (CSV, Excel, JSON, or Parquet) for DataHive to ingest and catalog.",
+    accountLabel: "File",
+    accountPlaceholder: "",
+    namePlaceholder: "Sales extract — Q2",
+    scopeLabel: "",
+    scopePlaceholder: "",
+    scopeHelp: "",
+    regions: [],
+    auth: [],
+    apis: [],
+    saLabel: "",
+    saHelp: "",
+    saPlaceholder: "",
+    hint: "Upload a data file"
   }
 };
 
@@ -357,6 +514,7 @@ const form = $("#connForm");
 const errBox = $("#formError");
 const statusEl = $("#connStatus");
 let activeCloud = null;
+let selectedUploadFile = null;
 
 Object.values(CLOUDS).forEach(cloud => {
   const btn = document.createElement("button");
@@ -366,15 +524,69 @@ Object.values(CLOUDS).forEach(cloud => {
   btn.setAttribute("aria-expanded", "false");
   btn.setAttribute("aria-controls", "connPanel");
   btn.innerHTML =
-    `<img class="logo" src="${cloud.logo}" alt="${cloud.name}" width="72" height="58" />` +
+    `<img class="cloud-logo" src="${cloud.logo}" alt="${cloud.name}" width="72" height="58" />` +
     `<span class="label">${cloud.name}</span>` +
-    `<span class="hint">Configure API connectivity</span>`;
+    `<span class="hint">${cloud.hint || "Configure API connectivity"}</span>`;
   btn.addEventListener("click", () => {
     if (activeCloud === cloud.id && !panel.classList.contains("hidden")) closePanel();
     else openPanel(cloud.id);
   });
   grid.appendChild(btn);
 });
+
+function formatBytes(n){
+  if (!n && n !== 0) return "";
+  if (n < 1024) return n + " B";
+  if (n < 1048576) return (n / 1024).toFixed(1) + " KB";
+  return (n / 1048576).toFixed(1) + " MB";
+}
+
+function clearUploadSelection(){
+  selectedUploadFile = null;
+  $("#uploadFileInput").value = "";
+  $("#uploadSelected").classList.add("hidden");
+  $("#uploadDropzone").classList.remove("hidden");
+}
+
+function selectUploadFile(file){
+  if (!file) return;
+  if (!/\.(csv|tsv|txt|xlsx|xls|json|parquet)$/i.test(file.name)) {
+    return showError("Please choose a CSV, Excel, JSON, or Parquet file.");
+  }
+  if (file.size > 50 * 1024 * 1024) {
+    return showError("File is too large. Maximum size is 50 MB.");
+  }
+  errBox.classList.add("hidden");
+  selectedUploadFile = file;
+  $("#uploadSelectedName").textContent = file.name;
+  $("#uploadSelectedSize").textContent = formatBytes(file.size);
+  $("#uploadSelected").classList.remove("hidden");
+  $("#uploadDropzone").classList.add("hidden");
+
+  const ext = file.name.split(".").pop().toLowerCase();
+  const formatSel = $("#cf_upload_format");
+  if (ext === "csv" || ext === "tsv" || ext === "txt") formatSel.value = "csv";
+  else if (ext === "xlsx" || ext === "xls") formatSel.value = "excel";
+  else if (ext === "json") formatSel.value = "json";
+  else if (ext === "parquet") formatSel.value = "parquet";
+  else formatSel.value = "auto";
+}
+
+const dropzone = $("#uploadDropzone");
+const fileInput = $("#uploadFileInput");
+dropzone.addEventListener("click", () => fileInput.click());
+dropzone.addEventListener("keydown", (e)=>{
+  if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fileInput.click(); }
+});
+fileInput.addEventListener("change", (e)=> selectUploadFile(e.target.files[0]));
+["dragenter","dragover"].forEach(ev => dropzone.addEventListener(ev, (e)=>{
+  e.preventDefault(); dropzone.classList.add("dragover");
+}));
+["dragleave","drop"].forEach(ev => dropzone.addEventListener(ev, (e)=>{
+  e.preventDefault(); dropzone.classList.remove("dragover");
+}));
+dropzone.addEventListener("drop", (e)=> selectUploadFile(e.dataTransfer.files[0]));
+$("#uploadClearBtn").addEventListener("click", clearUploadSelection);
 
 function fillSelect(sel, options, selected){
   sel.innerHTML = options.map(o => {
@@ -385,11 +597,19 @@ function fillSelect(sel, options, selected){
 }
 
 function configureForm(cloud){
+  const isUpload = cloud.mode === "upload";
   $("#panelLogo").src = cloud.logo;
-  $("#panelTitle").textContent = cloud.short + " API connectivity";
+  $("#panelTitle").textContent = isUpload ? "File upload" : (cloud.short + " API connectivity");
   $("#panelLead").textContent = cloud.lead;
-
   $("#cf_display_name").placeholder = cloud.namePlaceholder;
+  $("#submitBtn").textContent = isUpload ? "Upload & ingest" : "Connect & fetch";
+
+  $("#cloudFields").classList.toggle("hidden", isUpload);
+  $("#uploadFields").classList.toggle("hidden", !isUpload);
+  clearUploadSelection();
+
+  if (isUpload) return;
+
   $("#cf_account_label").innerHTML = cloud.accountLabel + ' <span class="req">*</span>';
   $("#cf_account_id").placeholder = cloud.accountPlaceholder;
   $("#cf_scope_label").textContent = cloud.scopeLabel;
@@ -430,7 +650,6 @@ function toggleAuth(type, cloud = CLOUDS[activeCloud]){
                     (cloud.id === "azure" && type === "service_principal");
   const showAccessKeys = cloud.id === "aws" && type === "access_keys";
   const showRole = cloud.id === "aws" && (type === "iam_role" || type === "assume_role");
-  // managed_identity needs no secret fields
 
   $("#group_sa").classList.toggle("hidden", !showSa);
   $("#group_api_key").classList.toggle("hidden", !showApiKey);
@@ -449,9 +668,12 @@ function openPanel(cloudId){
 
   $$(".cloud-btn").forEach(btn => {
     const open = btn.dataset.cloud === cloudId;
+    const c = CLOUDS[btn.dataset.cloud];
     btn.classList.toggle("open", open);
     btn.setAttribute("aria-expanded", open ? "true" : "false");
-    btn.querySelector(".hint").textContent = open ? "Editing connectivity details" : "Configure API connectivity";
+    btn.querySelector(".hint").textContent = open
+      ? (c.mode === "upload" ? "Selecting a file…" : "Editing connectivity details")
+      : (c.hint || "Configure API connectivity");
   });
 
   $("#cf_display_name").focus();
@@ -461,10 +683,12 @@ function openPanel(cloudId){
 function closePanel(){
   panel.classList.add("hidden");
   activeCloud = null;
+  clearUploadSelection();
   $$(".cloud-btn").forEach(btn => {
+    const c = CLOUDS[btn.dataset.cloud];
     btn.classList.remove("open");
     btn.setAttribute("aria-expanded", "false");
-    btn.querySelector(".hint").textContent = "Configure API connectivity";
+    btn.querySelector(".hint").textContent = c.hint || "Configure API connectivity";
   });
 }
 
@@ -487,87 +711,110 @@ form.addEventListener("submit", async (e)=>{
   if (!cloud) return;
 
   const displayName = $("#cf_display_name").value.trim();
-  const accountId = $("#cf_account_id").value.trim();
-  const region = $("#cf_region").value;
-  const authType = $("#cf_auth_type").value;
-  const scope = $("#cf_scope").value.trim();
-  const apis = $$('input[name="apis"]:checked').map(el => el.value);
-  const tenantId = $("#cf_tenant_id").value.trim();
-  const resourceGroup = $("#cf_resource_group").value.trim();
-
   if (!displayName) return showError("Connection name is required.");
-  if (!accountId) return showError(cloud.accountLabel + " is required.");
-  if (!apis.length) return showError("Select at least one service to fetch from.");
 
-  if (cloud.id === "azure" && (authType === "service_principal" || authType === "client_certificate" || authType === "managed_identity")) {
-    if (!tenantId) return showError("Tenant ID is required for Azure.");
-  }
+  let payload;
 
-  if (cloud.id === "gcp") {
-    if (authType === "service_account") {
-      const raw = $("#cf_sa_json").value.trim();
-      if (!raw) return showError("Paste a service account JSON key.");
-      try {
-        const parsed = JSON.parse(raw);
-        if (parsed.type && parsed.type !== "service_account") {
-          return showError('JSON "type" should be "service_account".');
+  if (cloud.mode === "upload") {
+    if (!selectedUploadFile) return showError("Please select a file to upload.");
+    payload = {
+      connector_type: cloud.type,
+      cloud: cloud.id,
+      mode: "upload",
+      display_name: displayName,
+      file_name: selectedUploadFile.name,
+      file_size: selectedUploadFile.size,
+      file_type: selectedUploadFile.type || "",
+      upload_format: $("#cf_upload_format").value,
+      upload_notes: $("#cf_upload_notes").value.trim(),
+      account_id: selectedUploadFile.name,
+      region: "local",
+      auth_type: "file_upload",
+      apis: ["file_ingest"]
+    };
+  } else {
+    const accountId = $("#cf_account_id").value.trim();
+    const region = $("#cf_region").value;
+    const authType = $("#cf_auth_type").value;
+    const scope = $("#cf_scope").value.trim();
+    const apis = $$('input[name="apis"]:checked').map(el => el.value);
+    const tenantId = $("#cf_tenant_id").value.trim();
+    const resourceGroup = $("#cf_resource_group").value.trim();
+
+    if (!accountId) return showError(cloud.accountLabel + " is required.");
+    if (!apis.length) return showError("Select at least one service to fetch from.");
+
+    if (cloud.id === "azure" && (authType === "service_principal" || authType === "client_certificate" || authType === "managed_identity")) {
+      if (!tenantId) return showError("Tenant ID is required for Azure.");
+    }
+
+    if (cloud.id === "gcp") {
+      if (authType === "service_account") {
+        const raw = $("#cf_sa_json").value.trim();
+        if (!raw) return showError("Paste a service account JSON key.");
+        try {
+          const parsed = JSON.parse(raw);
+          if (parsed.type && parsed.type !== "service_account") {
+            return showError('JSON "type" should be "service_account".');
+          }
+        } catch {
+          return showError("Service account JSON is not valid JSON.");
         }
-      } catch {
-        return showError("Service account JSON is not valid JSON.");
+      } else if (authType === "api_key") {
+        if (!$("#cf_api_key").value.trim()) return showError("API key is required.");
+      } else if (authType === "oauth2") {
+        if (!$("#cf_client_id").value.trim() || !$("#cf_client_secret").value.trim()) {
+          return showError("OAuth Client ID and secret are required.");
+        }
       }
-    } else if (authType === "api_key") {
-      if (!$("#cf_api_key").value.trim()) return showError("API key is required.");
-    } else if (authType === "oauth2") {
-      if (!$("#cf_client_id").value.trim() || !$("#cf_client_secret").value.trim()) {
-        return showError("OAuth Client ID and secret are required.");
+    } else if (cloud.id === "aws") {
+      if (authType === "access_keys") {
+        if (!$("#cf_access_key_id").value.trim() || !$("#cf_secret_access_key").value.trim()) {
+          return showError("Access key ID and secret access key are required.");
+        }
+      } else if (authType === "iam_role" || authType === "assume_role") {
+        if (!$("#cf_role_arn").value.trim()) return showError("IAM role ARN is required.");
+      }
+    } else if (cloud.id === "azure") {
+      if (authType === "service_principal") {
+        if (!$("#cf_client_id").value.trim() || !$("#cf_client_secret").value.trim()) {
+          return showError("Application (client) ID and secret are required.");
+        }
+      } else if (authType === "client_certificate") {
+        if (!$("#cf_sa_json").value.trim()) return showError("Client certificate / JSON is required.");
       }
     }
-  } else if (cloud.id === "aws") {
-    if (authType === "access_keys") {
-      if (!$("#cf_access_key_id").value.trim() || !$("#cf_secret_access_key").value.trim()) {
-        return showError("Access key ID and secret access key are required.");
-      }
-    } else if (authType === "iam_role" || authType === "assume_role") {
-      if (!$("#cf_role_arn").value.trim()) return showError("IAM role ARN is required.");
-    }
-  } else if (cloud.id === "azure") {
-    if (authType === "service_principal") {
-      if (!$("#cf_client_id").value.trim() || !$("#cf_client_secret").value.trim()) {
-        return showError("Application (client) ID and secret are required.");
-      }
-    } else if (authType === "client_certificate") {
-      if (!$("#cf_sa_json").value.trim()) return showError("Client certificate / JSON is required.");
-    }
-  }
 
-  const payload = {
-    connector_type: cloud.type,
-    cloud: cloud.id,
-    display_name: displayName,
-    account_id: accountId,
-    region,
-    auth_type: authType,
-    apis,
-    dataset_scope: scope,
-    tenant_id: tenantId,
-    resource_group: resourceGroup,
-    // Credentials stay in-memory for this R&D page; wire to backend when ready.
-    api_key: $("#cf_api_key").value,
-    client_id: $("#cf_client_id").value,
-    client_secret: $("#cf_client_secret").value,
-    service_account_json: $("#cf_sa_json").value,
-    access_key_id: $("#cf_access_key_id").value,
-    secret_access_key: $("#cf_secret_access_key").value,
-    role_arn: $("#cf_role_arn").value
-  };
+    payload = {
+      connector_type: cloud.type,
+      cloud: cloud.id,
+      display_name: displayName,
+      account_id: accountId,
+      region,
+      auth_type: authType,
+      apis,
+      dataset_scope: scope,
+      tenant_id: tenantId,
+      resource_group: resourceGroup,
+      api_key: $("#cf_api_key").value,
+      client_id: $("#cf_client_id").value,
+      client_secret: $("#cf_client_secret").value,
+      service_account_json: $("#cf_sa_json").value,
+      access_key_id: $("#cf_access_key_id").value,
+      secret_access_key: $("#cf_secret_access_key").value,
+      role_arn: $("#cf_role_arn").value
+    };
+  }
 
   const btn = $("#submitBtn");
+  const busyLabel = cloud.mode === "upload" ? "Uploading…" : "Connecting…";
+  const idleLabel = cloud.mode === "upload" ? "Upload & ingest" : "Connect & fetch";
   btn.disabled = true;
-  btn.textContent = "Connecting…";
+  btn.textContent = busyLabel;
 
   await new Promise(r => setTimeout(r, 700));
   try {
-    sessionStorage.setItem("datahive_cloud_connection", JSON.stringify({
+    const toStore = {
       cloud: payload.cloud,
       connector_type: payload.connector_type,
       display_name: payload.display_name,
@@ -578,22 +825,29 @@ form.addEventListener("submit", async (e)=>{
       dataset_scope: payload.dataset_scope,
       tenant_id: payload.tenant_id,
       resource_group: payload.resource_group,
+      mode: payload.mode,
+      file_name: payload.file_name,
+      file_size: payload.file_size,
+      upload_format: payload.upload_format,
+      upload_notes: payload.upload_notes,
       saved_at: new Date().toISOString()
-    }));
+    };
+    sessionStorage.setItem("datahive_cloud_connection", JSON.stringify(toStore));
   } catch { /* ignore quota */ }
 
   btn.disabled = false;
-  btn.textContent = "Connect & fetch";
+  btn.textContent = idleLabel;
   closePanel();
-  showStatus(payload, "Connected — fetch queued", "ok");
+  showStatus(payload, cloud.mode === "upload" ? "Uploaded — ingest queued" : "Connected — fetch queued", "ok");
 
-  console.info("[Cloud] connection configured", {
+  console.info("[Source] connection configured", {
     cloud: payload.cloud,
     display_name: payload.display_name,
     account_id: payload.account_id,
     region: payload.region,
     auth_type: payload.auth_type,
-    apis: payload.apis
+    apis: payload.apis,
+    file_name: payload.file_name
   });
 });
 
@@ -604,17 +858,32 @@ function authLabel(cloudId, authType){
 
 function showStatus(payload, pillText, pillKind){
   const cloud = CLOUDS[payload.cloud] || Object.values(CLOUDS).find(c => c.type === payload.connector_type);
-  const accountLabel = cloud ? cloud.accountLabel : "Account";
   $("#statusTitle").textContent = payload.display_name;
-  $("#statusMeta").innerHTML =
-    "<strong>Cloud:</strong> " + escapeHtml(cloud ? cloud.short : payload.cloud) +
-    " · <strong>" + escapeHtml(accountLabel) + ":</strong> " + escapeHtml(payload.account_id) +
-    " · <strong>Region:</strong> " + escapeHtml(payload.region) + "<br>" +
-    "<strong>Auth:</strong> " + escapeHtml(authLabel(payload.cloud, payload.auth_type)) +
-    " · <strong>Services:</strong> " + escapeHtml((payload.apis||[]).join(", ")) +
-    (payload.dataset_scope
-      ? "<br><strong>Scope:</strong> " + escapeHtml(payload.dataset_scope)
-      : "");
+
+  if (payload.mode === "upload" || payload.cloud === "upload") {
+    $("#statusMeta").innerHTML =
+      "<strong>Source:</strong> File Upload" +
+      " · <strong>File:</strong> " + escapeHtml(payload.file_name || payload.account_id || "") +
+      (payload.file_size != null ? " · <strong>Size:</strong> " + escapeHtml(formatBytes(payload.file_size)) : "") +
+      (payload.upload_format
+        ? "<br><strong>Format:</strong> " + escapeHtml(payload.upload_format)
+        : "") +
+      (payload.upload_notes
+        ? "<br><strong>Notes:</strong> " + escapeHtml(payload.upload_notes)
+        : "");
+  } else {
+    const accountLabel = cloud ? cloud.accountLabel : "Account";
+    $("#statusMeta").innerHTML =
+      "<strong>Cloud:</strong> " + escapeHtml(cloud ? cloud.short : payload.cloud) +
+      " · <strong>" + escapeHtml(accountLabel) + ":</strong> " + escapeHtml(payload.account_id) +
+      " · <strong>Region:</strong> " + escapeHtml(payload.region) + "<br>" +
+      "<strong>Auth:</strong> " + escapeHtml(authLabel(payload.cloud, payload.auth_type)) +
+      " · <strong>Services:</strong> " + escapeHtml((payload.apis||[]).join(", ")) +
+      (payload.dataset_scope
+        ? "<br><strong>Scope:</strong> " + escapeHtml(payload.dataset_scope)
+        : "");
+  }
+
   const pill = $("#statusPill");
   pill.className = "pill " + (pillKind || "pending");
   pill.textContent = pillText;
@@ -630,7 +899,6 @@ function escapeHtml(s){
 try {
   const saved = JSON.parse(sessionStorage.getItem("datahive_cloud_connection") || "null")
     || (() => {
-      // migrate older GCP-only key if present
       const legacy = JSON.parse(sessionStorage.getItem("datahive_gcp_connection") || "null");
       if (!legacy) return null;
       return {
