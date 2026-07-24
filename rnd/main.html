@@ -79,9 +79,10 @@
   .sub { margin:0 auto 28px; max-width:520px; color:var(--ink-700); font-size:15px; line-height:1.5; }
 
   .cloud-grid {
-    display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; margin:0 auto; max-width:720px;
+    display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; margin:0 auto; max-width:920px;
   }
-  @media (max-width:640px) { .cloud-grid { grid-template-columns:1fr; max-width:280px; } }
+  @media (max-width:900px) { .cloud-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+  @media (max-width:520px) { .cloud-grid { grid-template-columns:1fr; max-width:280px; } }
 
   .cloud-btn {
     appearance:none; border:1px solid var(--gray-200); background:var(--white);
@@ -178,6 +179,22 @@
     padding:4px 10px; border-radius:999px; font-size:12px; font-weight:700; }
   .pill.ok { background:rgba(31,169,113,.12); color:var(--ok); }
   .pill.pending { background:rgba(255,103,31,.10); color:var(--orange-500); }
+
+  .uploadzone {
+    border:2px dashed var(--gray-200); border-radius:var(--radius); padding:28px 20px;
+    text-align:center; cursor:pointer; transition:border-color .15s, background .15s;
+  }
+  .uploadzone:hover, .uploadzone.dragover {
+    border-color:var(--orange-500); background:rgba(255,103,31,.04);
+  }
+  .uploadzone .upimg { width:64px; height:auto; display:block; margin:0 auto 12px; object-fit:contain; }
+  .uploadzone .uptext { font-weight:600; color:var(--ink-900); margin-bottom:4px; }
+  .uploadzone .uphint { font-size:12.5px; color:#8a93a3; }
+  .selectedfile { display:flex; align-items:center; gap:10px; margin-top:14px; }
+  .selectedfile .sf-icon { width:28px; height:28px; object-fit:contain; flex:0 0 auto; }
+  .selectedfile .sf-meta { flex:1; min-width:0; text-align:left; }
+  .selectedfile .sf-name { font-weight:600; color:var(--ink-900); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .selectedfile .sf-size { font-size:12px; color:#8a93a3; }
 </style>
 </head>
 <body>
@@ -220,8 +237,8 @@
   <main class="body">
     <div class="stage">
       <p class="eyebrow">Source connectors</p>
-      <h1>Connect your cloud</h1>
-      <p class="sub">Choose GCP, AWS, or Azure to enter API connectivity details and fetch data from your cloud project.</p>
+      <h1>Connect your sources</h1>
+      <p class="sub">Choose GCP, AWS, Azure, or upload a file to configure connectivity and bring data into DataHive.</p>
 
       <div class="cloud-grid" id="cloudGrid" role="group" aria-label="Cloud providers"></div>
 
@@ -239,82 +256,118 @@
               <input id="cf_display_name" name="display_name" required maxlength="128" />
             </div>
 
-            <div class="row3">
-              <div class="field">
-                <label for="cf_account_id" id="cf_account_label">Project / Account ID <span class="req">*</span></label>
-                <input id="cf_account_id" name="account_id" required maxlength="128" autocomplete="off" />
-              </div>
-              <div class="field">
-                <label for="cf_region">Default region</label>
-                <select id="cf_region" name="region"></select>
-              </div>
-              <div class="field">
-                <label for="cf_auth_type">Authentication</label>
-                <select id="cf_auth_type" name="auth_type"></select>
-              </div>
-            </div>
-
-            <div class="field hidden" id="group_azure_extra">
-              <div class="row2" style="margin-bottom:0">
-                <div class="field" style="margin-bottom:0">
-                  <label for="cf_tenant_id">Tenant ID <span class="req">*</span></label>
-                  <input id="cf_tenant_id" name="tenant_id" maxlength="128" autocomplete="off" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" />
+            <div id="cloudFields">
+              <div class="row3">
+                <div class="field">
+                  <label for="cf_account_id" id="cf_account_label">Project / Account ID <span class="req">*</span></label>
+                  <input id="cf_account_id" name="account_id" maxlength="128" autocomplete="off" />
                 </div>
-                <div class="field" style="margin-bottom:0">
-                  <label for="cf_resource_group">Resource group</label>
-                  <input id="cf_resource_group" name="resource_group" maxlength="128" placeholder="rg-analytics (optional)" />
+                <div class="field">
+                  <label for="cf_region">Default region</label>
+                  <select id="cf_region" name="region"></select>
+                </div>
+                <div class="field">
+                  <label for="cf_auth_type">Authentication</label>
+                  <select id="cf_auth_type" name="auth_type"></select>
                 </div>
               </div>
-            </div>
 
-            <div class="field" id="group_sa">
-              <label for="cf_sa_json" id="cf_sa_label">Service account JSON <span class="req">*</span></label>
-              <textarea id="cf_sa_json" name="service_account_json" maxlength="65536"></textarea>
-              <div class="help" id="cf_sa_help"></div>
-            </div>
+              <div class="field hidden" id="group_azure_extra">
+                <div class="row2" style="margin-bottom:0">
+                  <div class="field" style="margin-bottom:0">
+                    <label for="cf_tenant_id">Tenant ID <span class="req">*</span></label>
+                    <input id="cf_tenant_id" name="tenant_id" maxlength="128" autocomplete="off" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" />
+                  </div>
+                  <div class="field" style="margin-bottom:0">
+                    <label for="cf_resource_group">Resource group</label>
+                    <input id="cf_resource_group" name="resource_group" maxlength="128" placeholder="rg-analytics (optional)" />
+                  </div>
+                </div>
+              </div>
 
-            <div class="field hidden" id="group_api_key">
-              <label for="cf_api_key" id="cf_api_key_label">API key <span class="req">*</span></label>
-              <input id="cf_api_key" name="api_key" type="password" maxlength="4096" autocomplete="off" />
-            </div>
+              <div class="field" id="group_sa">
+                <label for="cf_sa_json" id="cf_sa_label">Service account JSON <span class="req">*</span></label>
+                <textarea id="cf_sa_json" name="service_account_json" maxlength="65536"></textarea>
+                <div class="help" id="cf_sa_help"></div>
+              </div>
 
-            <div class="row2 hidden" id="group_access_keys">
+              <div class="field hidden" id="group_api_key">
+                <label for="cf_api_key" id="cf_api_key_label">API key <span class="req">*</span></label>
+                <input id="cf_api_key" name="api_key" type="password" maxlength="4096" autocomplete="off" />
+              </div>
+
+              <div class="row2 hidden" id="group_access_keys">
+                <div class="field">
+                  <label for="cf_access_key_id">Access key ID <span class="req">*</span></label>
+                  <input id="cf_access_key_id" name="access_key_id" maxlength="128" autocomplete="off" />
+                </div>
+                <div class="field">
+                  <label for="cf_secret_access_key">Secret access key <span class="req">*</span></label>
+                  <input id="cf_secret_access_key" name="secret_access_key" type="password" maxlength="4096" autocomplete="off" />
+                </div>
+              </div>
+
+              <div class="row2 hidden" id="group_oauth">
+                <div class="field">
+                  <label for="cf_client_id" id="cf_client_id_label">Client ID <span class="req">*</span></label>
+                  <input id="cf_client_id" name="client_id" maxlength="512" autocomplete="off" />
+                </div>
+                <div class="field">
+                  <label for="cf_client_secret" id="cf_client_secret_label">Client secret <span class="req">*</span></label>
+                  <input id="cf_client_secret" name="client_secret" type="password" maxlength="4096" autocomplete="off" />
+                </div>
+              </div>
+
+              <div class="field hidden" id="group_role_arn">
+                <label for="cf_role_arn">IAM role ARN <span class="req">*</span></label>
+                <input id="cf_role_arn" name="role_arn" maxlength="512" placeholder="arn:aws:iam::123456789012:role/DataHiveRole" autocomplete="off" />
+                <div class="help">Role DataHive should assume in your AWS account.</div>
+              </div>
+
               <div class="field">
-                <label for="cf_access_key_id">Access key ID <span class="req">*</span></label>
-                <input id="cf_access_key_id" name="access_key_id" maxlength="128" autocomplete="off" />
+                <label id="cf_apis_label">APIs / services to fetch from</label>
+                <div class="checks" id="cf_apis"></div>
+              </div>
+
+              <div class="field">
+                <label for="cf_scope" id="cf_scope_label">Dataset / bucket scope</label>
+                <input id="cf_scope" name="dataset_scope" maxlength="512" />
+                <div class="help" id="cf_scope_help">Optional allow-list of resources or patterns.</div>
+              </div>
+            </div>
+
+            <div id="uploadFields" class="hidden">
+              <div class="field">
+                <label>Upload data file <span class="req">*</span></label>
+                <div class="uploadzone" id="uploadDropzone" tabindex="0" role="button" aria-label="Upload data file">
+                  <img class="upimg" src="../images/upload.png" alt="" width="64" height="64" />
+                  <div class="uptext">Click to upload or drag &amp; drop</div>
+                  <div class="uphint">CSV, Excel (.xlsx, .xls), JSON, or Parquet — up to 50 MB</div>
+                </div>
+                <input type="file" id="uploadFileInput" class="hidden" accept=".csv,.xlsx,.xls,.json,.parquet,.tsv,.txt" />
+                <div id="uploadSelected" class="selectedfile hidden">
+                  <img class="sf-icon" src="../images/upload.png" alt="" width="28" height="28" />
+                  <div class="sf-meta">
+                    <div class="sf-name" id="uploadSelectedName"></div>
+                    <div class="sf-size" id="uploadSelectedSize"></div>
+                  </div>
+                  <button type="button" class="icon-btn" id="uploadClearBtn" aria-label="Remove selected file">✕</button>
+                </div>
               </div>
               <div class="field">
-                <label for="cf_secret_access_key">Secret access key <span class="req">*</span></label>
-                <input id="cf_secret_access_key" name="secret_access_key" type="password" maxlength="4096" autocomplete="off" />
+                <label for="cf_upload_format">File format</label>
+                <select id="cf_upload_format" name="upload_format">
+                  <option value="auto">Detect automatically</option>
+                  <option value="csv">CSV / TSV</option>
+                  <option value="excel">Excel</option>
+                  <option value="json">JSON</option>
+                  <option value="parquet">Parquet</option>
+                </select>
               </div>
-            </div>
-
-            <div class="row2 hidden" id="group_oauth">
               <div class="field">
-                <label for="cf_client_id" id="cf_client_id_label">Client ID <span class="req">*</span></label>
-                <input id="cf_client_id" name="client_id" maxlength="512" autocomplete="off" />
+                <label for="cf_upload_notes">Notes</label>
+                <input id="cf_upload_notes" name="upload_notes" maxlength="512" placeholder="Optional context for this dataset" />
               </div>
-              <div class="field">
-                <label for="cf_client_secret" id="cf_client_secret_label">Client secret <span class="req">*</span></label>
-                <input id="cf_client_secret" name="client_secret" type="password" maxlength="4096" autocomplete="off" />
-              </div>
-            </div>
-
-            <div class="field hidden" id="group_role_arn">
-              <label for="cf_role_arn">IAM role ARN <span class="req">*</span></label>
-              <input id="cf_role_arn" name="role_arn" maxlength="512" placeholder="arn:aws:iam::123456789012:role/DataHiveRole" autocomplete="off" />
-              <div class="help">Role DataHive should assume in your AWS account.</div>
-            </div>
-
-            <div class="field">
-              <label id="cf_apis_label">APIs / services to fetch from</label>
-              <div class="checks" id="cf_apis"></div>
-            </div>
-
-            <div class="field">
-              <label for="cf_scope" id="cf_scope_label">Dataset / bucket scope</label>
-              <input id="cf_scope" name="dataset_scope" maxlength="512" />
-              <div class="help" id="cf_scope_help">Optional allow-list of resources or patterns.</div>
             </div>
 
             <div id="formError" class="err hidden"></div>
@@ -430,6 +483,28 @@ const CLOUDS = {
     saLabel: "Client certificate / JSON",
     saHelp: "Paste the certificate or credential JSON for the app registration.",
     saPlaceholder: '{"clientId":"...","tenantId":"...","certificate":"..."}'
+  },
+  upload: {
+    id: "upload",
+    type: "manualupload",
+    mode: "upload",
+    name: "File Upload",
+    short: "Upload",
+    logo: "../images/upload.png",
+    lead: "Upload a local data file (CSV, Excel, JSON, or Parquet) for DataHive to ingest and catalog.",
+    accountLabel: "File",
+    accountPlaceholder: "",
+    namePlaceholder: "Sales extract — Q2",
+    scopeLabel: "",
+    scopePlaceholder: "",
+    scopeHelp: "",
+    regions: [],
+    auth: [],
+    apis: [],
+    saLabel: "",
+    saHelp: "",
+    saPlaceholder: "",
+    hint: "Upload a data file"
   }
 };
 
@@ -439,6 +514,7 @@ const form = $("#connForm");
 const errBox = $("#formError");
 const statusEl = $("#connStatus");
 let activeCloud = null;
+let selectedUploadFile = null;
 
 Object.values(CLOUDS).forEach(cloud => {
   const btn = document.createElement("button");
@@ -450,13 +526,67 @@ Object.values(CLOUDS).forEach(cloud => {
   btn.innerHTML =
     `<img class="cloud-logo" src="${cloud.logo}" alt="${cloud.name}" width="72" height="58" />` +
     `<span class="label">${cloud.name}</span>` +
-    `<span class="hint">Configure API connectivity</span>`;
+    `<span class="hint">${cloud.hint || "Configure API connectivity"}</span>`;
   btn.addEventListener("click", () => {
     if (activeCloud === cloud.id && !panel.classList.contains("hidden")) closePanel();
     else openPanel(cloud.id);
   });
   grid.appendChild(btn);
 });
+
+function formatBytes(n){
+  if (!n && n !== 0) return "";
+  if (n < 1024) return n + " B";
+  if (n < 1048576) return (n / 1024).toFixed(1) + " KB";
+  return (n / 1048576).toFixed(1) + " MB";
+}
+
+function clearUploadSelection(){
+  selectedUploadFile = null;
+  $("#uploadFileInput").value = "";
+  $("#uploadSelected").classList.add("hidden");
+  $("#uploadDropzone").classList.remove("hidden");
+}
+
+function selectUploadFile(file){
+  if (!file) return;
+  if (!/\.(csv|tsv|txt|xlsx|xls|json|parquet)$/i.test(file.name)) {
+    return showError("Please choose a CSV, Excel, JSON, or Parquet file.");
+  }
+  if (file.size > 50 * 1024 * 1024) {
+    return showError("File is too large. Maximum size is 50 MB.");
+  }
+  errBox.classList.add("hidden");
+  selectedUploadFile = file;
+  $("#uploadSelectedName").textContent = file.name;
+  $("#uploadSelectedSize").textContent = formatBytes(file.size);
+  $("#uploadSelected").classList.remove("hidden");
+  $("#uploadDropzone").classList.add("hidden");
+
+  const ext = file.name.split(".").pop().toLowerCase();
+  const formatSel = $("#cf_upload_format");
+  if (ext === "csv" || ext === "tsv" || ext === "txt") formatSel.value = "csv";
+  else if (ext === "xlsx" || ext === "xls") formatSel.value = "excel";
+  else if (ext === "json") formatSel.value = "json";
+  else if (ext === "parquet") formatSel.value = "parquet";
+  else formatSel.value = "auto";
+}
+
+const dropzone = $("#uploadDropzone");
+const fileInput = $("#uploadFileInput");
+dropzone.addEventListener("click", () => fileInput.click());
+dropzone.addEventListener("keydown", (e)=>{
+  if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fileInput.click(); }
+});
+fileInput.addEventListener("change", (e)=> selectUploadFile(e.target.files[0]));
+["dragenter","dragover"].forEach(ev => dropzone.addEventListener(ev, (e)=>{
+  e.preventDefault(); dropzone.classList.add("dragover");
+}));
+["dragleave","drop"].forEach(ev => dropzone.addEventListener(ev, (e)=>{
+  e.preventDefault(); dropzone.classList.remove("dragover");
+}));
+dropzone.addEventListener("drop", (e)=> selectUploadFile(e.dataTransfer.files[0]));
+$("#uploadClearBtn").addEventListener("click", clearUploadSelection);
 
 function fillSelect(sel, options, selected){
   sel.innerHTML = options.map(o => {
@@ -467,11 +597,19 @@ function fillSelect(sel, options, selected){
 }
 
 function configureForm(cloud){
+  const isUpload = cloud.mode === "upload";
   $("#panelLogo").src = cloud.logo;
-  $("#panelTitle").textContent = cloud.short + " API connectivity";
+  $("#panelTitle").textContent = isUpload ? "File upload" : (cloud.short + " API connectivity");
   $("#panelLead").textContent = cloud.lead;
-
   $("#cf_display_name").placeholder = cloud.namePlaceholder;
+  $("#submitBtn").textContent = isUpload ? "Upload & ingest" : "Connect & fetch";
+
+  $("#cloudFields").classList.toggle("hidden", isUpload);
+  $("#uploadFields").classList.toggle("hidden", !isUpload);
+  clearUploadSelection();
+
+  if (isUpload) return;
+
   $("#cf_account_label").innerHTML = cloud.accountLabel + ' <span class="req">*</span>';
   $("#cf_account_id").placeholder = cloud.accountPlaceholder;
   $("#cf_scope_label").textContent = cloud.scopeLabel;
@@ -530,9 +668,12 @@ function openPanel(cloudId){
 
   $$(".cloud-btn").forEach(btn => {
     const open = btn.dataset.cloud === cloudId;
+    const c = CLOUDS[btn.dataset.cloud];
     btn.classList.toggle("open", open);
     btn.setAttribute("aria-expanded", open ? "true" : "false");
-    btn.querySelector(".hint").textContent = open ? "Editing connectivity details" : "Configure API connectivity";
+    btn.querySelector(".hint").textContent = open
+      ? (c.mode === "upload" ? "Selecting a file…" : "Editing connectivity details")
+      : (c.hint || "Configure API connectivity");
   });
 
   $("#cf_display_name").focus();
@@ -542,10 +683,12 @@ function openPanel(cloudId){
 function closePanel(){
   panel.classList.add("hidden");
   activeCloud = null;
+  clearUploadSelection();
   $$(".cloud-btn").forEach(btn => {
+    const c = CLOUDS[btn.dataset.cloud];
     btn.classList.remove("open");
     btn.setAttribute("aria-expanded", "false");
-    btn.querySelector(".hint").textContent = "Configure API connectivity";
+    btn.querySelector(".hint").textContent = c.hint || "Configure API connectivity";
   });
 }
 
@@ -568,86 +711,110 @@ form.addEventListener("submit", async (e)=>{
   if (!cloud) return;
 
   const displayName = $("#cf_display_name").value.trim();
-  const accountId = $("#cf_account_id").value.trim();
-  const region = $("#cf_region").value;
-  const authType = $("#cf_auth_type").value;
-  const scope = $("#cf_scope").value.trim();
-  const apis = $$('input[name="apis"]:checked').map(el => el.value);
-  const tenantId = $("#cf_tenant_id").value.trim();
-  const resourceGroup = $("#cf_resource_group").value.trim();
-
   if (!displayName) return showError("Connection name is required.");
-  if (!accountId) return showError(cloud.accountLabel + " is required.");
-  if (!apis.length) return showError("Select at least one service to fetch from.");
 
-  if (cloud.id === "azure" && (authType === "service_principal" || authType === "client_certificate" || authType === "managed_identity")) {
-    if (!tenantId) return showError("Tenant ID is required for Azure.");
-  }
+  let payload;
 
-  if (cloud.id === "gcp") {
-    if (authType === "service_account") {
-      const raw = $("#cf_sa_json").value.trim();
-      if (!raw) return showError("Paste a service account JSON key.");
-      try {
-        const parsed = JSON.parse(raw);
-        if (parsed.type && parsed.type !== "service_account") {
-          return showError('JSON "type" should be "service_account".');
+  if (cloud.mode === "upload") {
+    if (!selectedUploadFile) return showError("Please select a file to upload.");
+    payload = {
+      connector_type: cloud.type,
+      cloud: cloud.id,
+      mode: "upload",
+      display_name: displayName,
+      file_name: selectedUploadFile.name,
+      file_size: selectedUploadFile.size,
+      file_type: selectedUploadFile.type || "",
+      upload_format: $("#cf_upload_format").value,
+      upload_notes: $("#cf_upload_notes").value.trim(),
+      account_id: selectedUploadFile.name,
+      region: "local",
+      auth_type: "file_upload",
+      apis: ["file_ingest"]
+    };
+  } else {
+    const accountId = $("#cf_account_id").value.trim();
+    const region = $("#cf_region").value;
+    const authType = $("#cf_auth_type").value;
+    const scope = $("#cf_scope").value.trim();
+    const apis = $$('input[name="apis"]:checked').map(el => el.value);
+    const tenantId = $("#cf_tenant_id").value.trim();
+    const resourceGroup = $("#cf_resource_group").value.trim();
+
+    if (!accountId) return showError(cloud.accountLabel + " is required.");
+    if (!apis.length) return showError("Select at least one service to fetch from.");
+
+    if (cloud.id === "azure" && (authType === "service_principal" || authType === "client_certificate" || authType === "managed_identity")) {
+      if (!tenantId) return showError("Tenant ID is required for Azure.");
+    }
+
+    if (cloud.id === "gcp") {
+      if (authType === "service_account") {
+        const raw = $("#cf_sa_json").value.trim();
+        if (!raw) return showError("Paste a service account JSON key.");
+        try {
+          const parsed = JSON.parse(raw);
+          if (parsed.type && parsed.type !== "service_account") {
+            return showError('JSON "type" should be "service_account".');
+          }
+        } catch {
+          return showError("Service account JSON is not valid JSON.");
         }
-      } catch {
-        return showError("Service account JSON is not valid JSON.");
+      } else if (authType === "api_key") {
+        if (!$("#cf_api_key").value.trim()) return showError("API key is required.");
+      } else if (authType === "oauth2") {
+        if (!$("#cf_client_id").value.trim() || !$("#cf_client_secret").value.trim()) {
+          return showError("OAuth Client ID and secret are required.");
+        }
       }
-    } else if (authType === "api_key") {
-      if (!$("#cf_api_key").value.trim()) return showError("API key is required.");
-    } else if (authType === "oauth2") {
-      if (!$("#cf_client_id").value.trim() || !$("#cf_client_secret").value.trim()) {
-        return showError("OAuth Client ID and secret are required.");
+    } else if (cloud.id === "aws") {
+      if (authType === "access_keys") {
+        if (!$("#cf_access_key_id").value.trim() || !$("#cf_secret_access_key").value.trim()) {
+          return showError("Access key ID and secret access key are required.");
+        }
+      } else if (authType === "iam_role" || authType === "assume_role") {
+        if (!$("#cf_role_arn").value.trim()) return showError("IAM role ARN is required.");
+      }
+    } else if (cloud.id === "azure") {
+      if (authType === "service_principal") {
+        if (!$("#cf_client_id").value.trim() || !$("#cf_client_secret").value.trim()) {
+          return showError("Application (client) ID and secret are required.");
+        }
+      } else if (authType === "client_certificate") {
+        if (!$("#cf_sa_json").value.trim()) return showError("Client certificate / JSON is required.");
       }
     }
-  } else if (cloud.id === "aws") {
-    if (authType === "access_keys") {
-      if (!$("#cf_access_key_id").value.trim() || !$("#cf_secret_access_key").value.trim()) {
-        return showError("Access key ID and secret access key are required.");
-      }
-    } else if (authType === "iam_role" || authType === "assume_role") {
-      if (!$("#cf_role_arn").value.trim()) return showError("IAM role ARN is required.");
-    }
-  } else if (cloud.id === "azure") {
-    if (authType === "service_principal") {
-      if (!$("#cf_client_id").value.trim() || !$("#cf_client_secret").value.trim()) {
-        return showError("Application (client) ID and secret are required.");
-      }
-    } else if (authType === "client_certificate") {
-      if (!$("#cf_sa_json").value.trim()) return showError("Client certificate / JSON is required.");
-    }
-  }
 
-  const payload = {
-    connector_type: cloud.type,
-    cloud: cloud.id,
-    display_name: displayName,
-    account_id: accountId,
-    region,
-    auth_type: authType,
-    apis,
-    dataset_scope: scope,
-    tenant_id: tenantId,
-    resource_group: resourceGroup,
-    api_key: $("#cf_api_key").value,
-    client_id: $("#cf_client_id").value,
-    client_secret: $("#cf_client_secret").value,
-    service_account_json: $("#cf_sa_json").value,
-    access_key_id: $("#cf_access_key_id").value,
-    secret_access_key: $("#cf_secret_access_key").value,
-    role_arn: $("#cf_role_arn").value
-  };
+    payload = {
+      connector_type: cloud.type,
+      cloud: cloud.id,
+      display_name: displayName,
+      account_id: accountId,
+      region,
+      auth_type: authType,
+      apis,
+      dataset_scope: scope,
+      tenant_id: tenantId,
+      resource_group: resourceGroup,
+      api_key: $("#cf_api_key").value,
+      client_id: $("#cf_client_id").value,
+      client_secret: $("#cf_client_secret").value,
+      service_account_json: $("#cf_sa_json").value,
+      access_key_id: $("#cf_access_key_id").value,
+      secret_access_key: $("#cf_secret_access_key").value,
+      role_arn: $("#cf_role_arn").value
+    };
+  }
 
   const btn = $("#submitBtn");
+  const busyLabel = cloud.mode === "upload" ? "Uploading…" : "Connecting…";
+  const idleLabel = cloud.mode === "upload" ? "Upload & ingest" : "Connect & fetch";
   btn.disabled = true;
-  btn.textContent = "Connecting…";
+  btn.textContent = busyLabel;
 
   await new Promise(r => setTimeout(r, 700));
   try {
-    sessionStorage.setItem("datahive_cloud_connection", JSON.stringify({
+    const toStore = {
       cloud: payload.cloud,
       connector_type: payload.connector_type,
       display_name: payload.display_name,
@@ -658,22 +825,29 @@ form.addEventListener("submit", async (e)=>{
       dataset_scope: payload.dataset_scope,
       tenant_id: payload.tenant_id,
       resource_group: payload.resource_group,
+      mode: payload.mode,
+      file_name: payload.file_name,
+      file_size: payload.file_size,
+      upload_format: payload.upload_format,
+      upload_notes: payload.upload_notes,
       saved_at: new Date().toISOString()
-    }));
+    };
+    sessionStorage.setItem("datahive_cloud_connection", JSON.stringify(toStore));
   } catch { /* ignore quota */ }
 
   btn.disabled = false;
-  btn.textContent = "Connect & fetch";
+  btn.textContent = idleLabel;
   closePanel();
-  showStatus(payload, "Connected — fetch queued", "ok");
+  showStatus(payload, cloud.mode === "upload" ? "Uploaded — ingest queued" : "Connected — fetch queued", "ok");
 
-  console.info("[Cloud] connection configured", {
+  console.info("[Source] connection configured", {
     cloud: payload.cloud,
     display_name: payload.display_name,
     account_id: payload.account_id,
     region: payload.region,
     auth_type: payload.auth_type,
-    apis: payload.apis
+    apis: payload.apis,
+    file_name: payload.file_name
   });
 });
 
@@ -684,17 +858,32 @@ function authLabel(cloudId, authType){
 
 function showStatus(payload, pillText, pillKind){
   const cloud = CLOUDS[payload.cloud] || Object.values(CLOUDS).find(c => c.type === payload.connector_type);
-  const accountLabel = cloud ? cloud.accountLabel : "Account";
   $("#statusTitle").textContent = payload.display_name;
-  $("#statusMeta").innerHTML =
-    "<strong>Cloud:</strong> " + escapeHtml(cloud ? cloud.short : payload.cloud) +
-    " · <strong>" + escapeHtml(accountLabel) + ":</strong> " + escapeHtml(payload.account_id) +
-    " · <strong>Region:</strong> " + escapeHtml(payload.region) + "<br>" +
-    "<strong>Auth:</strong> " + escapeHtml(authLabel(payload.cloud, payload.auth_type)) +
-    " · <strong>Services:</strong> " + escapeHtml((payload.apis||[]).join(", ")) +
-    (payload.dataset_scope
-      ? "<br><strong>Scope:</strong> " + escapeHtml(payload.dataset_scope)
-      : "");
+
+  if (payload.mode === "upload" || payload.cloud === "upload") {
+    $("#statusMeta").innerHTML =
+      "<strong>Source:</strong> File Upload" +
+      " · <strong>File:</strong> " + escapeHtml(payload.file_name || payload.account_id || "") +
+      (payload.file_size != null ? " · <strong>Size:</strong> " + escapeHtml(formatBytes(payload.file_size)) : "") +
+      (payload.upload_format
+        ? "<br><strong>Format:</strong> " + escapeHtml(payload.upload_format)
+        : "") +
+      (payload.upload_notes
+        ? "<br><strong>Notes:</strong> " + escapeHtml(payload.upload_notes)
+        : "");
+  } else {
+    const accountLabel = cloud ? cloud.accountLabel : "Account";
+    $("#statusMeta").innerHTML =
+      "<strong>Cloud:</strong> " + escapeHtml(cloud ? cloud.short : payload.cloud) +
+      " · <strong>" + escapeHtml(accountLabel) + ":</strong> " + escapeHtml(payload.account_id) +
+      " · <strong>Region:</strong> " + escapeHtml(payload.region) + "<br>" +
+      "<strong>Auth:</strong> " + escapeHtml(authLabel(payload.cloud, payload.auth_type)) +
+      " · <strong>Services:</strong> " + escapeHtml((payload.apis||[]).join(", ")) +
+      (payload.dataset_scope
+        ? "<br><strong>Scope:</strong> " + escapeHtml(payload.dataset_scope)
+        : "");
+  }
+
   const pill = $("#statusPill");
   pill.className = "pill " + (pillKind || "pending");
   pill.textContent = pillText;
