@@ -3,16 +3,15 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>DataHive — GCP Connector</title>
+<title>DataHive — Cloud Connectors</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <style>
   :root {
     --ink:#0f172a; --muted:#64748b; --line:#e2e8f0; --bg:#f1f5f9;
-    --white:#fff; --blue:#4285F4; --green:#34A853; --yellow:#FBBC04; --red:#EA4335;
-    --accent:#182978; --ok:#1FA971; --err:#E4572E; --radius:14px;
-    --shadow:0 10px 40px rgba(15,23,42,.12);
+    --white:#fff; --blue:#4285F4; --accent:#182978; --ok:#1FA971; --err:#E4572E;
+    --radius:14px; --shadow:0 10px 40px rgba(15,23,42,.12);
   }
   * { box-sizing:border-box; }
   html,body { margin:0; padding:0; }
@@ -26,28 +25,33 @@
       var(--bg);
     display:flex; align-items:flex-start; justify-content:center; padding:48px 20px 64px;
   }
-  .stage { width:min(760px,100%); text-align:center; }
+  .stage { width:min(820px,100%); text-align:center; }
   .eyebrow { margin:0 0 10px; font-size:13px; font-weight:700; letter-spacing:.08em;
     text-transform:uppercase; color:var(--muted); }
   h1 { margin:0 0 8px; font-size:clamp(28px,4vw,36px); font-weight:800; letter-spacing:-.02em; }
-  .sub { margin:0 auto 32px; max-width:420px; color:var(--muted); font-size:15px; line-height:1.5; }
+  .sub { margin:0 auto 28px; max-width:460px; color:var(--muted); font-size:15px; line-height:1.5; }
 
-  .gcp-btn {
-    appearance:none; border:1px solid var(--line); background:var(--white);
-    border-radius:20px; padding:28px 36px 22px; cursor:pointer; box-shadow:var(--shadow);
-    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-    display:inline-flex; flex-direction:column; align-items:center; gap:14px;
+  .cloud-grid {
+    display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:0 auto;
   }
-  .gcp-btn:hover { transform:translateY(-3px); border-color:#c7d2fe;
-    box-shadow:0 16px 48px rgba(66,133,244,.18); }
-  .gcp-btn:focus-visible { outline:3px solid rgba(66,133,244,.45); outline-offset:4px; }
-  .gcp-btn.open { border-color:#93c5fd; box-shadow:0 12px 36px rgba(66,133,244,.16); }
-  .gcp-btn .logo { width:96px; height:auto; display:block; object-fit:contain; }
-  .gcp-btn .label { font-size:15px; font-weight:700; color:var(--ink); }
-  .gcp-btn .hint { font-size:12px; color:var(--muted); font-weight:500; }
+  @media (max-width:640px) { .cloud-grid { grid-template-columns:1fr; max-width:280px; } }
+
+  .cloud-btn {
+    appearance:none; border:1px solid var(--line); background:var(--white);
+    border-radius:18px; padding:22px 16px 18px; cursor:pointer; box-shadow:var(--shadow);
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    display:flex; flex-direction:column; align-items:center; gap:12px; width:100%;
+  }
+  .cloud-btn:hover { transform:translateY(-3px); border-color:#c7d2fe;
+    box-shadow:0 16px 48px rgba(66,133,244,.16); }
+  .cloud-btn:focus-visible { outline:3px solid rgba(66,133,244,.45); outline-offset:4px; }
+  .cloud-btn.open { border-color:#93c5fd; box-shadow:0 12px 36px rgba(66,133,244,.16); }
+  .cloud-btn .logo { width:72px; height:58px; display:block; object-fit:contain; }
+  .cloud-btn .label { font-size:14px; font-weight:700; color:var(--ink); }
+  .cloud-btn .hint { font-size:11.5px; color:var(--muted); font-weight:500; }
 
   .panel {
-    margin:24px auto 0; text-align:left; background:var(--white);
+    margin:22px auto 0; text-align:left; background:var(--white);
     border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow);
     overflow:hidden; animation:rise .22s ease;
   }
@@ -73,7 +77,7 @@
   .field label {
     display:block; margin-bottom:5px; font-size:12.5px; font-weight:700; color:var(--ink);
   }
-  .field .req { color:var(--red); }
+  .field .req { color:#EA4335; }
   .field input, .field select, .field textarea {
     width:100%; border:1.5px solid var(--line); border-radius:10px; padding:9px 12px;
     font:inherit; font-size:14px; color:var(--ink); background:#fff;
@@ -121,7 +125,7 @@
   .btn-primary:disabled { opacity:.6; cursor:wait; filter:none; }
 
   .status {
-    margin:24px auto 0; max-width:100%; text-align:left; background:var(--white);
+    margin:24px auto 0; text-align:left; background:var(--white);
     border:1px solid var(--line); border-radius:var(--radius); padding:16px 18px;
     box-shadow:0 1px 3px rgba(15,23,42,.06);
   }
@@ -135,100 +139,109 @@
 </head>
 <body>
   <main class="stage">
-    <p class="eyebrow">Source connector</p>
-    <h1>Connect Google Cloud</h1>
-    <p class="sub">Click the GCP icon to enter API connectivity details and fetch data from your Google Cloud project.</p>
+    <p class="eyebrow">Source connectors</p>
+    <h1>Connect your cloud</h1>
+    <p class="sub">Choose GCP, AWS, or Azure to enter API connectivity details and fetch data from your cloud project.</p>
 
-    <button type="button" class="gcp-btn" id="gcpOpenBtn" aria-expanded="false" aria-controls="gcpPanel">
-      <img class="logo" src="../images/logos/googlecloud-color.svg" alt="Google Cloud Platform" width="96" height="77" />
-      <span class="label">Google Cloud Platform</span>
-      <span class="hint" id="gcpHint">Configure API connectivity</span>
-    </button>
+    <div class="cloud-grid" id="cloudGrid" role="group" aria-label="Cloud providers"></div>
 
-    <section class="panel hidden" id="gcpPanel" aria-labelledby="gcpPanelTitle">
+    <section class="panel hidden" id="connPanel" aria-labelledby="panelTitle">
       <div class="panel-hd">
-        <img class="mini" src="../images/logos/googlecloud-color.svg" alt="" width="28" height="22" aria-hidden="true" />
-        <h2 id="gcpPanelTitle">GCP API connectivity</h2>
-        <button type="button" class="icon-x" id="gcpCloseBtn" aria-label="Close">✕</button>
+        <img class="mini" id="panelLogo" src="" alt="" width="28" height="22" aria-hidden="true" />
+        <h2 id="panelTitle">API connectivity</h2>
+        <button type="button" class="icon-x" id="panelCloseBtn" aria-label="Close">✕</button>
       </div>
       <div class="panel-bd">
-        <p class="lead">Provide project credentials and the APIs you want DataHive to use when fetching assets from Google Cloud.</p>
-        <form id="gcpForm" novalidate>
+        <p class="lead" id="panelLead"></p>
+        <form id="connForm" novalidate>
           <div class="field">
-            <label for="gcp_display_name">Connection name <span class="req">*</span></label>
-            <input id="gcp_display_name" name="display_name" required maxlength="128" placeholder="Prod GCP — Analytics" />
+            <label for="cf_display_name">Connection name <span class="req">*</span></label>
+            <input id="cf_display_name" name="display_name" required maxlength="128" />
           </div>
 
           <div class="row3">
             <div class="field">
-              <label for="gcp_project_id">Project ID <span class="req">*</span></label>
-              <input id="gcp_project_id" name="project_id" required maxlength="128" placeholder="my-gcp-project" autocomplete="off" />
+              <label for="cf_account_id" id="cf_account_label">Project / Account ID <span class="req">*</span></label>
+              <input id="cf_account_id" name="account_id" required maxlength="128" autocomplete="off" />
             </div>
             <div class="field">
-              <label for="gcp_region">Default region</label>
-              <select id="gcp_region" name="region">
-                <option value="us-central1">us-central1</option>
-                <option value="us-east1">us-east1</option>
-                <option value="us-west1">us-west1</option>
-                <option value="europe-west1">europe-west1</option>
-                <option value="asia-south1">asia-south1</option>
-                <option value="asia-southeast1">asia-southeast1</option>
-              </select>
+              <label for="cf_region">Default region</label>
+              <select id="cf_region" name="region"></select>
             </div>
             <div class="field">
-              <label for="gcp_auth_type">Authentication</label>
-              <select id="gcp_auth_type" name="auth_type">
-                <option value="service_account">Service account (JSON key)</option>
-                <option value="api_key">API key</option>
-                <option value="oauth2">OAuth 2.0 (Client ID + Secret)</option>
-              </select>
+              <label for="cf_auth_type">Authentication</label>
+              <select id="cf_auth_type" name="auth_type"></select>
+            </div>
+          </div>
+
+          <div class="field hidden" id="group_azure_extra">
+            <div class="row2" style="margin-bottom:0">
+              <div class="field" style="margin-bottom:0">
+                <label for="cf_tenant_id">Tenant ID <span class="req">*</span></label>
+                <input id="cf_tenant_id" name="tenant_id" maxlength="128" autocomplete="off" placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" />
+              </div>
+              <div class="field" style="margin-bottom:0">
+                <label for="cf_resource_group">Resource group</label>
+                <input id="cf_resource_group" name="resource_group" maxlength="128" placeholder="rg-analytics (optional)" />
+              </div>
             </div>
           </div>
 
           <div class="field" id="group_sa">
-            <label for="gcp_sa_json">Service account JSON <span class="req">*</span></label>
-            <textarea id="gcp_sa_json" name="service_account_json" maxlength="65536" placeholder='{"type":"service_account","project_id":"...","private_key":"..."}'></textarea>
-            <div class="help">Paste the JSON key from IAM → Service Accounts. Never commit this file.</div>
+            <label for="cf_sa_json" id="cf_sa_label">Service account JSON <span class="req">*</span></label>
+            <textarea id="cf_sa_json" name="service_account_json" maxlength="65536"></textarea>
+            <div class="help" id="cf_sa_help"></div>
           </div>
 
           <div class="field hidden" id="group_api_key">
-            <label for="gcp_api_key">API key <span class="req">*</span></label>
-            <input id="gcp_api_key" name="api_key" type="password" maxlength="4096" autocomplete="off" />
+            <label for="cf_api_key" id="cf_api_key_label">API key <span class="req">*</span></label>
+            <input id="cf_api_key" name="api_key" type="password" maxlength="4096" autocomplete="off" />
+          </div>
+
+          <div class="row2 hidden" id="group_access_keys">
+            <div class="field">
+              <label for="cf_access_key_id">Access key ID <span class="req">*</span></label>
+              <input id="cf_access_key_id" name="access_key_id" maxlength="128" autocomplete="off" />
+            </div>
+            <div class="field">
+              <label for="cf_secret_access_key">Secret access key <span class="req">*</span></label>
+              <input id="cf_secret_access_key" name="secret_access_key" type="password" maxlength="4096" autocomplete="off" />
+            </div>
           </div>
 
           <div class="row2 hidden" id="group_oauth">
             <div class="field">
-              <label for="gcp_client_id">OAuth Client ID <span class="req">*</span></label>
-              <input id="gcp_client_id" name="client_id" maxlength="512" autocomplete="off" />
+              <label for="cf_client_id" id="cf_client_id_label">Client ID <span class="req">*</span></label>
+              <input id="cf_client_id" name="client_id" maxlength="512" autocomplete="off" />
             </div>
             <div class="field">
-              <label for="gcp_client_secret">Client secret <span class="req">*</span></label>
-              <input id="gcp_client_secret" name="client_secret" type="password" maxlength="4096" autocomplete="off" />
+              <label for="cf_client_secret" id="cf_client_secret_label">Client secret <span class="req">*</span></label>
+              <input id="cf_client_secret" name="client_secret" type="password" maxlength="4096" autocomplete="off" />
             </div>
           </div>
 
-          <div class="field">
-            <label>APIs to fetch from</label>
-            <div class="checks">
-              <label class="check"><input type="checkbox" name="apis" value="bigquery" checked /> BigQuery</label>
-              <label class="check"><input type="checkbox" name="apis" value="cloud_storage" checked /> Cloud Storage</label>
-              <label class="check"><input type="checkbox" name="apis" value="pubsub" /> Pub/Sub</label>
-              <label class="check"><input type="checkbox" name="apis" value="dataflow" /> Dataflow</label>
-              <label class="check"><input type="checkbox" name="apis" value="dataproc" /> Dataproc</label>
-            </div>
+          <div class="field hidden" id="group_role_arn">
+            <label for="cf_role_arn">IAM role ARN <span class="req">*</span></label>
+            <input id="cf_role_arn" name="role_arn" maxlength="512" placeholder="arn:aws:iam::123456789012:role/DataHiveRole" autocomplete="off" />
+            <div class="help">Role DataHive should assume in your AWS account.</div>
           </div>
 
           <div class="field">
-            <label for="gcp_dataset_scope">Dataset / bucket scope</label>
-            <input id="gcp_dataset_scope" name="dataset_scope" maxlength="512" placeholder="analytics.*, raw_events (optional filter)" />
-            <div class="help">Optional allow-list of datasets, buckets, or resource patterns.</div>
+            <label id="cf_apis_label">APIs / services to fetch from</label>
+            <div class="checks" id="cf_apis"></div>
           </div>
 
-          <div id="gcpFormError" class="err hidden"></div>
+          <div class="field">
+            <label for="cf_scope" id="cf_scope_label">Dataset / bucket scope</label>
+            <input id="cf_scope" name="dataset_scope" maxlength="512" />
+            <div class="help" id="cf_scope_help">Optional allow-list of resources or patterns.</div>
+          </div>
+
+          <div id="formError" class="err hidden"></div>
 
           <div class="actions">
-            <button type="button" class="btn btn-ghost" id="gcpCancelBtn">Cancel</button>
-            <button type="submit" class="btn btn-primary" id="gcpSubmitBtn">Connect &amp; fetch</button>
+            <button type="button" class="btn btn-ghost" id="cancelBtn">Cancel</button>
+            <button type="submit" class="btn btn-primary" id="submitBtn">Connect &amp; fetch</button>
           </div>
         </form>
       </div>
@@ -245,51 +258,222 @@
 const $ = (sel, root=document) => root.querySelector(sel);
 const $$ = (sel, root=document) => [...root.querySelectorAll(sel)];
 
-const openBtn = $("#gcpOpenBtn");
-const panel = $("#gcpPanel");
-const form = $("#gcpForm");
-const errBox = $("#gcpFormError");
-const statusEl = $("#connStatus");
-const hint = $("#gcpHint");
+const CLOUDS = {
+  gcp: {
+    id: "gcp",
+    type: "googlecloud",
+    name: "Google Cloud Platform",
+    short: "GCP",
+    logo: "../images/logos/googlecloud-color.svg",
+    lead: "Provide project credentials and the APIs you want DataHive to use when fetching assets from Google Cloud.",
+    accountLabel: "Project ID",
+    accountPlaceholder: "my-gcp-project",
+    namePlaceholder: "Prod GCP — Analytics",
+    scopeLabel: "Dataset / bucket scope",
+    scopePlaceholder: "analytics.*, raw_events (optional filter)",
+    scopeHelp: "Optional allow-list of datasets, buckets, or resource patterns.",
+    regions: ["us-central1","us-east1","us-west1","europe-west1","asia-south1","asia-southeast1"],
+    auth: [
+      { value:"service_account", label:"Service account (JSON key)" },
+      { value:"api_key", label:"API key" },
+      { value:"oauth2", label:"OAuth 2.0 (Client ID + Secret)" }
+    ],
+    apis: [
+      { value:"bigquery", label:"BigQuery", checked:true },
+      { value:"cloud_storage", label:"Cloud Storage", checked:true },
+      { value:"pubsub", label:"Pub/Sub" },
+      { value:"dataflow", label:"Dataflow" },
+      { value:"dataproc", label:"Dataproc" }
+    ],
+    saLabel: "Service account JSON",
+    saHelp: "Paste the JSON key from IAM → Service Accounts. Never commit this file.",
+    saPlaceholder: '{"type":"service_account","project_id":"...","private_key":"..."}'
+  },
+  aws: {
+    id: "aws",
+    type: "amazonwebservices",
+    name: "Amazon Web Services",
+    short: "AWS",
+    logo: "../images/logos/amazonwebservices.svg",
+    lead: "Provide account credentials and the AWS services you want DataHive to use when fetching assets.",
+    accountLabel: "AWS account ID",
+    accountPlaceholder: "123456789012",
+    namePlaceholder: "Prod AWS — Analytics",
+    scopeLabel: "Bucket / resource scope",
+    scopePlaceholder: "s3://analytics-*, glue:db_* (optional filter)",
+    scopeHelp: "Optional allow-list of buckets, databases, or resource patterns.",
+    regions: ["us-east-1","us-west-2","eu-west-1","eu-central-1","ap-south-1","ap-southeast-1"],
+    auth: [
+      { value:"access_keys", label:"Access key + secret" },
+      { value:"iam_role", label:"IAM role ARN" },
+      { value:"assume_role", label:"Assume role (STS)" }
+    ],
+    apis: [
+      { value:"s3", label:"S3", checked:true },
+      { value:"glue", label:"Glue", checked:true },
+      { value:"athena", label:"Athena" },
+      { value:"redshift", label:"Redshift" },
+      { value:"kinesis", label:"Kinesis" }
+    ],
+    saLabel: "",
+    saHelp: "",
+    saPlaceholder: ""
+  },
+  azure: {
+    id: "azure",
+    type: "microsoftazure",
+    name: "Microsoft Azure",
+    short: "Azure",
+    logo: "../images/logos/microsoftazure.svg",
+    lead: "Provide subscription credentials and the Azure services you want DataHive to use when fetching assets.",
+    accountLabel: "Subscription ID",
+    accountPlaceholder: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    namePlaceholder: "Prod Azure — Analytics",
+    scopeLabel: "Storage / resource scope",
+    scopePlaceholder: "storageacct*, rg-analytics (optional filter)",
+    scopeHelp: "Optional allow-list of storage accounts, containers, or resource patterns.",
+    regions: ["eastus","westus2","westeurope","northeurope","centralindia","southeastasia"],
+    auth: [
+      { value:"service_principal", label:"Service principal (Client ID + Secret)" },
+      { value:"managed_identity", label:"Managed identity" },
+      { value:"client_certificate", label:"Client certificate (JSON)" }
+    ],
+    apis: [
+      { value:"blob_storage", label:"Blob Storage", checked:true },
+      { value:"adls", label:"ADLS Gen2", checked:true },
+      { value:"synapse", label:"Synapse" },
+      { value:"event_hubs", label:"Event Hubs" },
+      { value:"data_factory", label:"Data Factory" }
+    ],
+    saLabel: "Client certificate / JSON",
+    saHelp: "Paste the certificate or credential JSON for the app registration.",
+    saPlaceholder: '{"clientId":"...","tenantId":"...","certificate":"..."}'
+  }
+};
 
-function isPanelOpen(){
-  return !panel.classList.contains("hidden");
+const grid = $("#cloudGrid");
+const panel = $("#connPanel");
+const form = $("#connForm");
+const errBox = $("#formError");
+const statusEl = $("#connStatus");
+let activeCloud = null;
+
+Object.values(CLOUDS).forEach(cloud => {
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "cloud-btn";
+  btn.dataset.cloud = cloud.id;
+  btn.setAttribute("aria-expanded", "false");
+  btn.setAttribute("aria-controls", "connPanel");
+  btn.innerHTML =
+    `<img class="logo" src="${cloud.logo}" alt="${cloud.name}" width="72" height="58" />` +
+    `<span class="label">${cloud.name}</span>` +
+    `<span class="hint">Configure API connectivity</span>`;
+  btn.addEventListener("click", () => {
+    if (activeCloud === cloud.id && !panel.classList.contains("hidden")) closePanel();
+    else openPanel(cloud.id);
+  });
+  grid.appendChild(btn);
+});
+
+function fillSelect(sel, options, selected){
+  sel.innerHTML = options.map(o => {
+    const value = typeof o === "string" ? o : o.value;
+    const label = typeof o === "string" ? o : o.label;
+    return `<option value="${value}"${value===selected?" selected":""}>${label}</option>`;
+  }).join("");
 }
-function openPanel(){
+
+function configureForm(cloud){
+  $("#panelLogo").src = cloud.logo;
+  $("#panelTitle").textContent = cloud.short + " API connectivity";
+  $("#panelLead").textContent = cloud.lead;
+
+  $("#cf_display_name").placeholder = cloud.namePlaceholder;
+  $("#cf_account_label").innerHTML = cloud.accountLabel + ' <span class="req">*</span>';
+  $("#cf_account_id").placeholder = cloud.accountPlaceholder;
+  $("#cf_scope_label").textContent = cloud.scopeLabel;
+  $("#cf_scope").placeholder = cloud.scopePlaceholder;
+  $("#cf_scope_help").textContent = cloud.scopeHelp;
+  $("#cf_apis_label").textContent = "APIs / services to fetch from";
+
+  fillSelect($("#cf_region"), cloud.regions, cloud.regions[0]);
+  fillSelect($("#cf_auth_type"), cloud.auth, cloud.auth[0].value);
+
+  $("#cf_apis").innerHTML = cloud.apis.map(a =>
+    `<label class="check"><input type="checkbox" name="apis" value="${a.value}"${a.checked?" checked":""} /> ${a.label}</label>`
+  ).join("");
+
+  $("#group_azure_extra").classList.toggle("hidden", cloud.id !== "azure");
+  $("#cf_sa_label").innerHTML = (cloud.saLabel || "Credential JSON") + ' <span class="req">*</span>';
+  $("#cf_sa_help").textContent = cloud.saHelp || "";
+  $("#cf_sa_json").placeholder = cloud.saPlaceholder || "";
+
+  if (cloud.id === "gcp") {
+    $("#cf_client_id_label").innerHTML = 'OAuth Client ID <span class="req">*</span>';
+    $("#cf_client_secret_label").innerHTML = 'Client secret <span class="req">*</span>';
+    $("#cf_api_key_label").innerHTML = 'API key <span class="req">*</span>';
+  } else if (cloud.id === "azure") {
+    $("#cf_client_id_label").innerHTML = 'Application (client) ID <span class="req">*</span>';
+    $("#cf_client_secret_label").innerHTML = 'Client secret <span class="req">*</span>';
+  }
+
+  toggleAuth(cloud.auth[0].value, cloud);
+}
+
+function toggleAuth(type, cloud = CLOUDS[activeCloud]){
+  if (!cloud) return;
+  const showSa = (cloud.id === "gcp" && type === "service_account") ||
+                 (cloud.id === "azure" && type === "client_certificate");
+  const showApiKey = cloud.id === "gcp" && type === "api_key";
+  const showOauth = (cloud.id === "gcp" && type === "oauth2") ||
+                    (cloud.id === "azure" && type === "service_principal");
+  const showAccessKeys = cloud.id === "aws" && type === "access_keys";
+  const showRole = cloud.id === "aws" && (type === "iam_role" || type === "assume_role");
+  // managed_identity needs no secret fields
+
+  $("#group_sa").classList.toggle("hidden", !showSa);
+  $("#group_api_key").classList.toggle("hidden", !showApiKey);
+  $("#group_oauth").classList.toggle("hidden", !showOauth);
+  $("#group_access_keys").classList.toggle("hidden", !showAccessKeys);
+  $("#group_role_arn").classList.toggle("hidden", !showRole);
+}
+
+function openPanel(cloudId){
+  const cloud = CLOUDS[cloudId];
+  activeCloud = cloudId;
   form.reset();
-  $("#gcp_auth_type").value = "service_account";
-  toggleAuth("service_account");
+  configureForm(cloud);
   errBox.classList.add("hidden");
   panel.classList.remove("hidden");
-  openBtn.classList.add("open");
-  openBtn.setAttribute("aria-expanded", "true");
-  hint.textContent = "Editing connectivity details";
-  $("#gcp_display_name").focus();
+
+  $$(".cloud-btn").forEach(btn => {
+    const open = btn.dataset.cloud === cloudId;
+    btn.classList.toggle("open", open);
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+    btn.querySelector(".hint").textContent = open ? "Editing connectivity details" : "Configure API connectivity";
+  });
+
+  $("#cf_display_name").focus();
   panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
+
 function closePanel(){
   panel.classList.add("hidden");
-  openBtn.classList.remove("open");
-  openBtn.setAttribute("aria-expanded", "false");
-  hint.textContent = "Configure API connectivity";
-  openBtn.focus();
-}
-function toggleAuth(type){
-  $("#group_sa").classList.toggle("hidden", type !== "service_account");
-  $("#group_api_key").classList.toggle("hidden", type !== "api_key");
-  $("#group_oauth").classList.toggle("hidden", type !== "oauth2");
+  activeCloud = null;
+  $$(".cloud-btn").forEach(btn => {
+    btn.classList.remove("open");
+    btn.setAttribute("aria-expanded", "false");
+    btn.querySelector(".hint").textContent = "Configure API connectivity";
+  });
 }
 
-openBtn.addEventListener("click", ()=>{
-  if (isPanelOpen()) closePanel();
-  else openPanel();
-});
-$("#gcpCloseBtn").addEventListener("click", closePanel);
-$("#gcpCancelBtn").addEventListener("click", closePanel);
+$("#panelCloseBtn").addEventListener("click", closePanel);
+$("#cancelBtn").addEventListener("click", closePanel);
 document.addEventListener("keydown", (e)=>{
-  if (e.key === "Escape" && isPanelOpen()) closePanel();
+  if (e.key === "Escape" && !panel.classList.contains("hidden")) closePanel();
 });
-$("#gcp_auth_type").addEventListener("change", (e)=> toggleAuth(e.target.value));
+$("#cf_auth_type").addEventListener("change", (e)=> toggleAuth(e.target.value));
 
 function showError(msg){
   errBox.textContent = msg;
@@ -299,66 +483,101 @@ function showError(msg){
 form.addEventListener("submit", async (e)=>{
   e.preventDefault();
   errBox.classList.add("hidden");
+  const cloud = CLOUDS[activeCloud];
+  if (!cloud) return;
 
-  const displayName = $("#gcp_display_name").value.trim();
-  const projectId = $("#gcp_project_id").value.trim();
-  const region = $("#gcp_region").value;
-  const authType = $("#gcp_auth_type").value;
-  const datasetScope = $("#gcp_dataset_scope").value.trim();
+  const displayName = $("#cf_display_name").value.trim();
+  const accountId = $("#cf_account_id").value.trim();
+  const region = $("#cf_region").value;
+  const authType = $("#cf_auth_type").value;
+  const scope = $("#cf_scope").value.trim();
   const apis = $$('input[name="apis"]:checked').map(el => el.value);
+  const tenantId = $("#cf_tenant_id").value.trim();
+  const resourceGroup = $("#cf_resource_group").value.trim();
 
   if (!displayName) return showError("Connection name is required.");
-  if (!projectId) return showError("Project ID is required.");
-  if (!apis.length) return showError("Select at least one GCP API to fetch from.");
+  if (!accountId) return showError(cloud.accountLabel + " is required.");
+  if (!apis.length) return showError("Select at least one service to fetch from.");
 
-  if (authType === "service_account") {
-    const raw = $("#gcp_sa_json").value.trim();
-    if (!raw) return showError("Paste a service account JSON key.");
-    try {
-      const parsed = JSON.parse(raw);
-      if (parsed.type && parsed.type !== "service_account") {
-        return showError('JSON "type" should be "service_account".');
+  if (cloud.id === "azure" && (authType === "service_principal" || authType === "client_certificate" || authType === "managed_identity")) {
+    if (!tenantId) return showError("Tenant ID is required for Azure.");
+  }
+
+  if (cloud.id === "gcp") {
+    if (authType === "service_account") {
+      const raw = $("#cf_sa_json").value.trim();
+      if (!raw) return showError("Paste a service account JSON key.");
+      try {
+        const parsed = JSON.parse(raw);
+        if (parsed.type && parsed.type !== "service_account") {
+          return showError('JSON "type" should be "service_account".');
+        }
+      } catch {
+        return showError("Service account JSON is not valid JSON.");
       }
-    } catch {
-      return showError("Service account JSON is not valid JSON.");
+    } else if (authType === "api_key") {
+      if (!$("#cf_api_key").value.trim()) return showError("API key is required.");
+    } else if (authType === "oauth2") {
+      if (!$("#cf_client_id").value.trim() || !$("#cf_client_secret").value.trim()) {
+        return showError("OAuth Client ID and secret are required.");
+      }
     }
-  } else if (authType === "api_key") {
-    if (!$("#gcp_api_key").value.trim()) return showError("API key is required.");
-  } else if (authType === "oauth2") {
-    if (!$("#gcp_client_id").value.trim() || !$("#gcp_client_secret").value.trim()) {
-      return showError("OAuth Client ID and secret are required.");
+  } else if (cloud.id === "aws") {
+    if (authType === "access_keys") {
+      if (!$("#cf_access_key_id").value.trim() || !$("#cf_secret_access_key").value.trim()) {
+        return showError("Access key ID and secret access key are required.");
+      }
+    } else if (authType === "iam_role" || authType === "assume_role") {
+      if (!$("#cf_role_arn").value.trim()) return showError("IAM role ARN is required.");
+    }
+  } else if (cloud.id === "azure") {
+    if (authType === "service_principal") {
+      if (!$("#cf_client_id").value.trim() || !$("#cf_client_secret").value.trim()) {
+        return showError("Application (client) ID and secret are required.");
+      }
+    } else if (authType === "client_certificate") {
+      if (!$("#cf_sa_json").value.trim()) return showError("Client certificate / JSON is required.");
     }
   }
 
   const payload = {
-    connector_type: "googlecloud",
+    connector_type: cloud.type,
+    cloud: cloud.id,
     display_name: displayName,
-    project_id: projectId,
+    account_id: accountId,
     region,
     auth_type: authType,
     apis,
-    dataset_scope: datasetScope,
+    dataset_scope: scope,
+    tenant_id: tenantId,
+    resource_group: resourceGroup,
     // Credentials stay in-memory for this R&D page; wire to backend when ready.
-    api_key: $("#gcp_api_key").value,
-    client_id: $("#gcp_client_id").value,
-    client_secret: $("#gcp_client_secret").value,
-    service_account_json: $("#gcp_sa_json").value
+    api_key: $("#cf_api_key").value,
+    client_id: $("#cf_client_id").value,
+    client_secret: $("#cf_client_secret").value,
+    service_account_json: $("#cf_sa_json").value,
+    access_key_id: $("#cf_access_key_id").value,
+    secret_access_key: $("#cf_secret_access_key").value,
+    role_arn: $("#cf_role_arn").value
   };
 
-  const btn = $("#gcpSubmitBtn");
+  const btn = $("#submitBtn");
   btn.disabled = true;
   btn.textContent = "Connecting…";
 
-  // Prototype: simulate connectivity + fetch. Replace with real backend call later.
   await new Promise(r => setTimeout(r, 700));
   try {
-    sessionStorage.setItem("datahive_gcp_connection", JSON.stringify({
+    sessionStorage.setItem("datahive_cloud_connection", JSON.stringify({
+      cloud: payload.cloud,
+      connector_type: payload.connector_type,
       display_name: payload.display_name,
-      project_id: payload.project_id,
+      account_id: payload.account_id,
       region: payload.region,
       auth_type: payload.auth_type,
       apis: payload.apis,
       dataset_scope: payload.dataset_scope,
+      tenant_id: payload.tenant_id,
+      resource_group: payload.resource_group,
       saved_at: new Date().toISOString()
     }));
   } catch { /* ignore quota */ }
@@ -366,35 +585,41 @@ form.addEventListener("submit", async (e)=>{
   btn.disabled = false;
   btn.textContent = "Connect & fetch";
   closePanel();
+  showStatus(payload, "Connected — fetch queued", "ok");
 
-  const authLabel = {
-    service_account: "Service account",
-    api_key: "API key",
-    oauth2: "OAuth 2.0"
-  }[payload.auth_type];
-
-  $("#statusTitle").textContent = payload.display_name;
-  $("#statusMeta").innerHTML =
-    "<strong>Project:</strong> " + escapeHtml(payload.project_id) +
-    " · <strong>Region:</strong> " + escapeHtml(payload.region) + "<br>" +
-    "<strong>Auth:</strong> " + escapeHtml(authLabel) +
-    " · <strong>APIs:</strong> " + escapeHtml(payload.apis.join(", ")) +
-    (payload.dataset_scope
-      ? "<br><strong>Scope:</strong> " + escapeHtml(payload.dataset_scope)
-      : "");
-  const pill = $("#statusPill");
-  pill.className = "pill ok";
-  pill.textContent = "Connected — fetch queued";
-  statusEl.classList.remove("hidden");
-
-  console.info("[GCP] connection configured", {
+  console.info("[Cloud] connection configured", {
+    cloud: payload.cloud,
     display_name: payload.display_name,
-    project_id: payload.project_id,
+    account_id: payload.account_id,
     region: payload.region,
     auth_type: payload.auth_type,
     apis: payload.apis
   });
 });
+
+function authLabel(cloudId, authType){
+  const opt = (CLOUDS[cloudId]?.auth || []).find(a => a.value === authType);
+  return opt ? opt.label : authType;
+}
+
+function showStatus(payload, pillText, pillKind){
+  const cloud = CLOUDS[payload.cloud] || Object.values(CLOUDS).find(c => c.type === payload.connector_type);
+  const accountLabel = cloud ? cloud.accountLabel : "Account";
+  $("#statusTitle").textContent = payload.display_name;
+  $("#statusMeta").innerHTML =
+    "<strong>Cloud:</strong> " + escapeHtml(cloud ? cloud.short : payload.cloud) +
+    " · <strong>" + escapeHtml(accountLabel) + ":</strong> " + escapeHtml(payload.account_id) +
+    " · <strong>Region:</strong> " + escapeHtml(payload.region) + "<br>" +
+    "<strong>Auth:</strong> " + escapeHtml(authLabel(payload.cloud, payload.auth_type)) +
+    " · <strong>Services:</strong> " + escapeHtml((payload.apis||[]).join(", ")) +
+    (payload.dataset_scope
+      ? "<br><strong>Scope:</strong> " + escapeHtml(payload.dataset_scope)
+      : "");
+  const pill = $("#statusPill");
+  pill.className = "pill " + (pillKind || "pending");
+  pill.textContent = pillText;
+  statusEl.classList.remove("hidden");
+}
 
 function escapeHtml(s){
   return String(s)
@@ -402,20 +627,24 @@ function escapeHtml(s){
     .replace(/>/g,"&gt;").replace(/"/g,"&quot;");
 }
 
-/* Restore last saved (non-secret) connection summary if present */
 try {
-  const saved = JSON.parse(sessionStorage.getItem("datahive_gcp_connection") || "null");
-  if (saved) {
-    $("#statusTitle").textContent = saved.display_name;
-    $("#statusMeta").innerHTML =
-      "<strong>Project:</strong> " + escapeHtml(saved.project_id) +
-      " · <strong>Region:</strong> " + escapeHtml(saved.region) + "<br>" +
-      "<strong>APIs:</strong> " + escapeHtml((saved.apis||[]).join(", "));
-    const pill = $("#statusPill");
-    pill.className = "pill pending";
-    pill.textContent = "Previously configured";
-    statusEl.classList.remove("hidden");
-  }
+  const saved = JSON.parse(sessionStorage.getItem("datahive_cloud_connection") || "null")
+    || (() => {
+      // migrate older GCP-only key if present
+      const legacy = JSON.parse(sessionStorage.getItem("datahive_gcp_connection") || "null");
+      if (!legacy) return null;
+      return {
+        cloud: "gcp",
+        connector_type: "googlecloud",
+        display_name: legacy.display_name,
+        account_id: legacy.project_id,
+        region: legacy.region,
+        auth_type: legacy.auth_type,
+        apis: legacy.apis,
+        dataset_scope: legacy.dataset_scope
+      };
+    })();
+  if (saved) showStatus(saved, "Previously configured", "pending");
 } catch { /* ignore */ }
 </script>
 </body>
