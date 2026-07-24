@@ -1,0 +1,7 @@
+# Runtime artifacts (regenerated on startup)
+id360.db
+id360.db-journal
+audit.log
+__pycache__/
+*.pyc
+.env

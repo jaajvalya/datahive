@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Start-Process \"c:\\\\Users\\\\raman\\\\Projects\\\\ID360\\\\frontend\\\\index-v2.html\")",
+      "Bash(markitdown \"C:\\\\Users\\\\raman\\\\Downloads\\\\Brochure - ACL_BA_Copilot.pptx\")",
+      "Bash(python -m markitdown \"C:\\\\Users\\\\raman\\\\Downloads\\\\Brochure - ACL_BA_Copilot.pptx\")",
+      "Read(//c/Users/raman/AppData/Local/Temp/claude/C--Users-raman-Projects-ID360/fd0f6ada-177a-4200-8409-f98820e85135/scratchpad/brochure/**)",
+      "Bash(python \"/c/Users/raman/AppData/Roaming/Claude/local-agent-mode-sessions/skills-plugin/36aefeac-972a-4ed8-9861-66b4f383e744/e000dd50-751e-43be-b81a-cfdb5d04c67e/skills/pptx/scripts/thumbnail.py\" \"/c/Users/raman/Downloads/Brochure - ACL_BA_Copilot.pptx\" ref_thumbs)",
+      "Bash(npm --version)",
+      "Bash(python -c ' *)",
+      "Bash(python build_brochure.py)",
+      "Bash(python -m markitdown ID360_Brochure.pptx)",
+      "Bash(python -m markitdown \"C:\\\\Users\\\\raman\\\\Projects\\\\ID360\\\\ID360_Brochure.pptx\")",
+      "Bash(python3)",
+      "Bash(xargs grep -l \"FastAPI\\(\")",
+      "Bash(mkdir -p \"/c/Users/raman/Projects/ID360/.claude\" && ls \"/c/Users/raman/Projects/ID360/.claude\")",
+      "Read(//c/Users/raman/AppData/Roaming/Claude/local-agent-mode-sessions/skills-plugin/36aefeac-972a-4ed8-9861-66b4f383e744/e000dd50-751e-43be-b81a-cfdb5d04c67e/skills/xlsx/**)",
+      "Bash(markitdown \"C:\\\\Users\\\\raman\\\\Downloads\\\\customer360data.xlsx\")",
+      "Bash(where python3 *)",
+      "Bash(where py *)",
+      "Bash(py --version)",
+      "Read(//c/Users/raman/AppData/Local/Programs/**)",
+      "Bash(py -c ' *)",
+      "Bash(py -m pip install --quiet openpyxl pandas faker numpy)",
+      "Bash(py \"C:\\\\Users\\\\raman\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-raman-Projects-ID360\\\\af590cc8-f12a-40bb-a431-b25f9de1a032\\\\scratchpad\\\\gen_synthetic.py\")"
+    ]
+  }
+}

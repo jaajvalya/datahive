@@ -1,0 +1,46 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "id360-control-plane",
+      "runtimeExecutable": "uvicorn",
+      "runtimeArgs": [
+        "id360_connect.api.control_plane:app",
+        "--reload",
+        "--app-dir",
+        "src",
+        "--port",
+        "8000"
+      ],
+      "port": 8000,
+      "url": "http://localhost:8000/docs"
+    },
+    {
+      "name": "id360-homepage-backend",
+      "runtimeExecutable": "uvicorn",
+      "runtimeArgs": [
+        "main:app",
+        "--reload",
+        "--app-dir",
+        "backend",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8000"
+      ],
+      "port": 8000
+    },
+    {
+      "name": "id360-homepage-frontend",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "5500",
+        "--directory",
+        "frontend"
+      ],
+      "port": 5500
+    }
+  ]
+}

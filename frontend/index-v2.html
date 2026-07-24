@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ID360 — Home (v2)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  /* ============================================================
+     ID360 Homepage v2 — ACL Digital theme
+     Changes vs v1:
+       1. Uses the provided ACL logo (acl-logo.png); swirl recreation removed.
+       2. User name shown as "Admin".
+       3. Right-hand column (Recent announcements + Newly added resources) removed.
+       4. Main content width increased to 90%.
+     ============================================================ */
+  :root {
+    --navy-900:#182978; --navy-700:#0056A7; --blue-600:#046BD2;
+    --blue-500:#3375B3; --blue-800:#13547A;
+    --orange-500:#FF671F; --orange-600:#e85a15;
+    --white:#FFFFFF; --ink-900:#010818; --ink-700:#212529;
+    --gray-100:#F6F9FF; --gray-150:#F4F4F4; --gray-200:#F1F1F1;
+    --ok:#1FA971; --warn-bg:#FFF6DC; --warn-line:#F6C445;
+    --err-bg:#FDE7E1; --err-line:#E4572E;
+    --radius:12px; --shadow:0 1px 3px rgba(1,8,24,.08);
+    --rail:72px; --header:56px;
+  }
+  * { box-sizing:border-box; }
+  html,body { margin:0; padding:0; }
+  body {
+    font-family:"Manrope",-apple-system,"Segoe UI",Roboto,sans-serif;
+    color:var(--ink-700); background:var(--gray-150);
+    -webkit-font-smoothing:antialiased;
+  }
+  a { color:var(--blue-600); text-decoration:none; }
+  .hidden { display:none !important; }
+
+  /* ---------- Top bar ---------- */
+  header.topbar {
+    position:sticky; top:0; z-index:40; height:var(--header);
+    display:flex; align-items:center; gap:16px;
+    padding:0 20px; background:var(--white);
+    border-bottom:1px solid var(--gray-200);
+  }
+  .logo { display:flex; align-items:center; }
+  .logo-img { height:40px; width:auto; display:block; }   /* the provided ACL logo */
+  .spacer { flex:1 1 auto; }
+  .btn { font-family:inherit; font-weight:500; font-size:14px; border-radius:8px;
+    padding:8px 14px; cursor:pointer; border:1.5px solid transparent; }
+  .btn-primary { background:var(--orange-500); color:#fff; }
+  .btn-primary:hover { background:var(--orange-600); }
+  .btn-outline { background:transparent; color:var(--orange-500); border-color:var(--orange-500); }
+  .btn-outline:hover { background:rgba(255,103,31,.08); }
+  .icon-btn { position:relative; width:38px; height:38px; border-radius:8px; border:none;
+    background:transparent; cursor:pointer; color:var(--ink-700); font-size:17px; }
+  .icon-btn:hover { background:var(--gray-100); color:var(--orange-500); }
+  .badge { position:absolute; top:4px; right:4px; min-width:16px; height:16px; padding:0 4px;
+    background:var(--orange-500); color:#fff; font-size:10px; font-weight:700; border-radius:999px;
+    display:flex; align-items:center; justify-content:center; }
+  .userchip { display:flex; align-items:center; gap:8px; padding:4px 10px 4px 4px;
+    border:1px solid var(--gray-200); border-radius:999px; cursor:pointer; background:#fff; }
+  .avatar { width:28px; height:28px; border-radius:999px; background:var(--navy-700); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:12px; }
+  .userchip .nm { font-size:13px; font-weight:600; color:var(--ink-900); }
+
+  /* ---------- Shell ---------- */
+  .shell { display:flex; min-height:calc(100vh - var(--header)); }
+
+  /* ---------- Left rail ---------- */
+  nav.rail { width:var(--rail); flex:0 0 auto; background:#fff; border-right:1px solid var(--gray-200);
+    display:flex; flex-direction:column; padding:12px 0; position:sticky; top:var(--header);
+    height:calc(100vh - var(--header)); }
+  .rail .grp { display:flex; flex-direction:column; gap:20px; }
+  .rail .grp.bottom { margin-top:auto; }
+  .rail a { position:relative; display:flex; flex-direction:column; align-items:center; gap:4px;
+    padding:10px 0; color:var(--ink-700); font-size:10px; font-weight:500; }
+  .rail a .ic { font-size:18px; line-height:1; filter:grayscale(1); }   /* grey icons */
+  .rail a:hover { background:var(--gray-100); }
+  .rail a.active { color:var(--orange-500); }
+  .rail a.active::before { content:""; position:absolute; left:0; top:6px; bottom:6px; width:3px;
+    background:var(--orange-500); border-radius:0 3px 3px 0; }
+
+  /* ---------- Body (width increased to 90%) ---------- */
+  main.body { flex:1 1 auto; padding:1px; width:98%; max-width:none; margin:0; }
+  .hero { border-radius:16px; padding:26px 28px 30px;
+    background:linear-gradient(120deg,var(--navy-900),var(--navy-700));
+    color:#fff; position:relative; overflow:hidden; }
+  .hero::after { content:""; position:absolute; inset:0; opacity:.18; pointer-events:none;
+    background-image:linear-gradient(90deg,rgba(255,255,255,.25) 1px,transparent 1px),
+                     linear-gradient(rgba(255,255,255,.18) 1px,transparent 1px);
+    background-size:34px 34px; mask-image:linear-gradient(90deg,transparent,#000 60%); }
+  .hero h1 { margin:0 0 16px; font-size:28px; font-weight:600; display:flex; align-items:center; gap:10px; }
+  .searchwrap { position:relative; z-index:2; }
+  .searchbar { display:flex; align-items:center; gap:10px; background:#fff; border-radius:10px;
+    padding:12px 14px; box-shadow:var(--shadow); }
+  .searchbar .mk { font-weight:800; color:var(--navy-900); font-size:14px; }
+  .searchbar input { flex:1; border:none; outline:none; font-family:inherit; font-size:15px; color:var(--ink-900); }
+  .searchbar input::placeholder { color:#9aa3b2; }
+  .hero .discover { display:block; text-align:right; margin-top:10px; color:#fff; font-weight:500;
+    opacity:.95; }
+  .hero .discover:hover { color:#ffd9c6; }
+
+  .searchresults { position:absolute; left:0; right:0; top:calc(100% + 6px); z-index:5; background:#fff;
+    border:1px solid var(--gray-200); border-radius:10px; box-shadow:0 8px 24px rgba(1,8,24,.14);
+    max-height:340px; overflow:auto; }
+  .searchresults .r { padding:10px 14px; display:flex; gap:10px; align-items:center; cursor:pointer;
+    border-bottom:1px solid var(--gray-200); color:var(--ink-900); }
+  .searchresults .r:last-child { border-bottom:none; }
+  .searchresults .r:hover { background:var(--gray-100); }
+  .searchresults .empty { padding:16px; color:var(--ink-700); font-size:14px; }
+
+  /* Single-column body (right column removed) */
+  .grid { display:grid; grid-template-columns:1fr; gap:20px; margin-top:20px; align-items:start; }
+
+  .card { background:#fff; border:1px solid var(--gray-200); border-radius:var(--radius);
+    box-shadow:var(--shadow); }
+  .card .hd { padding:16px 18px 0; }
+  .card h2 { margin:0; font-size:18px; font-weight:700; color:var(--ink-900); }
+  .card .bd { padding:14px 18px 18px; }
+
+  .tabs { display:flex; gap:18px; margin:12px 0 6px; border-bottom:1px solid var(--gray-200); }
+  .tab { padding:8px 2px; font-size:14px; font-weight:600; color:var(--ink-700); cursor:pointer;
+    border-bottom:2px solid transparent; margin-bottom:-1px; background:none; border-top:none;
+    border-left:none; border-right:none; font-family:inherit; }
+  .tab.active { color:var(--orange-500); border-bottom-color:var(--orange-500); }
+
+  .chips { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0; }
+  .chip { display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border-radius:999px;
+    background:var(--gray-150); border:1.5px solid transparent; font-size:13px; font-weight:500;
+    color:var(--ink-700); cursor:pointer; }
+  .chip .ct { font-weight:700; color:var(--ink-900); }
+  .chip.active { color:var(--orange-500); border-color:var(--orange-500); background:rgba(255,103,31,.06); }
+  .chip.active .ct { color:var(--orange-500); }
+
+  .assetlist { max-height:420px; overflow:auto; }
+  .asset { display:flex; gap:12px; padding:12px 6px; border-bottom:1px solid var(--gray-200); }
+  .asset:last-child { border-bottom:none; }
+  .asset:hover { background:var(--gray-100); }
+  .asset .tile { width:34px; height:34px; border-radius:8px; flex:0 0 auto;
+    display:flex; align-items:center; justify-content:center; font-size:16px; color:#fff;
+    background:var(--navy-700); }
+  .asset .meta { flex:1; min-width:0; }
+  .asset .nm { font-weight:700; color:var(--navy-700); display:flex; align-items:center; gap:6px; }
+  .asset .verified { color:var(--ok); font-size:13px; }
+  .asset .crumb { font-size:12.5px; color:var(--ink-700); margin:2px 0; }
+  .asset .time { font-size:12px; color:#8a93a3; display:flex; align-items:center; gap:5px; }
+  .asset .warn { color:var(--warn-line); font-size:16px; align-self:flex-start; }
+
+  .segtabs { display:flex; gap:8px; }
+  .segtab { padding:8px 14px; border-radius:8px; border:1px solid var(--gray-200); background:#fff;
+    font-family:inherit; font-size:13px; font-weight:600; cursor:pointer; color:var(--ink-900);
+    display:flex; gap:8px; align-items:center; }
+  .segtab .ct { color:var(--orange-500); font-weight:700; }
+  .segtab.active { border-color:var(--orange-500); }
+
+  /* Workflows — connector tiles */
+  .connector-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(170px,1fr)); gap:14px; margin-top:6px; }
+  .connector-tile { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px;
+    padding:24px 12px; border:1px solid var(--gray-200); border-radius:var(--radius); background:#fff;
+    cursor:pointer; text-align:center; transition:border-color .15s,box-shadow .15s,transform .15s; }
+  .connector-tile:hover { border-color:var(--orange-500); box-shadow:var(--shadow); transform:translateY(-1px); }
+  .connector-tile .cic { width:48px; height:48px; display:flex; align-items:center; justify-content:center; }
+  .connector-tile .cic img { max-width:100%; max-height:100%; display:block; }
+  .connector-tile .cnm { font-size:13px; font-weight:600; color:var(--ink-900); line-height:1.3; }
+
+  /* Workflows — pre-requisites & configuration instructions */
+  .prereq-item { margin-bottom:14px; font-size:13.5px; line-height:1.6; color:var(--ink-700); text-align:justify; }
+  .prereq-item:last-child { margin-bottom:0; }
+  .prereq-item strong { color:var(--ink-900); }
+
+  /* Governance — menu tiles */
+  .gov-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:14px; margin-top:6px; }
+  .gov-tile { border:1px solid var(--gray-200); border-radius:var(--radius); background:#fff; padding:20px;
+    cursor:pointer; transition:border-color .15s,box-shadow .15s,transform .15s; }
+  .gov-tile:hover { border-color:var(--orange-500); box-shadow:var(--shadow); transform:translateY(-1px); }
+  .gov-tile .gic { font-size:28px; margin-bottom:10px; line-height:1; }
+  .gov-tile .gnm { font-weight:700; color:var(--ink-900); margin-bottom:4px; }
+  .gov-tile .gdesc { font-size:12.5px; color:var(--ink-700); line-height:1.5; }
+
+  /* Glossary — file upload */
+  .uploadzone { border:2px dashed var(--gray-200); border-radius:var(--radius); padding:36px 20px;
+    text-align:center; cursor:pointer; transition:border-color .15s,background .15s; }
+  .uploadzone:hover, .uploadzone.dragover { border-color:var(--orange-500); background:rgba(255,103,31,.04); }
+  .uploadzone .upicon { font-size:40px; margin-bottom:10px; line-height:1; }
+  .uploadzone .uptext { font-weight:600; color:var(--ink-900); margin-bottom:4px; }
+  .uploadzone .uphint { font-size:12.5px; color:#8a93a3; }
+  .selectedfile { display:flex; align-items:center; gap:10px; margin-top:14px; }
+  .selectedfile .sf-icon { font-size:20px; }
+  .selectedfile .sf-meta { flex:1; min-width:0; }
+  .selectedfile .sf-name { font-weight:600; color:var(--ink-900); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .selectedfile .sf-size { font-size:12px; color:#8a93a3; }
+
+  /* Configured connections list */
+  .connlist .row { display:flex; align-items:center; gap:12px; padding:12px 6px;
+    border-bottom:1px solid var(--gray-200); }
+  .connlist .row:last-child { border-bottom:none; }
+  .connlist .row .clogo { width:28px; height:28px; flex:0 0 auto; }
+  .connlist .row .clogo img { width:100%; height:100%; display:block; }
+  .connlist .row .cmeta { flex:1; min-width:0; }
+  .connlist .row .cnm2 { font-weight:700; color:var(--ink-900); }
+  .connlist .row .curl { font-size:12.5px; color:var(--ink-700); }
+  .connlist .row .cscope { font-size:12px; color:#8a93a3; margin-top:2px; }
+  .connlist .row .cbadge { font-size:11px; font-weight:700; color:var(--navy-700); background:var(--gray-100);
+    border-radius:999px; padding:3px 9px; flex:0 0 auto; }
+  .connlist .row .cdel { border:none; background:transparent; color:var(--ink-700); cursor:pointer;
+    font-size:15px; padding:6px; border-radius:8px; flex:0 0 auto; }
+  .connlist .row .cdel:hover { background:var(--err-bg); color:var(--err-line); }
+
+  /* Connection config modal */
+  .modal-overlay { position:fixed; inset:0; background:rgba(1,8,24,.45); z-index:100;
+    display:flex; align-items:center; justify-content:center; padding:20px; }
+  .modal { width:520px; max-width:100%; max-height:88vh; overflow:auto; }
+  .field { margin-bottom:14px; }
+  .field-row { display:flex; gap:14px; }
+  .field-row .field { flex:1; min-width:0; }
+  .field label { display:block; font-size:13px; font-weight:600; color:var(--ink-700); margin-bottom:6px; }
+  .field input, .field select, .field textarea { width:100%; padding:9px 10px; border:1px solid var(--gray-200);
+    border-radius:8px; font-family:inherit; font-size:14px; color:var(--ink-900); }
+  .field textarea { resize:vertical; }
+
+  /* skeleton / states */
+  .sk { background:linear-gradient(90deg,#eef1f6 25%,#e3e8f0 37%,#eef1f6 63%);
+    background-size:400% 100%; animation:sh 1.2s infinite; border-radius:8px; }
+  @keyframes sh { 0%{background-position:100% 0} 100%{background-position:-100% 0} }
+  .sk-row { height:52px; margin:10px 0; }
+  .state { padding:20px; text-align:center; color:var(--ink-700); font-size:14px; }
+  @media (prefers-reduced-motion:reduce){ .sk{ animation:none; } }
+
+  .banner { padding:8px 14px; font-size:12.5px; text-align:center; color:#7a5200;
+    background:var(--warn-bg); border-bottom:1px solid var(--warn-line); }
+</style>
+</head>
+<body>
+
+<!-- Data-source banner (shown only in mock/offline mode) -->
+<div id="mockBanner" class="banner hidden">
+  Running with <b>embedded demo data</b> — backend not reachable at <span id="apiHint"></span>.
+</div>
+
+<!-- ===== Top bar ===== -->
+<header class="topbar">
+  <div class="logo" title="ACL Digital">
+    <img class="logo-img" src="../images/ACL-Logo.webp" alt="ACL Digital — an ALTEN group company" />
+  </div>
+  <div class="spacer"></div>
+  <button class="icon-btn" id="bellBtn" aria-label="Notifications">🔔<span class="badge" id="bellCount">5</span></button>
+  <div class="userchip" id="userChip">
+    <span class="avatar" id="userAv">··</span>
+    <span class="nm" id="userNm">Admin</span>
+    <span>▾</span>
+  </div>
+</header>
+
+<div class="shell">
+  <!-- ===== Left rail ===== -->
+  <nav class="rail" aria-label="Primary">
+    <div class="grp">
+      <a href="#" class="active" data-view="assets"><span class="ic">🧭</span>Assets</a>
+      <a href="#" data-view="glossary"><span class="ic">📘</span>Glossary</a>
+      <a href="#"><span class="ic">⚡</span>Insights</a>
+    </div>
+    <div class="grp" style="margin-top:14px">
+      <a href="#" data-view="workflows"><span class="ic">🔀</span>Connectors</a>
+      <a href="#" data-view="governance"><span class="ic">🏛️</span>Governance</a>
+      <a href="#" data-view="admin"><span class="ic">🛡️</span>Admin</a>
+      <a href="#"><span class="ic">📊</span>Reporting</a>
+    </div>
+    <div class="grp bottom">
+      <a href="#"><span class="ic">🎧</span>Support</a>
+      <a href="#"><span class="ic">📖</span>Docs</a>
+    </div>
+  </nav>
+
+  <!-- ===== Body ===== -->
+  <main class="body">
+    <!-- ===== Assets view ===== -->
+    <div id="view-assets">
+      <!-- Hero -->
+      <section class="hero">
+        <h1><span>☀️</span> <span id="greeting">Good day!</span></h1>
+        <div class="searchwrap">
+          <div class="searchbar">
+            <span class="mk">ID360</span>
+            <input id="search" type="text" placeholder="Search all your assets" autocomplete="off"
+                   aria-label="Search all your assets" />
+          </div>
+          <div id="searchResults" class="searchresults hidden"></div>
+        </div>
+        <a class="discover" href="#" id="discover">Discover all assets →</a>
+      </section>
+
+      <div class="grid">
+        <!-- Primary column (right column removed) -->
+        <div>
+          <!-- Relevant to you -->
+          <section class="card">
+            <div class="hd">
+              <h2>Relevant to you</h2>
+              <div class="tabs" id="relTabs">
+                <button class="tab active" data-tab="recently_verified">Recently verified assets</button>
+                <button class="tab" data-tab="my_drafts">My drafts</button>
+              </div>
+            </div>
+            <div class="bd">
+              <div class="chips" id="chips"></div>
+              <div class="assetlist" id="assetList"></div>
+            </div>
+          </section>
+
+          <!-- Personalise -->
+          <section class="card" style="margin-top:20px">
+            <div class="hd"><h2>Personalise your experience</h2></div>
+            <div class="bd">
+              <div class="segtabs" id="personalise"></div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Workflows view ===== -->
+    <div id="view-workflows" class="hidden">
+      <section class="card">
+        <div class="hd"><h2>Pre-requisites &amp; Configuration Instructions</h2></div>
+        <div class="bd">
+          <div class="prereq-item">To set up the connector, please provide your API endpoint, authentication credentials, and network requirements (GCP IP whitelisting, private connectivity, or mTLS). We also need the data scope-including schema, sample payloads, and sync mechanisms-along with data governance guidelines (PII/PHI handling, compliance requirements, and a technical point of contact).</div>
+        </div>
+      </section>
+
+      <section class="card" style="margin-top:1px">
+        <div class="hd">
+          <h2>Connectors</h2>
+        </div>
+        <div class="bd">
+          <div class="connector-grid" id="connectorGrid"></div>
+        </div>
+      </section>
+
+      <section class="card" style="margin-top:1px">
+        <div class="hd"><h2>Configured connections</h2></div>
+        <div class="bd"><div class="connlist" id="connectionsList"></div></div>
+      </section>
+    </div>
+
+    <!-- ===== Glossary view ===== -->
+    <div id="view-glossary" class="hidden">
+      <section class="card">
+        <div class="hd"><h2>Business Glossary</h2></div>
+        <div class="bd">
+          <div class="prereq-item">Upload an Excel (.xlsx, .xls) or CSV file containing your business glossary terms and definitions to enrich data assets with shared, governed terminology.</div>
+          <div class="field-row">
+            <div class="field">
+              <label for="gl_cloud">Cloud</label>
+              <select id="gl_cloud">
+                <option value="">Select cloud…</option>
+                <option value="AWS">AWS</option>
+                <option value="Azure">Azure</option>
+                <option value="GCP">GCP</option>
+                <option value="On-Premises">On-Premises</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="gl_database">Database</label>
+              <input id="gl_database" list="gl_database_options" maxlength="256" placeholder="Select or type a database" />
+              <datalist id="gl_database_options">
+                <option value="production"></option>
+                <option value="staging"></option>
+                <option value="analytics"></option>
+                <option value="reporting"></option>
+              </datalist>
+            </div>
+            <div class="field">
+              <label for="gl_schema">Schema</label>
+              <input id="gl_schema" list="gl_schema_options" maxlength="256" placeholder="Select or type a schema" />
+              <datalist id="gl_schema_options">
+                <option value="public"></option>
+                <option value="dbo"></option>
+                <option value="raw"></option>
+                <option value="curated"></option>
+              </datalist>
+            </div>
+          </div>
+          <div class="uploadzone" id="glossaryDropzone" tabindex="0" role="button" aria-label="Upload glossary file">
+            <div class="upicon">📤</div>
+            <div class="uptext">Click to upload or drag &amp; drop</div>
+            <div class="uphint">Excel (.xlsx, .xls) or CSV — up to 10 MB</div>
+          </div>
+          <input type="file" id="glossaryFileInput" accept=".csv,.xlsx,.xls" class="hidden" />
+          <div id="glossarySelected" class="selectedfile hidden">
+            <span class="sf-icon">📄</span>
+            <div class="sf-meta">
+              <div class="sf-name" id="glossarySelectedName"></div>
+              <div class="sf-size" id="glossarySelectedSize"></div>
+            </div>
+            <button class="btn btn-primary" id="glossaryUploadBtn">Upload</button>
+            <button class="icon-btn" id="glossaryClearBtn" aria-label="Remove selected file">✕</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" style="margin-top:1px">
+        <div class="hd"><h2>Uploaded glossaries</h2></div>
+        <div class="bd"><div class="connlist" id="glossaryList"></div></div>
+      </section>
+    </div>
+
+    <!-- ===== Governance view ===== -->
+    <div id="view-governance" class="hidden">
+      <section class="card">
+        <div class="hd"><h2>Governance</h2></div>
+        <div class="bd">
+          <div class="gov-grid">
+            <div class="gov-tile">
+              <div class="gic">🏷️</div>
+              <div class="gnm">Manage Tags</div>
+              <div class="gdesc">Create and organize tags used to classify and discover data assets.</div>
+            </div>
+            <div class="gov-tile">
+              <div class="gic">📜</div>
+              <div class="gnm">Manage Certificates</div>
+              <div class="gdesc">Define certification levels and approve trusted, verified data assets.</div>
+            </div>
+            <div class="gov-tile">
+              <div class="gic">✅</div>
+              <div class="gnm">Data Quality</div>
+              <div class="gdesc">Configure quality rules and monitor checks across data assets.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ===== Admin view ===== -->
+    <div id="view-admin" class="hidden">
+      <section class="card">
+        <div class="hd"><h2>Admin</h2></div>
+        <div class="bd">
+          <div class="gov-grid">
+            <div class="gov-tile">
+              <div class="gic">👤</div>
+              <div class="gnm">Users</div>
+              <div class="gdesc">Invite, deactivate, and manage user accounts and access.</div>
+            </div>
+            <div class="gov-tile">
+              <div class="gic">👥</div>
+              <div class="gnm">User Group</div>
+              <div class="gdesc">Organize users into groups for streamlined access management.</div>
+            </div>
+            <div class="gov-tile">
+              <div class="gic">🎭</div>
+              <div class="gnm">Manage Persona</div>
+              <div class="gdesc">Define personas used to personalise the experience for user groups.</div>
+            </div>
+            <div class="gov-tile">
+              <div class="gic">🔐</div>
+              <div class="gnm">Manage Permission</div>
+              <div class="gdesc">Configure roles and permissions that control access across the platform.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<!-- ===== Connection config modal ===== -->
+<div id="connModalOverlay" class="modal-overlay hidden">
+  <div class="card modal" role="dialog" aria-modal="true" aria-labelledby="connModalTitle">
+    <div class="hd" style="display:flex;align-items:center;justify-content:space-between">
+      <h2 id="connModalTitle">Configure connection</h2>
+      <button type="button" class="icon-btn" id="connModalClose" aria-label="Close">✕</button>
+    </div>
+    <div class="bd">
+      <form id="connForm">
+        <div class="field">
+          <label for="cf_display_name">Display name</label>
+          <input id="cf_display_name" required maxlength="128" />
+        </div>
+        <div class="field">
+          <label for="cf_base_url">Base URL</label>
+          <input id="cf_base_url" required maxlength="512" placeholder="https://api.vendor.com" />
+        </div>
+        <div class="field">
+          <label for="cf_api_version_path">Versioned path</label>
+          <input id="cf_api_version_path" maxlength="128" placeholder="/v1" />
+        </div>
+        <div class="field">
+          <label for="cf_auth_type">Authentication method</label>
+          <select id="cf_auth_type">
+            <option value="api_key">API Key</option>
+            <option value="oauth2">OAuth2 (Client ID + Secret)</option>
+            <option value="service_account">Service Account (JSON key)</option>
+          </select>
+        </div>
+        <div class="field" id="cf_group_api_key">
+          <label for="cf_api_key">API key</label>
+          <input id="cf_api_key" type="password" maxlength="4096" autocomplete="off" />
+        </div>
+        <div class="field hidden" id="cf_group_oauth2">
+          <label for="cf_client_id">Client ID</label>
+          <input id="cf_client_id" maxlength="512" autocomplete="off" />
+          <label for="cf_client_secret" style="margin-top:10px">Client secret</label>
+          <input id="cf_client_secret" type="password" maxlength="4096" autocomplete="off" />
+        </div>
+        <div class="field hidden" id="cf_group_service_account">
+          <label for="cf_service_account_json">Service account JSON</label>
+          <textarea id="cf_service_account_json" rows="5" maxlength="65536" placeholder="Paste JSON key"></textarea>
+        </div>
+        <div class="field">
+          <label for="cf_database_name">Database</label>
+          <input id="cf_database_name" maxlength="256" />
+        </div>
+        <div class="field">
+          <label for="cf_schema_name">Schema</label>
+          <input id="cf_schema_name" maxlength="256" />
+        </div>
+        <div class="field">
+          <label for="cf_tables">Tables (comma-separated)</label>
+          <input id="cf_tables" maxlength="4096" placeholder="orders, customers" />
+        </div>
+        <div id="connFormError" class="hidden" style="color:var(--err-line);font-size:13px;margin-bottom:10px"></div>
+        <div style="display:flex;gap:10px;justify-content:flex-end">
+          <button type="button" class="btn btn-outline" id="connCancelBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   CONFIG — point this at your FastAPI backend.
+   Leave as-is for local dev. Set to "" to force mock/offline mode.
+   ============================================================ */
+const API_BASE = "http://localhost:8000/api/v1";
+
+/* Demo credentials that match the seeded backend user. */
+const DEMO_LOGIN = { username: "mmadden", password: "Passw0rd!" };
+
+/* ---------- tiny API client ---------- */
+const api = {
+  token: null,
+  offline: false,
+  async _fetch(path, opts = {}) {
+    if (!API_BASE) throw new Error("no-api");
+    const headers = Object.assign(
+      { "Content-Type": "application/json" },
+      this.token ? { Authorization: "Bearer " + this.token } : {},
+      opts.headers || {}
+    );
+    const res = await fetch(API_BASE + path, Object.assign({}, opts, { headers }));
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    return res.json();
+  },
+  async login() {
+    const body = new URLSearchParams();
+    body.set("username", DEMO_LOGIN.username);
+    body.set("password", DEMO_LOGIN.password);
+    const res = await fetch(API_BASE + "/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body
+    });
+    if (!res.ok) throw new Error("login failed");
+    const data = await res.json();
+    this.token = data.access_token;
+  },
+  me() { return this._fetch("/me"); },
+  relevant(tab, type) {
+    const q = new URLSearchParams({ tab });
+    if (type) q.set("type", type);
+    return this._fetch("/assets/relevant?" + q.toString());
+  },
+  search(q) { return this._fetch("/assets/search?q=" + encodeURIComponent(q)); },
+  personas() { return this._fetch("/personas"); },
+  purposes() { return this._fetch("/purposes"); },
+  listConnections() { return this._fetch("/connections"); },
+  createConnection(body) { return this._fetch("/connections", { method:"POST", body: JSON.stringify(body) }); },
+  updateConnection(id, body) { return this._fetch("/connections/"+id, { method:"PUT", body: JSON.stringify(body) }); },
+  deleteConnection(id) { return this._fetch("/connections/"+id, { method:"DELETE" }); }
+};
+
+/* ============================================================
+   MOCK DATA — used when the backend is unreachable so the page
+   always renders. Name shown as "Admin".
+   ============================================================ */
+const MOCK = {
+  me: { display_name: "Admin", first_name: "Admin", initials: "AD", greeting: "Good afternoon", notifications: 5 },
+  counts: { View:5, Column:3, Query:9, Term:23, Category:5, Glossary:3, Dashboard:7 },
+  assets: [
+    { name:"Food Beverage Order Analysis", type:"Dashboard", crumb:"Dashboard › Food Beverage Order Analysis", edited:"edited 3 months ago", verified:true, warning:true },
+    { name:"Customer Acquisition Cost Metrics", type:"Dashboard", crumb:"Dashboard › Customer Acquisition Cost", edited:"edited 3 months ago", verified:true, warning:false },
+    { name:"Consolidated_dashboard", type:"Dashboard", crumb:"Dashboard › Cost Overruns Dashboard", edited:"edited 7 months ago", verified:true, warning:false }
+  ],
+  personas: [{name:"Data Analyst"},{name:"Marketing"}],
+  purposes: [{name:"Reporting"},{name:"Governance"},{name:"Discovery"},{name:"Onboarding"},{name:"Quality"}]
+};
+
+/* ---------- Workflows: source connectors ---------- */
+const CONNECTORS = [
+  { name:"Google Cloud Platform (GCP)", logo:"../images/logos/googlecloud.svg", type:"googlecloud" },
+  { name:"Azure", logo:"../images/logos/microsoftazure.svg", type:"microsoftazure" },
+  { name:"Amazon Web Services (AWS)", logo:"../images/logos/amazonwebservices.svg", type:"amazonwebservices" },
+  { name:"Snowflake", logo:"../images/logos/snowflake.svg", type:"snowflake" },
+  { name:"Databricks", logo:"../images/logos/databricks.svg", type:"databricks" },
+  { name:"MongoDB", logo:"../images/logos/mongodb.svg", type:"mongodb" },
+  { name:"PostgreSQL", logo:"../images/logos/postgresql.svg", type:"postgresql" },
+  { name:"Microsoft SQL Server", logo:"../images/logos/microsoftsqlserver.svg", type:"microsoftsqlserver" },
+  { name:"MySQL", logo:"../images/logos/mysql.svg", type:"mysql" },
+  { name:"SharePoint", logo:"../images/logos/microsoftsharepoint.svg", type:"microsoftsharepoint" },
+  { name:"Mailbox", icon:"📧", type:"mailbox" },
+  { name:"Manual Upload", icon:"📤", type:"manualupload" },
+  { name:"OneDrive", logo:"../images/logos/microsoftonedrive.svg", type:"microsoftonedrive" },
+  { name:"Google Drive", logo:"../images/logos/googledrive.svg", type:"googledrive" }
+];
+
+function connectorIconHtml(c, size){
+  size = size || 32;
+  return c.logo ? '<img src="'+esc(c.logo)+'" alt="'+esc(c.name)+' logo" />'
+                : '<span style="font-size:'+size+'px;line-height:1">'+c.icon+'</span>';
+}
+
+/* ---------- Workflows: configured connections (offline mock store) ---------- */
+let mockConnections = [];
+function mockCreateConnection(body){
+  const now = new Date().toISOString();
+  const rec = Object.assign({}, body, {
+    id: "mock-" + Date.now(),
+    credentials_configured: true,
+    tables: (body.tables || "").split(",").map(s=>s.trim()).filter(Boolean),
+    created_at: now, updated_at: now
+  });
+  mockConnections.push(rec);
+  return rec;
+}
+function mockDeleteConnection(id){ mockConnections = mockConnections.filter(c=>c.id!==id); }
+
+/* ---------- helpers ---------- */
+const $ = (s) => document.querySelector(s);
+const el = (t, c) => { const e = document.createElement(t); if (c) e.className = c; return e; };
+function esc(s){ return String(s).replace(/[&<>"]/g, m=>({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[m])); }
+
+let state = { tab:"recently_verified", type:null, counts:{} };
+
+/* ---------- renderers ---------- */
+function renderUser(me){
+  $("#userNm").textContent = me.display_name;
+  $("#userAv").textContent = me.initials || (me.first_name||"?")[0];
+  $("#greeting").textContent = (me.greeting || "Good day") + ", " + (me.first_name||me.display_name) + "!";
+  if (me.notifications != null) $("#bellCount").textContent = me.notifications;
+}
+
+function renderChips(counts){
+  state.counts = counts;
+  const wrap = $("#chips"); wrap.innerHTML = "";
+  const all = el("button","chip" + (state.type===null?" active":""));
+  all.innerHTML = 'All';
+  all.onclick = () => { state.type=null; loadAssets(); renderChips(counts); };
+  wrap.appendChild(all);
+  Object.keys(counts).forEach(k=>{
+    const c = el("button","chip" + (state.type===k?" active":""));
+    c.innerHTML = esc(k) + ' <span class="ct">' + counts[k] + '</span>';
+    c.onclick = () => { state.type=k; loadAssets(); renderChips(counts); };
+    wrap.appendChild(c);
+  });
+}
+
+function renderAssets(list){
+  const wrap = $("#assetList"); wrap.innerHTML = "";
+  if (!list.length){ wrap.innerHTML = '<div class="state">No assets match this filter.</div>'; return; }
+  list.forEach(a=>{
+    const row = el("div","asset");
+    row.innerHTML =
+      '<div class="tile">▦</div>' +
+      '<div class="meta">' +
+        '<div class="nm">'+esc(a.name)+ (a.verified?' <span class="verified">✔</span>':'') +'</div>' +
+        '<div class="crumb">'+esc(a.crumb || a.type)+'</div>' +
+        '<div class="time">🕒 '+esc(a.edited||"")+'</div>' +
+      '</div>' +
+      (a.warning?'<div class="warn" title="Has warnings">⚠️</div>':'');
+    wrap.appendChild(row);
+  });
+}
+
+function renderConnectors(){
+  const wrap = $("#connectorGrid"); wrap.innerHTML = "";
+  CONNECTORS.forEach(c=>{
+    const t = el("div","connector-tile");
+    t.innerHTML = '<div class="cic">'+connectorIconHtml(c,32)+'</div>' +
+      '<div class="cnm">'+esc(c.name)+'</div>';
+    t.onclick = () => openConnectionModal(c);
+    wrap.appendChild(t);
+  });
+}
+
+const AUTH_LABELS = { api_key:"API Key", oauth2:"OAuth2", service_account:"Service Account" };
+
+function renderConnectionsList(items){
+  const wrap = $("#connectionsList"); wrap.innerHTML = "";
+  if (!items.length){ wrap.innerHTML = '<div class="state">No connections configured yet.</div>'; return; }
+  items.forEach(it=>{
+    const connector = CONNECTORS.find(c=>c.type===it.connector_type);
+    const scopeParts = [it.database_name, it.schema_name, (it.tables||[]).join(", ")].filter(Boolean);
+    const row = el("div","row");
+    row.innerHTML =
+      '<div class="clogo">'+(connector?connectorIconHtml(connector,18):'')+'</div>' +
+      '<div class="cmeta">' +
+        '<div class="cnm2">'+esc(it.display_name)+'</div>' +
+        '<div class="curl">'+esc(it.base_url)+esc(it.api_version_path||"")+'</div>' +
+        (scopeParts.length ? '<div class="cscope">'+esc(scopeParts.join(" › "))+'</div>' : '') +
+      '</div>' +
+      '<div class="cbadge">'+esc(AUTH_LABELS[it.auth_type]||it.auth_type)+'</div>' +
+      '<button class="cdel" title="Delete" aria-label="Delete connection">🗑</button>';
+    row.querySelector(".cdel").onclick = () => deleteConnectionRow(it.id);
+    wrap.appendChild(row);
+  });
+}
+
+function renderPersonalise(personas, purposes){
+  const wrap = $("#personalise"); wrap.innerHTML = "";
+  const p = el("button","segtab active");
+  p.innerHTML = 'Persona <span class="ct">'+personas.length+'</span>';
+  const q = el("button","segtab");
+  q.innerHTML = 'Purpose <span class="ct">'+purposes.length+'</span>';
+  wrap.appendChild(p); wrap.appendChild(q);
+}
+
+/* ---------- loaders ---------- */
+function skeleton(elm, rows){ elm.innerHTML=""; for(let i=0;i<rows;i++){ const s=el("div","sk sk-row"); elm.appendChild(s);} }
+
+async function loadAssets(){
+  const wrap = $("#assetList"); skeleton(wrap,3);
+  try {
+    if (api.offline) throw new Error("offline");
+    const data = await api.relevant(state.tab, state.type);
+    renderChips(data.counts || state.counts);
+    renderAssets(data.items || []);
+  } catch(e){
+    const counts = MOCK.counts;
+    renderChips(counts);
+    let list = MOCK.assets.slice();
+    if (state.type) list = list.filter(a=>a.type===state.type);
+    renderAssets(list);
+  }
+}
+
+async function loadConnections(){
+  try {
+    if (api.offline) throw new Error("offline");
+    const data = await api.listConnections();
+    renderConnectionsList(data.items || []);
+  } catch(e){
+    renderConnectionsList(mockConnections);
+  }
+}
+
+async function deleteConnectionRow(id){
+  try {
+    if (api.offline) throw new Error("offline");
+    await api.deleteConnection(id);
+  } catch(e){
+    mockDeleteConnection(id);
+  }
+  loadConnections();
+}
+
+async function boot(){
+  // 1. try to connect + auth
+  try {
+    if (!API_BASE) throw new Error("no-api");
+    await api.login();
+    const me = await api.me();
+    renderUser(me);
+  } catch(e){
+    api.offline = true;
+    $("#mockBanner").classList.remove("hidden");
+    $("#apiHint").textContent = API_BASE || "(mock mode)";
+    renderUser(MOCK.me);
+  }
+
+  // 2. load remaining regions
+  loadAssets();
+
+  // personalise
+  try {
+    const [pe, pu] = api.offline ? [ {items:MOCK.personas}, {items:MOCK.purposes} ]
+                                 : [ await api.personas(), await api.purposes() ];
+    renderPersonalise(pe.items||MOCK.personas, pu.items||MOCK.purposes);
+  } catch { renderPersonalise(MOCK.personas, MOCK.purposes); }
+}
+
+/* ---------- view routing (rail nav) ---------- */
+renderConnectors();
+document.querySelectorAll("nav.rail a[data-view]").forEach(a=>{
+  a.addEventListener("click", (e)=>{
+    e.preventDefault();
+    document.querySelectorAll("nav.rail a").forEach(x=>x.classList.remove("active"));
+    a.classList.add("active");
+    const view = a.dataset.view;
+    $("#view-assets").classList.toggle("hidden", view!=="assets");
+    $("#view-workflows").classList.toggle("hidden", view!=="workflows");
+    $("#view-glossary").classList.toggle("hidden", view!=="glossary");
+    $("#view-governance").classList.toggle("hidden", view!=="governance");
+    $("#view-admin").classList.toggle("hidden", view!=="admin");
+    if (view === "workflows") loadConnections();
+  });
+});
+
+/* ---------- glossary upload (UI only — no backend endpoint yet) ---------- */
+let glossarySelectedFile = null;
+let glossaryUploads = [];
+
+function formatBytes(bytes){
+  if (bytes < 1024) return bytes + " B";
+  if (bytes < 1024*1024) return (bytes/1024).toFixed(1) + " KB";
+  return (bytes/(1024*1024)).toFixed(1) + " MB";
+}
+
+function renderGlossaryList(){
+  const wrap = $("#glossaryList"); wrap.innerHTML = "";
+  if (!glossaryUploads.length){ wrap.innerHTML = '<div class="state">No glossaries uploaded yet.</div>'; return; }
+  glossaryUploads.forEach((g,i)=>{
+    const scopeParts = [g.cloud, g.database, g.schema].filter(Boolean);
+    const row = el("div","row");
+    row.innerHTML =
+      '<div class="clogo"><span style="font-size:18px">📄</span></div>' +
+      '<div class="cmeta"><div class="cnm2">'+esc(g.name)+'</div>' +
+      '<div class="curl">'+esc(formatBytes(g.size))+' · uploaded '+esc(g.when)+'</div>' +
+      (scopeParts.length ? '<div class="cscope">'+esc(scopeParts.join(" › "))+'</div>' : '') +
+      '</div>' +
+      '<button class="cdel" title="Remove" aria-label="Remove">🗑</button>';
+    row.querySelector(".cdel").onclick = () => { glossaryUploads.splice(i,1); renderGlossaryList(); };
+    wrap.appendChild(row);
+  });
+}
+
+function selectGlossaryFile(file){
+  if (!file) return;
+  if (!/\.(csv|xlsx|xls)$/i.test(file.name)) {
+    alert("Please choose a CSV or Excel (.xlsx/.xls) file.");
+    return;
+  }
+  glossarySelectedFile = file;
+  $("#glossarySelectedName").textContent = file.name;
+  $("#glossarySelectedSize").textContent = formatBytes(file.size);
+  $("#glossarySelected").classList.remove("hidden");
+}
+
+$("#glossaryDropzone").addEventListener("click", ()=> $("#glossaryFileInput").click());
+$("#glossaryDropzone").addEventListener("keydown", (e)=>{
+  if (e.key==="Enter" || e.key===" ") { e.preventDefault(); $("#glossaryFileInput").click(); }
+});
+$("#glossaryFileInput").addEventListener("change", (e)=> selectGlossaryFile(e.target.files[0]));
+["dragover","dragenter"].forEach(evt=> $("#glossaryDropzone").addEventListener(evt, (e)=>{
+  e.preventDefault(); $("#glossaryDropzone").classList.add("dragover");
+}));
+["dragleave","drop"].forEach(evt=> $("#glossaryDropzone").addEventListener(evt, (e)=>{
+  e.preventDefault(); $("#glossaryDropzone").classList.remove("dragover");
+}));
+$("#glossaryDropzone").addEventListener("drop", (e)=> selectGlossaryFile(e.dataTransfer.files[0]));
+$("#glossaryClearBtn").addEventListener("click", ()=>{
+  glossarySelectedFile = null;
+  $("#glossaryFileInput").value = "";
+  $("#glossarySelected").classList.add("hidden");
+});
+$("#glossaryUploadBtn").addEventListener("click", ()=>{
+  if (!glossarySelectedFile) return;
+  glossaryUploads.unshift({
+    name: glossarySelectedFile.name, size: glossarySelectedFile.size, when: "just now",
+    cloud: $("#gl_cloud").value, database: $("#gl_database").value, schema: $("#gl_schema").value
+  });
+  renderGlossaryList();
+  glossarySelectedFile = null;
+  $("#glossaryFileInput").value = "";
+  $("#glossarySelected").classList.add("hidden");
+});
+renderGlossaryList();
+
+/* ---------- connection config modal ---------- */
+const CONN_FORM_FIELDS = [
+  ["cf_display_name", "display_name"], ["cf_base_url", "base_url"],
+  ["cf_api_version_path", "api_version_path"], ["cf_database_name", "database_name"],
+  ["cf_schema_name", "schema_name"], ["cf_tables", "tables"],
+  ["cf_api_key", "api_key"], ["cf_client_id", "client_id"],
+  ["cf_client_secret", "client_secret"], ["cf_service_account_json", "service_account_json"]
+];
+let activeConnector = null;
+
+function openConnectionModal(connector){
+  activeConnector = connector;
+  $("#connModalTitle").textContent = "Connect " + connector.name;
+  $("#connForm").reset();
+  $("#cf_auth_type").value = "api_key";
+  toggleAuthFields("api_key");
+  $("#connFormError").classList.add("hidden");
+  $("#connModalOverlay").classList.remove("hidden");
+}
+function closeConnectionModal(){ $("#connModalOverlay").classList.add("hidden"); activeConnector = null; }
+
+function toggleAuthFields(type){
+  $("#cf_group_api_key").classList.toggle("hidden", type!=="api_key");
+  $("#cf_group_oauth2").classList.toggle("hidden", type!=="oauth2");
+  $("#cf_group_service_account").classList.toggle("hidden", type!=="service_account");
+}
+
+$("#cf_auth_type").addEventListener("change", (e)=> toggleAuthFields(e.target.value));
+$("#connModalClose").addEventListener("click", closeConnectionModal);
+$("#connCancelBtn").addEventListener("click", closeConnectionModal);
+$("#connModalOverlay").addEventListener("click", (e)=>{ if (e.target.id === "connModalOverlay") closeConnectionModal(); });
+
+$("#connForm").addEventListener("submit", async (e)=>{
+  e.preventDefault();
+  const errBox = $("#connFormError"); errBox.classList.add("hidden");
+  const body = { connector_type: activeConnector.type, auth_type: $("#cf_auth_type").value };
+  CONN_FORM_FIELDS.forEach(([id,key])=>{ body[key] = $("#"+id).value; });
+  try {
+    if (api.offline) throw new Error("offline");
+    await api.createConnection(body);
+  } catch(e2){
+    if (api.offline) { mockCreateConnection(body); }
+    else { errBox.textContent = "Could not save connection. Check the fields and try again."; errBox.classList.remove("hidden"); return; }
+  }
+  closeConnectionModal();
+  loadConnections();
+});
+
+/* ---------- events ---------- */
+$("#relTabs").addEventListener("click", (e)=>{
+  const b = e.target.closest(".tab"); if(!b) return;
+  document.querySelectorAll("#relTabs .tab").forEach(t=>t.classList.remove("active"));
+  b.classList.add("active");
+  state.tab = b.dataset.tab; loadAssets();
+});
+
+let searchTimer=null;
+$("#search").addEventListener("input", (e)=>{
+  const q = e.target.value.trim();
+  clearTimeout(searchTimer);
+  const box = $("#searchResults");
+  if (!q){ box.classList.add("hidden"); return; }
+  searchTimer = setTimeout(async ()=>{
+    let items=[];
+    try { items = api.offline ? mockSearch(q) : (await api.search(q)).items; }
+    catch { items = mockSearch(q); }
+    box.innerHTML = "";
+    if (!items.length){ box.innerHTML = '<div class="empty">No results for “'+esc(q)+'”.</div>'; }
+    else items.forEach(it=>{
+      const r = el("div","r");
+      r.innerHTML = '<span class="tile" style="width:26px;height:26px;background:var(--navy-700);color:#fff;border-radius:6px;display:flex;align-items:center;justify-content:center">▦</span> <span>'+esc(it.name)+' <small style="color:#8a93a3">· '+esc(it.type)+'</small></span>';
+      box.appendChild(r);
+    });
+    box.classList.remove("hidden");
+  }, 250);
+});
+function mockSearch(q){
+  q=q.toLowerCase();
+  return MOCK.assets.filter(a=>a.name.toLowerCase().includes(q)||a.type.toLowerCase().includes(q));
+}
+document.addEventListener("click",(e)=>{ if(!e.target.closest(".searchwrap")) $("#searchResults").classList.add("hidden"); });
+// "/" focuses search
+document.addEventListener("keydown",(e)=>{ if(e.key==="/" && document.activeElement.tagName!=="INPUT"){ e.preventDefault(); $("#search").focus(); }});
+
+boot();
+</script>
+</body>
+</html>

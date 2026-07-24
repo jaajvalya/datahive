@@ -1,0 +1,10 @@
+# ID360 Homepage backend — Python 3.11+
+fastapi==0.115.5
+uvicorn[standard]==0.32.1
+pydantic==2.9.2
+pydantic-settings==2.6.1
+python-jose[cryptography]==3.3.0
+cryptography==43.0.3
+passlib[bcrypt]==1.7.4
+python-multipart==0.0.12
+slowapi==0.1.9

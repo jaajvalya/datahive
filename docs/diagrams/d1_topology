@@ -1,0 +1,65 @@
+digraph topology {
+	bgcolor=transparent compound=true fontname=Helvetica nodesep=0.45 rankdir=LR ranksep=0.6 splines=ortho
+	node [color="#9ca3af" fontcolor="#1a1a2e" fontname=Helvetica fontsize=11 margin="0.18,0.12" penwidth=1.4 shape=box style="rounded,filled"]
+	edge [arrowsize=0.75 color="#9ca3af" fontcolor="#6b7280" fontname=Helvetica fontsize=9 penwidth=1.2]
+	fontcolor="#1a1a2e" fontname=Helvetica fontsize=15 label="ID360 — Hybrid Topology: On-Prem Agent, Cloud Control Plane" labelloc=t
+	subgraph cluster_provider {
+		color="#d97706" fillcolor="#fafafa" fontcolor="#d97706" fontsize=11 label="PROVIDER NETWORK  (on-prem DC or their cloud VPC)" penwidth=2 style="rounded,filled"
+		subgraph cluster_sources {
+			color="#d97706" fillcolor="#fef3c7" fontcolor="#d97706" fontsize=10 label="Data sources" style="rounded,filled"
+			db [label="Databases
+Oracle · SQL Server
+Postgres · Db2" fillcolor="#ffffff"]
+			wh [label="Warehouse
+Snowflake · BigQuery
+Redshift · Teradata" fillcolor="#ffffff"]
+			lh [label="Lakehouse / Lake
+Delta · Iceberg
+HDFS · S3 · ADLS" fillcolor="#ffffff"]
+			collab [label="Collaboration
+SharePoint · OneDrive
+Google Drive · Mailbox" fillcolor="#ffffff"]
+		}
+		agent [label="ID360 AGENT  (stateless)
+
+• task executor + lease
+• strategy resolver
+• budget governor
+• encrypted local WAL
+• Arrow → Parquet encoder" color="#059669" fillcolor="#d1fae5" fontsize=11 penwidth=2]
+	}
+	subgraph cluster_id360 {
+		color="#4f46e5" fillcolor="#fafafa" fontcolor="#4f46e5" fontsize=11 label="ID360 CLOUD" penwidth=2 style="rounded,filled"
+		cp [label="CONTROL PLANE  (FastAPI)
+
+• connection registry
+• scheduler / job DAG
+• policy engine
+• schema registry
+• watermark + state store
+• audit ledger (hash-chained)
+• secret broker" color="#4f46e5" fillcolor="#e0e7ff" fontsize=11 penwidth=2]
+	}
+	subgraph cluster_sink {
+		color="#be185d" fillcolor="#fafafa" fontcolor="#be185d" fontsize=11 label="SINK  (on-prem OR cloud — deployment choice)" penwidth=2 style="rounded,filled"
+		obj [label="Object store + table format
+S3 / ADLS / MinIO
+Iceberg · Delta" color="#be185d" fillcolor="#fce7f3"]
+		rdb [label="Relational
+Postgres staging" color="#be185d" fillcolor="#fce7f3"]
+		stream [label="Stream
+Kafka topic" color="#be185d" fillcolor="#fce7f3"]
+	}
+	db -> agent [color="#d97706"]
+	wh -> agent [color="#d97706"]
+	lh -> agent [color="#d97706"]
+	collab -> agent [color="#d97706"]
+	agent -> cp [label="  outbound only · mTLS
+  tasks, watermarks,
+  schema, metrics, audit
+  NO BULK DATA  " color="#4f46e5" dir=both penwidth=2 style=dashed]
+	agent -> obj [label="  bulk data
+  (never via control plane)  " color="#be185d" penwidth=2]
+	agent -> rdb [color="#be185d" penwidth=2]
+	agent -> stream [color="#be185d" penwidth=2]
+}
