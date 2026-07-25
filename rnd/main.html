@@ -18,6 +18,9 @@
     --err-bg:#FDE7E1; --err-line:#E4572E;
     --radius:12px; --shadow:0 1px 3px rgba(1,8,24,.08);
     --rail:72px; --header:56px;
+    /* ACL logo palette (ACL mark + Digital word) */
+    --acl-blue-deep:#224294; --acl-blue:#0077C8; --acl-blue-bright:#00ADEF;
+    --acl-orange:#F49121;
   }
   * { box-sizing:border-box; }
   html,body { margin:0; padding:0; }
@@ -36,8 +39,14 @@
     padding:0 20px; background:var(--white);
     border-bottom:1px solid var(--gray-200);
   }
-  .brand-logo { display:flex; align-items:center; }
+  .brand-logo { display:flex; align-items:center; gap:12px; }
   .brand-logo-img { height:40px; width:auto; display:block; }
+  .brand-wordmark { font-size:24px; font-weight:800; letter-spacing:-.02em; line-height:1; }
+  .brand-wordmark .data {
+    background:linear-gradient(120deg, var(--acl-blue-deep) 0%, var(--acl-blue) 42%, var(--acl-blue-bright) 100%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .brand-wordmark .hive { color:var(--acl-orange); }
   .spacer { flex:1 1 auto; }
   .icon-btn { position:relative; width:38px; height:38px; border-radius:8px; border:none;
     background:transparent; cursor:pointer; color:var(--ink-700); font-size:17px; }
@@ -70,7 +79,7 @@
     background:var(--orange-500); border-radius:0 3px 3px 0; }
 
   /* ---------- Body ---------- */
-  main.body { flex:1 1 auto; width:99%; max-width:none; margin:0; padding:20px 1% 40px; }
+  main.body { flex:1 1 auto; width:99%; max-width:none; margin:0; padding:20px 1% 40px; background:var(--white); }
 
   .stage { width:99%; margin:0 auto; text-align:center; }
   .eyebrow { margin:0 0 10px; font-size:12px; font-weight:700; letter-spacing:.08em;
@@ -204,6 +213,7 @@
 <header class="topbar">
   <div class="brand-logo" title="ACL Digital">
     <img class="brand-logo-img" src="../images/ACL-Logo.webp" alt="ACL Digital — an ALTEN group company" />
+    <span class="brand-wordmark" aria-label="DataHive"><span class="data">Data</span><span class="hive">Hive</span></span>
   </div>
   <div class="spacer"></div>
   <button class="icon-btn" id="bellBtn" aria-label="Notifications" type="button">🔔<span class="badge" id="bellCount">5</span></button>
