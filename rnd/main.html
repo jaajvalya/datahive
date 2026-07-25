@@ -414,6 +414,7 @@
   </main>
 </div>
 
+<script src="save-connector.js"></script>
 <script>
 const $ = (sel, root=document) => root.querySelector(sel);
 const $$ = (sel, root=document) => [...root.querySelectorAll(sel)];
@@ -915,43 +916,52 @@ form.addEventListener("submit", async (e)=>{
   btn.disabled = true;
   btn.textContent = busyLabel;
 
-  await new Promise(r => setTimeout(r, 700));
   try {
-    const toStore = {
+    if (typeof saveConnectorToMongo !== "function") {
+      throw new Error("save-connector.js is not loaded.");
+    }
+    await saveConnectorToMongo(payload);
+
+    try {
+      const toStore = {
+        cloud: payload.cloud,
+        connector_type: payload.connector_type,
+        display_name: payload.display_name,
+        account_id: payload.account_id,
+        region: payload.region,
+        auth_type: payload.auth_type,
+        apis: payload.apis,
+        dataset_scope: payload.dataset_scope,
+        tenant_id: payload.tenant_id,
+        resource_group: payload.resource_group,
+        mode: payload.mode,
+        file_name: payload.file_name,
+        file_size: payload.file_size,
+        upload_format: payload.upload_format,
+        upload_notes: payload.upload_notes,
+        saved_at: new Date().toISOString()
+      };
+      sessionStorage.setItem("datahive_cloud_connection", JSON.stringify(toStore));
+    } catch { /* ignore quota */ }
+
+    closePanel();
+    showStatus(payload, cloud.mode === "upload" ? "Uploaded — ingest queued" : "Connected — fetch queued", "ok");
+
+    console.info("[Source] connection configured", {
       cloud: payload.cloud,
-      connector_type: payload.connector_type,
       display_name: payload.display_name,
       account_id: payload.account_id,
       region: payload.region,
       auth_type: payload.auth_type,
       apis: payload.apis,
-      dataset_scope: payload.dataset_scope,
-      tenant_id: payload.tenant_id,
-      resource_group: payload.resource_group,
-      mode: payload.mode,
-      file_name: payload.file_name,
-      file_size: payload.file_size,
-      upload_format: payload.upload_format,
-      upload_notes: payload.upload_notes,
-      saved_at: new Date().toISOString()
-    };
-    sessionStorage.setItem("datahive_cloud_connection", JSON.stringify(toStore));
-  } catch { /* ignore quota */ }
-
-  btn.disabled = false;
-  btn.textContent = idleLabel;
-  closePanel();
-  showStatus(payload, cloud.mode === "upload" ? "Uploaded — ingest queued" : "Connected — fetch queued", "ok");
-
-  console.info("[Source] connection configured", {
-    cloud: payload.cloud,
-    display_name: payload.display_name,
-    account_id: payload.account_id,
-    region: payload.region,
-    auth_type: payload.auth_type,
-    apis: payload.apis,
-    file_name: payload.file_name
-  });
+      file_name: payload.file_name
+    });
+  } catch (err) {
+    showError("Could not save connector to MongoDB: " + (err && err.message ? err.message : err));
+  } finally {
+    btn.disabled = false;
+    btn.textContent = idleLabel;
+  }
 });
 
 function authLabel(cloudId, authType){
