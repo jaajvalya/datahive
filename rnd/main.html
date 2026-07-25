@@ -87,6 +87,17 @@
   .stage > h1 { margin:0 0 8px; font-size:clamp(26px,3.5vw,32px); font-weight:700; color:var(--ink-900); letter-spacing:-.02em; }
   .sub { margin:0 auto 28px; max-width:720px; color:var(--ink-700); font-size:15px; line-height:1.5; }
 
+  .instr-card {
+    margin:0 auto 24px; width:99%; max-width:none; text-align:left;
+    background:var(--white); border:1px solid var(--gray-200); border-radius:var(--radius);
+    box-shadow:var(--shadow);
+  }
+  .instr-card .instr-hd { padding:16px 22px 0; }
+  .instr-card h2 { margin:0; font-size:18px; font-weight:700; color:var(--ink-900); }
+  .instr-card .instr-bd { padding:14px 22px 18px; }
+  .prereq-item { margin:0; font-size:13.5px; line-height:1.6; color:var(--ink-700); text-align:justify; }
+  .prereq-item strong { color:var(--ink-900); }
+
   .cloud-grid {
     display:grid; grid-template-columns:repeat(auto-fill,minmax(170px,1fr)); gap:14px;
     margin:6px auto 0; width:99%; max-width:none;
@@ -247,9 +258,12 @@
   <!-- ===== Body ===== -->
   <main class="body">
     <div class="stage">
-      <p class="eyebrow">Source connectors</p>
-      <h1>Connect your sources</h1>
-      <p class="sub">Choose a cloud, drive source, or upload a file to configure connectivity and bring data into DataHive.</p>
+      <section class="instr-card">
+        <div class="instr-hd"><h2>Pre-requisites &amp; Configuration Instructions</h2></div>
+        <div class="instr-bd">
+          <div class="prereq-item">To set up the connector, please provide your API endpoint, authentication credentials, and network requirements (GCP IP whitelisting, private connectivity, or mTLS). We also need the data scope-including schema, sample payloads, and sync mechanisms-along with data governance guidelines (PII/PHI handling, compliance requirements, and a technical point of contact).</div>
+        </div>
+      </section>
 
       <div class="cloud-grid" id="cloudGrid" role="group" aria-label="Cloud providers"></div>
 
