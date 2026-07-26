@@ -1476,6 +1476,26 @@ try {
 const CONFIGURED_ASSET_SCHEMAS = ["bronze", "silver", "gold"];
 const assetState = { offline: false, loaded: false, schema: null, table: null };
 
+function mergedAssetSchemas(apiItems) {
+  const out = [];
+  const seen = new Set();
+  CONFIGURED_ASSET_SCHEMAS.concat(apiItems || []).forEach((s) => {
+    const key = String(s).toLowerCase();
+    if (seen.has(key)) return;
+    seen.add(key);
+    out.push(String(s));
+  });
+  return out;
+}
+
+function fillAssetSchemaSelect(schemas) {
+  const sel = $("#assetSchemaSelect");
+  if (!sel || !schemas.length) return;
+  sel.innerHTML =
+    '<option value="">Select schema…</option>' +
+    schemas.map((s) => '<option value="' + escapeHtml(s) + '">' + escapeHtml(s) + "</option>").join("");
+}
+
 function formatAssetApiError(err) {
   const m = err && err.message ? err.message : String(err);
   if (/404|route not found|not found/i.test(m)) {
@@ -1506,16 +1526,12 @@ async function loadAssetCounts() {
   try {
     if (typeof DataHiveAssets === "undefined") throw new Error("Assets API not loaded");
     const data = await DataHiveAssets.summary();
-    renderAssetSummary(data.counts || {}, Array.isArray(data.items) ? data.items.length : 0);
+    const schemas = mergedAssetSchemas(data.items);
+    renderAssetSummary(data.counts || {}, schemas.length);
     assetState.offline = false;
     const pgBanner = $("#pgBanner");
     if (pgBanner) pgBanner.classList.add("hidden");
-    if (data.items && data.items.length && $("#assetSchemaSelect")) {
-      const sel = $("#assetSchemaSelect");
-      sel.innerHTML =
-        '<option value="">Select schema…</option>' +
-        data.items.map((s) => '<option value="' + escapeHtml(s) + '">' + escapeHtml(s) + "</option>").join("");
-    }
+    fillAssetSchemaSelect(schemas);
   } catch (err) {
     assetState.offline = true;
     renderAssetSummary(null, null);
@@ -1648,18 +1664,16 @@ async function populateTableSelect(schema) {
 async function populateSchemaSelect() {
   const select = $("#assetSchemaSelect");
   if (!select) return;
-  let schemas = CONFIGURED_ASSET_SCHEMAS.slice();
+  let schemas = mergedAssetSchemas(CONFIGURED_ASSET_SCHEMAS);
   try {
     if (typeof DataHiveAssets !== "undefined") {
       const data = await DataHiveAssets.schemas();
-      if (data.items && data.items.length) schemas = data.items;
+      schemas = mergedAssetSchemas(data.items);
     }
   } catch {
-    /* keep CONFIGURED_ASSET_SCHEMAS */
+    /* keep merged defaults */
   }
-  select.innerHTML =
-    '<option value="">Select schema…</option>' +
-    schemas.map((s) => '<option value="' + escapeHtml(s) + '">' + escapeHtml(s) + "</option>").join("");
+  fillAssetSchemaSelect(schemas);
 }
 
 const assetSchemaSelect = $("#assetSchemaSelect");

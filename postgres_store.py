@@ -16,7 +16,8 @@ _log = logging.getLogger("datahive.postgres_store")
 
 _REPO_ROOT = Path(__file__).resolve().parent
 
-DEFAULT_ASSET_SCHEMAS = ("bronze", "silver", "gold")
+MEDALLION_ASSET_SCHEMAS = ("bronze", "silver", "gold")
+DEFAULT_ASSET_SCHEMAS = MEDALLION_ASSET_SCHEMAS
 
 _SCHEMA_STATEMENTS = (
     """
@@ -62,9 +63,18 @@ def _pg_setting(name: str, default: str) -> str:
 
 
 def asset_schemas() -> tuple[str, ...]:
-    raw = _pg_setting("POSTGRES_ASSET_SCHEMAS", "bronze,silver,gold")
-    parts = [p.strip() for p in raw.split(",") if p.strip()]
-    return tuple(parts) if parts else DEFAULT_ASSET_SCHEMAS
+    """Asset catalog always includes bronze, silver, gold; `.env` may add more schemas."""
+    raw = _pg_setting("POSTGRES_ASSET_SCHEMAS", "").strip()
+    extras = [p.strip() for p in raw.split(",") if p.strip()] if raw else []
+    ordered: list[str] = []
+    seen: set[str] = set()
+    for name in (*MEDALLION_ASSET_SCHEMAS, *extras):
+        key = name.lower()
+        if key in seen:
+            continue
+        seen.add(key)
+        ordered.append(name)
+    return tuple(ordered) if ordered else MEDALLION_ASSET_SCHEMAS
 
 
 def postgres_dsn_kwargs() -> dict[str, Any]:
@@ -188,6 +198,16 @@ def _resolve_namespace(cur: Any, schema: str) -> str:
     return str(row[0])
 
 
+def _resolved_asset_schemas(cur: Any) -> list[str]:
+    resolved: list[str] = []
+    for name in asset_schemas():
+        try:
+            resolved.append(_resolve_namespace(cur, name))
+        except ValueError:
+            continue
+    return resolved
+
+
 def _relation_type_label(relkind: str) -> str:
     if relkind in ("v", "m"):
         return "View"
@@ -218,15 +238,9 @@ def _list_relations_in_namespace(cur: Any, nspname: str) -> list[tuple[str, str,
 
 def _catalog_counts() -> dict[str, int]:
     """All = column count; View / Table = relation counts in asset schemas (pg_catalog)."""
-    schemas = list(asset_schemas())
     with postgres_connection() as conn:
         with conn.cursor() as cur:
-            resolved: list[str] = []
-            for s in schemas:
-                try:
-                    resolved.append(_resolve_namespace(cur, s))
-                except ValueError:
-                    continue
+            resolved = _resolved_asset_schemas(cur)
             if not resolved:
                 return {"All": 0, "View": 0, "Table": 0}
 
@@ -246,7 +260,7 @@ def _catalog_counts() -> dict[str, int]:
                 for _name, asset_type, _kind in _list_relations_in_namespace(cur, nsp):
                     if asset_type == "View":
                         views_n += 1
-                    elif asset_type == "Table":
+                    elif asset_type in ("Table", "Foreign Table"):
                         tables_n += 1
 
     return {"All": fields_n, "View": views_n, "Table": tables_n}
@@ -348,28 +362,35 @@ def search_assets(
     limit = max(1, min(limit, 50))
     offset = max(0, offset)
     items: list[dict[str, Any]] = []
-    schemas = list(asset_schemas())
     if not q:
         return {"query": q, "items": items}
 
     like = f"%{q}%"
     with postgres_connection() as conn:
         with conn.cursor() as cur:
+            schemas = _resolved_asset_schemas(cur)
+            if not schemas:
+                return {"query": q, "items": items}
+
             cur.execute(
                 """
-                SELECT table_schema, table_name, table_type
-                FROM information_schema.tables
-                WHERE table_schema = ANY(%s)
-                  AND table_type IN ('BASE TABLE', 'VIEW')
-                  AND (table_name ILIKE %s OR table_schema ILIKE %s)
-                ORDER BY table_schema, table_name
+                SELECT n.nspname, c.relname, c.relkind
+                FROM pg_catalog.pg_class c
+                JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+                WHERE n.nspname = ANY(%s)
+                  AND c.relkind IN ('r', 'p', 'v', 'm', 'f')
+                  AND NOT c.relispartition
+                  AND (c.relname ILIKE %s OR n.nspname ILIKE %s)
+                ORDER BY n.nspname, c.relname
                 LIMIT %s OFFSET %s
                 """,
                 (schemas, like, like, limit, offset),
             )
-            for schema, name, table_type in cur.fetchall():
-                typ = "View" if table_type == "VIEW" else "Table"
-                items.append({"name": name, "type": typ, "schema": schema})
+            for schema, name, relkind in cur.fetchall():
+                asset_type = _relation_type_label(str(relkind))
+                if asset_type == "Foreign Table":
+                    asset_type = "Table"
+                items.append({"name": name, "type": asset_type, "schema": schema})
 
             if len(items) < limit:
                 cur.execute(
@@ -423,16 +444,12 @@ def discover_assets(owner: str, *, limit: int = 100) -> dict[str, Any]:
 
 
 def list_schemas() -> list[str]:
-    """Configured asset schemas that exist in PostgreSQL (silver, gold, …)."""
+    """Medallion schemas (bronze, silver, gold) that exist in PostgreSQL, in catalog order."""
     configured = list(asset_schemas())
     found: list[str] = []
     with postgres_connection() as conn:
         with conn.cursor() as cur:
-            for name in configured:
-                try:
-                    found.append(_resolve_namespace(cur, name))
-                except ValueError:
-                    _log.warning("asset schema %r not found in PostgreSQL", name)
+            found = _resolved_asset_schemas(cur)
     # De-dupe while preserving order
     seen: set[str] = set()
     ordered: list[str] = []
@@ -440,7 +457,10 @@ def list_schemas() -> list[str]:
         if s not in seen:
             seen.add(s)
             ordered.append(s)
-    return ordered if ordered else list(configured)
+    if ordered:
+        return ordered
+    # Namespace missing in DB — still expose configured names for the UI
+    return configured
 
 
 def list_tables(schema: str) -> list[dict[str, Any]]:
