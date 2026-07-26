@@ -433,8 +433,8 @@
   <!-- ===== Left rail ===== -->
   <nav class="rail" aria-label="Primary">
     <div class="grp">
-      <a href="#" data-view="assets"><span class="ic">🧭</span>Assets</a>
-      <a href="#" class="active" data-view="connectors" aria-current="page"><span class="ic">🔀</span>Connectors</a>
+      <a href="#" class="active" data-view="assets" aria-current="page"><span class="ic">🧭</span>Assets</a>
+      <a href="#" data-view="connectors"><span class="ic">🔀</span>Connectors</a>
       <a href="#" data-view="insights"><span class="ic">⚡</span>Insights</a>
     </div>
     <div class="grp" style="margin-top:14px">
@@ -451,7 +451,7 @@
 
   <!-- ===== Body ===== -->
   <main class="body">
-    <div id="view-assets" class="assets-pane hidden">
+    <div id="view-assets" class="assets-pane">
       <section class="hero">
         <h1><span>☀️</span> <span id="assetsGreeting">Good day, Admin!</span></h1>
         <div class="searchwrap">
@@ -535,7 +535,7 @@
       </div>
     </div>
 
-    <div id="view-connectors">
+    <div id="view-connectors" class="hidden">
     <div class="stage">
       <section class="instr-card">
         <div class="instr-hd"><h2>Pre-requisites &amp; Configuration Instructions</h2></div>
@@ -1828,7 +1828,10 @@ document.addEventListener("keydown", (e) => {
   if (typeof ensureDataHiveConnectorApi === "function") {
     await ensureDataHiveConnectorApi();
   }
-  if (typeof checkConnectorApiHealth !== "function") return;
+  if (typeof checkConnectorApiHealth !== "function") {
+    await initAssetsView();
+    return;
+  }
   const health = await checkConnectorApiHealth();
   const banner = $("#apiBanner");
   if (health && health.ok) {
@@ -1838,16 +1841,17 @@ document.addEventListener("keydown", (e) => {
     } else {
       renderRecentConnections();
     }
-    return;
+  } else {
+    banner.innerHTML =
+      "Connector API is not reachable — connections will not be saved to MongoDB. " +
+      "The UI usually starts it automatically when opened via " +
+      "<code>Open DataHive UI.bat</code>; or run " +
+      "<code>pythonw rnd/connector_watchdog.py</code> in the background" +
+      (health && health.detail ? " (" + escapeHtml(health.detail) + ")" : "");
+    banner.classList.remove("hidden");
+    renderRecentConnections();
   }
-  banner.innerHTML =
-    "Connector API is not reachable — connections will not be saved to MongoDB. " +
-    "The UI usually starts it automatically when opened via " +
-    "<code>Open DataHive UI.bat</code>; or run " +
-    "<code>pythonw rnd/connector_watchdog.py</code> in the background" +
-    (health && health.detail ? " (" + escapeHtml(health.detail) + ")" : "");
-  banner.classList.remove("hidden");
-  renderRecentConnections();
+  await initAssetsView();
 })();
 </script>
 </body>
