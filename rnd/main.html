@@ -216,6 +216,12 @@
   .selectedfile .sf-meta { flex:1; min-width:0; text-align:left; }
   .selectedfile .sf-name { font-weight:600; color:var(--ink-900); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
   .selectedfile .sf-size { font-size:12px; color:#8a93a3; }
+  .apibanner {
+    margin: 12px 24px 0; padding: 10px 14px; border-radius: 10px; font-size: 13px;
+    background: #fff4e5; border: 1px solid #f0c36d; color: #7a4b00;
+  }
+  .apibanner.hidden { display: none; }
+  .apibanner code { font-size: 12px; }
 </style>
 </head>
 <body>
@@ -234,6 +240,8 @@
     <span>▾</span>
   </div>
 </header>
+
+<div class="apibanner hidden" id="apiBanner" role="status"></div>
 
 <div class="shell">
   <!-- ===== Left rail ===== -->
@@ -930,7 +938,7 @@ form.addEventListener("submit", async (e)=>{
     if (typeof saveConnectorToMongo !== "function") {
       throw new Error("save-connector.js is not loaded.");
     }
-    await saveConnectorToMongo(
+    const saveResult = await saveConnectorToMongo(
       payload,
       cloud.mode === "upload" ? selectedUploadFile : null
     );
@@ -958,7 +966,12 @@ form.addEventListener("submit", async (e)=>{
     } catch { /* ignore quota */ }
 
     closePanel();
-    showStatus(payload, cloud.mode === "upload" ? "Uploaded — ingest queued" : "Connected — fetch queued", "ok");
+    showStatus(
+      payload,
+      cloud.mode === "upload" ? "Uploaded — ingest queued" : "Connected — fetch queued",
+      "ok",
+      saveResult
+    );
 
     console.info("[Source] connection configured", {
       cloud: payload.cloud,
@@ -985,9 +998,19 @@ function authLabel(cloudId, authType){
   return opt ? opt.label : authType;
 }
 
-function showStatus(payload, pillText, pillKind){
+function showStatus(payload, pillText, pillKind, saveResult){
   const cloud = CLOUDS[payload.cloud] || Object.values(CLOUDS).find(c => c.type === payload.connector_type);
   $("#statusTitle").textContent = payload.display_name;
+  let mongoLine = "";
+  if (saveResult && saveResult.ok) {
+    mongoLine =
+      "<br><strong>MongoDB:</strong> " +
+      escapeHtml((saveResult.db || "?") + "." + (saveResult.collection || "connectors")) +
+      (saveResult.id ? " · <strong>id:</strong> " + escapeHtml(saveResult.id) : "") +
+      (saveResult.upload_relative_path
+        ? " · <strong>file:</strong> " + escapeHtml(saveResult.upload_relative_path)
+        : "");
+  }
 
   if (payload.mode === "upload" || payload.cloud === "upload") {
     $("#statusMeta").innerHTML =
@@ -999,7 +1022,8 @@ function showStatus(payload, pillText, pillKind){
         : "") +
       (payload.upload_notes
         ? "<br><strong>Notes:</strong> " + escapeHtml(payload.upload_notes)
-        : "");
+        : "") +
+      mongoLine;
   } else {
     const accountLabel = cloud ? cloud.accountLabel : "Account";
     $("#statusMeta").innerHTML =
@@ -1010,7 +1034,8 @@ function showStatus(payload, pillText, pillKind){
       " · <strong>Services:</strong> " + escapeHtml((payload.apis||[]).join(", ")) +
       (payload.dataset_scope
         ? "<br><strong>Scope:</strong> " + escapeHtml(payload.dataset_scope)
-        : "");
+        : "") +
+      mongoLine;
   }
 
   const pill = $("#statusPill");
@@ -1043,6 +1068,21 @@ try {
     })();
   if (saved) showStatus(saved, "Previously configured", "pending");
 } catch { /* ignore */ }
+
+(async function initConnectorApiBanner(){
+  if (typeof checkConnectorApiHealth !== "function") return;
+  const health = await checkConnectorApiHealth();
+  const banner = $("#apiBanner");
+  if (health && health.ok) {
+    banner.classList.add("hidden");
+    return;
+  }
+  banner.innerHTML =
+    "Connector API is not reachable — connections will not be saved to MongoDB. " +
+    "Run <code>cd rnd &amp;&amp; python connector_api.py</code>" +
+    (health && health.detail ? " (" + escapeHtml(health.detail) + ")" : "");
+  banner.classList.remove("hidden");
+})();
 </script>
 </body>
 </html>

@@ -44,7 +44,14 @@ import time
 import uuid
 from contextlib import contextmanager
 from datetime import datetime, timedelta, timezone
+import sys
 from pathlib import Path
+
+_REPO_ROOT = Path(__file__).resolve().parent.parent
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+
+import mongo_store  # noqa: E402
 from typing import Optional
 
 from cryptography.fernet import Fernet
@@ -668,6 +675,28 @@ def create_connection(request: Request, body: ConnectionIn, user: dict = Depends
              body.api_version_path, body.auth_type, ciphertext, body.database_name,
              body.schema_name, json.dumps(tables), now, now),
         )
+    mongo_doc = {
+        "user": user["username"],
+        "owner": user["username"],
+        "connection_id": cid,
+        "source": "id360-backend",
+        "connector_type": body.connector_type,
+        "display_name": body.display_name,
+        "base_url": body.base_url,
+        "api_version_path": body.api_version_path,
+        "auth_type": body.auth_type,
+        "database_name": body.database_name,
+        "schema_name": body.schema_name,
+        "tables": tables,
+        "mode": "cloud",
+        "saved_at": now,
+    }
+    try:
+        mongo_store.insert_connector_document(mongo_doc)
+    except RuntimeError as exc:
+        with db() as conn:
+            conn.execute("DELETE FROM connections WHERE id=?", (cid,))
+        raise HTTPException(status.HTTP_503_SERVICE_UNAVAILABLE, str(exc)) from exc
     audit("connections.create", request_id=request.state.request_id, actor=user["username"],
           id=cid, connector_type=body.connector_type, auth_type=body.auth_type)
     return Connection(id=cid, connector_type=body.connector_type, display_name=body.display_name,

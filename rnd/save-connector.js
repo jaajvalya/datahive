@@ -8,9 +8,21 @@
 (function (global) {
   "use strict";
 
-  var API_URL = "http://127.0.0.1:5055/api/connectors";
-  var UPLOAD_API_URL = "http://127.0.0.1:5055/api/connectors/upload";
-  var CONNECTION_LOGS_URL = "http://127.0.0.1:5055/api/connection-logs";
+  function connectorApiBase() {
+    if (global.DATAHIVE_CONNECTOR_API) {
+      return String(global.DATAHIVE_CONNECTOR_API).replace(/\/$/, "");
+    }
+    var host =
+      global.location && global.location.hostname
+        ? global.location.hostname
+        : "127.0.0.1";
+    return "http://" + host + ":5055";
+  }
+
+  var API_URL = connectorApiBase() + "/api/connectors";
+  var UPLOAD_API_URL = connectorApiBase() + "/api/connectors/upload";
+  var CONNECTION_LOGS_URL = connectorApiBase() + "/api/connection-logs";
+  var HEALTH_URL = connectorApiBase() + "/health";
 
   var SENSITIVE_KEYS = {
     api_key: true,
@@ -192,4 +204,16 @@
   global.saveConnectorToMongo = saveConnectorToMongo;
   global.logConnectionFailure = logConnectionFailure;
   global.getDataHiveUser = getRequestUser;
+  global.checkConnectorApiHealth = async function checkConnectorApiHealth() {
+    try {
+      var res = await fetch(HEALTH_URL, { headers: requestHeaders() });
+      if (!res.ok) return { ok: false, detail: "HTTP " + res.status };
+      return await res.json();
+    } catch (err) {
+      return {
+        ok: false,
+        detail: err && err.message ? err.message : String(err)
+      };
+    }
+  };
 })(window);

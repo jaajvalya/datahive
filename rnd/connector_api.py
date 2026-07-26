@@ -16,10 +16,10 @@ Upload mode writes files to rnd/UPLOAD/ and metadata to MongoDB (connectors).
 """
 from __future__ import annotations
 
-import logging
 import json
-import os
+import logging
 import re
+import sys
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
@@ -29,44 +29,27 @@ from fastapi import Body, FastAPI, File, Form, HTTPException, Request, UploadFil
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
-from pymongo import MongoClient, uri_parser
-from pymongo.errors import PyMongoError
-
-log = logging.getLogger("datahive.connector_api")
 
 _RND_DIR = Path(__file__).resolve().parent
 _REPO_ROOT = _RND_DIR.parent
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+
+import mongo_store  # noqa: E402
+
+log = logging.getLogger("datahive.connector_api")
+
 UPLOAD_DIR = _RND_DIR / "UPLOAD"
 MAX_UPLOAD_BYTES = 50 * 1024 * 1024
 ALLOWED_UPLOAD_SUFFIXES = frozenset(
     {".csv", ".tsv", ".txt", ".xlsx", ".xls", ".json", ".parquet"}
 )
 
-
-def _load_repo_dotenv() -> None:
-    env_path = _REPO_ROOT / ".env"
-    if not env_path.is_file():
-        return
-    for line in env_path.read_text(encoding="utf-8").splitlines():
-        line = line.strip()
-        if not line or line.startswith("#") or "=" not in line:
-            continue
-        key, _, value = line.partition("=")
-        os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
-
-
-_load_repo_dotenv()
-
-MONGO_URI = os.environ.get(
-    "MONGO_URI",
-    os.environ.get("DATAHIVE_MONGO_URI", "mongodb://127.0.0.1:27017"),
-)
-_parsed_uri = uri_parser.parse_uri(MONGO_URI)
-DB_NAME = _parsed_uri.get("database") or "datahivepoc"
-COLLECTION = os.environ.get("MONGO_COLLECTION", "connectors")
-CONNECTION_LOGS_COLLECTION = os.environ.get(
-    "MONGO_CONNECTION_LOGS_COLLECTION", "connection_logs"
-)
+mongo_store.load_repo_dotenv()
+MONGO_URI = mongo_store.mongo_uri()
+DB_NAME = mongo_store.database_name()
+COLLECTION = mongo_store.connectors_collection_name()
+CONNECTION_LOGS_COLLECTION = mongo_store.connection_logs_collection_name()
 
 _SENSITIVE_LOG_KEYS = frozenset(
     {
@@ -139,8 +122,8 @@ def log_connection_failure(
     if http_status is not None:
         record["http_status"] = http_status
     try:
-        get_connection_logs_collection().insert_one(record)
-    except Exception as exc:  # noqa: BLE001 — logging must not break API responses
+        mongo_store.insert_connection_log(record)
+    except RuntimeError as exc:
         log.warning("connection_logs insert failed: %s", exc)
 
 
@@ -155,14 +138,13 @@ def _safe_stored_name(original: str) -> str:
 
 
 def _insert_connector_doc(doc: dict[str, Any]) -> dict[str, Any]:
-    doc.setdefault("saved_at", datetime.now(timezone.utc).isoformat())
     try:
-        result = get_collection().insert_one(doc)
-    except PyMongoError as exc:
-        raise HTTPException(status_code=503, detail=f"MongoDB write failed: {exc}") from exc
+        inserted_id = mongo_store.insert_connector_document(doc)
+    except RuntimeError as exc:
+        raise HTTPException(status_code=503, detail=str(exc)) from exc
     return {
         "ok": True,
-        "id": str(result.inserted_id),
+        "id": inserted_id,
         "db": DB_NAME,
         "collection": COLLECTION,
     }
@@ -244,23 +226,9 @@ async def connection_unhandled_exception_handler(request: Request, exc: Exceptio
     )
     return JSONResponse(status_code=500, content={"detail": "Internal server error."})
 
-_client: MongoClient | None = None
-
 
 def get_collection():
-    global _client
-    if _client is None:
-        _client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=3000)
-    # Fail fast if mongod is down
-    _client.admin.command("ping")
-    return _client[DB_NAME][COLLECTION]
-
-
-def get_connection_logs_collection():
-    global _client
-    if _client is None:
-        _client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=3000)
-    return _client[DB_NAME][CONNECTION_LOGS_COLLECTION]
+    return mongo_store.connectors_collection()
 
 
 @app.get("/health")
