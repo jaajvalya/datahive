@@ -1,0 +1,1879 @@
+{
+  "silver": {
+    "dh_account_hierarchy": {
+      "schema": "silver",
+      "table": "dh_account_hierarchy",
+      "table_type": "Table",
+      "columns": [
+        {
+          "position": 1,
+          "name": "account_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 2,
+          "name": "customer_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 3,
+          "name": "parent_account_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 4,
+          "name": "account_type",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 5,
+          "name": "hierarchy_level",
+          "type": "integer",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ]
+    },
+    "dh_ar_accounts_receivable": {
+      "schema": "silver",
+      "table": "dh_ar_accounts_receivable",
+      "table_type": "Table",
+      "columns": [
+        {
+          "position": 1,
+          "name": "ar_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 2,
+          "name": "customer_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 3,
+          "name": "invoice_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 4,
+          "name": "outstanding_balance",
+          "type": "numeric",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 5,
+          "name": "days_past_due",
+          "type": "integer",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 6,
+          "name": "aging_bucket",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ]
+    },
+    "dh_balance": {
+      "schema": "silver",
+      "table": "dh_balance",
+      "table_type": "Table",
+      "columns": [
+        {
+          "position": 1,
+          "name": "balance_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 2,
+          "name": "customer_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 3,
+          "name": "balance_type",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 4,
+          "name": "current_balance",
+          "type": "numeric",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 5,
+          "name": "last_updated",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ]
+    },
+    "dh_bandwidth_usage": {
+      "schema": "silver",
+      "table": "dh_bandwidth_usage",
+      "table_type": "Table",
+      "columns": [
+        {
+          "position": 1,
+          "name": "usage_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 2,
+          "name": "customer_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 3,
+          "name": "usage_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 4,
+          "name": "data_used_gb",
+          "type": "numeric",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 5,
+          "name": "peak_hour_usage_gb",
+          "type": "numeric",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 6,
+          "name": "throttled_flag",
+          "type": "boolean",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ]
+    },
+    "dh_case": {
+      "schema": "silver",
+      "table": "dh_case",
+      "table_type": "Table",
+      "columns": [
+        {
+          "position": 1,
+          "name": "case_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 2,
+          "name": "customer_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 3,
+          "name": "case_type",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 4,
+          "name": "assigned_agent",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 5,
+          "name": "opened_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 6,
+          "name": "closed_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 7,
+          "name": "status",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ]
+    },
+    "dh_cdr": {
+      "schema": "silver",
+      "table": "dh_cdr",
+      "table_type": "Table",
+      "columns": [
+        {
+          "position": 1,
+          "name": "cdr_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 2,
+          "name": "customer_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 3,
+          "name": "call_type",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 4,
+          "name": "origin_number",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 5,
+          "name": "destination_number",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 6,
+          "name": "call_start_ts",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 7,
+          "name": "duration_sec",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 8,
+          "name": "tower_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 9,
+          "name": "cell_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ]
+    },
+    "dh_churn_score": {
+      "schema": "silver",
+      "table": "dh_churn_score",
+      "table_type": "Table",
+      "columns": [
+        {
+          "position": 1,
+          "name": "customer_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 2,
+          "name": "churn_score",
+          "type": "double precision",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 3,
+          "name": "risk_segment",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 4,
+          "name": "score_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 5,
+          "name": "model_version",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ]
+    },
+    "dh_clv": {
+      "schema": "silver",
+      "table": "dh_clv",
+      "table_type": "Table",
+      "columns": [
+        {
+          "position": 1,
+          "name": "customer_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 2,
+          "name": "clv_estimate_usd",
+          "type": "double precision",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 3,
+          "name": "clv_segment",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 4,
+          "name": "calculation_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ]
+    },
+    "dh_contact": {
+      "schema": "silver",
+      "table": "dh_contact",
+      "table_type": "Table",
+      "columns": [
+        {
+          "position": 1,
+          "name": "contact_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 2,
+          "name": "customer_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 3,
+          "name": "contact_type",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 4,
+          "name": "contact_value",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 5,
+          "name": "is_primary",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 6,
+          "name": "verified_flag",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ]
+    },
+    "dh_contract": {
+      "schema": "silver",
+      "table": "dh_contract",
+      "table_type": "Table",
+      "columns": [
+        {
+          "position": 1,
+          "name": "contract_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 2,
+          "name": "customer_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 3,
+          "name": "contract_type",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 4,
+          "name": "start_date",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 5,
+          "name": "term_months",
+          "type": "integer",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 6,
+          "name": "end_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 7,
+          "name": "auto_renew",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 8,
+          "name": "status",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ]
+    },
+    "dh_customer": {
+      "schema": "silver",
+      "table": "dh_customer",
+      "table_type": "Table",
+      "columns": [
+        {
+          "position": 1,
+          "name": "customer_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 2,
+          "name": "first_name",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 3,
+          "name": "last_name",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 4,
+          "name": "date_of_birth",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 5,
+          "name": "gender",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 6,
+          "name": "email",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 7,
+          "name": "phone_number",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 8,
+          "name": "city",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 9,
+          "name": "state",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 10,
+          "name": "zip_code",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 11,
+          "name": "country",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 12,
+          "name": "registration_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 13,
+          "name": "customer_segment",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 14,
+          "name": "account_status",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ]
+    },
+    "dh_dispatch": {
+      "schema": "silver",
+      "table": "dh_dispatch",
+      "table_type": "Table",
+      "columns": [
+        {
+          "position": 1,
+          "name": "dispatch_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 2,
+          "name": "customer_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 3,
+          "name": "technician_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 4,
+          "name": "dispatch_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 5,
+          "name": "issue_type",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 6,
+          "name": "resolution_time_hr",
+          "type": "numeric",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 7,
+          "name": "status",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ]
+    },
+    "dh_dunning": {
+      "schema": "silver",
+      "table": "dh_dunning",
+      "table_type": "Table",
+      "columns": [
+        {
+          "position": 1,
+          "name": "dunning_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 2,
+          "name": "customer_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 3,
+          "name": "invoice_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 4,
+          "name": "dunning_stage",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 5,
+          "name": "notice_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 6,
+          "name": "action_taken",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 7,
+          "name": "resolved_flag",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ]
+    },
+    "dh_household": {
+      "schema": "silver",
+      "table": "dh_household",
+      "table_type": "Table",
+      "columns": [
+        {
+          "position": 1,
+          "name": "household_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 2,
+          "name": "primary_customer_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 3,
+          "name": "household_size",
+          "type": "integer",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 4,
+          "name": "address_line",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 5,
+          "name": "city",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 6,
+          "name": "state",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 7,
+          "name": "zip_code",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 8,
+          "name": "household_income_band",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ]
+    },
+    "dh_installed_asset": {
+      "schema": "silver",
+      "table": "dh_installed_asset",
+      "table_type": "Table",
+      "columns": [
+        {
+          "position": 1,
+          "name": "asset_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 2,
+          "name": "customer_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 3,
+          "name": "asset_type",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 4,
+          "name": "manufacturer",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 5,
+          "name": "serial_number",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 6,
+          "name": "install_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 7,
+          "name": "status",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ]
+    },
+    "dh_invoice": {
+      "schema": "silver",
+      "table": "dh_invoice",
+      "table_type": "Table",
+      "columns": [
+        {
+          "position": 1,
+          "name": "invoice_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 2,
+          "name": "customer_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 3,
+          "name": "invoice_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 4,
+          "name": "due_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 5,
+          "name": "amount_due",
+          "type": "numeric",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 6,
+          "name": "tax_amount",
+          "type": "numeric",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 7,
+          "name": "total_amount",
+          "type": "numeric",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 8,
+          "name": "status",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ]
+    },
+    "dh_ip_data": {
+      "schema": "silver",
+      "table": "dh_ip_data",
+      "table_type": "Table",
+      "columns": [
+        {
+          "position": 1,
+          "name": "session_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 2,
+          "name": "customer_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 3,
+          "name": "ip_address",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 4,
+          "name": "session_start",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 5,
+          "name": "session_duration_min",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 6,
+          "name": "bytes_uploaded_mb",
+          "type": "numeric",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 7,
+          "name": "bytes_downloaded_mb",
+          "type": "numeric",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 8,
+          "name": "apn",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ]
+    },
+    "dh_ivr_log": {
+      "schema": "silver",
+      "table": "dh_ivr_log",
+      "table_type": "Table",
+      "columns": [
+        {
+          "position": 1,
+          "name": "ivr_log_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 2,
+          "name": "customer_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 3,
+          "name": "call_date",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 4,
+          "name": "menu_path",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 5,
+          "name": "wait_time_sec",
+          "type": "integer",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 6,
+          "name": "resolution_flag",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 7,
+          "name": "transferred_to_agent",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ]
+    },
+    "dh_next_best_action": {
+      "schema": "silver",
+      "table": "dh_next_best_action",
+      "table_type": "Table",
+      "columns": [
+        {
+          "position": 1,
+          "name": "customer_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 2,
+          "name": "recommended_action",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 3,
+          "name": "action_type",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 4,
+          "name": "priority_rank",
+          "type": "integer",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 5,
+          "name": "generated_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ]
+    },
+    "dh_package": {
+      "schema": "silver",
+      "table": "dh_package",
+      "table_type": "Table",
+      "columns": [
+        {
+          "position": 1,
+          "name": "package_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 2,
+          "name": "customer_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 3,
+          "name": "package_name",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 4,
+          "name": "bundled_services",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 5,
+          "name": "discount_pct",
+          "type": "double precision",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 6,
+          "name": "start_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 7,
+          "name": "end_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ]
+    },
+    "dh_party": {
+      "schema": "silver",
+      "table": "dh_party",
+      "table_type": "Table",
+      "columns": [
+        {
+          "position": 1,
+          "name": "party_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 2,
+          "name": "customer_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 3,
+          "name": "party_type",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 4,
+          "name": "role",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 5,
+          "name": "relationship_to_account",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ]
+    },
+    "dh_payment": {
+      "schema": "silver",
+      "table": "dh_payment",
+      "table_type": "Table",
+      "columns": [
+        {
+          "position": 1,
+          "name": "payment_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 2,
+          "name": "customer_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 3,
+          "name": "invoice_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 4,
+          "name": "payment_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 5,
+          "name": "amount_paid",
+          "type": "numeric",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 6,
+          "name": "payment_method",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 7,
+          "name": "status",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ]
+    },
+    "dh_plan": {
+      "schema": "silver",
+      "table": "dh_plan",
+      "table_type": "Table",
+      "columns": [
+        {
+          "position": 1,
+          "name": "plan_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 2,
+          "name": "customer_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 3,
+          "name": "plan_name",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 4,
+          "name": "plan_type",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 5,
+          "name": "monthly_fee_usd",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 6,
+          "name": "data_allowance_gb",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 7,
+          "name": "voice_minutes",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 8,
+          "name": "sms_allowance",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 9,
+          "name": "start_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ]
+    },
+    "dh_propensity_to_buy": {
+      "schema": "silver",
+      "table": "dh_propensity_to_buy",
+      "table_type": "Table",
+      "columns": [
+        {
+          "position": 1,
+          "name": "customer_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 2,
+          "name": "product_recommended",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 3,
+          "name": "propensity_score",
+          "type": "double precision",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 4,
+          "name": "score_date",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ]
+    },
+    "dh_qoe_metrics": {
+      "schema": "silver",
+      "table": "dh_qoe_metrics",
+      "table_type": "Table",
+      "columns": [
+        {
+          "position": 1,
+          "name": "qoe_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 2,
+          "name": "customer_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 3,
+          "name": "tower_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 4,
+          "name": "timestamp",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 5,
+          "name": "latency_ms",
+          "type": "numeric",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 6,
+          "name": "jitter_ms",
+          "type": "numeric",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 7,
+          "name": "packet_loss_pct",
+          "type": "numeric",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 8,
+          "name": "signal_strength_dbm",
+          "type": "numeric",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 9,
+          "name": "video_quality_score",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ]
+    },
+    "dh_sentiment": {
+      "schema": "silver",
+      "table": "dh_sentiment",
+      "table_type": "Table",
+      "columns": [
+        {
+          "position": 1,
+          "name": "customer_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 2,
+          "name": "interaction_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 3,
+          "name": "sentiment_score",
+          "type": "double precision",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 4,
+          "name": "sentiment_label",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 5,
+          "name": "source_channel",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 6,
+          "name": "analysis_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ]
+    },
+    "dh_sim_esim": {
+      "schema": "silver",
+      "table": "dh_sim_esim",
+      "table_type": "Table",
+      "columns": [
+        {
+          "position": 1,
+          "name": "sim_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 2,
+          "name": "customer_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 3,
+          "name": "sim_type",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 4,
+          "name": "iccid",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 5,
+          "name": "msisdn",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 6,
+          "name": "activation_date",
+          "type": "date",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 7,
+          "name": "status",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ]
+    },
+    "dh_store_visit": {
+      "schema": "silver",
+      "table": "dh_store_visit",
+      "table_type": "Table",
+      "columns": [
+        {
+          "position": 1,
+          "name": "visit_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 2,
+          "name": "customer_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 3,
+          "name": "store_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 4,
+          "name": "visit_date",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 5,
+          "name": "visit_reason",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 6,
+          "name": "duration_min",
+          "type": "integer",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 7,
+          "name": "outcome",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ]
+    },
+    "dh_ticket": {
+      "schema": "silver",
+      "table": "dh_ticket",
+      "table_type": "Table",
+      "columns": [
+        {
+          "position": 1,
+          "name": "ticket_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 2,
+          "name": "customer_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 3,
+          "name": "ticket_type",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 4,
+          "name": "priority",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 5,
+          "name": "created_date",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 6,
+          "name": "resolved_date",
+          "type": "timestamp without time zone",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 7,
+          "name": "status",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 8,
+          "name": "channel",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ]
+    },
+    "dh_tower": {
+      "schema": "silver",
+      "table": "dh_tower",
+      "table_type": "Table",
+      "columns": [
+        {
+          "position": 1,
+          "name": "tower_id",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 2,
+          "name": "tower_name",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 3,
+          "name": "latitude",
+          "type": "double precision",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 4,
+          "name": "longitude",
+          "type": "double precision",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 5,
+          "name": "region",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 6,
+          "name": "tower_type",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        },
+        {
+          "position": 7,
+          "name": "capacity_status",
+          "type": "text",
+          "nullable": true,
+          "default": null,
+          "primary_key": false
+        }
+      ]
+    }
+  },
+  "gold": {}
+}
