@@ -294,6 +294,7 @@ def health(recent: int = 0) -> dict[str, Any]:
             )
             try:
                 payload["asset_counts"] = postgres_store.catalog_counts()
+                payload["asset_schemas"] = list(postgres_store.asset_schemas())
             except Exception as count_exc:  # noqa: BLE001
                 payload["asset_counts_error"] = str(count_exc)
         except Exception as pg_exc:  # noqa: BLE001
@@ -349,6 +350,7 @@ def assets_schemas() -> dict[str, Any]:
     try:
         return {
             "items": postgres_store.list_schemas(),
+            "configured_schemas": list(postgres_store.asset_schemas()),
             "counts": postgres_store.catalog_counts(),
         }
     except Exception as exc:  # noqa: BLE001

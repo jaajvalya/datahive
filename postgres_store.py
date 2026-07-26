@@ -177,8 +177,13 @@ def ensure_assets_schema() -> None:
 
 
 def _allowed_schema_name(schema: str) -> bool:
+    name = (schema or "").strip()
+    if not name:
+        return False
+    if name.lower() in {s.lower() for s in MEDALLION_ASSET_SCHEMAS}:
+        return True
     allowed = asset_schemas()
-    return schema in allowed or schema.lower() in {a.lower() for a in allowed}
+    return name in allowed or name.lower() in {a.lower() for a in allowed}
 
 
 def _resolve_namespace(cur: Any, schema: str) -> str:
@@ -465,6 +470,7 @@ def list_schemas() -> list[str]:
 
 def list_tables(schema: str) -> list[dict[str, Any]]:
     """All tables/views in one schema (pg_catalog — matches what you see in Postgres)."""
+    schema = (schema or "").strip()
     if not _allowed_schema_name(schema):
         raise ValueError(f"Schema '{schema}' is not in the configured asset schemas.")
     with postgres_connection() as conn:
@@ -476,6 +482,8 @@ def list_tables(schema: str) -> list[dict[str, Any]]:
 
 def table_structure(schema: str, table: str) -> dict[str, Any]:
     """Column-level structure (name, type, nullable, default, primary key) for one table/view."""
+    schema = (schema or "").strip()
+    table = (table or "").strip()
     if not _allowed_schema_name(schema):
         raise ValueError(f"Schema '{schema}' is not in the configured asset schemas.")
 
