@@ -5,6 +5,7 @@ Database : from MONGO_URI in repo-root `.env` (default path segment), else datah
 Collection: MONGO_COLLECTION in `.env` (default `connectors`)
 Connection errors: `connection_logs` (override via MONGO_CONNECTION_LOGS_COLLECTION)
 Connection logs record both success and failure outcomes.
+SQL workbench runs are logged to `query_log` (override via MONGO_QUERY_LOGS_COLLECTION).
 
 Run (from this directory):
     python3 -m venv .venv
@@ -22,6 +23,7 @@ import logging
 import re
 import sys
 import uuid
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -51,11 +53,14 @@ MONGO_URI = mongo_store.mongo_uri()
 DB_NAME = mongo_store.database_name()
 COLLECTION = mongo_store.connectors_collection_name()
 CONNECTION_LOGS_COLLECTION = mongo_store.connection_logs_collection_name()
+QUERY_LOGS_COLLECTION = mongo_store.query_logs_collection_name()
 
 
 class SqlQueryIn(BaseModel):
     sql: str = Field(..., min_length=1)
     max_rows: int = Field(default=1000, ge=1, le=10_000)
+    schema: str | None = None
+    table: str | None = None
 
 
 class ConnectionLogIn(BaseModel):
@@ -378,13 +383,40 @@ def assets_structure(schema: str, table: str) -> dict[str, Any]:
 
 
 @app.post("/api/sql/query")
-def sql_query(body: SqlQueryIn) -> dict[str, Any]:
+def sql_query(body: SqlQueryIn, request: Request) -> dict[str, Any]:
+    user = _resolve_user(request, None)
+    database = postgres_store.postgres_database_name()
+    schema = (body.schema or "").strip() or None
+    table = (body.table or "").strip() or None
+    if not schema or not table:
+        inferred_schema, inferred_table = postgres_store.infer_query_schema_table(body.sql)
+        schema = schema or inferred_schema
+        table = table or inferred_table
+
+    query_start_time = datetime.now(timezone.utc)
+    status = "success"
     try:
         return postgres_store.execute_sql_query(body.sql, max_rows=body.max_rows)
     except ValueError as exc:
+        status = "failure"
         raise HTTPException(status_code=422, detail=str(exc)) from exc
     except Exception as exc:  # noqa: BLE001
+        status = "failure"
         raise HTTPException(status_code=503, detail=f"PostgreSQL query failed: {exc}") from exc
+    finally:
+        query_end_time = datetime.now(timezone.utc)
+        mongo_store.append_query_log(
+            {
+                "user": user,
+                "database": database,
+                "schema": schema,
+                "table": table,
+                "query": body.sql,
+                "query_start_time": query_start_time.isoformat(),
+                "query_end_time": query_end_time.isoformat(),
+                "status": status,
+            }
+        )
 
 
 @app.post("/api/connection-logs")

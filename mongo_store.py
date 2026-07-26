@@ -61,6 +61,11 @@ def connection_logs_collection_name() -> str:
     return os.environ.get("MONGO_CONNECTION_LOGS_COLLECTION", "connection_logs")
 
 
+def query_logs_collection_name() -> str:
+    load_repo_dotenv()
+    return os.environ.get("MONGO_QUERY_LOGS_COLLECTION", "query_log")
+
+
 def database_name() -> str:
     global _db_name
     if _db_name is None:
@@ -85,6 +90,10 @@ def connectors_collection() -> Collection:
 
 def connection_logs_collection() -> Collection:
     return _get_client()[database_name()][connection_logs_collection_name()]
+
+
+def query_logs_collection() -> Collection:
+    return _get_client()[database_name()][query_logs_collection_name()]
 
 
 def sanitize_log_context(context: dict[str, Any] | None) -> dict[str, Any]:
@@ -130,6 +139,13 @@ def insert_connection_log(record: dict[str, Any]) -> None:
         connection_logs_collection().insert_one(record)
     except PyMongoError as exc:
         raise RuntimeError(f"MongoDB connection_logs write failed: {exc}") from exc
+
+
+def insert_query_log(record: dict[str, Any]) -> None:
+    try:
+        query_logs_collection().insert_one(record)
+    except PyMongoError as exc:
+        raise RuntimeError(f"MongoDB query_log write failed: {exc}") from exc
 
 
 def log_connection_event(
@@ -180,3 +196,11 @@ def append_connection_log(
         )
     except RuntimeError as exc:
         _log.error("connection_logs insert failed: %s", exc)
+
+
+def append_query_log(record: dict[str, Any]) -> None:
+    """Best-effort query_log write; never raises."""
+    try:
+        insert_query_log(record)
+    except RuntimeError as exc:
+        _log.error("query_log insert failed: %s", exc)

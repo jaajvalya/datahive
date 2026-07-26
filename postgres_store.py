@@ -78,6 +78,10 @@ def postgres_dsn_kwargs() -> dict[str, Any]:
     }
 
 
+def postgres_database_name() -> str:
+    return postgres_dsn_kwargs()["dbname"]
+
+
 def postgres_conninfo() -> str | None:
     """Optional URI override. Uses POSTGRES_CONNINFO or POSTGRES_URI only (not DATABASE_URL)."""
     for key in ("POSTGRES_CONNINFO", "POSTGRES_URI"):
@@ -544,6 +548,32 @@ _ALLOWED_SQL_START = frozenset({"SELECT", "WITH", "EXPLAIN", "TABLE", "VALUES"})
 def _strip_sql_comments(sql: str) -> str:
     without_block = _SQL_COMMENT_BLOCK.sub(" ", sql)
     return _SQL_COMMENT_LINE.sub(" ", without_block)
+
+
+_QUALIFIED_TABLE_REF = re.compile(
+    r"\b(?:FROM|JOIN)\s+"
+    r'(?:"([^"]+)"|([a-zA-Z_][\w$]*))\s*\.\s*'
+    r'(?:"([^"]+)"|([a-zA-Z_][\w$]*))',
+    re.IGNORECASE,
+)
+_UNQUALIFIED_FROM_REF = re.compile(
+    r'\bFROM\s+(?:"([^"]+)"|([a-zA-Z_][\w$]*))(?:\s|$)',
+    re.IGNORECASE,
+)
+
+
+def infer_query_schema_table(sql: str) -> tuple[str | None, str | None]:
+    """Best-effort schema/table from the first FROM/JOIN reference in SQL."""
+    normalized = _strip_sql_comments(sql.strip().rstrip(";"))
+    match = _QUALIFIED_TABLE_REF.search(normalized)
+    if match:
+        schema = match.group(1) or match.group(2)
+        table = match.group(3) or match.group(4)
+        return schema, table
+    match = _UNQUALIFIED_FROM_REF.search(normalized)
+    if match:
+        return None, match.group(1) or match.group(2)
+    return None, None
 
 
 def _assert_readonly_sql(sql: str) -> str:
