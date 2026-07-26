@@ -312,8 +312,8 @@
     background:var(--warn-bg); border-bottom:1px solid var(--warn-line); }
 
   /* ---------- Assets: schema/table drill-down ---------- */
-  .asset-picker { display:flex; flex-direction:column; gap:16px; margin:4px 0 20px; }
-  .asset-picker-block { padding:14px 16px; border:1px solid var(--gray-200); border-radius:10px; background:#fafbfd; }
+  .asset-picker { display:flex; flex-direction:row; flex-wrap:wrap; gap:16px; margin:4px 0 20px; }
+  .asset-picker-block { flex:1; min-width:220px; padding:14px 16px; border:1px solid var(--gray-200); border-radius:10px; background:#fafbfd; }
   .asset-picker-block label { display:block; font-size:13px; font-weight:700; color:var(--ink-900); margin-bottom:8px; }
   .asset-picker-block select { width:100%; padding:9px 10px; border:1px solid var(--gray-200);
     border-radius:8px; font-family:inherit; font-size:14px; color:var(--ink-900); background:#fff; }
