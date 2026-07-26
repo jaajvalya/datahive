@@ -198,6 +198,14 @@
     setStatus("Running…");
     setResultsMessage('<div class="sql-results-empty">Executing query…</div>');
     try {
+      if (typeof global.ensureDataHiveConnectorApi === "function") {
+        var apiOk = await global.ensureDataHiveConnectorApi();
+        if (!apiOk) {
+          throw new Error(
+            "Connector API is unavailable or outdated. Reload the page, or stop any process on port 5055 and run: cd rnd && python connector_api.py"
+          );
+        }
+      }
       var result = await fetchJson("/api/sql/query", {
         method: "POST",
         headers: headers(),

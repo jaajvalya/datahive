@@ -280,7 +280,9 @@ def health(recent: int = 0) -> dict[str, Any]:
             "db": DB_NAME,
             "collection": COLLECTION,
             "connection_logs_collection": CONNECTION_LOGS_COLLECTION,
+            "query_logs_collection": QUERY_LOGS_COLLECTION,
             "sql_query_api": True,
+            "query_log_api": True,
         }
         try:
             postgres_store.ping_postgres()

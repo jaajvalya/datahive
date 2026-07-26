@@ -63,7 +63,9 @@
         headers: tabHeaders(),
         cache: "no-store",
       });
-      return res.ok;
+      if (!res.ok) return false;
+      var data = await res.json();
+      return !!(data && data.query_log_api === true);
     } catch (err) {
       return false;
     }
@@ -112,19 +114,19 @@
     }).catch(function () {});
   }
 
-  var readyPromise = (async function () {
+  async function ensureConnectorApi() {
     if (await apiHealthy()) {
       sendPresence();
       return true;
     }
-    return wakeWatchdog();
-  })();
+    var ok = await wakeWatchdog();
+    if (ok) sendPresence();
+    return ok;
+  }
 
-  global.ensureDataHiveConnectorApi = function () {
-    return readyPromise;
-  };
+  global.ensureDataHiveConnectorApi = ensureConnectorApi;
 
-  readyPromise.then(function (ok) {
+  ensureConnectorApi().then(function (ok) {
     if (!ok) {
       console.warn(
         "[datahive] Local connector API unavailable. Start the UI via rnd/Open DataHive UI.bat " +

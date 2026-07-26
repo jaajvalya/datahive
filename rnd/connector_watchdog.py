@@ -10,13 +10,18 @@ Or install for the current user:
 """
 from __future__ import annotations
 
+import json
 import logging
+import os
 import socket
 import subprocess
 import sys
 import threading
 import time
+import urllib.error
+import urllib.request
 from pathlib import Path
+from typing import Any
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
@@ -47,12 +52,91 @@ def _api_port_open() -> bool:
         return False
 
 
+def _api_health_payload() -> dict[str, Any] | None:
+    try:
+        with urllib.request.urlopen(
+            f"http://{_HOST}:{_API_PORT}/health",
+            timeout=2,
+        ) as resp:
+            raw = resp.read().decode("utf-8")
+            data = json.loads(raw)
+            return data if isinstance(data, dict) else None
+    except (urllib.error.URLError, TimeoutError, json.JSONDecodeError, OSError):
+        return None
+
+
+def _api_query_log_ready() -> bool:
+    payload = _api_health_payload()
+    return bool(payload and payload.get("query_log_api"))
+
+
+def _listener_pids(port: int) -> list[int]:
+    pids: list[int] = []
+    if sys.platform == "win32":
+        try:
+            out = subprocess.check_output(
+                ["netstat", "-ano"], text=True, errors="ignore"
+            )
+        except (subprocess.CalledProcessError, FileNotFoundError):
+            return pids
+        token = f":{port}"
+        for line in out.splitlines():
+            if "LISTENING" not in line.upper() or token not in line:
+                continue
+            parts = line.split()
+            if parts and parts[-1].isdigit():
+                pids.append(int(parts[-1]))
+    else:
+        try:
+            out = subprocess.check_output(["lsof", "-ti", f":{port}"], text=False)
+            for part in out.decode().split():
+                if part.isdigit():
+                    pids.append(int(part))
+        except (subprocess.CalledProcessError, FileNotFoundError):
+            pass
+    return list(dict.fromkeys(pids))
+
+
+def _stop_listeners_on_port(port: int) -> None:
+    for pid in _listener_pids(port):
+        if pid == os.getpid():
+            continue
+        log.info("Stopping process %s on port %s", pid, port)
+        if sys.platform == "win32":
+            subprocess.run(
+                ["taskkill", "/PID", str(pid), "/F"],
+                capture_output=True,
+                check=False,
+            )
+        else:
+            subprocess.run(["kill", str(pid)], capture_output=True, check=False)
+    deadline = time.time() + 6
+    while time.time() < deadline and _api_port_open():
+        time.sleep(0.2)
+
+
 def _start_api() -> None:
     global _child, _we_started_api
     with _lock:
         if _api_port_open():
-            return
+            if _api_query_log_ready():
+                return
+            log.warning(
+                "connector_api on port %s is outdated; restarting with current code",
+                _API_PORT,
+            )
+            _stop_listeners_on_port(_API_PORT)
+            if _child is not None and _child.poll() is None:
+                _child.terminate()
+                try:
+                    _child.wait(timeout=5)
+                except subprocess.TimeoutExpired:
+                    _child.kill()
+            _child = None
+            _we_started_api = False
         if _child is not None and _child.poll() is None:
+            return
+        if _api_port_open():
             return
         flags = subprocess.CREATE_NO_WINDOW if sys.platform == "win32" else 0
         _child = subprocess.Popen(
