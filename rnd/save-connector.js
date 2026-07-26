@@ -1,6 +1,6 @@
 /**
- * Saves connector connection attributes to the local MongoDB
- * database `datahivepoc`, collection `connectors`.
+ * Saves connector connection attributes to MongoDB (database from MONGO_URI in `.env`),
+ * collection `connectors`.
  *
  * Requires the companion API: `python connector_api.py` (port 5055).
  * Attached from main.html and invoked on "Connect & fetch".
@@ -11,7 +11,7 @@
   var API_URL = "http://127.0.0.1:5055/api/connectors";
 
   /**
-   * Build the document persisted in `datahivepoc.connectors`.
+   * Build the document persisted in the connectors collection.
    * Includes connection attributes and all form input details.
    */
   function buildConnectorDocument(payload) {
@@ -78,7 +78,7 @@
       throw new Error(typeof msg === "string" ? msg : JSON.stringify(msg));
     }
 
-    console.info("[save-connector] saved to datahivepoc.connectors", data);
+    console.info("[save-connector] saved to connectors collection", data);
     return data;
   }
 
