@@ -864,6 +864,11 @@ function cloudLabel(cloudId){
   return escapeHtml(c ? (c.name || c.short || cloudId) : cloudId);
 }
 
+function cellText(val){
+  if (val == null || val === "") return "—";
+  return escapeHtml(String(val));
+}
+
 async function renderRecentConnections(){
   const body = $("#recentConnectionsBody");
   if (!body) return;
@@ -879,20 +884,31 @@ async function renderRecentConnections(){
       return;
     }
     const rows = items.map(function (it) {
+      const notes = it.upload_notes
+        ? '<span title="' + escapeHtml(it.upload_notes) + '">' +
+          escapeHtml(String(it.upload_notes).length > 48
+            ? String(it.upload_notes).slice(0, 45) + "…"
+            : it.upload_notes) +
+          "</span>"
+        : "—";
       return (
         "<tr>" +
         "<td>" + cloudLabel(it.cloud) + "</td>" +
-        '<td class="nm">' + escapeHtml(it.display_name || "—") + "</td>" +
-        "<td>" + escapeHtml(it.connector_type || "—") + "</td>" +
+        "<td>" + cellText(it.connector_type) + "</td>" +
+        '<td class="nm">' + cellText(it.display_name) + "</td>" +
+        "<td>" + cellText(it.mode) + "</td>" +
+        "<td>" + cellText(it.region) + "</td>" +
+        "<td>" + notes + "</td>" +
+        "<td>" + cellText(it.user) + "</td>" +
         "<td>" + formatSavedAt(it.saved_at) + "</td>" +
-        "<td>" + escapeHtml(it.user || "—") + "</td>" +
         "</tr>"
       );
     }).join("");
     body.innerHTML =
       '<table class="recent-table" aria-label="Latest connections">' +
       "<thead><tr>" +
-      "<th>Cloud</th><th>Display name</th><th>Connector type</th><th>Saved at</th><th>User</th>" +
+      "<th>Cloud</th><th>Connector type</th><th>Display name</th><th>Mode</th>" +
+      "<th>Region</th><th>Upload notes</th><th>User</th><th>Saved at</th>" +
       "</tr></thead><tbody>" +
       rows +
       "</tbody></table>";

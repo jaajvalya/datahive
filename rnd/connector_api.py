@@ -252,10 +252,13 @@ def save_connector(payload: dict[str, Any] = Body(...)) -> dict[str, Any]:
 
 _RECENT_CONNECTOR_FIELDS = (
     "cloud",
-    "display_name",
     "connector_type",
-    "saved_at",
+    "display_name",
+    "mode",
+    "region",
+    "upload_notes",
     "user",
+    "saved_at",
 )
 
 
