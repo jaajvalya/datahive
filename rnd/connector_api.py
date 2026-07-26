@@ -275,6 +275,10 @@ def health(recent: int = 0) -> dict[str, Any]:
             postgres_store.ping_postgres()
             payload["postgres"] = postgres_store.redacted_postgres_host()
             payload["postgres_ok"] = True
+            try:
+                payload["asset_counts"] = postgres_store.catalog_counts()
+            except Exception as count_exc:  # noqa: BLE001
+                payload["asset_counts_error"] = str(count_exc)
         except Exception as pg_exc:  # noqa: BLE001
             payload["postgres_ok"] = False
             payload["postgres_error"] = str(pg_exc)
@@ -326,9 +330,20 @@ def assets_discover(request: Request, limit: int = 100) -> dict[str, Any]:
 @app.get("/api/assets/schemas")
 def assets_schemas() -> dict[str, Any]:
     try:
-        return {"items": postgres_store.list_schemas()}
+        return {
+            "items": postgres_store.list_schemas(),
+            "counts": postgres_store.catalog_counts(),
+        }
     except Exception as exc:  # noqa: BLE001
         raise HTTPException(status_code=503, detail=f"PostgreSQL schemas failed: {exc}") from exc
+
+
+@app.get("/api/assets/counts")
+def assets_counts() -> dict[str, Any]:
+    try:
+        return {"counts": postgres_store.catalog_counts()}
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(status_code=503, detail=f"PostgreSQL counts failed: {exc}") from exc
 
 
 @app.get("/api/assets/tables")

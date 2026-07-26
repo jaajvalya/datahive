@@ -1390,6 +1390,48 @@ try {
 const CONFIGURED_ASSET_SCHEMAS = ["silver", "gold"];
 const assetState = { offline: false, loaded: false, schema: null, table: null, typeFilter: null };
 
+function formatAssetApiError(err) {
+  const m = err && err.message ? err.message : String(err);
+  if (/404|route not found|not found/i.test(m)) {
+    return (
+      "Connector API is missing Assets routes (404). " +
+      "Stop any old server on port 5055, then run: cd rnd && python connector_api.py"
+    );
+  }
+  if (/password authentication failed/i.test(m)) {
+    return (
+      "PostgreSQL login failed. Update POSTGRES_USER / POSTGRES_PASSWORD " +
+      "(or POSTGRES_CONNINFO) in .env, then restart connector_api.py."
+    );
+  }
+  return "PostgreSQL / connector API error: " + m;
+}
+
+async function loadAssetCounts() {
+  try {
+    if (typeof DataHiveAssets === "undefined") throw new Error("Assets API not loaded");
+    const data = await DataHiveAssets.summary();
+    renderAssetChips(data.counts || { All: 0, View: 0, Table: 0 });
+    assetState.offline = false;
+    const pgBanner = $("#pgBanner");
+    if (pgBanner) pgBanner.classList.add("hidden");
+    if (data.items && data.items.length && $("#assetSchemaSelect")) {
+      const sel = $("#assetSchemaSelect");
+      sel.innerHTML =
+        '<option value="">Select schema…</option>' +
+        data.items.map((s) => '<option value="' + escapeHtml(s) + '">' + escapeHtml(s) + "</option>").join("");
+    }
+  } catch (err) {
+    assetState.offline = true;
+    renderAssetChips({ All: 0, View: 0, Table: 0 });
+    const pgBanner = $("#pgBanner");
+    if (pgBanner) {
+      pgBanner.classList.remove("hidden");
+      pgBanner.textContent = formatAssetApiError(err);
+    }
+  }
+}
+
 function assetEl(tag, cls) {
   const e = document.createElement(tag);
   if (cls) e.className = cls;
@@ -1424,29 +1466,6 @@ function renderAssetChips(counts) {
     };
     wrap.appendChild(c);
   });
-}
-
-async function loadAssetCounts() {
-  try {
-    if (typeof DataHiveAssets === "undefined") throw new Error("Assets API not loaded");
-    const data = await DataHiveAssets.discover();
-    renderAssetChips(data.counts || { All: 0, View: 0, Table: 0 });
-    assetState.offline = false;
-    const pgBanner = $("#pgBanner");
-    if (pgBanner) pgBanner.classList.add("hidden");
-  } catch (err) {
-    assetState.offline = true;
-    renderAssetChips({ All: 0, View: 0, Table: 0 });
-    const pgBanner = $("#pgBanner");
-    if (pgBanner) {
-      pgBanner.classList.remove("hidden");
-      if (err && err.message) {
-        pgBanner.textContent =
-          "PostgreSQL / connector API error: " + err.message +
-          " — check POSTGRES_* in .env and restart connector_api.py";
-      }
-    }
-  }
 }
 
 function renderTableStructure(structure) {
@@ -1532,8 +1551,7 @@ async function populateTableSelect(schema) {
   } catch (err) {
     select.innerHTML = '<option value="">Failed to load tables</option>';
     if (meta) {
-      meta.textContent =
-        err && err.message ? err.message : "Could not load tables from PostgreSQL.";
+      meta.textContent = formatAssetApiError(err);
       meta.classList.remove("hidden");
       meta.classList.add("err");
     }

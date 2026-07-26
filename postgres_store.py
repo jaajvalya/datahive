@@ -230,6 +230,11 @@ def _catalog_counts() -> dict[str, int]:
     return {"All": fields_n, "View": views_n, "Table": tables_n}
 
 
+def catalog_counts() -> dict[str, int]:
+    """Public wrapper for chip counts (All / View / Table)."""
+    return _catalog_counts()
+
+
 def _catalog_assets() -> list[dict[str, Any]]:
     items: list[dict[str, Any]] = []
     with postgres_connection() as conn:

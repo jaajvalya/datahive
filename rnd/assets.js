@@ -41,9 +41,26 @@
       } catch (_e) {
         /* keep raw text */
       }
-      throw new Error(detail);
+      if (res.status === 404) {
+        detail =
+          "Connector API route not found (404). Restart connector_api.py from the rnd folder.";
+      }
+      var err = new Error(detail);
+      err.httpStatus = res.status;
+      throw err;
     }
     return text ? JSON.parse(text) : {};
+  }
+
+  async function summary() {
+    try {
+      return await fetchJson("/api/assets/schemas");
+    } catch (err) {
+      if (err && err.httpStatus === 404) {
+        return fetchJson("/api/assets/counts");
+      }
+      throw err;
+    }
   }
 
   global.DataHiveAssets = {
@@ -60,8 +77,9 @@
     discover: function () {
       return fetchJson("/api/assets/discover?limit=200");
     },
+    summary: summary,
     schemas: function () {
-      return fetchJson("/api/assets/schemas");
+      return summary();
     },
     tables: function (schema) {
       return fetchJson("/api/assets/tables?schema=" + encodeURIComponent(schema));
