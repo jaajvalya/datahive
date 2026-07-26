@@ -301,7 +301,7 @@ def save_connector(payload: dict[str, Any] = Body(...)) -> dict[str, Any]:
 
 
 @app.get("/api/connectors/recent")
-def list_recent_connectors(limit: int = 3) -> dict[str, Any]:
+def list_recent_connectors(limit: int = 5) -> dict[str, Any]:
     """Return the newest saved connectors from MongoDB (db/collection from repo `.env` MONGO_URI)."""
     try:
         items = _fetch_recent_connectors(limit)

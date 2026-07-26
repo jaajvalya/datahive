@@ -23,6 +23,7 @@
   var UPLOAD_API_URL = connectorApiBase() + "/api/connectors/upload";
   var CONNECTION_LOGS_URL = connectorApiBase() + "/api/connection-logs";
   var HEALTH_URL = connectorApiBase() + "/health";
+  var RECENT_CONNECTIONS_DEFAULT = 5;
 
   var SENSITIVE_KEYS = {
     api_key: true,
@@ -266,7 +267,7 @@
    * @returns {Promise<{ok:boolean,items:object[]}>}
    */
   async function fetchRecentConnectors(limit) {
-    var n = limit == null ? 3 : limit;
+    var n = limit == null ? RECENT_CONNECTIONS_DEFAULT : limit;
     var url =
       connectorApiBase() +
       "/api/connectors/recent?limit=" +
@@ -321,7 +322,10 @@
   global.getDataHiveUser = getRequestUser;
   global.checkConnectorApiHealth = async function checkConnectorApiHealth() {
     try {
-      var res = await fetch(HEALTH_URL + "?recent=3", { headers: requestHeaders() });
+      var res = await fetch(
+        HEALTH_URL + "?recent=" + encodeURIComponent(RECENT_CONNECTIONS_DEFAULT),
+        { headers: requestHeaders() }
+      );
       if (!res.ok) return { ok: false, detail: "HTTP " + res.status };
       return await res.json();
     } catch (err) {
