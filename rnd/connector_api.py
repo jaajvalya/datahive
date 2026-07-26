@@ -3,6 +3,7 @@ Local R&D API — persist connector form payloads into MongoDB.
 
 Database : from MONGO_URI in repo-root `.env` (default path segment), else datahivepoc
 Collection: MONGO_COLLECTION in `.env` (default `connectors`)
+Connection errors: `connection_logs` (override via MONGO_CONNECTION_LOGS_COLLECTION)
 
 Run (from this directory):
     python3 -m venv .venv
@@ -15,6 +16,7 @@ Upload mode writes files to rnd/UPLOAD/ and metadata to MongoDB (connectors).
 """
 from __future__ import annotations
 
+import logging
 import json
 import os
 import re
@@ -23,10 +25,14 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from fastapi import Body, FastAPI, File, Form, HTTPException, UploadFile
+from fastapi import Body, FastAPI, File, Form, HTTPException, Request, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
+from pydantic import BaseModel, Field
 from pymongo import MongoClient, uri_parser
 from pymongo.errors import PyMongoError
+
+log = logging.getLogger("datahive.connector_api")
 
 _RND_DIR = Path(__file__).resolve().parent
 _REPO_ROOT = _RND_DIR.parent
@@ -58,6 +64,84 @@ MONGO_URI = os.environ.get(
 _parsed_uri = uri_parser.parse_uri(MONGO_URI)
 DB_NAME = _parsed_uri.get("database") or "datahivepoc"
 COLLECTION = os.environ.get("MONGO_COLLECTION", "connectors")
+CONNECTION_LOGS_COLLECTION = os.environ.get(
+    "MONGO_CONNECTION_LOGS_COLLECTION", "connection_logs"
+)
+
+_SENSITIVE_LOG_KEYS = frozenset(
+    {
+        "api_key",
+        "client_secret",
+        "secret_access_key",
+        "service_account_json",
+        "password",
+        "credentials_ciphertext",
+    }
+)
+
+
+class ConnectionLogIn(BaseModel):
+    user: str | None = None
+    message: str = Field(..., min_length=1)
+    event: str = "connection.error"
+    error_type: str = "client"
+    context: dict[str, Any] | None = None
+
+
+def _utc_now_iso() -> str:
+    return datetime.now(timezone.utc).isoformat()
+
+
+def _sanitize_log_context(context: dict[str, Any] | None) -> dict[str, Any]:
+    if not context:
+        return {}
+    clean: dict[str, Any] = {}
+    for key, value in context.items():
+        if key in _SENSITIVE_LOG_KEYS:
+            clean[key] = "[redacted]"
+        elif isinstance(value, dict):
+            clean[key] = _sanitize_log_context(value)
+        else:
+            clean[key] = value
+    return clean
+
+
+def _resolve_user(request: Request | None, explicit: str | None = None) -> str:
+    if explicit and explicit.strip():
+        return explicit.strip()
+    if request is not None:
+        header_user = request.headers.get("X-DataHive-User")
+        if header_user and header_user.strip():
+            return header_user.strip()
+        state_user = getattr(request.state, "user", None)
+        if isinstance(state_user, str) and state_user.strip():
+            return state_user.strip()
+    return "unknown"
+
+
+def log_connection_failure(
+    user: str,
+    message: str,
+    *,
+    event: str = "connection.error",
+    error_type: str = "server",
+    context: dict[str, Any] | None = None,
+    http_status: int | None = None,
+) -> None:
+    record: dict[str, Any] = {
+        "timestamp": _utc_now_iso(),
+        "user": user,
+        "event": event,
+        "error_type": error_type,
+        "message": message,
+        "context": _sanitize_log_context(context),
+    }
+    if http_status is not None:
+        record["http_status"] = http_status
+    try:
+        get_connection_logs_collection().insert_one(record)
+    except Exception as exc:  # noqa: BLE001 — logging must not break API responses
+        log.warning("connection_logs insert failed: %s", exc)
 
 
 def _ensure_upload_dir() -> None:
@@ -119,6 +203,47 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
+@app.middleware("http")
+async def attach_request_user(request: Request, call_next):
+    request.state.user = request.headers.get("X-DataHive-User") or "unknown"
+    return await call_next(request)
+
+
+@app.exception_handler(HTTPException)
+async def connection_http_exception_handler(request: Request, exc: HTTPException):
+    detail = exc.detail
+    message = detail if isinstance(detail, str) else json.dumps(detail)
+    log_connection_failure(
+        _resolve_user(request),
+        message,
+        event="connection.http_error",
+        error_type="server",
+        http_status=exc.status_code,
+        context={
+            "path": request.url.path,
+            "method": request.method,
+        },
+    )
+    return JSONResponse(status_code=exc.status_code, content={"detail": exc.detail})
+
+
+@app.exception_handler(Exception)
+async def connection_unhandled_exception_handler(request: Request, exc: Exception):
+    log_connection_failure(
+        _resolve_user(request),
+        str(exc),
+        event="connection.unhandled_error",
+        error_type="server",
+        http_status=500,
+        context={
+            "path": request.url.path,
+            "method": request.method,
+            "exception_type": type(exc).__name__,
+        },
+    )
+    return JSONResponse(status_code=500, content={"detail": "Internal server error."})
+
 _client: MongoClient | None = None
 
 
@@ -129,6 +254,13 @@ def get_collection():
     # Fail fast if mongod is down
     _client.admin.command("ping")
     return _client[DB_NAME][COLLECTION]
+
+
+def get_connection_logs_collection():
+    global _client
+    if _client is None:
+        _client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=3000)
+    return _client[DB_NAME][CONNECTION_LOGS_COLLECTION]
 
 
 @app.get("/health")
@@ -143,6 +275,18 @@ def health() -> dict[str, Any]:
         }
     except Exception as exc:  # noqa: BLE001
         raise HTTPException(status_code=503, detail=f"MongoDB unavailable: {exc}") from exc
+
+
+@app.post("/api/connection-logs")
+def create_connection_log(body: ConnectionLogIn, request: Request) -> dict[str, bool]:
+    log_connection_failure(
+        _resolve_user(request, body.user),
+        body.message,
+        event=body.event,
+        error_type=body.error_type,
+        context=body.context,
+    )
+    return {"ok": True}
 
 
 @app.post("/api/connectors")

@@ -1,6 +1,6 @@
 /**
  * Saves connector connection attributes to MongoDB (database from MONGO_URI in `.env`),
- * collection `connectors`.
+ * collection `connectors`. Connection failures are logged to `connection_logs`.
  *
  * Requires the companion API: `python connector_api.py` (port 5055).
  * Attached from main.html and invoked on "Connect & fetch".
@@ -10,6 +10,74 @@
 
   var API_URL = "http://127.0.0.1:5055/api/connectors";
   var UPLOAD_API_URL = "http://127.0.0.1:5055/api/connectors/upload";
+  var CONNECTION_LOGS_URL = "http://127.0.0.1:5055/api/connection-logs";
+
+  var SENSITIVE_KEYS = {
+    api_key: true,
+    client_secret: true,
+    secret_access_key: true,
+    service_account_json: true
+  };
+
+  function getRequestUser() {
+    var el = document.getElementById("userNm");
+    if (el && el.textContent) {
+      var name = el.textContent.trim();
+      if (name) return name;
+    }
+    return "unknown";
+  }
+
+  function requestHeaders(extra) {
+    var headers = { "X-DataHive-User": getRequestUser() };
+    if (extra) {
+      Object.keys(extra).forEach(function (k) {
+        headers[k] = extra[k];
+      });
+    }
+    return headers;
+  }
+
+  function sanitizeContext(obj) {
+    if (obj == null || typeof obj !== "object") return obj;
+    if (Array.isArray(obj)) {
+      return obj.map(function (item) {
+        return typeof item === "object" ? sanitizeContext(item) : item;
+      });
+    }
+    var out = {};
+    Object.keys(obj).forEach(function (key) {
+      if (SENSITIVE_KEYS[key]) {
+        out[key] = "[redacted]";
+      } else if (obj[key] && typeof obj[key] === "object") {
+        out[key] = sanitizeContext(obj[key]);
+      } else {
+        out[key] = obj[key];
+      }
+    });
+    return out;
+  }
+
+  /**
+   * Persist a connection failure record to MongoDB connection_logs (best effort).
+   */
+  function logConnectionFailure(details) {
+    if (!details || !details.message) return;
+    var body = {
+      user: getRequestUser(),
+      message: String(details.message),
+      event: details.event || "connection.error",
+      error_type: details.error_type || "client",
+      context: sanitizeContext(details.context || {})
+    };
+    fetch(CONNECTION_LOGS_URL, {
+      method: "POST",
+      headers: requestHeaders({ "Content-Type": "application/json" }),
+      body: JSON.stringify(body)
+    }).catch(function (err) {
+      console.warn("[save-connector] could not write connection_logs", err);
+    });
+  }
 
   /**
    * Build the document persisted in the connectors collection.
@@ -17,6 +85,7 @@
    */
   function buildConnectorDocument(payload) {
     return {
+      user: getRequestUser(),
       connector_type: payload.connector_type || null,
       cloud: payload.cloud || null,
       mode: payload.mode || "cloud",
@@ -28,7 +97,6 @@
       dataset_scope: payload.dataset_scope || null,
       tenant_id: payload.tenant_id || null,
       resource_group: payload.resource_group || null,
-      // Credential / auth input details (as entered on the form)
       api_key: payload.api_key || null,
       client_id: payload.client_id || null,
       client_secret: payload.client_secret || null,
@@ -36,7 +104,6 @@
       access_key_id: payload.access_key_id || null,
       secret_access_key: payload.secret_access_key || null,
       role_arn: payload.role_arn || null,
-      // Upload mode fields
       file_name: payload.file_name || null,
       file_size: payload.file_size != null ? payload.file_size : null,
       file_type: payload.file_type || null,
@@ -65,20 +132,39 @@
       payload.auth_type === "file_upload";
     var res;
 
-    if (isUpload) {
-      if (!uploadFile) {
-        throw new Error("Missing upload file.");
+    try {
+      if (isUpload) {
+        if (!uploadFile) {
+          throw new Error("Missing upload file.");
+        }
+        var form = new FormData();
+        form.append("file", uploadFile, uploadFile.name);
+        form.append("metadata", JSON.stringify(document));
+        res = await fetch(UPLOAD_API_URL, {
+          method: "POST",
+          headers: requestHeaders(),
+          body: form
+        });
+      } else {
+        res = await fetch(API_URL, {
+          method: "POST",
+          headers: requestHeaders({ "Content-Type": "application/json" }),
+          body: JSON.stringify(document)
+        });
       }
-      var form = new FormData();
-      form.append("file", uploadFile, uploadFile.name);
-      form.append("metadata", JSON.stringify(document));
-      res = await fetch(UPLOAD_API_URL, { method: "POST", body: form });
-    } else {
-      res = await fetch(API_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(document)
+    } catch (networkErr) {
+      logConnectionFailure({
+        message: networkErr && networkErr.message ? networkErr.message : String(networkErr),
+        event: "connection.save_failed",
+        error_type: "network",
+        context: {
+          cloud: payload.cloud,
+          mode: payload.mode,
+          display_name: payload.display_name,
+          connector_type: payload.connector_type
+        }
       });
+      throw networkErr;
     }
 
     var bodyText = await res.text();
@@ -94,7 +180,8 @@
         (data && (data.detail || data.error || data.message)) ||
         bodyText ||
         "HTTP " + res.status;
-      throw new Error(typeof msg === "string" ? msg : JSON.stringify(msg));
+      var errText = typeof msg === "string" ? msg : JSON.stringify(msg);
+      throw new Error(errText);
     }
 
     console.info("[save-connector] saved to connectors collection", data);
@@ -103,4 +190,6 @@
 
   global.buildConnectorDocument = buildConnectorDocument;
   global.saveConnectorToMongo = saveConnectorToMongo;
+  global.logConnectionFailure = logConnectionFailure;
+  global.getDataHiveUser = getRequestUser;
 })(window);

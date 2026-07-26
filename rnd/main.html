@@ -813,9 +813,19 @@ document.addEventListener("keydown", (e)=>{
 });
 $("#cf_auth_type").addEventListener("change", (e)=> toggleAuth(e.target.value));
 
-function showError(msg){
+function showError(msg, skipLog){
   errBox.textContent = msg;
   errBox.classList.remove("hidden");
+  if (skipLog || typeof logConnectionFailure !== "function") return;
+  logConnectionFailure({
+    message: msg,
+    event: "connection.validation_failed",
+    error_type: "validation",
+    context: {
+      cloud: activeCloud || null,
+      connector_type: CLOUDS[activeCloud] ? CLOUDS[activeCloud].type : null
+    }
+  });
 }
 
 form.addEventListener("submit", async (e)=>{
@@ -960,7 +970,10 @@ form.addEventListener("submit", async (e)=>{
       file_name: payload.file_name
     });
   } catch (err) {
-    showError("Could not save connector to MongoDB: " + (err && err.message ? err.message : err));
+    showError(
+      "Could not save connector to MongoDB: " + (err && err.message ? err.message : err),
+      true
+    );
   } finally {
     btn.disabled = false;
     btn.textContent = idleLabel;
