@@ -705,6 +705,7 @@
   </section>
 </div>
 
+<script src="connector_session.js"></script>
 <script src="save-connector.js"></script>
 <script src="assets.js"></script>
 <script src="sql-explorer.js"></script>
@@ -1826,6 +1827,9 @@ document.addEventListener("keydown", (e) => {
 });
 
 (async function initConnectorApiBanner(){
+  if (typeof ensureDataHiveConnectorApi === "function") {
+    await ensureDataHiveConnectorApi();
+  }
   if (typeof checkConnectorApiHealth !== "function") return;
   const health = await checkConnectorApiHealth();
   const banner = $("#apiBanner");
@@ -1840,7 +1844,9 @@ document.addEventListener("keydown", (e) => {
   }
   banner.innerHTML =
     "Connector API is not reachable — connections will not be saved to MongoDB. " +
-    "Run <code>cd rnd &amp;&amp; python connector_api.py</code>" +
+    "The UI usually starts it automatically when opened via " +
+    "<code>Open DataHive UI.bat</code>; or run " +
+    "<code>pythonw rnd/connector_watchdog.py</code> in the background" +
     (health && health.detail ? " (" + escapeHtml(health.detail) + ")" : "");
   banner.classList.remove("hidden");
   renderRecentConnections();
