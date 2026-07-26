@@ -275,6 +275,10 @@ def health(recent: int = 0) -> dict[str, Any]:
             postgres_store.ping_postgres()
             payload["postgres"] = postgres_store.redacted_postgres_host()
             payload["postgres_ok"] = True
+            kw = postgres_store.postgres_dsn_kwargs()
+            payload["postgres_target"] = (
+                f"{kw['user']}@{kw['host']}:{kw['port']}/{kw['dbname']}"
+            )
             try:
                 payload["asset_counts"] = postgres_store.catalog_counts()
             except Exception as count_exc:  # noqa: BLE001

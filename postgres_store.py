@@ -39,7 +39,7 @@ def _dotenv_file_values() -> dict[str, str]:
     path = _REPO_ROOT / ".env"
     if not path.is_file():
         return out
-    for line in path.read_text(encoding="utf-8").splitlines():
+    for line in path.read_text(encoding="utf-8-sig").splitlines():
         line = line.strip()
         if not line or line.startswith("#") or "=" not in line:
             continue
@@ -76,12 +76,33 @@ def postgres_dsn_kwargs() -> dict[str, Any]:
 
 
 def postgres_conninfo() -> str | None:
-    """Optional single URI (overrides discrete POSTGRES_* fields when set)."""
-    for key in ("POSTGRES_CONNINFO", "POSTGRES_URI", "DATABASE_URL"):
+    """Optional URI override. Uses POSTGRES_CONNINFO or POSTGRES_URI only (not DATABASE_URL)."""
+    for key in ("POSTGRES_CONNINFO", "POSTGRES_URI"):
         val = _pg_setting(key, "").strip()
         if val:
             return val
     return None
+
+
+def postgres_connect():
+    """Open a psycopg connection using repo `.env` POSTGRES_* settings."""
+    import psycopg
+    from psycopg.conninfo import make_conninfo
+
+    explicit = postgres_conninfo()
+    if explicit:
+        return psycopg.connect(explicit, connect_timeout=5)
+    kw = postgres_dsn_kwargs()
+    return psycopg.connect(
+        make_conninfo(
+            host=kw["host"],
+            port=kw["port"],
+            dbname=kw["dbname"],
+            user=kw["user"],
+            password=kw["password"],
+        ),
+        connect_timeout=5,
+    )
 
 
 def redacted_postgres_host() -> str:
@@ -92,13 +113,7 @@ def redacted_postgres_host() -> str:
 
 @contextmanager
 def postgres_connection() -> Iterator[Any]:
-    import psycopg
-
-    conninfo = postgres_conninfo()
-    if conninfo:
-        conn = psycopg.connect(conninfo, connect_timeout=5)
-    else:
-        conn = psycopg.connect(**postgres_dsn_kwargs(), connect_timeout=5)
+    conn = postgres_connect()
     try:
         yield conn
         conn.commit()
