@@ -64,6 +64,8 @@ class ConnectionLogIn(BaseModel):
     def _normalize_outcome(self) -> ConnectionLogIn:
         if self.outcome not in ("success", "failure"):
             self.outcome = "failure"
+        if self.outcome == "success":
+            self.error_type = None
         return self
 
 
@@ -89,15 +91,18 @@ def log_connection_failure(
     context: dict[str, Any] | None = None,
     http_status: int | None = None,
 ) -> None:
-    mongo_store.append_connection_log(
-        user,
-        message,
-        outcome="failure",
-        event=event,
-        error_type=error_type,
-        context=context,
-        http_status=http_status,
-    )
+    try:
+        mongo_store.log_connection_event(
+            user,
+            message,
+            outcome="failure",
+            event=event,
+            error_type=error_type,
+            context=context,
+            http_status=http_status,
+        )
+    except RuntimeError as exc:
+        log.error("connection_logs write failed: %s", exc)
 
 
 def _ensure_upload_dir() -> None:
@@ -111,27 +116,40 @@ def _safe_stored_name(original: str) -> str:
 
 
 def _insert_connector_doc(doc: dict[str, Any]) -> dict[str, Any]:
+    payload = dict(doc)
+    payload.setdefault("connection_status", "connected")
     try:
-        inserted_id = mongo_store.insert_connector_document(doc)
+        inserted_id = mongo_store.insert_connector_document(payload)
     except RuntimeError as exc:
         raise HTTPException(status_code=503, detail=str(exc)) from exc
-    mongo_store.append_connection_log(
-        str(doc.get("user") or "unknown"),
-        f"Connector saved to {DB_NAME}.{COLLECTION}",
-        outcome="success",
-        event="connection.saved",
-        context={
-            **mongo_store.connector_summary_context(doc),
-            "connector_id": inserted_id,
-            "db": DB_NAME,
-            "collection": COLLECTION,
-        },
-    )
+    log_ok = True
+    log_detail: str | None = None
+    try:
+        mongo_store.log_connection_event(
+            str(payload.get("user") or "unknown"),
+            f"Connection established — saved to {DB_NAME}.{COLLECTION}",
+            outcome="success",
+            event="connection.established",
+            context={
+                **mongo_store.connector_summary_context(payload),
+                "connector_id": inserted_id,
+                "connection_status": payload.get("connection_status"),
+                "db": DB_NAME,
+                "collection": COLLECTION,
+            },
+        )
+    except RuntimeError as exc:
+        log_ok = False
+        log_detail = str(exc)
+        log.error("connection_logs write after connector save failed: %s", exc)
     return {
         "ok": True,
         "id": inserted_id,
         "db": DB_NAME,
         "collection": COLLECTION,
+        "connection_status": payload.get("connection_status"),
+        "connection_log": log_ok,
+        "connection_log_error": log_detail,
     }
 
 
@@ -250,6 +268,7 @@ def health(recent: int = 0) -> dict[str, Any]:
             "mongo": _redacted_mongo_uri(MONGO_URI),
             "db": DB_NAME,
             "collection": COLLECTION,
+            "connection_logs_collection": CONNECTION_LOGS_COLLECTION,
         }
         if recent > 0:
             payload["recent_connectors"] = _fetch_recent_connectors(recent)
@@ -260,14 +279,17 @@ def health(recent: int = 0) -> dict[str, Any]:
 
 @app.post("/api/connection-logs")
 def create_connection_log(body: ConnectionLogIn, request: Request) -> dict[str, bool]:
-    mongo_store.append_connection_log(
-        _resolve_user(request, body.user),
-        body.message,
-        outcome=body.outcome,  # validated success|failure
-        event=body.event,
-        error_type=body.error_type,
-        context=body.context,
-    )
+    try:
+        mongo_store.log_connection_event(
+            _resolve_user(request, body.user),
+            body.message,
+            outcome=body.outcome,  # validated success|failure
+            event=body.event,
+            error_type=body.error_type,
+            context=body.context,
+        )
+    except RuntimeError as exc:
+        raise HTTPException(status_code=503, detail=str(exc)) from exc
     return {"ok": True}
 
 

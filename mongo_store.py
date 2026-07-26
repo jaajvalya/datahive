@@ -179,4 +179,4 @@ def append_connection_log(
             http_status=http_status,
         )
     except RuntimeError as exc:
-        _log.warning("connection_logs insert failed: %s", exc)
+        _log.error("connection_logs insert failed: %s", exc)

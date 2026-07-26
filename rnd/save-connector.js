@@ -72,37 +72,49 @@
 
   /**
    * Persist a connection log record (success or failure) to MongoDB connection_logs.
+   * @returns {Promise<boolean>}
    */
-  function logConnectionEvent(details) {
-    if (!details || !details.message) return;
+  async function logConnectionEvent(details) {
+    if (!details || !details.message) return false;
     var outcome = details.outcome === "success" ? "success" : "failure";
     var body = {
       user: getRequestUser(),
       message: String(details.message),
       event:
         details.event ||
-        (outcome === "success" ? "connection.saved" : "connection.error"),
+        (outcome === "success" ? "connection.established" : "connection.error"),
       outcome: outcome,
       error_type: outcome === "success" ? null : details.error_type || "client",
       context: sanitizeContext(details.context || {})
     };
-    fetch(CONNECTION_LOGS_URL, {
-      method: "POST",
-      headers: requestHeaders({ "Content-Type": "application/json" }),
-      body: JSON.stringify(body)
-    }).catch(function (err) {
+    try {
+      var res = await fetch(CONNECTION_LOGS_URL, {
+        method: "POST",
+        headers: requestHeaders({ "Content-Type": "application/json" }),
+        body: JSON.stringify(body)
+      });
+      if (!res.ok) {
+        var errText = await res.text();
+        console.warn(
+          "[save-connector] connection_logs HTTP " + res.status + ": " + errText
+        );
+        return false;
+      }
+      return true;
+    } catch (err) {
       console.warn("[save-connector] could not write connection_logs", err);
-    });
+      return false;
+    }
   }
 
-  function logConnectionFailure(details) {
-    logConnectionEvent(
+  async function logConnectionFailure(details) {
+    return logConnectionEvent(
       Object.assign({}, details, { outcome: "failure" })
     );
   }
 
-  function logConnectionSuccess(details) {
-    logConnectionEvent(
+  async function logConnectionSuccess(details) {
+    return logConnectionEvent(
       Object.assign({}, details, { outcome: "success", error_type: null })
     );
   }
@@ -137,6 +149,7 @@
       file_type: payload.file_type || null,
       upload_format: payload.upload_format || null,
       upload_notes: payload.upload_notes || null,
+      connection_status: "connected",
       saved_at: new Date().toISOString()
     };
   }
@@ -181,7 +194,7 @@
         });
       }
     } catch (networkErr) {
-      logConnectionFailure({
+      await logConnectionFailure({
         message: networkErr && networkErr.message ? networkErr.message : String(networkErr),
         event: "connection.save_failed",
         error_type: "network",
@@ -189,7 +202,8 @@
           cloud: payload.cloud,
           mode: payload.mode,
           display_name: payload.display_name,
-          connector_type: payload.connector_type
+          connector_type: payload.connector_type,
+          connection_status: "failed"
         }
       });
       throw networkErr;
@@ -209,7 +223,37 @@
         bodyText ||
         "HTTP " + res.status;
       var errText = typeof msg === "string" ? msg : JSON.stringify(msg);
+      await logConnectionFailure({
+        message: errText,
+        event: "connection.save_failed",
+        error_type: "http",
+        context: {
+          cloud: payload.cloud,
+          mode: payload.mode,
+          display_name: payload.display_name,
+          connector_type: payload.connector_type,
+          connection_status: "failed",
+          http_status: res.status
+        }
+      });
       throw new Error(errText);
+    }
+
+    if (data.connection_log !== true) {
+      await logConnectionSuccess({
+        message: "Connection established — saved to MongoDB",
+        event: "connection.established",
+        context: {
+          cloud: payload.cloud,
+          mode: payload.mode,
+          display_name: payload.display_name,
+          connector_type: payload.connector_type,
+          connection_status: data.connection_status || "connected",
+          connector_id: data.id,
+          db: data.db,
+          collection: data.collection
+        }
+      });
     }
 
     console.info("[save-connector] saved to connectors collection", data);

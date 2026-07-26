@@ -223,6 +223,7 @@
     padding:4px 10px; border-radius:999px; font-size:12px; font-weight:700; }
   .pill.ok { background:rgba(31,169,113,.12); color:var(--ok); }
   .pill.pending { background:rgba(255,103,31,.10); color:var(--orange-500); }
+  .pill.err { background:var(--err-bg); color:#c0392b; border:1px solid var(--err-line); }
 
   .uploadzone {
     border:2px dashed var(--gray-200); border-radius:var(--radius); padding:28px 20px;
@@ -954,15 +955,25 @@ function showError(msg, skipLog){
   errBox.textContent = msg;
   errBox.classList.remove("hidden");
   if (skipLog || typeof logConnectionFailure !== "function") return;
-  logConnectionFailure({
+  void logConnectionFailure({
     message: msg,
     event: "connection.validation_failed",
     error_type: "validation",
     context: {
       cloud: activeCloud || null,
-      connector_type: CLOUDS[activeCloud] ? CLOUDS[activeCloud].type : null
+      connector_type: CLOUDS[activeCloud] ? CLOUDS[activeCloud].type : null,
+      connection_status: "failed"
     }
   });
+}
+
+function connectionLogContext(payload, extra){
+  return Object.assign({
+    cloud: payload.cloud,
+    connector_type: payload.connector_type,
+    display_name: payload.display_name,
+    mode: payload.mode
+  }, extra || {});
 }
 
 form.addEventListener("submit", async (e)=>{
@@ -1095,9 +1106,11 @@ form.addEventListener("submit", async (e)=>{
     } catch { /* ignore quota */ }
 
     closePanel();
+    const statusLabel =
+      cloud.mode === "upload" ? "Uploaded — ingest queued" : "Connected — fetch queued";
     showStatus(
-      payload,
-      cloud.mode === "upload" ? "Uploaded — ingest queued" : "Connected — fetch queued",
+      Object.assign({}, payload, { connection_status: saveResult.connection_status || "connected" }),
+      statusLabel,
       "ok",
       saveResult
     );
@@ -1113,9 +1126,21 @@ form.addEventListener("submit", async (e)=>{
       file_name: payload.file_name
     });
   } catch (err) {
-    showError(
-      "Could not save connector to MongoDB: " + (err && err.message ? err.message : err),
-      true
+    const msg =
+      "Could not save connector to MongoDB: " + (err && err.message ? err.message : err);
+    if (typeof logConnectionFailure === "function") {
+      await logConnectionFailure({
+        message: msg,
+        event: "connection.save_failed",
+        error_type: "save",
+        context: connectionLogContext(payload, { connection_status: "failed" })
+      });
+    }
+    showError(msg, true);
+    showStatus(
+      Object.assign({}, payload, { connection_status: "failed" }),
+      "Connection failed",
+      "err"
     );
   } finally {
     btn.disabled = false;
@@ -1168,10 +1193,19 @@ function showStatus(payload, pillText, pillKind, saveResult){
       mongoLine;
   }
 
+  if (payload.connection_status) {
+    $("#statusMeta").innerHTML +=
+      "<br><strong>Status:</strong> " + escapeHtml(payload.connection_status);
+  }
+
   const pill = $("#statusPill");
   pill.className = "pill " + (pillKind || "pending");
   pill.textContent = pillText;
   statusEl.classList.remove("hidden");
+
+  if (payload.connection_status === "failed") {
+    $("#statusTitle").textContent = payload.display_name || "Connection";
+  }
 }
 
 function escapeHtml(s){
