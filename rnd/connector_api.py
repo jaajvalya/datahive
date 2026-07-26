@@ -10,20 +10,31 @@ Run (from this directory):
     .venv/bin/python connector_api.py
 
 Listens on http://127.0.0.1:5055
+
+Upload mode writes files to rnd/UPLOAD/ and metadata to MongoDB (connectors).
 """
 from __future__ import annotations
 
+import json
 import os
+import re
+import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from fastapi import Body, FastAPI, HTTPException
+from fastapi import Body, FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from pymongo import MongoClient, uri_parser
 from pymongo.errors import PyMongoError
 
-_REPO_ROOT = Path(__file__).resolve().parent.parent
+_RND_DIR = Path(__file__).resolve().parent
+_REPO_ROOT = _RND_DIR.parent
+UPLOAD_DIR = _RND_DIR / "UPLOAD"
+MAX_UPLOAD_BYTES = 50 * 1024 * 1024
+ALLOWED_UPLOAD_SUFFIXES = frozenset(
+    {".csv", ".tsv", ".txt", ".xlsx", ".xls", ".json", ".parquet"}
+)
 
 
 def _load_repo_dotenv() -> None:
@@ -47,6 +58,49 @@ MONGO_URI = os.environ.get(
 _parsed_uri = uri_parser.parse_uri(MONGO_URI)
 DB_NAME = _parsed_uri.get("database") or "datahivepoc"
 COLLECTION = os.environ.get("MONGO_COLLECTION", "connectors")
+
+
+def _ensure_upload_dir() -> None:
+    UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
+
+
+def _safe_stored_name(original: str) -> str:
+    base = Path(original or "upload").name
+    safe = re.sub(r"[^\w.\- ]", "_", base).strip() or "upload"
+    return f"{uuid.uuid4().hex[:12]}_{safe}"
+
+
+def _insert_connector_doc(doc: dict[str, Any]) -> dict[str, Any]:
+    doc.setdefault("saved_at", datetime.now(timezone.utc).isoformat())
+    try:
+        result = get_collection().insert_one(doc)
+    except PyMongoError as exc:
+        raise HTTPException(status_code=503, detail=f"MongoDB write failed: {exc}") from exc
+    return {
+        "ok": True,
+        "id": str(result.inserted_id),
+        "db": DB_NAME,
+        "collection": COLLECTION,
+    }
+
+
+async def _write_upload_file(upload: UploadFile, dest: Path) -> int:
+    size = 0
+    with dest.open("wb") as out:
+        while True:
+            chunk = await upload.read(1024 * 1024)
+            if not chunk:
+                break
+            size += len(chunk)
+            if size > MAX_UPLOAD_BYTES:
+                out.close()
+                dest.unlink(missing_ok=True)
+                raise HTTPException(
+                    status_code=413,
+                    detail=f"File exceeds {MAX_UPLOAD_BYTES // (1024 * 1024)} MB limit.",
+                )
+            out.write(chunk)
+    return size
 
 
 def _redacted_mongo_uri(uri: str) -> str:
@@ -95,21 +149,46 @@ def health() -> dict[str, Any]:
 def save_connector(payload: dict[str, Any] = Body(...)) -> dict[str, Any]:
     if not payload:
         raise HTTPException(status_code=400, detail="Empty payload")
+    return _insert_connector_doc(dict(payload))
 
-    doc = dict(payload)
-    doc.setdefault("saved_at", datetime.now(timezone.utc).isoformat())
 
+@app.post("/api/connectors/upload")
+async def save_connector_upload(
+    file: UploadFile = File(...),
+    metadata: str = Form(...),
+) -> dict[str, Any]:
     try:
-        result = get_collection().insert_one(doc)
-    except PyMongoError as exc:
-        raise HTTPException(status_code=503, detail=f"MongoDB write failed: {exc}") from exc
+        meta = json.loads(metadata)
+    except json.JSONDecodeError as exc:
+        raise HTTPException(status_code=400, detail="Invalid metadata JSON.") from exc
+    if not isinstance(meta, dict) or not meta:
+        raise HTTPException(status_code=400, detail="Metadata must be a non-empty object.")
 
-    return {
-        "ok": True,
-        "id": str(result.inserted_id),
-        "db": DB_NAME,
-        "collection": COLLECTION,
-    }
+    original_name = file.filename or meta.get("file_name") or "upload"
+    suffix = Path(original_name).suffix.lower()
+    if suffix not in ALLOWED_UPLOAD_SUFFIXES:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Unsupported file type {suffix or '(none)'}.",
+        )
+
+    _ensure_upload_dir()
+    stored_name = _safe_stored_name(original_name)
+    dest = UPLOAD_DIR / stored_name
+    bytes_written = await _write_upload_file(file, dest)
+
+    doc = dict(meta)
+    doc["mode"] = doc.get("mode") or "upload"
+    doc["file_name"] = original_name
+    doc["stored_file_name"] = stored_name
+    doc["upload_relative_path"] = f"UPLOAD/{stored_name}"
+    doc["file_size"] = bytes_written
+    doc["file_type"] = file.content_type or doc.get("file_type") or ""
+
+    result = _insert_connector_doc(doc)
+    result["upload_relative_path"] = doc["upload_relative_path"]
+    result["stored_file_name"] = stored_name
+    return result
 
 
 if __name__ == "__main__":

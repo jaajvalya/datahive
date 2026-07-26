@@ -9,6 +9,7 @@
   "use strict";
 
   var API_URL = "http://127.0.0.1:5055/api/connectors";
+  var UPLOAD_API_URL = "http://127.0.0.1:5055/api/connectors/upload";
 
   /**
    * Build the document persisted in the connectors collection.
@@ -47,20 +48,38 @@
 
   /**
    * Persist connection attributes + input details to MongoDB via the local API.
+   * For file-upload mode, also stores the file under rnd/UPLOAD on the server.
    * @param {object} payload - Form payload built by main.html on submit
+   * @param {File|null} uploadFile - Selected file when mode is upload
    * @returns {Promise<{ok:boolean,id:string}>}
    */
-  async function saveConnectorToMongo(payload) {
+  async function saveConnectorToMongo(payload, uploadFile) {
     if (!payload || typeof payload !== "object") {
       throw new Error("Missing connector payload.");
     }
 
     var document = buildConnectorDocument(payload);
-    var res = await fetch(API_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(document)
-    });
+    var isUpload =
+      payload.mode === "upload" ||
+      payload.cloud === "upload" ||
+      payload.auth_type === "file_upload";
+    var res;
+
+    if (isUpload) {
+      if (!uploadFile) {
+        throw new Error("Missing upload file.");
+      }
+      var form = new FormData();
+      form.append("file", uploadFile, uploadFile.name);
+      form.append("metadata", JSON.stringify(document));
+      res = await fetch(UPLOAD_API_URL, { method: "POST", body: form });
+    } else {
+      res = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(document)
+      });
+    }
 
     var bodyText = await res.text();
     var data = null;

@@ -1,2 +1,4 @@
 *.env
 rnd/.venv/
+rnd/UPLOAD/*
+!rnd/UPLOAD/.gitkeep

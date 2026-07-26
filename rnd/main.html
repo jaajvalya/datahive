@@ -920,7 +920,10 @@ form.addEventListener("submit", async (e)=>{
     if (typeof saveConnectorToMongo !== "function") {
       throw new Error("save-connector.js is not loaded.");
     }
-    await saveConnectorToMongo(payload);
+    await saveConnectorToMongo(
+      payload,
+      cloud.mode === "upload" ? selectedUploadFile : null
+    );
 
     try {
       const toStore = {
