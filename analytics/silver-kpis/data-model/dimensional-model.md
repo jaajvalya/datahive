@@ -91,4 +91,4 @@ LEFT JOIN fact_support_ticket t ON t.customer_key = c.customer_key AND DATE(t.cr
 LEFT JOIN fact_customer_score_snapshot s ON s.customer_key = c.customer_key AND s.score_date = :d
 ```
 
-See [gold-layer-ddl.sql](./gold-layer-ddl.sql) for starter table definitions.
+See [gold-layer-ddl.sql](./gold-layer-ddl.sql) for table definitions and [ingest/run_ingest.sql](./ingest/run_ingest.sql) to load from silver.

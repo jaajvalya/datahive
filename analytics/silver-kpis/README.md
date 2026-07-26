@@ -10,7 +10,8 @@ This folder documents **Customer 360** analytics built from PostgreSQL schema **
 | [kpis/kpi-catalog.md](./kpis/kpi-catalog.md) | Exhaustive KPI list by domain pillar, with formulas and source columns |
 | [data-model/dimensional-model.md](./data-model/dimensional-model.md) | Recommended gold-layer star schema (facts, dimensions, grains) |
 | [data-model/entity-relationships.md](./data-model/entity-relationships.md) | Silver FK-style relationships and hub-and-spoke view |
-| [data-model/gold-layer-ddl.sql](./data-model/gold-layer-ddl.sql) | Starter DDL for gold facts and dimensions |
+| [data-model/gold-layer-ddl.sql](./data-model/gold-layer-ddl.sql) | Gold facts and dimensions DDL |
+| [data-model/ingest/](./data-model/ingest/) | SQL scripts to load silver → gold (`run_ingest.sql`) |
 
 ## Silver table inventory (29)
 
