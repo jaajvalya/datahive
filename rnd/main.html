@@ -290,18 +290,6 @@
   .card .hd { padding:16px 18px 0; }
   .card h2 { margin:0; font-size:18px; font-weight:700; color:var(--ink-900); }
   .card .bd { padding:14px 18px 18px; }
-  .tabs { display:flex; gap:18px; margin:12px 0 6px; border-bottom:1px solid var(--gray-200); }
-  .tab { padding:8px 2px; font-size:14px; font-weight:600; color:var(--ink-700); cursor:pointer;
-    border-bottom:2px solid transparent; margin-bottom:-1px; background:none; border-top:none;
-    border-left:none; border-right:none; font-family:inherit; }
-  .tab.active { color:var(--orange-500); border-bottom-color:var(--orange-500); }
-  .chips { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0; }
-  .chip { display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border-radius:999px;
-    background:var(--gray-150); border:1.5px solid transparent; font-size:13px; font-weight:500;
-    color:var(--ink-700); cursor:pointer; font-family:inherit; }
-  .chip .ct { font-weight:700; color:var(--ink-900); }
-  .chip.active { color:var(--orange-500); border-color:var(--orange-500); background:rgba(255,103,31,.06); }
-  .chip.active .ct { color:var(--orange-500); }
   .assetlist { max-height:420px; overflow:auto; }
   .asset { display:flex; gap:12px; padding:12px 6px; border-bottom:1px solid var(--gray-200); }
   .asset:last-child { border-bottom:none; }
@@ -324,13 +312,13 @@
     background:var(--warn-bg); border-bottom:1px solid var(--warn-line); }
 
   /* ---------- Assets: schema/table drill-down ---------- */
-  .asset-selectors { display:flex; gap:14px; margin:4px 0 16px; flex-wrap:wrap; }
-  .asset-selectors .field { flex:1; min-width:200px; margin-bottom:0; }
-  .asset-selectors label { display:block; font-size:12.5px; font-weight:600; color:var(--ink-700); margin-bottom:6px; }
-  .asset-selectors select { width:100%; padding:9px 10px; border:1px solid var(--gray-200);
+  .asset-picker { display:flex; flex-direction:column; gap:16px; margin:4px 0 20px; }
+  .asset-picker-block { padding:14px 16px; border:1px solid var(--gray-200); border-radius:10px; background:#fafbfd; }
+  .asset-picker-block label { display:block; font-size:13px; font-weight:700; color:var(--ink-900); margin-bottom:8px; }
+  .asset-picker-block select { width:100%; padding:9px 10px; border:1px solid var(--gray-200);
     border-radius:8px; font-family:inherit; font-size:14px; color:var(--ink-900); background:#fff; }
-  .asset-selectors select:disabled { color:#9aa3b2; background:var(--gray-100); cursor:not-allowed; }
-  .asset-table-meta { font-size:12.5px; color:#8a93a3; margin:-8px 0 12px; }
+  .asset-picker-block select:disabled { color:#9aa3b2; background:var(--gray-100); cursor:not-allowed; }
+  .asset-table-meta { font-size:12.5px; color:#8a93a3; margin:10px 0 0; }
   .asset-table-meta.err { color:#c0392b; }
   .asset-structure { border-top:1px solid var(--gray-200); padding-top:14px; }
   .structure-hd { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
@@ -412,22 +400,21 @@
             <h2>Know your data assets!</h2>
           </div>
           <div class="bd">
-            <div class="chips" id="assetChips"></div>
-            <div class="asset-selectors">
-              <div class="field">
+            <div class="asset-picker">
+              <div class="asset-picker-block">
                 <label for="assetSchemaSelect">Schema</label>
                 <select id="assetSchemaSelect">
                   <option value="">Select schema…</option>
                 </select>
               </div>
-              <div class="field">
+              <div class="asset-picker-block">
                 <label for="assetTableSelect">Table</label>
                 <select id="assetTableSelect" disabled>
                   <option value="">Select a schema first…</option>
                 </select>
+                <div id="assetTableMeta" class="asset-table-meta hidden" aria-live="polite"></div>
               </div>
             </div>
-            <div id="assetTableMeta" class="asset-table-meta hidden" aria-live="polite"></div>
             <div id="assetStructureWrap" class="asset-structure">
               <div class="state">Select a schema, then a table to view its structure.</div>
             </div>
@@ -1373,7 +1360,7 @@ try {
 
 /* ---------- Assets (PostgreSQL via connector API) ---------- */
 const CONFIGURED_ASSET_SCHEMAS = ["silver", "gold"];
-const assetState = { offline: false, loaded: false, schema: null, table: null, typeFilter: null };
+const assetState = { offline: false, loaded: false, schema: null, table: null };
 
 function formatAssetApiError(err) {
   const m = err && err.message ? err.message : String(err);
@@ -1396,7 +1383,6 @@ async function loadAssetCounts() {
   try {
     if (typeof DataHiveAssets === "undefined") throw new Error("Assets API not loaded");
     const data = await DataHiveAssets.summary();
-    renderAssetChips(data.counts || { All: 0, View: 0, Table: 0 });
     assetState.offline = false;
     const pgBanner = $("#pgBanner");
     if (pgBanner) pgBanner.classList.add("hidden");
@@ -1408,7 +1394,6 @@ async function loadAssetCounts() {
     }
   } catch (err) {
     assetState.offline = true;
-    renderAssetChips({ All: 0, View: 0, Table: 0 });
     const pgBanner = $("#pgBanner");
     if (pgBanner) {
       pgBanner.classList.remove("hidden");
@@ -1426,31 +1411,6 @@ function assetEl(tag, cls) {
 function assetSkeleton(elm, rows) {
   elm.innerHTML = "";
   for (let i = 0; i < rows; i++) elm.appendChild(assetEl("div", "sk sk-row"));
-}
-
-function renderAssetChips(counts) {
-  const wrap = $("#assetChips");
-  if (!wrap) return;
-  wrap.innerHTML = "";
-  const order = ["All", "View", "Table"];
-  order.forEach((k) => {
-    if (counts[k] == null) return;
-    const c = assetEl(
-      "button",
-      "chip" + ((k === "All" && assetState.typeFilter === null) || assetState.typeFilter === k ? " active" : "")
-    );
-    c.innerHTML = escapeHtml(k) + ' <span class="ct">' + counts[k] + "</span>";
-    c.title =
-      k === "All"
-        ? "Total data fields across silver & gold"
-        : "Filter the table dropdown to " + k + "s";
-    c.onclick = () => {
-      assetState.typeFilter = k === "All" ? null : k;
-      renderAssetChips(counts);
-      if (assetState.schema) populateTableSelect(assetState.schema);
-    };
-    wrap.appendChild(c);
-  });
 }
 
 function renderTableStructure(structure) {
@@ -1543,17 +1503,8 @@ async function populateTableSelect(schema) {
     return;
   }
 
-  if (assetState.typeFilter) {
-    tables = tables.filter((t) => t.type === assetState.typeFilter);
-  }
-
   if (!tables.length) {
-    select.innerHTML =
-      '<option value="">' +
-      (assetState.typeFilter
-        ? "No " + assetState.typeFilter + "s in this schema"
-        : "No tables found in this schema") +
-      "</option>";
+    select.innerHTML = '<option value="">No tables found in this schema</option>';
     select.disabled = true;
     return;
   }
@@ -1713,7 +1664,6 @@ const assetDiscover = $("#assetDiscover");
 if (assetDiscover) {
   assetDiscover.addEventListener("click", async (e) => {
     e.preventDefault();
-    assetState.typeFilter = null;
     if (assetSchemaSelect) assetSchemaSelect.value = "";
     assetState.schema = null;
     assetState.table = null;
