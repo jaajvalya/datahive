@@ -434,9 +434,8 @@
   <nav class="rail" aria-label="Primary">
     <div class="grp">
       <a href="#" data-view="assets"><span class="ic">🧭</span>Assets</a>
-      <a href="#" data-view="sql"><span class="ic">🗃️</span>SQL</a>
       <a href="#" class="active" data-view="connectors" aria-current="page"><span class="ic">🔀</span>Connectors</a>
-      <a href="#"><span class="ic">⚡</span>Insights</a>
+      <a href="#" data-view="insights"><span class="ic">⚡</span>Insights</a>
     </div>
     <div class="grp" style="margin-top:14px">
       <a href="../frontend/index-v2.html"><span class="ic">📘</span>Glossary</a>
@@ -510,7 +509,7 @@
 
     <div id="view-sql" class="sql-pane hidden">
       <div class="sql-pane-hd">
-        <h1>SQL explorer</h1>
+        <h1>Insights</h1>
         <p>Browse schemas from PostgreSQL (<code>POSTGRES_*</code> in <code>.env</code>), run read-only queries, and export results.</p>
       </div>
       <div class="sql-workbench">
@@ -1728,10 +1727,10 @@ document.querySelectorAll("nav.rail a[data-view]").forEach((a) => {
     a.classList.add("active");
     a.setAttribute("aria-current", "page");
     $("#view-assets").classList.toggle("hidden", view !== "assets");
-    $("#view-sql").classList.toggle("hidden", view !== "sql");
+    $("#view-sql").classList.toggle("hidden", view !== "insights");
     $("#view-connectors").classList.toggle("hidden", view !== "connectors");
     if (view === "assets") initAssetsView();
-    if (view === "sql" && typeof DataHiveSqlExplorer !== "undefined") {
+    if (view === "insights" && typeof DataHiveSqlExplorer !== "undefined") {
       DataHiveSqlExplorer.init();
     }
   });
