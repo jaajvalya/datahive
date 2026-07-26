@@ -1522,6 +1522,14 @@ function renderAssetSummary(counts, schemaCount) {
   if (tablesEl) tablesEl.textContent = counts && counts.Table != null ? String(counts.Table) : "—";
 }
 
+async function refreshAssetsCatalog() {
+  if (typeof ensureDataHiveConnectorApi === "function") {
+    await ensureDataHiveConnectorApi();
+  }
+  await loadAssetCounts();
+  await populateSchemaSelect();
+}
+
 async function loadAssetCounts() {
   try {
     if (typeof DataHiveAssets === "undefined") throw new Error("Assets API not loaded");
@@ -1535,6 +1543,7 @@ async function loadAssetCounts() {
   } catch (err) {
     assetState.offline = true;
     renderAssetSummary(null, null);
+    fillAssetSchemaSelect(mergedAssetSchemas([]));
     const pgBanner = $("#pgBanner");
     if (pgBanner) {
       pgBanner.classList.remove("hidden");
@@ -1704,8 +1713,12 @@ if (assetTableSelect) {
 }
 
 async function initAssetsView() {
-  if (assetState.loaded) return;
+  if (assetState.loaded) {
+    if (assetState.offline) await refreshAssetsCatalog();
+    return;
+  }
   assetState.loaded = true;
+  fillAssetSchemaSelect(mergedAssetSchemas([]));
   const hour = new Date().getHours();
   const greet = hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening";
   const nm = $("#userNm") ? $("#userNm").textContent.trim() : "Admin";
@@ -1724,8 +1737,7 @@ async function initAssetsView() {
       }
     }
   }
-  await loadAssetCounts();
-  populateSchemaSelect();
+  await refreshAssetsCatalog();
 }
 
 document.querySelectorAll("nav.rail a[data-view]").forEach((a) => {

@@ -65,7 +65,7 @@
       });
       if (!res.ok) return false;
       var data = await res.json();
-      return !!(data && data.query_log_api === true);
+      return !!(data && data.ok);
     } catch (err) {
       return false;
     }
@@ -138,6 +138,13 @@
     setInterval(function () {
       if (document.hidden) return;
       sendPresence();
+      if (!global.__datahiveApiRecheck) {
+        global.__datahiveApiRecheck = true;
+        return;
+      }
+      apiHealthy().then(function (up) {
+        if (!up) wakeWatchdog();
+      });
     }, PRESENCE_MS);
   });
 

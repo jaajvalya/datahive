@@ -119,24 +119,8 @@ def _start_api() -> None:
     global _child, _we_started_api
     with _lock:
         if _api_port_open():
-            if _api_query_log_ready():
-                return
-            log.warning(
-                "connector_api on port %s is outdated; restarting with current code",
-                _API_PORT,
-            )
-            _stop_listeners_on_port(_API_PORT)
-            if _child is not None and _child.poll() is None:
-                _child.terminate()
-                try:
-                    _child.wait(timeout=5)
-                except subprocess.TimeoutExpired:
-                    _child.kill()
-            _child = None
-            _we_started_api = False
-        if _child is not None and _child.poll() is None:
             return
-        if _api_port_open():
+        if _child is not None and _child.poll() is None:
             return
         flags = subprocess.CREATE_NO_WINDOW if sys.platform == "win32" else 0
         _child = subprocess.Popen(
@@ -196,6 +180,11 @@ def _reap_idle_tabs() -> None:
 def _supervisor_loop() -> None:
     while True:
         time.sleep(_POLL_SECONDS)
+        with _lock:
+            has_tabs = bool(_tabs)
+        if has_tabs and not _api_port_open():
+            _start_api()
+            _wait_for_api(timeout=15.0)
         _reap_idle_tabs()
 
 
