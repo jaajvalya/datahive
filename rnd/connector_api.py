@@ -36,6 +36,7 @@ if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
 import mongo_store  # noqa: E402
+import postgres_store  # noqa: E402
 
 log = logging.getLogger("datahive.connector_api")
 
@@ -270,11 +271,56 @@ def health(recent: int = 0) -> dict[str, Any]:
             "collection": COLLECTION,
             "connection_logs_collection": CONNECTION_LOGS_COLLECTION,
         }
+        try:
+            postgres_store.ping_postgres()
+            payload["postgres"] = postgres_store.redacted_postgres_host()
+            payload["postgres_ok"] = True
+        except Exception as pg_exc:  # noqa: BLE001
+            payload["postgres_ok"] = False
+            payload["postgres_error"] = str(pg_exc)
         if recent > 0:
             payload["recent_connectors"] = _fetch_recent_connectors(recent)
         return payload
     except Exception as exc:  # noqa: BLE001
         raise HTTPException(status_code=503, detail=f"MongoDB unavailable: {exc}") from exc
+
+
+@app.get("/api/assets/relevant")
+def assets_relevant(
+    request: Request,
+    tab: str = "recently_verified",
+    type: str | None = None,
+) -> dict[str, Any]:
+    if tab not in ("recently_verified", "my_drafts"):
+        raise HTTPException(status_code=422, detail="invalid tab")
+    try:
+        return postgres_store.relevant_assets(_resolve_user(request), tab, type)
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(status_code=503, detail=f"PostgreSQL read failed: {exc}") from exc
+
+
+@app.get("/api/assets/search")
+def assets_search(
+    request: Request,
+    q: str = "",
+    limit: int = 10,
+    offset: int = 0,
+) -> dict[str, Any]:
+    try:
+        return postgres_store.search_assets(
+            _resolve_user(request), q, limit=limit, offset=offset
+        )
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(status_code=503, detail=f"PostgreSQL search failed: {exc}") from exc
+
+
+@app.get("/api/assets/discover")
+def assets_discover(request: Request, limit: int = 100) -> dict[str, Any]:
+    capped = min(max(limit, 1), 500)
+    try:
+        return postgres_store.discover_assets(_resolve_user(request), limit=capped)
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(status_code=503, detail=f"PostgreSQL discover failed: {exc}") from exc
 
 
 @app.post("/api/connection-logs")

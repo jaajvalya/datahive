@@ -258,6 +258,76 @@
     margin: 0; width: 100%; max-width: 760px; max-height: min(92vh, 920px);
     overflow: auto; animation: rise .22s ease;
   }
+
+  /* ---------- Assets (from index-v2) ---------- */
+  .assets-pane { width: 100%; text-align: left; }
+  .hero { border-radius:16px; padding:26px 28px 30px;
+    background:linear-gradient(120deg,var(--navy-900),var(--navy-700));
+    color:#fff; position:relative; overflow:hidden; }
+  .hero::after { content:""; position:absolute; inset:0; opacity:.18; pointer-events:none;
+    background-image:linear-gradient(90deg,rgba(255,255,255,.25) 1px,transparent 1px),
+                     linear-gradient(rgba(255,255,255,.18) 1px,transparent 1px);
+    background-size:34px 34px; mask-image:linear-gradient(90deg,transparent,#000 60%); }
+  .hero h1 { margin:0 0 16px; font-size:28px; font-weight:600; display:flex; align-items:center; gap:10px; }
+  .searchwrap { position:relative; z-index:2; }
+  .searchbar { display:flex; align-items:center; gap:10px; background:#fff; border-radius:10px;
+    padding:12px 14px; box-shadow:var(--shadow); }
+  .searchbar .mk { font-weight:800; color:var(--navy-900); font-size:14px; }
+  .searchbar input { flex:1; border:none; outline:none; font-family:inherit; font-size:15px; color:var(--ink-900); }
+  .searchbar input::placeholder { color:#9aa3b2; }
+  .hero .discover { display:block; text-align:right; margin-top:10px; color:#fff; font-weight:500; opacity:.95; }
+  .hero .discover:hover { color:#ffd9c6; }
+  .searchresults { position:absolute; left:0; right:0; top:calc(100% + 6px); z-index:5; background:#fff;
+    border:1px solid var(--gray-200); border-radius:10px; box-shadow:0 8px 24px rgba(1,8,24,.14);
+    max-height:340px; overflow:auto; }
+  .searchresults .r { padding:10px 14px; display:flex; gap:10px; align-items:center; cursor:pointer;
+    border-bottom:1px solid var(--gray-200); color:var(--ink-900); }
+  .searchresults .r:last-child { border-bottom:none; }
+  .searchresults .r:hover { background:var(--gray-100); }
+  .searchresults .empty { padding:16px; color:var(--ink-700); font-size:14px; }
+  .assets-grid { display:grid; grid-template-columns:1fr; gap:20px; margin-top:20px; }
+  .card { background:#fff; border:1px solid var(--gray-200); border-radius:var(--radius); box-shadow:var(--shadow); }
+  .card .hd { padding:16px 18px 0; }
+  .card h2 { margin:0; font-size:18px; font-weight:700; color:var(--ink-900); }
+  .card .bd { padding:14px 18px 18px; }
+  .tabs { display:flex; gap:18px; margin:12px 0 6px; border-bottom:1px solid var(--gray-200); }
+  .tab { padding:8px 2px; font-size:14px; font-weight:600; color:var(--ink-700); cursor:pointer;
+    border-bottom:2px solid transparent; margin-bottom:-1px; background:none; border-top:none;
+    border-left:none; border-right:none; font-family:inherit; }
+  .tab.active { color:var(--orange-500); border-bottom-color:var(--orange-500); }
+  .chips { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0; }
+  .chip { display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border-radius:999px;
+    background:var(--gray-150); border:1.5px solid transparent; font-size:13px; font-weight:500;
+    color:var(--ink-700); cursor:pointer; font-family:inherit; }
+  .chip .ct { font-weight:700; color:var(--ink-900); }
+  .chip.active { color:var(--orange-500); border-color:var(--orange-500); background:rgba(255,103,31,.06); }
+  .chip.active .ct { color:var(--orange-500); }
+  .assetlist { max-height:420px; overflow:auto; }
+  .asset { display:flex; gap:12px; padding:12px 6px; border-bottom:1px solid var(--gray-200); }
+  .asset:last-child { border-bottom:none; }
+  .asset:hover { background:var(--gray-100); }
+  .asset .tile { width:34px; height:34px; border-radius:8px; flex:0 0 auto;
+    display:flex; align-items:center; justify-content:center; font-size:16px; color:#fff;
+    background:var(--navy-700); }
+  .asset .meta { flex:1; min-width:0; }
+  .asset .nm { font-weight:700; color:var(--navy-700); display:flex; align-items:center; gap:6px; }
+  .asset .verified { color:var(--ok); font-size:13px; }
+  .asset .crumb { font-size:12.5px; color:var(--ink-700); margin:2px 0; }
+  .asset .time { font-size:12px; color:#8a93a3; display:flex; align-items:center; gap:5px; }
+  .asset .warn { color:var(--warn-line); font-size:16px; align-self:flex-start; }
+  .segtabs { display:flex; gap:8px; }
+  .segtab { padding:8px 14px; border-radius:8px; border:1px solid var(--gray-200); background:#fff;
+    font-family:inherit; font-size:13px; font-weight:600; cursor:pointer; color:var(--ink-900);
+    display:flex; gap:8px; align-items:center; }
+  .segtab .ct { color:var(--orange-500); font-weight:700; }
+  .segtab.active { border-color:var(--orange-500); }
+  .sk { background:linear-gradient(90deg,#eef1f6 25%,#e3e8f0 37%,#eef1f6 63%);
+    background-size:400% 100%; animation:sh 1.2s infinite; border-radius:8px; }
+  @keyframes sh { 0%{background-position:100% 0} 100%{background-position:-100% 0} }
+  .sk-row { height:52px; margin:10px 0; }
+  .state { padding:20px; text-align:center; color:var(--ink-700); font-size:14px; }
+  .pgbanner { padding:8px 14px; font-size:12.5px; text-align:center; color:#7a5200;
+    background:var(--warn-bg); border-bottom:1px solid var(--warn-line); }
 </style>
 </head>
 <body>
@@ -278,17 +348,20 @@
 </header>
 
 <div class="apibanner hidden" id="apiBanner" role="status"></div>
+<div class="pgbanner hidden" id="pgBanner" role="status">
+  PostgreSQL is not reachable — asset search uses demo data only. Run connector API and check POSTGRES_* in <code>.env</code>.
+</div>
 
 <div class="shell">
   <!-- ===== Left rail ===== -->
   <nav class="rail" aria-label="Primary">
     <div class="grp">
-      <a href="../frontend/index-v2.html"><span class="ic">🧭</span>Assets</a>
+      <a href="#" data-view="assets"><span class="ic">🧭</span>Assets</a>
       <a href="../frontend/index-v2.html"><span class="ic">📘</span>Glossary</a>
       <a href="#"><span class="ic">⚡</span>Insights</a>
     </div>
     <div class="grp" style="margin-top:14px">
-      <a href="#" class="active" aria-current="page"><span class="ic">🔀</span>Connectors</a>
+      <a href="#" class="active" data-view="connectors" aria-current="page"><span class="ic">🔀</span>Connectors</a>
       <a href="../frontend/index-v2.html"><span class="ic">🏛️</span>Governance</a>
       <a href="../frontend/index-v2.html"><span class="ic">🛡️</span>Admin</a>
       <a href="#"><span class="ic">📊</span>Reporting</a>
@@ -301,6 +374,46 @@
 
   <!-- ===== Body ===== -->
   <main class="body">
+    <div id="view-assets" class="assets-pane hidden">
+      <section class="hero">
+        <h1><span>☀️</span> <span id="assetsGreeting">Good day, Admin!</span></h1>
+        <div class="searchwrap">
+          <div class="searchbar">
+            <span class="mk">DataHive</span>
+            <input id="assetSearch" type="search" placeholder="Search all your assets" autocomplete="off"
+                   aria-label="Search all your assets" />
+          </div>
+          <div id="assetSearchResults" class="searchresults hidden"></div>
+        </div>
+        <a class="discover" href="#" id="assetDiscover">Discover all assets →</a>
+      </section>
+      <div class="assets-grid">
+        <section class="card">
+          <div class="hd">
+            <h2>Relevant to you</h2>
+            <div class="tabs" id="assetRelTabs">
+              <button type="button" class="tab active" data-tab="recently_verified">Recently verified assets</button>
+              <button type="button" class="tab" data-tab="my_drafts">My drafts</button>
+            </div>
+          </div>
+          <div class="bd">
+            <div class="chips" id="assetChips"></div>
+            <div class="assetlist" id="assetList"></div>
+          </div>
+        </section>
+        <section class="card">
+          <div class="hd"><h2>Personalise your experience</h2></div>
+          <div class="bd">
+            <div class="segtabs" id="assetPersonalise">
+              <button type="button" class="segtab active">Persona <span class="ct">2</span></button>
+              <button type="button" class="segtab">Purpose <span class="ct">5</span></button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div id="view-connectors">
     <div class="stage">
       <section class="instr-card">
         <div class="instr-hd"><h2>Pre-requisites &amp; Configuration Instructions</h2></div>
@@ -323,6 +436,7 @@
         <div class="meta" id="statusMeta"></div>
         <div class="pill pending" id="statusPill">Ready to fetch</div>
       </section>
+    </div>
     </div>
   </main>
 </div>
@@ -468,6 +582,7 @@
 </div>
 
 <script src="save-connector.js"></script>
+<script src="assets.js"></script>
 <script>
 const $ = (sel, root=document) => root.querySelector(sel);
 const $$ = (sel, root=document) => [...root.querySelectorAll(sel)];
@@ -1232,6 +1347,210 @@ try {
     })();
   if (saved) showStatus(saved, "Previously configured", "pending");
 } catch { /* ignore */ }
+
+/* ---------- Assets (PostgreSQL via connector API) ---------- */
+const ASSET_MOCK = {
+  counts: { View: 5, Column: 3, Query: 9, Term: 23, Category: 5, Glossary: 3, Dashboard: 7, Table: 12 },
+  items: [
+    { name: "Food Beverage Order Analysis", type: "Dashboard", crumb: "Dashboard › Food Beverage Order Analysis", edited: "edited 3 months ago", verified: true, warning: true },
+    { name: "Customer Acquisition Cost Metrics", type: "Dashboard", crumb: "Dashboard › Customer Acquisition Cost", edited: "edited 3 months ago", verified: true, warning: false },
+    { name: "Consolidated_dashboard", type: "Dashboard", crumb: "Dashboard › Cost Overruns Dashboard", edited: "edited 7 months ago", verified: true, warning: false }
+  ]
+};
+const assetState = { tab: "recently_verified", type: null, offline: false, loaded: false };
+
+function assetEl(tag, cls) {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  return e;
+}
+
+function assetSkeleton(elm, rows) {
+  elm.innerHTML = "";
+  for (let i = 0; i < rows; i++) elm.appendChild(assetEl("div", "sk sk-row"));
+}
+
+function renderAssetChips(counts) {
+  const wrap = $("#assetChips");
+  if (!wrap) return;
+  wrap.innerHTML = "";
+  const all = assetEl("button", "chip" + (assetState.type === null ? " active" : ""));
+  all.textContent = "All";
+  all.onclick = () => { assetState.type = null; loadAssetList(); };
+  wrap.appendChild(all);
+  Object.keys(counts || {}).forEach((k) => {
+    if (!counts[k]) return;
+    const c = assetEl("button", "chip" + (assetState.type === k ? " active" : ""));
+    c.innerHTML = escapeHtml(k) + ' <span class="ct">' + counts[k] + "</span>";
+    c.onclick = () => { assetState.type = k; loadAssetList(); };
+    wrap.appendChild(c);
+  });
+}
+
+function renderAssetRows(list) {
+  const wrap = $("#assetList");
+  if (!wrap) return;
+  wrap.innerHTML = "";
+  if (!list.length) {
+    wrap.innerHTML = '<div class="state">No assets match this filter.</div>';
+    return;
+  }
+  list.forEach((a) => {
+    const row = assetEl("div", "asset");
+    row.innerHTML =
+      '<div class="tile">▦</div>' +
+      '<div class="meta">' +
+      '<div class="nm">' + escapeHtml(a.name) + (a.verified ? ' <span class="verified">✔</span>' : "") + "</div>" +
+      '<div class="crumb">' + escapeHtml(a.crumb || a.type) + "</div>" +
+      '<div class="time">🕒 ' + escapeHtml(a.edited || "") + "</div>" +
+      "</div>" +
+      (a.warning ? '<div class="warn" title="Has warnings">⚠️</div>' : "");
+    wrap.appendChild(row);
+  });
+}
+
+async function loadAssetList() {
+  const wrap = $("#assetList");
+  if (!wrap || typeof DataHiveAssets === "undefined") return;
+  assetSkeleton(wrap, 3);
+  try {
+    if (assetState.offline) throw new Error("offline");
+    const data = await DataHiveAssets.relevant(assetState.tab, assetState.type);
+    renderAssetChips(data.counts || ASSET_MOCK.counts);
+    renderAssetRows(data.items || []);
+  } catch {
+    renderAssetChips(ASSET_MOCK.counts);
+    let list = ASSET_MOCK.items.slice();
+    if (assetState.type) list = list.filter((a) => a.type === assetState.type);
+    renderAssetRows(list);
+  }
+}
+
+async function initAssetsView() {
+  if (assetState.loaded) return;
+  assetState.loaded = true;
+  const hour = new Date().getHours();
+  const greet = hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening";
+  const nm = $("#userNm") ? $("#userNm").textContent.trim() : "Admin";
+  const g = $("#assetsGreeting");
+  if (g) g.textContent = greet + ", " + nm + "!";
+
+  if (typeof checkConnectorApiHealth === "function") {
+    const health = await checkConnectorApiHealth();
+    assetState.offline =
+      !health || !health.ok || health.postgres_ok === false;
+    const pgBanner = $("#pgBanner");
+    if (pgBanner) {
+      if (assetState.offline) pgBanner.classList.remove("hidden");
+      else pgBanner.classList.add("hidden");
+    }
+  }
+  loadAssetList();
+}
+
+document.querySelectorAll("nav.rail a[data-view]").forEach((a) => {
+  a.addEventListener("click", (e) => {
+    e.preventDefault();
+    const view = a.dataset.view;
+    if (!view) return;
+    document.querySelectorAll("nav.rail a[data-view]").forEach((x) => {
+      x.classList.remove("active");
+      x.removeAttribute("aria-current");
+    });
+    a.classList.add("active");
+    a.setAttribute("aria-current", "page");
+    $("#view-assets").classList.toggle("hidden", view !== "assets");
+    $("#view-connectors").classList.toggle("hidden", view !== "connectors");
+    if (view === "assets") initAssetsView();
+  });
+});
+
+const assetRelTabs = $("#assetRelTabs");
+if (assetRelTabs) {
+  assetRelTabs.addEventListener("click", (e) => {
+    const b = e.target.closest(".tab");
+    if (!b) return;
+    assetRelTabs.querySelectorAll(".tab").forEach((t) => t.classList.remove("active"));
+    b.classList.add("active");
+    assetState.tab = b.dataset.tab;
+    loadAssetList();
+  });
+}
+
+let assetSearchTimer = null;
+const assetSearchInput = $("#assetSearch");
+if (assetSearchInput) {
+  assetSearchInput.addEventListener("input", (e) => {
+    const q = e.target.value.trim();
+    clearTimeout(assetSearchTimer);
+    const box = $("#assetSearchResults");
+    if (!q) {
+      box.classList.add("hidden");
+      return;
+    }
+    assetSearchTimer = setTimeout(async () => {
+      let items = [];
+      try {
+        if (assetState.offline || typeof DataHiveAssets === "undefined") throw new Error("offline");
+        items = (await DataHiveAssets.search(q)).items || [];
+      } catch {
+        const qq = q.toLowerCase();
+        items = ASSET_MOCK.items
+          .filter((a) => a.name.toLowerCase().includes(qq) || a.type.toLowerCase().includes(qq))
+          .map((a) => ({ name: a.name, type: a.type }));
+      }
+      box.innerHTML = "";
+      if (!items.length) {
+        box.innerHTML = '<div class="empty">No results for “' + escapeHtml(q) + '”.</div>';
+      } else {
+        items.forEach((it) => {
+          const r = assetEl("div", "r");
+          r.innerHTML =
+            '<span class="tile" style="width:26px;height:26px;background:var(--navy-700);color:#fff;border-radius:6px;display:flex;align-items:center;justify-content:center">▦</span> ' +
+            "<span>" + escapeHtml(it.name) + ' <small style="color:#8a93a3">· ' + escapeHtml(it.type) + "</small></span>";
+          box.appendChild(r);
+        });
+      }
+      box.classList.remove("hidden");
+    }, 250);
+  });
+}
+
+const assetDiscover = $("#assetDiscover");
+if (assetDiscover) {
+  assetDiscover.addEventListener("click", async (e) => {
+    e.preventDefault();
+    assetState.type = null;
+    const wrap = $("#assetList");
+    if (wrap) assetSkeleton(wrap, 5);
+    try {
+      if (assetState.offline || typeof DataHiveAssets === "undefined") throw new Error("offline");
+      const data = await DataHiveAssets.discover();
+      renderAssetChips(data.counts || ASSET_MOCK.counts);
+      renderAssetRows(data.items || []);
+    } catch {
+      renderAssetChips(ASSET_MOCK.counts);
+      renderAssetRows(ASSET_MOCK.items);
+    }
+  });
+}
+
+document.addEventListener("click", (e) => {
+  if (!e.target.closest(".searchwrap")) {
+    const box = $("#assetSearchResults");
+    if (box) box.classList.add("hidden");
+  }
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "/" && document.activeElement.tagName !== "INPUT" && document.activeElement.tagName !== "TEXTAREA") {
+    const assetsVisible = $("#view-assets") && !$("#view-assets").classList.contains("hidden");
+    if (assetsVisible && assetSearchInput) {
+      e.preventDefault();
+      assetSearchInput.focus();
+    }
+  }
+});
 
 (async function initConnectorApiBanner(){
   if (typeof checkConnectorApiHealth !== "function") return;
