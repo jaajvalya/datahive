@@ -1350,11 +1350,11 @@ try {
 
 /* ---------- Assets (PostgreSQL via connector API) ---------- */
 const ASSET_MOCK = {
-  counts: { View: 5, Column: 3, Query: 9, Term: 23, Category: 5, Glossary: 3, Dashboard: 7, Table: 12 },
+  counts: { All: 128, View: 4, Table: 18 },
   items: [
-    { name: "Food Beverage Order Analysis", type: "Dashboard", crumb: "Dashboard › Food Beverage Order Analysis", edited: "edited 3 months ago", verified: true, warning: true },
-    { name: "Customer Acquisition Cost Metrics", type: "Dashboard", crumb: "Dashboard › Customer Acquisition Cost", edited: "edited 3 months ago", verified: true, warning: false },
-    { name: "Consolidated_dashboard", type: "Dashboard", crumb: "Dashboard › Cost Overruns Dashboard", edited: "edited 7 months ago", verified: true, warning: false }
+    { name: "orders", type: "Table", crumb: "silver › orders", edited: "catalog snapshot", verified: true, warning: false },
+    { name: "customers", type: "Table", crumb: "silver › customers", edited: "catalog snapshot", verified: true, warning: false },
+    { name: "revenue_summary", type: "View", crumb: "gold › revenue_summary", edited: "catalog snapshot", verified: true, warning: false }
   ]
 };
 const assetState = { tab: "recently_verified", type: null, offline: false, loaded: false };
@@ -1374,15 +1374,18 @@ function renderAssetChips(counts) {
   const wrap = $("#assetChips");
   if (!wrap) return;
   wrap.innerHTML = "";
-  const all = assetEl("button", "chip" + (assetState.type === null ? " active" : ""));
-  all.textContent = "All";
-  all.onclick = () => { assetState.type = null; loadAssetList(); };
-  wrap.appendChild(all);
-  Object.keys(counts || {}).forEach((k) => {
-    if (!counts[k]) return;
-    const c = assetEl("button", "chip" + (assetState.type === k ? " active" : ""));
+  const order = ["All", "View", "Table"];
+  order.forEach((k) => {
+    if (counts[k] == null) return;
+    const c = assetEl(
+      "button",
+      "chip" + ((k === "All" && assetState.type === null) || assetState.type === k ? " active" : "")
+    );
     c.innerHTML = escapeHtml(k) + ' <span class="ct">' + counts[k] + "</span>";
-    c.onclick = () => { assetState.type = k; loadAssetList(); };
+    c.onclick = () => {
+      assetState.type = k === "All" ? null : k;
+      loadAssetList();
+    };
     wrap.appendChild(c);
   });
 }

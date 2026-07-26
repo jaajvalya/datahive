@@ -10,7 +10,7 @@ from mongo_store import load_repo_dotenv
 
 _log = logging.getLogger("datahive.postgres_store")
 
-ASSET_TYPES = ("View", "Column", "Query", "Term", "Category", "Glossary", "Dashboard", "Table")
+DEFAULT_ASSET_SCHEMAS = ("silver", "gold")
 
 _SCHEMA_STATEMENTS = (
     """
@@ -35,6 +35,13 @@ def _pg_setting(name: str, default: str) -> str:
     return os.environ.get(name, default)
 
 
+def asset_schemas() -> tuple[str, ...]:
+    load_repo_dotenv()
+    raw = os.environ.get("POSTGRES_ASSET_SCHEMAS", "silver,gold")
+    parts = [p.strip() for p in raw.split(",") if p.strip()]
+    return tuple(parts) if parts else DEFAULT_ASSET_SCHEMAS
+
+
 def postgres_dsn_kwargs() -> dict[str, Any]:
     load_repo_dotenv()
     return {
@@ -48,7 +55,8 @@ def postgres_dsn_kwargs() -> dict[str, Any]:
 
 def redacted_postgres_host() -> str:
     kw = postgres_dsn_kwargs()
-    return f"{kw['user']}@{kw['host']}:{kw['port']}/{kw['dbname']}"
+    schemas = ", ".join(asset_schemas())
+    return f"{kw['user']}@{kw['host']}:{kw['port']}/{kw['dbname']} (schemas: {schemas})"
 
 
 @contextmanager
@@ -83,26 +91,6 @@ def ensure_assets_schema() -> None:
                 seed = [
                     (
                         "Admin",
-                        "Food Beverage Order Analysis",
-                        "Dashboard",
-                        "Dashboard › Food Beverage Order Analysis",
-                        "edited 3 months ago",
-                        True,
-                        True,
-                        "recently_verified",
-                    ),
-                    (
-                        "Admin",
-                        "Customer Acquisition Cost Metrics",
-                        "Dashboard",
-                        "Dashboard › Customer Acquisition Cost",
-                        "edited 3 months ago",
-                        True,
-                        False,
-                        "recently_verified",
-                    ),
-                    (
-                        "Admin",
                         "Revenue by Region (draft)",
                         "Query",
                         "Query › Revenue by Region",
@@ -121,19 +109,52 @@ def ensure_assets_schema() -> None:
                 )
 
 
-def _catalog_assets(limit: int = 200) -> list[dict[str, Any]]:
+def _catalog_counts() -> dict[str, int]:
+    """All = column (field) count; View / Table = object counts in asset schemas."""
+    schemas = list(asset_schemas())
+    with postgres_connection() as conn:
+        with conn.cursor() as cur:
+            cur.execute(
+                """
+                SELECT
+                  COUNT(*) FILTER (WHERE table_type = 'BASE TABLE') AS tables,
+                  COUNT(*) FILTER (WHERE table_type = 'VIEW') AS views
+                FROM information_schema.tables
+                WHERE table_schema = ANY(%s)
+                  AND table_type IN ('BASE TABLE', 'VIEW')
+                """,
+                (schemas,),
+            )
+            tables_n, views_n = cur.fetchone()
+            cur.execute(
+                """
+                SELECT COUNT(*)
+                FROM information_schema.columns
+                WHERE table_schema = ANY(%s)
+                """,
+                (schemas,),
+            )
+            fields_n = int(cur.fetchone()[0])
+    return {
+        "All": fields_n,
+        "View": int(views_n or 0),
+        "Table": int(tables_n or 0),
+    }
+
+
+def _catalog_assets() -> list[dict[str, Any]]:
+    schemas = list(asset_schemas())
     sql = """
         SELECT table_schema, table_name, table_type
         FROM information_schema.tables
-        WHERE table_schema NOT IN ('pg_catalog', 'information_schema')
+        WHERE table_schema = ANY(%s)
           AND table_type IN ('BASE TABLE', 'VIEW')
         ORDER BY table_schema, table_name
-        LIMIT %s
     """
     items: list[dict[str, Any]] = []
     with postgres_connection() as conn:
         with conn.cursor() as cur:
-            cur.execute(sql, (limit,))
+            cur.execute(sql, (schemas,))
             rows = cur.fetchall()
     for schema, name, table_type in rows:
         asset_type = "View" if table_type == "VIEW" else "Table"
@@ -146,6 +167,7 @@ def _catalog_assets(limit: int = 200) -> list[dict[str, Any]]:
                 "verified": True,
                 "warning": False,
                 "source": "catalog",
+                "schema": schema,
             }
         )
     return items
@@ -176,12 +198,12 @@ def _table_assets(owner: str, tab: str) -> list[dict[str, Any]]:
     ]
 
 
-def _merge_counts(items: list[dict[str, Any]]) -> dict[str, int]:
-    counts: dict[str, int] = {t: 0 for t in ASSET_TYPES}
-    for it in items:
-        t = it.get("type") or "Table"
-        counts[t] = counts.get(t, 0) + 1
-    return counts
+def _apply_type_filter(
+    items: list[dict[str, Any]], asset_type: str | None
+) -> list[dict[str, Any]]:
+    if not asset_type or asset_type == "All":
+        return items
+    return [i for i in items if i.get("type") == asset_type]
 
 
 def relevant_assets(
@@ -190,19 +212,17 @@ def relevant_assets(
     asset_type: str | None = None,
 ) -> dict[str, Any]:
     ensure_assets_schema()
+    counts = _catalog_counts()
     if tab == "my_drafts":
-        pool = _table_assets(owner, "my_drafts")
+        items = _table_assets(owner, "my_drafts")
     else:
-        pool = [i for i in _table_assets(owner, "recently_verified") if i.get("verified")]
-        pool.extend(_catalog_assets())
-    count_pool = _table_assets(owner, tab) + _catalog_assets()
-    items = pool
-    if asset_type:
-        items = [i for i in items if i.get("type") == asset_type]
+        items = _catalog_assets()
+    items = _apply_type_filter(items, asset_type)
     return {
         "tab": tab,
         "type": asset_type,
-        "counts": _merge_counts(count_pool),
+        "schemas": list(asset_schemas()),
+        "counts": counts,
         "items": items,
     }
 
@@ -219,6 +239,7 @@ def search_assets(
     limit = max(1, min(limit, 50))
     offset = max(0, offset)
     items: list[dict[str, Any]] = []
+    schemas = list(asset_schemas())
     if not q:
         return {"query": q, "items": items}
 
@@ -227,57 +248,58 @@ def search_assets(
         with conn.cursor() as cur:
             cur.execute(
                 """
-                SELECT DISTINCT name, type
-                FROM assets
-                WHERE owner = %s AND (name ILIKE %s OR type ILIKE %s OR crumb ILIKE %s)
-                ORDER BY name
+                SELECT table_schema, table_name, table_type
+                FROM information_schema.tables
+                WHERE table_schema = ANY(%s)
+                  AND table_type IN ('BASE TABLE', 'VIEW')
+                  AND (table_name ILIKE %s OR table_schema ILIKE %s)
+                ORDER BY table_schema, table_name
                 LIMIT %s OFFSET %s
                 """,
-                (owner, like, like, like, limit, offset),
+                (schemas, like, like, limit, offset),
             )
-            for name, typ in cur.fetchall():
-                items.append({"name": name, "type": typ})
-
-            if len(items) < limit:
-                cur.execute(
-                    """
-                    SELECT table_schema, table_name, table_type
-                    FROM information_schema.tables
-                    WHERE table_schema NOT IN ('pg_catalog', 'information_schema')
-                      AND (table_name ILIKE %s OR table_schema ILIKE %s)
-                    ORDER BY table_schema, table_name
-                    LIMIT %s
-                    """,
-                    (like, like, limit - len(items)),
-                )
-                seen = {(i["name"], i["type"]) for i in items}
-                for schema, name, table_type in cur.fetchall():
-                    typ = "View" if table_type == "VIEW" else "Table"
-                    key = (name, typ)
-                    if key in seen:
-                        continue
-                    items.append({"name": name, "type": typ})
-                    seen.add(key)
+            for schema, name, table_type in cur.fetchall():
+                typ = "View" if table_type == "VIEW" else "Table"
+                items.append({"name": name, "type": typ, "schema": schema})
 
             if len(items) < limit:
                 cur.execute(
                     """
                     SELECT table_schema, table_name, column_name
                     FROM information_schema.columns
-                    WHERE table_schema NOT IN ('pg_catalog', 'information_schema')
+                    WHERE table_schema = ANY(%s)
                       AND (column_name ILIKE %s OR table_name ILIKE %s)
-                    ORDER BY table_schema, table_name, column_name
+                    ORDER BY table_schema, table_name, ordinal_position
                     LIMIT %s
                     """,
-                    (like, like, limit - len(items)),
+                    (schemas, like, like, limit - len(items)),
                 )
-                seen = {(i["name"], i["type"]) for i in items}
-                for _schema, table, column in cur.fetchall():
+                seen = {(i["name"], i["type"], i.get("schema")) for i in items}
+                for schema, table, column in cur.fetchall():
                     label = f"{table}.{column}"
-                    key = (label, "Column")
+                    key = (label, "Column", schema)
                     if key in seen:
                         continue
-                    items.append({"name": label, "type": "Column"})
+                    items.append({"name": label, "type": "Column", "schema": schema})
+                    seen.add(key)
+
+            if len(items) < limit:
+                cur.execute(
+                    """
+                    SELECT DISTINCT name, type
+                    FROM assets
+                    WHERE owner = %s AND (name ILIKE %s OR type ILIKE %s OR crumb ILIKE %s)
+                    ORDER BY name
+                    LIMIT %s
+                    """,
+                    (owner, like, like, like, limit - len(items)),
+                )
+                seen = {(i["name"], i["type"]) for i in items}
+                for name, typ in cur.fetchall():
+                    key = (name, typ)
+                    if key in seen:
+                        continue
+                    items.append({"name": name, "type": typ})
                     seen.add(key)
 
     return {"query": q, "items": items[:limit]}
@@ -285,6 +307,7 @@ def search_assets(
 
 def discover_assets(owner: str, *, limit: int = 100) -> dict[str, Any]:
     ensure_assets_schema()
-    items = _table_assets(owner, "recently_verified") + _table_assets(owner, "my_drafts")
-    items.extend(_catalog_assets(limit=limit))
-    return {"items": items, "counts": _merge_counts(items)}
+    _ = owner
+    _ = limit
+    items = _catalog_assets()
+    return {"items": items, "schemas": list(asset_schemas()), "counts": _catalog_counts()}
