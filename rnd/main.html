@@ -315,12 +315,6 @@
   .asset .crumb { font-size:12.5px; color:var(--ink-700); margin:2px 0; }
   .asset .time { font-size:12px; color:#8a93a3; display:flex; align-items:center; gap:5px; }
   .asset .warn { color:var(--warn-line); font-size:16px; align-self:flex-start; }
-  .segtabs { display:flex; gap:8px; }
-  .segtab { padding:8px 14px; border-radius:8px; border:1px solid var(--gray-200); background:#fff;
-    font-family:inherit; font-size:13px; font-weight:600; cursor:pointer; color:var(--ink-900);
-    display:flex; gap:8px; align-items:center; }
-  .segtab .ct { color:var(--orange-500); font-weight:700; }
-  .segtab.active { border-color:var(--orange-500); }
   .sk { background:linear-gradient(90deg,#eef1f6 25%,#e3e8f0 37%,#eef1f6 63%);
     background-size:400% 100%; animation:sh 1.2s infinite; border-radius:8px; }
   @keyframes sh { 0%{background-position:100% 0} 100%{background-position:-100% 0} }
@@ -436,15 +430,6 @@
             <div id="assetTableMeta" class="asset-table-meta hidden" aria-live="polite"></div>
             <div id="assetStructureWrap" class="asset-structure">
               <div class="state">Select a schema, then a table to view its structure.</div>
-            </div>
-          </div>
-        </section>
-        <section class="card">
-          <div class="hd"><h2>Personalise your experience</h2></div>
-          <div class="bd">
-            <div class="segtabs" id="assetPersonalise">
-              <button type="button" class="segtab active">Persona <span class="ct">2</span></button>
-              <button type="button" class="segtab">Purpose <span class="ct">5</span></button>
             </div>
           </div>
         </section>
