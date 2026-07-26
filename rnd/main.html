@@ -336,6 +336,8 @@
   .asset-selectors select { width:100%; padding:9px 10px; border:1px solid var(--gray-200);
     border-radius:8px; font-family:inherit; font-size:14px; color:var(--ink-900); background:#fff; }
   .asset-selectors select:disabled { color:#9aa3b2; background:var(--gray-100); cursor:not-allowed; }
+  .asset-table-meta { font-size:12.5px; color:#8a93a3; margin:-8px 0 12px; }
+  .asset-table-meta.err { color:#c0392b; }
   .asset-structure { border-top:1px solid var(--gray-200); padding-top:14px; }
   .structure-hd { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
   .structure-hd .snm { font-weight:700; color:var(--navy-700); font-size:14.5px; }
@@ -431,6 +433,7 @@
                 </select>
               </div>
             </div>
+            <div id="assetTableMeta" class="asset-table-meta hidden" aria-live="polite"></div>
             <div id="assetStructureWrap" class="asset-structure">
               <div class="state">Select a schema, then a table to view its structure.</div>
             </div>
@@ -1384,49 +1387,7 @@ try {
 } catch { /* ignore */ }
 
 /* ---------- Assets (PostgreSQL via connector API) ---------- */
-const ASSET_MOCK = {
-  counts: { All: 9, View: 1, Table: 2 },
-  schemas: ["silver", "gold"],
-  tables: {
-    silver: [
-      { name: "orders", type: "Table" },
-      { name: "customers", type: "Table" }
-    ],
-    gold: [{ name: "revenue_summary", type: "View" }]
-  },
-  structures: {
-    "silver.orders": {
-      schema: "silver",
-      table: "orders",
-      table_type: "Table",
-      columns: [
-        { position: 1, name: "order_id", type: "integer", nullable: false, default: null, primary_key: true },
-        { position: 2, name: "customer_id", type: "integer", nullable: false, default: null, primary_key: false },
-        { position: 3, name: "order_date", type: "timestamp", nullable: true, default: null, primary_key: false },
-        { position: 4, name: "amount", type: "numeric(10,2)", nullable: true, default: "0", primary_key: false }
-      ]
-    },
-    "silver.customers": {
-      schema: "silver",
-      table: "customers",
-      table_type: "Table",
-      columns: [
-        { position: 1, name: "customer_id", type: "integer", nullable: false, default: null, primary_key: true },
-        { position: 2, name: "name", type: "character varying(120)", nullable: true, default: null, primary_key: false },
-        { position: 3, name: "region", type: "text", nullable: true, default: null, primary_key: false }
-      ]
-    },
-    "gold.revenue_summary": {
-      schema: "gold",
-      table: "revenue_summary",
-      table_type: "View",
-      columns: [
-        { position: 1, name: "region", type: "text", nullable: true, default: null, primary_key: false },
-        { position: 2, name: "total_revenue", type: "numeric(14,2)", nullable: true, default: null, primary_key: false }
-      ]
-    }
-  }
-};
+const CONFIGURED_ASSET_SCHEMAS = ["silver", "gold"];
 const assetState = { offline: false, loaded: false, schema: null, table: null, typeFilter: null };
 
 function assetEl(tag, cls) {
@@ -1467,11 +1428,24 @@ function renderAssetChips(counts) {
 
 async function loadAssetCounts() {
   try {
-    if (assetState.offline || typeof DataHiveAssets === "undefined") throw new Error("offline");
+    if (typeof DataHiveAssets === "undefined") throw new Error("Assets API not loaded");
     const data = await DataHiveAssets.discover();
-    renderAssetChips(data.counts || ASSET_MOCK.counts);
-  } catch {
-    renderAssetChips(ASSET_MOCK.counts);
+    renderAssetChips(data.counts || { All: 0, View: 0, Table: 0 });
+    assetState.offline = false;
+    const pgBanner = $("#pgBanner");
+    if (pgBanner) pgBanner.classList.add("hidden");
+  } catch (err) {
+    assetState.offline = true;
+    renderAssetChips({ All: 0, View: 0, Table: 0 });
+    const pgBanner = $("#pgBanner");
+    if (pgBanner) {
+      pgBanner.classList.remove("hidden");
+      if (err && err.message) {
+        pgBanner.textContent =
+          "PostgreSQL / connector API error: " + err.message +
+          " — check POSTGRES_* in .env and restart connector_api.py";
+      }
+    }
   }
 }
 
@@ -1518,44 +1492,70 @@ async function onTableSelected(schema, table) {
   }
   wrap.innerHTML = '<div class="state">Loading table structure…</div>';
   try {
-    if (assetState.offline || typeof DataHiveAssets === "undefined") throw new Error("offline");
+    if (typeof DataHiveAssets === "undefined") throw new Error("Assets API not loaded");
     const structure = await DataHiveAssets.structure(schema, table);
     renderTableStructure(structure);
-  } catch {
-    const mock = ASSET_MOCK.structures[schema + "." + table];
-    if (mock) renderTableStructure(mock);
-    else wrap.innerHTML = '<div class="state">Could not load structure for this table.</div>';
+  } catch (err) {
+    wrap.innerHTML =
+      '<div class="state">Could not load structure: ' +
+      escapeHtml(err && err.message ? err.message : String(err)) +
+      "</div>";
   }
 }
 
 async function populateTableSelect(schema) {
   const select = $("#assetTableSelect");
   const wrap = $("#assetStructureWrap");
+  const meta = $("#assetTableMeta");
   if (!select) return;
   select.disabled = true;
   select.innerHTML = '<option value="">Loading tables…</option>';
+  if (meta) {
+    meta.classList.add("hidden");
+    meta.classList.remove("err");
+    meta.textContent = "";
+  }
   if (wrap) wrap.innerHTML = '<div class="state">Select a schema, then a table to view its structure.</div>';
   assetState.table = null;
 
   let tables = [];
   try {
-    if (assetState.offline || typeof DataHiveAssets === "undefined") throw new Error("offline");
+    if (typeof DataHiveAssets === "undefined") throw new Error("Assets API not loaded");
     const data = await DataHiveAssets.tables(schema);
     tables = data.items || [];
-  } catch {
-    tables = ASSET_MOCK.tables[schema] || [];
+    if (meta && data.count != null) {
+      meta.textContent =
+        data.count + " object" + (data.count === 1 ? "" : "s") + " in schema " + schema;
+      meta.classList.remove("hidden");
+    }
+    assetState.offline = false;
+  } catch (err) {
+    select.innerHTML = '<option value="">Failed to load tables</option>';
+    if (meta) {
+      meta.textContent =
+        err && err.message ? err.message : "Could not load tables from PostgreSQL.";
+      meta.classList.remove("hidden");
+      meta.classList.add("err");
+    }
+    return;
   }
+
   if (assetState.typeFilter) {
     tables = tables.filter((t) => t.type === assetState.typeFilter);
   }
 
   if (!tables.length) {
-    select.innerHTML = '<option value="">No tables found in this schema</option>';
+    select.innerHTML =
+      '<option value="">' +
+      (assetState.typeFilter
+        ? "No " + assetState.typeFilter + "s in this schema"
+        : "No tables found in this schema") +
+      "</option>";
     select.disabled = true;
     return;
   }
   select.innerHTML =
-    '<option value="">Select table…</option>' +
+    '<option value="">Select table… (' + tables.length + ")</option>" +
     tables
       .map(
         (t) =>
@@ -1569,13 +1569,14 @@ async function populateTableSelect(schema) {
 async function populateSchemaSelect() {
   const select = $("#assetSchemaSelect");
   if (!select) return;
-  let schemas = [];
+  let schemas = CONFIGURED_ASSET_SCHEMAS.slice();
   try {
-    if (assetState.offline || typeof DataHiveAssets === "undefined") throw new Error("offline");
-    const data = await DataHiveAssets.schemas();
-    schemas = data.items || [];
+    if (typeof DataHiveAssets !== "undefined") {
+      const data = await DataHiveAssets.schemas();
+      if (data.items && data.items.length) schemas = data.items;
+    }
   } catch {
-    schemas = ASSET_MOCK.schemas;
+    /* keep CONFIGURED_ASSET_SCHEMAS */
   }
   select.innerHTML =
     '<option value="">Select schema…</option>' +
@@ -1620,15 +1621,17 @@ async function initAssetsView() {
 
   if (typeof checkConnectorApiHealth === "function") {
     const health = await checkConnectorApiHealth();
-    assetState.offline =
-      !health || !health.ok || health.postgres_ok === false;
-    const pgBanner = $("#pgBanner");
-    if (pgBanner) {
-      if (assetState.offline) pgBanner.classList.remove("hidden");
-      else pgBanner.classList.add("hidden");
+    if (health && health.postgres_ok === false && health.postgres_error) {
+      const pgBanner = $("#pgBanner");
+      if (pgBanner) {
+        pgBanner.classList.remove("hidden");
+        pgBanner.textContent =
+          "PostgreSQL error: " + health.postgres_error +
+          " — verify POSTGRES_* in .env and restart connector_api.py";
+      }
     }
   }
-  loadAssetCounts();
+  await loadAssetCounts();
   populateSchemaSelect();
 }
 
@@ -1666,10 +1669,7 @@ if (assetSearchInput) {
         if (assetState.offline || typeof DataHiveAssets === "undefined") throw new Error("offline");
         items = (await DataHiveAssets.search(q)).items || [];
       } catch {
-        const qq = q.toLowerCase();
-        items = Object.keys(ASSET_MOCK.tables)
-          .flatMap((schema) => ASSET_MOCK.tables[schema].map((t) => Object.assign({ schema }, t)))
-          .filter((a) => a.name.toLowerCase().includes(qq) || a.type.toLowerCase().includes(qq));
+        items = [];
       }
       box.innerHTML = "";
       if (!items.length) {

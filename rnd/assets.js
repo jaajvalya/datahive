@@ -27,11 +27,23 @@
 
   async function fetchJson(path) {
     var res = await fetch(apiBase() + path, { headers: headers() });
+    var text = await res.text();
     if (!res.ok) {
-      var text = await res.text();
-      throw new Error(text || "HTTP " + res.status);
+      var detail = text || "HTTP " + res.status;
+      try {
+        var parsed = JSON.parse(text);
+        if (parsed && parsed.detail) {
+          detail =
+            typeof parsed.detail === "string"
+              ? parsed.detail
+              : JSON.stringify(parsed.detail);
+        }
+      } catch (_e) {
+        /* keep raw text */
+      }
+      throw new Error(detail);
     }
-    return res.json();
+    return text ? JSON.parse(text) : {};
   }
 
   global.DataHiveAssets = {

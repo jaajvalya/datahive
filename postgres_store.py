@@ -4,11 +4,14 @@ from __future__ import annotations
 import logging
 import os
 from contextlib import contextmanager
+from pathlib import Path
 from typing import Any, Iterator
 
 from mongo_store import load_repo_dotenv
 
 _log = logging.getLogger("datahive.postgres_store")
+
+_REPO_ROOT = Path(__file__).resolve().parent
 
 DEFAULT_ASSET_SCHEMAS = ("silver", "gold")
 
@@ -30,14 +33,33 @@ _SCHEMA_STATEMENTS = (
 )
 
 
+def _dotenv_file_values() -> dict[str, str]:
+    """Read repo-root `.env`; file values beat os.environ for POSTGRES_* (setdefault misses updates)."""
+    out: dict[str, str] = {}
+    path = _REPO_ROOT / ".env"
+    if not path.is_file():
+        return out
+    for line in path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, _, value = line.partition("=")
+        key = key.strip()
+        if key.startswith("POSTGRES_"):
+            out[key] = value.strip().strip('"').strip("'")
+    return out
+
+
 def _pg_setting(name: str, default: str) -> str:
     load_repo_dotenv()
+    file_vals = _dotenv_file_values()
+    if name in file_vals and file_vals[name] != "":
+        return file_vals[name]
     return os.environ.get(name, default)
 
 
 def asset_schemas() -> tuple[str, ...]:
-    load_repo_dotenv()
-    raw = os.environ.get("POSTGRES_ASSET_SCHEMAS", "silver,gold")
+    raw = _pg_setting("POSTGRES_ASSET_SCHEMAS", "silver,gold")
     parts = [p.strip() for p in raw.split(",") if p.strip()]
     return tuple(parts) if parts else DEFAULT_ASSET_SCHEMAS
 
@@ -53,6 +75,15 @@ def postgres_dsn_kwargs() -> dict[str, Any]:
     }
 
 
+def postgres_conninfo() -> str | None:
+    """Optional single URI (overrides discrete POSTGRES_* fields when set)."""
+    for key in ("POSTGRES_CONNINFO", "POSTGRES_URI", "DATABASE_URL"):
+        val = _pg_setting(key, "").strip()
+        if val:
+            return val
+    return None
+
+
 def redacted_postgres_host() -> str:
     kw = postgres_dsn_kwargs()
     schemas = ", ".join(asset_schemas())
@@ -63,7 +94,11 @@ def redacted_postgres_host() -> str:
 def postgres_connection() -> Iterator[Any]:
     import psycopg
 
-    conn = psycopg.connect(**postgres_dsn_kwargs(), connect_timeout=5)
+    conninfo = postgres_conninfo()
+    if conninfo:
+        conn = psycopg.connect(conninfo, connect_timeout=5)
+    else:
+        conn = psycopg.connect(**postgres_dsn_kwargs(), connect_timeout=5)
     try:
         yield conn
         conn.commit()
@@ -109,67 +144,114 @@ def ensure_assets_schema() -> None:
                 )
 
 
+def _allowed_schema_name(schema: str) -> bool:
+    allowed = asset_schemas()
+    return schema in allowed or schema.lower() in {a.lower() for a in allowed}
+
+
+def _resolve_namespace(cur: Any, schema: str) -> str:
+    cur.execute(
+        """
+        SELECT nspname
+        FROM pg_catalog.pg_namespace
+        WHERE nspname = %s OR lower(nspname) = lower(%s)
+        ORDER BY CASE WHEN nspname = %s THEN 0 ELSE 1 END
+        LIMIT 1
+        """,
+        (schema, schema, schema),
+    )
+    row = cur.fetchone()
+    if row is None:
+        raise ValueError(f"Schema '{schema}' was not found in PostgreSQL.")
+    return str(row[0])
+
+
+def _relation_type_label(relkind: str) -> str:
+    if relkind in ("v", "m"):
+        return "View"
+    if relkind == "f":
+        return "Foreign Table"
+    return "Table"
+
+
+def _list_relations_in_namespace(cur: Any, nspname: str) -> list[tuple[str, str, str]]:
+    """Return (name, asset_type, relkind) for user relations in one schema."""
+    cur.execute(
+        """
+        SELECT c.relname, c.relkind
+        FROM pg_catalog.pg_class c
+        JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+        WHERE n.nspname = %s
+          AND c.relkind IN ('r', 'p', 'v', 'm', 'f')
+          AND NOT c.relispartition
+        ORDER BY c.relname
+        """,
+        (nspname,),
+    )
+    out: list[tuple[str, str, str]] = []
+    for name, relkind in cur.fetchall():
+        out.append((str(name), _relation_type_label(str(relkind)), str(relkind)))
+    return out
+
+
 def _catalog_counts() -> dict[str, int]:
-    """All = column (field) count; View / Table = object counts in asset schemas."""
+    """All = column count; View / Table = relation counts in asset schemas (pg_catalog)."""
     schemas = list(asset_schemas())
     with postgres_connection() as conn:
         with conn.cursor() as cur:
-            cur.execute(
-                """
-                SELECT
-                  COUNT(*) FILTER (WHERE table_type = 'BASE TABLE') AS tables,
-                  COUNT(*) FILTER (WHERE table_type = 'VIEW') AS views
-                FROM information_schema.tables
-                WHERE table_schema = ANY(%s)
-                  AND table_type IN ('BASE TABLE', 'VIEW')
-                """,
-                (schemas,),
-            )
-            tables_n, views_n = cur.fetchone()
+            resolved: list[str] = []
+            for s in schemas:
+                try:
+                    resolved.append(_resolve_namespace(cur, s))
+                except ValueError:
+                    continue
+            if not resolved:
+                return {"All": 0, "View": 0, "Table": 0}
+
             cur.execute(
                 """
                 SELECT COUNT(*)
                 FROM information_schema.columns
                 WHERE table_schema = ANY(%s)
                 """,
-                (schemas,),
+                (resolved,),
             )
             fields_n = int(cur.fetchone()[0])
-    return {
-        "All": fields_n,
-        "View": int(views_n or 0),
-        "Table": int(tables_n or 0),
-    }
+
+            tables_n = 0
+            views_n = 0
+            for nsp in resolved:
+                for _name, asset_type, _kind in _list_relations_in_namespace(cur, nsp):
+                    if asset_type == "View":
+                        views_n += 1
+                    elif asset_type == "Table":
+                        tables_n += 1
+
+    return {"All": fields_n, "View": views_n, "Table": tables_n}
 
 
 def _catalog_assets() -> list[dict[str, Any]]:
-    schemas = list(asset_schemas())
-    sql = """
-        SELECT table_schema, table_name, table_type
-        FROM information_schema.tables
-        WHERE table_schema = ANY(%s)
-          AND table_type IN ('BASE TABLE', 'VIEW')
-        ORDER BY table_schema, table_name
-    """
     items: list[dict[str, Any]] = []
     with postgres_connection() as conn:
         with conn.cursor() as cur:
-            cur.execute(sql, (schemas,))
-            rows = cur.fetchall()
-    for schema, name, table_type in rows:
-        asset_type = "View" if table_type == "VIEW" else "Table"
-        items.append(
-            {
-                "name": name,
-                "type": asset_type,
-                "crumb": f"{schema} › {name}",
-                "edited": "catalog snapshot",
-                "verified": True,
-                "warning": False,
-                "source": "catalog",
-                "schema": schema,
-            }
-        )
+            for schema in asset_schemas():
+                try:
+                    nsp = _resolve_namespace(cur, schema)
+                except ValueError:
+                    continue
+                for name, asset_type, _kind in _list_relations_in_namespace(cur, nsp):
+                    items.append(
+                        {
+                            "name": name,
+                            "type": asset_type,
+                            "crumb": f"{nsp} › {name}",
+                            "edited": "catalog snapshot",
+                            "verified": True,
+                            "warning": False,
+                            "source": "catalog",
+                            "schema": nsp,
+                        }
+                    )
     return items
 
 
@@ -314,59 +396,58 @@ def discover_assets(owner: str, *, limit: int = 100) -> dict[str, Any]:
 
 
 def list_schemas() -> list[str]:
-    """Schemas available for browsing (restricted to the configured allow-list)."""
+    """Configured asset schemas that exist in PostgreSQL (silver, gold, …)."""
     configured = list(asset_schemas())
+    found: list[str] = []
     with postgres_connection() as conn:
         with conn.cursor() as cur:
-            cur.execute(
-                "SELECT schema_name FROM information_schema.schemata WHERE schema_name = ANY(%s)",
-                (configured,),
-            )
-            present = {r[0] for r in cur.fetchall()}
-    # Preserve configured order; drop schemas that don't actually exist in the DB.
-    return [s for s in configured if s in present]
+            for name in configured:
+                try:
+                    found.append(_resolve_namespace(cur, name))
+                except ValueError:
+                    _log.warning("asset schema %r not found in PostgreSQL", name)
+    # De-dupe while preserving order
+    seen: set[str] = set()
+    ordered: list[str] = []
+    for s in found:
+        if s not in seen:
+            seen.add(s)
+            ordered.append(s)
+    return ordered if ordered else list(configured)
 
 
 def list_tables(schema: str) -> list[dict[str, Any]]:
-    """Tables and views inside a single schema, for the table dropdown."""
-    if schema not in asset_schemas():
+    """All tables/views in one schema (pg_catalog — matches what you see in Postgres)."""
+    if not _allowed_schema_name(schema):
         raise ValueError(f"Schema '{schema}' is not in the configured asset schemas.")
-    sql = """
-        SELECT table_name, table_type
-        FROM information_schema.tables
-        WHERE table_schema = %s
-          AND table_type IN ('BASE TABLE', 'VIEW')
-        ORDER BY table_name
-    """
     with postgres_connection() as conn:
         with conn.cursor() as cur:
-            cur.execute(sql, (schema,))
-            rows = cur.fetchall()
-    return [
-        {"name": name, "type": "View" if table_type == "VIEW" else "Table"}
-        for name, table_type in rows
-    ]
+            nsp = _resolve_namespace(cur, schema)
+            rels = _list_relations_in_namespace(cur, nsp)
+    return [{"name": name, "type": asset_type} for name, asset_type, _kind in rels]
 
 
 def table_structure(schema: str, table: str) -> dict[str, Any]:
     """Column-level structure (name, type, nullable, default, primary key) for one table/view."""
-    if schema not in asset_schemas():
+    if not _allowed_schema_name(schema):
         raise ValueError(f"Schema '{schema}' is not in the configured asset schemas.")
 
     with postgres_connection() as conn:
         with conn.cursor() as cur:
+            nsp = _resolve_namespace(cur, schema)
             cur.execute(
                 """
-                SELECT table_type
-                FROM information_schema.tables
-                WHERE table_schema = %s AND table_name = %s
+                SELECT c.relkind
+                FROM pg_catalog.pg_class c
+                JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+                WHERE n.nspname = %s AND c.relname = %s
                 """,
-                (schema, table),
+                (nsp, table),
             )
             row = cur.fetchone()
             if row is None:
-                raise ValueError(f"Table '{schema}.{table}' was not found.")
-            table_type = "View" if row[0] == "VIEW" else "Table"
+                raise ValueError(f"Table '{nsp}.{table}' was not found.")
+            table_type = _relation_type_label(str(row[0]))
 
             cur.execute(
                 """
@@ -377,7 +458,7 @@ def table_structure(schema: str, table: str) -> dict[str, Any]:
                 WHERE table_schema = %s AND table_name = %s
                 ORDER BY ordinal_position
                 """,
-                (schema, table),
+                (nsp, table),
             )
             cols = cur.fetchall()
 
@@ -391,7 +472,7 @@ def table_structure(schema: str, table: str) -> dict[str, Any]:
                 WHERE tc.constraint_type = 'PRIMARY KEY'
                   AND tc.table_schema = %s AND tc.table_name = %s
                 """,
-                (schema, table),
+                (nsp, table),
             )
             pk_columns = {r[0] for r in cur.fetchall()}
 
@@ -416,7 +497,7 @@ def table_structure(schema: str, table: str) -> dict[str, Any]:
         )
 
     return {
-        "schema": schema,
+        "schema": nsp,
         "table": table,
         "table_type": table_type,
         "columns": columns,

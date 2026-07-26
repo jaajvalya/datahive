@@ -334,7 +334,8 @@ def assets_schemas() -> dict[str, Any]:
 @app.get("/api/assets/tables")
 def assets_tables(schema: str) -> dict[str, Any]:
     try:
-        return {"schema": schema, "items": postgres_store.list_tables(schema)}
+        items = postgres_store.list_tables(schema)
+        return {"schema": schema, "count": len(items), "items": items}
     except ValueError as exc:
         raise HTTPException(status_code=422, detail=str(exc)) from exc
     except Exception as exc:  # noqa: BLE001
