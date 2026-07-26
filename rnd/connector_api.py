@@ -323,6 +323,34 @@ def assets_discover(request: Request, limit: int = 100) -> dict[str, Any]:
         raise HTTPException(status_code=503, detail=f"PostgreSQL discover failed: {exc}") from exc
 
 
+@app.get("/api/assets/schemas")
+def assets_schemas() -> dict[str, Any]:
+    try:
+        return {"items": postgres_store.list_schemas()}
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(status_code=503, detail=f"PostgreSQL schemas failed: {exc}") from exc
+
+
+@app.get("/api/assets/tables")
+def assets_tables(schema: str) -> dict[str, Any]:
+    try:
+        return {"schema": schema, "items": postgres_store.list_tables(schema)}
+    except ValueError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(status_code=503, detail=f"PostgreSQL tables failed: {exc}") from exc
+
+
+@app.get("/api/assets/structure")
+def assets_structure(schema: str, table: str) -> dict[str, Any]:
+    try:
+        return postgres_store.table_structure(schema, table)
+    except ValueError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(status_code=503, detail=f"PostgreSQL structure failed: {exc}") from exc
+
+
 @app.post("/api/connection-logs")
 def create_connection_log(body: ConnectionLogIn, request: Request) -> dict[str, bool]:
     try:

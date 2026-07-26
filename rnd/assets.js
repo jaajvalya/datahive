@@ -47,6 +47,20 @@
     },
     discover: function () {
       return fetchJson("/api/assets/discover?limit=200");
+    },
+    schemas: function () {
+      return fetchJson("/api/assets/schemas");
+    },
+    tables: function (schema) {
+      return fetchJson("/api/assets/tables?schema=" + encodeURIComponent(schema));
+    },
+    structure: function (schema, table) {
+      return fetchJson(
+        "/api/assets/structure?schema=" +
+          encodeURIComponent(schema) +
+          "&table=" +
+          encodeURIComponent(table)
+      );
     }
   };
 })(window);

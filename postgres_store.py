@@ -311,3 +311,113 @@ def discover_assets(owner: str, *, limit: int = 100) -> dict[str, Any]:
     _ = limit
     items = _catalog_assets()
     return {"items": items, "schemas": list(asset_schemas()), "counts": _catalog_counts()}
+
+
+def list_schemas() -> list[str]:
+    """Schemas available for browsing (restricted to the configured allow-list)."""
+    configured = list(asset_schemas())
+    with postgres_connection() as conn:
+        with conn.cursor() as cur:
+            cur.execute(
+                "SELECT schema_name FROM information_schema.schemata WHERE schema_name = ANY(%s)",
+                (configured,),
+            )
+            present = {r[0] for r in cur.fetchall()}
+    # Preserve configured order; drop schemas that don't actually exist in the DB.
+    return [s for s in configured if s in present]
+
+
+def list_tables(schema: str) -> list[dict[str, Any]]:
+    """Tables and views inside a single schema, for the table dropdown."""
+    if schema not in asset_schemas():
+        raise ValueError(f"Schema '{schema}' is not in the configured asset schemas.")
+    sql = """
+        SELECT table_name, table_type
+        FROM information_schema.tables
+        WHERE table_schema = %s
+          AND table_type IN ('BASE TABLE', 'VIEW')
+        ORDER BY table_name
+    """
+    with postgres_connection() as conn:
+        with conn.cursor() as cur:
+            cur.execute(sql, (schema,))
+            rows = cur.fetchall()
+    return [
+        {"name": name, "type": "View" if table_type == "VIEW" else "Table"}
+        for name, table_type in rows
+    ]
+
+
+def table_structure(schema: str, table: str) -> dict[str, Any]:
+    """Column-level structure (name, type, nullable, default, primary key) for one table/view."""
+    if schema not in asset_schemas():
+        raise ValueError(f"Schema '{schema}' is not in the configured asset schemas.")
+
+    with postgres_connection() as conn:
+        with conn.cursor() as cur:
+            cur.execute(
+                """
+                SELECT table_type
+                FROM information_schema.tables
+                WHERE table_schema = %s AND table_name = %s
+                """,
+                (schema, table),
+            )
+            row = cur.fetchone()
+            if row is None:
+                raise ValueError(f"Table '{schema}.{table}' was not found.")
+            table_type = "View" if row[0] == "VIEW" else "Table"
+
+            cur.execute(
+                """
+                SELECT column_name, data_type, is_nullable, column_default,
+                       character_maximum_length, numeric_precision, numeric_scale,
+                       ordinal_position
+                FROM information_schema.columns
+                WHERE table_schema = %s AND table_name = %s
+                ORDER BY ordinal_position
+                """,
+                (schema, table),
+            )
+            cols = cur.fetchall()
+
+            cur.execute(
+                """
+                SELECT kcu.column_name
+                FROM information_schema.table_constraints tc
+                JOIN information_schema.key_column_usage kcu
+                  ON tc.constraint_name = kcu.constraint_name
+                 AND tc.table_schema = kcu.table_schema
+                WHERE tc.constraint_type = 'PRIMARY KEY'
+                  AND tc.table_schema = %s AND tc.table_name = %s
+                """,
+                (schema, table),
+            )
+            pk_columns = {r[0] for r in cur.fetchall()}
+
+    columns: list[dict[str, Any]] = []
+    for name, data_type, nullable, default, char_len, num_prec, num_scale, position in cols:
+        type_display = data_type
+        if char_len:
+            type_display = f"{data_type}({char_len})"
+        elif num_prec is not None and data_type in ("numeric", "decimal"):
+            type_display = (
+                f"{data_type}({num_prec},{num_scale})" if num_scale else f"{data_type}({num_prec})"
+            )
+        columns.append(
+            {
+                "position": position,
+                "name": name,
+                "type": type_display,
+                "nullable": nullable == "YES",
+                "default": default,
+                "primary_key": name in pk_columns,
+            }
+        )
+
+    return {
+        "schema": schema,
+        "table": table,
+        "table_type": table_type,
+        "columns": columns,
+    }
