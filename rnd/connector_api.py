@@ -264,6 +264,7 @@ _RECENT_CONNECTOR_FIELDS = (
 
 @app.get("/api/connectors/recent")
 def list_recent_connectors(limit: int = 3) -> dict[str, Any]:
+    """Return the newest saved connectors from MongoDB (db/collection from repo `.env` MONGO_URI)."""
     capped = min(max(limit, 1), 20)
     projection = {field: 1 for field in _RECENT_CONNECTOR_FIELDS}
     projection["_id"] = 0

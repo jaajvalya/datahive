@@ -299,9 +299,9 @@
       <div class="cloud-grid" id="cloudGrid" role="group" aria-label="Cloud providers"></div>
 
       <section class="recent-conn" id="recentConnections" aria-labelledby="recentConnTitle">
-        <div class="recent-conn-hd"><h2 id="recentConnTitle">Latest connections</h2></div>
+        <div class="recent-conn-hd"><h2 id="recentConnTitle">Recent Connections</h2></div>
         <div class="recent-conn-bd" id="recentConnectionsBody">
-          <div class="recent-empty">Loading recent connections…</div>
+          <div class="recent-empty">Loading recent connections from MongoDB…</div>
         </div>
       </section>
 
@@ -869,6 +869,8 @@ function cellText(val){
   return escapeHtml(String(val));
 }
 
+const RECENT_CONNECTIONS_LIMIT = 3;
+
 async function renderRecentConnections(){
   const body = $("#recentConnectionsBody");
   if (!body) return;
@@ -877,7 +879,7 @@ async function renderRecentConnections(){
     return;
   }
   try {
-    const data = await fetchRecentConnectors(3);
+    const data = await fetchRecentConnectors(RECENT_CONNECTIONS_LIMIT);
     const items = (data && data.items) || [];
     if (!items.length) {
       body.innerHTML = '<div class="recent-empty">No connections saved yet.</div>';
@@ -905,7 +907,7 @@ async function renderRecentConnections(){
       );
     }).join("");
     body.innerHTML =
-      '<table class="recent-table" aria-label="Latest connections">' +
+      '<table class="recent-table" aria-label="Recent Connections">' +
       "<thead><tr>" +
       "<th>Cloud</th><th>Connector type</th><th>Display name</th><th>Mode</th>" +
       "<th>Region</th><th>Upload notes</th><th>User</th><th>Saved at</th>" +

@@ -217,15 +217,16 @@
   }
 
   /**
-   * Fetch the most recently saved connectors from MongoDB.
+   * Fetch recent connectors from MongoDB (datahive.connectors via connector API / MONGO_URI).
    * @param {number} limit
    * @returns {Promise<{ok:boolean,items:object[]}>}
    */
   async function fetchRecentConnectors(limit) {
+    var n = limit == null ? 3 : limit;
     var url =
       connectorApiBase() +
       "/api/connectors/recent?limit=" +
-      encodeURIComponent(limit == null ? 3 : limit);
+      encodeURIComponent(n);
     var res = await fetch(url, { headers: requestHeaders() });
     var bodyText = await res.text();
     var data = null;
