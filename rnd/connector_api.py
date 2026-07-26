@@ -250,6 +250,33 @@ def save_connector(payload: dict[str, Any] = Body(...)) -> dict[str, Any]:
     return _insert_connector_doc(dict(payload))
 
 
+_RECENT_CONNECTOR_FIELDS = (
+    "cloud",
+    "display_name",
+    "connector_type",
+    "saved_at",
+    "user",
+)
+
+
+@app.get("/api/connectors/recent")
+def list_recent_connectors(limit: int = 3) -> dict[str, Any]:
+    capped = min(max(limit, 1), 20)
+    projection = {field: 1 for field in _RECENT_CONNECTOR_FIELDS}
+    projection["_id"] = 0
+    try:
+        cursor = (
+            get_collection()
+            .find({}, projection)
+            .sort([("saved_at", -1), ("_id", -1)])
+            .limit(capped)
+        )
+        items = list(cursor)
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(status_code=503, detail=f"MongoDB read failed: {exc}") from exc
+    return {"ok": True, "items": items, "db": DB_NAME, "collection": COLLECTION}
+
+
 @app.post("/api/connectors/upload")
 async def save_connector_upload(
     file: UploadFile = File(...),

@@ -118,6 +118,29 @@
   .cloud-btn .label { font-size:13px; font-weight:600; color:var(--ink-900); line-height:1.3; }
   .cloud-btn .hint { font-size:11.5px; color:#8a93a3; font-weight:500; }
 
+  .recent-conn {
+    margin: 22px auto 0; width: 99%; max-width: none; text-align: left;
+    background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius);
+    box-shadow: var(--shadow); overflow: hidden;
+  }
+  .recent-conn-hd {
+    padding: 14px 22px; border-bottom: 1px solid var(--gray-200);
+  }
+  .recent-conn-hd h2 { margin: 0; font-size: 16px; font-weight: 800; color: var(--ink-900); }
+  .recent-conn-bd { padding: 0; overflow-x: auto; }
+  .recent-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .recent-table th, .recent-table td {
+    padding: 11px 16px; text-align: left; border-bottom: 1px solid var(--gray-200);
+    vertical-align: top;
+  }
+  .recent-table th {
+    font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .03em;
+    color: #8a93a3; background: #fafbfc;
+  }
+  .recent-table tr:last-child td { border-bottom: none; }
+  .recent-table .nm { font-weight: 600; color: var(--ink-900); }
+  .recent-empty { padding: 18px 22px; color: #8a93a3; font-size: 13px; }
+
   .panel {
     margin:22px auto 0; width:99%; max-width:none; text-align:left; background:var(--white);
     border:1px solid var(--gray-200); border-radius:var(--radius); box-shadow:var(--shadow);
@@ -274,6 +297,13 @@
       </section>
 
       <div class="cloud-grid" id="cloudGrid" role="group" aria-label="Cloud providers"></div>
+
+      <section class="recent-conn" id="recentConnections" aria-labelledby="recentConnTitle">
+        <div class="recent-conn-hd"><h2 id="recentConnTitle">Latest connections</h2></div>
+        <div class="recent-conn-bd" id="recentConnectionsBody">
+          <div class="recent-empty">Loading recent connections…</div>
+        </div>
+      </section>
 
       <section class="panel hidden" id="connPanel" aria-labelledby="panelTitle">
         <div class="panel-hd">
@@ -821,6 +851,59 @@ document.addEventListener("keydown", (e)=>{
 });
 $("#cf_auth_type").addEventListener("change", (e)=> toggleAuth(e.target.value));
 
+function formatSavedAt(iso){
+  if (!iso) return "—";
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return escapeHtml(String(iso));
+  return escapeHtml(d.toLocaleString());
+}
+
+function cloudLabel(cloudId){
+  if (!cloudId) return "—";
+  const c = CLOUDS[cloudId];
+  return escapeHtml(c ? (c.name || c.short || cloudId) : cloudId);
+}
+
+async function renderRecentConnections(){
+  const body = $("#recentConnectionsBody");
+  if (!body) return;
+  if (typeof fetchRecentConnectors !== "function") {
+    body.innerHTML = '<div class="recent-empty">Recent connections unavailable.</div>';
+    return;
+  }
+  try {
+    const data = await fetchRecentConnectors(3);
+    const items = (data && data.items) || [];
+    if (!items.length) {
+      body.innerHTML = '<div class="recent-empty">No connections saved yet.</div>';
+      return;
+    }
+    const rows = items.map(function (it) {
+      return (
+        "<tr>" +
+        "<td>" + cloudLabel(it.cloud) + "</td>" +
+        '<td class="nm">' + escapeHtml(it.display_name || "—") + "</td>" +
+        "<td>" + escapeHtml(it.connector_type || "—") + "</td>" +
+        "<td>" + formatSavedAt(it.saved_at) + "</td>" +
+        "<td>" + escapeHtml(it.user || "—") + "</td>" +
+        "</tr>"
+      );
+    }).join("");
+    body.innerHTML =
+      '<table class="recent-table" aria-label="Latest connections">' +
+      "<thead><tr>" +
+      "<th>Cloud</th><th>Display name</th><th>Connector type</th><th>Saved at</th><th>User</th>" +
+      "</tr></thead><tbody>" +
+      rows +
+      "</tbody></table>";
+  } catch (err) {
+    body.innerHTML =
+      '<div class="recent-empty">Could not load recent connections. ' +
+      escapeHtml(err && err.message ? err.message : String(err)) +
+      "</div>";
+  }
+}
+
 function showError(msg, skipLog){
   errBox.textContent = msg;
   errBox.classList.remove("hidden");
@@ -972,6 +1055,7 @@ form.addEventListener("submit", async (e)=>{
       "ok",
       saveResult
     );
+    renderRecentConnections();
 
     console.info("[Source] connection configured", {
       cloud: payload.cloud,
@@ -1083,6 +1167,7 @@ try {
     (health && health.detail ? " (" + escapeHtml(health.detail) + ")" : "");
   banner.classList.remove("hidden");
 })();
+renderRecentConnections();
 </script>
 </body>
 </html>

@@ -216,8 +216,37 @@
     return data;
   }
 
+  /**
+   * Fetch the most recently saved connectors from MongoDB.
+   * @param {number} limit
+   * @returns {Promise<{ok:boolean,items:object[]}>}
+   */
+  async function fetchRecentConnectors(limit) {
+    var url =
+      connectorApiBase() +
+      "/api/connectors/recent?limit=" +
+      encodeURIComponent(limit == null ? 3 : limit);
+    var res = await fetch(url, { headers: requestHeaders() });
+    var bodyText = await res.text();
+    var data = null;
+    try {
+      data = bodyText ? JSON.parse(bodyText) : null;
+    } catch {
+      data = { raw: bodyText };
+    }
+    if (!res.ok) {
+      var msg =
+        (data && (data.detail || data.error || data.message)) ||
+        bodyText ||
+        "HTTP " + res.status;
+      throw new Error(typeof msg === "string" ? msg : JSON.stringify(msg));
+    }
+    return data;
+  }
+
   global.buildConnectorDocument = buildConnectorDocument;
   global.saveConnectorToMongo = saveConnectorToMongo;
+  global.fetchRecentConnectors = fetchRecentConnectors;
   global.logConnectionFailure = logConnectionFailure;
   global.logConnectionSuccess = logConnectionSuccess;
   global.logConnectionEvent = logConnectionEvent;
