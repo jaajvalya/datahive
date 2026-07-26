@@ -16,7 +16,7 @@ _log = logging.getLogger("datahive.postgres_store")
 
 _REPO_ROOT = Path(__file__).resolve().parent
 
-DEFAULT_ASSET_SCHEMAS = ("silver", "gold")
+DEFAULT_ASSET_SCHEMAS = ("bronze", "silver", "gold")
 
 _SCHEMA_STATEMENTS = (
     """
@@ -62,7 +62,7 @@ def _pg_setting(name: str, default: str) -> str:
 
 
 def asset_schemas() -> tuple[str, ...]:
-    raw = _pg_setting("POSTGRES_ASSET_SCHEMAS", "silver,gold")
+    raw = _pg_setting("POSTGRES_ASSET_SCHEMAS", "bronze,silver,gold")
     parts = [p.strip() for p in raw.split(",") if p.strip()]
     return tuple(parts) if parts else DEFAULT_ASSET_SCHEMAS
 

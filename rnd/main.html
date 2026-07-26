@@ -1473,7 +1473,7 @@ try {
 } catch { /* ignore */ }
 
 /* ---------- Assets (PostgreSQL via connector API) ---------- */
-const CONFIGURED_ASSET_SCHEMAS = ["silver", "gold"];
+const CONFIGURED_ASSET_SCHEMAS = ["bronze", "silver", "gold"];
 const assetState = { offline: false, loaded: false, schema: null, table: null };
 
 function formatAssetApiError(err) {
