@@ -47,6 +47,13 @@
       } catch (_e) {
         /* keep raw text */
       }
+      if (res.status === 404 && path.indexOf("/api/sql/") === 0) {
+        detail =
+          "SQL API not found (404). Stop the old server on port 5055, then run: cd rnd && python connector_api.py";
+      } else if (res.status === 404) {
+        detail =
+          "Connector API route not found (404). Restart connector_api.py from the rnd folder.";
+      }
       var err = new Error(detail);
       err.httpStatus = res.status;
       throw err;
@@ -205,10 +212,17 @@
       state.lastResult = null;
       var dlErr = $("#sqlDownloadBtn");
       if (dlErr) dlErr.disabled = true;
+      var msg = err.message || String(err);
+      if (msg === "Failed to fetch" || msg.indexOf("NetworkError") !== -1) {
+        msg =
+          "Cannot reach connector API at " +
+          apiBase() +
+          ". Start it with: cd rnd && python connector_api.py";
+      }
       setResultsMessage(
-        '<div class="sql-results-empty err">' + escapeHtml(err.message || String(err)) + "</div>"
+        '<div class="sql-results-empty err">' + escapeHtml(msg) + "</div>"
       );
-      setStatus("Query failed.", true);
+      setStatus(msg.length > 120 ? "Query failed — see details below." : msg, true);
     } finally {
       if (runBtn) runBtn.disabled = false;
     }
@@ -436,12 +450,39 @@
     }
   }
 
+  async function probeSqlApi() {
+    try {
+      var res = await fetch(apiBase() + "/api/sql/query", {
+        method: "POST",
+        headers: headers(),
+        body: JSON.stringify({ sql: " " }),
+      });
+      if (res.status === 422) {
+        setStatus("Ready — enter a query and click Run (or Ctrl+Enter).");
+        return;
+      }
+      if (res.status === 404) {
+        setStatus(
+          "SQL API not found (404). Stop the old server on port 5055, then run: cd rnd && python connector_api.py",
+          true
+        );
+        return;
+      }
+      if (!res.ok) {
+        setStatus("Connector API error (HTTP " + res.status + ").", true);
+      }
+    } catch (_e) {
+      setStatus("Connector API offline — run: cd rnd && python connector_api.py", true);
+    }
+  }
+
   function initSqlView() {
     if (!state.initialized) {
       bindWorkbench();
       state.initialized = true;
     }
     loadSchemasTree();
+    probeSqlApi();
     setResultsMessage(
       '<div class="sql-results-empty">Run a query to see results here. Double-click a table in the tree for a starter SELECT.</div>'
     );
