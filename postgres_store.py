@@ -3,7 +3,10 @@ from __future__ import annotations
 
 import logging
 import os
+import re
 from contextlib import contextmanager
+from datetime import date, datetime, time
+from decimal import Decimal
 from pathlib import Path
 from typing import Any, Iterator
 
@@ -522,3 +525,90 @@ def table_structure(schema: str, table: str) -> dict[str, Any]:
         "table_type": table_type,
         "columns": columns,
     }
+
+
+_SQL_COMMENT_BLOCK = re.compile(r"/\*.*?\*/", re.DOTALL)
+_SQL_COMMENT_LINE = re.compile(r"--[^\n]*")
+_FORBIDDEN_SQL = re.compile(
+    r"\b("
+    r"INSERT|UPDATE|DELETE|DROP|TRUNCATE|ALTER|CREATE|GRANT|REVOKE|"
+    r"COPY|CALL|DO|EXECUTE|MERGE|REPLACE|VACUUM|ANALYZE|CLUSTER|REINDEX|"
+    r"COMMENT|LOCK|UNLOCK|DISCARD|LISTEN|NOTIFY|PREPARE|DEALLOCATE|"
+    r"REFRESH|REASSIGN|SECURITY|SET\s+ROLE|RESET\s+ROLE"
+    r")\b",
+    re.IGNORECASE,
+)
+_ALLOWED_SQL_START = frozenset({"SELECT", "WITH", "EXPLAIN", "TABLE", "VALUES"})
+
+
+def _strip_sql_comments(sql: str) -> str:
+    without_block = _SQL_COMMENT_BLOCK.sub(" ", sql)
+    return _SQL_COMMENT_LINE.sub(" ", without_block)
+
+
+def _assert_readonly_sql(sql: str) -> str:
+    raw = sql.strip()
+    if not raw:
+        raise ValueError("Query is empty.")
+    body = raw.rstrip(";").strip()
+    if ";" in body:
+        raise ValueError("Only a single SQL statement is allowed.")
+    normalized = _strip_sql_comments(body)
+    if _FORBIDDEN_SQL.search(normalized):
+        raise ValueError("Only read-only SELECT queries are allowed.")
+    match = re.match(r"^\s*(\w+)", normalized)
+    if not match:
+        raise ValueError("Invalid SQL.")
+    keyword = match.group(1).upper()
+    if keyword not in _ALLOWED_SQL_START:
+        raise ValueError(
+            f"Statement type '{keyword}' is not allowed. Use SELECT (or WITH … SELECT)."
+        )
+    return body
+
+
+def _json_cell(value: Any) -> Any:
+    if value is None:
+        return None
+    if isinstance(value, (bool, int, float, str)):
+        return value
+    if isinstance(value, Decimal):
+        return float(value)
+    if isinstance(value, (datetime, date, time)):
+        return value.isoformat()
+    if isinstance(value, (bytes, bytearray, memoryview)):
+        return bytes(value).hex()
+    return str(value)
+
+
+def execute_sql_query(sql: str, *, max_rows: int = 1000) -> dict[str, Any]:
+    """Run one read-only SQL statement; returns column names and row values."""
+    statement = _assert_readonly_sql(sql)
+    capped = min(max(int(max_rows), 1), 10_000)
+
+    with postgres_connection() as conn:
+        with conn.cursor() as cur:
+            cur.execute("BEGIN READ ONLY")
+            cur.execute("SET LOCAL statement_timeout = '60000'")
+            cur.execute(statement)
+            if cur.description is None:
+                return {
+                    "columns": [],
+                    "rows": [],
+                    "row_count": 0,
+                    "truncated": False,
+                    "max_rows": capped,
+                }
+            columns = [col.name for col in cur.description]
+            fetched = cur.fetchmany(capped + 1)
+            truncated = len(fetched) > capped
+            if truncated:
+                fetched = fetched[:capped]
+            rows = [[_json_cell(cell) for cell in row] for row in fetched]
+            return {
+                "columns": columns,
+                "rows": rows,
+                "row_count": len(rows),
+                "truncated": truncated,
+                "max_rows": capped,
+            }

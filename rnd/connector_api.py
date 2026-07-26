@@ -53,6 +53,11 @@ COLLECTION = mongo_store.connectors_collection_name()
 CONNECTION_LOGS_COLLECTION = mongo_store.connection_logs_collection_name()
 
 
+class SqlQueryIn(BaseModel):
+    sql: str = Field(..., min_length=1)
+    max_rows: int = Field(default=1000, ge=1, le=10_000)
+
+
 class ConnectionLogIn(BaseModel):
     user: str | None = None
     message: str = Field(..., min_length=1)
@@ -369,6 +374,16 @@ def assets_structure(schema: str, table: str) -> dict[str, Any]:
         raise HTTPException(status_code=422, detail=str(exc)) from exc
     except Exception as exc:  # noqa: BLE001
         raise HTTPException(status_code=503, detail=f"PostgreSQL structure failed: {exc}") from exc
+
+
+@app.post("/api/sql/query")
+def sql_query(body: SqlQueryIn) -> dict[str, Any]:
+    try:
+        return postgres_store.execute_sql_query(body.sql, max_rows=body.max_rows)
+    except ValueError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(status_code=503, detail=f"PostgreSQL query failed: {exc}") from exc
 
 
 @app.post("/api/connection-logs")

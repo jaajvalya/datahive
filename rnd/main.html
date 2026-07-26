@@ -340,6 +340,71 @@
   .structure-table .dtype { color:var(--blue-600); font-family:"Consolas",monospace; font-size:12.5px; }
   .structure-table .nullable-no { color:#c0392b; font-weight:600; }
   .structure-table .nullable-yes { color:#8a93a3; }
+
+  /* ---------- SQL workbench ---------- */
+  .sql-pane { text-align:left; width:99%; margin:0 auto; }
+  .sql-pane-hd { margin-bottom:14px; }
+  .sql-pane-hd h1 { margin:0 0 6px; font-size:22px; font-weight:800; color:var(--ink-900); }
+  .sql-pane-hd p { margin:0; font-size:13.5px; color:#8a93a3; }
+  .sql-workbench {
+    display:flex; gap:0; min-height:calc(100vh - var(--header) - 120px);
+    border:1px solid var(--gray-200); border-radius:var(--radius); overflow:hidden;
+    box-shadow:var(--shadow); background:#fff;
+  }
+  .sql-tree-panel {
+    flex:0 0 280px; max-width:34%; border-right:1px solid var(--gray-200);
+    display:flex; flex-direction:column; background:#fafbfd;
+  }
+  .sql-tree-hd {
+    padding:12px 14px; font-size:12px; font-weight:800; text-transform:uppercase;
+    letter-spacing:.04em; color:#8a93a3; border-bottom:1px solid var(--gray-200);
+  }
+  .sql-tree-scroll { flex:1; overflow:auto; padding:8px 6px 12px; }
+  .sql-catalog-tree { list-style:none; margin:0; padding:0; font-size:13px; }
+  .sql-tree-node { margin:0; padding:0; }
+  .sql-tree-toggle, .sql-tree-col {
+    display:flex; align-items:center; gap:4px; width:100%; text-align:left;
+    border:none; background:transparent; padding:5px 8px; border-radius:6px;
+    font:inherit; color:var(--ink-900); cursor:pointer;
+  }
+  .sql-tree-toggle:hover, .sql-tree-col:hover { background:var(--gray-100); }
+  .sql-tree-toggle .chev { width:12px; flex:0 0 auto; color:#8a93a3; font-size:10px; }
+  .sql-tree-toggle .ic, .sql-tree-col .ic { flex:0 0 auto; font-size:11px; }
+  .sql-tree-meta { margin-left:auto; font-size:11px; color:#8a93a3; font-weight:500; }
+  .sql-tree-children { list-style:none; margin:0; padding:0 0 0 14px; }
+  .sql-tree-empty { padding:10px 12px; font-size:12.5px; color:#8a93a3; }
+  .sql-tree-empty.err { color:#c0392b; }
+  .sql-main-panel { flex:1; min-width:0; display:flex; flex-direction:column; }
+  .sql-editor-section { flex:0 0 auto; border-bottom:1px solid var(--gray-200); padding:12px 14px 14px; }
+  .sql-toolbar { display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-bottom:8px; }
+  .sql-toolbar .sql-status { flex:1; font-size:12.5px; color:#8a93a3; min-width:120px; }
+  .sql-toolbar .sql-status.err { color:#c0392b; }
+  .sql-editor {
+    width:100%; min-height:140px; max-height:240px; resize:vertical;
+    border:1.5px solid var(--gray-200); border-radius:8px; padding:10px 12px;
+    font-family:ui-monospace,SFMono-Regular,Consolas,Menlo,monospace; font-size:13px;
+    line-height:1.45; color:var(--ink-900);
+  }
+  .sql-editor:focus { outline:none; border-color:var(--orange-500); box-shadow:0 0 0 3px rgba(255,103,31,.15); }
+  .sql-results-section { flex:1; min-height:200px; display:flex; flex-direction:column; padding:12px 14px 14px; }
+  .sql-results-hd { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
+  .sql-results-hd h2 { margin:0; font-size:14px; font-weight:800; color:var(--ink-900); flex:1; }
+  .sql-results-note { margin:0 0 8px; font-size:12px; color:#8a93a3; }
+  .sql-results-scroll { flex:1; overflow:auto; border:1px solid var(--gray-200); border-radius:8px; }
+  .sql-results-table { width:100%; border-collapse:collapse; font-size:12.5px; }
+  .sql-results-table th {
+    position:sticky; top:0; background:#fafbfc; text-align:left; font-size:11px;
+    text-transform:uppercase; letter-spacing:.03em; color:#8a93a3;
+    padding:8px 10px; border-bottom:1px solid var(--gray-200); white-space:nowrap;
+  }
+  .sql-results-table td { padding:7px 10px; border-bottom:1px solid var(--gray-200); vertical-align:top; }
+  .sql-results-table td.null { color:#8a93a3; font-style:italic; }
+  .sql-results-empty { padding:16px; font-size:13px; color:#8a93a3; }
+  .sql-results-empty.err { color:#c0392b; }
+  @media (max-width:900px) {
+    .sql-workbench { flex-direction:column; min-height:0; }
+    .sql-tree-panel { flex:0 0 auto; max-width:none; max-height:220px; border-right:none; border-bottom:1px solid var(--gray-200); }
+  }
 </style>
 </head>
 <body>
@@ -369,6 +434,7 @@
   <nav class="rail" aria-label="Primary">
     <div class="grp">
       <a href="#" data-view="assets"><span class="ic">🧭</span>Assets</a>
+      <a href="#" data-view="sql"><span class="ic">🗃️</span>SQL</a>
       <a href="#" class="active" data-view="connectors" aria-current="page"><span class="ic">🔀</span>Connectors</a>
       <a href="#"><span class="ic">⚡</span>Insights</a>
     </div>
@@ -439,6 +505,35 @@
             </div>
           </div>
         </section>
+      </div>
+    </div>
+
+    <div id="view-sql" class="sql-pane hidden">
+      <div class="sql-pane-hd">
+        <h1>SQL explorer</h1>
+        <p>Browse schemas from PostgreSQL (<code>POSTGRES_*</code> in <code>.env</code>), run read-only queries, and export results.</p>
+      </div>
+      <div class="sql-workbench">
+        <aside class="sql-tree-panel" aria-label="Database catalog">
+          <div class="sql-tree-hd">Catalog</div>
+          <div class="sql-tree-scroll">
+            <ul id="sqlCatalogTree" class="sql-catalog-tree"></ul>
+          </div>
+        </aside>
+        <div class="sql-main-panel">
+          <section class="sql-editor-section" aria-label="Query editor">
+            <div class="sql-toolbar">
+              <button type="button" class="btn btn-primary" id="sqlRunBtn">Run query</button>
+              <button type="button" class="btn btn-ghost" id="sqlDownloadBtn">Download CSV</button>
+              <span class="sql-status" id="sqlStatus" aria-live="polite"></span>
+            </div>
+            <textarea id="sqlEditor" class="sql-editor" spellcheck="false" placeholder="SELECT * FROM silver.my_table LIMIT 100;">SELECT 1 AS ok;</textarea>
+          </section>
+          <section class="sql-results-section" aria-label="Query results">
+            <div class="sql-results-hd"><h2>Results</h2></div>
+            <div id="sqlResultsWrap"></div>
+          </section>
+        </div>
       </div>
     </div>
 
@@ -612,6 +707,7 @@
 
 <script src="save-connector.js"></script>
 <script src="assets.js"></script>
+<script src="sql-explorer.js"></script>
 <script>
 const $ = (sel, root=document) => root.querySelector(sel);
 const $$ = (sel, root=document) => [...root.querySelectorAll(sel)];
@@ -1631,8 +1727,12 @@ document.querySelectorAll("nav.rail a[data-view]").forEach((a) => {
     a.classList.add("active");
     a.setAttribute("aria-current", "page");
     $("#view-assets").classList.toggle("hidden", view !== "assets");
+    $("#view-sql").classList.toggle("hidden", view !== "sql");
     $("#view-connectors").classList.toggle("hidden", view !== "connectors");
     if (view === "assets") initAssetsView();
+    if (view === "sql" && typeof DataHiveSqlExplorer !== "undefined") {
+      DataHiveSqlExplorer.init();
+    }
   });
 });
 
