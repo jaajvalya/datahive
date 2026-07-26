@@ -1,19 +1,34 @@
 """Shared MongoDB persistence for connector / connection records."""
 from __future__ import annotations
 
+import logging
 import os
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any
+from typing import Any, Literal
 
 from pymongo import MongoClient, uri_parser
 from pymongo.collection import Collection
 from pymongo.errors import PyMongoError
 
 _REPO_ROOT = Path(__file__).resolve().parent
+_log = logging.getLogger("datahive.mongo_store")
 
 _client: MongoClient | None = None
 _db_name: str | None = None
+
+_SENSITIVE_LOG_KEYS = frozenset(
+    {
+        "api_key",
+        "client_secret",
+        "secret_access_key",
+        "service_account_json",
+        "password",
+        "credentials_ciphertext",
+    }
+)
+
+Outcome = Literal["success", "failure"]
 
 
 def load_repo_dotenv() -> None:
@@ -72,6 +87,34 @@ def connection_logs_collection() -> Collection:
     return _get_client()[database_name()][connection_logs_collection_name()]
 
 
+def sanitize_log_context(context: dict[str, Any] | None) -> dict[str, Any]:
+    if not context:
+        return {}
+    clean: dict[str, Any] = {}
+    for key, value in context.items():
+        if key in _SENSITIVE_LOG_KEYS:
+            clean[key] = "[redacted]"
+        elif isinstance(value, dict):
+            clean[key] = sanitize_log_context(value)
+        else:
+            clean[key] = value
+    return clean
+
+
+def connector_summary_context(doc: dict[str, Any]) -> dict[str, Any]:
+    keys = (
+        "connector_type",
+        "cloud",
+        "mode",
+        "display_name",
+        "connection_id",
+        "upload_relative_path",
+        "source",
+        "owner",
+    )
+    return {k: doc[k] for k in keys if doc.get(k) is not None}
+
+
 def insert_connector_document(doc: dict[str, Any]) -> str:
     payload = dict(doc)
     payload.setdefault("saved_at", datetime.now(timezone.utc).isoformat())
@@ -87,3 +130,53 @@ def insert_connection_log(record: dict[str, Any]) -> None:
         connection_logs_collection().insert_one(record)
     except PyMongoError as exc:
         raise RuntimeError(f"MongoDB connection_logs write failed: {exc}") from exc
+
+
+def log_connection_event(
+    user: str,
+    message: str,
+    *,
+    outcome: Outcome,
+    event: str,
+    error_type: str | None = None,
+    context: dict[str, Any] | None = None,
+    http_status: int | None = None,
+) -> None:
+    record: dict[str, Any] = {
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "user": user.strip() if user and user.strip() else "unknown",
+        "outcome": outcome,
+        "event": event,
+        "message": message,
+        "context": sanitize_log_context(context),
+    }
+    if error_type:
+        record["error_type"] = error_type
+    if http_status is not None:
+        record["http_status"] = http_status
+    insert_connection_log(record)
+
+
+def append_connection_log(
+    user: str,
+    message: str,
+    *,
+    outcome: Outcome,
+    event: str,
+    error_type: str | None = None,
+    context: dict[str, Any] | None = None,
+    http_status: int | None = None,
+) -> None:
+    """Best-effort connection_logs write; never raises."""
+    try:
+        log_connection_event(
+            user,
+            message,
+            outcome=outcome,
+            event=event,
+            error_type=error_type,
+            context=context,
+            http_status=http_status,
+        )
+    except RuntimeError as exc:
+        _log.warning("connection_logs insert failed: %s", exc)

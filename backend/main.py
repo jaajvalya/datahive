@@ -692,11 +692,32 @@ def create_connection(request: Request, body: ConnectionIn, user: dict = Depends
         "saved_at": now,
     }
     try:
-        mongo_store.insert_connector_document(mongo_doc)
+        connector_id = mongo_store.insert_connector_document(mongo_doc)
     except RuntimeError as exc:
+        mongo_store.append_connection_log(
+            user["username"],
+            str(exc),
+            outcome="failure",
+            event="connection.save_failed",
+            error_type="mongodb",
+            context=mongo_store.connector_summary_context(mongo_doc),
+            http_status=503,
+        )
         with db() as conn:
             conn.execute("DELETE FROM connections WHERE id=?", (cid,))
         raise HTTPException(status.HTTP_503_SERVICE_UNAVAILABLE, str(exc)) from exc
+    mongo_store.append_connection_log(
+        user["username"],
+        f"Connection saved to {mongo_store.database_name()}.{mongo_store.connectors_collection_name()}",
+        outcome="success",
+        event="connection.saved",
+        context={
+            **mongo_store.connector_summary_context(mongo_doc),
+            "connector_id": connector_id,
+            "db": mongo_store.database_name(),
+            "collection": mongo_store.connectors_collection_name(),
+        },
+    )
     audit("connections.create", request_id=request.state.request_id, actor=user["username"],
           id=cid, connector_type=body.connector_type, auth_type=body.auth_type)
     return Connection(id=cid, connector_type=body.connector_type, display_name=body.display_name,

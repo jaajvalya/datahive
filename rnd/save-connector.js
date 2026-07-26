@@ -1,6 +1,6 @@
 /**
  * Saves connector connection attributes to MongoDB (database from MONGO_URI in `.env`),
- * collection `connectors`. Connection failures are logged to `connection_logs`.
+ * collection `connectors`. All connection attempts are logged to `connection_logs`.
  *
  * Requires the companion API: `python connector_api.py` (port 5055).
  * Attached from main.html and invoked on "Connect & fetch".
@@ -71,15 +71,19 @@
   }
 
   /**
-   * Persist a connection failure record to MongoDB connection_logs (best effort).
+   * Persist a connection log record (success or failure) to MongoDB connection_logs.
    */
-  function logConnectionFailure(details) {
+  function logConnectionEvent(details) {
     if (!details || !details.message) return;
+    var outcome = details.outcome === "success" ? "success" : "failure";
     var body = {
       user: getRequestUser(),
       message: String(details.message),
-      event: details.event || "connection.error",
-      error_type: details.error_type || "client",
+      event:
+        details.event ||
+        (outcome === "success" ? "connection.saved" : "connection.error"),
+      outcome: outcome,
+      error_type: outcome === "success" ? null : details.error_type || "client",
       context: sanitizeContext(details.context || {})
     };
     fetch(CONNECTION_LOGS_URL, {
@@ -89,6 +93,18 @@
     }).catch(function (err) {
       console.warn("[save-connector] could not write connection_logs", err);
     });
+  }
+
+  function logConnectionFailure(details) {
+    logConnectionEvent(
+      Object.assign({}, details, { outcome: "failure" })
+    );
+  }
+
+  function logConnectionSuccess(details) {
+    logConnectionEvent(
+      Object.assign({}, details, { outcome: "success", error_type: null })
+    );
   }
 
   /**
@@ -203,6 +219,8 @@
   global.buildConnectorDocument = buildConnectorDocument;
   global.saveConnectorToMongo = saveConnectorToMongo;
   global.logConnectionFailure = logConnectionFailure;
+  global.logConnectionSuccess = logConnectionSuccess;
+  global.logConnectionEvent = logConnectionEvent;
   global.getDataHiveUser = getRequestUser;
   global.checkConnectorApiHealth = async function checkConnectorApiHealth() {
     try {

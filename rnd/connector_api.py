@@ -4,6 +4,7 @@ Local R&D API — persist connector form payloads into MongoDB.
 Database : from MONGO_URI in repo-root `.env` (default path segment), else datahivepoc
 Collection: MONGO_COLLECTION in `.env` (default `connectors`)
 Connection errors: `connection_logs` (override via MONGO_CONNECTION_LOGS_COLLECTION)
+Connection logs record both success and failure outcomes.
 
 Run (from this directory):
     python3 -m venv .venv
@@ -21,14 +22,13 @@ import logging
 import re
 import sys
 import uuid
-from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
 from fastapi import Body, FastAPI, File, Form, HTTPException, Request, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_validator
 
 _RND_DIR = Path(__file__).resolve().parent
 _REPO_ROOT = _RND_DIR.parent
@@ -51,42 +51,20 @@ DB_NAME = mongo_store.database_name()
 COLLECTION = mongo_store.connectors_collection_name()
 CONNECTION_LOGS_COLLECTION = mongo_store.connection_logs_collection_name()
 
-_SENSITIVE_LOG_KEYS = frozenset(
-    {
-        "api_key",
-        "client_secret",
-        "secret_access_key",
-        "service_account_json",
-        "password",
-        "credentials_ciphertext",
-    }
-)
-
 
 class ConnectionLogIn(BaseModel):
     user: str | None = None
     message: str = Field(..., min_length=1)
     event: str = "connection.error"
-    error_type: str = "client"
+    outcome: str = "failure"
+    error_type: str | None = "client"
     context: dict[str, Any] | None = None
 
-
-def _utc_now_iso() -> str:
-    return datetime.now(timezone.utc).isoformat()
-
-
-def _sanitize_log_context(context: dict[str, Any] | None) -> dict[str, Any]:
-    if not context:
-        return {}
-    clean: dict[str, Any] = {}
-    for key, value in context.items():
-        if key in _SENSITIVE_LOG_KEYS:
-            clean[key] = "[redacted]"
-        elif isinstance(value, dict):
-            clean[key] = _sanitize_log_context(value)
-        else:
-            clean[key] = value
-    return clean
+    @model_validator(mode="after")
+    def _normalize_outcome(self) -> ConnectionLogIn:
+        if self.outcome not in ("success", "failure"):
+            self.outcome = "failure"
+        return self
 
 
 def _resolve_user(request: Request | None, explicit: str | None = None) -> str:
@@ -107,24 +85,19 @@ def log_connection_failure(
     message: str,
     *,
     event: str = "connection.error",
-    error_type: str = "server",
+    error_type: str | None = "server",
     context: dict[str, Any] | None = None,
     http_status: int | None = None,
 ) -> None:
-    record: dict[str, Any] = {
-        "timestamp": _utc_now_iso(),
-        "user": user,
-        "event": event,
-        "error_type": error_type,
-        "message": message,
-        "context": _sanitize_log_context(context),
-    }
-    if http_status is not None:
-        record["http_status"] = http_status
-    try:
-        mongo_store.insert_connection_log(record)
-    except RuntimeError as exc:
-        log.warning("connection_logs insert failed: %s", exc)
+    mongo_store.append_connection_log(
+        user,
+        message,
+        outcome="failure",
+        event=event,
+        error_type=error_type,
+        context=context,
+        http_status=http_status,
+    )
 
 
 def _ensure_upload_dir() -> None:
@@ -142,6 +115,18 @@ def _insert_connector_doc(doc: dict[str, Any]) -> dict[str, Any]:
         inserted_id = mongo_store.insert_connector_document(doc)
     except RuntimeError as exc:
         raise HTTPException(status_code=503, detail=str(exc)) from exc
+    mongo_store.append_connection_log(
+        str(doc.get("user") or "unknown"),
+        f"Connector saved to {DB_NAME}.{COLLECTION}",
+        outcome="success",
+        event="connection.saved",
+        context={
+            **mongo_store.connector_summary_context(doc),
+            "connector_id": inserted_id,
+            "db": DB_NAME,
+            "collection": COLLECTION,
+        },
+    )
     return {
         "ok": True,
         "id": inserted_id,
@@ -247,9 +232,10 @@ def health() -> dict[str, Any]:
 
 @app.post("/api/connection-logs")
 def create_connection_log(body: ConnectionLogIn, request: Request) -> dict[str, bool]:
-    log_connection_failure(
+    mongo_store.append_connection_log(
         _resolve_user(request, body.user),
         body.message,
+        outcome=body.outcome,  # validated success|failure
         event=body.event,
         error_type=body.error_type,
         context=body.context,
