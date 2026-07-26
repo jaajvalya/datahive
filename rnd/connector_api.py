@@ -216,16 +216,44 @@ def get_collection():
     return mongo_store.connectors_collection()
 
 
+_RECENT_CONNECTOR_FIELDS = (
+    "cloud",
+    "connector_type",
+    "display_name",
+    "mode",
+    "region",
+    "upload_notes",
+    "user",
+    "saved_at",
+)
+
+
+def _fetch_recent_connectors(limit: int) -> list[dict[str, Any]]:
+    capped = min(max(limit, 1), 20)
+    projection = {field: 1 for field in _RECENT_CONNECTOR_FIELDS}
+    projection["_id"] = 0
+    cursor = (
+        get_collection()
+        .find({}, projection)
+        .sort([("saved_at", -1), ("_id", -1)])
+        .limit(capped)
+    )
+    return list(cursor)
+
+
 @app.get("/health")
-def health() -> dict[str, Any]:
+def health(recent: int = 0) -> dict[str, Any]:
     try:
         get_collection()
-        return {
+        payload: dict[str, Any] = {
             "ok": True,
             "mongo": _redacted_mongo_uri(MONGO_URI),
             "db": DB_NAME,
             "collection": COLLECTION,
         }
+        if recent > 0:
+            payload["recent_connectors"] = _fetch_recent_connectors(recent)
+        return payload
     except Exception as exc:  # noqa: BLE001
         raise HTTPException(status_code=503, detail=f"MongoDB unavailable: {exc}") from exc
 
@@ -250,32 +278,11 @@ def save_connector(payload: dict[str, Any] = Body(...)) -> dict[str, Any]:
     return _insert_connector_doc(dict(payload))
 
 
-_RECENT_CONNECTOR_FIELDS = (
-    "cloud",
-    "connector_type",
-    "display_name",
-    "mode",
-    "region",
-    "upload_notes",
-    "user",
-    "saved_at",
-)
-
-
 @app.get("/api/connectors/recent")
 def list_recent_connectors(limit: int = 3) -> dict[str, Any]:
     """Return the newest saved connectors from MongoDB (db/collection from repo `.env` MONGO_URI)."""
-    capped = min(max(limit, 1), 20)
-    projection = {field: 1 for field in _RECENT_CONNECTOR_FIELDS}
-    projection["_id"] = 0
     try:
-        cursor = (
-            get_collection()
-            .find({}, projection)
-            .sort([("saved_at", -1), ("_id", -1)])
-            .limit(capped)
-        )
-        items = list(cursor)
+        items = _fetch_recent_connectors(limit)
     except Exception as exc:  # noqa: BLE001
         raise HTTPException(status_code=503, detail=f"MongoDB read failed: {exc}") from exc
     return {"ok": True, "items": items, "db": DB_NAME, "collection": COLLECTION}

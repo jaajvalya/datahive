@@ -245,6 +245,18 @@
   }
   .apibanner.hidden { display: none; }
   .apibanner code { font-size: 12px; }
+
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 200;
+    background: rgba(1, 8, 24, 0.45);
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px;
+  }
+  .modal-overlay.hidden { display: none; }
+  .conn-modal.panel {
+    margin: 0; width: 100%; max-width: 760px; max-height: min(92vh, 920px);
+    overflow: auto; animation: rise .22s ease;
+  }
 </style>
 </head>
 <body>
@@ -305,19 +317,29 @@
         </div>
       </section>
 
-      <section class="panel hidden" id="connPanel" aria-labelledby="panelTitle">
-        <div class="panel-hd">
-          <img class="mini" id="panelLogo" src="" alt="" width="28" height="22" aria-hidden="true" />
-          <h2 id="panelTitle">API connectivity</h2>
-          <button type="button" class="icon-x" id="panelCloseBtn" aria-label="Close">✕</button>
+      <section class="status hidden" id="connStatus" aria-live="polite">
+        <h2 id="statusTitle">Connection saved</h2>
+        <div class="meta" id="statusMeta"></div>
+        <div class="pill pending" id="statusPill">Ready to fetch</div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<div id="connModalOverlay" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="panelTitle">
+  <section class="panel conn-modal" id="connPanel">
+    <div class="panel-hd">
+      <img class="mini" id="panelLogo" src="" alt="" width="28" height="22" aria-hidden="true" />
+      <h2 id="panelTitle">API connectivity</h2>
+      <button type="button" class="icon-x" id="panelCloseBtn" aria-label="Close">✕</button>
+    </div>
+    <div class="panel-bd">
+      <p class="lead" id="panelLead"></p>
+      <form id="connForm" novalidate>
+        <div class="field">
+          <label for="cf_display_name">Connection name <span class="req">*</span></label>
+          <input id="cf_display_name" name="display_name" required maxlength="128" />
         </div>
-        <div class="panel-bd">
-          <p class="lead" id="panelLead"></p>
-          <form id="connForm" novalidate>
-            <div class="field">
-              <label for="cf_display_name">Connection name <span class="req">*</span></label>
-              <input id="cf_display_name" name="display_name" required maxlength="128" />
-            </div>
 
             <div id="cloudFields">
               <div class="row3">
@@ -440,16 +462,8 @@
               <button type="submit" class="btn btn-primary" id="submitBtn">Connect &amp; fetch</button>
             </div>
           </form>
-        </div>
-      </section>
-
-      <section class="status hidden" id="connStatus" aria-live="polite">
-        <h2 id="statusTitle">Connection saved</h2>
-        <div class="meta" id="statusMeta"></div>
-        <div class="pill pending" id="statusPill">Ready to fetch</div>
-      </section>
     </div>
-  </main>
+  </section>
 </div>
 
 <script src="save-connector.js"></script>
@@ -660,6 +674,7 @@ const CLOUDS = {
 };
 
 const grid = $("#cloudGrid");
+const modalOverlay = $("#connModalOverlay");
 const panel = $("#connPanel");
 const form = $("#connForm");
 const errBox = $("#formError");
@@ -673,13 +688,13 @@ Object.values(CLOUDS).forEach(cloud => {
   btn.className = "cloud-btn";
   btn.dataset.cloud = cloud.id;
   btn.setAttribute("aria-expanded", "false");
-  btn.setAttribute("aria-controls", "connPanel");
+  btn.setAttribute("aria-controls", "connModalOverlay");
   btn.innerHTML =
     `<div class="cic"><img src="${cloud.logo}" alt="${cloud.name}" width="32" height="32" /></div>` +
     `<span class="label">${cloud.name}</span>` +
     `<span class="hint">${cloud.hint || "Configure API connectivity"}</span>`;
   btn.addEventListener("click", () => {
-    if (activeCloud === cloud.id && !panel.classList.contains("hidden")) closePanel();
+    if (activeCloud === cloud.id && !modalOverlay.classList.contains("hidden")) closePanel();
     else openPanel(cloud.id);
   });
   grid.appendChild(btn);
@@ -816,7 +831,8 @@ function openPanel(cloudId){
   form.reset();
   configureForm(cloud);
   errBox.classList.add("hidden");
-  panel.classList.remove("hidden");
+  modalOverlay.classList.remove("hidden");
+  document.body.style.overflow = "hidden";
 
   $$(".cloud-btn").forEach(btn => {
     const open = btn.dataset.cloud === cloudId;
@@ -829,11 +845,11 @@ function openPanel(cloudId){
   });
 
   $("#cf_display_name").focus();
-  panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
 
 function closePanel(){
-  panel.classList.add("hidden");
+  modalOverlay.classList.add("hidden");
+  document.body.style.overflow = "";
   activeCloud = null;
   clearUploadSelection();
   $$(".cloud-btn").forEach(btn => {
@@ -846,8 +862,11 @@ function closePanel(){
 
 $("#panelCloseBtn").addEventListener("click", closePanel);
 $("#cancelBtn").addEventListener("click", closePanel);
+modalOverlay.addEventListener("click", (e)=>{
+  if (e.target === modalOverlay) closePanel();
+});
 document.addEventListener("keydown", (e)=>{
-  if (e.key === "Escape" && !panel.classList.contains("hidden")) closePanel();
+  if (e.key === "Escape" && !modalOverlay.classList.contains("hidden")) closePanel();
 });
 $("#cf_auth_type").addEventListener("change", (e)=> toggleAuth(e.target.value));
 
@@ -871,21 +890,18 @@ function cellText(val){
 
 const RECENT_CONNECTIONS_LIMIT = 3;
 
-async function renderRecentConnections(){
+function renderRecentConnectionsFromItems(items) {
   const body = $("#recentConnectionsBody");
   if (!body) return;
-  if (typeof fetchRecentConnectors !== "function") {
-    body.innerHTML = '<div class="recent-empty">Recent connections unavailable.</div>';
+  paintRecentConnectionsTable(body, items || []);
+}
+
+function paintRecentConnectionsTable(body, items) {
+  if (!items.length) {
+    body.innerHTML = '<div class="recent-empty">No connections saved yet.</div>';
     return;
   }
-  try {
-    const data = await fetchRecentConnectors(RECENT_CONNECTIONS_LIMIT);
-    const items = (data && data.items) || [];
-    if (!items.length) {
-      body.innerHTML = '<div class="recent-empty">No connections saved yet.</div>';
-      return;
-    }
-    const rows = items.map(function (it) {
+  const rows = items.map(function (it) {
       const notes = it.upload_notes
         ? '<span title="' + escapeHtml(it.upload_notes) + '">' +
           escapeHtml(String(it.upload_notes).length > 48
@@ -906,14 +922,26 @@ async function renderRecentConnections(){
         "</tr>"
       );
     }).join("");
-    body.innerHTML =
-      '<table class="recent-table" aria-label="Recent Connections">' +
-      "<thead><tr>" +
-      "<th>Cloud</th><th>Connector type</th><th>Display name</th><th>Mode</th>" +
-      "<th>Region</th><th>Upload notes</th><th>User</th><th>Saved at</th>" +
-      "</tr></thead><tbody>" +
-      rows +
-      "</tbody></table>";
+  body.innerHTML =
+    '<table class="recent-table" aria-label="Recent Connections">' +
+    "<thead><tr>" +
+    "<th>Cloud</th><th>Connector type</th><th>Display name</th><th>Mode</th>" +
+    "<th>Region</th><th>Upload notes</th><th>User</th><th>Saved at</th>" +
+    "</tr></thead><tbody>" +
+    rows +
+    "</tbody></table>";
+}
+
+async function renderRecentConnections(){
+  const body = $("#recentConnectionsBody");
+  if (!body) return;
+  if (typeof fetchRecentConnectors !== "function") {
+    body.innerHTML = '<div class="recent-empty">Recent connections unavailable.</div>';
+    return;
+  }
+  try {
+    const data = await fetchRecentConnectors(RECENT_CONNECTIONS_LIMIT);
+    paintRecentConnectionsTable(body, (data && data.items) || []);
   } catch (err) {
     body.innerHTML =
       '<div class="recent-empty">Could not load recent connections. ' +
@@ -1177,6 +1205,11 @@ try {
   const banner = $("#apiBanner");
   if (health && health.ok) {
     banner.classList.add("hidden");
+    if (Array.isArray(health.recent_connectors)) {
+      renderRecentConnectionsFromItems(health.recent_connectors);
+    } else {
+      renderRecentConnections();
+    }
     return;
   }
   banner.innerHTML =
@@ -1184,8 +1217,8 @@ try {
     "Run <code>cd rnd &amp;&amp; python connector_api.py</code>" +
     (health && health.detail ? " (" + escapeHtml(health.detail) + ")" : "");
   banner.classList.remove("hidden");
+  renderRecentConnections();
 })();
-renderRecentConnections();
 </script>
 </body>
 </html>

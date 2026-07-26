@@ -12,10 +12,10 @@
     if (global.DATAHIVE_CONNECTOR_API) {
       return String(global.DATAHIVE_CONNECTOR_API).replace(/\/$/, "");
     }
-    var host =
-      global.location && global.location.hostname
-        ? global.location.hostname
-        : "127.0.0.1";
+    var host = "127.0.0.1";
+    if (global.location && global.location.hostname) {
+      host = global.location.hostname;
+    }
     return "http://" + host + ":5055";
   }
 
@@ -228,6 +228,29 @@
       "/api/connectors/recent?limit=" +
       encodeURIComponent(n);
     var res = await fetch(url, { headers: requestHeaders() });
+    if (res.status === 404) {
+      var healthUrl =
+        connectorApiBase() + "/health?recent=" + encodeURIComponent(n);
+      res = await fetch(healthUrl, { headers: requestHeaders() });
+      var healthBody = await res.text();
+      var healthData = null;
+      try {
+        healthData = healthBody ? JSON.parse(healthBody) : null;
+      } catch {
+        healthData = { raw: healthBody };
+      }
+      if (res.ok && healthData && Array.isArray(healthData.recent_connectors)) {
+        return {
+          ok: true,
+          items: healthData.recent_connectors,
+          db: healthData.db,
+          collection: healthData.collection
+        };
+      }
+      throw new Error(
+        "Recent connections API not found. Restart the connector API: python connector_api.py"
+      );
+    }
     var bodyText = await res.text();
     var data = null;
     try {
@@ -254,7 +277,7 @@
   global.getDataHiveUser = getRequestUser;
   global.checkConnectorApiHealth = async function checkConnectorApiHealth() {
     try {
-      var res = await fetch(HEALTH_URL, { headers: requestHeaders() });
+      var res = await fetch(HEALTH_URL + "?recent=3", { headers: requestHeaders() });
       if (!res.ok) return { ok: false, detail: "HTTP " + res.status };
       return await res.json();
     } catch (err) {
