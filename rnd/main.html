@@ -405,6 +405,76 @@
     .sql-workbench { flex-direction:column; min-height:0; }
     .sql-tree-panel { flex:0 0 auto; max-width:none; max-height:220px; border-right:none; border-bottom:1px solid var(--gray-200); }
   }
+
+  /* ---------- Admin ---------- */
+  .admin-pane { text-align:left; width:99%; margin:0 auto; }
+  .admin-pane-hd { margin-bottom:16px; }
+  .admin-pane-hd h1 { margin:0 0 6px; font-size:22px; font-weight:800; color:var(--ink-900); }
+  .admin-pane-hd p { margin:0; font-size:13.5px; color:#8a93a3; }
+  .admin-tabs {
+    display:flex; gap:4px; flex-wrap:wrap; margin-bottom:16px;
+    border-bottom:1px solid var(--gray-200); padding-bottom:0;
+  }
+  .admin-tab {
+    appearance:none; border:none; background:transparent; cursor:pointer;
+    font:inherit; font-size:13.5px; font-weight:700; color:#8a93a3;
+    padding:10px 14px; border-bottom:2px solid transparent; margin-bottom:-1px;
+  }
+  .admin-tab:hover { color:var(--ink-900); }
+  .admin-tab.active { color:var(--orange-500); border-bottom-color:var(--orange-500); }
+  .admin-panel {
+    background:#fff; border:1px solid var(--gray-200); border-radius:var(--radius);
+    box-shadow:var(--shadow); overflow:hidden;
+  }
+  .admin-toolbar {
+    display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+    padding:14px 18px; border-bottom:1px solid var(--gray-200);
+  }
+  .admin-toolbar h2 { margin:0; font-size:16px; font-weight:800; color:var(--ink-900); }
+  .admin-toolbar .count {
+    font-size:12px; font-weight:700; color:#8a93a3; background:var(--gray-100);
+    border-radius:999px; padding:3px 10px;
+  }
+  .admin-search {
+    flex:1 1 200px; min-width:180px; max-width:320px; margin-left:auto;
+    display:flex; align-items:center; gap:8px;
+    border:1.5px solid var(--gray-200); border-radius:8px; padding:7px 12px; background:#fff;
+  }
+  .admin-search:focus-within { border-color:var(--orange-500); box-shadow:0 0 0 3px rgba(255,103,31,.15); }
+  .admin-search .ic { font-size:13px; color:#8a93a3; line-height:1; }
+  .admin-search input {
+    flex:1; min-width:0; border:none; outline:none; font:inherit; font-size:13.5px;
+    color:var(--ink-900); background:transparent;
+  }
+  .admin-search input::placeholder { color:#9aa3b2; }
+  .admin-table-wrap { overflow-x:auto; }
+  .admin-table { width:100%; border-collapse:collapse; font-size:13px; }
+  .admin-table th, .admin-table td {
+    padding:11px 16px; text-align:left; border-bottom:1px solid var(--gray-200); vertical-align:middle;
+  }
+  .admin-table th {
+    font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:.03em;
+    color:#8a93a3; background:#fafbfc;
+  }
+  .admin-table tr:last-child td { border-bottom:none; }
+  .admin-table .nm { font-weight:600; color:var(--ink-900); }
+  .admin-table .muted { color:#8a93a3; font-size:12.5px; }
+  .admin-empty { padding:28px 22px; color:#8a93a3; font-size:13.5px; text-align:center; }
+  .admin-actions { display:flex; gap:6px; justify-content:flex-end; white-space:nowrap; }
+  .btn-sm {
+    font:inherit; font-weight:600; font-size:12.5px; border-radius:7px; padding:6px 10px;
+    cursor:pointer; border:1.5px solid var(--gray-200); background:#fff; color:var(--ink-700);
+  }
+  .btn-sm:hover { background:var(--gray-100); color:var(--ink-900); }
+  .btn-sm.danger { color:#c0392b; border-color:#f0c4b8; }
+  .btn-sm.danger:hover { background:var(--err-bg); }
+  .role-pill {
+    display:inline-flex; align-items:center; padding:3px 9px; border-radius:999px;
+    font-size:11.5px; font-weight:700; background:var(--gray-100); color:var(--navy-700);
+  }
+  .role-pill.admin { background:rgba(255,103,31,.12); color:var(--orange-500); }
+  .role-pill.editor { background:rgba(4,107,210,.10); color:var(--blue-600); }
+  .admin-modal.panel { margin:0; width:100%; max-width:560px; max-height:min(92vh,720px); overflow:auto; }
 </style>
 </head>
 <body>
@@ -440,7 +510,7 @@
     <div class="grp" style="margin-top:14px">
       <a href="../frontend/index-v2.html"><span class="ic">📘</span>Glossary</a>
       <a href="../frontend/index-v2.html"><span class="ic">🏛️</span>Governance</a>
-      <a href="../frontend/index-v2.html"><span class="ic">🛡️</span>Admin</a>
+      <a href="#" data-view="admin"><span class="ic">🛡️</span>Admin</a>
       <a href="#"><span class="ic">📊</span>Reporting</a>
     </div>
     <div class="grp bottom">
@@ -560,7 +630,84 @@
       </section>
     </div>
     </div>
+
+    <div id="view-admin" class="admin-pane hidden">
+      <div class="admin-pane-hd">
+        <h1>Admin</h1>
+        <p>Manage user groups, personas, and users for DataHive access and personalisation.</p>
+      </div>
+
+      <div class="admin-tabs" role="tablist" aria-label="Admin sections">
+        <button type="button" class="admin-tab active" role="tab" aria-selected="true" data-admin-tab="groups">User Groups</button>
+        <button type="button" class="admin-tab" role="tab" aria-selected="false" data-admin-tab="personas">Personas</button>
+        <button type="button" class="admin-tab" role="tab" aria-selected="false" data-admin-tab="users">Users</button>
+      </div>
+
+      <section class="admin-panel" id="adminSectionGroups" data-admin-section="groups">
+        <div class="admin-toolbar">
+          <h2>User Groups</h2>
+          <span class="count" id="adminGroupsCount">0</span>
+          <label class="admin-search" for="adminSearchGroups">
+            <span class="ic" aria-hidden="true">⌕</span>
+            <input id="adminSearchGroups" type="search" placeholder="Search user groups…" autocomplete="off" />
+          </label>
+          <button type="button" class="btn btn-primary" id="adminAddGroupBtn">Add group</button>
+        </div>
+        <div class="admin-table-wrap">
+          <div id="adminGroupsBody"></div>
+        </div>
+      </section>
+
+      <section class="admin-panel hidden" id="adminSectionPersonas" data-admin-section="personas">
+        <div class="admin-toolbar">
+          <h2>Personas</h2>
+          <span class="count" id="adminPersonasCount">0</span>
+          <label class="admin-search" for="adminSearchPersonas">
+            <span class="ic" aria-hidden="true">⌕</span>
+            <input id="adminSearchPersonas" type="search" placeholder="Search personas…" autocomplete="off" />
+          </label>
+          <button type="button" class="btn btn-primary" id="adminAddPersonaBtn">Add persona</button>
+        </div>
+        <div class="admin-table-wrap">
+          <div id="adminPersonasBody"></div>
+        </div>
+      </section>
+
+      <section class="admin-panel hidden" id="adminSectionUsers" data-admin-section="users">
+        <div class="admin-toolbar">
+          <h2>Users</h2>
+          <span class="count" id="adminUsersCount">0</span>
+          <label class="admin-search" for="adminSearchUsers">
+            <span class="ic" aria-hidden="true">⌕</span>
+            <input id="adminSearchUsers" type="search" placeholder="Search users…" autocomplete="off" />
+          </label>
+          <button type="button" class="btn btn-primary" id="adminAddUserBtn">Add user</button>
+        </div>
+        <div class="admin-table-wrap">
+          <div id="adminUsersBody"></div>
+        </div>
+      </section>
+    </div>
   </main>
+</div>
+
+<div id="adminModalOverlay" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="adminModalTitle">
+  <section class="panel admin-modal">
+    <div class="panel-hd">
+      <h2 id="adminModalTitle">Add</h2>
+      <button type="button" class="icon-x" id="adminModalClose" aria-label="Close">✕</button>
+    </div>
+    <div class="panel-bd">
+      <form id="adminForm" novalidate>
+        <div id="adminFormFields"></div>
+        <div class="err hidden" id="adminFormError"></div>
+        <div class="actions">
+          <button type="button" class="btn btn-ghost" id="adminFormCancel">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="adminFormSave">Save</button>
+        </div>
+      </form>
+    </div>
+  </section>
 </div>
 
 <div id="connModalOverlay" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="panelTitle">
@@ -1754,10 +1901,13 @@ document.querySelectorAll("nav.rail a[data-view]").forEach((a) => {
     $("#view-assets").classList.toggle("hidden", view !== "assets");
     $("#view-sql").classList.toggle("hidden", view !== "insights");
     $("#view-connectors").classList.toggle("hidden", view !== "connectors");
+    const adminView = $("#view-admin");
+    if (adminView) adminView.classList.toggle("hidden", view !== "admin");
     if (view === "assets") initAssetsView();
     if (view === "insights" && typeof DataHiveSqlExplorer !== "undefined") {
       DataHiveSqlExplorer.init();
     }
+    if (view === "admin") initAdminView();
   });
 });
 
@@ -1879,6 +2029,456 @@ document.addEventListener("keydown", (e) => {
   }
   await initAssetsView();
 })();
+
+/* ========== Admin: User Groups / Personas / Users ========== */
+const ADMIN_STORAGE_KEY = "datahive.admin.v1";
+const ADMIN_ROLES = ["viewer", "editor", "admin"];
+
+const ADMIN_SEED = {
+  groups: [
+    { id: "g-analytics", name: "Analytics", description: "Data analysts and reporting teams", personaId: "p-analyst" },
+    { id: "g-marketing", name: "Marketing", description: "Campaign and growth users", personaId: "p-marketing" },
+  ],
+  personas: [
+    { id: "p-analyst", name: "Data Analyst", description: "Surfaces dashboards, queries, and verified metrics" },
+    { id: "p-marketing", name: "Marketing", description: "Surfaces campaign assets and acquisition metrics" },
+  ],
+  users: [
+    { id: "u-admin", username: "admin", displayName: "Admin", email: "admin@acldigital.com", role: "admin", groupId: "g-analytics", personaId: "p-analyst" },
+    { id: "u-mmadden", username: "mmadden", displayName: "Matt Madden", email: "mmadden@acldigital.com", role: "editor", groupId: "g-marketing", personaId: "p-marketing" },
+  ],
+};
+
+let adminState = null;
+let adminActiveTab = "groups";
+let adminEdit = null; // { kind, id } or null for add
+const adminSearch = { groups: "", personas: "", users: "" };
+
+function adminUid(prefix) {
+  return prefix + "-" + Math.random().toString(36).slice(2, 9);
+}
+
+function adminMatches(query, parts) {
+  const q = (query || "").trim().toLowerCase();
+  if (!q) return true;
+  return parts.some((p) => String(p || "").toLowerCase().includes(q));
+}
+
+function loadAdminState() {
+  try {
+    const raw = localStorage.getItem(ADMIN_STORAGE_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (parsed && Array.isArray(parsed.groups) && Array.isArray(parsed.personas) && Array.isArray(parsed.users)) {
+        return parsed;
+      }
+    }
+  } catch (_) { /* ignore corrupt storage */ }
+  return JSON.parse(JSON.stringify(ADMIN_SEED));
+}
+
+function saveAdminState() {
+  localStorage.setItem(ADMIN_STORAGE_KEY, JSON.stringify(adminState));
+}
+
+function groupNameById(id) {
+  const g = adminState.groups.find((x) => x.id === id);
+  return g ? g.name : "—";
+}
+
+function personaNameById(id) {
+  const p = adminState.personas.find((x) => x.id === id);
+  return p ? p.name : "—";
+}
+
+function usersInGroup(groupId) {
+  return adminState.users.filter((u) => u.groupId === groupId).length;
+}
+
+function setAdminTab(tab) {
+  adminActiveTab = tab;
+  document.querySelectorAll(".admin-tab").forEach((btn) => {
+    const on = btn.dataset.adminTab === tab;
+    btn.classList.toggle("active", on);
+    btn.setAttribute("aria-selected", on ? "true" : "false");
+  });
+  document.querySelectorAll("[data-admin-section]").forEach((sec) => {
+    sec.classList.toggle("hidden", sec.dataset.adminSection !== tab);
+  });
+  const searchIds = { groups: "adminSearchGroups", personas: "adminSearchPersonas", users: "adminSearchUsers" };
+  const input = searchIds[tab] ? $("#" + searchIds[tab]) : null;
+  if (input) setTimeout(() => input.focus(), 30);
+}
+
+function renderAdminGroups() {
+  const body = $("#adminGroupsBody");
+  const count = $("#adminGroupsCount");
+  const filtered = adminState.groups.filter((g) =>
+    adminMatches(adminSearch.groups, [g.name, g.description, personaNameById(g.personaId)])
+  );
+  if (count) {
+    count.textContent = adminSearch.groups.trim()
+      ? filtered.length + "/" + adminState.groups.length
+      : String(adminState.groups.length);
+  }
+  if (!body) return;
+  if (!adminState.groups.length) {
+    body.innerHTML = '<div class="admin-empty">No user groups yet. Click "Add group" to create one.</div>';
+    return;
+  }
+  if (!filtered.length) {
+    body.innerHTML = '<div class="admin-empty">No user groups match "' + escapeHtml(adminSearch.groups.trim()) + '".</div>';
+    return;
+  }
+  body.innerHTML =
+    '<table class="admin-table" aria-label="User Groups">' +
+    "<thead><tr><th>Name</th><th>Description</th><th>Default persona</th><th>Users</th><th></th></tr></thead><tbody>" +
+    filtered.map((g) =>
+      "<tr>" +
+      '<td class="nm">' + escapeHtml(g.name) + "</td>" +
+      "<td>" + escapeHtml(g.description || "—") + "</td>" +
+      "<td>" + escapeHtml(personaNameById(g.personaId)) + "</td>" +
+      "<td>" + usersInGroup(g.id) + "</td>" +
+      '<td><div class="admin-actions">' +
+      '<button type="button" class="btn-sm" data-admin-edit="groups" data-id="' + escapeHtml(g.id) + '">Modify</button>' +
+      '<button type="button" class="btn-sm danger" data-admin-del="groups" data-id="' + escapeHtml(g.id) + '">Delete</button>' +
+      "</div></td></tr>"
+    ).join("") +
+    "</tbody></table>";
+}
+
+function renderAdminPersonas() {
+  const body = $("#adminPersonasBody");
+  const count = $("#adminPersonasCount");
+  const filtered = adminState.personas.filter((p) =>
+    adminMatches(adminSearch.personas, [p.name, p.description])
+  );
+  if (count) {
+    count.textContent = adminSearch.personas.trim()
+      ? filtered.length + "/" + adminState.personas.length
+      : String(adminState.personas.length);
+  }
+  if (!body) return;
+  if (!adminState.personas.length) {
+    body.innerHTML = '<div class="admin-empty">No personas yet. Click "Add persona" to create one.</div>';
+    return;
+  }
+  if (!filtered.length) {
+    body.innerHTML = '<div class="admin-empty">No personas match "' + escapeHtml(adminSearch.personas.trim()) + '".</div>';
+    return;
+  }
+  body.innerHTML =
+    '<table class="admin-table" aria-label="Personas">' +
+    "<thead><tr><th>Name</th><th>Description</th><th>Used by</th><th></th></tr></thead><tbody>" +
+    filtered.map((p) => {
+      const used = adminState.users.filter((u) => u.personaId === p.id).length +
+        adminState.groups.filter((g) => g.personaId === p.id).length;
+      return (
+        "<tr>" +
+        '<td class="nm">' + escapeHtml(p.name) + "</td>" +
+        "<td>" + escapeHtml(p.description || "—") + "</td>" +
+        "<td>" + used + " assignment" + (used === 1 ? "" : "s") + "</td>" +
+        '<td><div class="admin-actions">' +
+        '<button type="button" class="btn-sm" data-admin-edit="personas" data-id="' + escapeHtml(p.id) + '">Modify</button>' +
+        '<button type="button" class="btn-sm danger" data-admin-del="personas" data-id="' + escapeHtml(p.id) + '">Delete</button>' +
+        "</div></td></tr>"
+      );
+    }).join("") +
+    "</tbody></table>";
+}
+
+function renderAdminUsers() {
+  const body = $("#adminUsersBody");
+  const count = $("#adminUsersCount");
+  const filtered = adminState.users.filter((u) =>
+    adminMatches(adminSearch.users, [
+      u.displayName, u.username, u.email, u.role,
+      groupNameById(u.groupId), personaNameById(u.personaId),
+    ])
+  );
+  if (count) {
+    count.textContent = adminSearch.users.trim()
+      ? filtered.length + "/" + adminState.users.length
+      : String(adminState.users.length);
+  }
+  if (!body) return;
+  if (!adminState.users.length) {
+    body.innerHTML = '<div class="admin-empty">No users yet. Click "Add user" to create one.</div>';
+    return;
+  }
+  if (!filtered.length) {
+    body.innerHTML = '<div class="admin-empty">No users match "' + escapeHtml(adminSearch.users.trim()) + '".</div>';
+    return;
+  }
+  body.innerHTML =
+    '<table class="admin-table" aria-label="Users">' +
+    "<thead><tr><th>User</th><th>Email</th><th>Role</th><th>Group</th><th>Persona</th><th></th></tr></thead><tbody>" +
+    filtered.map((u) =>
+      "<tr>" +
+      '<td><div class="nm">' + escapeHtml(u.displayName) + '</div><div class="muted">@' + escapeHtml(u.username) + "</div></td>" +
+      "<td>" + escapeHtml(u.email || "—") + "</td>" +
+      '<td><span class="role-pill ' + escapeHtml(u.role) + '">' + escapeHtml(u.role) + "</span></td>" +
+      "<td>" + escapeHtml(groupNameById(u.groupId)) + "</td>" +
+      "<td>" + escapeHtml(personaNameById(u.personaId)) + "</td>" +
+      '<td><div class="admin-actions">' +
+      '<button type="button" class="btn-sm" data-admin-edit="users" data-id="' + escapeHtml(u.id) + '">Modify</button>' +
+      '<button type="button" class="btn-sm danger" data-admin-del="users" data-id="' + escapeHtml(u.id) + '">Delete</button>' +
+      "</div></td></tr>"
+    ).join("") +
+    "</tbody></table>";
+}
+
+function renderAdminAll() {
+  renderAdminGroups();
+  renderAdminPersonas();
+  renderAdminUsers();
+}
+
+function optionHtml(items, selectedId, emptyLabel) {
+  return (
+    '<option value="">' + escapeHtml(emptyLabel) + "</option>" +
+    items.map((it) =>
+      '<option value="' + escapeHtml(it.id) + '"' +
+      (it.id === selectedId ? " selected" : "") + ">" +
+      escapeHtml(it.name) + "</option>"
+    ).join("")
+  );
+}
+
+function openAdminModal(kind, id) {
+  adminEdit = id ? { kind, id } : { kind, id: null };
+  const isEdit = !!id;
+  const titles = {
+    groups: isEdit ? "Modify user group" : "Add user group",
+    personas: isEdit ? "Modify persona" : "Add persona",
+    users: isEdit ? "Modify user" : "Add user",
+  };
+  $("#adminModalTitle").textContent = titles[kind] || "Edit";
+  $("#adminFormError").classList.add("hidden");
+  $("#adminFormError").textContent = "";
+
+  const fields = $("#adminFormFields");
+  if (kind === "groups") {
+    const g = isEdit ? adminState.groups.find((x) => x.id === id) : null;
+    fields.innerHTML =
+      '<div class="field"><label for="af_name">Name <span class="req">*</span></label>' +
+      '<input id="af_name" name="name" required maxlength="64" value="' + escapeHtml((g && g.name) || "") + '" /></div>' +
+      '<div class="field"><label for="af_description">Description</label>' +
+      '<input id="af_description" name="description" maxlength="256" value="' + escapeHtml((g && g.description) || "") + '" /></div>' +
+      '<div class="field"><label for="af_personaId">Default persona</label>' +
+      '<select id="af_personaId" name="personaId">' +
+      optionHtml(adminState.personas, g && g.personaId, "None") +
+      "</select></div>";
+  } else if (kind === "personas") {
+    const p = isEdit ? adminState.personas.find((x) => x.id === id) : null;
+    fields.innerHTML =
+      '<div class="field"><label for="af_name">Name <span class="req">*</span></label>' +
+      '<input id="af_name" name="name" required maxlength="64" value="' + escapeHtml((p && p.name) || "") + '" /></div>' +
+      '<div class="field"><label for="af_description">Description</label>' +
+      '<textarea id="af_description" name="description" maxlength="512">' + escapeHtml((p && p.description) || "") + "</textarea></div>";
+  } else if (kind === "users") {
+    const u = isEdit ? adminState.users.find((x) => x.id === id) : null;
+    fields.innerHTML =
+      '<div class="row2">' +
+      '<div class="field"><label for="af_username">Username <span class="req">*</span></label>' +
+      '<input id="af_username" name="username" required maxlength="64" autocomplete="off" value="' +
+      escapeHtml((u && u.username) || "") + '"' + (isEdit ? " readonly" : "") + " /></div>" +
+      '<div class="field"><label for="af_displayName">Display name <span class="req">*</span></label>' +
+      '<input id="af_displayName" name="displayName" required maxlength="128" value="' +
+      escapeHtml((u && u.displayName) || "") + '" /></div></div>' +
+      '<div class="field"><label for="af_email">Email <span class="req">*</span></label>' +
+      '<input id="af_email" name="email" type="email" required maxlength="256" value="' +
+      escapeHtml((u && u.email) || "") + '" /></div>' +
+      '<div class="row3">' +
+      '<div class="field"><label for="af_role">Role <span class="req">*</span></label>' +
+      '<select id="af_role" name="role">' +
+      ADMIN_ROLES.map((r) =>
+        '<option value="' + r + '"' + ((u ? u.role : "viewer") === r ? " selected" : "") + ">" + r + "</option>"
+      ).join("") +
+      "</select></div>" +
+      '<div class="field"><label for="af_groupId">User group</label>' +
+      '<select id="af_groupId" name="groupId">' +
+      optionHtml(adminState.groups, u && u.groupId, "None") +
+      "</select></div>" +
+      '<div class="field"><label for="af_personaId">Persona</label>' +
+      '<select id="af_personaId" name="personaId">' +
+      optionHtml(adminState.personas, u && u.personaId, "None") +
+      "</select></div></div>";
+  }
+
+  $("#adminModalOverlay").classList.remove("hidden");
+  const first = $("#af_name") || $("#af_username") || $("#af_displayName");
+  if (first) setTimeout(() => first.focus(), 30);
+}
+
+function closeAdminModal() {
+  $("#adminModalOverlay").classList.add("hidden");
+  adminEdit = null;
+}
+
+function showAdminFormError(msg) {
+  const el = $("#adminFormError");
+  el.textContent = msg;
+  el.classList.remove("hidden");
+}
+
+function saveAdminForm(e) {
+  e.preventDefault();
+  if (!adminEdit) return;
+  const kind = adminEdit.kind;
+  const id = adminEdit.id;
+
+  if (kind === "groups") {
+    const name = ($("#af_name").value || "").trim();
+    const description = ($("#af_description").value || "").trim();
+    const personaId = $("#af_personaId").value || "";
+    if (!name) return showAdminFormError("Name is required.");
+    const dup = adminState.groups.some((g) => g.name.toLowerCase() === name.toLowerCase() && g.id !== id);
+    if (dup) return showAdminFormError("A group with this name already exists.");
+    if (id) {
+      const g = adminState.groups.find((x) => x.id === id);
+      if (!g) return showAdminFormError("Group not found.");
+      g.name = name; g.description = description; g.personaId = personaId;
+    } else {
+      adminState.groups.push({ id: adminUid("g"), name, description, personaId });
+    }
+  } else if (kind === "personas") {
+    const name = ($("#af_name").value || "").trim();
+    const description = ($("#af_description").value || "").trim();
+    if (!name) return showAdminFormError("Name is required.");
+    const dup = adminState.personas.some((p) => p.name.toLowerCase() === name.toLowerCase() && p.id !== id);
+    if (dup) return showAdminFormError("A persona with this name already exists.");
+    if (id) {
+      const p = adminState.personas.find((x) => x.id === id);
+      if (!p) return showAdminFormError("Persona not found.");
+      p.name = name; p.description = description;
+    } else {
+      adminState.personas.push({ id: adminUid("p"), name, description });
+    }
+  } else if (kind === "users") {
+    const username = ($("#af_username").value || "").trim().toLowerCase();
+    const displayName = ($("#af_displayName").value || "").trim();
+    const email = ($("#af_email").value || "").trim();
+    const role = $("#af_role").value || "viewer";
+    const groupId = $("#af_groupId").value || "";
+    const personaId = $("#af_personaId").value || "";
+    if (!username) return showAdminFormError("Username is required.");
+    if (!/^[a-z0-9._-]{2,64}$/.test(username)) {
+      return showAdminFormError("Username must be 2–64 chars: letters, numbers, . _ -");
+    }
+    if (!displayName) return showAdminFormError("Display name is required.");
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return showAdminFormError("A valid email is required.");
+    }
+    if (!ADMIN_ROLES.includes(role)) return showAdminFormError("Invalid role.");
+    const dup = adminState.users.some((u) => u.username === username && u.id !== id);
+    if (dup) return showAdminFormError("A user with this username already exists.");
+    if (id) {
+      const u = adminState.users.find((x) => x.id === id);
+      if (!u) return showAdminFormError("User not found.");
+      u.displayName = displayName; u.email = email; u.role = role;
+      u.groupId = groupId; u.personaId = personaId;
+    } else {
+      adminState.users.push({
+        id: adminUid("u"), username, displayName, email, role, groupId, personaId,
+      });
+    }
+  }
+
+  saveAdminState();
+  renderAdminAll();
+  closeAdminModal();
+}
+
+function deleteAdminItem(kind, id) {
+  let name = id;
+  if (kind === "groups") {
+    const g = adminState.groups.find((x) => x.id === id);
+    name = g ? g.name : id;
+    const linked = usersInGroup(id);
+    const msg = linked
+      ? 'Delete user group "' + name + '"? ' + linked + " user(s) will be unassigned from this group."
+      : 'Delete user group "' + name + '"?';
+    if (!confirm(msg)) return;
+    adminState.groups = adminState.groups.filter((x) => x.id !== id);
+    adminState.users.forEach((u) => { if (u.groupId === id) u.groupId = ""; });
+  } else if (kind === "personas") {
+    const p = adminState.personas.find((x) => x.id === id);
+    name = p ? p.name : id;
+    if (!confirm('Delete persona "' + name + '"? Users and groups using it will be cleared.')) return;
+    adminState.personas = adminState.personas.filter((x) => x.id !== id);
+    adminState.groups.forEach((g) => { if (g.personaId === id) g.personaId = ""; });
+    adminState.users.forEach((u) => { if (u.personaId === id) u.personaId = ""; });
+  } else if (kind === "users") {
+    const u = adminState.users.find((x) => x.id === id);
+    name = u ? u.displayName : id;
+    if (!confirm('Delete user "' + name + '"?')) return;
+    adminState.users = adminState.users.filter((x) => x.id !== id);
+  } else {
+    return;
+  }
+  saveAdminState();
+  renderAdminAll();
+}
+
+let adminBound = false;
+function bindAdminEvents() {
+  if (adminBound) return;
+  adminBound = true;
+
+  document.querySelectorAll(".admin-tab").forEach((btn) => {
+    btn.addEventListener("click", () => setAdminTab(btn.dataset.adminTab));
+  });
+
+  $("#adminAddGroupBtn").addEventListener("click", () => openAdminModal("groups", null));
+  $("#adminAddPersonaBtn").addEventListener("click", () => openAdminModal("personas", null));
+  $("#adminAddUserBtn").addEventListener("click", () => openAdminModal("users", null));
+
+  const searchBindings = [
+    ["adminSearchGroups", "groups", renderAdminGroups],
+    ["adminSearchPersonas", "personas", renderAdminPersonas],
+    ["adminSearchUsers", "users", renderAdminUsers],
+  ];
+  searchBindings.forEach(([id, key, render]) => {
+    const input = $("#" + id);
+    if (!input) return;
+    input.addEventListener("input", () => {
+      adminSearch[key] = input.value;
+      render();
+    });
+  });
+
+  $("#adminModalClose").addEventListener("click", closeAdminModal);
+  $("#adminFormCancel").addEventListener("click", closeAdminModal);
+  $("#adminForm").addEventListener("submit", saveAdminForm);
+
+  const overlay = $("#adminModalOverlay");
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) closeAdminModal();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !overlay.classList.contains("hidden")) closeAdminModal();
+  });
+
+  $("#view-admin").addEventListener("click", (e) => {
+    const editBtn = e.target.closest("[data-admin-edit]");
+    if (editBtn) {
+      openAdminModal(editBtn.dataset.adminEdit, editBtn.dataset.id);
+      return;
+    }
+    const delBtn = e.target.closest("[data-admin-del]");
+    if (delBtn) {
+      deleteAdminItem(delBtn.dataset.adminDel, delBtn.dataset.id);
+    }
+  });
+}
+
+function initAdminView() {
+  if (!adminState) adminState = loadAdminState();
+  bindAdminEvents();
+  setAdminTab(adminActiveTab || "groups");
+  renderAdminAll();
+}
 </script>
 </body>
 </html>
