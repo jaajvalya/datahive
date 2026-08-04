@@ -561,6 +561,30 @@
     margin:0 0 12px; padding:10px 12px; border-radius:8px;
     background:rgba(31,169,113,.10); color:var(--ok); font-size:13px; font-weight:600;
   }
+  .etl-lang-row {
+    display:flex; flex-wrap:wrap; gap:10px; margin:4px 0 2px;
+  }
+  .etl-lang-opt {
+    display:inline-flex; align-items:center; gap:8px; padding:8px 12px;
+    border:1px solid var(--gray-200); border-radius:999px; background:#fff;
+    cursor:pointer; font-size:13px; font-weight:600; color:var(--ink-700);
+  }
+  .etl-lang-opt:has(input:checked) {
+    border-color:var(--orange-500); color:var(--orange-500);
+    background:rgba(255,103,31,.06);
+  }
+  .etl-lang-opt input { accent-color:var(--orange-500); }
+  .etl-script-toolbar {
+    display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin:0 0 10px;
+  }
+  .etl-script-toolbar .hint { flex:1; font-size:12.5px; color:#8a93a3; min-width:160px; }
+  .etl-script {
+    width:100%; min-height:280px; resize:vertical; font-family:"Consolas","SFMono-Regular",Menlo,monospace;
+    font-size:12.5px; line-height:1.45; padding:12px 14px; border:1px solid var(--gray-200);
+    border-radius:10px; background:#0f1724; color:#e8eef8; tab-size:2;
+  }
+  .etl-script:focus { outline:none; border-color:var(--orange-500); box-shadow:0 0 0 3px rgba(255,103,31,.15); }
+  .etl-script-meta { margin:8px 0 0; font-size:12px; color:#8a93a3; }
 
   /* ---------- Glossary ---------- */
   .glossary-pane { text-align:left; width:99%; margin:0 auto; }
@@ -842,7 +866,7 @@
     <div id="view-etl" class="etl-pane hidden">
       <div class="etl-pane-hd">
         <h1>ETL / ELT</h1>
-        <p>Define a pipeline by selecting source and target connection details from the dropdowns.</p>
+        <p>Select source and destination, choose SQL / Python / PySpark, then generate a transformation script.</p>
       </div>
 
       <section class="etl-card" aria-labelledby="etlFormTitle">
@@ -863,32 +887,51 @@
                     <option value="">Select source connector…</option>
                   </select>
                 </div>
-                <div class="field" style="margin-bottom:0">
+                <div class="field">
                   <label for="etl_source_conn">Source connection <span class="req">*</span></label>
                   <select id="etl_source_conn" required disabled>
                     <option value="">Select a source connector first…</option>
                   </select>
                   <div class="help">Saved connections for the selected source connector.</div>
                 </div>
+                <div class="field" style="margin-bottom:0">
+                  <label for="etl_source_object">Source object</label>
+                  <input id="etl_source_object" maxlength="256" placeholder="e.g. bronze.customers or s3://bucket/path/" />
+                  <div class="help">Schema.table, dataset.table, or path used in the generated script.</div>
+                </div>
               </div>
 
               <div class="etl-arrow" aria-hidden="true">→</div>
 
               <div class="etl-endpoint" aria-label="Target details">
-                <p class="ep-label">Target</p>
+                <p class="ep-label">Destination</p>
                 <div class="field">
                   <label for="etl_target_type">Target connector <span class="req">*</span></label>
                   <select id="etl_target_type" required>
                     <option value="">Select target connector…</option>
                   </select>
                 </div>
-                <div class="field" style="margin-bottom:0">
+                <div class="field">
                   <label for="etl_target_conn">Target connection <span class="req">*</span></label>
                   <select id="etl_target_conn" required disabled>
                     <option value="">Select a target connector first…</option>
                   </select>
                   <div class="help">Saved connections for the selected target connector.</div>
                 </div>
+                <div class="field" style="margin-bottom:0">
+                  <label for="etl_target_object">Destination object</label>
+                  <input id="etl_target_object" maxlength="256" placeholder="e.g. silver.customers or dhpoc-silver.dh_customer" />
+                  <div class="help">Where transformed rows should land.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field">
+              <label>Transformation language <span class="req">*</span></label>
+              <div class="etl-lang-row" role="radiogroup" aria-label="Script language">
+                <label class="etl-lang-opt"><input type="radio" name="etl_language" value="sql" checked /> SQL</label>
+                <label class="etl-lang-opt"><input type="radio" name="etl_language" value="python" /> Python</label>
+                <label class="etl-lang-opt"><input type="radio" name="etl_language" value="pyspark" /> PySpark</label>
               </div>
             </div>
 
@@ -901,9 +944,25 @@
             <div class="etl-ok hidden" id="etlFormOk"></div>
             <div class="actions">
               <button type="button" class="btn btn-ghost" id="etlResetBtn">Reset</button>
+              <button type="button" class="btn btn-primary" id="etlGenerateBtn">Generate script</button>
               <button type="submit" class="btn btn-primary" id="etlSaveBtn">Save pipeline</button>
             </div>
           </form>
+        </div>
+      </section>
+
+      <section class="etl-card" aria-labelledby="etlScriptTitle">
+        <div class="etl-hd">
+          <h2 id="etlScriptTitle">Transformation script</h2>
+        </div>
+        <div class="etl-bd">
+          <div class="etl-script-toolbar">
+            <span class="hint" id="etlScriptHint">Select source, destination, and language, then generate.</span>
+            <button type="button" class="btn btn-ghost" id="etlCopyScriptBtn">Copy</button>
+            <button type="button" class="btn btn-ghost" id="etlDownloadScriptBtn">Download</button>
+          </div>
+          <textarea id="etlScriptEditor" class="etl-script" spellcheck="false" placeholder="Generated transformation script will appear here…"></textarea>
+          <p class="etl-script-meta" id="etlScriptMeta"></p>
         </div>
       </section>
 
@@ -3358,9 +3417,408 @@ const ETL_STORAGE_KEY = "datahive.etl.pipelines.v1";
 let etlConnections = [];
 let etlPipelines = [];
 let etlBound = false;
+let etlGeneratedScript = "";
 
 function etlConnectorOptions() {
-  return Object.values(CLOUDS).filter((c) => c.mode !== "upload");
+  const clouds = Object.values(CLOUDS).filter((c) => c.mode !== "upload");
+  // Always offer Local Postgres as a warehouse endpoint for ELT.
+  if (!clouds.some((c) => c.id === "postgres")) {
+    clouds.push({
+      id: "postgres",
+      name: "PostgreSQL",
+      short: "Postgres",
+      type: "database",
+      mode: "local",
+    });
+  }
+  return clouds;
+}
+
+function selectedEtlLanguage() {
+  const checked = document.querySelector('input[name="etl_language"]:checked');
+  return (checked && checked.value) || "sql";
+}
+
+function etlPlatformLabel(cloudId) {
+  const c = CLOUDS[cloudId] || etlConnectorOptions().find((x) => x.id === cloudId);
+  return (c && (c.short || c.name)) || cloudId || "source";
+}
+
+function etlQuoteIdent(name, dialect) {
+  const parts = String(name || "")
+    .split(".")
+    .map((p) => p.trim())
+    .filter(Boolean);
+  if (!parts.length) return dialect === "snowflake" ? "SOURCE_TABLE" : "source_table";
+  if (dialect === "bigquery") {
+    return parts.map((p) => "`" + p.replace(/`/g, "") + "`").join(".");
+  }
+  if (dialect === "snowflake") {
+    return parts.map((p) => '"' + p.replace(/"/g, '""').toUpperCase() + '"').join(".");
+  }
+  return parts.map((p) => '"' + p.replace(/"/g, '""') + '"').join(".");
+}
+
+function etlDefaultObject(kind, cloudId) {
+  if (kind === "source") {
+    if (cloudId === "aws") return "s3://my-bucket/raw/customers/";
+    if (cloudId === "gcp") return "project.dataset.raw_customers";
+    if (cloudId === "azure") return "abfss://container@account.dfs.core.windows.net/raw/customers/";
+    if (cloudId === "snowflake") return "RAW.BRONZE.CUSTOMERS";
+    return "dhpoc-bronze.test_customer_tbl";
+  }
+  if (cloudId === "aws") return "s3://my-bucket/curated/customers/";
+  if (cloudId === "gcp") return "project.dataset.silver_customers";
+  if (cloudId === "azure") return "abfss://container@account.dfs.core.windows.net/curated/customers/";
+  if (cloudId === "snowflake") return "ANALYTICS.SILVER.CUSTOMERS";
+  return "dhpoc-silver.dh_customer";
+}
+
+function etlSqlDialect(cloudId) {
+  if (cloudId === "snowflake") return "snowflake";
+  if (cloudId === "gcp") return "bigquery";
+  if (cloudId === "azure") return "tsql";
+  return "postgres";
+}
+
+function generateEtlSqlScript(ctx) {
+  const srcDialect = etlSqlDialect(ctx.sourceType);
+  const tgtDialect = etlSqlDialect(ctx.targetType);
+  const srcObj = etlQuoteIdent(ctx.sourceObject, srcDialect);
+  const tgtObj = etlQuoteIdent(ctx.targetObject, tgtDialect);
+  const lines = [
+    "-- DataHive generated transformation (SQL)",
+    "-- Pipeline : " + ctx.name,
+    "-- Source  : " + ctx.sourceLabel + " [" + ctx.sourceType + "] → " + ctx.sourceObject,
+    "-- Target  : " + ctx.targetLabel + " [" + ctx.targetType + "] → " + ctx.targetObject,
+    "-- Notes   : " + (ctx.notes || "n/a"),
+    "",
+    "-- Staging extract from source",
+    "CREATE OR REPLACE TEMP TABLE stg_extract AS",
+    "SELECT",
+    "  *,",
+    "  CURRENT_TIMESTAMP AS _dh_ingested_at,",
+    "  '" + ctx.sourceType + "' AS _dh_source_system",
+    "FROM " + srcObj + ";",
+    "",
+    "-- Light transforms (rename / cast / quality filters — edit as needed)",
+    "CREATE OR REPLACE TEMP TABLE stg_transform AS",
+    "SELECT",
+    "  *",
+    "FROM stg_extract",
+    "WHERE 1 = 1;",
+    "",
+  ];
+  if (ctx.sourceType === ctx.targetType || (srcDialect === tgtDialect && srcDialect !== "tsql")) {
+    lines.push(
+      "-- Load into destination (same SQL dialect)",
+      "CREATE TABLE IF NOT EXISTS " + tgtObj + " AS",
+      "SELECT * FROM stg_transform WHERE 1 = 0;",
+      "",
+      "INSERT INTO " + tgtObj,
+      "SELECT * FROM stg_transform;",
+      "",
+      "-- Optional idempotent merge pattern",
+      "-- MERGE INTO " + tgtObj + " AS t",
+      "-- USING stg_transform AS s",
+      "-- ON t.id = s.id",
+      "-- WHEN MATCHED THEN UPDATE SET ...",
+      "-- WHEN NOT MATCHED THEN INSERT ...;"
+    );
+  } else {
+    lines.push(
+      "-- Cross-platform note:",
+      "-- Source dialect=" + srcDialect + ", target dialect=" + tgtDialect + ".",
+      "-- Run the extract on the source engine, land files/rows in an exchange zone,",
+      "-- then load into the target with its native SQL / COPY command.",
+      "",
+      "-- Target load skeleton (" + tgtDialect + ")",
+      "CREATE TABLE IF NOT EXISTS " + tgtObj + " AS",
+      "SELECT * FROM stg_transform WHERE 1 = 0;",
+      "",
+      "INSERT INTO " + tgtObj,
+      "SELECT * FROM stg_transform;"
+    );
+  }
+  return lines.join("\n");
+}
+
+function generateEtlPythonScript(ctx) {
+  const src = ctx.sourceObject;
+  const tgt = ctx.targetObject;
+  return [
+    '"""DataHive generated transformation (Python)',
+    "Pipeline : " + ctx.name,
+    "Source  : " + ctx.sourceLabel + " [" + ctx.sourceType + "] → " + src,
+    "Target  : " + ctx.targetLabel + " [" + ctx.targetType + "] → " + tgt,
+    '"""',
+    "from __future__ import annotations",
+    "",
+    "from datetime import datetime, timezone",
+    "",
+    "import pandas as pd",
+    "",
+    "SOURCE_CONNECTOR = " + JSON.stringify(ctx.sourceType),
+    "TARGET_CONNECTOR = " + JSON.stringify(ctx.targetType),
+    "SOURCE_OBJECT = " + JSON.stringify(src),
+    "TARGET_OBJECT = " + JSON.stringify(tgt),
+    "",
+    "",
+    "def read_source() -> pd.DataFrame:",
+    '    """Load source rows — swap in connector SDK / SQLAlchemy / boto3 as needed."""',
+    "    if SOURCE_CONNECTOR in {\"aws\"} or SOURCE_OBJECT.startswith(\"s3://\"):",
+    "        # Example: df = pd.read_parquet(SOURCE_OBJECT)",
+    "        raise NotImplementedError(\"Wire AWS credentials from connector_dtls here\")",
+    "    if SOURCE_CONNECTOR in {\"gcp\"}:",
+    "        # Example: pandas-gbq / bigquery.Client",
+    "        raise NotImplementedError(\"Wire GCP credentials from connector_dtls here\")",
+    "    if SOURCE_CONNECTOR in {\"azure\"}:",
+    "        raise NotImplementedError(\"Wire Azure credentials from connector_dtls here\")",
+    "    if SOURCE_CONNECTOR in {\"snowflake\"}:",
+    "        raise NotImplementedError(\"Wire Snowflake connector here\")",
+    "    # Default: Postgres / SQLAlchemy",
+    "    # from sqlalchemy import create_engine",
+    "    # engine = create_engine(os.environ[\"POSTGRES_CONNINFO\"])",
+    "    # return pd.read_sql(f\"SELECT * FROM {SOURCE_OBJECT}\", engine)",
+    "    return pd.DataFrame()",
+    "",
+    "",
+    "def transform(df: pd.DataFrame) -> pd.DataFrame:",
+    "    out = df.copy()",
+    "    out[\"_dh_ingested_at\"] = datetime.now(timezone.utc).isoformat()",
+    "    out[\"_dh_source_system\"] = SOURCE_CONNECTOR",
+    "    # Add renames, casts, and quality rules here.",
+    "    return out",
+    "",
+    "",
+    "def write_target(df: pd.DataFrame) -> None:",
+    '    """Persist transformed rows to the destination connector."""',
+    "    if TARGET_CONNECTOR in {\"aws\"} or TARGET_OBJECT.startswith(\"s3://\"):",
+    "        # df.to_parquet(TARGET_OBJECT, index=False)",
+    "        raise NotImplementedError(\"Wire AWS write path here\")",
+    "    if TARGET_CONNECTOR in {\"gcp\"}:",
+    "        raise NotImplementedError(\"Wire BigQuery / GCS write here\")",
+    "    if TARGET_CONNECTOR in {\"azure\"}:",
+    "        raise NotImplementedError(\"Wire Azure write here\")",
+    "    if TARGET_CONNECTOR in {\"snowflake\"}:",
+    "        raise NotImplementedError(\"Wire Snowflake write here\")",
+    "    # Default Postgres path",
+    "    # df.to_sql(TARGET_OBJECT, engine, if_exists=\"append\", index=False)",
+    "    print(f\"Would write {len(df)} rows to {TARGET_OBJECT} via {TARGET_CONNECTOR}\")",
+    "",
+    "",
+    "def main() -> None:",
+    "    raw = read_source()",
+    "    clean = transform(raw)",
+    "    write_target(clean)",
+    "",
+    "",
+    'if __name__ == \"__main__\":',
+    "    main()",
+    "",
+  ].join("\n");
+}
+
+function generateEtlPySparkScript(ctx) {
+  const src = ctx.sourceObject;
+  const tgt = ctx.targetObject;
+  const srcFormat =
+    ctx.sourceType === "aws" || String(src).startsWith("s3://")
+      ? "parquet"
+      : ctx.sourceType === "snowflake"
+        ? "snowflake"
+        : ctx.sourceType === "gcp"
+          ? "bigquery"
+          : "jdbc";
+  const tgtFormat =
+    ctx.targetType === "aws" || String(tgt).startsWith("s3://")
+      ? "parquet"
+      : ctx.targetType === "snowflake"
+        ? "snowflake"
+        : ctx.targetType === "gcp"
+          ? "bigquery"
+          : "jdbc";
+  return [
+    '"""DataHive generated transformation (PySpark)',
+    "Pipeline : " + ctx.name,
+    "Source  : " + ctx.sourceLabel + " [" + ctx.sourceType + "] → " + src,
+    "Target  : " + ctx.targetLabel + " [" + ctx.targetType + "] → " + tgt,
+    '"""',
+    "from pyspark.sql import SparkSession",
+    "from pyspark.sql import functions as F",
+    "",
+    "SOURCE_CONNECTOR = " + JSON.stringify(ctx.sourceType),
+    "TARGET_CONNECTOR = " + JSON.stringify(ctx.targetType),
+    "SOURCE_OBJECT = " + JSON.stringify(src),
+    "TARGET_OBJECT = " + JSON.stringify(tgt),
+    "",
+    "",
+    "def build_spark() -> SparkSession:",
+    "    return (",
+    "        SparkSession.builder.appName(" + JSON.stringify("datahive-" + (ctx.name || "pipeline")) + ")",
+    '        .config("spark.sql.session.timeZone", "UTC")',
+    "        .getOrCreate()",
+    "    )",
+    "",
+    "",
+    "def read_source(spark: SparkSession):",
+    "    fmt = " + JSON.stringify(srcFormat),
+    "    if fmt == \"parquet\":",
+    "        return spark.read.parquet(SOURCE_OBJECT)",
+    "    if fmt == \"bigquery\":",
+    '        return spark.read.format("bigquery").option("table", SOURCE_OBJECT).load()',
+    "    if fmt == \"snowflake\":",
+    "        return (",
+    '            spark.read.format("snowflake")',
+    '            .options(**{})  # fill sfURL / sfUser / pem from connector_dtls',
+    '            .option("dbtable", SOURCE_OBJECT)',
+    "            .load()",
+    "        )",
+    "    # JDBC / Postgres default",
+    "    return (",
+    '        spark.read.format("jdbc")',
+    '        .option("url", "jdbc:postgresql://localhost:5432/datahivepoc")',
+    '        .option("dbtable", SOURCE_OBJECT)',
+    '        .option("user", "postgres")',
+    '        .option("password", "***")',
+    "        .load()",
+    "    )",
+    "",
+    "",
+    "def transform(df):",
+    "    return (",
+    "        df",
+    '        .withColumn("_dh_ingested_at", F.current_timestamp())',
+    '        .withColumn("_dh_source_system", F.lit(SOURCE_CONNECTOR))',
+    "        # .filter(...).withColumnRenamed(...)",
+    "    )",
+    "",
+    "",
+    "def write_target(df) -> None:",
+    "    fmt = " + JSON.stringify(tgtFormat),
+    "    if fmt == \"parquet\":",
+    '        df.write.mode("overwrite").parquet(TARGET_OBJECT)',
+    "        return",
+    "    if fmt == \"bigquery\":",
+    "        (",
+    '            df.write.format("bigquery")',
+    '            .option("table", TARGET_OBJECT)',
+    '            .mode("append")',
+    "            .save()",
+    "        )",
+    "        return",
+    "    if fmt == \"snowflake\":",
+    "        (",
+    '            df.write.format("snowflake")',
+    "            .options(**{})",
+    '            .option("dbtable", TARGET_OBJECT)',
+    '            .mode("append")',
+    "            .save()",
+    "        )",
+    "        return",
+    "    (",
+    '        df.write.format("jdbc")',
+    '        .option("url", "jdbc:postgresql://localhost:5432/datahivepoc")',
+    '        .option("dbtable", TARGET_OBJECT)',
+    '        .option("user", "postgres")',
+    '        .option("password", "***")',
+    '        .mode("append")',
+    "        .save()",
+    "    )",
+    "",
+    "",
+    "def main() -> None:",
+    "    spark = build_spark()",
+    "    try:",
+    "        raw = read_source(spark)",
+    "        clean = transform(raw)",
+    "        write_target(clean)",
+    "    finally:",
+    "        spark.stop()",
+    "",
+    "",
+    'if __name__ == "__main__":',
+    "    main()",
+    "",
+  ].join("\n");
+}
+
+function buildEtlScriptContext() {
+  const name = ($("#etl_name").value || "").trim() || "untitled_pipeline";
+  const sourceType = $("#etl_source_type").value;
+  const targetType = $("#etl_target_type").value;
+  const sourceConnKey = $("#etl_source_conn").value;
+  const targetConnKey = $("#etl_target_conn").value;
+  const srcConn = findEtlConnection(sourceConnKey);
+  const tgtConn = findEtlConnection(targetConnKey);
+  const sourceObject =
+    ($("#etl_source_object").value || "").trim() || etlDefaultObject("source", sourceType);
+  const targetObject =
+    ($("#etl_target_object").value || "").trim() || etlDefaultObject("target", targetType);
+  return {
+    name,
+    sourceType,
+    targetType,
+    sourceConnKey,
+    targetConnKey,
+    sourceLabel: srcConn ? connectionLabel(srcConn) : sourceConnKey || etlPlatformLabel(sourceType),
+    targetLabel: tgtConn ? connectionLabel(tgtConn) : targetConnKey || etlPlatformLabel(targetType),
+    sourceObject,
+    targetObject,
+    notes: ($("#etl_notes").value || "").trim(),
+    language: selectedEtlLanguage(),
+  };
+}
+
+function generateEtlTransformationScript() {
+  const ctx = buildEtlScriptContext();
+  if (!ctx.sourceType) {
+    showEtlError("Select a source connector before generating a script.");
+    return null;
+  }
+  if (!ctx.targetType) {
+    showEtlError("Select a destination connector before generating a script.");
+    return null;
+  }
+  if (!ctx.sourceConnKey || ctx.sourceConnKey === "__configure__") {
+    showEtlError("Select a source connection before generating a script.");
+    return null;
+  }
+  if (!ctx.targetConnKey || ctx.targetConnKey === "__configure__") {
+    showEtlError("Select a destination connection before generating a script.");
+    return null;
+  }
+  let script = "";
+  if (ctx.language === "python") script = generateEtlPythonScript(ctx);
+  else if (ctx.language === "pyspark") script = generateEtlPySparkScript(ctx);
+  else script = generateEtlSqlScript(ctx);
+
+  etlGeneratedScript = script;
+  const editor = $("#etlScriptEditor");
+  if (editor) editor.value = script;
+  const hint = $("#etlScriptHint");
+  if (hint) {
+    hint.textContent =
+      etlPlatformLabel(ctx.sourceType) +
+      " → " +
+      etlPlatformLabel(ctx.targetType) +
+      " · " +
+      ctx.language.toUpperCase();
+  }
+  const meta = $("#etlScriptMeta");
+  if (meta) {
+    meta.textContent =
+      "Generated for " +
+      ctx.sourceObject +
+      " → " +
+      ctx.targetObject +
+      " (" +
+      script.split("\n").length +
+      " lines). Edit freely before saving.";
+  }
+  const err = $("#etlFormError");
+  if (err) err.classList.add("hidden");
+  return { ctx, script };
 }
 
 function loadEtlPipelines() {
@@ -3414,9 +3872,20 @@ function fillEtlConnectionSelect(selectEl, cloudId, selectedValue) {
     selectEl.innerHTML = '<option value="">Select a connector first…</option>';
     return;
   }
-  const matches = etlConnections.filter((c) =>
+  let matches = etlConnections.filter((c) =>
     c.cloud === cloudId || c.connector_type === (CLOUDS[cloudId] && CLOUDS[cloudId].type)
   );
+  if (cloudId === "postgres") {
+    matches = [
+      {
+        id: "local-postgres",
+        cloud: "postgres",
+        display_name: "Local Postgres",
+        region: "localhost",
+        account_id: "datahivepoc",
+      },
+    ].concat(matches);
+  }
   if (!matches.length) {
     selectEl.disabled = false;
     selectEl.innerHTML =
@@ -3439,6 +3908,15 @@ function fillEtlConnectionSelect(selectEl, cloudId, selectedValue) {
 
 function findEtlConnection(key) {
   if (!key) return null;
+  if (key === "local-postgres") {
+    return {
+      id: "local-postgres",
+      cloud: "postgres",
+      display_name: "Local Postgres",
+      region: "localhost",
+      account_id: "datahivepoc",
+    };
+  }
   return etlConnections.find((c) => {
     const id = c.id || (c.cloud + "|" + c.display_name + "|" + (c.saved_at || ""));
     return id === key;
@@ -3487,8 +3965,19 @@ function showEtlOk(msg) {
 function resetEtlForm() {
   const form = $("#etlForm");
   if (form) form.reset();
+  const sqlRadio = document.querySelector('input[name="etl_language"][value="sql"]');
+  if (sqlRadio) sqlRadio.checked = true;
   fillEtlConnectionSelect($("#etl_source_conn"), "", "");
   fillEtlConnectionSelect($("#etl_target_conn"), "", "");
+  if ($("#etl_source_object")) $("#etl_source_object").value = "";
+  if ($("#etl_target_object")) $("#etl_target_object").value = "";
+  etlGeneratedScript = "";
+  if ($("#etlScriptEditor")) $("#etlScriptEditor").value = "";
+  if ($("#etlScriptHint")) {
+    $("#etlScriptHint").textContent =
+      "Select source, destination, and language, then generate.";
+  }
+  if ($("#etlScriptMeta")) $("#etlScriptMeta").textContent = "";
   const err = $("#etlFormError");
   const ok = $("#etlFormOk");
   if (err) err.classList.add("hidden");
@@ -3501,27 +3990,37 @@ function renderEtlPipelines() {
   if (count) count.textContent = String(etlPipelines.length);
   if (!body) return;
   if (!etlPipelines.length) {
-    body.innerHTML = '<div class="admin-empty">No pipelines yet. Select source and target details above, then save.</div>';
+    body.innerHTML =
+      '<div class="admin-empty">No pipelines yet. Select source and destination, generate a script, then save.</div>';
     return;
   }
   body.innerHTML =
     '<table class="admin-table" aria-label="Saved pipelines">' +
-    "<thead><tr><th>Pipeline</th><th>Source</th><th>Target</th><th>Updated</th><th></th></tr></thead><tbody>" +
+    "<thead><tr><th>Pipeline</th><th>Source</th><th>Destination</th><th>Language</th><th>Updated</th><th></th></tr></thead><tbody>" +
     etlPipelines.map((p) => {
-      const srcCloud = CLOUDS[p.source_type];
-      const tgtCloud = CLOUDS[p.target_type];
+      const srcCloud = CLOUDS[p.source_type] || { short: etlPlatformLabel(p.source_type) };
+      const tgtCloud = CLOUDS[p.target_type] || { short: etlPlatformLabel(p.target_type) };
       const updated = p.updated_at ? new Date(p.updated_at).toLocaleString() : "—";
+      const lang = (p.language || "sql").toUpperCase();
       return (
         "<tr>" +
         '<td><div class="nm">' + escapeHtml(p.name) + "</div>" +
         (p.notes ? '<div class="muted">' + escapeHtml(p.notes) + "</div>" : "") +
         "</td>" +
-        "<td><div class=\"nm\">" + escapeHtml((srcCloud && srcCloud.short) || p.source_type) + "</div>" +
-        '<div class="muted">' + escapeHtml(p.source_label || "—") + "</div></td>" +
-        "<td><div class=\"nm\">" + escapeHtml((tgtCloud && tgtCloud.short) || p.target_type) + "</div>" +
-        '<div class="muted">' + escapeHtml(p.target_label || "—") + "</div></td>" +
+        "<td><div class=\"nm\">" + escapeHtml(srcCloud.short || p.source_type) + "</div>" +
+        '<div class="muted">' + escapeHtml(p.source_label || "—") + "</div>" +
+        (p.source_object ? '<div class="muted">' + escapeHtml(p.source_object) + "</div>" : "") +
+        "</td>" +
+        "<td><div class=\"nm\">" + escapeHtml(tgtCloud.short || p.target_type) + "</div>" +
+        '<div class="muted">' + escapeHtml(p.target_label || "—") + "</div>" +
+        (p.target_object ? '<div class="muted">' + escapeHtml(p.target_object) + "</div>" : "") +
+        "</td>" +
+        "<td>" + escapeHtml(lang) + "</td>" +
         "<td>" + escapeHtml(updated) + "</td>" +
         '<td><div class="admin-actions">' +
+        (p.script
+          ? '<button type="button" class="btn-sm" data-etl-open="' + escapeHtml(p.id) + '">Script</button>'
+          : "") +
         '<button type="button" class="btn-sm danger" data-etl-del="' + escapeHtml(p.id) + '">Delete</button>' +
         "</div></td></tr>"
       );
@@ -3535,9 +4034,15 @@ function bindEtlEvents() {
 
   $("#etl_source_type").addEventListener("change", (e) => {
     fillEtlConnectionSelect($("#etl_source_conn"), e.target.value, "");
+    if ($("#etl_source_object") && !$("#etl_source_object").value) {
+      $("#etl_source_object").placeholder = etlDefaultObject("source", e.target.value);
+    }
   });
   $("#etl_target_type").addEventListener("change", (e) => {
     fillEtlConnectionSelect($("#etl_target_conn"), e.target.value, "");
+    if ($("#etl_target_object") && !$("#etl_target_object").value) {
+      $("#etl_target_object").placeholder = etlDefaultObject("target", e.target.value);
+    }
   });
 
   $("#etl_source_conn").addEventListener("change", (e) => {
@@ -3553,6 +4058,59 @@ function bindEtlEvents() {
     }
   });
 
+  document.querySelectorAll('input[name="etl_language"]').forEach((radio) => {
+    radio.addEventListener("change", () => {
+      if (etlGeneratedScript) generateEtlTransformationScript();
+    });
+  });
+
+  const genBtn = $("#etlGenerateBtn");
+  if (genBtn) {
+    genBtn.addEventListener("click", () => {
+      const result = generateEtlTransformationScript();
+      if (result) showEtlOk("Transformation script generated (" + result.ctx.language.toUpperCase() + ").");
+    });
+  }
+
+  const copyBtn = $("#etlCopyScriptBtn");
+  if (copyBtn) {
+    copyBtn.addEventListener("click", async () => {
+      const text = ($("#etlScriptEditor") && $("#etlScriptEditor").value) || "";
+      if (!text.trim()) return showEtlError("Generate a script before copying.");
+      try {
+        await navigator.clipboard.writeText(text);
+        showEtlOk("Script copied to clipboard.");
+      } catch (_err) {
+        $("#etlScriptEditor").select();
+        document.execCommand("copy");
+        showEtlOk("Script copied to clipboard.");
+      }
+    });
+  }
+
+  const dlBtn = $("#etlDownloadScriptBtn");
+  if (dlBtn) {
+    dlBtn.addEventListener("click", () => {
+      const text = ($("#etlScriptEditor") && $("#etlScriptEditor").value) || "";
+      if (!text.trim()) return showEtlError("Generate a script before downloading.");
+      const lang = selectedEtlLanguage();
+      const ext = lang === "sql" ? "sql" : "py";
+      const name = (($("#etl_name").value || "pipeline").trim() || "pipeline")
+        .replace(/[^\w\-]+/g, "_")
+        .toLowerCase();
+      const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = name + "." + ext;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      showEtlOk("Downloaded " + name + "." + ext);
+    });
+  }
+
   $("#etlResetBtn").addEventListener("click", resetEtlForm);
 
   $("#etlForm").addEventListener("submit", (e) => {
@@ -3563,18 +4121,30 @@ function bindEtlEvents() {
     const sourceConnKey = $("#etl_source_conn").value;
     const targetConnKey = $("#etl_target_conn").value;
     const notes = ($("#etl_notes").value || "").trim();
+    const language = selectedEtlLanguage();
+    const sourceObject =
+      ($("#etl_source_object").value || "").trim() || etlDefaultObject("source", sourceType);
+    const targetObject =
+      ($("#etl_target_object").value || "").trim() || etlDefaultObject("target", targetType);
 
     if (!name) return showEtlError("Pipeline name is required.");
     if (!sourceType) return showEtlError("Select a source connector.");
-    if (!targetType) return showEtlError("Select a target connector.");
+    if (!targetType) return showEtlError("Select a destination connector.");
     if (!sourceConnKey || sourceConnKey === "__configure__") {
       return showEtlError("Select a source connection. Save one under Connectors if the list is empty.");
     }
     if (!targetConnKey || targetConnKey === "__configure__") {
-      return showEtlError("Select a target connection. Save one under Connectors if the list is empty.");
+      return showEtlError("Select a destination connection. Save one under Connectors if the list is empty.");
     }
     if (sourceConnKey === targetConnKey) {
-      return showEtlError("Source and target connections must be different.");
+      return showEtlError("Source and destination connections must be different.");
+    }
+
+    let script = ($("#etlScriptEditor") && $("#etlScriptEditor").value) || etlGeneratedScript;
+    if (!script || !script.trim()) {
+      const generated = generateEtlTransformationScript();
+      if (!generated) return;
+      script = generated.script;
     }
 
     const srcConn = findEtlConnection(sourceConnKey);
@@ -3589,18 +4159,58 @@ function bindEtlEvents() {
       target_conn_id: targetConnKey,
       source_label: srcConn ? connectionLabel(srcConn) : sourceConnKey,
       target_label: tgtConn ? connectionLabel(tgtConn) : targetConnKey,
+      source_object: sourceObject,
+      target_object: targetObject,
+      language,
+      script,
       notes,
       created_at: now,
       updated_at: now
     });
     saveEtlPipelines();
     renderEtlPipelines();
-    showEtlOk("Pipeline \"" + name + "\" saved.");
-    $("#etl_name").value = "";
-    $("#etl_notes").value = "";
+    showEtlOk("Pipeline \"" + name + "\" saved with " + language.toUpperCase() + " script.");
   });
 
   $("#etlPipelinesBody").addEventListener("click", (e) => {
+    const open = e.target.closest("[data-etl-open]");
+    if (open) {
+      const id = open.dataset.etlOpen;
+      const p = etlPipelines.find((x) => x.id === id);
+      if (!p || !p.script) return;
+      etlGeneratedScript = p.script;
+      if ($("#etlScriptEditor")) $("#etlScriptEditor").value = p.script;
+      if ($("#etl_name")) $("#etl_name").value = p.name || "";
+      if ($("#etl_source_type")) {
+        $("#etl_source_type").value = p.source_type || "";
+        fillEtlConnectionSelect($("#etl_source_conn"), p.source_type || "", p.source_conn_id || "");
+      }
+      if ($("#etl_target_type")) {
+        $("#etl_target_type").value = p.target_type || "";
+        fillEtlConnectionSelect($("#etl_target_conn"), p.target_type || "", p.target_conn_id || "");
+      }
+      if ($("#etl_source_object")) $("#etl_source_object").value = p.source_object || "";
+      if ($("#etl_target_object")) $("#etl_target_object").value = p.target_object || "";
+      if ($("#etl_notes")) $("#etl_notes").value = p.notes || "";
+      const langRadio = document.querySelector(
+        'input[name="etl_language"][value="' + (p.language || "sql") + '"]'
+      );
+      if (langRadio) langRadio.checked = true;
+      if ($("#etlScriptHint")) {
+        $("#etlScriptHint").textContent =
+          etlPlatformLabel(p.source_type) +
+          " → " +
+          etlPlatformLabel(p.target_type) +
+          " · " +
+          String(p.language || "sql").toUpperCase();
+      }
+      if ($("#etlScriptMeta")) {
+        $("#etlScriptMeta").textContent = "Loaded saved script for \"" + p.name + "\".";
+      }
+      showEtlOk("Loaded script for \"" + p.name + "\".");
+      $("#etlScriptEditor").scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
     const del = e.target.closest("[data-etl-del]");
     if (!del) return;
     const id = del.dataset.etlDel;
