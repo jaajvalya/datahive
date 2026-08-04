@@ -1,6 +1,7 @@
 /**
- * Saves connector connection attributes to MongoDB (database from MONGO_URI in `.env`),
- * collection `connectors`. All connection attempts are logged to `connection_logs`.
+ * Saves connector connection attributes to MongoDB (MONGO_URI in `.env`),
+ * collection `connector_dtls`. Secrets are encrypted server-side before insert.
+ * Connection attempts are logged to `connection_log`.
  *
  * Requires the companion API: `python connector_api.py` (port 5055).
  * Attached from main.html and invoked on "Connect & fetch".
@@ -29,7 +30,10 @@
     api_key: true,
     client_secret: true,
     secret_access_key: true,
-    service_account_json: true
+    service_account_json: true,
+    password: true,
+    private_key: true,
+    credentials_ciphertext: true
   };
 
   function getRequestUser() {
@@ -257,12 +261,12 @@
       });
     }
 
-    console.info("[save-connector] saved to connectors collection", data);
+    console.info("[save-connector] saved to connector_dtls", data);
     return data;
   }
 
   /**
-   * Fetch recent connectors from MongoDB (datahive.connectors via connector API / MONGO_URI).
+   * Fetch recent connectors from MongoDB (connector_dtls via connector API / MONGO_URI).
    * @param {number} limit
    * @returns {Promise<{ok:boolean,items:object[]}>}
    */

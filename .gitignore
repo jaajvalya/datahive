@@ -2,4 +2,6 @@
 rnd/.venv/
 rnd/UPLOAD/*
 !rnd/UPLOAD/.gitkeep
+rnd/GLOSSARY/*
+!rnd/GLOSSARY/.gitkeep
 *.env.example

@@ -1,20 +1,18 @@
 """
 Local R&D API — persist connector form payloads into MongoDB.
 
-Database : from MONGO_URI in repo-root `.env` (default path segment), else datahivepoc
-Collection: MONGO_COLLECTION in `.env` (default `connectors`)
-Connection errors: `connection_logs` (override via MONGO_CONNECTION_LOGS_COLLECTION)
-Connection logs record both success and failure outcomes.
-SQL workbench runs are logged to `query_log` (override via MONGO_QUERY_LOGS_COLLECTION).
+Uses MONGO_URI from repo-root `.env`. Default collections:
+  connector_dtls       saved connections (passwords/keys encrypted)
+  connection_log       connect / save outcomes
+  query_log            Insights SQL executions
+  glossary_upload_log  glossary uploads
 
 Run (from this directory):
     python3 -m venv .venv
-    .venv/bin/pip install fastapi uvicorn pymongo
+    .venv/bin/pip install -r requirements.txt
     .venv/bin/python connector_api.py
 
 Listens on http://127.0.0.1:5055
-
-Upload mode writes files to rnd/UPLOAD/ and metadata to MongoDB (connectors).
 """
 from __future__ import annotations
 
@@ -29,7 +27,7 @@ from typing import Any
 
 from fastapi import Body, FastAPI, File, Form, HTTPException, Request, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import FileResponse, JSONResponse
 from pydantic import BaseModel, Field, model_validator
 
 _RND_DIR = Path(__file__).resolve().parent
@@ -43,10 +41,14 @@ import postgres_store  # noqa: E402
 log = logging.getLogger("datahive.connector_api")
 
 UPLOAD_DIR = _RND_DIR / "UPLOAD"
+GLOSSARY_DIR = _RND_DIR / "GLOSSARY"
+GLOSSARY_TEMPLATE_PATH = _RND_DIR / "templates" / "glossary_template.xlsx"
 MAX_UPLOAD_BYTES = 50 * 1024 * 1024
+MAX_GLOSSARY_BYTES = 10 * 1024 * 1024
 ALLOWED_UPLOAD_SUFFIXES = frozenset(
     {".csv", ".tsv", ".txt", ".xlsx", ".xls", ".json", ".parquet"}
 )
+ALLOWED_GLOSSARY_SUFFIXES = frozenset({".xlsx", ".xls", ".csv"})
 
 mongo_store.load_repo_dotenv()
 MONGO_URI = mongo_store.mongo_uri()
@@ -54,6 +56,12 @@ DB_NAME = mongo_store.database_name()
 COLLECTION = mongo_store.connectors_collection_name()
 CONNECTION_LOGS_COLLECTION = mongo_store.connection_logs_collection_name()
 QUERY_LOGS_COLLECTION = mongo_store.query_logs_collection_name()
+GLOSSARY_UPLOAD_LOG_COLLECTION = mongo_store.glossary_upload_logs_collection_name()
+
+_CONNECTION_LOG_PATH_PREFIXES = (
+    "/api/connectors",
+    "/api/connection-logs",
+)
 
 
 class SqlQueryIn(BaseModel):
@@ -118,6 +126,36 @@ def log_connection_failure(
 
 def _ensure_upload_dir() -> None:
     UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
+
+
+def _ensure_glossary_dir() -> None:
+    GLOSSARY_DIR.mkdir(parents=True, exist_ok=True)
+
+
+def _count_glossary_terms(path: Path) -> int | None:
+    """Best-effort term/row count for Excel/CSV glossary uploads."""
+    suffix = path.suffix.lower()
+    try:
+        if suffix == ".csv":
+            with path.open("r", encoding="utf-8", errors="ignore") as fh:
+                # header + data rows
+                return max(0, sum(1 for _ in fh) - 1)
+        if suffix in {".xlsx", ".xls"}:
+            from openpyxl import load_workbook
+
+            wb = load_workbook(path, read_only=True, data_only=True)
+            sheet = wb["Glossary"] if "Glossary" in wb.sheetnames else wb.active
+            rows = 0
+            for i, row in enumerate(sheet.iter_rows(values_only=True)):
+                if i == 0:
+                    continue
+                if any(cell is not None and str(cell).strip() != "" for cell in row):
+                    rows += 1
+            wb.close()
+            return rows
+    except Exception as exc:  # noqa: BLE001
+        log.warning("glossary term count failed for %s: %s", path.name, exc)
+    return None
 
 
 def _safe_stored_name(original: str) -> str:
@@ -206,38 +244,44 @@ async def attach_request_user(request: Request, call_next):
     return await call_next(request)
 
 
+def _should_log_connection_path(path: str) -> bool:
+    return any(path == p or path.startswith(p + "/") for p in _CONNECTION_LOG_PATH_PREFIXES)
+
+
 @app.exception_handler(HTTPException)
 async def connection_http_exception_handler(request: Request, exc: HTTPException):
     detail = exc.detail
     message = detail if isinstance(detail, str) else json.dumps(detail)
-    log_connection_failure(
-        _resolve_user(request),
-        message,
-        event="connection.http_error",
-        error_type="server",
-        http_status=exc.status_code,
-        context={
-            "path": request.url.path,
-            "method": request.method,
-        },
-    )
+    if _should_log_connection_path(request.url.path):
+        log_connection_failure(
+            _resolve_user(request),
+            message,
+            event="connection.http_error",
+            error_type="server",
+            http_status=exc.status_code,
+            context={
+                "path": request.url.path,
+                "method": request.method,
+            },
+        )
     return JSONResponse(status_code=exc.status_code, content={"detail": exc.detail})
 
 
 @app.exception_handler(Exception)
 async def connection_unhandled_exception_handler(request: Request, exc: Exception):
-    log_connection_failure(
-        _resolve_user(request),
-        str(exc),
-        event="connection.unhandled_error",
-        error_type="server",
-        http_status=500,
-        context={
-            "path": request.url.path,
-            "method": request.method,
-            "exception_type": type(exc).__name__,
-        },
-    )
+    if _should_log_connection_path(request.url.path):
+        log_connection_failure(
+            _resolve_user(request),
+            str(exc),
+            event="connection.unhandled_error",
+            error_type="server",
+            http_status=500,
+            context={
+                "path": request.url.path,
+                "method": request.method,
+                "exception_type": type(exc).__name__,
+            },
+        )
     return JSONResponse(status_code=500, content={"detail": "Internal server error."})
 
 
@@ -281,8 +325,10 @@ def health(recent: int = 0) -> dict[str, Any]:
             "collection": COLLECTION,
             "connection_logs_collection": CONNECTION_LOGS_COLLECTION,
             "query_logs_collection": QUERY_LOGS_COLLECTION,
+            "glossary_upload_log_collection": GLOSSARY_UPLOAD_LOG_COLLECTION,
             "sql_query_api": True,
             "query_log_api": True,
+            "credentials_encrypted": True,
         }
         try:
             postgres_store.ping_postgres()
@@ -403,26 +449,42 @@ def sql_query(body: SqlQueryIn, request: Request) -> dict[str, Any]:
 
     query_start_time = datetime.now(timezone.utc)
     status = "success"
+    error_message: str | None = None
+    row_count: int | None = None
+    result: dict[str, Any] | None = None
     try:
-        return postgres_store.execute_sql_query(body.sql, max_rows=body.max_rows)
+        result = postgres_store.execute_sql_query(body.sql, max_rows=body.max_rows)
+        row_count = result.get("row_count")
+        return result
     except ValueError as exc:
         status = "failure"
+        error_message = str(exc)
         raise HTTPException(status_code=422, detail=str(exc)) from exc
     except Exception as exc:  # noqa: BLE001
         status = "failure"
+        error_message = str(exc)
         raise HTTPException(status_code=503, detail=f"PostgreSQL query failed: {exc}") from exc
     finally:
         query_end_time = datetime.now(timezone.utc)
         mongo_store.append_query_log(
             {
                 "user": user,
+                "source": "insights",
                 "database": database,
                 "schema": schema,
                 "table": table,
                 "query": body.sql,
+                "max_rows": body.max_rows,
+                "row_count": row_count,
+                "truncated": (result or {}).get("truncated") if result else None,
                 "query_start_time": query_start_time.isoformat(),
                 "query_end_time": query_end_time.isoformat(),
+                "duration_ms": int(
+                    (query_end_time - query_start_time).total_seconds() * 1000
+                ),
                 "status": status,
+                "error": error_message,
+                "collection": QUERY_LOGS_COLLECTION,
             }
         )
 
@@ -458,6 +520,28 @@ def list_recent_connectors(limit: int = 5) -> dict[str, Any]:
     except Exception as exc:  # noqa: BLE001
         raise HTTPException(status_code=503, detail=f"MongoDB read failed: {exc}") from exc
     return {"ok": True, "items": items, "db": DB_NAME, "collection": COLLECTION}
+
+
+@app.get("/api/connectors/{connector_id}/auth-ready")
+def connector_auth_ready(connector_id: str) -> dict[str, Any]:
+    """
+    Server-side check that credentials can be decrypted for auth.
+    Never returns secret values — only which fields are present.
+    """
+    try:
+        creds = mongo_store.connector_credentials_for_auth(connector_id)
+    except ValueError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+    except LookupError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+    except RuntimeError as exc:
+        raise HTTPException(status_code=503, detail=str(exc)) from exc
+    return {
+        "ok": True,
+        "id": connector_id,
+        "credentials_configured": bool(creds),
+        "credential_fields": sorted(creds.keys()),
+    }
 
 
 @app.post("/api/connectors/upload")
@@ -497,6 +581,123 @@ async def save_connector_upload(
     result["upload_relative_path"] = doc["upload_relative_path"]
     result["stored_file_name"] = stored_name
     return result
+
+
+@app.get("/api/glossary/template")
+def download_glossary_template() -> FileResponse:
+    if not GLOSSARY_TEMPLATE_PATH.is_file():
+        raise HTTPException(
+            status_code=404,
+            detail="glossary_template.xlsx was not found on the server.",
+        )
+    return FileResponse(
+        path=str(GLOSSARY_TEMPLATE_PATH),
+        media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        filename="glossary_template.xlsx",
+    )
+
+
+@app.get("/api/glossary/recent")
+def recent_glossaries(limit: int = 20) -> dict[str, Any]:
+    try:
+        items = mongo_store.recent_glossary_documents(limit)
+    except RuntimeError as exc:
+        raise HTTPException(status_code=503, detail=str(exc)) from exc
+    return {
+        "ok": True,
+        "items": items,
+        "db": DB_NAME,
+        "collection": GLOSSARY_UPLOAD_LOG_COLLECTION,
+    }
+
+
+@app.post("/api/glossary/upload")
+async def upload_glossary(
+    request: Request,
+    file: UploadFile = File(...),
+    notes: str = Form(""),
+) -> dict[str, Any]:
+    original_name = file.filename or "glossary.xlsx"
+    suffix = Path(original_name).suffix.lower()
+    if suffix not in ALLOWED_GLOSSARY_SUFFIXES:
+        raise HTTPException(
+            status_code=400,
+            detail="Unsupported file type. Use .xlsx, .xls, or .csv.",
+        )
+
+    _ensure_glossary_dir()
+    stored_name = _safe_stored_name(original_name)
+    dest = GLOSSARY_DIR / stored_name
+    bytes_written = await _write_upload_file(file, dest)
+    if bytes_written > MAX_GLOSSARY_BYTES:
+        dest.unlink(missing_ok=True)
+        raise HTTPException(status_code=413, detail="Glossary file exceeds 10 MB limit.")
+
+    term_count = _count_glossary_terms(dest)
+    try:
+        apply_result = postgres_store.apply_glossary_file(dest)
+    except Exception as exc:  # noqa: BLE001
+        dest.unlink(missing_ok=True)
+        raise HTTPException(
+            status_code=400,
+            detail=f"Could not apply glossary to Assets metadata: {exc}",
+        ) from exc
+
+    user = _resolve_user(request)
+    apply_summary = {
+        "updated": apply_result.get("updated", 0),
+        "skipped": apply_result.get("skipped", 0),
+        "failed": apply_result.get("failed", 0),
+        "rows_total": apply_result.get("rows_total", 0),
+        "errors": apply_result.get("errors") or [],
+    }
+    doc = {
+        "event": "glossary.upload",
+        "outcome": "success" if apply_summary["failed"] == 0 else "partial",
+        "file_name": original_name,
+        "stored_file_name": stored_name,
+        "upload_relative_path": f"GLOSSARY/{stored_name}",
+        "file_size": bytes_written,
+        "file_type": file.content_type or "",
+        "notes": (notes or "").strip(),
+        "term_count": term_count if term_count is not None else apply_result.get("rows_total"),
+        "user": user,
+        "kind": "glossary",
+        "apply": apply_summary,
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+    }
+    try:
+        inserted_id = mongo_store.insert_glossary_upload_log(doc)
+    except RuntimeError as exc:
+        # File + comments may already be applied; keep the file and report Mongo issue.
+        raise HTTPException(status_code=503, detail=str(exc)) from exc
+
+    return {
+        "ok": True,
+        "id": inserted_id,
+        "db": DB_NAME,
+        "collection": GLOSSARY_UPLOAD_LOG_COLLECTION,
+        "file_name": original_name,
+        "stored_file_name": stored_name,
+        "upload_relative_path": doc["upload_relative_path"],
+        "file_size": bytes_written,
+        "term_count": doc["term_count"],
+        "apply": doc["apply"],
+        "updates": apply_result.get("updates") or [],
+    }
+
+
+@app.get("/api/glossary/files/{stored_name}")
+def download_glossary_upload(stored_name: str) -> FileResponse:
+    safe = Path(stored_name).name
+    path = GLOSSARY_DIR / safe
+    if not path.is_file():
+        raise HTTPException(status_code=404, detail="Glossary file not found.")
+    return FileResponse(
+        path=str(path),
+        filename=safe.split("_", 1)[-1] if "_" in safe else safe,
+        media_type="application/octet-stream",
+    )
 
 
 if __name__ == "__main__":

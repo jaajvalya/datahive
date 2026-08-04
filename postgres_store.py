@@ -1,6 +1,7 @@
 """PostgreSQL access for searchable / discoverable data assets (repo `.env` POSTGRES_*)."""
 from __future__ import annotations
 
+import json
 import logging
 import os
 import re
@@ -176,14 +177,37 @@ def ensure_assets_schema() -> None:
                 )
 
 
+def _is_system_schema(schema: str) -> bool:
+    name = (schema or "").strip().lower()
+    return (not name) or name.startswith("pg_") or name == "information_schema"
+
+
 def _allowed_schema_name(schema: str) -> bool:
+    """Allow configured medallion/extra schemas and any non-system schema in Postgres."""
     name = (schema or "").strip()
-    if not name:
+    if _is_system_schema(name):
         return False
     if name.lower() in {s.lower() for s in MEDALLION_ASSET_SCHEMAS}:
         return True
     allowed = asset_schemas()
-    return name in allowed or name.lower() in {a.lower() for a in allowed}
+    if name in allowed or name.lower() in {a.lower() for a in allowed}:
+        return True
+    # Live catalog: any user schema present in the connected database.
+    try:
+        with postgres_connection() as conn:
+            with conn.cursor() as cur:
+                cur.execute(
+                    """
+                    SELECT 1
+                    FROM pg_catalog.pg_namespace
+                    WHERE nspname = %s OR lower(nspname) = lower(%s)
+                    LIMIT 1
+                    """,
+                    (name, name),
+                )
+                return cur.fetchone() is not None
+    except Exception:  # noqa: BLE001
+        return False
 
 
 def _resolve_namespace(cur: Any, schema: str) -> str:
@@ -203,14 +227,45 @@ def _resolve_namespace(cur: Any, schema: str) -> str:
     return str(row[0])
 
 
+def _list_user_namespaces(cur: Any) -> list[str]:
+    """All non-system schemas in the connected database (pg_catalog)."""
+    cur.execute(
+        """
+        SELECT nspname
+        FROM pg_catalog.pg_namespace
+        WHERE nspname NOT LIKE 'pg\\_%' ESCAPE '\\'
+          AND nspname <> 'information_schema'
+        ORDER BY
+          CASE lower(nspname)
+            WHEN 'bronze' THEN 0
+            WHEN 'silver' THEN 1
+            WHEN 'gold' THEN 2
+            WHEN 'public' THEN 3
+            ELSE 10
+          END,
+          nspname
+        """
+    )
+    return [str(r[0]) for r in cur.fetchall()]
+
+
 def _resolved_asset_schemas(cur: Any) -> list[str]:
-    resolved: list[str] = []
+    """Configured schemas that exist, then any other user schemas from Postgres."""
+    configured_existing: list[str] = []
     for name in asset_schemas():
         try:
-            resolved.append(_resolve_namespace(cur, name))
+            configured_existing.append(_resolve_namespace(cur, name))
         except ValueError:
             continue
-    return resolved
+
+    seen = {s.lower() for s in configured_existing}
+    discovered = configured_existing[:]
+    for nsp in _list_user_namespaces(cur):
+        if nsp.lower() in seen:
+            continue
+        seen.add(nsp.lower())
+        discovered.append(nsp)
+    return discovered
 
 
 def _relation_type_label(relkind: str) -> str:
@@ -280,11 +335,7 @@ def _catalog_assets() -> list[dict[str, Any]]:
     items: list[dict[str, Any]] = []
     with postgres_connection() as conn:
         with conn.cursor() as cur:
-            for schema in asset_schemas():
-                try:
-                    nsp = _resolve_namespace(cur, schema)
-                except ValueError:
-                    continue
+            for nsp in _resolved_asset_schemas(cur):
                 for name, asset_type, _kind in _list_relations_in_namespace(cur, nsp):
                     items.append(
                         {
@@ -449,9 +500,8 @@ def discover_assets(owner: str, *, limit: int = 100) -> dict[str, Any]:
 
 
 def list_schemas() -> list[str]:
-    """Medallion schemas (bronze, silver, gold) that exist in PostgreSQL, in catalog order."""
+    """Schemas from the connected PostgreSQL database (configured first, then other user schemas)."""
     configured = list(asset_schemas())
-    found: list[str] = []
     with postgres_connection() as conn:
         with conn.cursor() as cur:
             found = _resolved_asset_schemas(cur)
@@ -459,9 +509,11 @@ def list_schemas() -> list[str]:
     seen: set[str] = set()
     ordered: list[str] = []
     for s in found:
-        if s not in seen:
-            seen.add(s)
-            ordered.append(s)
+        key = s.lower()
+        if key in seen:
+            continue
+        seen.add(key)
+        ordered.append(s)
     if ordered:
         return ordered
     # Namespace missing in DB — still expose configured names for the UI
@@ -531,6 +583,34 @@ def table_structure(schema: str, table: str) -> dict[str, Any]:
             )
             pk_columns = {r[0] for r in cur.fetchall()}
 
+            # Column comments (JSON business metadata when present).
+            cur.execute(
+                """
+                SELECT a.attname, pg_catalog.col_description(a.attrelid, a.attnum)
+                FROM pg_catalog.pg_attribute a
+                JOIN pg_catalog.pg_class c ON c.oid = a.attrelid
+                JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+                WHERE n.nspname = %s
+                  AND c.relname = %s
+                  AND a.attnum > 0
+                  AND NOT a.attisdropped
+                """,
+                (nsp, table),
+            )
+            comments = {str(r[0]): r[1] for r in cur.fetchall()}
+
+            cur.execute(
+                """
+                SELECT pg_catalog.obj_description(c.oid, 'pg_class')
+                FROM pg_catalog.pg_class c
+                JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+                WHERE n.nspname = %s AND c.relname = %s
+                """,
+                (nsp, table),
+            )
+            table_comment_row = cur.fetchone()
+            table_comment = table_comment_row[0] if table_comment_row else None
+
     columns: list[dict[str, Any]] = []
     for name, data_type, nullable, default, char_len, num_prec, num_scale, position in cols:
         type_display = data_type
@@ -540,6 +620,8 @@ def table_structure(schema: str, table: str) -> dict[str, Any]:
             type_display = (
                 f"{data_type}({num_prec},{num_scale})" if num_scale else f"{data_type}({num_prec})"
             )
+        raw_comment = comments.get(name)
+        metadata = _parse_column_metadata(raw_comment)
         columns.append(
             {
                 "position": position,
@@ -548,6 +630,8 @@ def table_structure(schema: str, table: str) -> dict[str, Any]:
                 "nullable": nullable == "YES",
                 "default": default,
                 "primary_key": name in pk_columns,
+                "comment": raw_comment,
+                "metadata": metadata,
             }
         )
 
@@ -555,7 +639,378 @@ def table_structure(schema: str, table: str) -> dict[str, Any]:
         "schema": nsp,
         "table": table,
         "table_type": table_type,
+        "comment": table_comment,
+        "metadata": _parse_column_metadata(table_comment),
         "columns": columns,
+    }
+
+
+def _parse_column_metadata(comment: Any) -> dict[str, Any] | None:
+    """Parse JSON business metadata from a Postgres comment; return None if absent/invalid."""
+    if comment is None:
+        return None
+    text = str(comment).strip()
+    if not text:
+        return None
+    if text[0] not in "{[":
+        return {"description": text}
+    try:
+        parsed = json.loads(text)
+    except (TypeError, ValueError, json.JSONDecodeError):
+        return {"description": text}
+    return parsed if isinstance(parsed, dict) else {"value": parsed}
+
+
+GLOSSARY_ID_FIELDS = ("connection", "database", "schema", "table", "column")
+GLOSSARY_META_FIELDS = (
+    "business_name",
+    "description",
+    "business_definition",
+    "classification",
+    "sensitivity",
+    "source_system",
+    "owner",
+    "steward",
+)
+_GLOSSARY_HEADER_ALIASES = {
+    "business_defintion": "business_definition",
+    "business definition": "business_definition",
+    "business_name": "business_name",
+    "source system": "source_system",
+    "conn": "connection",
+    "db": "database",
+    "column_name": "column",
+    "col": "column",
+}
+
+
+def _normalize_glossary_header(raw: Any) -> str:
+    text = str(raw or "").strip().lower().replace("-", "_")
+    text = re.sub(r"\s+", "_", text)
+    text = re.sub(r"_+", "_", text).strip("_")
+    return _GLOSSARY_HEADER_ALIASES.get(text, text)
+
+
+def _cell_str(value: Any) -> str:
+    if value is None:
+        return ""
+    return str(value).strip()
+
+
+def _read_glossary_rows(path: Path) -> list[dict[str, str]]:
+    """Parse glossary xlsx/csv into normalized row dicts."""
+    suffix = path.suffix.lower()
+    rows_out: list[dict[str, str]] = []
+
+    if suffix == ".csv":
+        import csv
+
+        with path.open("r", encoding="utf-8-sig", errors="ignore", newline="") as fh:
+            reader = csv.reader(fh)
+            try:
+                header = next(reader)
+            except StopIteration:
+                return []
+            keys = [_normalize_glossary_header(h) for h in header]
+            for raw in reader:
+                if not any(_cell_str(v) for v in raw):
+                    continue
+                item = {keys[i]: _cell_str(raw[i]) if i < len(raw) else "" for i in range(len(keys))}
+                rows_out.append(item)
+        return rows_out
+
+    if suffix not in {".xlsx", ".xls"}:
+        raise ValueError(f"Unsupported glossary file type: {suffix or '(none)'}")
+
+    from openpyxl import load_workbook
+
+    wb = load_workbook(path, read_only=True, data_only=True)
+    try:
+        sheet = wb["Glossary"] if "Glossary" in wb.sheetnames else wb.active
+        it = sheet.iter_rows(values_only=True)
+        try:
+            header = next(it)
+        except StopIteration:
+            return []
+        keys = [_normalize_glossary_header(h) for h in header]
+        for raw in it:
+            if raw is None or not any(_cell_str(v) for v in raw):
+                continue
+            item = {
+                keys[i]: _cell_str(raw[i]) if i < len(raw) else ""
+                for i in range(len(keys))
+            }
+            rows_out.append(item)
+    finally:
+        wb.close()
+    return rows_out
+
+
+def _postgres_connect_to(dbname: str):
+    """Open a psycopg connection to a specific database using repo POSTGRES_* settings."""
+    import psycopg
+    from psycopg.conninfo import make_conninfo
+
+    target = (dbname or "").strip() or postgres_database_name()
+    explicit = postgres_conninfo()
+    if explicit:
+        # Override dbname in URI when possible; otherwise fall back to kwargs.
+        try:
+            return psycopg.connect(explicit, dbname=target, connect_timeout=5)
+        except TypeError:
+            pass
+    kw = postgres_dsn_kwargs()
+    return psycopg.connect(
+        make_conninfo(
+            host=kw["host"],
+            port=kw["port"],
+            dbname=target,
+            user=kw["user"],
+            password=kw["password"],
+        ),
+        connect_timeout=5,
+    )
+
+
+def _column_exists(cur: Any, schema: str, table: str, column: str) -> tuple[str, str, str] | None:
+    """Return resolved (schema, table, column) names if the column exists."""
+    cur.execute(
+        """
+        SELECT n.nspname, c.relname, a.attname
+        FROM pg_catalog.pg_attribute a
+        JOIN pg_catalog.pg_class c ON c.oid = a.attrelid
+        JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+        WHERE (n.nspname = %s OR lower(n.nspname) = lower(%s))
+          AND (c.relname = %s OR lower(c.relname) = lower(%s))
+          AND (a.attname = %s OR lower(a.attname) = lower(%s))
+          AND a.attnum > 0
+          AND NOT a.attisdropped
+        ORDER BY
+          CASE WHEN n.nspname = %s THEN 0 ELSE 1 END,
+          CASE WHEN c.relname = %s THEN 0 ELSE 1 END,
+          CASE WHEN a.attname = %s THEN 0 ELSE 1 END
+        LIMIT 1
+        """,
+        (schema, schema, table, table, column, column, schema, table, column),
+    )
+    row = cur.fetchone()
+    if not row:
+        return None
+    return str(row[0]), str(row[1]), str(row[2])
+
+
+def _suggest_column_target(
+    cur: Any, schema: str, table: str, column: str
+) -> str | None:
+    """Best-effort suggestion when an identifier does not resolve exactly."""
+    import difflib
+
+    cur.execute(
+        """
+        SELECT nspname FROM pg_catalog.pg_namespace
+        WHERE nspname NOT LIKE 'pg\\_%' ESCAPE '\\'
+          AND nspname <> 'information_schema'
+        """
+    )
+    schemas = [str(r[0]) for r in cur.fetchall()]
+    schema_match = difflib.get_close_matches(schema, schemas, n=1, cutoff=0.6)
+    use_schema = schema_match[0] if schema_match else schema
+
+    cur.execute(
+        """
+        SELECT c.relname
+        FROM pg_catalog.pg_class c
+        JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+        WHERE (n.nspname = %s OR lower(n.nspname) = lower(%s))
+          AND c.relkind IN ('r', 'p', 'v', 'm', 'f')
+        """,
+        (use_schema, use_schema),
+    )
+    tables = [str(r[0]) for r in cur.fetchall()]
+    table_match = difflib.get_close_matches(table, tables, n=1, cutoff=0.6)
+    use_table = table_match[0] if table_match else table
+
+    cur.execute(
+        """
+        SELECT a.attname
+        FROM pg_catalog.pg_attribute a
+        JOIN pg_catalog.pg_class c ON c.oid = a.attrelid
+        JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+        WHERE (n.nspname = %s OR lower(n.nspname) = lower(%s))
+          AND (c.relname = %s OR lower(c.relname) = lower(%s))
+          AND a.attnum > 0 AND NOT a.attisdropped
+        """,
+        (use_schema, use_schema, use_table, use_table),
+    )
+    columns = [str(r[0]) for r in cur.fetchall()]
+    column_match = difflib.get_close_matches(column, columns, n=1, cutoff=0.6)
+
+    if schema_match or table_match or column_match:
+        return (
+            f"Did you mean "
+            f"{use_schema}.{use_table}."
+            f"{(column_match[0] if column_match else column)}?"
+        )
+    if schemas:
+        return "Available schemas: " + ", ".join(schemas[:12])
+    return None
+
+
+def _set_column_comment(cur: Any, schema: str, table: str, column: str, comment: str) -> None:
+    from psycopg import sql
+
+    cur.execute(
+        sql.SQL("COMMENT ON COLUMN {}.{}.{} IS {}").format(
+            sql.Identifier(schema),
+            sql.Identifier(table),
+            sql.Identifier(column),
+            sql.Literal(comment),
+        )
+    )
+
+
+def apply_glossary_file(path: Path | str) -> dict[str, Any]:
+    """
+    Apply glossary spreadsheet rows as PostgreSQL column comments.
+
+    Identifier columns: connection, database, schema, table, column
+    Metadata columns: business_name, description, business_definition,
+    classification, sensitivity, source_system, owner, steward
+    """
+    file_path = Path(path)
+    rows = _read_glossary_rows(file_path)
+    if not rows:
+        return {
+            "rows_total": 0,
+            "updated": 0,
+            "skipped": 0,
+            "failed": 0,
+            "errors": ["No data rows found in glossary file."],
+            "updates": [],
+        }
+
+    # Validate required headers exist in at least one usable form.
+    present = set()
+    for row in rows:
+        present.update(k for k, v in row.items() if k)
+    missing_headers = [h for h in ("schema", "table", "column") if h not in present]
+    if missing_headers:
+        return {
+            "rows_total": len(rows),
+            "updated": 0,
+            "skipped": 0,
+            "failed": len(rows),
+            "errors": [
+                "Missing required columns: "
+                + ", ".join(missing_headers)
+                + ". Expected identifiers: connection, database, schema, table, column."
+            ],
+            "updates": [],
+        }
+
+    updated = 0
+    skipped = 0
+    failed = 0
+    errors: list[str] = []
+    updates: list[dict[str, Any]] = []
+    # Cache connections per database name
+    conn_cache: dict[str, Any] = {}
+
+    try:
+        for idx, row in enumerate(rows, start=2):  # 1-based sheet rows; header is row 1
+            connection = row.get("connection", "")
+            database = row.get("database", "") or postgres_database_name()
+            schema = row.get("schema", "")
+            table = row.get("table", "")
+            column = row.get("column", "")
+
+            if not schema or not table or not column:
+                skipped += 1
+                errors.append(f"Row {idx}: skipped — schema/table/column are required.")
+                continue
+
+            meta: dict[str, Any] = {}
+            for key in GLOSSARY_META_FIELDS:
+                val = row.get(key, "")
+                if val != "":
+                    meta[key] = val
+            if connection:
+                meta["connection"] = connection
+            if database:
+                meta["database"] = database
+            if not meta:
+                skipped += 1
+                errors.append(f"Row {idx}: skipped — no metadata fields to apply.")
+                continue
+
+            try:
+                if database not in conn_cache:
+                    conn_cache[database] = _postgres_connect_to(database)
+                    conn_cache[database].autocommit = True
+                conn = conn_cache[database]
+                with conn.cursor() as cur:
+                    resolved = _column_exists(cur, schema, table, column)
+                    if not resolved:
+                        failed += 1
+                        hint = _suggest_column_target(cur, schema, table, column)
+                        msg = (
+                            f"Row {idx}: column not found — "
+                            f"{database}.{schema}.{table}.{column}"
+                        )
+                        if hint:
+                            msg += f" ({hint})"
+                        errors.append(msg)
+                        continue
+                    nsp, rel, att = resolved
+                    # Preserve unknown keys from an existing JSON comment.
+                    cur.execute(
+                        """
+                        SELECT pg_catalog.col_description(c.oid, a.attnum)
+                        FROM pg_catalog.pg_attribute a
+                        JOIN pg_catalog.pg_class c ON c.oid = a.attrelid
+                        JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+                        WHERE n.nspname = %s AND c.relname = %s AND a.attname = %s
+                        """,
+                        (nsp, rel, att),
+                    )
+                    existing_raw = cur.fetchone()
+                    existing = _parse_column_metadata(existing_raw[0] if existing_raw else None) or {}
+                    if not isinstance(existing, dict):
+                        existing = {}
+                    merged = dict(existing)
+                    merged.update(meta)
+                    comment = json.dumps(merged, ensure_ascii=False)
+                    _set_column_comment(cur, nsp, rel, att, comment)
+                updated += 1
+                updates.append(
+                    {
+                        "row": idx,
+                        "connection": connection,
+                        "database": database,
+                        "schema": nsp,
+                        "table": rel,
+                        "column": att,
+                    }
+                )
+            except Exception as exc:  # noqa: BLE001
+                failed += 1
+                errors.append(
+                    f"Row {idx}: failed — {database}.{schema}.{table}.{column}: {exc}"
+                )
+    finally:
+        for conn in conn_cache.values():
+            try:
+                conn.close()
+            except Exception:  # noqa: BLE001
+                pass
+
+    return {
+        "rows_total": len(rows),
+        "updated": updated,
+        "skipped": skipped,
+        "failed": failed,
+        "errors": errors[:50],
+        "updates": updates[:100],
     }
 
 

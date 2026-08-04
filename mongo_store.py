@@ -1,4 +1,11 @@
-"""Shared MongoDB persistence for connector / connection records."""
+"""Shared MongoDB persistence for connector / connection / query / glossary logs.
+
+Collections (override via repo-root `.env`, URI from MONGO_URI):
+  - connector_dtls          connection documents (secrets encrypted)
+  - connection_log          connect / save outcomes
+  - query_log               Insights SQL executions
+  - glossary_upload_log     glossary file uploads
+"""
 from __future__ import annotations
 
 import logging
@@ -10,6 +17,8 @@ from typing import Any, Literal
 from pymongo import MongoClient, uri_parser
 from pymongo.collection import Collection
 from pymongo.errors import PyMongoError
+
+import credential_crypto
 
 _REPO_ROOT = Path(__file__).resolve().parent
 _log = logging.getLogger("datahive.mongo_store")
@@ -24,6 +33,7 @@ _SENSITIVE_LOG_KEYS = frozenset(
         "secret_access_key",
         "service_account_json",
         "password",
+        "private_key",
         "credentials_ciphertext",
     }
 )
@@ -53,17 +63,30 @@ def mongo_uri() -> str:
 
 def connectors_collection_name() -> str:
     load_repo_dotenv()
-    return os.environ.get("MONGO_COLLECTION", "connectors")
+    return os.environ.get("MONGO_COLLECTION", "connector_dtls")
 
 
 def connection_logs_collection_name() -> str:
     load_repo_dotenv()
-    return os.environ.get("MONGO_CONNECTION_LOGS_COLLECTION", "connection_logs")
+    return os.environ.get("MONGO_CONNECTION_LOGS_COLLECTION", "connection_log")
 
 
 def query_logs_collection_name() -> str:
     load_repo_dotenv()
     return os.environ.get("MONGO_QUERY_LOGS_COLLECTION", "query_log")
+
+
+def glossary_collection_name() -> str:
+    """Glossary upload inventory / audit (default: glossary_upload_log)."""
+    load_repo_dotenv()
+    return os.environ.get(
+        "MONGO_GLOSSARY_UPLOAD_LOG_COLLECTION",
+        os.environ.get("MONGO_GLOSSARY_COLLECTION", "glossary_upload_log"),
+    )
+
+
+def glossary_upload_logs_collection_name() -> str:
+    return glossary_collection_name()
 
 
 def database_name() -> str:
@@ -96,6 +119,50 @@ def query_logs_collection() -> Collection:
     return _get_client()[database_name()][query_logs_collection_name()]
 
 
+def glossary_collection() -> Collection:
+    return _get_client()[database_name()][glossary_collection_name()]
+
+
+def glossary_upload_logs_collection() -> Collection:
+    return glossary_collection()
+
+
+def insert_glossary_document(doc: dict[str, Any]) -> str:
+    payload = dict(doc)
+    payload.setdefault("saved_at", datetime.now(timezone.utc).isoformat())
+    payload.setdefault("event", "glossary.upload")
+    try:
+        result = glossary_collection().insert_one(payload)
+    except PyMongoError as exc:
+        raise RuntimeError(f"MongoDB glossary_upload_log write failed: {exc}") from exc
+    return str(result.inserted_id)
+
+
+def insert_glossary_upload_log(record: dict[str, Any]) -> str:
+    """Alias for glossary upload audit inserts into glossary_upload_log."""
+    return insert_glossary_document(record)
+
+
+def recent_glossary_documents(limit: int = 20) -> list[dict[str, Any]]:
+    try:
+        cursor = (
+            glossary_collection()
+            .find({}, {"_id": 1, "file_name": 1, "stored_file_name": 1,
+                       "upload_relative_path": 1, "file_size": 1, "user": 1,
+                       "notes": 1, "saved_at": 1, "term_count": 1, "apply": 1})
+            .sort([("saved_at", -1), ("_id", -1)])
+            .limit(max(1, min(limit, 100)))
+        )
+    except PyMongoError as exc:
+        raise RuntimeError(f"MongoDB glossary read failed: {exc}") from exc
+    items: list[dict[str, Any]] = []
+    for doc in cursor:
+        item = dict(doc)
+        item["id"] = str(item.pop("_id"))
+        items.append(item)
+    return items
+
+
 def sanitize_log_context(context: dict[str, Any] | None) -> dict[str, Any]:
     if not context:
         return {}
@@ -125,13 +192,49 @@ def connector_summary_context(doc: dict[str, Any]) -> dict[str, Any]:
 
 
 def insert_connector_document(doc: dict[str, Any]) -> str:
-    payload = dict(doc)
+    """Persist a connector into connector_dtls with secrets encrypted at rest."""
+    try:
+        payload = credential_crypto.seal_connector_document(dict(doc))
+    except RuntimeError as exc:
+        raise RuntimeError(f"Credential encryption failed: {exc}") from exc
     payload.setdefault("saved_at", datetime.now(timezone.utc).isoformat())
     try:
         result = connectors_collection().insert_one(payload)
     except PyMongoError as exc:
         raise RuntimeError(f"MongoDB write failed: {exc}") from exc
     return str(result.inserted_id)
+
+
+def get_connector_document(connector_id: str, *, with_secrets: bool = False) -> dict[str, Any] | None:
+    """Load a connector_dtls document. Set with_secrets=True only for server-side auth."""
+    from bson import ObjectId
+    from bson.errors import InvalidId
+
+    try:
+        oid = ObjectId(connector_id)
+    except InvalidId as exc:
+        raise ValueError(f"Invalid connector id: {connector_id}") from exc
+    try:
+        doc = connectors_collection().find_one({"_id": oid})
+    except PyMongoError as exc:
+        raise RuntimeError(f"MongoDB read failed: {exc}") from exc
+    if not doc:
+        return None
+    item = dict(doc)
+    item["id"] = str(item.pop("_id"))
+    if with_secrets:
+        return credential_crypto.unseal_connector_document(item)
+    for key in credential_crypto.SENSITIVE_CONNECTOR_KEYS:
+        item.pop(key, None)
+    return item
+
+
+def connector_credentials_for_auth(connector_id: str) -> dict[str, Any]:
+    """Decrypt secrets from connector_dtls for authentication/authorization."""
+    doc = get_connector_document(connector_id, with_secrets=True)
+    if not doc:
+        raise LookupError(f"Connector not found: {connector_id}")
+    return credential_crypto.connector_credentials_for_auth(doc)
 
 
 def insert_connection_log(record: dict[str, Any]) -> None:

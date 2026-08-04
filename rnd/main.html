@@ -336,13 +336,36 @@
   .structure-table { width:100%; border-collapse:collapse; font-size:13px; }
   .structure-table th { text-align:left; font-size:11.5px; text-transform:uppercase; letter-spacing:.04em;
     color:#8a93a3; padding:8px 10px; border-bottom:1px solid var(--gray-200); }
-  .structure-table td { padding:9px 10px; border-bottom:1px solid var(--gray-200); color:var(--ink-900); }
+  .structure-table td { padding:9px 10px; border-bottom:1px solid var(--gray-200); color:var(--ink-900); vertical-align:top; }
   .structure-table tr:last-child td { border-bottom:none; }
   .structure-table .colname { font-weight:600; }
   .structure-table .pk { color:var(--orange-500); font-weight:700; font-size:11px; margin-left:6px; }
   .structure-table .dtype { color:var(--blue-600); font-family:"Consolas",monospace; font-size:12.5px; }
   .structure-table .nullable-no { color:#c0392b; font-weight:600; }
   .structure-table .nullable-yes { color:#8a93a3; }
+  .structure-table .biz { font-weight:600; color:var(--ink-900); }
+  .structure-table .meta-desc { margin-top:3px; font-size:12px; color:#8a93a3; line-height:1.4; }
+  .col-meta {
+    margin-top:8px; padding:10px 12px; border:1px solid var(--gray-200); border-radius:8px;
+    background:#fafbfd; display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:8px 14px;
+  }
+  .col-meta .mi .lbl { display:block; font-size:10.5px; font-weight:700; text-transform:uppercase;
+    letter-spacing:.04em; color:#8a93a3; margin-bottom:2px; }
+  .col-meta .mi .val { font-size:12.5px; color:var(--ink-900); font-weight:600; word-break:break-word; }
+  .col-meta .mi.span2 { grid-column:1 / -1; }
+  .col-meta .tags { display:flex; flex-wrap:wrap; gap:6px; }
+  .meta-pill {
+    display:inline-flex; align-items:center; padding:2px 8px; border-radius:999px;
+    font-size:11px; font-weight:700; background:var(--gray-100); color:var(--navy-700);
+  }
+  .meta-pill.pii { background:rgba(228,87,46,.12); color:#c0392b; }
+  .meta-pill.conf { background:rgba(255,103,31,.12); color:var(--orange-500); }
+  .meta-pill.ok { background:rgba(31,169,113,.12); color:var(--ok); }
+  .structure-table tr.has-meta td { border-bottom:none; }
+  .structure-table tr.meta-row td {
+    padding:0 10px 12px; border-bottom:1px solid var(--gray-200); background:#fff;
+  }
+  .structure-table tr.meta-row:last-child td { border-bottom:none; }
 
   /* ---------- SQL workbench ---------- */
   .sql-pane { text-align:left; width:99%; margin:0 auto; }
@@ -516,6 +539,26 @@
     margin:0 0 12px; padding:10px 12px; border-radius:8px;
     background:rgba(31,169,113,.10); color:var(--ok); font-size:13px; font-weight:600;
   }
+
+  /* ---------- Glossary ---------- */
+  .glossary-pane { text-align:left; width:99%; margin:0 auto; }
+  .glossary-pane-hd { margin-bottom:16px; }
+  .glossary-pane-hd h1 { margin:0 0 6px; font-size:22px; font-weight:800; color:var(--ink-900); }
+  .glossary-pane-hd p { margin:0; font-size:13.5px; color:#8a93a3; }
+  .glossary-steps {
+    display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:0 0 18px;
+  }
+  @media (max-width:800px) { .glossary-steps { grid-template-columns:1fr; } }
+  .glossary-step {
+    border:1px solid var(--gray-200); border-radius:10px; padding:14px 16px; background:#fafbfd;
+  }
+  .glossary-step .n {
+    display:inline-flex; align-items:center; justify-content:center;
+    width:22px; height:22px; border-radius:999px; margin-bottom:8px;
+    background:rgba(255,103,31,.12); color:var(--orange-500); font-size:12px; font-weight:800;
+  }
+  .glossary-step h3 { margin:0 0 4px; font-size:14px; font-weight:800; color:var(--ink-900); }
+  .glossary-step p { margin:0; font-size:12.5px; color:#8a93a3; line-height:1.45; }
 </style>
 </head>
 <body>
@@ -550,7 +593,7 @@
       <a href="#" data-view="insights"><span class="ic" aria-hidden="true"><i data-lucide="sparkles"></i></span>Insights</a>
     </div>
     <div class="grp" style="margin-top:14px">
-      <a href="../frontend/index-v2.html"><span class="ic" aria-hidden="true"><i data-lucide="book-text"></i></span>Glossary</a>
+      <a href="#" data-view="glossary"><span class="ic" aria-hidden="true"><i data-lucide="book-text"></i></span>Glossary</a>
       <a href="../frontend/index-v2.html"><span class="ic" aria-hidden="true"><i data-lucide="scale"></i></span>Governance</a>
       <a href="#" data-view="admin"><span class="ic" aria-hidden="true"><i data-lucide="shield-check"></i></span>Admin</a>
       <a href="#"><span class="ic" aria-hidden="true"><i data-lucide="chart-column"></i></span>Reporting</a>
@@ -748,6 +791,85 @@
         </div>
         <div class="admin-table-wrap">
           <div id="etlPipelinesBody"></div>
+        </div>
+      </section>
+    </div>
+
+    <div id="view-glossary" class="glossary-pane hidden">
+      <div class="glossary-pane-hd">
+        <h1>Glossary</h1>
+        <p>Download the glossary template, update terms offline, then upload the file back to DataHive.</p>
+      </div>
+
+      <div class="glossary-steps" aria-label="Glossary workflow">
+        <div class="glossary-step">
+          <div class="n">1</div>
+          <h3>Download template</h3>
+          <p>Get <code>glossary_template.xlsx</code> with the required columns and a sample term.</p>
+        </div>
+        <div class="glossary-step">
+          <div class="n">2</div>
+          <h3>Update offline</h3>
+          <p>Fill one row per column. Keep identifier and metadata header names unchanged.</p>
+        </div>
+        <div class="glossary-step">
+          <div class="n">3</div>
+          <h3>Upload back</h3>
+          <p>Upload any file name — matching Assets columns get their comments/metadata updated.</p>
+        </div>
+      </div>
+
+      <section class="etl-card" aria-labelledby="glossaryTemplateTitle">
+        <div class="etl-hd">
+          <h2 id="glossaryTemplateTitle">Glossary template</h2>
+          <a class="btn btn-primary" id="glossaryDownloadBtn" href="#" role="button">Download template</a>
+        </div>
+        <div class="etl-bd">
+          <p class="lead" style="margin:0 0 8px">
+            Template file: <strong>glossary_template.xlsx</strong>
+          </p>
+          <p class="lead" style="margin:0">
+            <strong>Identifiers:</strong> connection, database, schema, table, column &nbsp;·&nbsp;
+            <strong>Metadata:</strong> business_name, description, business_definition, classification,
+            sensitivity, source_system, owner, steward
+          </p>
+        </div>
+      </section>
+
+      <section class="etl-card" aria-labelledby="glossaryUploadTitle">
+        <div class="etl-hd"><h2 id="glossaryUploadTitle">Upload glossary</h2></div>
+        <div class="etl-bd">
+          <div class="field">
+            <label for="glossaryNotes">Notes</label>
+            <input id="glossaryNotes" maxlength="512" placeholder="Optional context for this upload (e.g. Q3 term refresh)" />
+          </div>
+          <div class="uploadzone" id="glossaryDropzone" tabindex="0" role="button" aria-label="Upload glossary file">
+            <img class="upimg" src="../images/upload.png" alt="" width="64" height="64" />
+            <div class="uptext">Click to upload or drag &amp; drop</div>
+            <div class="uphint">Excel (.xlsx, .xls) or CSV — up to 10 MB</div>
+          </div>
+          <input type="file" id="glossaryFileInput" class="hidden" accept=".xlsx,.xls,.csv" />
+          <div id="glossarySelected" class="selectedfile hidden">
+            <img class="sf-icon" src="../images/upload.png" alt="" width="28" height="28" />
+            <div class="sf-meta">
+              <div class="sf-name" id="glossarySelectedName"></div>
+              <div class="sf-size" id="glossarySelectedSize"></div>
+            </div>
+            <button type="button" class="btn btn-primary" id="glossaryUploadBtn">Upload</button>
+            <button type="button" class="icon-btn" id="glossaryClearBtn" aria-label="Remove selected file">✕</button>
+          </div>
+          <div class="err hidden" id="glossaryFormError" style="margin-top:12px"></div>
+          <div class="etl-ok hidden" id="glossaryFormOk" style="margin-top:12px"></div>
+        </div>
+      </section>
+
+      <section class="etl-card" aria-labelledby="glossaryListTitle">
+        <div class="etl-hd">
+          <h2 id="glossaryListTitle">Uploaded glossaries</h2>
+          <span class="count" id="glossaryCount" style="font-size:12px;font-weight:700;color:#8a93a3;background:var(--gray-100);border-radius:999px;padding:3px 10px">0</span>
+        </div>
+        <div class="admin-table-wrap">
+          <div id="glossaryListBody"></div>
         </div>
       </section>
     </div>
@@ -1830,9 +1952,12 @@ const CONFIGURED_ASSET_SCHEMAS = ["bronze", "silver", "gold"];
 const assetState = { offline: false, loaded: false, schema: null, table: null };
 
 function mergedAssetSchemas(apiItems) {
+  // Prefer live schemas returned by the Postgres catalog API.
+  const fromApi = (apiItems || []).map((s) => String(s)).filter(Boolean);
+  const source = fromApi.length ? fromApi : CONFIGURED_ASSET_SCHEMAS;
   const out = [];
   const seen = new Set();
-  CONFIGURED_ASSET_SCHEMAS.concat(apiItems || []).forEach((s) => {
+  source.forEach((s) => {
     const key = String(s).toLowerCase();
     if (seen.has(key)) return;
     seen.add(key);
@@ -1916,6 +2041,55 @@ function assetSkeleton(elm, rows) {
   for (let i = 0; i < rows; i++) elm.appendChild(assetEl("div", "sk sk-row"));
 }
 
+function metaPill(text, cls) {
+  if (text == null || text === "") return "";
+  return '<span class="meta-pill' + (cls ? " " + cls : "") + '">' + escapeHtml(String(text)) + "</span>";
+}
+
+function metaItem(label, value, span2) {
+  if (value == null || value === "") return "";
+  return (
+    '<div class="mi' + (span2 ? " span2" : "") + '">' +
+    '<span class="lbl">' + escapeHtml(label) + "</span>" +
+    '<span class="val">' + escapeHtml(String(value)) + "</span></div>"
+  );
+}
+
+function renderColumnMetadata(meta) {
+  if (!meta || typeof meta !== "object") return "";
+  const tags = [];
+  if (meta.classification) {
+    tags.push(metaPill(meta.classification, /pii/i.test(String(meta.classification)) ? "pii" : ""));
+  }
+  if (meta.sensitivity) {
+    tags.push(metaPill(meta.sensitivity, /confidential|restricted/i.test(String(meta.sensitivity)) ? "conf" : ""));
+  }
+  if (meta.is_primary_key) tags.push(metaPill("Primary key", "ok"));
+  if (meta.is_unique) tags.push(metaPill("Unique", "ok"));
+  if (meta.is_nullable === false) tags.push(metaPill("Not null", ""));
+  if (meta.is_nullable === true) tags.push(metaPill("Nullable", ""));
+
+  const rulesHtml = Array.isArray(meta.quality_rules) && meta.quality_rules.length
+    ? metaItem("Quality rules", meta.quality_rules.join(" · "), true)
+    : "";
+
+  const body =
+    metaItem("Business name", meta.business_name) +
+    metaItem("Business definition", meta.business_definition, true) +
+    metaItem("Description", meta.description, true) +
+    metaItem("Data type", meta.data_type) +
+    metaItem("Source system", meta.source_system) +
+    metaItem("Owner", meta.owner) +
+    metaItem("Steward", meta.steward) +
+    (tags.length ? '<div class="mi span2"><span class="lbl">Flags</span><div class="tags">' + tags.join("") + "</div></div>" : "") +
+    rulesHtml;
+
+  if (!body) {
+    return '<div class="col-meta">' + metaItem("Comment", meta.description || JSON.stringify(meta), true) + "</div>";
+  }
+  return '<div class="col-meta">' + body + "</div>";
+}
+
 function renderTableStructure(structure) {
   const wrap = $("#assetStructureWrap");
   if (!wrap) return;
@@ -1927,16 +2101,32 @@ function renderTableStructure(structure) {
     .map((c) => {
       const nullCls = c.nullable ? "nullable-yes" : "nullable-no";
       const nullTxt = c.nullable ? "Yes" : "No";
-      return (
-        "<tr>" +
+      const meta = c.metadata || null;
+      const bizName = meta && meta.business_name ? meta.business_name : "";
+      const desc = meta && meta.description ? meta.description : (c.comment && !meta ? c.comment : "");
+      const classif = meta && meta.classification ? meta.classification : "";
+      const sens = meta && meta.sensitivity ? meta.sensitivity : "";
+      const hasDetail = !!(meta && (meta.business_definition || meta.owner || meta.steward ||
+        meta.source_system || meta.quality_rules || meta.data_type || meta.is_primary_key != null ||
+        meta.is_unique != null || meta.is_nullable != null));
+      const main =
+        "<tr" + (hasDetail || desc ? ' class="has-meta"' : "") + ">" +
         '<td class="colname">' +
         escapeHtml(c.name) +
         (c.primary_key ? '<span class="pk">PK</span>' : "") +
+        (bizName ? '<div class="biz">' + escapeHtml(bizName) + "</div>" : "") +
+        (desc ? '<div class="meta-desc">' + escapeHtml(desc) + "</div>" : "") +
         "</td>" +
         '<td class="dtype">' + escapeHtml(c.type) + "</td>" +
         '<td class="' + nullCls + '">' + nullTxt + "</td>" +
         "<td>" + (c.default != null ? escapeHtml(String(c.default)) : "—") + "</td>" +
-        "</tr>"
+        "<td>" + (classif ? metaPill(classif, /pii/i.test(classif) ? "pii" : "") : "—") + "</td>" +
+        "<td>" + (sens ? metaPill(sens, /confidential|restricted/i.test(sens) ? "conf" : "") : "—") + "</td>" +
+        "</tr>";
+      if (!hasDetail) return main;
+      return (
+        main +
+        '<tr class="meta-row"><td colspan="6">' + renderColumnMetadata(meta) + "</td></tr>"
       );
     })
     .join("");
@@ -1945,8 +2135,8 @@ function renderTableStructure(structure) {
     '<span class="snm">' + escapeHtml(structure.schema) + "." + escapeHtml(structure.table) + "</span>" +
     '<span class="stype">' + escapeHtml(structure.table_type || "Table") + "</span>" +
     "</div>" +
-    '<table class="structure-table" aria-label="Table structure">' +
-    "<thead><tr><th>Column</th><th>Type</th><th>Nullable</th><th>Default</th></tr></thead>" +
+    '<table class="structure-table" aria-label="Table structure and metadata">' +
+    "<thead><tr><th>Column</th><th>Type</th><th>Nullable</th><th>Default</th><th>Classification</th><th>Sensitivity</th></tr></thead>" +
     "<tbody>" + rows + "</tbody></table>";
 }
 
@@ -2109,6 +2299,8 @@ document.querySelectorAll("nav.rail a[data-view]").forEach((a) => {
     $("#view-connectors").classList.toggle("hidden", view !== "connectors");
     const etlView = $("#view-etl");
     if (etlView) etlView.classList.toggle("hidden", view !== "etl");
+    const glossaryView = $("#view-glossary");
+    if (glossaryView) glossaryView.classList.toggle("hidden", view !== "glossary");
     const adminView = $("#view-admin");
     if (adminView) adminView.classList.toggle("hidden", view !== "admin");
     if (view === "assets") initAssetsView();
@@ -2116,6 +2308,7 @@ document.querySelectorAll("nav.rail a[data-view]").forEach((a) => {
       DataHiveSqlExplorer.init();
     }
     if (view === "etl") initEtlView();
+    if (view === "glossary") initGlossaryView();
     if (view === "admin") initAdminView();
   });
 });
@@ -2955,6 +3148,220 @@ async function initEtlView() {
   bindEtlEvents();
   await refreshEtlConnections();
   renderEtlPipelines();
+}
+
+/* ========== Glossary: template download + upload ========== */
+let glossarySelectedFile = null;
+let glossaryBound = false;
+
+function glossaryApiBase() {
+  if (window.DATAHIVE_CONNECTOR_API) {
+    return String(window.DATAHIVE_CONNECTOR_API).replace(/\/$/, "");
+  }
+  const host = (window.location && window.location.hostname) || "127.0.0.1";
+  return "http://" + host + ":5055";
+}
+
+function showGlossaryError(msg) {
+  const err = $("#glossaryFormError");
+  const ok = $("#glossaryFormOk");
+  if (ok) { ok.classList.add("hidden"); ok.textContent = ""; }
+  if (err) { err.textContent = msg; err.classList.remove("hidden"); }
+}
+
+function showGlossaryOk(msg) {
+  const err = $("#glossaryFormError");
+  const ok = $("#glossaryFormOk");
+  if (err) { err.classList.add("hidden"); err.textContent = ""; }
+  if (ok) { ok.textContent = msg; ok.classList.remove("hidden"); }
+}
+
+function clearGlossarySelection() {
+  glossarySelectedFile = null;
+  const input = $("#glossaryFileInput");
+  if (input) input.value = "";
+  const box = $("#glossarySelected");
+  if (box) box.classList.add("hidden");
+}
+
+function selectGlossaryFile(file) {
+  if (!file) return;
+  const name = String(file.name || "").toLowerCase();
+  if (!/\.(xlsx|xls|csv)$/.test(name)) {
+    showGlossaryError("Please choose an Excel (.xlsx, .xls) or CSV file.");
+    return;
+  }
+  if (file.size > 10 * 1024 * 1024) {
+    showGlossaryError("File exceeds the 10 MB limit.");
+    return;
+  }
+  glossarySelectedFile = file;
+  $("#glossarySelectedName").textContent = file.name;
+  $("#glossarySelectedSize").textContent = formatBytes(file.size);
+  $("#glossarySelected").classList.remove("hidden");
+  const err = $("#glossaryFormError");
+  if (err) err.classList.add("hidden");
+}
+
+function renderGlossaryList(items) {
+  const body = $("#glossaryListBody");
+  const count = $("#glossaryCount");
+  const list = items || [];
+  if (count) count.textContent = String(list.length);
+  if (!body) return;
+  if (!list.length) {
+    body.innerHTML = '<div class="admin-empty">No glossaries uploaded yet. Download the template, update it, then upload here.</div>';
+    return;
+  }
+  body.innerHTML =
+    '<table class="admin-table" aria-label="Uploaded glossaries">' +
+    "<thead><tr><th>File</th><th>Rows</th><th>Updated</th><th>Failed</th><th>Uploaded by</th><th>Saved at</th><th></th></tr></thead><tbody>" +
+    list.map((g) => {
+      const saved = g.saved_at ? new Date(g.saved_at).toLocaleString() : "—";
+      const apply = g.apply || {};
+      const rows = apply.rows_total != null ? String(apply.rows_total) : (g.term_count != null ? String(g.term_count) : "—");
+      const updated = apply.updated != null ? String(apply.updated) : "—";
+      const failed = apply.failed != null ? String(apply.failed) : "—";
+      const dl = g.stored_file_name
+        ? glossaryApiBase() + "/api/glossary/files/" + encodeURIComponent(g.stored_file_name)
+        : "";
+      return (
+        "<tr>" +
+        '<td><div class="nm">' + escapeHtml(g.file_name || "glossary") + "</div>" +
+        (g.notes ? '<div class="muted">' + escapeHtml(g.notes) + "</div>" : "") +
+        "</td>" +
+        "<td>" + escapeHtml(rows) + "</td>" +
+        "<td>" + escapeHtml(updated) + "</td>" +
+        "<td>" + escapeHtml(failed) + "</td>" +
+        "<td>" + escapeHtml(g.user || "—") + "</td>" +
+        "<td>" + escapeHtml(saved) + "</td>" +
+        '<td><div class="admin-actions">' +
+        (dl
+          ? '<a class="btn-sm" href="' + escapeHtml(dl) + '" download>Download</a>'
+          : "") +
+        "</div></td></tr>"
+      );
+    }).join("") +
+    "</tbody></table>";
+}
+
+async function refreshGlossaryList() {
+  const body = $("#glossaryListBody");
+  if (body) body.innerHTML = '<div class="admin-empty">Loading uploaded glossaries…</div>';
+  try {
+    const res = await fetch(glossaryApiBase() + "/api/glossary/recent?limit=20", {
+      headers: { "X-DataHive-User": ($("#userNm") && $("#userNm").textContent.trim()) || "Admin" },
+      cache: "no-store",
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      throw new Error((data && data.detail) || ("HTTP " + res.status));
+    }
+    renderGlossaryList((data && data.items) || []);
+  } catch (err) {
+    if (body) {
+      body.innerHTML =
+        '<div class="admin-empty">Could not load uploads. ' +
+        escapeHtml(err && err.message ? err.message : String(err)) +
+        "</div>";
+    }
+  }
+}
+
+function bindGlossaryEvents() {
+  if (glossaryBound) return;
+  glossaryBound = true;
+
+  const downloadBtn = $("#glossaryDownloadBtn");
+  if (downloadBtn) {
+    downloadBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.location.href = glossaryApiBase() + "/api/glossary/template";
+    });
+  }
+
+  const drop = $("#glossaryDropzone");
+  const input = $("#glossaryFileInput");
+  if (drop && input) {
+    drop.addEventListener("click", () => input.click());
+    drop.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        input.click();
+      }
+    });
+    input.addEventListener("change", (e) => selectGlossaryFile(e.target.files && e.target.files[0]));
+    ["dragover", "dragenter"].forEach((evt) => {
+      drop.addEventListener(evt, (e) => {
+        e.preventDefault();
+        drop.classList.add("dragover");
+      });
+    });
+    ["dragleave", "drop"].forEach((evt) => {
+      drop.addEventListener(evt, (e) => {
+        e.preventDefault();
+        drop.classList.remove("dragover");
+      });
+    });
+    drop.addEventListener("drop", (e) => {
+      const file = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+      selectGlossaryFile(file);
+    });
+  }
+
+  const clearBtn = $("#glossaryClearBtn");
+  if (clearBtn) clearBtn.addEventListener("click", clearGlossarySelection);
+
+  const uploadBtn = $("#glossaryUploadBtn");
+  if (uploadBtn) {
+    uploadBtn.addEventListener("click", async () => {
+      if (!glossarySelectedFile) return showGlossaryError("Select a glossary file first.");
+      uploadBtn.disabled = true;
+      uploadBtn.textContent = "Uploading…";
+      try {
+        if (typeof ensureDataHiveConnectorApi === "function") {
+          const ok = await ensureDataHiveConnectorApi();
+          if (!ok) throw new Error("Connector API is not reachable.");
+        }
+        const fd = new FormData();
+        fd.append("file", glossarySelectedFile, glossarySelectedFile.name);
+        fd.append("notes", ($("#glossaryNotes") && $("#glossaryNotes").value.trim()) || "");
+        const res = await fetch(glossaryApiBase() + "/api/glossary/upload", {
+          method: "POST",
+          headers: { "X-DataHive-User": ($("#userNm") && $("#userNm").textContent.trim()) || "Admin" },
+          body: fd,
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          throw new Error((data && data.detail) || ("HTTP " + res.status));
+        }
+        const apply = data.apply || {};
+        const msg =
+          'Uploaded "' + (data.file_name || glossarySelectedFile.name) + '". ' +
+          "Assets comments updated: " + (apply.updated != null ? apply.updated : 0) +
+          (apply.failed ? (", failed: " + apply.failed) : "") +
+          (apply.skipped ? (", skipped: " + apply.skipped) : "") + ".";
+        if (apply.failed && apply.errors && apply.errors.length) {
+          showGlossaryError(msg + " " + apply.errors.slice(0, 3).join(" "));
+        } else {
+          showGlossaryOk(msg);
+        }
+        clearGlossarySelection();
+        if ($("#glossaryNotes")) $("#glossaryNotes").value = "";
+        await refreshGlossaryList();
+      } catch (err) {
+        showGlossaryError(err && err.message ? err.message : String(err));
+      } finally {
+        uploadBtn.disabled = false;
+        uploadBtn.textContent = "Upload";
+      }
+    });
+  }
+}
+
+async function initGlossaryView() {
+  bindGlossaryEvents();
+  await refreshGlossaryList();
 }
 </script>
 </body>
