@@ -1,0 +1,1001 @@
+promotion_id,promo_code,promo_name,discount_type,discount_value,min_order_amount,start_date,end_date,channel,is_active
+PRO0001,SLICE0001,App Exclusive 1,percent,11.40,28.48,2025-12-03,2026-02-23,web,true
+PRO0002,SLICE0002,Free Delivery Weekend 2,fixed,19.91,14.05,2025-04-21,2025-06-12,web,true
+PRO0003,SLICE0003,Member Double Points 3,free_delivery,8.50,13.14,2025-02-03,2025-03-18,delivery_partner,true
+PRO0004,SLICE0004,Free Delivery Weekend 4,fixed,18.22,21.92,2024-09-12,2024-10-15,delivery_partner,true
+PRO0005,SLICE0005,Two for Tuesday 5,percent,8.49,18.15,2025-03-17,2025-04-07,web,true
+PRO0006,SLICE0006,Member Double Points 6,free_delivery,12.90,34.81,2026-01-27,2026-04-17,web,true
+PRO0007,SLICE0007,Family Feast 7,bogo,24.92,28.51,2024-10-06,2024-10-23,web,false
+PRO0008,SLICE0008,Student Night 8,free_delivery,11.89,19.27,2025-09-20,2025-12-01,web,false
+PRO0009,SLICE0009,App Exclusive 9,bogo,20.74,19.77,2024-05-25,2024-07-02,web,false
+PRO0010,SLICE0010,Lunch Special 10,fixed,4.24,23.88,2025-09-04,2025-11-25,all,true
+PRO0011,SLICE0011,Free Delivery Weekend 11,percent,8.81,23.65,2025-12-13,2026-01-04,delivery_partner,true
+PRO0012,SLICE0012,Student Night 12,fixed,4.11,23.07,2024-12-11,2025-02-07,delivery_partner,false
+PRO0013,SLICE0013,Member Double Points 13,fixed,16.34,28.30,2024-09-20,2024-11-10,all,false
+PRO0014,SLICE0014,Free Delivery Weekend 14,percent,13.41,10.32,2025-04-02,2025-05-19,web,true
+PRO0015,SLICE0015,Two for Tuesday 15,free_delivery,23.23,35.26,2024-02-22,2024-05-10,delivery_partner,true
+PRO0016,SLICE0016,Student Night 16,percent,16.01,34.32,2024-08-30,2024-10-29,all,false
+PRO0017,SLICE0017,Free Delivery Weekend 17,free_delivery,16.54,16.98,2024-12-19,2025-02-14,web,false
+PRO0018,SLICE0018,App Exclusive 18,free_delivery,4.52,26.31,2025-08-15,2025-09-11,mobile_app,false
+PRO0019,SLICE0019,Lunch Special 19,fixed,23.21,34.83,2025-11-07,2026-01-05,phone,false
+PRO0020,SLICE0020,Member Double Points 20,free_delivery,19.09,23.67,2026-01-19,2026-02-17,web,true
+PRO0021,SLICE0021,Two for Tuesday 21,free_delivery,12.83,32.04,2024-11-02,2025-01-16,delivery_partner,true
+PRO0022,SLICE0022,App Exclusive 22,fixed,23.36,18.37,2024-03-16,2024-04-12,delivery_partner,false
+PRO0023,SLICE0023,App Exclusive 23,fixed,3.71,23.66,2025-04-17,2025-06-22,web,true
+PRO0024,SLICE0024,Free Delivery Weekend 24,free_delivery,13.87,39.30,2024-06-21,2024-07-31,phone,true
+PRO0025,SLICE0025,Member Double Points 25,free_delivery,4.84,14.16,2025-11-28,2026-01-18,delivery_partner,true
+PRO0026,SLICE0026,Two for Tuesday 26,free_delivery,8.86,11.72,2024-10-06,2024-11-24,delivery_partner,false
+PRO0027,SLICE0027,Member Double Points 27,bogo,6.15,22.83,2026-01-08,2026-02-22,mobile_app,false
+PRO0028,SLICE0028,Free Delivery Weekend 28,bogo,14.20,26.66,2025-09-17,2025-11-22,web,false
+PRO0029,SLICE0029,Two for Tuesday 29,free_delivery,16.48,28.75,2024-10-03,2024-11-06,phone,true
+PRO0030,SLICE0030,Family Feast 30,free_delivery,20.79,25.35,2024-10-30,2025-01-18,phone,false
+PRO0031,SLICE0031,Two for Tuesday 31,free_delivery,3.09,39.75,2025-06-21,2025-07-02,delivery_partner,false
+PRO0032,SLICE0032,Two for Tuesday 32,bogo,2.35,16.09,2025-07-12,2025-09-29,all,true
+PRO0033,SLICE0033,Free Delivery Weekend 33,fixed,6.07,23.28,2025-01-02,2025-03-19,phone,true
+PRO0034,SLICE0034,Student Night 34,bogo,9.19,27.43,2025-07-18,2025-10-02,mobile_app,true
+PRO0035,SLICE0035,Two for Tuesday 35,fixed,13.08,34.08,2025-06-21,2025-07-16,phone,true
+PRO0036,SLICE0036,Student Night 36,percent,15.69,34.28,2024-04-17,2024-06-26,all,true
+PRO0037,SLICE0037,App Exclusive 37,bogo,16.99,32.22,2024-10-14,2024-11-21,phone,true
+PRO0038,SLICE0038,Lunch Special 38,fixed,22.73,14.96,2025-01-23,2025-03-28,in_store,true
+PRO0039,SLICE0039,Free Delivery Weekend 39,free_delivery,12.98,24.57,2025-11-25,2025-12-06,delivery_partner,true
+PRO0040,SLICE0040,Member Double Points 40,bogo,22.79,23.51,2024-07-03,2024-09-04,in_store,true
+PRO0041,SLICE0041,App Exclusive 41,percent,17.13,31.60,2024-08-05,2024-09-14,mobile_app,true
+PRO0042,SLICE0042,Free Delivery Weekend 42,fixed,4.40,10.57,2025-01-31,2025-03-23,web,true
+PRO0043,SLICE0043,Two for Tuesday 43,bogo,18.55,35.40,2024-05-13,2024-05-31,all,false
+PRO0044,SLICE0044,Member Double Points 44,free_delivery,17.24,15.68,2024-07-05,2024-09-25,web,true
+PRO0045,SLICE0045,Free Delivery Weekend 45,bogo,20.55,38.74,2025-10-17,2026-01-14,mobile_app,true
+PRO0046,SLICE0046,Family Feast 46,percent,3.83,19.93,2025-11-20,2026-01-30,in_store,true
+PRO0047,SLICE0047,Lunch Special 47,fixed,3.21,28.93,2024-01-07,2024-04-05,phone,false
+PRO0048,SLICE0048,Free Delivery Weekend 48,percent,14.67,22.32,2025-12-19,2026-01-14,web,true
+PRO0049,SLICE0049,Two for Tuesday 49,percent,14.18,34.38,2024-06-07,2024-07-22,all,false
+PRO0050,SLICE0050,Free Delivery Weekend 50,free_delivery,19.81,10.36,2026-01-21,2026-04-17,delivery_partner,false
+PRO0051,SLICE0051,App Exclusive 51,fixed,12.58,15.66,2024-11-23,2024-12-06,in_store,true
+PRO0052,SLICE0052,Member Double Points 52,bogo,21.42,22.55,2024-12-12,2025-01-11,all,false
+PRO0053,SLICE0053,Family Feast 53,percent,18.71,16.79,2024-12-20,2024-12-27,mobile_app,true
+PRO0054,SLICE0054,Two for Tuesday 54,bogo,7.26,10.25,2025-06-02,2025-08-24,delivery_partner,true
+PRO0055,SLICE0055,Free Delivery Weekend 55,fixed,3.31,31.10,2025-01-08,2025-02-07,all,true
+PRO0056,SLICE0056,Lunch Special 56,fixed,14.88,16.81,2025-03-23,2025-05-05,all,true
+PRO0057,SLICE0057,Two for Tuesday 57,bogo,7.53,12.23,2025-05-07,2025-07-09,phone,false
+PRO0058,SLICE0058,Lunch Special 58,percent,16.82,21.83,2024-10-31,2025-01-26,all,true
+PRO0059,SLICE0059,Student Night 59,bogo,16.13,38.21,2025-04-01,2025-04-20,all,true
+PRO0060,SLICE0060,Family Feast 60,free_delivery,20.18,36.18,2026-01-01,2026-03-03,mobile_app,true
+PRO0061,SLICE0061,Family Feast 61,fixed,9.27,21.27,2026-02-02,2026-04-06,in_store,false
+PRO0062,SLICE0062,Member Double Points 62,bogo,17.11,21.48,2024-02-24,2024-03-21,in_store,true
+PRO0063,SLICE0063,App Exclusive 63,fixed,5.43,18.94,2024-12-21,2025-02-24,in_store,true
+PRO0064,SLICE0064,Free Delivery Weekend 64,percent,20.35,35.21,2024-07-11,2024-10-06,phone,true
+PRO0065,SLICE0065,Family Feast 65,bogo,16.43,15.61,2024-03-02,2024-03-16,delivery_partner,true
+PRO0066,SLICE0066,Two for Tuesday 66,free_delivery,8.57,23.79,2024-02-06,2024-04-26,mobile_app,true
+PRO0067,SLICE0067,Lunch Special 67,percent,11.94,10.27,2024-05-28,2024-07-26,mobile_app,true
+PRO0068,SLICE0068,Student Night 68,percent,13.28,39.39,2024-11-07,2024-11-15,all,true
+PRO0069,SLICE0069,Lunch Special 69,free_delivery,13.06,38.58,2025-02-12,2025-03-07,mobile_app,true
+PRO0070,SLICE0070,Lunch Special 70,free_delivery,2.97,35.69,2024-09-04,2024-09-23,phone,true
+PRO0071,SLICE0071,Student Night 71,free_delivery,9.73,14.86,2025-09-02,2025-09-27,delivery_partner,true
+PRO0072,SLICE0072,Two for Tuesday 72,bogo,17.18,31.71,2025-07-19,2025-09-23,mobile_app,false
+PRO0073,SLICE0073,Lunch Special 73,percent,4.79,34.40,2025-11-21,2026-01-29,in_store,true
+PRO0074,SLICE0074,Family Feast 74,free_delivery,2.67,22.78,2025-08-31,2025-11-07,in_store,true
+PRO0075,SLICE0075,Student Night 75,bogo,2.74,13.71,2025-02-20,2025-04-21,in_store,false
+PRO0076,SLICE0076,Free Delivery Weekend 76,percent,4.63,29.83,2025-11-08,2025-12-13,mobile_app,true
+PRO0077,SLICE0077,Lunch Special 77,fixed,13.45,36.95,2026-02-27,2026-03-27,delivery_partner,true
+PRO0078,SLICE0078,Two for Tuesday 78,percent,6.10,18.92,2025-06-06,2025-07-02,all,true
+PRO0079,SLICE0079,App Exclusive 79,free_delivery,22.80,26.15,2025-08-01,2025-10-01,mobile_app,true
+PRO0080,SLICE0080,Member Double Points 80,free_delivery,9.98,23.31,2024-03-10,2024-05-05,mobile_app,true
+PRO0081,SLICE0081,Student Night 81,fixed,12.54,28.62,2024-09-05,2024-11-27,in_store,false
+PRO0082,SLICE0082,Lunch Special 82,free_delivery,17.18,34.56,2025-07-11,2025-08-30,phone,false
+PRO0083,SLICE0083,Lunch Special 83,fixed,20.82,32.85,2025-10-02,2025-10-13,in_store,false
+PRO0084,SLICE0084,Two for Tuesday 84,bogo,2.82,38.72,2025-05-16,2025-07-31,all,true
+PRO0085,SLICE0085,Free Delivery Weekend 85,fixed,22.06,11.57,2025-07-23,2025-08-19,all,true
+PRO0086,SLICE0086,Free Delivery Weekend 86,percent,6.68,11.17,2024-10-30,2024-11-30,mobile_app,false
+PRO0087,SLICE0087,App Exclusive 87,free_delivery,11.47,39.95,2025-01-13,2025-02-20,delivery_partner,true
+PRO0088,SLICE0088,Member Double Points 88,percent,14.70,13.91,2024-01-19,2024-03-08,delivery_partner,true
+PRO0089,SLICE0089,Free Delivery Weekend 89,fixed,12.73,21.07,2024-10-07,2024-11-21,mobile_app,true
+PRO0090,SLICE0090,App Exclusive 90,percent,2.99,27.73,2024-06-23,2024-08-01,all,true
+PRO0091,SLICE0091,Member Double Points 91,bogo,12.62,28.48,2024-12-29,2025-02-23,phone,false
+PRO0092,SLICE0092,Free Delivery Weekend 92,percent,15.42,19.58,2024-05-02,2024-07-07,in_store,true
+PRO0093,SLICE0093,Two for Tuesday 93,free_delivery,8.52,25.85,2025-04-11,2025-05-02,mobile_app,false
+PRO0094,SLICE0094,App Exclusive 94,free_delivery,2.64,19.81,2025-11-27,2026-01-09,phone,true
+PRO0095,SLICE0095,App Exclusive 95,bogo,8.91,34.09,2024-04-15,2024-06-30,web,true
+PRO0096,SLICE0096,Lunch Special 96,free_delivery,4.20,18.16,2024-10-31,2025-01-02,web,true
+PRO0097,SLICE0097,Student Night 97,free_delivery,16.12,27.48,2025-09-26,2025-10-20,all,false
+PRO0098,SLICE0098,Member Double Points 98,fixed,24.90,28.36,2024-10-16,2024-11-17,mobile_app,true
+PRO0099,SLICE0099,Family Feast 99,free_delivery,13.81,39.14,2024-07-03,2024-08-20,in_store,true
+PRO0100,SLICE0100,Two for Tuesday 100,percent,10.65,20.10,2024-01-27,2024-03-25,web,false
+PRO0101,SLICE0101,Two for Tuesday 101,fixed,8.78,21.10,2024-12-20,2025-01-09,delivery_partner,true
+PRO0102,SLICE0102,Free Delivery Weekend 102,percent,10.98,29.63,2025-11-20,2026-01-11,mobile_app,true
+PRO0103,SLICE0103,App Exclusive 103,free_delivery,16.80,15.57,2026-02-18,2026-03-10,phone,true
+PRO0104,SLICE0104,Two for Tuesday 104,bogo,18.60,35.70,2024-01-19,2024-04-04,in_store,true
+PRO0105,SLICE0105,App Exclusive 105,fixed,18.30,28.08,2026-01-20,2026-02-25,mobile_app,true
+PRO0106,SLICE0106,Student Night 106,fixed,11.13,31.06,2026-03-08,2026-03-29,in_store,true
+PRO0107,SLICE0107,Free Delivery Weekend 107,free_delivery,16.90,23.59,2025-09-27,2025-10-12,delivery_partner,false
+PRO0108,SLICE0108,Lunch Special 108,percent,17.51,32.79,2025-01-27,2025-02-17,mobile_app,true
+PRO0109,SLICE0109,Member Double Points 109,percent,1.75,34.76,2025-03-05,2025-04-04,in_store,true
+PRO0110,SLICE0110,App Exclusive 110,percent,1.49,16.23,2024-12-04,2025-02-14,mobile_app,true
+PRO0111,SLICE0111,Two for Tuesday 111,fixed,1.24,29.81,2025-05-11,2025-07-01,web,true
+PRO0112,SLICE0112,Two for Tuesday 112,percent,18.99,23.53,2025-01-08,2025-03-23,delivery_partner,false
+PRO0113,SLICE0113,Free Delivery Weekend 113,bogo,23.33,27.68,2024-02-28,2024-04-08,phone,false
+PRO0114,SLICE0114,Family Feast 114,bogo,22.11,16.06,2024-12-29,2025-01-30,web,true
+PRO0115,SLICE0115,Student Night 115,fixed,5.18,33.49,2025-12-03,2026-01-01,all,true
+PRO0116,SLICE0116,Lunch Special 116,bogo,13.37,29.09,2024-01-08,2024-02-09,phone,true
+PRO0117,SLICE0117,App Exclusive 117,percent,6.73,14.19,2024-08-11,2024-10-19,mobile_app,true
+PRO0118,SLICE0118,Family Feast 118,free_delivery,23.75,17.91,2024-01-16,2024-03-26,all,true
+PRO0119,SLICE0119,Member Double Points 119,percent,3.90,10.92,2024-01-13,2024-03-16,all,true
+PRO0120,SLICE0120,Student Night 120,free_delivery,11.06,21.43,2024-01-14,2024-03-28,web,true
+PRO0121,SLICE0121,Family Feast 121,fixed,18.50,20.52,2024-07-21,2024-09-24,delivery_partner,false
+PRO0122,SLICE0122,Two for Tuesday 122,percent,17.29,25.22,2025-04-11,2025-04-23,phone,false
+PRO0123,SLICE0123,Student Night 123,percent,5.91,16.38,2025-02-12,2025-04-01,in_store,true
+PRO0124,SLICE0124,Two for Tuesday 124,fixed,6.84,31.65,2024-11-16,2025-01-09,in_store,true
+PRO0125,SLICE0125,App Exclusive 125,fixed,20.19,31.81,2024-04-25,2024-07-02,delivery_partner,true
+PRO0126,SLICE0126,Student Night 126,bogo,17.33,23.53,2024-10-21,2024-11-27,mobile_app,true
+PRO0127,SLICE0127,Family Feast 127,fixed,1.31,18.02,2024-06-21,2024-09-19,phone,true
+PRO0128,SLICE0128,Lunch Special 128,free_delivery,21.05,15.60,2024-01-04,2024-01-27,mobile_app,true
+PRO0129,SLICE0129,Lunch Special 129,free_delivery,4.24,25.53,2025-09-15,2025-09-25,phone,false
+PRO0130,SLICE0130,Free Delivery Weekend 130,percent,1.39,31.48,2024-11-05,2024-12-24,in_store,true
+PRO0131,SLICE0131,Two for Tuesday 131,fixed,14.65,28.16,2024-03-12,2024-04-21,in_store,true
+PRO0132,SLICE0132,App Exclusive 132,bogo,11.03,35.62,2025-08-12,2025-10-29,delivery_partner,true
+PRO0133,SLICE0133,App Exclusive 133,bogo,22.54,20.65,2025-10-08,2025-12-21,all,false
+PRO0134,SLICE0134,Two for Tuesday 134,fixed,22.03,11.13,2025-03-28,2025-04-24,delivery_partner,false
+PRO0135,SLICE0135,Family Feast 135,bogo,5.17,15.00,2025-07-28,2025-08-31,delivery_partner,false
+PRO0136,SLICE0136,Lunch Special 136,fixed,3.24,17.29,2024-07-27,2024-09-01,in_store,true
+PRO0137,SLICE0137,Two for Tuesday 137,bogo,18.57,14.97,2025-10-24,2025-12-12,mobile_app,false
+PRO0138,SLICE0138,Student Night 138,fixed,15.31,30.48,2024-01-30,2024-04-20,web,true
+PRO0139,SLICE0139,Free Delivery Weekend 139,fixed,1.63,10.72,2025-05-17,2025-07-20,web,false
+PRO0140,SLICE0140,Student Night 140,fixed,8.81,21.79,2024-01-21,2024-02-24,in_store,true
+PRO0141,SLICE0141,Two for Tuesday 141,free_delivery,17.95,16.68,2025-03-18,2025-06-14,in_store,false
+PRO0142,SLICE0142,App Exclusive 142,bogo,8.24,24.80,2025-06-23,2025-07-31,in_store,true
+PRO0143,SLICE0143,Member Double Points 143,free_delivery,4.17,24.64,2024-12-26,2025-02-01,in_store,false
+PRO0144,SLICE0144,App Exclusive 144,free_delivery,19.35,37.91,2025-08-23,2025-11-19,phone,true
+PRO0145,SLICE0145,Free Delivery Weekend 145,fixed,15.57,37.12,2025-04-13,2025-06-21,web,true
+PRO0146,SLICE0146,Lunch Special 146,percent,7.58,36.19,2024-03-31,2024-05-06,mobile_app,true
+PRO0147,SLICE0147,Member Double Points 147,bogo,2.50,19.28,2025-02-06,2025-02-21,web,false
+PRO0148,SLICE0148,Member Double Points 148,free_delivery,17.77,19.26,2024-08-28,2024-11-21,web,false
+PRO0149,SLICE0149,Lunch Special 149,free_delivery,3.48,37.82,2026-03-10,2026-04-18,phone,true
+PRO0150,SLICE0150,Two for Tuesday 150,bogo,10.88,16.65,2024-10-15,2024-10-23,phone,true
+PRO0151,SLICE0151,Family Feast 151,fixed,2.66,32.78,2026-03-07,2026-03-20,web,true
+PRO0152,SLICE0152,Family Feast 152,bogo,18.02,35.83,2025-02-17,2025-04-12,web,true
+PRO0153,SLICE0153,Family Feast 153,free_delivery,20.86,15.65,2025-02-19,2025-03-15,in_store,true
+PRO0154,SLICE0154,Lunch Special 154,bogo,18.46,31.79,2024-01-16,2024-04-02,delivery_partner,true
+PRO0155,SLICE0155,Lunch Special 155,fixed,17.02,20.88,2024-10-13,2024-11-22,in_store,false
+PRO0156,SLICE0156,App Exclusive 156,percent,22.73,26.55,2024-03-11,2024-04-16,web,true
+PRO0157,SLICE0157,Free Delivery Weekend 157,free_delivery,21.65,14.28,2024-07-27,2024-09-08,mobile_app,true
+PRO0158,SLICE0158,Family Feast 158,bogo,10.88,20.95,2025-03-15,2025-05-23,all,true
+PRO0159,SLICE0159,Family Feast 159,bogo,21.42,39.28,2024-08-22,2024-09-14,mobile_app,false
+PRO0160,SLICE0160,Member Double Points 160,bogo,11.93,27.85,2025-12-06,2026-01-05,mobile_app,false
+PRO0161,SLICE0161,Member Double Points 161,bogo,23.18,37.59,2024-12-27,2025-02-20,in_store,true
+PRO0162,SLICE0162,Lunch Special 162,free_delivery,2.35,31.19,2024-11-18,2024-12-31,web,true
+PRO0163,SLICE0163,Two for Tuesday 163,free_delivery,18.36,24.68,2025-11-28,2025-12-05,delivery_partner,true
+PRO0164,SLICE0164,Lunch Special 164,free_delivery,1.72,29.07,2025-12-01,2026-02-04,all,false
+PRO0165,SLICE0165,App Exclusive 165,percent,3.58,22.87,2026-01-13,2026-02-26,delivery_partner,false
+PRO0166,SLICE0166,Lunch Special 166,fixed,4.48,20.71,2026-02-21,2026-05-04,mobile_app,true
+PRO0167,SLICE0167,Member Double Points 167,percent,2.49,26.27,2025-10-04,2025-10-23,web,true
+PRO0168,SLICE0168,Free Delivery Weekend 168,bogo,10.30,38.16,2025-07-08,2025-08-26,web,false
+PRO0169,SLICE0169,Lunch Special 169,bogo,24.89,15.24,2024-03-10,2024-04-04,delivery_partner,true
+PRO0170,SLICE0170,App Exclusive 170,percent,6.99,26.69,2024-03-01,2024-03-23,mobile_app,true
+PRO0171,SLICE0171,Student Night 171,bogo,20.76,30.63,2026-01-29,2026-04-17,mobile_app,true
+PRO0172,SLICE0172,Student Night 172,fixed,6.09,36.79,2025-06-13,2025-09-02,mobile_app,true
+PRO0173,SLICE0173,Free Delivery Weekend 173,free_delivery,10.89,21.13,2025-03-16,2025-04-29,all,true
+PRO0174,SLICE0174,Lunch Special 174,free_delivery,14.37,34.71,2025-02-10,2025-04-25,web,true
+PRO0175,SLICE0175,App Exclusive 175,percent,22.42,37.25,2026-01-11,2026-03-25,delivery_partner,true
+PRO0176,SLICE0176,Lunch Special 176,bogo,18.18,36.93,2025-12-12,2026-02-24,all,true
+PRO0177,SLICE0177,Lunch Special 177,fixed,12.48,26.12,2025-03-19,2025-05-23,web,true
+PRO0178,SLICE0178,Free Delivery Weekend 178,free_delivery,19.42,23.29,2024-06-05,2024-07-09,phone,true
+PRO0179,SLICE0179,Member Double Points 179,percent,6.62,11.97,2026-02-03,2026-04-29,phone,true
+PRO0180,SLICE0180,App Exclusive 180,free_delivery,4.20,30.97,2024-02-18,2024-05-15,phone,true
+PRO0181,SLICE0181,Lunch Special 181,percent,12.56,28.87,2025-07-05,2025-09-25,web,true
+PRO0182,SLICE0182,Lunch Special 182,bogo,3.14,17.38,2025-02-22,2025-03-19,web,true
+PRO0183,SLICE0183,Two for Tuesday 183,fixed,6.76,34.56,2026-01-20,2026-03-04,all,true
+PRO0184,SLICE0184,Lunch Special 184,percent,20.48,25.62,2024-10-03,2024-11-22,web,true
+PRO0185,SLICE0185,Free Delivery Weekend 185,percent,7.02,19.18,2024-12-16,2025-03-02,phone,true
+PRO0186,SLICE0186,Member Double Points 186,free_delivery,23.73,28.12,2024-02-27,2024-05-19,phone,true
+PRO0187,SLICE0187,Two for Tuesday 187,percent,5.64,30.80,2024-12-23,2025-01-08,web,true
+PRO0188,SLICE0188,Member Double Points 188,fixed,18.23,26.30,2026-02-08,2026-03-23,delivery_partner,false
+PRO0189,SLICE0189,Lunch Special 189,bogo,20.96,39.17,2025-06-13,2025-07-07,mobile_app,false
+PRO0190,SLICE0190,App Exclusive 190,free_delivery,16.53,29.47,2024-01-12,2024-02-23,delivery_partner,true
+PRO0191,SLICE0191,Family Feast 191,fixed,6.56,39.94,2025-02-09,2025-03-01,mobile_app,true
+PRO0192,SLICE0192,Two for Tuesday 192,fixed,19.74,13.95,2025-10-20,2025-11-18,phone,false
+PRO0193,SLICE0193,App Exclusive 193,free_delivery,15.09,31.43,2024-03-12,2024-04-07,all,true
+PRO0194,SLICE0194,Two for Tuesday 194,free_delivery,2.43,20.95,2025-11-22,2026-01-04,web,true
+PRO0195,SLICE0195,Two for Tuesday 195,percent,3.27,32.58,2025-02-06,2025-02-28,mobile_app,false
+PRO0196,SLICE0196,Member Double Points 196,bogo,22.76,14.69,2024-02-08,2024-02-19,all,true
+PRO0197,SLICE0197,Lunch Special 197,percent,9.43,13.51,2024-10-04,2024-12-27,delivery_partner,true
+PRO0198,SLICE0198,App Exclusive 198,free_delivery,18.31,20.35,2024-05-05,2024-08-03,mobile_app,true
+PRO0199,SLICE0199,Family Feast 199,free_delivery,6.78,26.66,2024-04-02,2024-05-30,web,true
+PRO0200,SLICE0200,Free Delivery Weekend 200,bogo,16.53,18.53,2025-01-30,2025-03-19,mobile_app,true
+PRO0201,SLICE0201,Student Night 201,free_delivery,23.33,14.80,2024-01-06,2024-02-26,phone,true
+PRO0202,SLICE0202,Free Delivery Weekend 202,free_delivery,20.68,28.14,2026-02-13,2026-05-02,all,true
+PRO0203,SLICE0203,App Exclusive 203,percent,20.45,12.21,2025-06-25,2025-07-27,all,true
+PRO0204,SLICE0204,Student Night 204,bogo,5.59,13.52,2024-12-25,2025-02-01,in_store,false
+PRO0205,SLICE0205,Free Delivery Weekend 205,free_delivery,18.89,23.10,2024-05-24,2024-07-06,web,true
+PRO0206,SLICE0206,Student Night 206,fixed,22.53,27.14,2025-06-25,2025-09-23,delivery_partner,true
+PRO0207,SLICE0207,Student Night 207,free_delivery,15.57,12.68,2024-10-12,2024-11-18,in_store,true
+PRO0208,SLICE0208,Student Night 208,free_delivery,15.11,13.47,2024-08-19,2024-09-04,delivery_partner,true
+PRO0209,SLICE0209,Lunch Special 209,free_delivery,10.57,11.57,2024-01-02,2024-03-03,web,false
+PRO0210,SLICE0210,Member Double Points 210,fixed,19.23,31.06,2024-01-07,2024-02-23,mobile_app,true
+PRO0211,SLICE0211,Free Delivery Weekend 211,percent,7.98,10.37,2026-01-02,2026-03-24,all,false
+PRO0212,SLICE0212,Two for Tuesday 212,bogo,7.82,26.74,2024-01-23,2024-02-26,web,true
+PRO0213,SLICE0213,Two for Tuesday 213,bogo,3.56,19.22,2024-10-14,2024-11-28,web,true
+PRO0214,SLICE0214,Student Night 214,fixed,8.58,29.46,2024-09-06,2024-10-14,all,true
+PRO0215,SLICE0215,App Exclusive 215,fixed,12.04,17.36,2024-05-28,2024-06-11,mobile_app,true
+PRO0216,SLICE0216,App Exclusive 216,percent,7.78,32.81,2025-05-22,2025-08-05,all,false
+PRO0217,SLICE0217,Two for Tuesday 217,free_delivery,6.18,10.08,2024-02-24,2024-05-17,all,true
+PRO0218,SLICE0218,Family Feast 218,percent,12.08,22.09,2026-02-24,2026-04-04,in_store,true
+PRO0219,SLICE0219,App Exclusive 219,free_delivery,3.71,29.80,2025-06-10,2025-09-01,in_store,true
+PRO0220,SLICE0220,Student Night 220,fixed,14.35,34.00,2024-09-04,2024-09-18,delivery_partner,false
+PRO0221,SLICE0221,Member Double Points 221,percent,3.80,28.09,2024-02-17,2024-05-01,delivery_partner,false
+PRO0222,SLICE0222,App Exclusive 222,bogo,22.13,27.22,2025-12-03,2026-02-13,delivery_partner,false
+PRO0223,SLICE0223,Lunch Special 223,fixed,17.12,37.51,2025-09-29,2025-11-07,mobile_app,true
+PRO0224,SLICE0224,App Exclusive 224,percent,1.34,22.82,2025-10-05,2025-11-09,phone,true
+PRO0225,SLICE0225,Student Night 225,fixed,17.40,16.29,2024-06-07,2024-09-02,all,false
+PRO0226,SLICE0226,Family Feast 226,fixed,12.00,19.78,2024-09-02,2024-11-11,phone,true
+PRO0227,SLICE0227,Family Feast 227,fixed,19.11,19.51,2024-02-08,2024-05-08,in_store,true
+PRO0228,SLICE0228,Student Night 228,free_delivery,4.64,22.28,2025-10-06,2025-12-03,web,true
+PRO0229,SLICE0229,App Exclusive 229,free_delivery,12.69,31.83,2025-03-27,2025-06-01,delivery_partner,true
+PRO0230,SLICE0230,App Exclusive 230,percent,5.55,10.30,2025-05-31,2025-08-26,web,true
+PRO0231,SLICE0231,Lunch Special 231,free_delivery,4.15,37.49,2025-05-29,2025-07-25,all,true
+PRO0232,SLICE0232,Member Double Points 232,bogo,11.26,26.90,2024-05-13,2024-07-07,web,true
+PRO0233,SLICE0233,Student Night 233,fixed,10.62,35.65,2025-05-28,2025-08-24,in_store,true
+PRO0234,SLICE0234,Member Double Points 234,free_delivery,23.03,10.25,2024-03-08,2024-04-11,delivery_partner,false
+PRO0235,SLICE0235,Family Feast 235,percent,7.18,36.25,2026-01-07,2026-03-24,in_store,false
+PRO0236,SLICE0236,Two for Tuesday 236,bogo,24.14,10.19,2024-07-28,2024-09-19,all,true
+PRO0237,SLICE0237,Free Delivery Weekend 237,fixed,8.26,26.25,2025-01-14,2025-04-14,delivery_partner,false
+PRO0238,SLICE0238,Family Feast 238,bogo,10.54,18.26,2024-07-07,2024-07-22,all,true
+PRO0239,SLICE0239,Family Feast 239,fixed,22.20,35.91,2025-06-17,2025-08-20,mobile_app,false
+PRO0240,SLICE0240,Member Double Points 240,fixed,5.49,20.77,2026-03-03,2026-05-22,delivery_partner,true
+PRO0241,SLICE0241,App Exclusive 241,bogo,17.71,32.63,2025-12-18,2026-03-17,web,false
+PRO0242,SLICE0242,Free Delivery Weekend 242,free_delivery,19.25,27.80,2025-11-21,2026-01-21,in_store,false
+PRO0243,SLICE0243,Lunch Special 243,bogo,14.75,27.45,2026-01-03,2026-02-12,all,true
+PRO0244,SLICE0244,Free Delivery Weekend 244,percent,2.65,37.92,2025-11-22,2026-02-10,web,true
+PRO0245,SLICE0245,Member Double Points 245,percent,17.96,25.27,2025-07-27,2025-09-09,phone,true
+PRO0246,SLICE0246,Student Night 246,bogo,22.35,20.86,2024-10-13,2024-11-28,phone,true
+PRO0247,SLICE0247,Family Feast 247,bogo,16.13,14.73,2024-07-06,2024-08-01,delivery_partner,true
+PRO0248,SLICE0248,Family Feast 248,fixed,15.02,31.34,2025-08-19,2025-11-14,delivery_partner,false
+PRO0249,SLICE0249,App Exclusive 249,fixed,13.93,26.58,2024-02-20,2024-04-11,phone,false
+PRO0250,SLICE0250,Two for Tuesday 250,free_delivery,6.38,27.90,2024-02-13,2024-02-29,phone,false
+PRO0251,SLICE0251,Family Feast 251,free_delivery,1.55,32.91,2025-10-16,2025-11-28,in_store,true
+PRO0252,SLICE0252,Lunch Special 252,fixed,7.70,16.28,2025-06-05,2025-06-14,phone,true
+PRO0253,SLICE0253,Family Feast 253,bogo,22.12,34.80,2025-09-21,2025-11-23,phone,true
+PRO0254,SLICE0254,Member Double Points 254,free_delivery,7.42,29.19,2024-08-13,2024-10-10,in_store,true
+PRO0255,SLICE0255,Two for Tuesday 255,fixed,24.60,21.80,2024-12-29,2025-02-21,delivery_partner,true
+PRO0256,SLICE0256,Student Night 256,fixed,21.22,19.51,2024-09-29,2024-12-18,web,true
+PRO0257,SLICE0257,App Exclusive 257,percent,12.16,14.85,2024-11-22,2024-11-30,mobile_app,false
+PRO0258,SLICE0258,Free Delivery Weekend 258,free_delivery,15.84,34.64,2025-03-21,2025-05-31,delivery_partner,true
+PRO0259,SLICE0259,Lunch Special 259,free_delivery,6.28,34.53,2025-04-30,2025-05-19,web,true
+PRO0260,SLICE0260,App Exclusive 260,free_delivery,24.45,24.04,2024-07-06,2024-09-20,in_store,false
+PRO0261,SLICE0261,Family Feast 261,free_delivery,13.81,35.55,2024-11-04,2024-12-26,phone,true
+PRO0262,SLICE0262,Student Night 262,bogo,7.95,27.08,2025-07-09,2025-07-23,phone,true
+PRO0263,SLICE0263,Member Double Points 263,free_delivery,13.25,19.72,2024-11-25,2025-01-30,phone,true
+PRO0264,SLICE0264,Two for Tuesday 264,fixed,4.76,34.30,2024-08-04,2024-09-09,mobile_app,true
+PRO0265,SLICE0265,Free Delivery Weekend 265,bogo,8.24,35.72,2024-09-08,2024-10-31,all,false
+PRO0266,SLICE0266,Free Delivery Weekend 266,bogo,19.67,10.01,2025-12-03,2025-12-22,mobile_app,false
+PRO0267,SLICE0267,App Exclusive 267,bogo,16.94,34.60,2025-12-02,2026-01-31,in_store,true
+PRO0268,SLICE0268,Lunch Special 268,fixed,12.99,28.61,2026-01-07,2026-03-03,web,true
+PRO0269,SLICE0269,Two for Tuesday 269,percent,4.13,36.50,2024-11-23,2024-12-08,all,false
+PRO0270,SLICE0270,Family Feast 270,percent,14.53,32.98,2024-11-26,2024-12-29,phone,true
+PRO0271,SLICE0271,Student Night 271,percent,19.97,21.74,2024-06-19,2024-07-04,web,false
+PRO0272,SLICE0272,Student Night 272,percent,2.91,34.32,2024-11-20,2025-01-22,mobile_app,true
+PRO0273,SLICE0273,Free Delivery Weekend 273,free_delivery,14.54,10.63,2025-06-06,2025-07-21,mobile_app,true
+PRO0274,SLICE0274,Two for Tuesday 274,free_delivery,5.40,19.67,2024-02-02,2024-02-14,in_store,true
+PRO0275,SLICE0275,Family Feast 275,percent,12.16,18.46,2025-05-20,2025-08-04,all,true
+PRO0276,SLICE0276,Lunch Special 276,fixed,21.33,33.57,2025-09-06,2025-10-11,mobile_app,true
+PRO0277,SLICE0277,Family Feast 277,bogo,12.64,23.92,2025-12-18,2026-03-15,in_store,true
+PRO0278,SLICE0278,Free Delivery Weekend 278,bogo,12.83,21.40,2024-02-22,2024-04-10,phone,true
+PRO0279,SLICE0279,Student Night 279,fixed,24.24,31.93,2025-08-14,2025-09-10,all,true
+PRO0280,SLICE0280,Member Double Points 280,fixed,4.34,34.49,2025-08-29,2025-11-09,all,true
+PRO0281,SLICE0281,Student Night 281,percent,3.64,38.59,2025-04-04,2025-05-18,all,false
+PRO0282,SLICE0282,Two for Tuesday 282,free_delivery,15.60,22.34,2024-12-18,2025-01-21,mobile_app,false
+PRO0283,SLICE0283,Two for Tuesday 283,bogo,15.54,25.63,2024-09-24,2024-10-29,in_store,true
+PRO0284,SLICE0284,Student Night 284,fixed,24.40,28.76,2024-02-15,2024-05-13,web,false
+PRO0285,SLICE0285,Member Double Points 285,percent,21.57,13.04,2024-09-06,2024-10-31,web,false
+PRO0286,SLICE0286,Family Feast 286,percent,10.85,11.64,2025-08-28,2025-10-14,phone,true
+PRO0287,SLICE0287,Member Double Points 287,bogo,13.01,29.02,2025-05-21,2025-07-17,in_store,true
+PRO0288,SLICE0288,Two for Tuesday 288,fixed,5.56,39.85,2024-12-28,2025-02-01,in_store,false
+PRO0289,SLICE0289,Student Night 289,fixed,20.15,10.40,2025-03-03,2025-04-06,delivery_partner,false
+PRO0290,SLICE0290,Member Double Points 290,percent,5.96,27.19,2024-06-14,2024-08-25,web,true
+PRO0291,SLICE0291,Family Feast 291,fixed,21.16,37.21,2025-04-02,2025-04-27,mobile_app,true
+PRO0292,SLICE0292,Lunch Special 292,fixed,3.71,25.73,2024-02-03,2024-03-03,in_store,true
+PRO0293,SLICE0293,Two for Tuesday 293,fixed,9.93,35.68,2026-02-13,2026-02-28,phone,false
+PRO0294,SLICE0294,Student Night 294,free_delivery,20.70,28.27,2025-07-31,2025-08-30,all,true
+PRO0295,SLICE0295,Free Delivery Weekend 295,free_delivery,19.33,10.50,2024-10-24,2024-11-02,phone,false
+PRO0296,SLICE0296,Lunch Special 296,percent,9.54,19.92,2025-01-21,2025-03-31,web,false
+PRO0297,SLICE0297,App Exclusive 297,percent,15.02,20.70,2024-04-22,2024-06-30,web,true
+PRO0298,SLICE0298,Two for Tuesday 298,percent,7.02,17.93,2024-11-07,2025-01-26,in_store,true
+PRO0299,SLICE0299,Free Delivery Weekend 299,free_delivery,13.63,34.94,2024-11-04,2025-01-27,phone,true
+PRO0300,SLICE0300,Member Double Points 300,free_delivery,20.18,22.10,2025-11-02,2025-11-22,delivery_partner,true
+PRO0301,SLICE0301,Student Night 301,percent,21.27,23.15,2025-03-30,2025-06-23,delivery_partner,true
+PRO0302,SLICE0302,Two for Tuesday 302,free_delivery,3.19,11.18,2024-01-13,2024-01-24,phone,false
+PRO0303,SLICE0303,App Exclusive 303,free_delivery,12.08,34.00,2025-01-13,2025-02-12,in_store,true
+PRO0304,SLICE0304,Lunch Special 304,bogo,15.87,37.73,2025-02-24,2025-05-22,web,true
+PRO0305,SLICE0305,Student Night 305,bogo,22.67,10.86,2024-11-04,2025-01-05,web,true
+PRO0306,SLICE0306,Member Double Points 306,percent,20.14,33.79,2025-06-24,2025-09-18,phone,true
+PRO0307,SLICE0307,App Exclusive 307,free_delivery,23.66,38.27,2025-08-21,2025-09-12,web,false
+PRO0308,SLICE0308,Member Double Points 308,percent,12.93,18.87,2026-01-04,2026-01-31,in_store,false
+PRO0309,SLICE0309,Lunch Special 309,free_delivery,18.84,33.94,2026-03-10,2026-03-18,in_store,false
+PRO0310,SLICE0310,Lunch Special 310,fixed,5.25,13.93,2024-11-25,2025-02-19,in_store,true
+PRO0311,SLICE0311,Free Delivery Weekend 311,percent,7.34,13.02,2024-05-16,2024-08-06,phone,true
+PRO0312,SLICE0312,Lunch Special 312,bogo,5.61,36.32,2024-12-01,2024-12-17,all,true
+PRO0313,SLICE0313,App Exclusive 313,percent,15.56,17.31,2025-02-24,2025-04-14,in_store,true
+PRO0314,SLICE0314,Two for Tuesday 314,fixed,6.24,16.98,2025-09-03,2025-09-22,phone,true
+PRO0315,SLICE0315,Free Delivery Weekend 315,percent,22.78,20.67,2025-01-25,2025-04-02,phone,true
+PRO0316,SLICE0316,Free Delivery Weekend 316,free_delivery,5.84,12.13,2024-02-23,2024-04-22,mobile_app,true
+PRO0317,SLICE0317,Free Delivery Weekend 317,fixed,23.40,25.08,2025-02-26,2025-04-28,web,true
+PRO0318,SLICE0318,Lunch Special 318,percent,19.91,31.23,2025-02-18,2025-03-06,delivery_partner,false
+PRO0319,SLICE0319,Student Night 319,fixed,13.57,34.33,2024-02-05,2024-03-18,phone,true
+PRO0320,SLICE0320,Family Feast 320,percent,18.57,18.85,2025-11-21,2026-01-30,web,true
+PRO0321,SLICE0321,Student Night 321,free_delivery,15.92,16.75,2024-12-06,2025-01-02,phone,true
+PRO0322,SLICE0322,Two for Tuesday 322,percent,4.91,36.28,2025-08-15,2025-08-22,delivery_partner,true
+PRO0323,SLICE0323,Two for Tuesday 323,free_delivery,12.28,10.86,2025-07-31,2025-10-19,all,true
+PRO0324,SLICE0324,App Exclusive 324,percent,11.96,20.08,2025-05-14,2025-07-23,delivery_partner,true
+PRO0325,SLICE0325,Member Double Points 325,free_delivery,20.60,23.11,2025-10-10,2025-11-05,in_store,true
+PRO0326,SLICE0326,Free Delivery Weekend 326,bogo,24.85,17.75,2025-05-16,2025-06-05,web,true
+PRO0327,SLICE0327,App Exclusive 327,bogo,6.14,36.66,2025-01-03,2025-03-12,web,true
+PRO0328,SLICE0328,Member Double Points 328,fixed,8.03,25.99,2025-09-06,2025-10-10,phone,true
+PRO0329,SLICE0329,Member Double Points 329,percent,19.80,38.82,2024-04-29,2024-07-23,all,true
+PRO0330,SLICE0330,Family Feast 330,bogo,8.60,37.85,2025-05-29,2025-07-16,phone,true
+PRO0331,SLICE0331,Student Night 331,free_delivery,3.59,31.59,2024-02-05,2024-03-21,all,true
+PRO0332,SLICE0332,Lunch Special 332,percent,2.00,22.94,2024-03-26,2024-05-19,phone,true
+PRO0333,SLICE0333,Free Delivery Weekend 333,bogo,9.54,17.54,2024-02-26,2024-04-08,phone,false
+PRO0334,SLICE0334,Member Double Points 334,percent,6.71,34.41,2024-07-01,2024-08-31,web,false
+PRO0335,SLICE0335,Member Double Points 335,bogo,11.82,27.19,2026-02-13,2026-03-08,mobile_app,true
+PRO0336,SLICE0336,App Exclusive 336,percent,22.66,38.76,2024-07-18,2024-07-29,delivery_partner,true
+PRO0337,SLICE0337,Lunch Special 337,percent,17.30,15.53,2024-03-12,2024-04-06,phone,true
+PRO0338,SLICE0338,Two for Tuesday 338,bogo,14.27,33.36,2025-03-19,2025-05-09,all,false
+PRO0339,SLICE0339,Student Night 339,free_delivery,17.63,37.89,2025-07-08,2025-08-04,phone,false
+PRO0340,SLICE0340,Member Double Points 340,fixed,24.45,38.37,2024-12-02,2025-01-05,phone,true
+PRO0341,SLICE0341,App Exclusive 341,percent,5.80,37.63,2024-12-25,2025-01-04,delivery_partner,true
+PRO0342,SLICE0342,Free Delivery Weekend 342,percent,7.43,26.04,2024-04-30,2024-06-15,phone,true
+PRO0343,SLICE0343,Free Delivery Weekend 343,free_delivery,23.94,18.00,2024-05-28,2024-06-17,delivery_partner,true
+PRO0344,SLICE0344,App Exclusive 344,bogo,4.24,24.37,2024-04-28,2024-06-11,phone,true
+PRO0345,SLICE0345,Family Feast 345,free_delivery,14.20,13.73,2025-06-04,2025-06-30,mobile_app,false
+PRO0346,SLICE0346,Free Delivery Weekend 346,bogo,17.47,34.40,2025-12-07,2026-02-03,delivery_partner,false
+PRO0347,SLICE0347,Free Delivery Weekend 347,bogo,4.86,28.36,2025-12-19,2026-03-18,in_store,false
+PRO0348,SLICE0348,App Exclusive 348,percent,2.00,25.36,2024-05-02,2024-05-22,in_store,true
+PRO0349,SLICE0349,Two for Tuesday 349,bogo,1.49,31.34,2025-05-16,2025-07-25,delivery_partner,true
+PRO0350,SLICE0350,Lunch Special 350,free_delivery,8.18,11.48,2025-04-25,2025-05-19,in_store,true
+PRO0351,SLICE0351,Free Delivery Weekend 351,percent,4.08,24.99,2025-04-19,2025-05-26,delivery_partner,true
+PRO0352,SLICE0352,Two for Tuesday 352,percent,10.99,16.82,2026-02-25,2026-03-19,mobile_app,false
+PRO0353,SLICE0353,Member Double Points 353,percent,23.05,34.92,2024-11-19,2025-01-22,mobile_app,false
+PRO0354,SLICE0354,Free Delivery Weekend 354,free_delivery,11.42,36.06,2025-02-09,2025-03-20,in_store,true
+PRO0355,SLICE0355,Student Night 355,percent,10.72,26.44,2025-01-28,2025-04-15,all,true
+PRO0356,SLICE0356,Member Double Points 356,bogo,19.87,34.04,2026-02-19,2026-04-01,all,false
+PRO0357,SLICE0357,Two for Tuesday 357,bogo,18.60,32.40,2024-12-15,2025-02-25,mobile_app,false
+PRO0358,SLICE0358,Lunch Special 358,free_delivery,14.42,39.68,2024-12-28,2025-02-10,web,false
+PRO0359,SLICE0359,Family Feast 359,fixed,12.84,22.47,2025-03-02,2025-05-04,phone,true
+PRO0360,SLICE0360,Family Feast 360,fixed,8.58,18.10,2024-12-17,2025-02-21,delivery_partner,true
+PRO0361,SLICE0361,Two for Tuesday 361,percent,4.63,38.57,2024-07-05,2024-07-25,delivery_partner,true
+PRO0362,SLICE0362,Two for Tuesday 362,free_delivery,6.15,19.77,2025-01-14,2025-03-29,all,true
+PRO0363,SLICE0363,Free Delivery Weekend 363,free_delivery,23.05,11.90,2026-02-03,2026-03-18,web,true
+PRO0364,SLICE0364,Member Double Points 364,fixed,11.42,30.96,2025-01-20,2025-03-06,phone,true
+PRO0365,SLICE0365,Lunch Special 365,bogo,15.79,25.92,2024-07-06,2024-09-17,all,true
+PRO0366,SLICE0366,Family Feast 366,fixed,9.38,33.89,2024-01-17,2024-03-14,phone,true
+PRO0367,SLICE0367,Family Feast 367,free_delivery,3.82,15.52,2024-06-29,2024-07-14,all,false
+PRO0368,SLICE0368,Member Double Points 368,bogo,24.17,31.82,2025-12-27,2026-03-03,web,false
+PRO0369,SLICE0369,Family Feast 369,bogo,12.22,34.05,2024-04-26,2024-05-11,all,true
+PRO0370,SLICE0370,App Exclusive 370,bogo,11.91,15.75,2024-05-08,2024-06-07,in_store,false
+PRO0371,SLICE0371,Two for Tuesday 371,fixed,11.43,28.29,2024-04-07,2024-05-03,delivery_partner,true
+PRO0372,SLICE0372,Student Night 372,bogo,24.54,33.37,2025-04-25,2025-05-03,phone,true
+PRO0373,SLICE0373,Lunch Special 373,bogo,4.84,19.57,2024-07-17,2024-09-28,all,false
+PRO0374,SLICE0374,Member Double Points 374,free_delivery,6.65,26.76,2025-01-17,2025-04-17,delivery_partner,true
+PRO0375,SLICE0375,App Exclusive 375,bogo,15.00,12.12,2024-03-04,2024-05-28,delivery_partner,true
+PRO0376,SLICE0376,Family Feast 376,bogo,11.46,15.81,2024-11-20,2025-02-12,mobile_app,true
+PRO0377,SLICE0377,Student Night 377,bogo,12.34,19.70,2024-02-22,2024-03-14,all,false
+PRO0378,SLICE0378,Family Feast 378,fixed,8.69,26.69,2024-07-08,2024-09-03,web,true
+PRO0379,SLICE0379,Member Double Points 379,fixed,5.80,33.76,2025-08-29,2025-10-18,mobile_app,false
+PRO0380,SLICE0380,Member Double Points 380,bogo,5.61,34.72,2025-03-19,2025-04-29,delivery_partner,true
+PRO0381,SLICE0381,Two for Tuesday 381,bogo,18.79,23.94,2024-10-03,2024-10-28,mobile_app,true
+PRO0382,SLICE0382,Lunch Special 382,percent,15.90,14.17,2025-04-08,2025-06-12,all,true
+PRO0383,SLICE0383,Two for Tuesday 383,percent,23.76,30.51,2024-10-31,2024-12-25,web,false
+PRO0384,SLICE0384,Member Double Points 384,percent,23.91,17.08,2025-05-24,2025-06-14,delivery_partner,true
+PRO0385,SLICE0385,Family Feast 385,free_delivery,18.95,14.47,2025-06-21,2025-08-13,phone,true
+PRO0386,SLICE0386,Family Feast 386,fixed,16.57,30.78,2025-02-03,2025-02-21,in_store,true
+PRO0387,SLICE0387,Member Double Points 387,fixed,19.57,34.95,2024-02-21,2024-05-15,web,false
+PRO0388,SLICE0388,Free Delivery Weekend 388,bogo,4.21,31.96,2025-07-29,2025-08-15,all,false
+PRO0389,SLICE0389,Family Feast 389,bogo,19.88,17.38,2025-12-11,2026-01-18,delivery_partner,false
+PRO0390,SLICE0390,App Exclusive 390,bogo,4.54,39.30,2026-02-01,2026-04-24,in_store,false
+PRO0391,SLICE0391,Two for Tuesday 391,free_delivery,15.92,11.56,2025-04-23,2025-06-11,phone,true
+PRO0392,SLICE0392,Two for Tuesday 392,percent,15.39,17.09,2025-04-23,2025-05-29,delivery_partner,true
+PRO0393,SLICE0393,Member Double Points 393,free_delivery,18.63,37.58,2025-09-16,2025-10-26,all,true
+PRO0394,SLICE0394,App Exclusive 394,bogo,11.31,27.05,2024-08-09,2024-10-28,in_store,true
+PRO0395,SLICE0395,Family Feast 395,fixed,2.79,11.21,2026-01-05,2026-03-27,phone,true
+PRO0396,SLICE0396,Lunch Special 396,bogo,13.89,35.12,2024-05-07,2024-06-18,in_store,false
+PRO0397,SLICE0397,App Exclusive 397,percent,13.18,29.72,2025-05-21,2025-05-31,mobile_app,false
+PRO0398,SLICE0398,App Exclusive 398,percent,1.37,24.63,2024-10-12,2024-12-16,all,false
+PRO0399,SLICE0399,Student Night 399,free_delivery,19.93,23.11,2025-10-11,2025-12-01,mobile_app,false
+PRO0400,SLICE0400,Member Double Points 400,fixed,8.51,20.19,2026-02-13,2026-05-04,phone,false
+PRO0401,SLICE0401,Member Double Points 401,free_delivery,14.63,19.25,2025-06-29,2025-09-13,in_store,false
+PRO0402,SLICE0402,Two for Tuesday 402,free_delivery,11.13,21.70,2024-06-30,2024-08-01,in_store,true
+PRO0403,SLICE0403,Free Delivery Weekend 403,bogo,17.51,28.49,2025-05-24,2025-08-11,mobile_app,false
+PRO0404,SLICE0404,Free Delivery Weekend 404,free_delivery,7.34,34.73,2025-11-18,2025-12-24,web,true
+PRO0405,SLICE0405,Student Night 405,fixed,14.10,17.22,2024-05-05,2024-06-11,all,true
+PRO0406,SLICE0406,Lunch Special 406,free_delivery,9.18,21.77,2024-01-24,2024-04-18,mobile_app,true
+PRO0407,SLICE0407,Family Feast 407,fixed,23.55,11.95,2025-05-04,2025-08-01,delivery_partner,false
+PRO0408,SLICE0408,Family Feast 408,free_delivery,14.22,28.28,2025-09-28,2025-11-04,phone,true
+PRO0409,SLICE0409,Student Night 409,percent,10.03,16.53,2025-02-10,2025-04-22,web,true
+PRO0410,SLICE0410,App Exclusive 410,fixed,19.54,14.46,2024-05-03,2024-05-25,phone,true
+PRO0411,SLICE0411,Family Feast 411,percent,21.66,33.50,2025-05-07,2025-06-05,web,true
+PRO0412,SLICE0412,Free Delivery Weekend 412,free_delivery,21.54,28.16,2024-02-23,2024-03-14,all,true
+PRO0413,SLICE0413,Family Feast 413,bogo,7.52,11.05,2025-06-23,2025-08-19,in_store,true
+PRO0414,SLICE0414,Free Delivery Weekend 414,fixed,15.65,28.76,2025-09-12,2025-11-08,in_store,false
+PRO0415,SLICE0415,Member Double Points 415,bogo,14.84,32.81,2025-05-12,2025-07-01,in_store,true
+PRO0416,SLICE0416,App Exclusive 416,fixed,23.56,36.89,2025-05-13,2025-06-06,in_store,true
+PRO0417,SLICE0417,Two for Tuesday 417,fixed,8.20,33.25,2024-03-15,2024-05-04,mobile_app,true
+PRO0418,SLICE0418,Member Double Points 418,percent,1.29,15.59,2025-12-24,2026-01-17,phone,false
+PRO0419,SLICE0419,App Exclusive 419,fixed,17.29,26.78,2024-04-11,2024-05-28,delivery_partner,true
+PRO0420,SLICE0420,Family Feast 420,bogo,6.02,11.94,2025-10-05,2025-11-14,all,true
+PRO0421,SLICE0421,Two for Tuesday 421,percent,21.68,18.66,2024-09-13,2024-10-28,phone,true
+PRO0422,SLICE0422,Student Night 422,bogo,2.68,27.52,2024-04-13,2024-06-26,mobile_app,true
+PRO0423,SLICE0423,App Exclusive 423,percent,22.06,22.37,2024-08-17,2024-09-22,web,false
+PRO0424,SLICE0424,Lunch Special 424,percent,2.11,23.89,2024-03-22,2024-04-27,delivery_partner,true
+PRO0425,SLICE0425,App Exclusive 425,percent,13.19,16.80,2024-07-10,2024-08-01,mobile_app,true
+PRO0426,SLICE0426,Lunch Special 426,free_delivery,24.41,32.04,2025-03-04,2025-05-20,in_store,true
+PRO0427,SLICE0427,Family Feast 427,bogo,14.34,12.80,2026-03-04,2026-04-17,phone,true
+PRO0428,SLICE0428,Lunch Special 428,bogo,20.53,37.22,2024-09-09,2024-09-28,web,true
+PRO0429,SLICE0429,Lunch Special 429,fixed,8.22,34.26,2024-05-24,2024-08-02,web,true
+PRO0430,SLICE0430,App Exclusive 430,fixed,23.87,12.57,2025-06-23,2025-08-13,web,true
+PRO0431,SLICE0431,App Exclusive 431,percent,6.01,20.54,2024-08-23,2024-11-12,mobile_app,true
+PRO0432,SLICE0432,App Exclusive 432,percent,14.41,25.19,2025-09-05,2025-10-19,in_store,true
+PRO0433,SLICE0433,App Exclusive 433,fixed,15.78,36.82,2025-03-04,2025-05-05,delivery_partner,false
+PRO0434,SLICE0434,Free Delivery Weekend 434,bogo,20.44,15.56,2024-11-04,2024-11-27,in_store,false
+PRO0435,SLICE0435,Lunch Special 435,percent,2.48,26.21,2024-11-20,2024-12-09,in_store,true
+PRO0436,SLICE0436,App Exclusive 436,percent,6.82,26.02,2024-09-22,2024-12-13,all,true
+PRO0437,SLICE0437,Two for Tuesday 437,fixed,13.57,15.97,2024-09-06,2024-10-19,delivery_partner,false
+PRO0438,SLICE0438,Free Delivery Weekend 438,fixed,18.86,28.22,2024-11-27,2025-02-04,all,true
+PRO0439,SLICE0439,Family Feast 439,percent,12.16,15.59,2024-02-15,2024-05-03,web,true
+PRO0440,SLICE0440,Student Night 440,percent,7.00,10.20,2024-04-17,2024-05-03,mobile_app,false
+PRO0441,SLICE0441,Free Delivery Weekend 441,bogo,1.61,39.56,2024-02-12,2024-04-18,all,true
+PRO0442,SLICE0442,Two for Tuesday 442,percent,11.48,11.11,2024-04-28,2024-06-05,delivery_partner,true
+PRO0443,SLICE0443,Family Feast 443,fixed,2.68,37.09,2024-04-20,2024-05-11,phone,false
+PRO0444,SLICE0444,Student Night 444,bogo,23.37,11.91,2024-05-30,2024-07-16,in_store,false
+PRO0445,SLICE0445,Student Night 445,free_delivery,18.56,39.31,2025-03-02,2025-03-19,web,true
+PRO0446,SLICE0446,Member Double Points 446,bogo,23.63,32.26,2024-01-19,2024-03-08,mobile_app,true
+PRO0447,SLICE0447,Two for Tuesday 447,fixed,7.06,12.31,2024-03-29,2024-05-03,phone,true
+PRO0448,SLICE0448,Family Feast 448,fixed,15.51,36.84,2024-04-06,2024-06-18,all,false
+PRO0449,SLICE0449,Lunch Special 449,bogo,17.90,35.50,2024-06-09,2024-07-17,web,true
+PRO0450,SLICE0450,Student Night 450,fixed,19.54,22.88,2025-05-04,2025-06-14,mobile_app,false
+PRO0451,SLICE0451,Student Night 451,fixed,14.72,22.62,2025-08-31,2025-09-28,mobile_app,true
+PRO0452,SLICE0452,Student Night 452,fixed,1.13,24.26,2025-03-28,2025-04-21,all,false
+PRO0453,SLICE0453,Lunch Special 453,free_delivery,7.88,32.53,2024-01-11,2024-01-23,in_store,true
+PRO0454,SLICE0454,Free Delivery Weekend 454,bogo,20.76,29.85,2024-06-18,2024-06-26,mobile_app,true
+PRO0455,SLICE0455,Free Delivery Weekend 455,free_delivery,17.06,23.60,2026-01-30,2026-03-24,in_store,true
+PRO0456,SLICE0456,Free Delivery Weekend 456,free_delivery,22.96,19.40,2025-05-10,2025-06-14,phone,true
+PRO0457,SLICE0457,Lunch Special 457,free_delivery,8.79,19.96,2024-05-14,2024-06-27,web,false
+PRO0458,SLICE0458,Lunch Special 458,percent,1.75,32.09,2025-08-23,2025-10-16,delivery_partner,false
+PRO0459,SLICE0459,Lunch Special 459,bogo,23.78,17.14,2025-07-27,2025-10-16,phone,false
+PRO0460,SLICE0460,Member Double Points 460,fixed,19.77,16.04,2025-11-20,2025-12-31,web,true
+PRO0461,SLICE0461,Lunch Special 461,percent,15.24,35.28,2025-03-10,2025-06-08,in_store,true
+PRO0462,SLICE0462,Family Feast 462,percent,23.37,18.61,2025-08-07,2025-10-31,web,false
+PRO0463,SLICE0463,App Exclusive 463,bogo,8.47,35.52,2025-02-04,2025-02-19,web,true
+PRO0464,SLICE0464,Free Delivery Weekend 464,fixed,17.67,39.47,2025-05-12,2025-05-20,phone,true
+PRO0465,SLICE0465,Student Night 465,bogo,14.87,29.74,2024-07-26,2024-10-09,web,true
+PRO0466,SLICE0466,Family Feast 466,percent,12.41,35.24,2024-12-05,2025-01-02,delivery_partner,true
+PRO0467,SLICE0467,Student Night 467,percent,5.71,24.64,2024-05-25,2024-08-14,all,false
+PRO0468,SLICE0468,Two for Tuesday 468,percent,2.56,36.52,2024-01-31,2024-03-20,mobile_app,true
+PRO0469,SLICE0469,App Exclusive 469,free_delivery,15.33,16.73,2025-08-13,2025-10-14,web,true
+PRO0470,SLICE0470,App Exclusive 470,bogo,8.24,39.22,2025-09-15,2025-10-11,in_store,true
+PRO0471,SLICE0471,App Exclusive 471,fixed,17.68,22.97,2025-08-19,2025-10-27,delivery_partner,true
+PRO0472,SLICE0472,Lunch Special 472,bogo,13.00,38.11,2025-08-17,2025-11-11,mobile_app,true
+PRO0473,SLICE0473,Student Night 473,bogo,12.37,13.86,2024-07-11,2024-08-12,all,false
+PRO0474,SLICE0474,Student Night 474,free_delivery,1.80,30.65,2024-05-09,2024-07-13,delivery_partner,false
+PRO0475,SLICE0475,Family Feast 475,free_delivery,8.66,13.59,2024-03-11,2024-03-21,in_store,false
+PRO0476,SLICE0476,Family Feast 476,bogo,12.03,11.90,2025-01-12,2025-02-21,web,true
+PRO0477,SLICE0477,Free Delivery Weekend 477,bogo,13.26,11.14,2025-05-03,2025-05-17,phone,true
+PRO0478,SLICE0478,Lunch Special 478,fixed,21.52,25.56,2025-11-30,2026-02-27,in_store,true
+PRO0479,SLICE0479,Student Night 479,free_delivery,18.15,24.36,2025-06-18,2025-07-25,phone,true
+PRO0480,SLICE0480,Family Feast 480,percent,15.36,13.13,2024-05-16,2024-07-09,all,true
+PRO0481,SLICE0481,Lunch Special 481,fixed,5.27,14.36,2025-04-08,2025-05-16,all,false
+PRO0482,SLICE0482,Two for Tuesday 482,free_delivery,22.64,18.58,2024-02-07,2024-04-04,delivery_partner,true
+PRO0483,SLICE0483,Member Double Points 483,fixed,5.01,37.41,2025-12-27,2026-03-22,delivery_partner,true
+PRO0484,SLICE0484,Lunch Special 484,bogo,4.58,19.33,2024-03-22,2024-04-22,all,true
+PRO0485,SLICE0485,Student Night 485,percent,18.26,12.36,2026-02-14,2026-04-28,web,true
+PRO0486,SLICE0486,Free Delivery Weekend 486,free_delivery,4.45,25.33,2025-02-19,2025-04-28,phone,false
+PRO0487,SLICE0487,Free Delivery Weekend 487,fixed,16.87,27.75,2025-12-25,2026-02-07,delivery_partner,false
+PRO0488,SLICE0488,App Exclusive 488,percent,7.45,24.12,2025-12-15,2026-01-17,all,true
+PRO0489,SLICE0489,Two for Tuesday 489,fixed,3.93,32.43,2026-01-11,2026-01-23,in_store,true
+PRO0490,SLICE0490,App Exclusive 490,bogo,1.27,37.93,2024-06-09,2024-07-10,in_store,true
+PRO0491,SLICE0491,Free Delivery Weekend 491,free_delivery,20.16,17.25,2024-10-22,2024-11-08,delivery_partner,true
+PRO0492,SLICE0492,Student Night 492,bogo,21.84,23.40,2026-02-18,2026-04-20,all,true
+PRO0493,SLICE0493,Two for Tuesday 493,bogo,22.67,14.27,2025-01-15,2025-03-28,mobile_app,true
+PRO0494,SLICE0494,Member Double Points 494,fixed,3.06,19.09,2024-12-14,2025-02-05,in_store,true
+PRO0495,SLICE0495,Lunch Special 495,free_delivery,3.12,29.62,2026-02-16,2026-02-26,delivery_partner,true
+PRO0496,SLICE0496,Free Delivery Weekend 496,fixed,22.27,15.84,2024-01-09,2024-03-01,phone,true
+PRO0497,SLICE0497,Member Double Points 497,bogo,5.70,23.47,2024-12-03,2024-12-11,all,true
+PRO0498,SLICE0498,Student Night 498,free_delivery,1.38,29.08,2024-11-28,2025-01-11,phone,false
+PRO0499,SLICE0499,Student Night 499,fixed,21.35,27.04,2024-06-26,2024-08-03,delivery_partner,true
+PRO0500,SLICE0500,Student Night 500,percent,11.70,36.82,2025-04-19,2025-05-07,in_store,true
+PRO0501,SLICE0501,Two for Tuesday 501,percent,17.88,28.93,2024-01-23,2024-01-30,phone,false
+PRO0502,SLICE0502,Free Delivery Weekend 502,fixed,6.99,31.29,2024-08-04,2024-09-08,phone,true
+PRO0503,SLICE0503,Family Feast 503,bogo,5.99,22.89,2026-01-08,2026-02-26,mobile_app,false
+PRO0504,SLICE0504,App Exclusive 504,free_delivery,17.91,36.47,2024-05-20,2024-06-18,in_store,true
+PRO0505,SLICE0505,Member Double Points 505,fixed,7.02,27.51,2024-08-13,2024-10-07,phone,false
+PRO0506,SLICE0506,Member Double Points 506,free_delivery,4.43,30.70,2024-08-20,2024-11-03,web,false
+PRO0507,SLICE0507,Free Delivery Weekend 507,percent,15.33,27.66,2025-03-13,2025-03-26,mobile_app,true
+PRO0508,SLICE0508,Student Night 508,percent,1.10,38.55,2025-08-17,2025-10-08,all,false
+PRO0509,SLICE0509,Two for Tuesday 509,percent,23.48,25.92,2025-04-15,2025-05-01,mobile_app,true
+PRO0510,SLICE0510,Lunch Special 510,bogo,14.80,29.82,2025-01-14,2025-03-08,all,true
+PRO0511,SLICE0511,Family Feast 511,fixed,16.01,14.65,2026-03-03,2026-05-27,phone,true
+PRO0512,SLICE0512,Family Feast 512,fixed,7.53,29.52,2025-10-31,2026-01-27,delivery_partner,true
+PRO0513,SLICE0513,Two for Tuesday 513,bogo,23.90,15.11,2025-12-22,2026-03-07,in_store,false
+PRO0514,SLICE0514,Family Feast 514,free_delivery,3.93,28.77,2025-03-02,2025-05-05,all,true
+PRO0515,SLICE0515,Member Double Points 515,fixed,22.72,30.29,2025-08-26,2025-10-06,mobile_app,true
+PRO0516,SLICE0516,App Exclusive 516,bogo,15.52,15.11,2025-10-29,2026-01-10,delivery_partner,true
+PRO0517,SLICE0517,Member Double Points 517,free_delivery,13.21,13.10,2026-02-25,2026-04-26,mobile_app,true
+PRO0518,SLICE0518,Lunch Special 518,percent,1.81,19.34,2025-09-19,2025-11-16,web,true
+PRO0519,SLICE0519,Free Delivery Weekend 519,bogo,15.83,19.21,2024-06-21,2024-09-07,phone,true
+PRO0520,SLICE0520,Member Double Points 520,fixed,4.71,20.91,2024-04-02,2024-04-29,mobile_app,true
+PRO0521,SLICE0521,Member Double Points 521,percent,12.62,26.10,2026-01-19,2026-03-23,phone,true
+PRO0522,SLICE0522,Two for Tuesday 522,fixed,11.41,30.72,2024-07-08,2024-09-24,mobile_app,true
+PRO0523,SLICE0523,Lunch Special 523,free_delivery,6.49,22.31,2024-06-21,2024-07-04,in_store,true
+PRO0524,SLICE0524,Student Night 524,percent,8.10,29.94,2024-10-08,2024-11-10,web,true
+PRO0525,SLICE0525,App Exclusive 525,free_delivery,1.10,30.19,2024-04-09,2024-06-17,in_store,false
+PRO0526,SLICE0526,App Exclusive 526,free_delivery,21.23,16.50,2025-05-26,2025-07-20,web,false
+PRO0527,SLICE0527,Student Night 527,percent,7.52,37.76,2025-04-21,2025-05-03,all,true
+PRO0528,SLICE0528,Student Night 528,free_delivery,18.30,24.81,2025-03-09,2025-05-22,mobile_app,false
+PRO0529,SLICE0529,Member Double Points 529,bogo,6.98,31.08,2025-12-16,2026-01-01,phone,false
+PRO0530,SLICE0530,Family Feast 530,percent,8.79,29.74,2025-09-10,2025-10-19,phone,false
+PRO0531,SLICE0531,Student Night 531,percent,16.51,29.43,2025-04-27,2025-05-09,delivery_partner,true
+PRO0532,SLICE0532,Lunch Special 532,percent,19.10,35.94,2024-06-15,2024-08-08,delivery_partner,true
+PRO0533,SLICE0533,Student Night 533,fixed,7.59,31.19,2024-06-26,2024-09-07,web,true
+PRO0534,SLICE0534,App Exclusive 534,bogo,14.78,25.92,2025-10-26,2025-12-05,in_store,true
+PRO0535,SLICE0535,Student Night 535,fixed,8.69,32.62,2024-09-05,2024-11-16,mobile_app,false
+PRO0536,SLICE0536,Lunch Special 536,percent,23.76,16.32,2024-01-27,2024-02-22,mobile_app,true
+PRO0537,SLICE0537,Student Night 537,fixed,15.07,15.41,2024-01-21,2024-02-12,delivery_partner,false
+PRO0538,SLICE0538,Student Night 538,bogo,13.01,11.13,2025-02-24,2025-04-05,phone,true
+PRO0539,SLICE0539,Family Feast 539,bogo,18.77,14.16,2025-06-08,2025-08-28,delivery_partner,true
+PRO0540,SLICE0540,Lunch Special 540,percent,13.40,10.91,2025-12-20,2026-03-02,phone,true
+PRO0541,SLICE0541,Member Double Points 541,free_delivery,10.38,10.87,2024-01-09,2024-02-22,mobile_app,false
+PRO0542,SLICE0542,Two for Tuesday 542,free_delivery,12.37,38.75,2024-11-19,2024-12-09,delivery_partner,true
+PRO0543,SLICE0543,Member Double Points 543,fixed,21.65,23.78,2024-12-11,2025-01-17,phone,true
+PRO0544,SLICE0544,Free Delivery Weekend 544,bogo,16.29,27.10,2025-11-16,2026-01-02,all,true
+PRO0545,SLICE0545,Student Night 545,fixed,22.84,29.35,2024-09-06,2024-12-02,all,false
+PRO0546,SLICE0546,Student Night 546,bogo,21.95,21.80,2024-07-20,2024-10-02,web,true
+PRO0547,SLICE0547,Lunch Special 547,percent,4.86,37.06,2024-09-06,2024-11-15,all,false
+PRO0548,SLICE0548,App Exclusive 548,percent,20.86,21.81,2024-06-29,2024-08-07,web,true
+PRO0549,SLICE0549,App Exclusive 549,free_delivery,20.01,30.69,2025-10-19,2025-12-13,delivery_partner,true
+PRO0550,SLICE0550,Free Delivery Weekend 550,bogo,18.17,13.30,2025-02-11,2025-04-20,in_store,true
+PRO0551,SLICE0551,Member Double Points 551,fixed,11.11,21.86,2024-04-15,2024-05-20,all,true
+PRO0552,SLICE0552,Free Delivery Weekend 552,bogo,9.08,20.72,2025-12-16,2026-02-04,in_store,true
+PRO0553,SLICE0553,Two for Tuesday 553,bogo,5.22,16.62,2025-10-02,2025-12-16,mobile_app,false
+PRO0554,SLICE0554,Family Feast 554,percent,15.59,13.75,2024-11-09,2025-02-05,all,true
+PRO0555,SLICE0555,Student Night 555,bogo,19.53,11.93,2024-06-08,2024-06-19,in_store,true
+PRO0556,SLICE0556,Free Delivery Weekend 556,percent,14.85,20.33,2024-04-21,2024-06-05,all,true
+PRO0557,SLICE0557,Free Delivery Weekend 557,percent,11.07,38.60,2024-06-23,2024-09-02,all,true
+PRO0558,SLICE0558,Free Delivery Weekend 558,percent,1.82,32.02,2024-02-05,2024-03-11,web,true
+PRO0559,SLICE0559,App Exclusive 559,fixed,10.57,18.75,2025-08-15,2025-09-25,web,true
+PRO0560,SLICE0560,Student Night 560,fixed,7.97,22.53,2025-01-15,2025-02-08,all,true
+PRO0561,SLICE0561,Member Double Points 561,bogo,9.57,24.96,2024-11-19,2024-12-15,in_store,true
+PRO0562,SLICE0562,Free Delivery Weekend 562,percent,10.20,10.67,2024-05-03,2024-05-27,mobile_app,true
+PRO0563,SLICE0563,Member Double Points 563,free_delivery,12.42,36.34,2025-11-21,2026-01-22,all,false
+PRO0564,SLICE0564,Two for Tuesday 564,fixed,14.90,23.98,2024-06-30,2024-08-07,mobile_app,true
+PRO0565,SLICE0565,Student Night 565,bogo,16.92,23.28,2024-12-21,2025-02-04,all,false
+PRO0566,SLICE0566,Free Delivery Weekend 566,fixed,21.44,39.40,2025-11-27,2026-01-29,in_store,false
+PRO0567,SLICE0567,Student Night 567,bogo,5.87,15.37,2024-06-17,2024-09-09,phone,true
+PRO0568,SLICE0568,App Exclusive 568,fixed,21.70,27.23,2025-07-26,2025-08-12,delivery_partner,true
+PRO0569,SLICE0569,Lunch Special 569,free_delivery,9.16,33.15,2025-08-21,2025-11-16,mobile_app,true
+PRO0570,SLICE0570,Family Feast 570,percent,6.20,33.39,2025-05-04,2025-06-21,delivery_partner,true
+PRO0571,SLICE0571,Student Night 571,percent,12.32,39.26,2024-05-26,2024-08-08,delivery_partner,true
+PRO0572,SLICE0572,Free Delivery Weekend 572,free_delivery,24.39,26.62,2025-05-02,2025-06-16,all,true
+PRO0573,SLICE0573,Member Double Points 573,bogo,22.81,17.38,2025-03-30,2025-05-03,web,false
+PRO0574,SLICE0574,Lunch Special 574,free_delivery,8.19,22.20,2024-07-08,2024-08-07,all,true
+PRO0575,SLICE0575,Two for Tuesday 575,free_delivery,14.76,23.69,2024-11-27,2024-12-23,all,true
+PRO0576,SLICE0576,Student Night 576,bogo,12.05,10.16,2025-02-10,2025-04-01,web,true
+PRO0577,SLICE0577,App Exclusive 577,bogo,1.30,36.95,2024-08-17,2024-10-15,in_store,true
+PRO0578,SLICE0578,Free Delivery Weekend 578,percent,7.66,24.41,2025-05-16,2025-07-19,all,false
+PRO0579,SLICE0579,Lunch Special 579,free_delivery,18.51,15.29,2024-05-15,2024-07-21,all,false
+PRO0580,SLICE0580,App Exclusive 580,bogo,11.41,14.55,2025-05-15,2025-07-13,web,false
+PRO0581,SLICE0581,Student Night 581,percent,15.88,18.52,2025-09-25,2025-10-12,mobile_app,true
+PRO0582,SLICE0582,Free Delivery Weekend 582,percent,11.15,22.67,2024-09-16,2024-10-29,all,false
+PRO0583,SLICE0583,Member Double Points 583,free_delivery,3.86,37.89,2025-08-01,2025-09-20,in_store,true
+PRO0584,SLICE0584,Two for Tuesday 584,percent,14.36,17.64,2025-03-18,2025-04-20,web,true
+PRO0585,SLICE0585,Student Night 585,bogo,18.28,32.83,2024-08-21,2024-08-28,in_store,true
+PRO0586,SLICE0586,Two for Tuesday 586,free_delivery,16.06,10.73,2025-04-27,2025-06-06,web,false
+PRO0587,SLICE0587,Free Delivery Weekend 587,free_delivery,16.28,18.42,2024-02-02,2024-03-26,phone,true
+PRO0588,SLICE0588,Free Delivery Weekend 588,fixed,18.77,39.67,2026-02-14,2026-04-30,in_store,false
+PRO0589,SLICE0589,Member Double Points 589,bogo,6.78,38.14,2024-03-01,2024-03-15,in_store,true
+PRO0590,SLICE0590,Member Double Points 590,free_delivery,21.98,20.55,2024-02-26,2024-03-28,mobile_app,true
+PRO0591,SLICE0591,Lunch Special 591,free_delivery,1.43,37.85,2024-04-19,2024-06-19,all,true
+PRO0592,SLICE0592,Family Feast 592,bogo,17.41,25.39,2025-03-25,2025-04-10,delivery_partner,true
+PRO0593,SLICE0593,Family Feast 593,fixed,19.16,21.49,2025-11-06,2025-12-20,delivery_partner,true
+PRO0594,SLICE0594,Lunch Special 594,percent,21.14,32.51,2025-05-29,2025-06-23,web,true
+PRO0595,SLICE0595,Student Night 595,free_delivery,9.35,19.54,2026-03-07,2026-04-02,in_store,true
+PRO0596,SLICE0596,Family Feast 596,percent,6.61,15.22,2025-07-05,2025-08-26,in_store,true
+PRO0597,SLICE0597,Two for Tuesday 597,free_delivery,20.88,33.67,2026-03-06,2026-05-29,web,true
+PRO0598,SLICE0598,App Exclusive 598,fixed,5.55,10.45,2025-02-23,2025-04-07,web,false
+PRO0599,SLICE0599,Free Delivery Weekend 599,percent,11.66,34.86,2025-01-10,2025-01-26,phone,true
+PRO0600,SLICE0600,Student Night 600,bogo,2.60,23.08,2024-07-23,2024-09-14,web,true
+PRO0601,SLICE0601,Family Feast 601,bogo,13.88,31.75,2025-02-13,2025-05-01,web,true
+PRO0602,SLICE0602,Free Delivery Weekend 602,free_delivery,10.82,10.06,2026-02-28,2026-05-18,phone,true
+PRO0603,SLICE0603,Student Night 603,free_delivery,23.43,16.36,2024-10-17,2024-10-26,all,false
+PRO0604,SLICE0604,Member Double Points 604,free_delivery,10.41,13.62,2025-12-24,2026-02-02,phone,false
+PRO0605,SLICE0605,Family Feast 605,percent,12.54,34.01,2025-03-07,2025-04-06,web,true
+PRO0606,SLICE0606,Family Feast 606,bogo,1.53,26.28,2024-10-26,2025-01-15,delivery_partner,true
+PRO0607,SLICE0607,Member Double Points 607,percent,1.24,13.27,2024-01-16,2024-02-13,mobile_app,false
+PRO0608,SLICE0608,Free Delivery Weekend 608,percent,1.31,37.68,2025-08-19,2025-09-08,delivery_partner,true
+PRO0609,SLICE0609,Free Delivery Weekend 609,fixed,14.62,18.16,2025-04-03,2025-06-20,phone,true
+PRO0610,SLICE0610,Member Double Points 610,percent,11.16,10.03,2024-08-05,2024-10-11,in_store,true
+PRO0611,SLICE0611,Lunch Special 611,free_delivery,2.14,17.79,2025-04-17,2025-05-01,all,true
+PRO0612,SLICE0612,Free Delivery Weekend 612,fixed,16.97,15.14,2026-02-22,2026-04-02,mobile_app,true
+PRO0613,SLICE0613,Family Feast 613,fixed,15.72,32.80,2025-08-26,2025-11-01,web,false
+PRO0614,SLICE0614,App Exclusive 614,free_delivery,15.24,31.85,2024-11-28,2025-01-02,in_store,true
+PRO0615,SLICE0615,Lunch Special 615,percent,7.59,16.15,2025-10-21,2025-11-17,phone,false
+PRO0616,SLICE0616,Lunch Special 616,percent,2.65,27.81,2024-04-02,2024-06-18,mobile_app,true
+PRO0617,SLICE0617,Member Double Points 617,fixed,4.28,23.99,2025-10-13,2025-11-11,phone,true
+PRO0618,SLICE0618,Two for Tuesday 618,bogo,5.61,12.95,2024-04-12,2024-06-20,web,true
+PRO0619,SLICE0619,App Exclusive 619,fixed,6.93,20.18,2025-08-23,2025-09-25,in_store,true
+PRO0620,SLICE0620,Free Delivery Weekend 620,bogo,8.02,19.24,2025-10-18,2025-12-13,delivery_partner,false
+PRO0621,SLICE0621,Member Double Points 621,fixed,9.06,15.98,2025-06-10,2025-07-23,mobile_app,false
+PRO0622,SLICE0622,Member Double Points 622,percent,3.55,34.85,2025-03-16,2025-05-20,in_store,false
+PRO0623,SLICE0623,Free Delivery Weekend 623,free_delivery,24.75,21.77,2025-07-12,2025-08-21,in_store,true
+PRO0624,SLICE0624,Two for Tuesday 624,fixed,5.74,22.08,2024-01-28,2024-03-13,in_store,false
+PRO0625,SLICE0625,App Exclusive 625,free_delivery,3.64,17.57,2024-02-04,2024-02-29,in_store,true
+PRO0626,SLICE0626,Family Feast 626,bogo,6.88,32.30,2024-01-24,2024-02-10,phone,true
+PRO0627,SLICE0627,Lunch Special 627,bogo,22.39,34.97,2025-06-03,2025-08-29,mobile_app,true
+PRO0628,SLICE0628,Lunch Special 628,fixed,15.67,11.76,2025-08-09,2025-10-24,in_store,true
+PRO0629,SLICE0629,Student Night 629,bogo,22.36,25.22,2025-07-08,2025-08-25,delivery_partner,true
+PRO0630,SLICE0630,Member Double Points 630,percent,17.28,15.23,2025-10-05,2025-12-26,all,true
+PRO0631,SLICE0631,Student Night 631,free_delivery,11.41,35.05,2024-04-30,2024-07-21,mobile_app,true
+PRO0632,SLICE0632,Member Double Points 632,fixed,7.28,38.99,2024-08-20,2024-11-02,mobile_app,false
+PRO0633,SLICE0633,App Exclusive 633,percent,18.31,13.57,2024-10-08,2025-01-06,all,false
+PRO0634,SLICE0634,App Exclusive 634,percent,9.10,17.11,2025-06-28,2025-07-09,all,true
+PRO0635,SLICE0635,Free Delivery Weekend 635,free_delivery,13.82,22.18,2024-01-14,2024-02-02,all,true
+PRO0636,SLICE0636,Two for Tuesday 636,free_delivery,11.34,10.61,2024-09-18,2024-11-02,all,true
+PRO0637,SLICE0637,Member Double Points 637,fixed,10.49,15.73,2024-02-04,2024-03-20,all,true
+PRO0638,SLICE0638,App Exclusive 638,fixed,4.26,39.11,2024-10-16,2024-10-28,all,true
+PRO0639,SLICE0639,App Exclusive 639,fixed,3.25,26.43,2025-04-13,2025-07-02,all,false
+PRO0640,SLICE0640,Member Double Points 640,fixed,18.85,19.58,2026-01-26,2026-03-03,in_store,false
+PRO0641,SLICE0641,Student Night 641,bogo,14.57,11.84,2025-06-03,2025-06-18,delivery_partner,true
+PRO0642,SLICE0642,App Exclusive 642,bogo,3.87,23.74,2025-01-05,2025-02-13,web,true
+PRO0643,SLICE0643,Student Night 643,fixed,7.85,26.10,2024-01-26,2024-03-31,web,true
+PRO0644,SLICE0644,App Exclusive 644,fixed,22.73,13.40,2025-02-18,2025-03-10,in_store,false
+PRO0645,SLICE0645,App Exclusive 645,percent,23.17,15.47,2025-01-28,2025-04-23,in_store,true
+PRO0646,SLICE0646,Two for Tuesday 646,bogo,7.65,38.42,2025-02-28,2025-05-11,all,true
+PRO0647,SLICE0647,Student Night 647,percent,1.12,27.70,2025-09-08,2025-10-10,web,true
+PRO0648,SLICE0648,Two for Tuesday 648,fixed,5.59,29.18,2024-02-29,2024-04-02,delivery_partner,false
+PRO0649,SLICE0649,App Exclusive 649,bogo,18.31,14.33,2025-10-12,2025-12-13,web,true
+PRO0650,SLICE0650,Two for Tuesday 650,percent,9.67,32.18,2025-05-28,2025-08-04,delivery_partner,true
+PRO0651,SLICE0651,App Exclusive 651,free_delivery,16.98,25.67,2024-07-22,2024-10-13,web,false
+PRO0652,SLICE0652,Member Double Points 652,fixed,24.62,11.78,2025-03-29,2025-05-05,delivery_partner,true
+PRO0653,SLICE0653,Member Double Points 653,fixed,7.27,12.23,2025-11-16,2026-02-12,phone,true
+PRO0654,SLICE0654,Lunch Special 654,percent,3.22,19.82,2024-04-16,2024-06-27,phone,true
+PRO0655,SLICE0655,Family Feast 655,fixed,7.69,15.52,2025-07-05,2025-07-27,phone,false
+PRO0656,SLICE0656,Student Night 656,fixed,13.91,32.43,2025-07-13,2025-08-10,delivery_partner,false
+PRO0657,SLICE0657,Family Feast 657,free_delivery,2.05,29.83,2024-12-24,2025-02-05,phone,false
+PRO0658,SLICE0658,Lunch Special 658,bogo,15.14,20.75,2024-04-05,2024-05-19,phone,false
+PRO0659,SLICE0659,Family Feast 659,bogo,18.00,32.19,2025-12-13,2026-01-12,phone,false
+PRO0660,SLICE0660,Member Double Points 660,percent,20.61,19.91,2025-04-22,2025-05-02,delivery_partner,true
+PRO0661,SLICE0661,Free Delivery Weekend 661,bogo,18.54,11.58,2025-12-10,2026-02-24,all,true
+PRO0662,SLICE0662,Free Delivery Weekend 662,free_delivery,4.86,37.97,2025-02-19,2025-03-25,mobile_app,true
+PRO0663,SLICE0663,Two for Tuesday 663,percent,12.14,25.39,2025-01-16,2025-01-31,web,true
+PRO0664,SLICE0664,Family Feast 664,fixed,9.67,24.32,2024-08-11,2024-11-01,web,false
+PRO0665,SLICE0665,Free Delivery Weekend 665,percent,22.35,19.05,2024-10-21,2024-11-09,mobile_app,false
+PRO0666,SLICE0666,App Exclusive 666,fixed,20.05,26.67,2024-11-22,2024-12-03,in_store,true
+PRO0667,SLICE0667,Free Delivery Weekend 667,bogo,3.15,34.34,2024-04-09,2024-04-17,in_store,true
+PRO0668,SLICE0668,Two for Tuesday 668,free_delivery,20.19,12.90,2024-10-30,2025-01-27,delivery_partner,true
+PRO0669,SLICE0669,App Exclusive 669,fixed,17.41,33.70,2024-06-17,2024-08-12,in_store,true
+PRO0670,SLICE0670,Family Feast 670,free_delivery,15.25,23.29,2024-04-23,2024-06-05,phone,false
+PRO0671,SLICE0671,Free Delivery Weekend 671,bogo,1.89,37.43,2025-06-27,2025-07-07,all,true
+PRO0672,SLICE0672,App Exclusive 672,bogo,9.36,15.91,2024-11-10,2024-11-18,phone,true
+PRO0673,SLICE0673,Free Delivery Weekend 673,bogo,16.17,10.60,2025-12-09,2026-01-07,phone,false
+PRO0674,SLICE0674,Student Night 674,percent,19.90,32.61,2024-01-06,2024-02-02,web,true
+PRO0675,SLICE0675,Two for Tuesday 675,bogo,17.46,37.30,2024-10-13,2024-11-08,phone,false
+PRO0676,SLICE0676,Student Night 676,percent,19.07,21.12,2024-06-19,2024-07-09,in_store,true
+PRO0677,SLICE0677,Free Delivery Weekend 677,bogo,23.22,21.64,2024-01-01,2024-02-24,delivery_partner,true
+PRO0678,SLICE0678,Family Feast 678,free_delivery,20.98,31.33,2024-08-19,2024-09-02,in_store,true
+PRO0679,SLICE0679,Family Feast 679,bogo,4.09,29.28,2024-04-10,2024-06-26,mobile_app,false
+PRO0680,SLICE0680,Member Double Points 680,fixed,20.37,24.51,2025-07-02,2025-08-17,web,true
+PRO0681,SLICE0681,App Exclusive 681,bogo,15.40,31.80,2024-01-17,2024-02-15,phone,false
+PRO0682,SLICE0682,Family Feast 682,free_delivery,10.58,16.88,2025-09-25,2025-10-17,mobile_app,false
+PRO0683,SLICE0683,App Exclusive 683,bogo,2.98,22.54,2025-04-04,2025-06-21,mobile_app,false
+PRO0684,SLICE0684,Family Feast 684,fixed,23.23,20.44,2024-03-15,2024-05-14,phone,true
+PRO0685,SLICE0685,Family Feast 685,percent,16.23,39.82,2024-12-10,2025-02-10,mobile_app,true
+PRO0686,SLICE0686,Family Feast 686,fixed,1.63,19.13,2025-10-07,2025-12-02,mobile_app,true
+PRO0687,SLICE0687,Free Delivery Weekend 687,percent,14.32,28.84,2024-12-19,2025-02-15,phone,true
+PRO0688,SLICE0688,Family Feast 688,fixed,24.52,19.56,2025-10-17,2025-12-31,all,true
+PRO0689,SLICE0689,Student Night 689,percent,4.05,23.94,2024-04-01,2024-06-12,all,true
+PRO0690,SLICE0690,Lunch Special 690,free_delivery,18.88,28.73,2025-01-27,2025-03-22,phone,true
+PRO0691,SLICE0691,Family Feast 691,free_delivery,16.98,10.21,2024-01-26,2024-04-15,delivery_partner,true
+PRO0692,SLICE0692,Lunch Special 692,fixed,22.07,29.31,2026-01-25,2026-04-15,mobile_app,true
+PRO0693,SLICE0693,Family Feast 693,free_delivery,5.96,28.93,2025-02-15,2025-03-12,web,true
+PRO0694,SLICE0694,Lunch Special 694,free_delivery,16.31,12.75,2024-02-17,2024-05-13,mobile_app,true
+PRO0695,SLICE0695,Student Night 695,percent,6.31,26.91,2025-02-27,2025-03-20,in_store,false
+PRO0696,SLICE0696,Member Double Points 696,free_delivery,18.18,10.98,2024-02-10,2024-04-25,delivery_partner,true
+PRO0697,SLICE0697,Family Feast 697,percent,2.01,30.03,2025-03-05,2025-04-12,in_store,true
+PRO0698,SLICE0698,Family Feast 698,free_delivery,14.35,35.73,2025-06-28,2025-07-25,web,true
+PRO0699,SLICE0699,Lunch Special 699,percent,13.30,29.22,2024-05-24,2024-07-15,phone,true
+PRO0700,SLICE0700,App Exclusive 700,bogo,21.05,39.21,2025-04-09,2025-04-22,phone,true
+PRO0701,SLICE0701,Lunch Special 701,free_delivery,20.90,38.56,2025-02-20,2025-03-10,all,true
+PRO0702,SLICE0702,Member Double Points 702,percent,17.43,23.13,2025-02-01,2025-04-05,phone,false
+PRO0703,SLICE0703,Family Feast 703,bogo,21.22,24.77,2025-05-27,2025-08-01,delivery_partner,true
+PRO0704,SLICE0704,Member Double Points 704,bogo,18.91,10.02,2024-09-30,2024-11-22,phone,true
+PRO0705,SLICE0705,Member Double Points 705,free_delivery,3.07,28.05,2024-07-03,2024-07-26,mobile_app,false
+PRO0706,SLICE0706,Student Night 706,percent,10.06,24.34,2026-03-11,2026-05-22,phone,true
+PRO0707,SLICE0707,Member Double Points 707,free_delivery,12.29,25.70,2025-09-25,2025-11-10,in_store,true
+PRO0708,SLICE0708,Free Delivery Weekend 708,free_delivery,13.03,34.55,2026-01-21,2026-04-02,in_store,false
+PRO0709,SLICE0709,Member Double Points 709,free_delivery,13.27,27.88,2025-06-23,2025-08-10,delivery_partner,true
+PRO0710,SLICE0710,Free Delivery Weekend 710,fixed,17.65,13.65,2025-03-26,2025-06-18,web,false
+PRO0711,SLICE0711,Free Delivery Weekend 711,bogo,12.34,24.25,2024-05-06,2024-06-03,mobile_app,true
+PRO0712,SLICE0712,Student Night 712,fixed,20.36,39.79,2025-04-18,2025-05-12,web,true
+PRO0713,SLICE0713,Family Feast 713,bogo,21.51,37.18,2026-02-22,2026-04-03,mobile_app,true
+PRO0714,SLICE0714,Member Double Points 714,fixed,2.56,16.00,2025-09-13,2025-09-27,delivery_partner,true
+PRO0715,SLICE0715,Lunch Special 715,fixed,3.47,27.29,2024-12-19,2025-01-25,in_store,true
+PRO0716,SLICE0716,Free Delivery Weekend 716,fixed,2.12,29.94,2025-01-06,2025-03-02,web,false
+PRO0717,SLICE0717,Student Night 717,fixed,17.05,26.85,2024-08-01,2024-10-01,mobile_app,false
+PRO0718,SLICE0718,App Exclusive 718,bogo,5.16,38.35,2024-04-16,2024-06-27,all,true
+PRO0719,SLICE0719,Free Delivery Weekend 719,bogo,17.00,21.34,2025-04-22,2025-06-28,in_store,true
+PRO0720,SLICE0720,App Exclusive 720,bogo,21.80,13.76,2026-03-06,2026-03-18,delivery_partner,true
+PRO0721,SLICE0721,Member Double Points 721,free_delivery,3.59,33.83,2024-12-25,2025-03-25,delivery_partner,false
+PRO0722,SLICE0722,Family Feast 722,bogo,20.67,11.28,2025-04-26,2025-05-09,web,true
+PRO0723,SLICE0723,Member Double Points 723,bogo,16.17,10.29,2024-03-06,2024-05-06,in_store,false
+PRO0724,SLICE0724,Student Night 724,bogo,6.72,21.29,2025-05-25,2025-07-06,delivery_partner,true
+PRO0725,SLICE0725,Free Delivery Weekend 725,free_delivery,8.68,25.32,2024-11-26,2025-02-01,delivery_partner,true
+PRO0726,SLICE0726,Family Feast 726,percent,22.60,17.70,2024-07-16,2024-09-11,delivery_partner,true
+PRO0727,SLICE0727,Member Double Points 727,bogo,2.71,39.40,2024-09-11,2024-11-17,in_store,true
+PRO0728,SLICE0728,Two for Tuesday 728,fixed,21.75,15.70,2025-04-26,2025-05-09,in_store,false
+PRO0729,SLICE0729,Member Double Points 729,fixed,22.86,28.95,2024-04-24,2024-06-25,all,false
+PRO0730,SLICE0730,Member Double Points 730,fixed,23.29,31.81,2025-02-01,2025-04-09,delivery_partner,true
+PRO0731,SLICE0731,Family Feast 731,free_delivery,13.00,33.22,2025-03-05,2025-04-24,mobile_app,true
+PRO0732,SLICE0732,Two for Tuesday 732,bogo,1.79,11.84,2024-06-21,2024-07-02,in_store,true
+PRO0733,SLICE0733,Member Double Points 733,fixed,11.04,10.12,2024-03-05,2024-05-02,phone,false
+PRO0734,SLICE0734,Two for Tuesday 734,percent,19.99,34.98,2024-04-30,2024-07-17,mobile_app,true
+PRO0735,SLICE0735,Free Delivery Weekend 735,percent,14.98,33.91,2026-02-06,2026-03-05,phone,false
+PRO0736,SLICE0736,Free Delivery Weekend 736,free_delivery,6.36,18.42,2025-02-22,2025-04-21,web,true
+PRO0737,SLICE0737,Free Delivery Weekend 737,bogo,19.58,31.10,2025-10-11,2026-01-01,all,false
+PRO0738,SLICE0738,Free Delivery Weekend 738,bogo,21.34,14.24,2024-05-30,2024-06-07,phone,false
+PRO0739,SLICE0739,Member Double Points 739,bogo,19.80,10.78,2024-08-21,2024-10-19,web,true
+PRO0740,SLICE0740,Family Feast 740,fixed,4.65,22.60,2024-09-11,2024-10-03,all,true
+PRO0741,SLICE0741,Free Delivery Weekend 741,free_delivery,1.96,33.52,2024-07-26,2024-09-29,mobile_app,true
+PRO0742,SLICE0742,Free Delivery Weekend 742,free_delivery,22.96,22.71,2024-03-28,2024-04-18,web,true
+PRO0743,SLICE0743,Member Double Points 743,bogo,17.30,25.52,2026-01-14,2026-04-11,web,true
+PRO0744,SLICE0744,App Exclusive 744,fixed,11.11,31.86,2024-03-22,2024-05-31,all,true
+PRO0745,SLICE0745,Lunch Special 745,free_delivery,13.84,33.00,2025-07-20,2025-08-29,all,false
+PRO0746,SLICE0746,Family Feast 746,percent,23.04,29.05,2025-01-09,2025-02-27,mobile_app,false
+PRO0747,SLICE0747,Free Delivery Weekend 747,percent,21.65,24.55,2024-10-15,2024-11-15,all,false
+PRO0748,SLICE0748,Member Double Points 748,percent,3.48,15.11,2024-12-08,2025-03-05,mobile_app,true
+PRO0749,SLICE0749,Two for Tuesday 749,fixed,15.66,19.88,2024-08-22,2024-09-02,in_store,true
+PRO0750,SLICE0750,App Exclusive 750,percent,16.86,28.61,2024-04-09,2024-06-02,delivery_partner,false
+PRO0751,SLICE0751,Family Feast 751,fixed,8.80,14.12,2024-06-22,2024-08-14,phone,true
+PRO0752,SLICE0752,Family Feast 752,fixed,1.69,31.24,2025-09-19,2025-11-10,delivery_partner,true
+PRO0753,SLICE0753,Family Feast 753,bogo,24.03,10.11,2025-08-23,2025-08-31,all,true
+PRO0754,SLICE0754,Member Double Points 754,fixed,16.71,25.55,2024-11-20,2024-12-11,all,true
+PRO0755,SLICE0755,Student Night 755,free_delivery,5.54,10.35,2024-11-09,2024-12-16,delivery_partner,true
+PRO0756,SLICE0756,App Exclusive 756,fixed,16.77,20.17,2025-05-05,2025-07-20,delivery_partner,false
+PRO0757,SLICE0757,Free Delivery Weekend 757,bogo,6.85,34.51,2025-07-28,2025-08-14,in_store,false
+PRO0758,SLICE0758,Lunch Special 758,free_delivery,7.91,16.57,2025-02-01,2025-03-17,web,true
+PRO0759,SLICE0759,App Exclusive 759,percent,11.74,35.90,2025-10-24,2025-12-07,web,false
+PRO0760,SLICE0760,Student Night 760,fixed,4.74,29.42,2025-07-13,2025-08-23,in_store,true
+PRO0761,SLICE0761,Two for Tuesday 761,bogo,22.68,24.56,2025-04-01,2025-05-17,phone,true
+PRO0762,SLICE0762,App Exclusive 762,free_delivery,13.69,26.79,2024-05-27,2024-07-29,web,true
+PRO0763,SLICE0763,App Exclusive 763,free_delivery,13.59,11.32,2025-06-15,2025-09-03,delivery_partner,true
+PRO0764,SLICE0764,Student Night 764,bogo,3.93,16.93,2024-02-16,2024-04-02,mobile_app,true
+PRO0765,SLICE0765,Member Double Points 765,fixed,5.88,28.81,2024-06-10,2024-08-04,all,true
+PRO0766,SLICE0766,Family Feast 766,free_delivery,5.07,21.54,2024-09-28,2024-11-05,all,true
+PRO0767,SLICE0767,Family Feast 767,bogo,22.46,33.89,2025-06-21,2025-09-05,in_store,false
+PRO0768,SLICE0768,Family Feast 768,bogo,12.69,25.84,2025-10-17,2025-12-21,phone,true
+PRO0769,SLICE0769,Member Double Points 769,percent,9.81,30.78,2025-02-22,2025-04-08,web,false
+PRO0770,SLICE0770,Lunch Special 770,bogo,12.10,12.23,2024-12-07,2025-02-19,all,true
+PRO0771,SLICE0771,Student Night 771,percent,16.69,10.73,2024-03-27,2024-04-28,in_store,true
+PRO0772,SLICE0772,Family Feast 772,fixed,21.58,24.24,2024-09-08,2024-09-27,mobile_app,true
+PRO0773,SLICE0773,App Exclusive 773,fixed,4.09,28.73,2025-06-26,2025-09-11,mobile_app,true
+PRO0774,SLICE0774,Member Double Points 774,fixed,11.18,32.73,2025-12-15,2025-12-26,all,true
+PRO0775,SLICE0775,Member Double Points 775,bogo,18.28,30.98,2024-05-31,2024-08-28,web,true
+PRO0776,SLICE0776,Student Night 776,percent,8.10,22.11,2024-07-07,2024-07-26,mobile_app,true
+PRO0777,SLICE0777,Lunch Special 777,free_delivery,1.75,26.67,2026-01-23,2026-02-13,phone,true
+PRO0778,SLICE0778,Student Night 778,fixed,3.72,30.23,2025-05-21,2025-08-05,phone,true
+PRO0779,SLICE0779,Member Double Points 779,free_delivery,11.14,26.17,2025-03-20,2025-05-30,web,true
+PRO0780,SLICE0780,App Exclusive 780,bogo,15.64,12.61,2025-07-12,2025-08-12,phone,true
+PRO0781,SLICE0781,Two for Tuesday 781,free_delivery,21.41,18.36,2024-05-13,2024-07-29,in_store,true
+PRO0782,SLICE0782,App Exclusive 782,bogo,6.21,35.12,2024-06-13,2024-08-05,mobile_app,true
+PRO0783,SLICE0783,Lunch Special 783,free_delivery,18.84,39.18,2026-03-10,2026-04-17,web,false
+PRO0784,SLICE0784,Student Night 784,bogo,1.40,18.58,2024-02-23,2024-05-14,in_store,true
+PRO0785,SLICE0785,Free Delivery Weekend 785,fixed,18.06,38.55,2025-07-26,2025-09-07,web,false
+PRO0786,SLICE0786,Student Night 786,fixed,9.95,28.24,2025-04-07,2025-07-06,mobile_app,true
+PRO0787,SLICE0787,Lunch Special 787,bogo,17.74,30.61,2025-08-04,2025-11-01,phone,true
+PRO0788,SLICE0788,Family Feast 788,percent,9.80,17.66,2025-04-28,2025-07-10,delivery_partner,true
+PRO0789,SLICE0789,Lunch Special 789,free_delivery,1.77,14.28,2025-12-28,2026-01-31,mobile_app,true
+PRO0790,SLICE0790,Lunch Special 790,fixed,6.00,37.94,2024-03-31,2024-06-21,all,true
+PRO0791,SLICE0791,Student Night 791,bogo,24.53,30.33,2025-03-30,2025-05-13,web,false
+PRO0792,SLICE0792,Lunch Special 792,free_delivery,11.09,30.61,2024-06-13,2024-06-20,mobile_app,true
+PRO0793,SLICE0793,App Exclusive 793,percent,23.69,37.87,2025-03-05,2025-05-02,web,false
+PRO0794,SLICE0794,Lunch Special 794,percent,22.91,11.13,2025-11-16,2026-01-24,in_store,false
+PRO0795,SLICE0795,Family Feast 795,fixed,18.28,37.25,2025-10-23,2025-11-10,phone,true
+PRO0796,SLICE0796,Member Double Points 796,bogo,3.81,25.24,2025-08-20,2025-10-21,all,true
+PRO0797,SLICE0797,Family Feast 797,bogo,4.06,39.90,2024-01-03,2024-01-22,all,false
+PRO0798,SLICE0798,Family Feast 798,free_delivery,7.49,25.39,2024-05-23,2024-08-14,web,true
+PRO0799,SLICE0799,App Exclusive 799,bogo,10.27,19.76,2025-12-23,2026-01-02,web,true
+PRO0800,SLICE0800,Two for Tuesday 800,bogo,6.57,13.84,2025-11-03,2025-12-15,delivery_partner,false
+PRO0801,SLICE0801,Free Delivery Weekend 801,percent,23.71,20.93,2024-11-22,2024-12-07,in_store,true
+PRO0802,SLICE0802,Family Feast 802,free_delivery,17.59,35.09,2025-08-07,2025-08-15,all,false
+PRO0803,SLICE0803,Lunch Special 803,bogo,21.24,20.23,2025-01-14,2025-04-14,phone,true
+PRO0804,SLICE0804,Member Double Points 804,percent,16.70,31.18,2026-02-17,2026-04-18,in_store,false
+PRO0805,SLICE0805,Free Delivery Weekend 805,bogo,19.60,10.73,2025-05-06,2025-06-23,mobile_app,true
+PRO0806,SLICE0806,Student Night 806,free_delivery,17.06,15.93,2025-12-09,2026-01-11,web,false
+PRO0807,SLICE0807,Member Double Points 807,free_delivery,10.47,12.70,2024-04-12,2024-04-25,all,true
+PRO0808,SLICE0808,Student Night 808,free_delivery,24.35,39.75,2025-04-02,2025-04-29,delivery_partner,true
+PRO0809,SLICE0809,App Exclusive 809,bogo,6.85,39.76,2025-03-08,2025-05-25,in_store,true
+PRO0810,SLICE0810,Student Night 810,bogo,20.66,37.23,2025-08-15,2025-11-09,in_store,true
+PRO0811,SLICE0811,Two for Tuesday 811,bogo,13.49,26.71,2024-06-11,2024-07-09,all,false
+PRO0812,SLICE0812,Student Night 812,bogo,9.28,30.08,2025-12-25,2026-01-14,in_store,true
+PRO0813,SLICE0813,Lunch Special 813,bogo,10.70,23.15,2025-08-21,2025-09-03,delivery_partner,true
+PRO0814,SLICE0814,Family Feast 814,percent,13.69,15.18,2024-01-07,2024-03-16,phone,true
+PRO0815,SLICE0815,Family Feast 815,free_delivery,1.34,12.40,2025-12-13,2026-01-04,in_store,true
+PRO0816,SLICE0816,Lunch Special 816,percent,24.39,33.92,2025-03-01,2025-03-11,all,true
+PRO0817,SLICE0817,Family Feast 817,bogo,9.18,31.07,2025-06-05,2025-09-02,phone,true
+PRO0818,SLICE0818,Student Night 818,fixed,21.00,25.53,2025-12-03,2025-12-28,web,false
+PRO0819,SLICE0819,App Exclusive 819,free_delivery,10.27,39.42,2024-10-19,2024-11-30,delivery_partner,false
+PRO0820,SLICE0820,Student Night 820,bogo,15.76,10.82,2024-03-30,2024-05-14,web,false
+PRO0821,SLICE0821,App Exclusive 821,percent,11.94,16.09,2025-08-10,2025-08-18,web,false
+PRO0822,SLICE0822,Student Night 822,percent,5.56,35.66,2024-04-10,2024-05-28,in_store,true
+PRO0823,SLICE0823,Two for Tuesday 823,percent,18.62,31.44,2024-07-14,2024-08-03,mobile_app,false
+PRO0824,SLICE0824,Family Feast 824,free_delivery,3.95,24.35,2025-12-20,2026-02-21,phone,true
+PRO0825,SLICE0825,App Exclusive 825,bogo,2.42,33.79,2025-03-15,2025-05-10,phone,true
+PRO0826,SLICE0826,Lunch Special 826,bogo,9.63,23.64,2024-12-16,2025-02-21,phone,true
+PRO0827,SLICE0827,Free Delivery Weekend 827,percent,13.05,27.90,2026-02-04,2026-03-07,mobile_app,false
+PRO0828,SLICE0828,Family Feast 828,free_delivery,3.56,31.64,2025-08-12,2025-11-03,delivery_partner,false
+PRO0829,SLICE0829,Free Delivery Weekend 829,bogo,1.42,19.18,2025-05-23,2025-06-14,all,false
+PRO0830,SLICE0830,App Exclusive 830,percent,19.00,17.17,2024-06-22,2024-08-03,all,true
+PRO0831,SLICE0831,App Exclusive 831,free_delivery,2.62,28.88,2025-12-19,2025-12-31,web,true
+PRO0832,SLICE0832,Lunch Special 832,fixed,17.40,24.97,2025-05-25,2025-07-15,web,true
+PRO0833,SLICE0833,Family Feast 833,free_delivery,12.57,38.69,2024-11-28,2024-12-12,in_store,true
+PRO0834,SLICE0834,Student Night 834,percent,12.76,26.00,2025-03-17,2025-06-04,all,true
+PRO0835,SLICE0835,Member Double Points 835,fixed,14.69,31.57,2024-12-10,2025-01-20,mobile_app,true
+PRO0836,SLICE0836,Free Delivery Weekend 836,free_delivery,22.60,38.72,2025-12-29,2026-03-19,all,false
+PRO0837,SLICE0837,Family Feast 837,bogo,1.41,33.62,2024-11-04,2024-12-03,all,false
+PRO0838,SLICE0838,Family Feast 838,percent,19.31,34.69,2024-06-01,2024-08-09,web,false
+PRO0839,SLICE0839,Family Feast 839,percent,9.64,28.04,2025-11-27,2026-01-14,web,true
+PRO0840,SLICE0840,Member Double Points 840,fixed,20.30,38.31,2025-11-26,2026-01-30,all,false
+PRO0841,SLICE0841,Two for Tuesday 841,free_delivery,13.18,27.60,2024-09-21,2024-12-14,all,false
+PRO0842,SLICE0842,Two for Tuesday 842,bogo,23.39,18.69,2024-09-29,2024-12-20,in_store,false
+PRO0843,SLICE0843,App Exclusive 843,free_delivery,1.31,25.76,2024-01-21,2024-03-31,mobile_app,true
+PRO0844,SLICE0844,Two for Tuesday 844,fixed,14.43,38.31,2024-10-01,2024-11-04,all,true
+PRO0845,SLICE0845,Free Delivery Weekend 845,fixed,12.25,16.94,2024-02-01,2024-03-20,phone,true
+PRO0846,SLICE0846,Student Night 846,fixed,21.31,24.82,2025-09-07,2025-10-02,all,true
+PRO0847,SLICE0847,App Exclusive 847,fixed,2.61,15.04,2025-11-24,2026-02-01,in_store,true
+PRO0848,SLICE0848,App Exclusive 848,fixed,18.36,38.61,2025-04-08,2025-05-27,phone,true
+PRO0849,SLICE0849,Member Double Points 849,free_delivery,13.94,21.48,2024-08-20,2024-11-11,in_store,false
+PRO0850,SLICE0850,Student Night 850,bogo,6.75,31.70,2024-04-29,2024-07-13,phone,false
+PRO0851,SLICE0851,Member Double Points 851,fixed,24.24,22.35,2025-08-21,2025-09-06,delivery_partner,true
+PRO0852,SLICE0852,App Exclusive 852,fixed,1.25,30.77,2024-04-20,2024-04-30,all,true
+PRO0853,SLICE0853,Family Feast 853,percent,8.72,27.83,2024-11-12,2025-01-28,delivery_partner,true
+PRO0854,SLICE0854,Student Night 854,bogo,13.51,29.70,2025-05-11,2025-07-26,mobile_app,true
+PRO0855,SLICE0855,Member Double Points 855,fixed,22.97,30.50,2025-10-21,2025-11-09,delivery_partner,true
+PRO0856,SLICE0856,Lunch Special 856,percent,18.90,13.89,2025-11-01,2025-11-19,web,true
+PRO0857,SLICE0857,Student Night 857,fixed,23.57,10.19,2024-09-02,2024-10-05,all,true
+PRO0858,SLICE0858,Student Night 858,free_delivery,17.87,14.26,2024-04-12,2024-06-18,delivery_partner,false
+PRO0859,SLICE0859,Two for Tuesday 859,percent,21.62,27.80,2024-08-26,2024-09-18,in_store,true
+PRO0860,SLICE0860,Student Night 860,percent,10.75,11.91,2025-06-17,2025-07-25,mobile_app,true
+PRO0861,SLICE0861,Member Double Points 861,bogo,12.48,29.25,2025-07-24,2025-08-13,web,true
+PRO0862,SLICE0862,Student Night 862,free_delivery,12.34,27.08,2025-09-11,2025-11-01,phone,true
+PRO0863,SLICE0863,Lunch Special 863,percent,4.97,35.07,2025-10-30,2025-12-29,delivery_partner,true
+PRO0864,SLICE0864,Lunch Special 864,free_delivery,18.28,36.82,2024-07-28,2024-10-15,all,true
+PRO0865,SLICE0865,Student Night 865,free_delivery,11.43,15.34,2025-08-01,2025-08-10,delivery_partner,false
+PRO0866,SLICE0866,Family Feast 866,percent,21.09,26.35,2025-04-12,2025-05-15,all,true
+PRO0867,SLICE0867,Two for Tuesday 867,free_delivery,9.28,34.09,2025-11-30,2026-02-07,phone,true
+PRO0868,SLICE0868,Two for Tuesday 868,fixed,4.13,35.96,2024-12-13,2025-01-24,mobile_app,true
+PRO0869,SLICE0869,Student Night 869,fixed,1.53,27.78,2025-12-05,2026-01-14,delivery_partner,true
+PRO0870,SLICE0870,Family Feast 870,fixed,7.68,36.06,2025-04-02,2025-05-06,all,true
+PRO0871,SLICE0871,App Exclusive 871,free_delivery,4.53,24.22,2024-12-27,2025-01-11,all,true
+PRO0872,SLICE0872,Family Feast 872,free_delivery,6.36,18.30,2024-04-21,2024-05-15,mobile_app,false
+PRO0873,SLICE0873,Two for Tuesday 873,bogo,13.90,10.31,2024-06-26,2024-07-06,all,false
+PRO0874,SLICE0874,App Exclusive 874,bogo,16.89,38.75,2024-03-17,2024-06-07,delivery_partner,true
+PRO0875,SLICE0875,Two for Tuesday 875,free_delivery,13.87,22.59,2024-05-10,2024-06-17,mobile_app,true
+PRO0876,SLICE0876,Free Delivery Weekend 876,bogo,2.53,21.17,2024-09-01,2024-10-09,web,true
+PRO0877,SLICE0877,Lunch Special 877,percent,21.97,39.66,2026-02-23,2026-05-14,all,false
+PRO0878,SLICE0878,Free Delivery Weekend 878,free_delivery,9.84,13.17,2025-02-07,2025-02-22,mobile_app,false
+PRO0879,SLICE0879,Student Night 879,fixed,6.83,18.44,2025-03-27,2025-05-28,mobile_app,true
+PRO0880,SLICE0880,App Exclusive 880,bogo,16.18,37.27,2024-10-16,2025-01-14,in_store,false
+PRO0881,SLICE0881,Two for Tuesday 881,bogo,10.19,33.33,2025-01-01,2025-01-14,all,true
+PRO0882,SLICE0882,Family Feast 882,fixed,11.76,38.85,2024-04-14,2024-06-04,in_store,true
+PRO0883,SLICE0883,Two for Tuesday 883,fixed,1.89,34.77,2025-02-06,2025-03-31,all,true
+PRO0884,SLICE0884,Member Double Points 884,fixed,20.90,32.53,2025-02-22,2025-05-19,all,true
+PRO0885,SLICE0885,Lunch Special 885,fixed,15.12,38.89,2024-08-26,2024-11-18,web,true
+PRO0886,SLICE0886,Family Feast 886,free_delivery,22.61,17.07,2025-10-11,2025-11-19,phone,true
+PRO0887,SLICE0887,Member Double Points 887,free_delivery,2.67,17.34,2025-09-04,2025-10-09,in_store,true
+PRO0888,SLICE0888,Lunch Special 888,free_delivery,18.17,30.01,2025-09-13,2025-11-18,all,true
+PRO0889,SLICE0889,Two for Tuesday 889,free_delivery,21.88,31.83,2025-02-09,2025-05-09,in_store,true
+PRO0890,SLICE0890,Two for Tuesday 890,free_delivery,22.13,29.64,2025-11-22,2026-02-09,phone,false
+PRO0891,SLICE0891,Two for Tuesday 891,bogo,21.46,20.22,2024-03-30,2024-06-07,all,false
+PRO0892,SLICE0892,App Exclusive 892,bogo,4.16,38.09,2024-05-11,2024-08-09,mobile_app,true
+PRO0893,SLICE0893,Member Double Points 893,bogo,5.28,23.87,2026-02-07,2026-04-13,all,false
+PRO0894,SLICE0894,Student Night 894,bogo,22.14,21.99,2025-03-25,2025-05-10,delivery_partner,true
+PRO0895,SLICE0895,Free Delivery Weekend 895,percent,7.33,16.65,2025-03-27,2025-05-08,delivery_partner,true
+PRO0896,SLICE0896,Student Night 896,free_delivery,3.00,23.83,2024-08-24,2024-11-15,in_store,true
+PRO0897,SLICE0897,Free Delivery Weekend 897,free_delivery,17.55,39.00,2025-06-09,2025-06-23,phone,true
+PRO0898,SLICE0898,Member Double Points 898,fixed,14.39,35.97,2025-06-24,2025-08-20,in_store,false
+PRO0899,SLICE0899,Lunch Special 899,fixed,7.29,12.07,2024-11-29,2024-12-20,in_store,false
+PRO0900,SLICE0900,Two for Tuesday 900,fixed,14.51,12.14,2024-02-04,2024-02-14,all,true
+PRO0901,SLICE0901,Lunch Special 901,fixed,12.01,32.24,2024-05-22,2024-08-13,all,true
+PRO0902,SLICE0902,Lunch Special 902,free_delivery,6.87,14.46,2025-05-13,2025-06-14,phone,true
+PRO0903,SLICE0903,Student Night 903,percent,4.67,16.11,2024-02-23,2024-05-09,all,true
+PRO0904,SLICE0904,Lunch Special 904,bogo,1.20,21.68,2024-05-02,2024-05-26,phone,false
+PRO0905,SLICE0905,Family Feast 905,free_delivery,2.05,22.03,2025-05-09,2025-07-30,all,true
+PRO0906,SLICE0906,Lunch Special 906,bogo,11.88,23.03,2026-01-26,2026-02-05,all,true
+PRO0907,SLICE0907,Member Double Points 907,percent,21.75,15.25,2024-06-22,2024-08-19,delivery_partner,true
+PRO0908,SLICE0908,Two for Tuesday 908,bogo,22.54,11.41,2025-08-18,2025-11-04,phone,false
+PRO0909,SLICE0909,Lunch Special 909,free_delivery,18.32,39.90,2025-10-13,2025-11-05,mobile_app,true
+PRO0910,SLICE0910,Member Double Points 910,free_delivery,4.87,32.04,2025-11-27,2026-01-15,phone,true
+PRO0911,SLICE0911,Free Delivery Weekend 911,free_delivery,7.95,16.77,2024-07-12,2024-08-22,in_store,false
+PRO0912,SLICE0912,App Exclusive 912,bogo,19.08,11.08,2024-07-09,2024-09-22,web,true
+PRO0913,SLICE0913,Lunch Special 913,percent,10.87,38.10,2024-07-22,2024-10-16,phone,false
+PRO0914,SLICE0914,Member Double Points 914,fixed,19.26,25.95,2024-09-26,2024-10-25,mobile_app,true
+PRO0915,SLICE0915,Free Delivery Weekend 915,bogo,24.31,35.22,2025-02-03,2025-03-20,web,true
+PRO0916,SLICE0916,Free Delivery Weekend 916,bogo,7.54,16.52,2024-09-26,2024-10-20,phone,true
+PRO0917,SLICE0917,App Exclusive 917,fixed,21.06,15.47,2024-03-14,2024-03-25,all,true
+PRO0918,SLICE0918,Member Double Points 918,percent,15.34,23.84,2025-11-20,2025-12-21,all,true
+PRO0919,SLICE0919,Family Feast 919,bogo,4.48,10.45,2025-09-21,2025-11-12,phone,false
+PRO0920,SLICE0920,Two for Tuesday 920,bogo,4.99,30.48,2025-11-02,2025-12-04,delivery_partner,true
+PRO0921,SLICE0921,Member Double Points 921,percent,16.48,33.04,2025-06-06,2025-06-27,phone,false
+PRO0922,SLICE0922,Member Double Points 922,free_delivery,17.84,16.85,2025-12-10,2026-03-05,web,false
+PRO0923,SLICE0923,Two for Tuesday 923,fixed,20.60,10.26,2024-02-12,2024-03-10,all,true
+PRO0924,SLICE0924,App Exclusive 924,free_delivery,15.04,13.08,2026-02-27,2026-05-06,all,true
+PRO0925,SLICE0925,Student Night 925,bogo,12.74,31.35,2024-01-02,2024-03-10,phone,true
+PRO0926,SLICE0926,Free Delivery Weekend 926,fixed,13.47,15.50,2026-02-28,2026-03-14,in_store,false
+PRO0927,SLICE0927,Lunch Special 927,percent,21.20,13.28,2024-02-08,2024-04-26,in_store,false
+PRO0928,SLICE0928,Student Night 928,fixed,3.70,38.76,2024-06-26,2024-07-03,phone,true
+PRO0929,SLICE0929,Student Night 929,free_delivery,13.28,20.03,2025-07-10,2025-08-23,in_store,true
+PRO0930,SLICE0930,Student Night 930,fixed,11.21,18.56,2025-08-17,2025-08-31,in_store,true
+PRO0931,SLICE0931,Lunch Special 931,bogo,21.77,27.84,2025-02-07,2025-04-01,web,true
+PRO0932,SLICE0932,App Exclusive 932,percent,14.69,38.53,2025-06-06,2025-06-24,web,true
+PRO0933,SLICE0933,Lunch Special 933,percent,9.63,29.86,2024-06-11,2024-07-05,all,true
+PRO0934,SLICE0934,Two for Tuesday 934,bogo,23.45,37.45,2025-04-25,2025-06-13,web,false
+PRO0935,SLICE0935,App Exclusive 935,fixed,5.36,35.32,2025-09-16,2025-10-30,mobile_app,true
+PRO0936,SLICE0936,App Exclusive 936,fixed,15.38,25.32,2024-11-15,2024-12-11,phone,true
+PRO0937,SLICE0937,Two for Tuesday 937,percent,3.56,18.76,2025-09-21,2025-10-10,in_store,true
+PRO0938,SLICE0938,Free Delivery Weekend 938,percent,15.48,31.82,2025-03-20,2025-05-21,mobile_app,true
+PRO0939,SLICE0939,Free Delivery Weekend 939,fixed,1.26,18.19,2024-09-17,2024-12-11,phone,true
+PRO0940,SLICE0940,Member Double Points 940,percent,9.90,35.22,2024-02-02,2024-03-06,phone,true
+PRO0941,SLICE0941,Family Feast 941,percent,9.54,38.72,2025-05-26,2025-06-17,phone,true
+PRO0942,SLICE0942,Lunch Special 942,percent,9.70,29.74,2024-09-13,2024-11-15,all,true
+PRO0943,SLICE0943,Free Delivery Weekend 943,percent,8.82,23.93,2025-08-03,2025-11-01,all,true
+PRO0944,SLICE0944,Two for Tuesday 944,bogo,16.81,20.04,2025-08-05,2025-10-14,phone,true
+PRO0945,SLICE0945,App Exclusive 945,bogo,16.56,12.98,2025-05-09,2025-05-29,mobile_app,false
+PRO0946,SLICE0946,Lunch Special 946,free_delivery,3.76,31.14,2025-07-22,2025-09-17,phone,false
+PRO0947,SLICE0947,Family Feast 947,percent,14.81,23.89,2025-10-10,2026-01-05,phone,true
+PRO0948,SLICE0948,Family Feast 948,fixed,4.65,20.81,2025-08-10,2025-09-25,web,true
+PRO0949,SLICE0949,Two for Tuesday 949,bogo,18.48,18.04,2026-01-23,2026-04-20,mobile_app,false
+PRO0950,SLICE0950,Two for Tuesday 950,fixed,11.65,10.30,2024-05-23,2024-07-19,all,true
+PRO0951,SLICE0951,App Exclusive 951,free_delivery,3.27,11.29,2024-05-22,2024-07-06,web,true
+PRO0952,SLICE0952,Two for Tuesday 952,free_delivery,24.26,28.04,2025-03-04,2025-05-24,delivery_partner,true
+PRO0953,SLICE0953,Student Night 953,fixed,13.49,24.95,2025-12-01,2026-01-14,phone,false
+PRO0954,SLICE0954,Member Double Points 954,bogo,20.68,33.21,2026-01-01,2026-02-17,delivery_partner,true
+PRO0955,SLICE0955,Member Double Points 955,free_delivery,17.60,20.69,2024-11-10,2025-01-01,all,true
+PRO0956,SLICE0956,Two for Tuesday 956,fixed,17.89,33.54,2025-07-24,2025-08-28,delivery_partner,true
+PRO0957,SLICE0957,Two for Tuesday 957,fixed,2.77,20.68,2024-08-08,2024-08-31,in_store,true
+PRO0958,SLICE0958,Family Feast 958,free_delivery,24.45,12.28,2025-06-02,2025-07-13,phone,true
+PRO0959,SLICE0959,Member Double Points 959,fixed,23.31,28.91,2024-03-06,2024-03-29,in_store,true
+PRO0960,SLICE0960,Student Night 960,fixed,3.51,20.90,2025-04-03,2025-05-03,mobile_app,true
+PRO0961,SLICE0961,Lunch Special 961,bogo,23.09,29.74,2024-11-04,2024-12-31,in_store,true
+PRO0962,SLICE0962,Free Delivery Weekend 962,bogo,24.31,36.93,2025-08-06,2025-08-26,in_store,true
+PRO0963,SLICE0963,Two for Tuesday 963,percent,12.63,30.01,2025-07-05,2025-08-01,web,true
+PRO0964,SLICE0964,App Exclusive 964,percent,16.48,35.46,2025-07-12,2025-08-30,in_store,true
+PRO0965,SLICE0965,Family Feast 965,percent,3.22,35.83,2025-01-04,2025-03-20,in_store,true
+PRO0966,SLICE0966,Two for Tuesday 966,free_delivery,17.48,20.40,2024-07-18,2024-09-24,in_store,false
+PRO0967,SLICE0967,App Exclusive 967,free_delivery,24.11,11.82,2024-11-22,2025-02-17,mobile_app,false
+PRO0968,SLICE0968,Two for Tuesday 968,percent,22.82,27.58,2026-02-10,2026-05-09,phone,true
+PRO0969,SLICE0969,App Exclusive 969,percent,2.07,15.93,2025-12-10,2026-02-04,mobile_app,true
+PRO0970,SLICE0970,App Exclusive 970,fixed,4.65,31.09,2024-01-10,2024-03-17,delivery_partner,true
+PRO0971,SLICE0971,Student Night 971,bogo,15.02,31.36,2024-03-07,2024-04-26,mobile_app,true
+PRO0972,SLICE0972,Two for Tuesday 972,free_delivery,14.73,35.97,2026-01-27,2026-03-16,all,true
+PRO0973,SLICE0973,Member Double Points 973,percent,8.93,32.59,2025-08-29,2025-10-09,phone,true
+PRO0974,SLICE0974,Free Delivery Weekend 974,percent,15.59,13.05,2024-11-17,2025-02-13,in_store,true
+PRO0975,SLICE0975,Free Delivery Weekend 975,free_delivery,7.15,33.21,2025-10-02,2025-10-17,mobile_app,false
+PRO0976,SLICE0976,Two for Tuesday 976,fixed,1.15,19.24,2024-01-16,2024-03-07,all,false
+PRO0977,SLICE0977,Member Double Points 977,fixed,5.87,10.10,2024-02-14,2024-05-10,mobile_app,true
+PRO0978,SLICE0978,Member Double Points 978,fixed,2.60,18.68,2026-02-05,2026-04-04,phone,true
+PRO0979,SLICE0979,App Exclusive 979,free_delivery,14.00,37.34,2025-02-25,2025-04-06,web,false
+PRO0980,SLICE0980,Lunch Special 980,percent,21.93,33.76,2026-03-04,2026-05-11,in_store,true
+PRO0981,SLICE0981,Free Delivery Weekend 981,percent,12.99,39.23,2024-05-27,2024-07-12,phone,true
+PRO0982,SLICE0982,Free Delivery Weekend 982,percent,5.72,10.43,2025-02-26,2025-04-01,all,true
+PRO0983,SLICE0983,Member Double Points 983,percent,9.03,14.09,2024-06-12,2024-09-04,web,true
+PRO0984,SLICE0984,Lunch Special 984,percent,3.64,13.45,2025-06-03,2025-07-22,delivery_partner,true
+PRO0985,SLICE0985,Two for Tuesday 985,fixed,17.42,30.24,2024-01-14,2024-02-09,all,true
+PRO0986,SLICE0986,Two for Tuesday 986,fixed,8.66,24.70,2025-02-10,2025-03-11,all,false
+PRO0987,SLICE0987,App Exclusive 987,percent,4.94,31.88,2024-05-05,2024-05-18,delivery_partner,true
+PRO0988,SLICE0988,Student Night 988,bogo,22.23,10.05,2024-11-27,2024-12-28,web,false
+PRO0989,SLICE0989,Free Delivery Weekend 989,free_delivery,14.75,18.39,2025-01-20,2025-02-03,phone,false
+PRO0990,SLICE0990,Family Feast 990,free_delivery,17.49,15.97,2025-02-23,2025-03-05,all,true
+PRO0991,SLICE0991,Lunch Special 991,free_delivery,8.68,19.94,2024-02-09,2024-04-13,mobile_app,true
+PRO0992,SLICE0992,Family Feast 992,fixed,14.35,16.93,2024-08-27,2024-10-08,web,false
+PRO0993,SLICE0993,Free Delivery Weekend 993,bogo,12.39,19.24,2024-01-22,2024-03-31,phone,true
+PRO0994,SLICE0994,Family Feast 994,percent,18.66,15.79,2024-01-12,2024-03-04,web,true
+PRO0995,SLICE0995,Member Double Points 995,percent,19.17,39.90,2024-10-24,2025-01-21,all,false
+PRO0996,SLICE0996,Member Double Points 996,bogo,4.53,37.60,2024-06-02,2024-07-31,all,false
+PRO0997,SLICE0997,App Exclusive 997,fixed,22.42,32.98,2025-09-03,2025-11-30,mobile_app,true
+PRO0998,SLICE0998,Lunch Special 998,bogo,3.15,15.78,2025-03-04,2025-05-11,phone,true
+PRO0999,SLICE0999,Member Double Points 999,percent,9.53,20.72,2025-11-15,2025-11-23,delivery_partner,false
+PRO1000,SLICE1000,Lunch Special 1000,percent,1.36,35.69,2025-06-13,2025-07-29,mobile_app,true

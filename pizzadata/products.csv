@@ -1,0 +1,1001 @@
+product_id,product_name,category,size,crust,is_vegetarian,unit_cost,unit_price,calories,is_active,supplier_id
+PRD0001,"Four Cheese (Medium, Pan)",pizza,Medium,Pan,false,4.40,14.64,706,true,SUP0337
+PRD0002,"Ranch Special (Family, Hand-Tossed)",pizza,Family,Hand-Tossed,false,7.18,16.02,327,true,SUP0552
+PRD0003,"Veggie Supreme (Large, Stuffed)",pizza,Large,Stuffed,true,5.79,17.19,1381,true,SUP0911
+PRD0004,"Spicy Diablo (Personal, Cauliflower)",pizza,Personal,Cauliflower,false,3.17,10.26,1144,true,SUP0404
+PRD0005,"Ranch Special (Medium, Cauliflower)",pizza,Medium,Cauliflower,false,3.12,7.78,1138,true,SUP0486
+PRD0006,"Veggie Supreme (Family, Thin)",pizza,Family,Thin,true,5.80,13.92,128,true,SUP0281
+PRD0007,"Spicy Diablo (Family, Cauliflower)",pizza,Family,Cauliflower,false,9.21,30.26,159,true,SUP0144
+PRD0008,"White Garlic (Large, Stuffed)",pizza,Large,Stuffed,false,3.96,9.33,370,true,SUP0408
+PRD0009,"Four Cheese (Large, Cauliflower)",pizza,Large,Cauliflower,false,5.28,13.66,689,true,SUP0767
+PRD0010,"Meat Lovers (Family, Pan)",pizza,Family,Pan,false,4.91,13.19,511,true,SUP0472
+PRD0011,"Veggie Supreme (Large, Thin)",pizza,Large,Thin,true,4.01,12.76,657,true,SUP0681
+PRD0012,"BBQ Chicken (Personal, Hand-Tossed)",pizza,Personal,Hand-Tossed,false,6.99,21.28,904,true,SUP0581
+PRD0013,"Sausage & Peppers (Personal, Stuffed)",pizza,Personal,Stuffed,false,5.37,18.19,172,true,SUP0911
+PRD0014,"Spicy Diablo (Medium, Hand-Tossed)",pizza,Medium,Hand-Tossed,false,4.80,14.02,187,true,SUP0399
+PRD0015,"Hawaiian (Medium, Pan)",pizza,Medium,Pan,false,8.00,23.07,352,true,SUP0736
+PRD0016,"Buffalo Chicken (Large, Stuffed)",pizza,Large,Stuffed,false,2.74,8.50,518,true,SUP0279
+PRD0017,"Mushroom Truffle (Medium, Cauliflower)",pizza,Medium,Cauliflower,false,8.92,24.12,1107,true,SUP0211
+PRD0018,"Mushroom Truffle (Personal, Pan)",pizza,Personal,Pan,false,2.82,8.11,663,true,SUP0064
+PRD0019,"BBQ Chicken (Family, Cauliflower)",pizza,Family,Cauliflower,false,6.70,15.05,634,true,SUP0094
+PRD0020,"Hawaiian (Family, Thin)",pizza,Family,Thin,false,9.33,26.99,1328,true,SUP0086
+PRD0021,"Margherita (Personal, Pan)",pizza,Personal,Pan,true,7.09,23.46,199,true,SUP0576
+PRD0022,"Pesto Chicken (Family, Thin)",pizza,Family,Thin,false,5.33,15.21,187,true,SUP0075
+PRD0023,"Pepperoni (Medium, Pan)",pizza,Medium,Pan,false,3.51,11.75,530,true,SUP0917
+PRD0024,"Sicilian (Large, Stuffed)",pizza,Large,Stuffed,false,4.33,10.33,242,true,SUP0203
+PRD0025,"BBQ Chicken (Family, Thin)",pizza,Family,Thin,false,7.37,21.21,316,true,SUP0962
+PRD0026,"Hawaiian (Medium, Stuffed)",pizza,Medium,Stuffed,false,5.18,11.88,1104,true,SUP0719
+PRD0027,"BBQ Chicken (Family, Thin)",pizza,Family,Thin,false,3.92,9.27,320,true,SUP0317
+PRD0028,"Margherita (Medium, Pan)",pizza,Medium,Pan,true,8.84,26.56,128,true,SUP0956
+PRD0029,"Ranch Special (Personal, Pan)",pizza,Personal,Pan,false,3.14,7.42,1212,true,SUP0648
+PRD0030,"Spinach Feta (Large, Hand-Tossed)",pizza,Large,Hand-Tossed,false,8.86,29.42,273,true,SUP0623
+PRD0031,"Four Cheese (Family, Cauliflower)",pizza,Family,Cauliflower,false,8.44,22.31,899,true,SUP0439
+PRD0032,"Four Cheese (Personal, Hand-Tossed)",pizza,Personal,Hand-Tossed,false,6.38,21.41,196,true,SUP0512
+PRD0033,"Spinach Feta (Personal, Cauliflower)",pizza,Personal,Cauliflower,false,3.35,9.71,706,true,SUP0657
+PRD0034,"Veggie Supreme (Personal, Pan)",pizza,Personal,Pan,true,4.49,10.13,606,true,SUP0344
+PRD0035,"Four Cheese (Large, Thin)",pizza,Large,Thin,false,5.38,16.11,499,true,SUP0417
+PRD0036,"Spicy Diablo (Large, Pan)",pizza,Large,Pan,false,4.86,16.51,479,true,SUP0509
+PRD0037,"Spinach Feta (Personal, Thin)",pizza,Personal,Thin,false,3.47,9.15,1116,true,SUP0067
+PRD0038,"Sausage & Peppers (Large, Stuffed)",pizza,Large,Stuffed,false,6.18,20.34,992,true,SUP0290
+PRD0039,"Ranch Special (Medium, Thin)",pizza,Medium,Thin,false,2.71,6.32,817,true,SUP0357
+PRD0040,"White Garlic (Medium, Pan)",pizza,Medium,Pan,false,5.05,14.17,418,true,SUP0189
+PRD0041,"Sausage & Peppers (Personal, Cauliflower)",pizza,Personal,Cauliflower,false,3.59,9.65,860,true,SUP0027
+PRD0042,"Mushroom Truffle (Family, Thin)",pizza,Family,Thin,false,5.83,17.48,289,true,SUP0670
+PRD0043,"Mushroom Truffle (Personal, Hand-Tossed)",pizza,Personal,Hand-Tossed,false,2.54,8.07,1162,true,SUP0985
+PRD0044,"Pesto Chicken (Medium, Pan)",pizza,Medium,Pan,false,2.78,8.46,1031,true,SUP0106
+PRD0045,"Margherita (Personal, Cauliflower)",pizza,Personal,Cauliflower,true,5.36,15.66,676,true,SUP0824
+PRD0046,"Hawaiian (Family, Hand-Tossed)",pizza,Family,Hand-Tossed,false,6.25,13.82,954,true,SUP0514
+PRD0047,"Hawaiian (Personal, Pan)",pizza,Personal,Pan,false,8.59,25.70,406,true,SUP0566
+PRD0048,"Veggie Supreme (Medium, Hand-Tossed)",pizza,Medium,Hand-Tossed,true,6.39,16.24,1217,true,SUP0335
+PRD0049,"Veggie Supreme (Medium, Pan)",pizza,Medium,Pan,true,9.50,27.64,728,false,SUP0280
+PRD0050,"BBQ Chicken (Personal, Stuffed)",pizza,Personal,Stuffed,false,4.38,12.81,357,true,SUP0912
+PRD0051,"Hawaiian (Personal, Hand-Tossed)",pizza,Personal,Hand-Tossed,false,4.93,11.02,763,true,SUP0991
+PRD0052,"Sausage & Peppers (Medium, Hand-Tossed)",pizza,Medium,Hand-Tossed,false,7.86,22.31,388,true,SUP0008
+PRD0053,"Pesto Chicken (Large, Thin)",pizza,Large,Thin,false,6.98,23.19,856,true,SUP0570
+PRD0054,"Pepperoni (Family, Stuffed)",pizza,Family,Stuffed,false,4.18,9.84,1226,false,SUP0075
+PRD0055,"Margherita (Large, Thin)",pizza,Large,Thin,true,6.85,22.57,794,true,SUP0080
+PRD0056,"Sicilian (Medium, Stuffed)",pizza,Medium,Stuffed,false,7.83,18.12,657,true,SUP0570
+PRD0057,"Pesto Chicken (Family, Pan)",pizza,Family,Pan,false,7.63,22.54,1247,false,SUP0088
+PRD0058,"Ranch Special (Medium, Thin)",pizza,Medium,Thin,false,5.20,16.15,1139,true,SUP0573
+PRD0059,"Margherita (Medium, Cauliflower)",pizza,Medium,Cauliflower,true,6.41,20.04,418,true,SUP0844
+PRD0060,"Sausage & Peppers (Large, Hand-Tossed)",pizza,Large,Hand-Tossed,false,8.25,22.15,1299,false,SUP0834
+PRD0061,"Sicilian (Large, Pan)",pizza,Large,Pan,false,8.90,27.97,1333,true,SUP0715
+PRD0062,"Margherita (Large, Hand-Tossed)",pizza,Large,Hand-Tossed,true,6.53,20.14,978,true,SUP0441
+PRD0063,"Pepperoni (Large, Pan)",pizza,Large,Pan,false,8.76,24.73,1232,true,SUP0387
+PRD0064,"BBQ Chicken (Personal, Cauliflower)",pizza,Personal,Cauliflower,false,4.82,13.27,598,true,SUP0280
+PRD0065,"Neapolitan (Family, Thin)",pizza,Family,Thin,false,3.08,7.96,1029,true,SUP0949
+PRD0066,"Buffalo Chicken (Family, Stuffed)",pizza,Family,Stuffed,false,2.98,8.67,1250,false,SUP0367
+PRD0067,"Buffalo Chicken (Personal, Stuffed)",pizza,Personal,Stuffed,false,4.46,12.38,936,true,SUP0165
+PRD0068,"White Garlic (Large, Pan)",pizza,Large,Pan,false,4.61,14.42,1141,true,SUP0185
+PRD0069,"Sicilian (Personal, Stuffed)",pizza,Personal,Stuffed,false,4.47,10.83,408,true,SUP0179
+PRD0070,"Four Cheese (Large, Stuffed)",pizza,Large,Stuffed,false,2.53,5.67,283,true,SUP0130
+PRD0071,"Spinach Feta (Personal, Pan)",pizza,Personal,Pan,false,4.89,16.30,935,true,SUP0336
+PRD0072,"Spicy Diablo (Large, Pan)",pizza,Large,Pan,false,5.71,18.36,1317,true,SUP0394
+PRD0073,"Meat Lovers (Family, Stuffed)",pizza,Family,Stuffed,false,8.16,18.10,688,true,SUP0464
+PRD0074,"Pepperoni (Medium, Hand-Tossed)",pizza,Medium,Hand-Tossed,false,4.05,9.62,812,true,SUP0299
+PRD0075,"Neapolitan (Medium, Hand-Tossed)",pizza,Medium,Hand-Tossed,false,8.44,21.83,1221,true,SUP0143
+PRD0076,"Ranch Special (Family, Hand-Tossed)",pizza,Family,Hand-Tossed,false,2.82,6.28,406,true,SUP0402
+PRD0077,"Meat Lovers (Personal, Cauliflower)",pizza,Personal,Cauliflower,false,3.61,10.03,441,true,SUP0850
+PRD0078,"Veggie Supreme (Personal, Pan)",pizza,Personal,Pan,true,3.11,8.57,482,true,SUP0368
+PRD0079,"Buffalo Chicken (Medium, Cauliflower)",pizza,Medium,Cauliflower,false,5.18,12.69,130,true,SUP0130
+PRD0080,"Neapolitan (Personal, Hand-Tossed)",pizza,Personal,Hand-Tossed,false,3.35,8.29,441,true,SUP0310
+PRD0081,"Spicy Diablo (Large, Thin)",pizza,Large,Thin,false,3.79,8.55,315,true,SUP0050
+PRD0082,"Hawaiian (Medium, Hand-Tossed)",pizza,Medium,Hand-Tossed,false,3.98,11.72,1122,true,SUP0087
+PRD0083,"Pepperoni (Personal, Thin)",pizza,Personal,Thin,false,7.02,17.00,1311,true,SUP0441
+PRD0084,"Hawaiian (Family, Hand-Tossed)",pizza,Family,Hand-Tossed,false,3.79,9.89,695,true,SUP0066
+PRD0085,"Ranch Special (Large, Pan)",pizza,Large,Pan,false,9.29,23.88,1040,true,SUP0637
+PRD0086,"Veggie Supreme (Medium, Thin)",pizza,Medium,Thin,true,4.50,14.11,564,true,SUP0240
+PRD0087,"BBQ Chicken (Family, Cauliflower)",pizza,Family,Cauliflower,false,5.76,18.07,274,true,SUP0386
+PRD0088,"Spinach Feta (Family, Pan)",pizza,Family,Pan,false,8.37,22.86,362,true,SUP0968
+PRD0089,"Neapolitan (Medium, Stuffed)",pizza,Medium,Stuffed,false,7.40,17.20,284,true,SUP0998
+PRD0090,"Supreme (Family, Cauliflower)",pizza,Family,Cauliflower,false,7.48,19.51,825,true,SUP0483
+PRD0091,"Pesto Chicken (Personal, Hand-Tossed)",pizza,Personal,Hand-Tossed,false,2.69,7.76,1254,true,SUP0718
+PRD0092,"Sicilian (Family, Stuffed)",pizza,Family,Stuffed,false,2.88,8.64,1399,false,SUP0136
+PRD0093,"Buffalo Chicken (Personal, Thin)",pizza,Personal,Thin,false,5.24,15.45,1024,false,SUP0645
+PRD0094,"Supreme (Family, Hand-Tossed)",pizza,Family,Hand-Tossed,false,4.85,11.45,526,true,SUP0127
+PRD0095,"Spicy Diablo (Large, Stuffed)",pizza,Large,Stuffed,false,3.59,11.63,895,true,SUP0530
+PRD0096,"Spinach Feta (Large, Cauliflower)",pizza,Large,Cauliflower,false,4.04,11.32,290,true,SUP0156
+PRD0097,"Spinach Feta (Medium, Thin)",pizza,Medium,Thin,false,2.78,9.25,621,true,SUP0345
+PRD0098,"Buffalo Chicken (Medium, Hand-Tossed)",pizza,Medium,Hand-Tossed,false,7.42,16.98,413,true,SUP0353
+PRD0099,"Ranch Special (Family, Cauliflower)",pizza,Family,Cauliflower,false,6.79,15.97,1100,true,SUP0549
+PRD0100,"Mushroom Truffle (Personal, Cauliflower)",pizza,Personal,Cauliflower,false,7.11,17.37,1137,true,SUP0584
+PRD0101,"BBQ Chicken (Large, Hand-Tossed)",pizza,Large,Hand-Tossed,false,8.94,21.15,313,true,SUP0282
+PRD0102,"Margherita (Family, Pan)",pizza,Family,Pan,true,3.65,9.89,719,true,SUP0456
+PRD0103,"Buffalo Chicken (Large, Thin)",pizza,Large,Thin,false,8.14,22.67,692,true,SUP0354
+PRD0104,"Buffalo Chicken (Medium, Cauliflower)",pizza,Medium,Cauliflower,false,9.15,24.15,923,true,SUP0770
+PRD0105,"White Garlic (Family, Cauliflower)",pizza,Family,Cauliflower,false,4.32,11.80,721,true,SUP0164
+PRD0106,"Meat Lovers (Large, Stuffed)",pizza,Large,Stuffed,false,4.52,11.93,366,false,SUP0417
+PRD0107,"Veggie Supreme (Large, Thin)",pizza,Large,Thin,true,9.21,26.66,1282,true,SUP0393
+PRD0108,"Spicy Diablo (Large, Thin)",pizza,Large,Thin,false,3.50,10.53,983,true,SUP0769
+PRD0109,"Sausage & Peppers (Family, Cauliflower)",pizza,Family,Cauliflower,false,3.76,12.52,774,true,SUP0629
+PRD0110,"Sausage & Peppers (Medium, Pan)",pizza,Medium,Pan,false,7.29,18.40,403,false,SUP0590
+PRD0111,"Hawaiian (Large, Cauliflower)",pizza,Large,Cauliflower,false,8.58,25.64,128,true,SUP0807
+PRD0112,"Four Cheese (Large, Cauliflower)",pizza,Large,Cauliflower,false,5.73,19.37,132,true,SUP0354
+PRD0113,"Supreme (Family, Hand-Tossed)",pizza,Family,Hand-Tossed,false,5.12,16.56,716,true,SUP0054
+PRD0114,"Sausage & Peppers (Personal, Hand-Tossed)",pizza,Personal,Hand-Tossed,false,4.11,12.06,394,true,SUP0464
+PRD0115,"Spicy Diablo (Medium, Hand-Tossed)",pizza,Medium,Hand-Tossed,false,3.85,11.45,439,true,SUP0949
+PRD0116,"Mushroom Truffle (Large, Thin)",pizza,Large,Thin,false,7.52,20.12,939,true,SUP0456
+PRD0117,"Margherita (Family, Hand-Tossed)",pizza,Family,Hand-Tossed,true,5.35,13.18,407,true,SUP0803
+PRD0118,"Ranch Special (Family, Hand-Tossed)",pizza,Family,Hand-Tossed,false,2.53,5.77,403,true,SUP0846
+PRD0119,"Veggie Supreme (Personal, Thin)",pizza,Personal,Thin,true,8.74,26.78,1180,true,SUP0941
+PRD0120,"Mushroom Truffle (Medium, Cauliflower)",pizza,Medium,Cauliflower,false,8.22,25.71,1232,true,SUP0771
+PRD0121,"Four Cheese (Family, Cauliflower)",pizza,Family,Cauliflower,false,7.23,19.21,1163,true,SUP0708
+PRD0122,"Spicy Diablo (Family, Cauliflower)",pizza,Family,Cauliflower,false,7.57,22.44,543,true,SUP0873
+PRD0123,"Sicilian (Large, Stuffed)",pizza,Large,Stuffed,false,8.92,29.16,1347,true,SUP0576
+PRD0124,"Neapolitan (Family, Pan)",pizza,Family,Pan,false,6.48,20.73,352,true,SUP0150
+PRD0125,"Mushroom Truffle (Large, Thin)",pizza,Large,Thin,false,8.86,29.37,886,false,SUP0669
+PRD0126,"Margherita (Personal, Thin)",pizza,Personal,Thin,true,8.79,22.42,344,true,SUP0806
+PRD0127,"Ranch Special (Personal, Stuffed)",pizza,Personal,Stuffed,false,8.64,21.27,1192,true,SUP0591
+PRD0128,"Pepperoni (Large, Pan)",pizza,Large,Pan,false,6.97,15.84,245,true,SUP0066
+PRD0129,"Neapolitan (Family, Cauliflower)",pizza,Family,Cauliflower,false,8.76,22.83,557,true,SUP0196
+PRD0130,"Ranch Special (Personal, Pan)",pizza,Personal,Pan,false,6.11,15.02,755,true,SUP0361
+PRD0131,"Ranch Special (Personal, Hand-Tossed)",pizza,Personal,Hand-Tossed,false,2.79,8.29,331,true,SUP0529
+PRD0132,"Sicilian (Family, Pan)",pizza,Family,Pan,false,5.63,15.68,1043,true,SUP0037
+PRD0133,"BBQ Chicken (Personal, Hand-Tossed)",pizza,Personal,Hand-Tossed,false,8.72,27.45,330,true,SUP0621
+PRD0134,"Ranch Special (Medium, Cauliflower)",pizza,Medium,Cauliflower,false,7.41,20.18,338,true,SUP0951
+PRD0135,"White Garlic (Family, Stuffed)",pizza,Family,Stuffed,false,9.34,21.82,1284,true,SUP0847
+PRD0136,"White Garlic (Family, Pan)",pizza,Family,Pan,false,6.55,20.02,533,true,SUP0164
+PRD0137,"Pesto Chicken (Personal, Cauliflower)",pizza,Personal,Cauliflower,false,8.59,26.31,177,true,SUP0550
+PRD0138,"Four Cheese (Large, Hand-Tossed)",pizza,Large,Hand-Tossed,false,4.29,12.75,257,true,SUP0433
+PRD0139,"Sicilian (Family, Hand-Tossed)",pizza,Family,Hand-Tossed,false,6.32,15.77,610,true,SUP0593
+PRD0140,"Ranch Special (Medium, Pan)",pizza,Medium,Pan,false,3.61,9.69,410,true,SUP0928
+PRD0141,"Supreme (Large, Stuffed)",pizza,Large,Stuffed,false,2.80,8.46,1224,true,SUP0952
+PRD0142,"Pesto Chicken (Family, Stuffed)",pizza,Family,Stuffed,false,5.89,19.11,128,true,SUP0796
+PRD0143,"Four Cheese (Personal, Hand-Tossed)",pizza,Personal,Hand-Tossed,false,8.02,20.93,442,true,SUP0474
+PRD0144,"Meat Lovers (Family, Cauliflower)",pizza,Family,Cauliflower,false,5.51,15.83,574,true,SUP0072
+PRD0145,"Neapolitan (Personal, Hand-Tossed)",pizza,Personal,Hand-Tossed,false,4.74,15.40,879,true,SUP0437
+PRD0146,"Hawaiian (Medium, Thin)",pizza,Medium,Thin,false,8.13,22.43,510,true,SUP0008
+PRD0147,"Spicy Diablo (Family, Hand-Tossed)",pizza,Family,Hand-Tossed,false,8.70,27.94,1055,true,SUP0230
+PRD0148,"Spicy Diablo (Medium, Cauliflower)",pizza,Medium,Cauliflower,false,8.05,22.25,357,true,SUP0779
+PRD0149,"Ranch Special (Large, Hand-Tossed)",pizza,Large,Hand-Tossed,false,4.73,14.35,1104,true,SUP0944
+PRD0150,"White Garlic (Medium, Thin)",pizza,Medium,Thin,false,7.96,18.10,1026,true,SUP0150
+PRD0151,"BBQ Chicken (Personal, Hand-Tossed)",pizza,Personal,Hand-Tossed,false,7.51,19.04,516,true,SUP0298
+PRD0152,"Supreme (Medium, Thin)",pizza,Medium,Thin,false,4.94,14.78,1035,true,SUP0097
+PRD0153,"Pesto Chicken (Personal, Stuffed)",pizza,Personal,Stuffed,false,6.58,18.22,890,true,SUP0625
+PRD0154,"Pesto Chicken (Large, Cauliflower)",pizza,Large,Cauliflower,false,5.32,14.61,726,false,SUP0625
+PRD0155,"White Garlic (Medium, Hand-Tossed)",pizza,Medium,Hand-Tossed,false,4.51,11.37,155,true,SUP0376
+PRD0156,"Veggie Supreme (Medium, Pan)",pizza,Medium,Pan,true,9.11,30.84,897,true,SUP0374
+PRD0157,"Four Cheese (Family, Stuffed)",pizza,Family,Stuffed,false,3.90,11.84,380,true,SUP0594
+PRD0158,"BBQ Chicken (Large, Hand-Tossed)",pizza,Large,Hand-Tossed,false,9.39,28.58,1059,false,SUP0710
+PRD0159,"Spinach Feta (Family, Hand-Tossed)",pizza,Family,Hand-Tossed,false,5.45,16.97,805,true,SUP0656
+PRD0160,"Hawaiian (Personal, Pan)",pizza,Personal,Pan,false,2.76,8.40,209,false,SUP0726
+PRD0161,"Veggie Supreme (Family, Thin)",pizza,Family,Thin,true,2.72,6.08,941,true,SUP0586
+PRD0162,"Four Cheese (Large, Cauliflower)",pizza,Large,Cauliflower,false,8.87,25.87,1259,true,SUP0209
+PRD0163,"Buffalo Chicken (Large, Pan)",pizza,Large,Pan,false,6.05,18.50,853,true,SUP0092
+PRD0164,"Meat Lovers (Personal, Pan)",pizza,Personal,Pan,false,6.49,17.96,306,true,SUP0394
+PRD0165,"Buffalo Chicken (Family, Cauliflower)",pizza,Family,Cauliflower,false,8.47,25.54,611,true,SUP0024
+PRD0166,"Four Cheese (Personal, Cauliflower)",pizza,Personal,Cauliflower,false,7.35,23.37,954,true,SUP0150
+PRD0167,"Ranch Special (Medium, Pan)",pizza,Medium,Pan,false,5.25,13.65,1332,true,SUP0738
+PRD0168,"Supreme (Medium, Pan)",pizza,Medium,Pan,false,2.52,7.99,409,false,SUP0401
+PRD0169,"Pepperoni (Personal, Pan)",pizza,Personal,Pan,false,7.17,19.01,155,true,SUP0604
+PRD0170,"Margherita (Large, Pan)",pizza,Large,Pan,true,3.96,9.39,354,true,SUP0668
+PRD0171,"Four Cheese (Personal, Hand-Tossed)",pizza,Personal,Hand-Tossed,false,9.42,24.34,981,true,SUP0932
+PRD0172,"Four Cheese (Family, Stuffed)",pizza,Family,Stuffed,false,7.49,23.96,531,true,SUP0092
+PRD0173,"Pepperoni (Personal, Thin)",pizza,Personal,Thin,false,6.63,18.76,1338,true,SUP0068
+PRD0174,"Spicy Diablo (Family, Stuffed)",pizza,Family,Stuffed,false,3.30,7.27,754,true,SUP0545
+PRD0175,"Pepperoni (Medium, Stuffed)",pizza,Medium,Stuffed,false,7.01,23.39,807,true,SUP0286
+PRD0176,"BBQ Chicken (Large, Stuffed)",pizza,Large,Stuffed,false,8.67,25.30,488,true,SUP0052
+PRD0177,"Buffalo Chicken (Personal, Pan)",pizza,Personal,Pan,false,7.44,22.03,974,true,SUP0249
+PRD0178,"Pesto Chicken (Family, Hand-Tossed)",pizza,Family,Hand-Tossed,false,6.24,18.53,1168,true,SUP0085
+PRD0179,"Veggie Supreme (Medium, Cauliflower)",pizza,Medium,Cauliflower,true,6.14,16.08,1291,true,SUP0470
+PRD0180,"Mushroom Truffle (Family, Thin)",pizza,Family,Thin,false,8.60,28.33,571,false,SUP0849
+PRD0181,"BBQ Chicken (Personal, Pan)",pizza,Personal,Pan,false,7.27,24.24,620,false,SUP0628
+PRD0182,"Pesto Chicken (Family, Hand-Tossed)",pizza,Family,Hand-Tossed,false,6.73,19.81,714,true,SUP0097
+PRD0183,"Spicy Diablo (Personal, Pan)",pizza,Personal,Pan,false,3.48,9.42,596,true,SUP0418
+PRD0184,"Neapolitan (Personal, Thin)",pizza,Personal,Thin,false,5.34,14.86,1100,true,SUP0101
+PRD0185,"Ranch Special (Family, Cauliflower)",pizza,Family,Cauliflower,false,5.29,17.33,1207,true,SUP0982
+PRD0186,"Four Cheese (Family, Hand-Tossed)",pizza,Family,Hand-Tossed,false,5.53,15.65,852,false,SUP0747
+PRD0187,"White Garlic (Medium, Cauliflower)",pizza,Medium,Cauliflower,false,8.97,21.58,445,true,SUP0443
+PRD0188,"Pesto Chicken (Family, Stuffed)",pizza,Family,Stuffed,false,8.32,23.43,1287,true,SUP0200
+PRD0189,"Sausage & Peppers (Family, Thin)",pizza,Family,Thin,false,9.15,30.99,785,true,SUP0564
+PRD0190,"Spicy Diablo (Personal, Cauliflower)",pizza,Personal,Cauliflower,false,4.54,13.17,771,true,SUP0109
+PRD0191,"Veggie Supreme (Large, Pan)",pizza,Large,Pan,true,6.86,19.04,431,true,SUP0998
+PRD0192,"Supreme (Family, Pan)",pizza,Family,Pan,false,2.67,8.58,1260,true,SUP0760
+PRD0193,"Spicy Diablo (Personal, Pan)",pizza,Personal,Pan,false,2.71,6.19,715,true,SUP0452
+PRD0194,"Hawaiian (Family, Pan)",pizza,Family,Pan,false,5.88,17.05,1290,false,SUP0843
+PRD0195,"Veggie Supreme (Large, Cauliflower)",pizza,Large,Cauliflower,true,4.96,11.46,1211,true,SUP0664
+PRD0196,"Hawaiian (Large, Stuffed)",pizza,Large,Stuffed,false,5.50,12.47,859,true,SUP0005
+PRD0197,"Meat Lovers (Large, Pan)",pizza,Large,Pan,false,6.66,19.76,1190,true,SUP0575
+PRD0198,"Supreme (Large, Cauliflower)",pizza,Large,Cauliflower,false,9.45,27.88,154,true,SUP0604
+PRD0199,"Four Cheese (Personal, Thin)",pizza,Personal,Thin,false,3.21,10.45,816,true,SUP0066
+PRD0200,"Ranch Special (Family, Thin)",pizza,Family,Thin,false,5.95,14.32,167,true,SUP0659
+PRD0201,"Neapolitan (Medium, Hand-Tossed)",pizza,Medium,Hand-Tossed,false,3.63,11.71,955,true,SUP0841
+PRD0202,"Hawaiian (Personal, Cauliflower)",pizza,Personal,Cauliflower,false,3.68,8.27,1140,true,SUP0021
+PRD0203,"Veggie Supreme (Large, Hand-Tossed)",pizza,Large,Hand-Tossed,true,8.83,26.33,987,true,SUP0719
+PRD0204,"Sausage & Peppers (Large, Hand-Tossed)",pizza,Large,Hand-Tossed,false,5.79,18.24,710,true,SUP0715
+PRD0205,"Sicilian (Family, Thin)",pizza,Family,Thin,false,8.15,25.38,744,true,SUP0680
+PRD0206,"Neapolitan (Family, Cauliflower)",pizza,Family,Cauliflower,false,4.29,13.15,1231,true,SUP0808
+PRD0207,"Four Cheese (Large, Pan)",pizza,Large,Pan,false,4.27,11.31,640,true,SUP0068
+PRD0208,"Mushroom Truffle (Family, Cauliflower)",pizza,Family,Cauliflower,false,8.77,29.57,977,true,SUP0895
+PRD0209,"Ranch Special (Medium, Pan)",pizza,Medium,Pan,false,6.05,19.01,1270,true,SUP0235
+PRD0210,"Neapolitan (Family, Hand-Tossed)",pizza,Family,Hand-Tossed,false,8.48,27.13,562,true,SUP0402
+PRD0211,"Spinach Feta (Large, Hand-Tossed)",pizza,Large,Hand-Tossed,false,3.58,11.57,1063,true,SUP0538
+PRD0212,"Supreme (Personal, Stuffed)",pizza,Personal,Stuffed,false,8.81,22.45,445,true,SUP0667
+PRD0213,"Pesto Chicken (Medium, Pan)",pizza,Medium,Pan,false,4.61,14.95,1001,true,SUP0708
+PRD0214,"Sicilian (Personal, Pan)",pizza,Personal,Pan,false,2.67,8.18,745,true,SUP0062
+PRD0215,"Neapolitan (Personal, Stuffed)",pizza,Personal,Stuffed,false,3.72,9.40,1069,true,SUP0843
+PRD0216,"Margherita (Personal, Cauliflower)",pizza,Personal,Cauliflower,true,3.88,9.34,1355,true,SUP0581
+PRD0217,"Pepperoni (Family, Cauliflower)",pizza,Family,Cauliflower,false,4.09,12.62,410,true,SUP0605
+PRD0218,"Sicilian (Large, Pan)",pizza,Large,Pan,false,7.17,24.11,129,true,SUP0948
+PRD0219,"Margherita (Personal, Cauliflower)",pizza,Personal,Cauliflower,true,3.46,9.94,839,true,SUP0040
+PRD0220,"Veggie Supreme (Personal, Pan)",pizza,Personal,Pan,true,9.45,21.05,498,true,SUP0097
+PRD0221,"Spinach Feta (Medium, Pan)",pizza,Medium,Pan,false,4.09,9.31,1070,true,SUP0791
+PRD0222,"Buffalo Chicken (Medium, Cauliflower)",pizza,Medium,Cauliflower,false,6.84,21.89,797,true,SUP0817
+PRD0223,"Hawaiian (Personal, Hand-Tossed)",pizza,Personal,Hand-Tossed,false,4.17,10.95,179,true,SUP0890
+PRD0224,"Meat Lovers (Family, Pan)",pizza,Family,Pan,false,3.79,10.44,661,true,SUP0445
+PRD0225,"White Garlic (Medium, Pan)",pizza,Medium,Pan,false,3.28,7.41,864,true,SUP0542
+PRD0226,"Four Cheese (Large, Pan)",pizza,Large,Pan,false,4.55,15.21,651,true,SUP0442
+PRD0227,"Pepperoni (Personal, Stuffed)",pizza,Personal,Stuffed,false,4.13,9.54,1096,true,SUP0946
+PRD0228,"Spinach Feta (Large, Pan)",pizza,Large,Pan,false,4.69,14.16,1049,true,SUP0946
+PRD0229,"Pesto Chicken (Medium, Cauliflower)",pizza,Medium,Cauliflower,false,3.81,12.23,971,true,SUP0254
+PRD0230,"Sausage & Peppers (Large, Cauliflower)",pizza,Large,Cauliflower,false,3.17,10.18,297,true,SUP0851
+PRD0231,"Supreme (Large, Cauliflower)",pizza,Large,Cauliflower,false,7.53,23.47,461,true,SUP0264
+PRD0232,"Hawaiian (Medium, Cauliflower)",pizza,Medium,Cauliflower,false,2.70,6.78,362,true,SUP0803
+PRD0233,"Sausage & Peppers (Family, Hand-Tossed)",pizza,Family,Hand-Tossed,false,2.60,7.66,241,true,SUP0240
+PRD0234,"BBQ Chicken (Family, Hand-Tossed)",pizza,Family,Hand-Tossed,false,2.64,8.49,1386,true,SUP0973
+PRD0235,"BBQ Chicken (Family, Cauliflower)",pizza,Family,Cauliflower,false,9.09,23.38,186,true,SUP0739
+PRD0236,"Spicy Diablo (Medium, Hand-Tossed)",pizza,Medium,Hand-Tossed,false,8.90,27.10,977,true,SUP0693
+PRD0237,"Hawaiian (Medium, Hand-Tossed)",pizza,Medium,Hand-Tossed,false,4.46,11.05,1207,true,SUP0544
+PRD0238,"Pepperoni (Large, Stuffed)",pizza,Large,Stuffed,false,4.91,16.31,717,true,SUP0059
+PRD0239,"Veggie Supreme (Large, Stuffed)",pizza,Large,Stuffed,true,8.21,22.01,870,false,SUP0696
+PRD0240,"Veggie Supreme (Medium, Hand-Tossed)",pizza,Medium,Hand-Tossed,true,3.25,8.14,1085,true,SUP0380
+PRD0241,"Sausage & Peppers (Family, Cauliflower)",pizza,Family,Cauliflower,false,3.79,11.12,345,true,SUP0300
+PRD0242,"Margherita (Large, Pan)",pizza,Large,Pan,true,3.86,8.88,535,true,SUP0255
+PRD0243,"Pesto Chicken (Large, Hand-Tossed)",pizza,Large,Hand-Tossed,false,8.91,20.50,198,true,SUP0877
+PRD0244,"Meat Lovers (Family, Cauliflower)",pizza,Family,Cauliflower,false,3.33,9.90,776,false,SUP0151
+PRD0245,"Hawaiian (Family, Stuffed)",pizza,Family,Stuffed,false,3.39,11.12,815,true,SUP0932
+PRD0246,"Sausage & Peppers (Medium, Hand-Tossed)",pizza,Medium,Hand-Tossed,false,6.06,19.47,409,true,SUP0086
+PRD0247,"Pepperoni (Family, Hand-Tossed)",pizza,Family,Hand-Tossed,false,8.24,19.67,320,true,SUP0253
+PRD0248,"White Garlic (Personal, Pan)",pizza,Personal,Pan,false,5.60,16.88,1011,true,SUP0117
+PRD0249,"Margherita (Large, Hand-Tossed)",pizza,Large,Hand-Tossed,true,6.45,19.48,1118,false,SUP0659
+PRD0250,"Spinach Feta (Large, Stuffed)",pizza,Large,Stuffed,false,7.68,24.65,285,true,SUP0202
+PRD0251,"Pepperoni (Large, Pan)",pizza,Large,Pan,false,4.72,10.45,483,false,SUP0795
+PRD0252,"White Garlic (Medium, Stuffed)",pizza,Medium,Stuffed,false,5.96,17.50,556,true,SUP0318
+PRD0253,"Neapolitan (Personal, Hand-Tossed)",pizza,Personal,Hand-Tossed,false,6.66,18.68,1046,true,SUP0049
+PRD0254,"Buffalo Chicken (Personal, Pan)",pizza,Personal,Pan,false,2.56,8.03,541,true,SUP0702
+PRD0255,"Sausage & Peppers (Large, Pan)",pizza,Large,Pan,false,6.88,19.56,419,true,SUP0435
+PRD0256,"Spicy Diablo (Personal, Thin)",pizza,Personal,Thin,false,3.03,7.55,1245,true,SUP0458
+PRD0257,"Meat Lovers (Personal, Thin)",pizza,Personal,Thin,false,8.60,22.15,619,true,SUP0385
+PRD0258,"Pepperoni (Personal, Stuffed)",pizza,Personal,Stuffed,false,4.67,11.12,321,true,SUP0674
+PRD0259,"Spicy Diablo (Medium, Pan)",pizza,Medium,Pan,false,8.07,19.44,1246,true,SUP0702
+PRD0260,"BBQ Chicken (Family, Stuffed)",pizza,Family,Stuffed,false,3.35,10.51,961,true,SUP0862
+PRD0261,"Margherita (Medium, Stuffed)",pizza,Medium,Stuffed,true,6.46,19.38,296,true,SUP0719
+PRD0262,"Supreme (Medium, Cauliflower)",pizza,Medium,Cauliflower,false,6.70,18.49,1165,true,SUP0314
+PRD0263,"Supreme (Family, Cauliflower)",pizza,Family,Cauliflower,false,3.79,8.53,844,true,SUP0264
+PRD0264,"Hawaiian (Personal, Cauliflower)",pizza,Personal,Cauliflower,false,8.89,24.44,1008,true,SUP0575
+PRD0265,"Neapolitan (Personal, Stuffed)",pizza,Personal,Stuffed,false,8.37,21.62,489,true,SUP0007
+PRD0266,"Ranch Special (Large, Thin)",pizza,Large,Thin,false,7.85,25.59,1316,true,SUP0638
+PRD0267,"Mushroom Truffle (Large, Pan)",pizza,Large,Pan,false,4.32,11.38,1360,true,SUP0632
+PRD0268,"White Garlic (Large, Pan)",pizza,Large,Pan,false,5.23,12.22,501,true,SUP0511
+PRD0269,"BBQ Chicken (Medium, Cauliflower)",pizza,Medium,Cauliflower,false,5.62,16.99,358,true,SUP0692
+PRD0270,"Ranch Special (Family, Hand-Tossed)",pizza,Family,Hand-Tossed,false,8.43,20.97,845,true,SUP0138
+PRD0271,"White Garlic (Family, Cauliflower)",pizza,Family,Cauliflower,false,6.31,20.99,882,true,SUP0213
+PRD0272,"Sausage & Peppers (Personal, Hand-Tossed)",pizza,Personal,Hand-Tossed,false,6.31,20.34,1098,true,SUP0843
+PRD0273,"Pepperoni (Medium, Hand-Tossed)",pizza,Medium,Hand-Tossed,false,4.02,12.01,711,true,SUP0985
+PRD0274,"BBQ Chicken (Large, Pan)",pizza,Large,Pan,false,8.01,26.14,480,true,SUP0210
+PRD0275,"Four Cheese (Personal, Pan)",pizza,Personal,Pan,false,9.16,21.37,1056,true,SUP0100
+PRD0276,"Spinach Feta (Medium, Thin)",pizza,Medium,Thin,false,5.12,13.09,584,true,SUP0407
+PRD0277,"Spicy Diablo (Family, Hand-Tossed)",pizza,Family,Hand-Tossed,false,8.71,23.51,1101,false,SUP0257
+PRD0278,"White Garlic (Large, Cauliflower)",pizza,Large,Cauliflower,false,6.27,18.05,1334,true,SUP0495
+PRD0279,"Margherita (Medium, Cauliflower)",pizza,Medium,Cauliflower,true,6.36,19.94,593,false,SUP0285
+PRD0280,"Spicy Diablo (Medium, Cauliflower)",pizza,Medium,Cauliflower,false,7.28,24.06,586,true,SUP0233
+PRD0281,"BBQ Chicken (Large, Stuffed)",pizza,Large,Stuffed,false,9.33,28.88,416,true,SUP0724
+PRD0282,"Hawaiian (Medium, Cauliflower)",pizza,Medium,Cauliflower,false,9.05,24.06,1345,true,SUP0066
+PRD0283,"Pepperoni (Large, Thin)",pizza,Large,Thin,false,5.14,17.08,417,true,SUP0084
+PRD0284,"Spicy Diablo (Family, Hand-Tossed)",pizza,Family,Hand-Tossed,false,3.40,8.12,1102,true,SUP0198
+PRD0285,"Margherita (Personal, Stuffed)",pizza,Personal,Stuffed,true,3.30,10.02,940,true,SUP0869
+PRD0286,"Supreme (Large, Cauliflower)",pizza,Large,Cauliflower,false,6.18,19.01,1186,true,SUP0853
+PRD0287,"Supreme (Large, Stuffed)",pizza,Large,Stuffed,false,6.80,20.05,236,true,SUP0953
+PRD0288,"Veggie Supreme (Personal, Cauliflower)",pizza,Personal,Cauliflower,true,3.37,8.54,958,true,SUP0428
+PRD0289,"Neapolitan (Personal, Stuffed)",pizza,Personal,Stuffed,false,6.84,20.49,139,true,SUP0505
+PRD0290,"Four Cheese (Large, Cauliflower)",pizza,Large,Cauliflower,false,8.53,19.74,955,true,SUP0097
+PRD0291,"Meat Lovers (Family, Pan)",pizza,Family,Pan,false,8.33,22.81,484,true,SUP0772
+PRD0292,"Pesto Chicken (Personal, Cauliflower)",pizza,Personal,Cauliflower,false,6.68,19.57,566,true,SUP0575
+PRD0293,"Ranch Special (Personal, Thin)",pizza,Personal,Thin,false,6.52,21.31,1196,true,SUP0728
+PRD0294,"Pepperoni (Family, Stuffed)",pizza,Family,Stuffed,false,9.35,22.43,216,true,SUP0213
+PRD0295,"Margherita (Family, Thin)",pizza,Family,Thin,true,5.48,15.31,506,true,SUP0713
+PRD0296,"Meat Lovers (Personal, Cauliflower)",pizza,Personal,Cauliflower,false,4.05,13.70,518,true,SUP0124
+PRD0297,"Buffalo Chicken (Personal, Cauliflower)",pizza,Personal,Cauliflower,false,6.80,19.25,668,true,SUP0773
+PRD0298,"Pepperoni (Large, Stuffed)",pizza,Large,Stuffed,false,8.34,20.79,454,true,SUP0768
+PRD0299,"Spinach Feta (Large, Stuffed)",pizza,Large,Stuffed,false,7.94,22.25,819,true,SUP0926
+PRD0300,"Buffalo Chicken (Personal, Hand-Tossed)",pizza,Personal,Hand-Tossed,false,5.87,14.88,566,true,SUP0158
+PRD0301,"Veggie Supreme (Large, Pan)",pizza,Large,Pan,true,3.24,10.28,262,true,SUP0718
+PRD0302,"Meat Lovers (Large, Stuffed)",pizza,Large,Stuffed,false,8.66,19.76,640,true,SUP0889
+PRD0303,"Pesto Chicken (Medium, Thin)",pizza,Medium,Thin,false,8.23,27.91,504,true,SUP0039
+PRD0304,"Hawaiian (Family, Hand-Tossed)",pizza,Family,Hand-Tossed,false,6.50,16.34,648,true,SUP0213
+PRD0305,"Spicy Diablo (Large, Pan)",pizza,Large,Pan,false,4.14,10.66,565,true,SUP0618
+PRD0306,"Buffalo Chicken (Personal, Cauliflower)",pizza,Personal,Cauliflower,false,6.68,18.89,811,true,SUP0637
+PRD0307,"Pepperoni (Family, Pan)",pizza,Family,Pan,false,5.04,15.84,1222,true,SUP0645
+PRD0308,"Mushroom Truffle (Personal, Stuffed)",pizza,Personal,Stuffed,false,9.40,27.57,480,true,SUP0472
+PRD0309,"Supreme (Medium, Pan)",pizza,Medium,Pan,false,7.06,21.96,310,true,SUP0521
+PRD0310,"BBQ Chicken (Personal, Hand-Tossed)",pizza,Personal,Hand-Tossed,false,4.01,11.82,513,true,SUP0464
+PRD0311,"Margherita (Family, Hand-Tossed)",pizza,Family,Hand-Tossed,true,3.35,10.00,721,true,SUP0724
+PRD0312,"Meat Lovers (Large, Hand-Tossed)",pizza,Large,Hand-Tossed,false,7.05,20.99,673,true,SUP0632
+PRD0313,"Ranch Special (Medium, Thin)",pizza,Medium,Thin,false,5.38,17.73,498,true,SUP0445
+PRD0314,"Sicilian (Large, Thin)",pizza,Large,Thin,false,3.16,9.01,754,true,SUP0173
+PRD0315,"Spinach Feta (Large, Hand-Tossed)",pizza,Large,Hand-Tossed,false,7.19,21.57,442,true,SUP0251
+PRD0316,"Neapolitan (Personal, Stuffed)",pizza,Personal,Stuffed,false,4.65,12.53,306,true,SUP0754
+PRD0317,"Ranch Special (Family, Thin)",pizza,Family,Thin,false,9.36,25.27,681,false,SUP0822
+PRD0318,"Spinach Feta (Personal, Pan)",pizza,Personal,Pan,false,5.96,14.50,1224,true,SUP0067
+PRD0319,"Four Cheese (Family, Thin)",pizza,Family,Thin,false,4.74,15.15,394,true,SUP0333
+PRD0320,"BBQ Chicken (Personal, Stuffed)",pizza,Personal,Stuffed,false,8.87,21.41,275,true,SUP0842
+PRD0321,"BBQ Chicken (Personal, Hand-Tossed)",pizza,Personal,Hand-Tossed,false,4.73,12.21,667,true,SUP0592
+PRD0322,"Meat Lovers (Personal, Hand-Tossed)",pizza,Personal,Hand-Tossed,false,4.19,11.15,901,true,SUP0680
+PRD0323,"Pesto Chicken (Medium, Hand-Tossed)",pizza,Medium,Hand-Tossed,false,6.49,16.10,1220,true,SUP0583
+PRD0324,"Mushroom Truffle (Personal, Thin)",pizza,Personal,Thin,false,6.88,19.60,512,true,SUP0017
+PRD0325,"Buffalo Chicken (Large, Hand-Tossed)",pizza,Large,Hand-Tossed,false,4.46,13.20,424,true,SUP0388
+PRD0326,"Pesto Chicken (Medium, Stuffed)",pizza,Medium,Stuffed,false,7.71,19.47,511,true,SUP0308
+PRD0327,"Ranch Special (Medium, Hand-Tossed)",pizza,Medium,Hand-Tossed,false,4.30,11.90,329,true,SUP0756
+PRD0328,"Ranch Special (Family, Cauliflower)",pizza,Family,Cauliflower,false,8.82,22.09,196,true,SUP0795
+PRD0329,"Neapolitan (Large, Hand-Tossed)",pizza,Large,Hand-Tossed,false,4.49,13.80,481,true,SUP0636
+PRD0330,"Veggie Supreme (Large, Pan)",pizza,Large,Pan,true,2.65,6.67,816,true,SUP0023
+PRD0331,"Neapolitan (Medium, Stuffed)",pizza,Medium,Stuffed,false,6.94,23.05,1392,true,SUP0624
+PRD0332,"Mushroom Truffle (Family, Thin)",pizza,Family,Thin,false,4.24,11.50,1359,true,SUP0433
+PRD0333,"Spinach Feta (Large, Hand-Tossed)",pizza,Large,Hand-Tossed,false,4.76,11.02,1083,true,SUP0046
+PRD0334,"Mushroom Truffle (Family, Thin)",pizza,Family,Thin,false,8.12,22.95,129,false,SUP0607
+PRD0335,"Sicilian (Large, Hand-Tossed)",pizza,Large,Hand-Tossed,false,6.35,21.22,554,true,SUP0292
+PRD0336,"White Garlic (Family, Stuffed)",pizza,Family,Stuffed,false,9.24,25.09,1326,true,SUP0594
+PRD0337,"Mushroom Truffle (Family, Thin)",pizza,Family,Thin,false,5.36,12.48,165,true,SUP0888
+PRD0338,"Pesto Chicken (Personal, Thin)",pizza,Personal,Thin,false,8.42,24.81,288,true,SUP0987
+PRD0339,"Four Cheese (Large, Cauliflower)",pizza,Large,Cauliflower,false,3.22,8.60,854,true,SUP0746
+PRD0340,"Sicilian (Personal, Pan)",pizza,Personal,Pan,false,3.04,9.33,985,true,SUP0703
+PRD0341,"Hawaiian (Family, Cauliflower)",pizza,Family,Cauliflower,false,7.14,17.93,490,true,SUP0711
+PRD0342,"Four Cheese (Large, Stuffed)",pizza,Large,Stuffed,false,8.71,29.45,1298,true,SUP0020
+PRD0343,"Mushroom Truffle (Large, Thin)",pizza,Large,Thin,false,7.02,22.03,956,true,SUP0591
+PRD0344,"Buffalo Chicken (Family, Pan)",pizza,Family,Pan,false,4.68,11.05,661,true,SUP0815
+PRD0345,"Spicy Diablo (Family, Thin)",pizza,Family,Thin,false,5.80,17.66,1323,true,SUP0340
+PRD0346,"Sausage & Peppers (Personal, Pan)",pizza,Personal,Pan,false,9.21,29.60,796,false,SUP0883
+PRD0347,"Buffalo Chicken (Large, Cauliflower)",pizza,Large,Cauliflower,false,5.49,13.23,890,true,SUP0309
+PRD0348,"Ranch Special (Personal, Cauliflower)",pizza,Personal,Cauliflower,false,7.82,19.55,708,true,SUP0777
+PRD0349,"Pesto Chicken (Personal, Cauliflower)",pizza,Personal,Cauliflower,false,3.87,10.90,572,false,SUP0861
+PRD0350,"BBQ Chicken (Personal, Thin)",pizza,Personal,Thin,false,8.45,20.03,1244,true,SUP0616
+PRD0351,"Sicilian (Personal, Stuffed)",pizza,Personal,Stuffed,false,7.04,15.50,722,true,SUP0516
+PRD0352,"Neapolitan (Medium, Cauliflower)",pizza,Medium,Cauliflower,false,5.72,16.18,1092,false,SUP0222
+PRD0353,"White Garlic (Large, Cauliflower)",pizza,Large,Cauliflower,false,3.53,11.76,985,true,SUP0312
+PRD0354,"Spinach Feta (Medium, Stuffed)",pizza,Medium,Stuffed,false,4.31,12.10,1344,true,SUP0757
+PRD0355,"Buffalo Chicken (Medium, Thin)",pizza,Medium,Thin,false,6.26,18.84,428,true,SUP0380
+PRD0356,"Sausage & Peppers (Family, Thin)",pizza,Family,Thin,false,5.84,18.74,217,true,SUP0226
+PRD0357,"Hawaiian (Family, Pan)",pizza,Family,Pan,false,4.46,11.72,1065,true,SUP0178
+PRD0358,"Pesto Chicken (Medium, Cauliflower)",pizza,Medium,Cauliflower,false,4.22,11.26,1222,true,SUP0043
+PRD0359,"Ranch Special (Family, Cauliflower)",pizza,Family,Cauliflower,false,4.35,12.17,886,true,SUP0701
+PRD0360,"Spinach Feta (Medium, Pan)",pizza,Medium,Pan,false,8.38,25.59,403,true,SUP0869
+PRD0361,"Four Cheese (Family, Cauliflower)",pizza,Family,Cauliflower,false,8.01,26.06,176,true,SUP0803
+PRD0362,"Buffalo Chicken (Family, Cauliflower)",pizza,Family,Cauliflower,false,5.76,16.53,696,false,SUP0894
+PRD0363,"Veggie Supreme (Personal, Cauliflower)",pizza,Personal,Cauliflower,true,5.45,14.31,751,true,SUP0360
+PRD0364,"Four Cheese (Large, Thin)",pizza,Large,Thin,false,3.03,9.42,545,true,SUP0213
+PRD0365,"Pepperoni (Personal, Thin)",pizza,Personal,Thin,false,7.00,15.80,688,true,SUP0816
+PRD0366,"Pesto Chicken (Large, Cauliflower)",pizza,Large,Cauliflower,false,5.00,14.04,615,true,SUP0740
+PRD0367,"Mushroom Truffle (Large, Hand-Tossed)",pizza,Large,Hand-Tossed,false,6.18,20.70,803,true,SUP0433
+PRD0368,"Neapolitan (Medium, Pan)",pizza,Medium,Pan,false,9.18,30.25,386,true,SUP0441
+PRD0369,"Pepperoni (Personal, Thin)",pizza,Personal,Thin,false,4.32,9.66,1288,true,SUP0072
+PRD0370,"Pepperoni (Medium, Pan)",pizza,Medium,Pan,false,6.59,20.47,860,true,SUP0080
+PRD0371,"BBQ Chicken (Family, Pan)",pizza,Family,Pan,false,9.46,21.79,328,true,SUP0326
+PRD0372,"Ranch Special (Medium, Cauliflower)",pizza,Medium,Cauliflower,false,8.01,20.29,993,false,SUP0748
+PRD0373,"Spinach Feta (Family, Cauliflower)",pizza,Family,Cauliflower,false,5.48,12.66,956,true,SUP0685
+PRD0374,"Margherita (Large, Cauliflower)",pizza,Large,Cauliflower,true,7.63,20.56,905,true,SUP0151
+PRD0375,"Margherita (Large, Hand-Tossed)",pizza,Large,Hand-Tossed,true,5.08,13.27,1349,true,SUP0018
+PRD0376,"Ranch Special (Personal, Pan)",pizza,Personal,Pan,false,7.53,22.90,594,false,SUP0185
+PRD0377,"Meat Lovers (Family, Cauliflower)",pizza,Family,Cauliflower,false,8.86,28.58,766,true,SUP0493
+PRD0378,"Buffalo Chicken (Family, Hand-Tossed)",pizza,Family,Hand-Tossed,false,8.90,20.30,232,true,SUP0222
+PRD0379,"BBQ Chicken (Family, Cauliflower)",pizza,Family,Cauliflower,false,2.73,7.58,1043,true,SUP0219
+PRD0380,"Spicy Diablo (Personal, Pan)",pizza,Personal,Pan,false,5.68,17.53,815,true,SUP0467
+PRD0381,"Spinach Feta (Large, Hand-Tossed)",pizza,Large,Hand-Tossed,false,2.52,6.53,657,true,SUP0018
+PRD0382,"Meat Lovers (Medium, Stuffed)",pizza,Medium,Stuffed,false,5.87,14.49,851,true,SUP0551
+PRD0383,"Pesto Chicken (Family, Pan)",pizza,Family,Pan,false,8.98,29.07,1101,true,SUP0209
+PRD0384,"BBQ Chicken (Medium, Pan)",pizza,Medium,Pan,false,3.03,9.13,137,true,SUP0527
+PRD0385,"Neapolitan (Medium, Pan)",pizza,Medium,Pan,false,8.80,29.62,771,true,SUP0081
+PRD0386,"Neapolitan (Medium, Stuffed)",pizza,Medium,Stuffed,false,9.05,28.33,866,true,SUP0711
+PRD0387,"Hawaiian (Family, Stuffed)",pizza,Family,Stuffed,false,6.72,17.55,1395,true,SUP0060
+PRD0388,"Ranch Special (Large, Thin)",pizza,Large,Thin,false,8.92,30.01,1254,true,SUP0339
+PRD0389,"Neapolitan (Personal, Cauliflower)",pizza,Personal,Cauliflower,false,5.73,17.80,484,true,SUP0211
+PRD0390,"Hawaiian (Medium, Pan)",pizza,Medium,Pan,false,6.23,20.83,307,true,SUP0734
+PRD0391,"Pepperoni (Personal, Hand-Tossed)",pizza,Personal,Hand-Tossed,false,9.22,21.01,648,true,SUP0194
+PRD0392,"Mushroom Truffle (Medium, Stuffed)",pizza,Medium,Stuffed,false,9.37,22.57,441,true,SUP0623
+PRD0393,"Neapolitan (Family, Hand-Tossed)",pizza,Family,Hand-Tossed,false,9.35,30.06,1323,true,SUP0105
+PRD0394,"Meat Lovers (Personal, Stuffed)",pizza,Personal,Stuffed,false,4.70,13.01,515,true,SUP0090
+PRD0395,"Spinach Feta (Family, Thin)",pizza,Family,Thin,false,3.88,8.92,849,true,SUP0870
+PRD0396,"Pepperoni (Personal, Pan)",pizza,Personal,Pan,false,4.06,9.87,749,true,SUP0461
+PRD0397,"Sausage & Peppers (Personal, Thin)",pizza,Personal,Thin,false,8.76,25.74,954,true,SUP0563
+PRD0398,"Spinach Feta (Large, Pan)",pizza,Large,Pan,false,5.70,17.60,1005,true,SUP0820
+PRD0399,"Spinach Feta (Large, Pan)",pizza,Large,Pan,false,3.34,9.58,496,true,SUP0101
+PRD0400,"Veggie Supreme (Family, Stuffed)",pizza,Family,Stuffed,true,8.50,24.81,818,true,SUP0427
+PRD0401,"Spinach Feta (Personal, Stuffed)",pizza,Personal,Stuffed,false,8.92,28.23,166,true,SUP0108
+PRD0402,"White Garlic (Family, Stuffed)",pizza,Family,Stuffed,false,3.15,7.16,1198,true,SUP0164
+PRD0403,"Mushroom Truffle (Medium, Thin)",pizza,Medium,Thin,false,5.33,12.63,1151,true,SUP0156
+PRD0404,"BBQ Chicken (Family, Pan)",pizza,Family,Pan,false,9.00,24.13,900,true,SUP0583
+PRD0405,"White Garlic (Medium, Thin)",pizza,Medium,Thin,false,6.20,18.35,1136,true,SUP0955
+PRD0406,"BBQ Chicken (Personal, Thin)",pizza,Personal,Thin,false,4.92,12.18,840,true,SUP0779
+PRD0407,"Veggie Supreme (Family, Thin)",pizza,Family,Thin,true,7.42,17.74,182,false,SUP0661
+PRD0408,"Sausage & Peppers (Large, Stuffed)",pizza,Large,Stuffed,false,4.88,13.62,383,true,SUP0196
+PRD0409,"Spicy Diablo (Family, Thin)",pizza,Family,Thin,false,3.51,9.20,724,true,SUP0923
+PRD0410,"Pepperoni (Large, Stuffed)",pizza,Large,Stuffed,false,8.69,27.50,167,true,SUP0151
+PRD0411,"Ranch Special (Family, Thin)",pizza,Family,Thin,false,8.14,18.34,1251,false,SUP0811
+PRD0412,"Meat Lovers (Large, Thin)",pizza,Large,Thin,false,5.43,14.28,735,true,SUP0270
+PRD0413,"Sausage & Peppers (Family, Stuffed)",pizza,Family,Stuffed,false,9.26,20.84,1306,false,SUP0892
+PRD0414,"BBQ Chicken (Large, Cauliflower)",pizza,Large,Cauliflower,false,5.24,15.87,538,false,SUP0923
+PRD0415,"White Garlic (Large, Pan)",pizza,Large,Pan,false,5.52,13.03,1174,true,SUP0544
+PRD0416,"Ranch Special (Family, Cauliflower)",pizza,Family,Cauliflower,false,4.93,14.98,1376,true,SUP0244
+PRD0417,"BBQ Chicken (Medium, Cauliflower)",pizza,Medium,Cauliflower,false,7.11,16.10,382,true,SUP0142
+PRD0418,"Margherita (Personal, Thin)",pizza,Personal,Thin,true,8.10,26.24,1258,true,SUP0945
+PRD0419,"Mushroom Truffle (Family, Stuffed)",pizza,Family,Stuffed,false,4.44,13.78,283,true,SUP0631
+PRD0420,"Margherita (Medium, Stuffed)",pizza,Medium,Stuffed,true,2.62,6.79,645,true,SUP0534
+PRD0421,"Sicilian (Medium, Stuffed)",pizza,Medium,Stuffed,false,3.68,11.27,713,true,SUP0604
+PRD0422,"Hawaiian (Large, Cauliflower)",pizza,Large,Cauliflower,false,8.16,25.12,860,true,SUP0452
+PRD0423,"Veggie Supreme (Medium, Stuffed)",pizza,Medium,Stuffed,true,5.01,11.58,957,true,SUP0655
+PRD0424,"Pepperoni (Large, Hand-Tossed)",pizza,Large,Hand-Tossed,false,3.38,10.41,1130,false,SUP0570
+PRD0425,"Mushroom Truffle (Family, Stuffed)",pizza,Family,Stuffed,false,7.74,20.87,799,true,SUP0677
+PRD0426,"Veggie Supreme (Medium, Pan)",pizza,Medium,Pan,true,7.92,26.35,1215,true,SUP0894
+PRD0427,"Meat Lovers (Medium, Stuffed)",pizza,Medium,Stuffed,false,8.81,27.41,346,true,SUP0158
+PRD0428,"Buffalo Chicken (Large, Hand-Tossed)",pizza,Large,Hand-Tossed,false,2.79,9.15,1173,true,SUP0549
+PRD0429,"Spinach Feta (Family, Cauliflower)",pizza,Family,Cauliflower,false,8.85,26.25,1148,false,SUP0972
+PRD0430,"White Garlic (Large, Pan)",pizza,Large,Pan,false,8.11,19.98,670,true,SUP0589
+PRD0431,"Sicilian (Family, Pan)",pizza,Family,Pan,false,3.53,8.73,530,true,SUP0490
+PRD0432,"Sicilian (Large, Pan)",pizza,Large,Pan,false,6.70,16.01,1150,true,SUP0501
+PRD0433,"Mushroom Truffle (Family, Pan)",pizza,Family,Pan,false,3.11,9.40,716,true,SUP0396
+PRD0434,"Meat Lovers (Family, Cauliflower)",pizza,Family,Cauliflower,false,4.76,11.17,361,true,SUP0634
+PRD0435,"Supreme (Family, Pan)",pizza,Family,Pan,false,4.84,12.21,952,true,SUP0326
+PRD0436,"BBQ Chicken (Large, Cauliflower)",pizza,Large,Cauliflower,false,4.67,10.91,945,true,SUP0614
+PRD0437,"Pesto Chicken (Medium, Thin)",pizza,Medium,Thin,false,8.89,20.10,543,true,SUP0517
+PRD0438,"Meat Lovers (Personal, Thin)",pizza,Personal,Thin,false,5.27,12.81,197,true,SUP0755
+PRD0439,"Sicilian (Family, Hand-Tossed)",pizza,Family,Hand-Tossed,false,3.71,9.41,378,true,SUP0778
+PRD0440,"Spicy Diablo (Medium, Pan)",pizza,Medium,Pan,false,7.91,23.09,1102,true,SUP0567
+PRD0441,"Pepperoni (Large, Cauliflower)",pizza,Large,Cauliflower,false,7.08,16.00,289,true,SUP0896
+PRD0442,"Ranch Special (Personal, Pan)",pizza,Personal,Pan,false,2.56,6.25,734,true,SUP0074
+PRD0443,"Sicilian (Medium, Cauliflower)",pizza,Medium,Cauliflower,false,7.73,20.49,1199,true,SUP0765
+PRD0444,"Supreme (Personal, Pan)",pizza,Personal,Pan,false,4.78,12.09,152,true,SUP0600
+PRD0445,"Veggie Supreme (Family, Thin)",pizza,Family,Thin,true,6.81,18.54,667,true,SUP0845
+PRD0446,"White Garlic (Medium, Cauliflower)",pizza,Medium,Cauliflower,false,3.45,10.20,542,true,SUP0714
+PRD0447,"Spinach Feta (Personal, Thin)",pizza,Personal,Thin,false,6.70,15.96,1206,true,SUP0358
+PRD0448,"Pesto Chicken (Family, Hand-Tossed)",pizza,Family,Hand-Tossed,false,8.12,21.42,207,true,SUP0088
+PRD0449,"Neapolitan (Large, Hand-Tossed)",pizza,Large,Hand-Tossed,false,6.40,20.69,1138,true,SUP0896
+PRD0450,"Sicilian (Medium, Thin)",pizza,Medium,Thin,false,8.90,23.70,973,true,SUP0966
+PRD0451,"Neapolitan (Family, Cauliflower)",pizza,Family,Cauliflower,false,6.99,17.62,929,false,SUP0575
+PRD0452,"Margherita (Family, Pan)",pizza,Family,Pan,true,3.08,9.65,1272,true,SUP0961
+PRD0453,"Hawaiian (Personal, Cauliflower)",pizza,Personal,Cauliflower,false,5.88,15.56,433,true,SUP0705
+PRD0454,"Mushroom Truffle (Large, Thin)",pizza,Large,Thin,false,8.05,23.56,458,true,SUP0689
+PRD0455,"Hawaiian (Family, Pan)",pizza,Family,Pan,false,6.84,16.51,620,true,SUP0660
+PRD0456,"Sicilian (Family, Pan)",pizza,Family,Pan,false,5.58,15.18,896,true,SUP0597
+PRD0457,"Pepperoni (Family, Thin)",pizza,Family,Thin,false,5.03,12.90,1374,true,SUP0813
+PRD0458,"Four Cheese (Large, Hand-Tossed)",pizza,Large,Hand-Tossed,false,9.39,25.52,1084,true,SUP0105
+PRD0459,"Sicilian (Family, Stuffed)",pizza,Family,Stuffed,false,3.72,8.82,125,true,SUP0273
+PRD0460,"Pepperoni (Family, Cauliflower)",pizza,Family,Cauliflower,false,9.13,27.68,731,true,SUP0355
+PRD0461,"Four Cheese (Large, Stuffed)",pizza,Large,Stuffed,false,5.75,13.50,224,true,SUP0113
+PRD0462,"Hawaiian (Large, Pan)",pizza,Large,Pan,false,5.74,18.53,709,true,SUP0270
+PRD0463,"Buffalo Chicken (Personal, Pan)",pizza,Personal,Pan,false,7.36,20.46,474,true,SUP0375
+PRD0464,"Sausage & Peppers (Large, Cauliflower)",pizza,Large,Cauliflower,false,4.28,10.57,673,true,SUP0749
+PRD0465,"Supreme (Large, Thin)",pizza,Large,Thin,false,5.25,13.63,886,true,SUP0635
+PRD0466,"Sicilian (Medium, Hand-Tossed)",pizza,Medium,Hand-Tossed,false,8.52,24.24,883,true,SUP0019
+PRD0467,"Neapolitan (Family, Stuffed)",pizza,Family,Stuffed,false,4.61,12.84,1147,true,SUP0419
+PRD0468,"White Garlic (Personal, Hand-Tossed)",pizza,Personal,Hand-Tossed,false,8.01,26.37,657,true,SUP0121
+PRD0469,"Four Cheese (Family, Hand-Tossed)",pizza,Family,Hand-Tossed,false,4.17,12.88,738,true,SUP0308
+PRD0470,"Margherita (Family, Thin)",pizza,Family,Thin,true,4.26,13.50,1030,true,SUP0099
+PRD0471,"Mushroom Truffle (Family, Stuffed)",pizza,Family,Stuffed,false,5.92,18.79,622,true,SUP0128
+PRD0472,"Spicy Diablo (Large, Pan)",pizza,Large,Pan,false,6.50,22.07,1181,true,SUP0512
+PRD0473,"Spinach Feta (Large, Cauliflower)",pizza,Large,Cauliflower,false,2.76,7.60,511,true,SUP0398
+PRD0474,"Hawaiian (Personal, Thin)",pizza,Personal,Thin,false,5.72,16.81,183,true,SUP0041
+PRD0475,"Hawaiian (Family, Thin)",pizza,Family,Thin,false,9.08,24.99,672,true,SUP0501
+PRD0476,"Spicy Diablo (Family, Stuffed)",pizza,Family,Stuffed,false,3.75,10.62,762,true,SUP0408
+PRD0477,"Veggie Supreme (Personal, Pan)",pizza,Personal,Pan,true,6.55,20.54,1245,true,SUP0946
+PRD0478,"Pesto Chicken (Family, Cauliflower)",pizza,Family,Cauliflower,false,7.24,18.99,525,true,SUP0499
+PRD0479,"Buffalo Chicken (Large, Pan)",pizza,Large,Pan,false,7.42,21.62,213,true,SUP0466
+PRD0480,"Veggie Supreme (Medium, Stuffed)",pizza,Medium,Stuffed,true,6.27,15.82,294,true,SUP0237
+PRD0481,"Neapolitan (Personal, Hand-Tossed)",pizza,Personal,Hand-Tossed,false,6.78,15.53,508,false,SUP0480
+PRD0482,"Spinach Feta (Medium, Cauliflower)",pizza,Medium,Cauliflower,false,6.95,23.42,584,true,SUP0872
+PRD0483,"Buffalo Chicken (Large, Cauliflower)",pizza,Large,Cauliflower,false,7.49,23.00,967,true,SUP0840
+PRD0484,"BBQ Chicken (Large, Stuffed)",pizza,Large,Stuffed,false,9.24,22.51,142,true,SUP0937
+PRD0485,"Sausage & Peppers (Medium, Pan)",pizza,Medium,Pan,false,7.92,21.57,867,true,SUP0158
+PRD0486,"White Garlic (Personal, Stuffed)",pizza,Personal,Stuffed,false,3.72,11.97,491,true,SUP0686
+PRD0487,"Pesto Chicken (Medium, Cauliflower)",pizza,Medium,Cauliflower,false,8.17,27.24,259,true,SUP0519
+PRD0488,"Ranch Special (Family, Cauliflower)",pizza,Family,Cauliflower,false,9.07,21.09,378,true,SUP0980
+PRD0489,"Four Cheese (Medium, Thin)",pizza,Medium,Thin,false,4.35,12.99,780,true,SUP0825
+PRD0490,"White Garlic (Personal, Thin)",pizza,Personal,Thin,false,6.60,20.77,1239,true,SUP0151
+PRD0491,"Sicilian (Large, Cauliflower)",pizza,Large,Cauliflower,false,9.34,29.04,1044,true,SUP0645
+PRD0492,"Mushroom Truffle (Family, Pan)",pizza,Family,Pan,false,7.40,17.89,769,true,SUP0947
+PRD0493,"BBQ Chicken (Personal, Stuffed)",pizza,Personal,Stuffed,false,3.18,9.95,1210,true,SUP0783
+PRD0494,"Sicilian (Personal, Hand-Tossed)",pizza,Personal,Hand-Tossed,false,5.17,14.18,1166,true,SUP0704
+PRD0495,"Sicilian (Medium, Thin)",pizza,Medium,Thin,false,3.94,12.58,1225,true,SUP0608
+PRD0496,"Four Cheese (Family, Cauliflower)",pizza,Family,Cauliflower,false,6.09,19.10,1219,true,SUP0287
+PRD0497,"Supreme (Personal, Pan)",pizza,Personal,Pan,false,5.17,12.22,177,true,SUP0268
+PRD0498,"Ranch Special (Medium, Hand-Tossed)",pizza,Medium,Hand-Tossed,false,4.20,10.59,242,true,SUP0114
+PRD0499,"Meat Lovers (Family, Hand-Tossed)",pizza,Family,Hand-Tossed,false,6.29,20.72,143,true,SUP0521
+PRD0500,"Supreme (Family, Pan)",pizza,Family,Pan,false,5.78,16.07,1293,false,SUP0432
+PRD0501,"Supreme (Family, Thin)",pizza,Family,Thin,false,9.30,23.11,1072,true,SUP0759
+PRD0502,"Neapolitan (Personal, Cauliflower)",pizza,Personal,Cauliflower,false,5.45,15.14,254,true,SUP0190
+PRD0503,"Hawaiian (Family, Hand-Tossed)",pizza,Family,Hand-Tossed,false,2.79,7.97,1177,true,SUP0051
+PRD0504,"Spinach Feta (Personal, Stuffed)",pizza,Personal,Stuffed,false,5.23,15.11,211,true,SUP0847
+PRD0505,"Meat Lovers (Family, Pan)",pizza,Family,Pan,false,7.08,22.34,645,true,SUP0479
+PRD0506,"Spinach Feta (Personal, Stuffed)",pizza,Personal,Stuffed,false,6.79,18.21,781,true,SUP0702
+PRD0507,"Buffalo Chicken (Personal, Cauliflower)",pizza,Personal,Cauliflower,false,7.99,19.98,1285,false,SUP0579
+PRD0508,"Supreme (Personal, Hand-Tossed)",pizza,Personal,Hand-Tossed,false,4.59,11.95,354,true,SUP0611
+PRD0509,"Sausage & Peppers (Personal, Thin)",pizza,Personal,Thin,false,6.37,19.64,885,true,SUP0103
+PRD0510,"Four Cheese (Family, Stuffed)",pizza,Family,Stuffed,false,3.50,9.33,142,true,SUP0180
+PRD0511,"Hawaiian (Large, Hand-Tossed)",pizza,Large,Hand-Tossed,false,2.97,7.42,935,true,SUP0800
+PRD0512,"Sicilian (Medium, Cauliflower)",pizza,Medium,Cauliflower,false,8.07,19.12,351,true,SUP0753
+PRD0513,"Margherita (Family, Pan)",pizza,Family,Pan,true,8.05,22.68,409,true,SUP0951
+PRD0514,"Buffalo Chicken (Medium, Pan)",pizza,Medium,Pan,false,6.32,19.63,730,true,SUP0860
+PRD0515,"BBQ Chicken (Personal, Cauliflower)",pizza,Personal,Cauliflower,false,5.03,12.52,788,true,SUP0492
+PRD0516,"Spinach Feta (Large, Pan)",pizza,Large,Pan,false,5.14,12.65,826,true,SUP0898
+PRD0517,"Meat Lovers (Personal, Pan)",pizza,Personal,Pan,false,2.83,8.97,301,true,SUP0557
+PRD0518,"Buffalo Chicken (Medium, Thin)",pizza,Medium,Thin,false,6.50,17.17,1313,true,SUP0580
+PRD0519,"Margherita (Medium, Pan)",pizza,Medium,Pan,true,8.16,26.38,1049,true,SUP0952
+PRD0520,"Supreme (Personal, Cauliflower)",pizza,Personal,Cauliflower,false,7.39,17.97,827,true,SUP0463
+PRD0521,"Pepperoni (Large, Thin)",pizza,Large,Thin,false,3.41,11.22,902,false,SUP0096
+PRD0522,"White Garlic (Large, Stuffed)",pizza,Large,Stuffed,false,8.16,25.41,1257,true,SUP0214
+PRD0523,"Buffalo Chicken (Family, Cauliflower)",pizza,Family,Cauliflower,false,6.41,14.99,1261,true,SUP0853
+PRD0524,"White Garlic (Family, Cauliflower)",pizza,Family,Cauliflower,false,8.56,23.31,244,false,SUP0287
+PRD0525,"Buffalo Chicken (Large, Pan)",pizza,Large,Pan,false,9.09,27.16,1322,true,SUP0466
+PRD0526,"Buffalo Chicken (Personal, Cauliflower)",pizza,Personal,Cauliflower,false,7.82,17.63,582,true,SUP0595
+PRD0527,"Pesto Chicken (Family, Pan)",pizza,Family,Pan,false,8.89,30.04,660,true,SUP0349
+PRD0528,"Hawaiian (Personal, Pan)",pizza,Personal,Pan,false,6.30,20.64,208,true,SUP0718
+PRD0529,"Sausage & Peppers (Medium, Thin)",pizza,Medium,Thin,false,6.29,21.32,912,false,SUP0350
+PRD0530,"Spinach Feta (Medium, Cauliflower)",pizza,Medium,Cauliflower,false,2.86,8.33,1315,true,SUP0369
+PRD0531,"Spinach Feta (Family, Cauliflower)",pizza,Family,Cauliflower,false,8.32,19.36,224,true,SUP0590
+PRD0532,"Supreme (Family, Pan)",pizza,Family,Pan,false,8.67,22.84,839,true,SUP0473
+PRD0533,"Veggie Supreme (Family, Hand-Tossed)",pizza,Family,Hand-Tossed,true,3.66,11.07,550,true,SUP0346
+PRD0534,"Mushroom Truffle (Personal, Hand-Tossed)",pizza,Personal,Hand-Tossed,false,6.56,19.22,648,true,SUP0390
+PRD0535,"Ranch Special (Large, Cauliflower)",pizza,Large,Cauliflower,false,2.58,7.02,1328,true,SUP0187
+PRD0536,"Pesto Chicken (Personal, Hand-Tossed)",pizza,Personal,Hand-Tossed,false,6.14,20.36,1242,true,SUP0640
+PRD0537,"Sausage & Peppers (Family, Cauliflower)",pizza,Family,Cauliflower,false,5.57,14.77,203,true,SUP0211
+PRD0538,"Pesto Chicken (Medium, Cauliflower)",pizza,Medium,Cauliflower,false,4.06,11.21,496,true,SUP0828
+PRD0539,"Sausage & Peppers (Personal, Thin)",pizza,Personal,Thin,false,2.89,7.87,608,true,SUP0127
+PRD0540,"Veggie Supreme (Family, Hand-Tossed)",pizza,Family,Hand-Tossed,true,3.81,12.01,953,true,SUP0923
+PRD0541,"Meat Lovers (Large, Hand-Tossed)",pizza,Large,Hand-Tossed,false,3.65,8.87,615,false,SUP0147
+PRD0542,"Four Cheese (Medium, Pan)",pizza,Medium,Pan,false,4.46,9.93,941,true,SUP0911
+PRD0543,"Margherita (Family, Stuffed)",pizza,Family,Stuffed,true,9.39,23.58,584,true,SUP0003
+PRD0544,"White Garlic (Large, Hand-Tossed)",pizza,Large,Hand-Tossed,false,3.84,10.45,922,true,SUP0144
+PRD0545,"Spinach Feta (Personal, Hand-Tossed)",pizza,Personal,Hand-Tossed,false,6.04,15.05,219,false,SUP0392
+PRD0546,"Mushroom Truffle (Large, Stuffed)",pizza,Large,Stuffed,false,8.70,24.94,708,true,SUP0799
+PRD0547,"Sicilian (Medium, Thin)",pizza,Medium,Thin,false,3.32,9.60,1185,true,SUP0263
+PRD0548,"Meat Lovers (Large, Pan)",pizza,Large,Pan,false,9.24,30.36,1204,true,SUP0332
+PRD0549,"Buffalo Chicken (Family, Cauliflower)",pizza,Family,Cauliflower,false,7.82,20.05,390,true,SUP0820
+PRD0550,"Margherita (Family, Stuffed)",pizza,Family,Stuffed,true,8.52,28.46,1247,true,SUP0984
+PRD0551,"Sausage & Peppers (Family, Thin)",pizza,Family,Thin,false,7.25,16.32,1328,true,SUP0173
+PRD0552,"Hawaiian (Medium, Thin)",pizza,Medium,Thin,false,8.92,19.99,310,true,SUP0735
+PRD0553,"Sicilian (Family, Cauliflower)",pizza,Family,Cauliflower,false,8.96,29.93,1301,true,SUP0553
+PRD0554,"Supreme (Family, Hand-Tossed)",pizza,Family,Hand-Tossed,false,8.94,25.23,535,true,SUP0717
+PRD0555,"BBQ Chicken (Large, Hand-Tossed)",pizza,Large,Hand-Tossed,false,8.14,23.45,957,true,SUP0838
+PRD0556,"Hawaiian (Family, Stuffed)",pizza,Family,Stuffed,false,5.25,13.43,994,false,SUP0200
+PRD0557,"Meat Lovers (Personal, Cauliflower)",pizza,Personal,Cauliflower,false,2.53,6.55,204,true,SUP0500
+PRD0558,"Spinach Feta (Large, Thin)",pizza,Large,Thin,false,3.55,7.90,446,true,SUP0672
+PRD0559,"Margherita (Personal, Cauliflower)",pizza,Personal,Cauliflower,true,5.03,13.27,676,false,SUP0283
+PRD0560,"Ranch Special (Family, Stuffed)",pizza,Family,Stuffed,false,3.46,11.21,259,false,SUP0910
+PRD0561,"Mushroom Truffle (Family, Cauliflower)",pizza,Family,Cauliflower,false,3.42,9.44,156,true,SUP0365
+PRD0562,"Meat Lovers (Family, Stuffed)",pizza,Family,Stuffed,false,5.63,14.25,224,true,SUP0739
+PRD0563,"White Garlic (Personal, Cauliflower)",pizza,Personal,Cauliflower,false,6.24,19.48,718,true,SUP0955
+PRD0564,"Four Cheese (Medium, Thin)",pizza,Medium,Thin,false,6.51,17.23,1130,true,SUP0244
+PRD0565,"Spicy Diablo (Medium, Cauliflower)",pizza,Medium,Cauliflower,false,6.24,18.57,992,false,SUP0091
+PRD0566,"Mushroom Truffle (Large, Cauliflower)",pizza,Large,Cauliflower,false,9.34,22.28,395,true,SUP0078
+PRD0567,"Mushroom Truffle (Large, Stuffed)",pizza,Large,Stuffed,false,7.43,21.87,1062,false,SUP0374
+PRD0568,"Pepperoni (Personal, Stuffed)",pizza,Personal,Stuffed,false,5.53,16.20,1109,true,SUP0029
+PRD0569,"Veggie Supreme (Large, Thin)",pizza,Large,Thin,true,6.50,14.66,1271,true,SUP0742
+PRD0570,"Neapolitan (Medium, Hand-Tossed)",pizza,Medium,Hand-Tossed,false,4.09,9.73,1277,true,SUP0004
+PRD0571,"Mushroom Truffle (Medium, Cauliflower)",pizza,Medium,Cauliflower,false,6.60,18.52,1335,true,SUP0352
+PRD0572,"Spicy Diablo (Large, Pan)",pizza,Large,Pan,false,8.17,18.74,552,true,SUP0662
+PRD0573,"Sausage & Peppers (Personal, Pan)",pizza,Personal,Pan,false,6.71,22.60,1075,true,SUP0959
+PRD0574,"Sausage & Peppers (Large, Thin)",pizza,Large,Thin,false,9.46,31.76,495,true,SUP0831
+PRD0575,"Sausage & Peppers (Medium, Stuffed)",pizza,Medium,Stuffed,false,5.38,14.34,828,true,SUP0530
+PRD0576,"Spicy Diablo (Medium, Thin)",pizza,Medium,Thin,false,3.74,11.17,1082,true,SUP0242
+PRD0577,"Pesto Chicken (Family, Cauliflower)",pizza,Family,Cauliflower,false,3.70,11.49,728,true,SUP0314
+PRD0578,"Four Cheese (Large, Pan)",pizza,Large,Pan,false,6.86,18.89,1134,true,SUP0998
+PRD0579,"White Garlic (Large, Cauliflower)",pizza,Large,Cauliflower,false,3.27,10.75,749,true,SUP0531
+PRD0580,"Pepperoni (Medium, Stuffed)",pizza,Medium,Stuffed,false,8.91,20.10,583,true,SUP0547
+PRD0581,"Margherita (Large, Hand-Tossed)",pizza,Large,Hand-Tossed,true,4.55,13.19,977,true,SUP0642
+PRD0582,"Margherita (Personal, Stuffed)",pizza,Personal,Stuffed,true,4.51,13.18,978,true,SUP0495
+PRD0583,"Buffalo Chicken (Family, Cauliflower)",pizza,Family,Cauliflower,false,3.39,11.04,950,true,SUP0798
+PRD0584,"Veggie Supreme (Medium, Pan)",pizza,Medium,Pan,true,4.33,10.33,187,true,SUP0801
+PRD0585,"Buffalo Chicken (Personal, Stuffed)",pizza,Personal,Stuffed,false,7.82,23.95,669,true,SUP0645
+PRD0586,"Pepperoni (Personal, Pan)",pizza,Personal,Pan,false,3.54,8.81,352,true,SUP0189
+PRD0587,"Meat Lovers (Family, Pan)",pizza,Family,Pan,false,8.88,22.29,792,true,SUP0993
+PRD0588,"Margherita (Personal, Thin)",pizza,Personal,Thin,true,6.15,14.46,1370,true,SUP0223
+PRD0589,"Sicilian (Large, Cauliflower)",pizza,Large,Cauliflower,false,8.11,19.43,1298,true,SUP0249
+PRD0590,"Sicilian (Family, Cauliflower)",pizza,Family,Cauliflower,false,8.88,24.67,1096,true,SUP0085
+PRD0591,"Neapolitan (Medium, Stuffed)",pizza,Medium,Stuffed,false,2.64,6.34,1003,true,SUP0168
+PRD0592,"Spinach Feta (Family, Hand-Tossed)",pizza,Family,Hand-Tossed,false,5.32,11.77,535,true,SUP0577
+PRD0593,"Margherita (Personal, Thin)",pizza,Personal,Thin,true,5.53,17.74,952,false,SUP0861
+PRD0594,"Spinach Feta (Large, Hand-Tossed)",pizza,Large,Hand-Tossed,false,5.66,15.78,785,true,SUP0675
+PRD0595,"Pepperoni (Large, Hand-Tossed)",pizza,Large,Hand-Tossed,false,6.99,16.42,1388,true,SUP0148
+PRD0596,"Pepperoni (Family, Cauliflower)",pizza,Family,Cauliflower,false,9.15,29.05,668,true,SUP0231
+PRD0597,"Four Cheese (Large, Hand-Tossed)",pizza,Large,Hand-Tossed,false,7.29,19.53,159,true,SUP0875
+PRD0598,"Four Cheese (Medium, Pan)",pizza,Medium,Pan,false,3.72,10.28,575,true,SUP0203
+PRD0599,"Buffalo Chicken (Personal, Hand-Tossed)",pizza,Personal,Hand-Tossed,false,4.22,14.03,596,true,SUP0255
+PRD0600,"Four Cheese (Personal, Hand-Tossed)",pizza,Personal,Hand-Tossed,false,9.40,25.45,327,true,SUP0157
+PRD0601,"Spinach Feta (Family, Pan)",pizza,Family,Pan,false,2.65,7.65,886,true,SUP0839
+PRD0602,"Sausage & Peppers (Medium, Thin)",pizza,Medium,Thin,false,4.19,10.97,783,true,SUP0410
+PRD0603,"Pepperoni (Medium, Hand-Tossed)",pizza,Medium,Hand-Tossed,false,8.25,21.39,178,true,SUP0092
+PRD0604,"Neapolitan (Large, Pan)",pizza,Large,Pan,false,6.24,17.46,1323,true,SUP0274
+PRD0605,"Pepperoni (Large, Hand-Tossed)",pizza,Large,Hand-Tossed,false,3.57,10.62,732,true,SUP0403
+PRD0606,"Spinach Feta (Personal, Thin)",pizza,Personal,Thin,false,6.66,15.89,882,true,SUP0135
+PRD0607,"Sicilian (Medium, Stuffed)",pizza,Medium,Stuffed,false,8.11,18.18,1115,true,SUP0078
+PRD0608,"BBQ Chicken (Medium, Pan)",pizza,Medium,Pan,false,8.82,23.11,577,true,SUP0318
+PRD0609,"Mushroom Truffle (Personal, Stuffed)",pizza,Personal,Stuffed,false,7.49,20.71,802,true,SUP0879
+PRD0610,"Sicilian (Large, Cauliflower)",pizza,Large,Cauliflower,false,9.15,29.93,923,true,SUP0237
+PRD0611,"Meat Lovers (Medium, Pan)",pizza,Medium,Pan,false,5.37,11.92,1001,true,SUP0421
+PRD0612,"Veggie Supreme (Personal, Stuffed)",pizza,Personal,Stuffed,true,7.10,23.22,1005,true,SUP0135
+PRD0613,"Margherita (Personal, Cauliflower)",pizza,Personal,Cauliflower,true,5.55,12.70,205,true,SUP0057
+PRD0614,"Sicilian (Family, Stuffed)",pizza,Family,Stuffed,false,8.16,24.49,980,true,SUP0472
+PRD0615,"BBQ Chicken (Large, Hand-Tossed)",pizza,Large,Hand-Tossed,false,7.30,22.13,985,false,SUP0956
+PRD0616,"Ranch Special (Personal, Stuffed)",pizza,Personal,Stuffed,false,2.77,6.23,702,true,SUP0428
+PRD0617,"Hawaiian (Personal, Hand-Tossed)",pizza,Personal,Hand-Tossed,false,6.70,18.64,1171,true,SUP0571
+PRD0618,"Hawaiian (Medium, Thin)",pizza,Medium,Thin,false,4.47,15.05,920,true,SUP0396
+PRD0619,"Buffalo Chicken (Personal, Cauliflower)",pizza,Personal,Cauliflower,false,9.27,25.65,1217,true,SUP0091
+PRD0620,"Ranch Special (Large, Cauliflower)",pizza,Large,Cauliflower,false,9.02,20.33,837,true,SUP0677
+PRD0621,"White Garlic (Large, Cauliflower)",pizza,Large,Cauliflower,false,7.81,22.21,448,true,SUP0181
+PRD0622,"Ranch Special (Personal, Thin)",pizza,Personal,Thin,false,5.85,13.98,1119,true,SUP0002
+PRD0623,"Spicy Diablo (Personal, Pan)",pizza,Personal,Pan,false,5.63,16.66,1058,true,SUP0431
+PRD0624,"Spinach Feta (Personal, Cauliflower)",pizza,Personal,Cauliflower,false,6.11,18.77,178,true,SUP0228
+PRD0625,"Pepperoni (Family, Stuffed)",pizza,Family,Stuffed,false,5.60,18.28,1345,true,SUP0584
+PRD0626,"Neapolitan (Personal, Pan)",pizza,Personal,Pan,false,4.93,12.52,1243,true,SUP0473
+PRD0627,"BBQ Chicken (Large, Cauliflower)",pizza,Large,Cauliflower,false,5.87,16.88,1010,true,SUP0528
+PRD0628,"Pesto Chicken (Family, Pan)",pizza,Family,Pan,false,2.98,8.56,1126,true,SUP0087
+PRD0629,"Pesto Chicken (Large, Pan)",pizza,Large,Pan,false,5.52,14.46,1364,true,SUP0841
+PRD0630,"White Garlic (Medium, Pan)",pizza,Medium,Pan,false,4.24,13.15,1151,false,SUP0641
+PRD0631,"Sausage & Peppers (Medium, Stuffed)",pizza,Medium,Stuffed,false,9.02,20.03,186,true,SUP0542
+PRD0632,"Neapolitan (Family, Pan)",pizza,Family,Pan,false,7.81,19.18,1081,true,SUP0494
+PRD0633,"Buffalo Chicken (Personal, Hand-Tossed)",pizza,Personal,Hand-Tossed,false,3.20,8.93,1261,true,SUP0607
+PRD0634,"Meat Lovers (Family, Thin)",pizza,Family,Thin,false,5.10,14.57,434,false,SUP0106
+PRD0635,"Veggie Supreme (Large, Thin)",pizza,Large,Thin,true,3.47,9.19,714,true,SUP0025
+PRD0636,"Pepperoni (Large, Pan)",pizza,Large,Pan,false,6.63,14.83,194,true,SUP0601
+PRD0637,"Spicy Diablo (Medium, Stuffed)",pizza,Medium,Stuffed,false,8.43,22.60,1058,true,SUP0523
+PRD0638,"Supreme (Medium, Pan)",pizza,Medium,Pan,false,5.14,13.73,147,true,SUP0813
+PRD0639,"Spinach Feta (Medium, Stuffed)",pizza,Medium,Stuffed,false,4.04,12.14,176,false,SUP0082
+PRD0640,"Spinach Feta (Medium, Pan)",pizza,Medium,Pan,false,3.60,9.25,582,true,SUP0504
+PRD0641,"Mushroom Truffle (Personal, Cauliflower)",pizza,Personal,Cauliflower,false,9.44,27.19,965,true,SUP0278
+PRD0642,"Pesto Chicken (Family, Hand-Tossed)",pizza,Family,Hand-Tossed,false,6.08,17.01,518,true,SUP0535
+PRD0643,"White Garlic (Medium, Hand-Tossed)",pizza,Medium,Hand-Tossed,false,4.86,13.32,790,true,SUP0058
+PRD0644,"Margherita (Medium, Hand-Tossed)",pizza,Medium,Hand-Tossed,true,4.25,10.01,707,false,SUP0392
+PRD0645,"Sausage & Peppers (Family, Thin)",pizza,Family,Thin,false,3.79,8.70,875,true,SUP0755
+PRD0646,"Pepperoni (Large, Thin)",pizza,Large,Thin,false,8.96,28.86,459,true,SUP0520
+PRD0647,"Margherita (Large, Thin)",pizza,Large,Thin,true,5.39,14.65,1230,true,SUP0871
+PRD0648,"Meat Lovers (Medium, Stuffed)",pizza,Medium,Stuffed,false,3.39,9.60,721,true,SUP0498
+PRD0649,"Pepperoni (Family, Hand-Tossed)",pizza,Family,Hand-Tossed,false,5.41,14.03,1090,true,SUP0331
+PRD0650,"Spicy Diablo (Large, Pan)",pizza,Large,Pan,false,4.62,10.25,447,true,SUP0266
+PRD0651,"Spicy Diablo (Medium, Pan)",pizza,Medium,Pan,false,6.26,20.04,511,true,SUP0251
+PRD0652,"Sausage & Peppers (Medium, Cauliflower)",pizza,Medium,Cauliflower,false,3.04,8.02,583,true,SUP0858
+PRD0653,"Hawaiian (Personal, Hand-Tossed)",pizza,Personal,Hand-Tossed,false,5.16,13.71,1322,true,SUP0943
+PRD0654,"Mushroom Truffle (Personal, Stuffed)",pizza,Personal,Stuffed,false,7.84,23.53,957,false,SUP0088
+PRD0655,"Margherita (Large, Cauliflower)",pizza,Large,Cauliflower,true,9.01,28.36,1146,true,SUP0763
+PRD0656,"Hawaiian (Personal, Stuffed)",pizza,Personal,Stuffed,false,8.13,23.89,765,true,SUP0388
+PRD0657,"Veggie Supreme (Large, Cauliflower)",pizza,Large,Cauliflower,true,5.36,15.36,552,true,SUP0993
+PRD0658,"Pepperoni (Medium, Pan)",pizza,Medium,Pan,false,3.05,7.05,262,true,SUP0114
+PRD0659,"Spicy Diablo (Personal, Pan)",pizza,Personal,Pan,false,2.57,8.68,295,true,SUP0238
+PRD0660,"Meat Lovers (Large, Thin)",pizza,Large,Thin,false,5.61,16.31,124,true,SUP0462
+PRD0661,"Pepperoni (Large, Cauliflower)",pizza,Large,Cauliflower,false,2.51,7.76,217,true,SUP0925
+PRD0662,"White Garlic (Family, Thin)",pizza,Family,Thin,false,4.57,14.54,1059,true,SUP0071
+PRD0663,"Margherita (Medium, Thin)",pizza,Medium,Thin,true,4.34,13.75,918,true,SUP0486
+PRD0664,"Veggie Supreme (Medium, Cauliflower)",pizza,Medium,Cauliflower,true,4.80,16.18,1348,true,SUP0056
+PRD0665,"Sausage & Peppers (Large, Thin)",pizza,Large,Thin,false,4.06,13.10,1041,true,SUP0634
+PRD0666,"Ranch Special (Family, Thin)",pizza,Family,Thin,false,6.73,16.66,1366,true,SUP0235
+PRD0667,"White Garlic (Large, Thin)",pizza,Large,Thin,false,3.80,11.24,735,false,SUP0854
+PRD0668,"White Garlic (Personal, Hand-Tossed)",pizza,Personal,Hand-Tossed,false,3.67,11.43,1043,true,SUP0963
+PRD0669,"BBQ Chicken (Personal, Pan)",pizza,Personal,Pan,false,5.92,19.77,614,true,SUP0857
+PRD0670,"Pepperoni (Personal, Thin)",pizza,Personal,Thin,false,9.48,27.70,800,true,SUP0806
+PRD0671,"Hawaiian (Medium, Pan)",pizza,Medium,Pan,false,4.08,9.16,711,false,SUP0288
+PRD0672,"Sausage & Peppers (Large, Stuffed)",pizza,Large,Stuffed,false,5.30,15.47,1269,true,SUP0651
+PRD0673,"Ranch Special (Large, Stuffed)",pizza,Large,Stuffed,false,4.27,9.74,144,true,SUP0253
+PRD0674,"White Garlic (Personal, Thin)",pizza,Personal,Thin,false,9.42,31.13,1053,true,SUP0005
+PRD0675,"BBQ Chicken (Family, Cauliflower)",pizza,Family,Cauliflower,false,9.15,28.53,574,true,SUP0321
+PRD0676,"Spinach Feta (Medium, Hand-Tossed)",pizza,Medium,Hand-Tossed,false,8.21,27.27,1029,true,SUP0114
+PRD0677,"BBQ Chicken (Family, Thin)",pizza,Family,Thin,false,6.52,20.27,226,true,SUP0285
+PRD0678,"Margherita (Medium, Thin)",pizza,Medium,Thin,true,4.38,11.17,850,true,SUP0607
+PRD0679,"Pesto Chicken (Family, Pan)",pizza,Family,Pan,false,4.09,10.15,1182,true,SUP0579
+PRD0680,"Pesto Chicken (Large, Pan)",pizza,Large,Pan,false,9.08,22.47,343,true,SUP0697
+PRD0681,"Margherita (Medium, Hand-Tossed)",pizza,Medium,Hand-Tossed,true,5.02,16.51,233,true,SUP0712
+PRD0682,"Meat Lovers (Family, Cauliflower)",pizza,Family,Cauliflower,false,9.36,23.00,910,true,SUP0981
+PRD0683,"Supreme (Family, Hand-Tossed)",pizza,Family,Hand-Tossed,false,3.23,8.86,1283,true,SUP0782
+PRD0684,"Pesto Chicken (Medium, Pan)",pizza,Medium,Pan,false,6.05,18.51,431,true,SUP0201
+PRD0685,"Spicy Diablo (Large, Stuffed)",pizza,Large,Stuffed,false,5.13,13.32,618,true,SUP0158
+PRD0686,"Supreme (Family, Stuffed)",pizza,Family,Stuffed,false,5.67,13.11,280,true,SUP0982
+PRD0687,"Buffalo Chicken (Large, Stuffed)",pizza,Large,Stuffed,false,3.91,9.17,1106,true,SUP0400
+PRD0688,"Sausage & Peppers (Personal, Cauliflower)",pizza,Personal,Cauliflower,false,2.54,6.70,327,true,SUP0235
+PRD0689,"Sicilian (Family, Stuffed)",pizza,Family,Stuffed,false,3.38,11.00,368,true,SUP0348
+PRD0690,"Margherita (Family, Stuffed)",pizza,Family,Stuffed,true,6.40,15.53,879,true,SUP0403
+PRD0691,"Spinach Feta (Family, Hand-Tossed)",pizza,Family,Hand-Tossed,false,8.24,23.41,1340,true,SUP0105
+PRD0692,"Spinach Feta (Large, Pan)",pizza,Large,Pan,false,5.90,18.98,592,true,SUP0244
+PRD0693,"Mushroom Truffle (Medium, Cauliflower)",pizza,Medium,Cauliflower,false,7.37,24.90,1227,true,SUP0408
+PRD0694,"Veggie Supreme (Large, Pan)",pizza,Large,Pan,true,3.38,10.83,232,true,SUP0637
+PRD0695,"Meat Lovers (Family, Thin)",pizza,Family,Thin,false,2.55,7.65,347,true,SUP0768
+PRD0696,"Pepperoni (Personal, Pan)",pizza,Personal,Pan,false,5.47,14.76,1318,true,SUP0576
+PRD0697,"Mushroom Truffle (Large, Stuffed)",pizza,Large,Stuffed,false,6.89,15.83,299,true,SUP0002
+PRD0698,"Pepperoni (Medium, Hand-Tossed)",pizza,Medium,Hand-Tossed,false,6.22,15.93,888,true,SUP0640
+PRD0699,"Pepperoni (Family, Cauliflower)",pizza,Family,Cauliflower,false,3.39,10.21,566,false,SUP0271
+PRD0700,"Mushroom Truffle (Personal, Cauliflower)",pizza,Personal,Cauliflower,false,7.23,24.11,1074,true,SUP0251
+PRD0701,Cinnamon Twists #701,beverage,,,false,3.89,12.85,403,true,SUP0074
+PRD0702,Soft Drink #702,dessert,,,false,3.56,7.26,287,true,SUP0408
+PRD0703,Chicken Wings #703,side,,,true,2.13,4.50,577,true,SUP0160
+PRD0704,Garden Salad #704,addon,,,true,1.34,2.97,1364,true,SUP0519
+PRD0705,Garden Salad #705,beverage,,,false,3.69,11.42,1067,true,SUP0016
+PRD0706,Garden Salad #706,dessert,,,false,1.21,3.68,1290,true,SUP0675
+PRD0707,Caesar Salad #707,beverage,,,false,0.90,3.27,943,true,SUP0934
+PRD0708,Cheese Breadsticks #708,dessert,,,false,1.77,5.46,652,true,SUP0640
+PRD0709,Bottled Water #709,beverage,,,false,3.44,7.91,498,true,SUP0425
+PRD0710,Chicken Wings #710,beverage,,,true,1.48,4.36,628,true,SUP0765
+PRD0711,Cinnamon Twists #711,addon,,,true,2.23,7.95,272,true,SUP0995
+PRD0712,Garden Salad #712,dessert,,,true,0.57,1.40,1184,false,SUP0576
+PRD0713,Chocolate Brownie #713,addon,,,true,0.71,1.84,1336,true,SUP0801
+PRD0714,Garlic Knots #714,addon,,,false,2.91,6.71,1100,true,SUP0054
+PRD0715,Caesar Salad #715,beverage,,,false,2.48,8.02,665,true,SUP0977
+PRD0716,Garden Salad #716,addon,,,true,1.01,2.76,932,true,SUP0024
+PRD0717,Garden Salad #717,dessert,,,false,1.08,3.16,133,true,SUP0328
+PRD0718,Mozzarella Sticks #718,addon,,,false,2.09,5.03,1289,true,SUP0851
+PRD0719,Mozzarella Sticks #719,addon,,,false,3.47,8.91,1275,true,SUP0836
+PRD0720,Caesar Salad #720,beverage,,,false,2.99,7.43,251,true,SUP0222
+PRD0721,Cinnamon Twists #721,addon,,,false,0.44,1.45,847,true,SUP0669
+PRD0722,Chocolate Brownie #722,addon,,,true,0.77,1.77,717,true,SUP0165
+PRD0723,Garden Salad #723,dessert,,,false,0.51,1.03,934,true,SUP0033
+PRD0724,Soft Drink #724,dessert,,,false,2.48,5.70,1264,true,SUP0478
+PRD0725,Garden Salad #725,dessert,,,false,3.28,6.79,1188,true,SUP0086
+PRD0726,Caesar Salad #726,addon,,,false,1.23,3.39,715,true,SUP0153
+PRD0727,Caesar Salad #727,side,,,true,2.10,4.22,166,true,SUP0142
+PRD0728,Soft Drink #728,addon,,,false,1.31,4.21,448,true,SUP0715
+PRD0729,Cinnamon Twists #729,dessert,,,false,2.67,6.90,790,true,SUP0094
+PRD0730,Garlic Knots #730,side,,,false,3.85,13.82,355,true,SUP0706
+PRD0731,Soft Drink #731,beverage,,,true,2.96,6.60,545,true,SUP0014
+PRD0732,Garden Salad #732,addon,,,false,0.44,1.23,779,false,SUP0764
+PRD0733,Soft Drink #733,dessert,,,true,0.41,1.49,411,true,SUP0656
+PRD0734,Chicken Wings #734,dessert,,,false,3.98,10.34,354,true,SUP0786
+PRD0735,Bottled Water #735,dessert,,,true,3.46,10.40,349,true,SUP0727
+PRD0736,Cinnamon Twists #736,dessert,,,true,0.85,2.97,1373,true,SUP0572
+PRD0737,Chocolate Brownie #737,beverage,,,false,0.43,1.03,885,true,SUP0259
+PRD0738,Cheese Breadsticks #738,side,,,false,1.80,5.02,1070,false,SUP0703
+PRD0739,Soft Drink #739,beverage,,,true,1.44,4.80,324,true,SUP0672
+PRD0740,Cheese Breadsticks #740,addon,,,true,1.87,4.21,468,true,SUP0601
+PRD0741,Caesar Salad #741,beverage,,,false,0.75,1.97,157,true,SUP0988
+PRD0742,Cinnamon Twists #742,addon,,,false,0.76,2.49,795,true,SUP0726
+PRD0743,Mozzarella Sticks #743,beverage,,,false,0.98,2.38,1251,true,SUP0333
+PRD0744,Soft Drink #744,dessert,,,true,3.94,12.48,601,true,SUP0278
+PRD0745,Garlic Knots #745,beverage,,,true,2.19,5.97,526,true,SUP0048
+PRD0746,Cheese Breadsticks #746,side,,,false,0.82,2.12,784,true,SUP0703
+PRD0747,Cinnamon Twists #747,dessert,,,true,2.07,6.75,482,true,SUP0227
+PRD0748,Cheese Breadsticks #748,addon,,,true,1.39,4.27,160,true,SUP0987
+PRD0749,Mozzarella Sticks #749,side,,,false,2.94,9.03,1233,true,SUP0819
+PRD0750,Chicken Wings #750,dessert,,,false,1.04,3.94,792,true,SUP0787
+PRD0751,Chicken Wings #751,beverage,,,false,2.55,5.92,842,true,SUP0454
+PRD0752,Mozzarella Sticks #752,addon,,,true,2.19,6.76,339,true,SUP0805
+PRD0753,Chocolate Brownie #753,dessert,,,false,0.47,1.19,963,true,SUP0453
+PRD0754,Chicken Wings #754,beverage,,,false,3.16,10.21,916,false,SUP0584
+PRD0755,Mozzarella Sticks #755,addon,,,true,3.68,7.62,833,true,SUP0988
+PRD0756,Caesar Salad #756,dessert,,,false,0.82,1.94,1188,true,SUP0385
+PRD0757,Garlic Knots #757,side,,,false,3.70,8.69,264,true,SUP0520
+PRD0758,Bottled Water #758,dessert,,,false,0.43,1.61,919,true,SUP0759
+PRD0759,Cheese Breadsticks #759,dessert,,,true,3.03,9.18,1101,true,SUP0881
+PRD0760,Bottled Water #760,dessert,,,true,2.08,6.53,926,true,SUP0935
+PRD0761,Garden Salad #761,dessert,,,true,2.28,6.54,1183,true,SUP0904
+PRD0762,Caesar Salad #762,beverage,,,true,3.04,11.36,1379,true,SUP0525
+PRD0763,Cheese Breadsticks #763,beverage,,,false,3.19,11.96,617,false,SUP0932
+PRD0764,Bottled Water #764,side,,,false,2.72,7.75,702,true,SUP0627
+PRD0765,Chicken Wings #765,beverage,,,true,1.53,4.93,637,true,SUP0318
+PRD0766,Chicken Wings #766,side,,,false,3.46,7.19,468,true,SUP0139
+PRD0767,Cinnamon Twists #767,beverage,,,true,1.43,3.45,846,true,SUP0112
+PRD0768,Cinnamon Twists #768,side,,,false,3.77,12.53,1307,true,SUP0528
+PRD0769,Garden Salad #769,beverage,,,true,3.84,12.07,230,true,SUP0621
+PRD0770,Bottled Water #770,addon,,,false,1.71,6.05,576,true,SUP0509
+PRD0771,Mozzarella Sticks #771,addon,,,false,2.80,9.61,1096,true,SUP0844
+PRD0772,Garden Salad #772,beverage,,,true,2.84,8.17,551,false,SUP0454
+PRD0773,Cheese Breadsticks #773,addon,,,true,2.08,5.60,515,true,SUP0027
+PRD0774,Garlic Knots #774,addon,,,true,2.23,5.33,424,true,SUP0733
+PRD0775,Soft Drink #775,beverage,,,false,1.42,3.44,1311,true,SUP0349
+PRD0776,Caesar Salad #776,beverage,,,false,2.86,5.93,298,true,SUP0986
+PRD0777,Caesar Salad #777,addon,,,false,1.53,3.51,797,true,SUP0292
+PRD0778,Bottled Water #778,addon,,,false,0.96,2.95,406,true,SUP0252
+PRD0779,Chicken Wings #779,addon,,,true,2.15,5.44,795,true,SUP0600
+PRD0780,Garden Salad #780,beverage,,,false,1.53,4.01,205,true,SUP0153
+PRD0781,Garlic Knots #781,side,,,false,1.88,5.35,976,true,SUP0272
+PRD0782,Mozzarella Sticks #782,beverage,,,false,3.28,11.27,447,true,SUP0578
+PRD0783,Garden Salad #783,side,,,true,3.84,8.71,149,true,SUP0333
+PRD0784,Garlic Knots #784,addon,,,false,3.05,6.66,426,true,SUP0555
+PRD0785,Garden Salad #785,side,,,false,1.71,4.34,842,true,SUP0005
+PRD0786,Chicken Wings #786,beverage,,,false,1.73,5.99,801,false,SUP0993
+PRD0787,Cinnamon Twists #787,dessert,,,false,2.94,8.15,1117,true,SUP0621
+PRD0788,Chicken Wings #788,dessert,,,false,1.24,2.78,512,true,SUP0616
+PRD0789,Garlic Knots #789,beverage,,,false,2.84,7.79,484,true,SUP0845
+PRD0790,Garden Salad #790,addon,,,true,2.44,8.03,411,true,SUP0435
+PRD0791,Bottled Water #791,side,,,false,1.06,3.43,1275,true,SUP0972
+PRD0792,Mozzarella Sticks #792,side,,,true,1.84,5.20,1004,true,SUP0938
+PRD0793,Chocolate Brownie #793,side,,,false,3.70,7.85,340,true,SUP0058
+PRD0794,Garden Salad #794,dessert,,,false,1.31,4.06,1347,true,SUP0168
+PRD0795,Cheese Breadsticks #795,addon,,,true,1.06,2.25,606,true,SUP0838
+PRD0796,Garden Salad #796,side,,,true,3.07,7.00,1368,true,SUP0003
+PRD0797,Mozzarella Sticks #797,dessert,,,false,0.49,1.05,975,false,SUP0057
+PRD0798,Soft Drink #798,dessert,,,true,3.58,10.46,1030,true,SUP0187
+PRD0799,Chocolate Brownie #799,side,,,false,1.54,4.79,1228,true,SUP0456
+PRD0800,Caesar Salad #800,dessert,,,false,0.62,1.46,1181,true,SUP0766
+PRD0801,Garlic Knots #801,side,,,true,3.93,9.05,1253,false,SUP0299
+PRD0802,Chicken Wings #802,addon,,,true,2.93,7.80,401,true,SUP0278
+PRD0803,Chocolate Brownie #803,addon,,,true,0.45,1.35,159,true,SUP0908
+PRD0804,Chicken Wings #804,addon,,,true,0.96,3.01,821,true,SUP0473
+PRD0805,Garden Salad #805,addon,,,false,2.38,7.74,1241,true,SUP0268
+PRD0806,Garlic Knots #806,addon,,,true,0.41,1.34,973,true,SUP0480
+PRD0807,Chocolate Brownie #807,side,,,true,3.98,8.58,1172,true,SUP0465
+PRD0808,Caesar Salad #808,beverage,,,true,0.96,2.82,399,true,SUP0151
+PRD0809,Cinnamon Twists #809,side,,,false,2.95,9.90,1016,false,SUP0350
+PRD0810,Garden Salad #810,addon,,,false,0.67,1.96,805,true,SUP0735
+PRD0811,Cinnamon Twists #811,side,,,true,3.26,6.96,942,true,SUP0484
+PRD0812,Bottled Water #812,beverage,,,true,2.69,6.08,510,true,SUP0902
+PRD0813,Caesar Salad #813,beverage,,,false,0.88,2.85,884,true,SUP0277
+PRD0814,Cheese Breadsticks #814,addon,,,true,3.25,7.00,1383,true,SUP0268
+PRD0815,Soft Drink #815,side,,,true,2.28,4.57,1085,false,SUP0527
+PRD0816,Cinnamon Twists #816,addon,,,false,3.54,7.73,1102,true,SUP0106
+PRD0817,Garlic Knots #817,addon,,,false,3.38,7.11,989,true,SUP0593
+PRD0818,Mozzarella Sticks #818,addon,,,false,2.55,7.18,721,true,SUP0686
+PRD0819,Garlic Knots #819,beverage,,,true,3.91,8.46,1288,true,SUP0053
+PRD0820,Chocolate Brownie #820,side,,,true,3.33,9.65,177,true,SUP0013
+PRD0821,Mozzarella Sticks #821,side,,,true,0.93,2.99,454,true,SUP0953
+PRD0822,Garden Salad #822,dessert,,,true,0.52,1.05,1389,true,SUP0482
+PRD0823,Mozzarella Sticks #823,addon,,,true,1.37,3.87,803,true,SUP0889
+PRD0824,Bottled Water #824,addon,,,true,1.56,5.54,753,true,SUP0779
+PRD0825,Caesar Salad #825,beverage,,,true,0.94,3.02,648,true,SUP0170
+PRD0826,Garlic Knots #826,beverage,,,false,0.70,1.76,552,true,SUP0041
+PRD0827,Mozzarella Sticks #827,side,,,false,3.64,13.81,1374,true,SUP0890
+PRD0828,Chocolate Brownie #828,addon,,,true,3.27,8.86,1365,true,SUP0547
+PRD0829,Cheese Breadsticks #829,addon,,,true,3.16,6.35,823,true,SUP0091
+PRD0830,Chocolate Brownie #830,beverage,,,false,2.56,5.32,730,true,SUP0401
+PRD0831,Soft Drink #831,side,,,false,1.39,4.25,239,true,SUP0840
+PRD0832,Mozzarella Sticks #832,addon,,,true,1.02,3.37,1029,true,SUP0339
+PRD0833,Garlic Knots #833,addon,,,true,1.15,2.84,769,true,SUP0452
+PRD0834,Bottled Water #834,side,,,true,0.75,1.66,236,true,SUP0531
+PRD0835,Mozzarella Sticks #835,side,,,true,3.86,9.47,1167,true,SUP0685
+PRD0836,Mozzarella Sticks #836,dessert,,,false,3.35,7.15,1301,true,SUP0513
+PRD0837,Garden Salad #837,side,,,true,3.35,9.43,683,true,SUP0872
+PRD0838,Soft Drink #838,side,,,false,3.56,7.37,977,true,SUP0355
+PRD0839,Bottled Water #839,addon,,,false,2.79,6.24,799,true,SUP0847
+PRD0840,Caesar Salad #840,addon,,,false,3.72,11.10,1368,true,SUP0066
+PRD0841,Chicken Wings #841,addon,,,true,3.90,9.59,693,true,SUP0396
+PRD0842,Garlic Knots #842,beverage,,,false,1.03,2.52,332,true,SUP0561
+PRD0843,Chicken Wings #843,addon,,,false,3.95,14.16,1000,false,SUP0188
+PRD0844,Chocolate Brownie #844,beverage,,,false,2.33,8.04,415,true,SUP0919
+PRD0845,Caesar Salad #845,addon,,,false,2.01,7.41,1151,true,SUP0634
+PRD0846,Chocolate Brownie #846,addon,,,false,3.79,9.83,1170,true,SUP0463
+PRD0847,Chicken Wings #847,side,,,true,1.25,2.51,398,true,SUP0596
+PRD0848,Garden Salad #848,addon,,,true,3.98,14.53,1353,true,SUP0713
+PRD0849,Chocolate Brownie #849,beverage,,,true,2.79,5.90,547,true,SUP0918
+PRD0850,Garden Salad #850,side,,,true,0.80,2.81,1201,true,SUP0302
+PRD0851,Chocolate Brownie #851,dessert,,,false,1.92,6.56,363,true,SUP0072
+PRD0852,Mozzarella Sticks #852,addon,,,true,2.40,6.53,611,true,SUP0064
+PRD0853,Chocolate Brownie #853,side,,,false,2.77,7.20,181,true,SUP0992
+PRD0854,Garden Salad #854,side,,,false,1.76,3.94,733,true,SUP0055
+PRD0855,Garden Salad #855,addon,,,true,3.86,8.94,1127,false,SUP0424
+PRD0856,Caesar Salad #856,beverage,,,false,1.47,5.26,505,true,SUP0819
+PRD0857,Cheese Breadsticks #857,dessert,,,true,2.65,6.30,1126,true,SUP0191
+PRD0858,Soft Drink #858,addon,,,true,2.34,8.05,972,false,SUP0714
+PRD0859,Chicken Wings #859,beverage,,,true,2.64,7.71,891,true,SUP0444
+PRD0860,Mozzarella Sticks #860,beverage,,,false,0.69,2.53,1248,true,SUP0181
+PRD0861,Mozzarella Sticks #861,dessert,,,true,0.67,1.56,1226,true,SUP0599
+PRD0862,Garlic Knots #862,beverage,,,false,3.40,10.56,1360,true,SUP0318
+PRD0863,Caesar Salad #863,dessert,,,true,3.98,13.97,1039,true,SUP0337
+PRD0864,Caesar Salad #864,side,,,true,1.27,4.08,463,true,SUP0554
+PRD0865,Soft Drink #865,addon,,,true,0.73,2.42,549,true,SUP0940
+PRD0866,Garlic Knots #866,dessert,,,true,3.52,13.04,720,true,SUP0454
+PRD0867,Chocolate Brownie #867,addon,,,true,0.89,3.29,812,true,SUP0148
+PRD0868,Soft Drink #868,addon,,,true,3.06,11.52,426,false,SUP0935
+PRD0869,Chocolate Brownie #869,addon,,,false,2.42,8.46,283,true,SUP0008
+PRD0870,Cinnamon Twists #870,dessert,,,false,2.80,6.74,830,true,SUP0773
+PRD0871,Mozzarella Sticks #871,addon,,,false,1.27,4.59,384,true,SUP0872
+PRD0872,Chocolate Brownie #872,addon,,,false,2.72,9.19,797,true,SUP0544
+PRD0873,Mozzarella Sticks #873,addon,,,true,1.19,4.38,571,true,SUP0686
+PRD0874,Caesar Salad #874,dessert,,,true,2.38,8.26,166,true,SUP0168
+PRD0875,Chicken Wings #875,side,,,false,3.15,11.80,811,true,SUP0421
+PRD0876,Soft Drink #876,dessert,,,true,3.93,13.50,1058,true,SUP0301
+PRD0877,Cheese Breadsticks #877,side,,,true,1.90,7.11,261,true,SUP0598
+PRD0878,Cinnamon Twists #878,beverage,,,false,1.84,5.81,920,true,SUP0895
+PRD0879,Mozzarella Sticks #879,addon,,,true,2.59,6.57,1174,true,SUP0920
+PRD0880,Chicken Wings #880,addon,,,false,2.20,5.30,485,true,SUP0073
+PRD0881,Caesar Salad #881,beverage,,,true,2.36,6.12,1016,false,SUP0676
+PRD0882,Cinnamon Twists #882,dessert,,,true,1.26,3.92,1313,true,SUP0694
+PRD0883,Chicken Wings #883,dessert,,,false,1.92,3.95,1256,true,SUP0212
+PRD0884,Garlic Knots #884,side,,,false,0.86,2.84,621,true,SUP0030
+PRD0885,Cheese Breadsticks #885,dessert,,,false,3.00,8.72,889,true,SUP0230
+PRD0886,Garden Salad #886,beverage,,,false,1.93,6.02,1242,true,SUP0078
+PRD0887,Garlic Knots #887,side,,,false,3.81,10.12,1056,true,SUP0828
+PRD0888,Garden Salad #888,beverage,,,true,1.85,3.78,1041,true,SUP0524
+PRD0889,Chocolate Brownie #889,side,,,false,3.99,14.64,1003,true,SUP0377
+PRD0890,Chocolate Brownie #890,beverage,,,true,1.67,4.83,1372,true,SUP1000
+PRD0891,Mozzarella Sticks #891,side,,,true,3.61,9.32,912,true,SUP0728
+PRD0892,Cheese Breadsticks #892,addon,,,true,0.81,2.38,706,true,SUP0573
+PRD0893,Garden Salad #893,beverage,,,false,3.79,12.29,871,true,SUP0956
+PRD0894,Garlic Knots #894,addon,,,true,3.62,12.28,1145,true,SUP0778
+PRD0895,Cheese Breadsticks #895,addon,,,false,2.74,5.96,498,true,SUP0853
+PRD0896,Mozzarella Sticks #896,addon,,,false,1.46,3.71,538,false,SUP0827
+PRD0897,Caesar Salad #897,addon,,,true,2.67,9.02,1068,true,SUP0526
+PRD0898,Soft Drink #898,dessert,,,true,1.48,3.11,862,true,SUP0248
+PRD0899,Caesar Salad #899,side,,,false,3.23,10.75,705,false,SUP0720
+PRD0900,Caesar Salad #900,dessert,,,false,4.00,11.13,165,true,SUP0093
+PRD0901,Caesar Salad #901,side,,,false,3.36,12.18,457,true,SUP0586
+PRD0902,Mozzarella Sticks #902,side,,,true,2.95,7.39,1364,true,SUP0091
+PRD0903,Caesar Salad #903,dessert,,,false,3.66,9.45,296,true,SUP0609
+PRD0904,Cheese Breadsticks #904,side,,,true,1.13,2.89,597,true,SUP0515
+PRD0905,Mozzarella Sticks #905,addon,,,true,0.65,1.54,1396,true,SUP0181
+PRD0906,Chocolate Brownie #906,addon,,,false,2.37,5.11,714,true,SUP0119
+PRD0907,Cheese Breadsticks #907,dessert,,,false,0.49,1.13,537,true,SUP0230
+PRD0908,Garlic Knots #908,side,,,true,1.44,5.12,453,true,SUP0974
+PRD0909,Bottled Water #909,side,,,true,2.40,7.59,1304,true,SUP0423
+PRD0910,Chicken Wings #910,beverage,,,true,0.97,2.14,1299,true,SUP0037
+PRD0911,Soft Drink #911,dessert,,,false,0.65,1.56,1270,true,SUP0713
+PRD0912,Garden Salad #912,side,,,true,1.99,4.53,936,true,SUP0308
+PRD0913,Cheese Breadsticks #913,addon,,,false,0.71,2.50,1242,true,SUP0095
+PRD0914,Bottled Water #914,side,,,false,3.60,12.33,193,true,SUP0888
+PRD0915,Garlic Knots #915,side,,,false,1.26,2.99,629,true,SUP0819
+PRD0916,Chicken Wings #916,beverage,,,false,1.95,7.25,1183,true,SUP0401
+PRD0917,Mozzarella Sticks #917,side,,,false,3.37,9.76,434,true,SUP0881
+PRD0918,Chocolate Brownie #918,dessert,,,true,1.21,4.23,547,true,SUP0027
+PRD0919,Garden Salad #919,addon,,,false,3.85,11.21,232,true,SUP0911
+PRD0920,Chocolate Brownie #920,side,,,true,3.83,12.91,896,true,SUP0211
+PRD0921,Garlic Knots #921,addon,,,false,1.84,5.20,1336,true,SUP0413
+PRD0922,Bottled Water #922,addon,,,true,1.83,5.65,400,true,SUP0254
+PRD0923,Garden Salad #923,addon,,,true,0.61,1.77,771,true,SUP0010
+PRD0924,Garlic Knots #924,addon,,,true,3.52,7.46,1265,true,SUP0256
+PRD0925,Caesar Salad #925,dessert,,,true,1.47,5.19,951,true,SUP0548
+PRD0926,Chocolate Brownie #926,beverage,,,true,1.43,4.64,1250,true,SUP0897
+PRD0927,Caesar Salad #927,dessert,,,false,2.09,6.42,1303,true,SUP0146
+PRD0928,Soft Drink #928,beverage,,,false,3.69,12.94,885,true,SUP0346
+PRD0929,Chicken Wings #929,beverage,,,false,1.54,5.49,354,true,SUP0978
+PRD0930,Cinnamon Twists #930,side,,,true,3.87,14.14,458,true,SUP0241
+PRD0931,Cinnamon Twists #931,addon,,,true,2.35,8.56,1121,true,SUP0900
+PRD0932,Bottled Water #932,dessert,,,false,0.92,2.25,648,true,SUP0422
+PRD0933,Chicken Wings #933,addon,,,false,1.71,4.38,680,true,SUP0756
+PRD0934,Chocolate Brownie #934,beverage,,,true,0.75,1.82,386,false,SUP0234
+PRD0935,Cheese Breadsticks #935,addon,,,true,1.60,5.76,1104,true,SUP0125
+PRD0936,Chicken Wings #936,beverage,,,false,2.25,4.52,671,true,SUP0082
+PRD0937,Mozzarella Sticks #937,addon,,,false,1.04,2.29,558,true,SUP0914
+PRD0938,Cheese Breadsticks #938,side,,,false,1.89,5.08,911,true,SUP0881
+PRD0939,Garden Salad #939,addon,,,false,0.67,1.97,165,true,SUP0350
+PRD0940,Mozzarella Sticks #940,beverage,,,false,1.76,4.64,935,true,SUP0253
+PRD0941,Cinnamon Twists #941,beverage,,,true,3.73,13.79,594,true,SUP0092
+PRD0942,Chicken Wings #942,side,,,true,1.11,3.99,764,true,SUP0347
+PRD0943,Bottled Water #943,beverage,,,false,2.83,9.67,592,true,SUP0872
+PRD0944,Cheese Breadsticks #944,side,,,true,2.56,7.04,431,true,SUP0154
+PRD0945,Garden Salad #945,addon,,,false,3.28,9.34,377,true,SUP0668
+PRD0946,Chocolate Brownie #946,dessert,,,true,1.81,5.34,233,true,SUP0333
+PRD0947,Chocolate Brownie #947,side,,,false,3.93,11.99,1358,true,SUP0417
+PRD0948,Mozzarella Sticks #948,side,,,false,2.36,5.01,651,true,SUP0772
+PRD0949,Garlic Knots #949,dessert,,,false,1.39,4.10,677,true,SUP0764
+PRD0950,Chocolate Brownie #950,addon,,,false,0.52,1.69,1117,true,SUP0339
+PRD0951,Bottled Water #951,beverage,,,true,3.55,7.90,1336,true,SUP0262
+PRD0952,Chicken Wings #952,addon,,,false,1.94,5.03,293,true,SUP0770
+PRD0953,Chocolate Brownie #953,beverage,,,false,3.44,7.69,1145,false,SUP0013
+PRD0954,Cheese Breadsticks #954,addon,,,true,3.88,12.95,256,true,SUP0458
+PRD0955,Garden Salad #955,beverage,,,true,1.50,4.57,773,true,SUP0240
+PRD0956,Mozzarella Sticks #956,side,,,true,3.34,10.95,452,true,SUP0932
+PRD0957,Soft Drink #957,addon,,,true,2.99,9.66,214,false,SUP0456
+PRD0958,Garlic Knots #958,addon,,,false,2.40,8.89,1395,true,SUP0672
+PRD0959,Mozzarella Sticks #959,addon,,,true,1.86,3.97,203,true,SUP0895
+PRD0960,Bottled Water #960,beverage,,,true,2.41,5.22,710,true,SUP0723
+PRD0961,Garden Salad #961,beverage,,,true,2.97,10.07,1229,true,SUP0219
+PRD0962,Chocolate Brownie #962,dessert,,,true,2.83,9.78,950,true,SUP0588
+PRD0963,Soft Drink #963,side,,,false,2.77,5.79,787,true,SUP0653
+PRD0964,Chocolate Brownie #964,addon,,,true,0.75,1.60,386,true,SUP0747
+PRD0965,Cheese Breadsticks #965,addon,,,true,3.86,12.40,1337,true,SUP0955
+PRD0966,Garlic Knots #966,addon,,,true,3.02,6.70,364,false,SUP0956
+PRD0967,Cinnamon Twists #967,beverage,,,false,1.32,4.32,331,true,SUP0877
+PRD0968,Soft Drink #968,dessert,,,false,0.62,1.88,741,true,SUP0786
+PRD0969,Chicken Wings #969,addon,,,true,1.17,3.87,1177,true,SUP0879
+PRD0970,Mozzarella Sticks #970,dessert,,,true,1.27,4.82,718,true,SUP0859
+PRD0971,Chocolate Brownie #971,addon,,,true,0.42,1.19,367,true,SUP0349
+PRD0972,Garden Salad #972,dessert,,,false,1.60,3.48,1256,true,SUP0564
+PRD0973,Caesar Salad #973,dessert,,,true,1.86,5.64,1378,true,SUP0416
+PRD0974,Cinnamon Twists #974,side,,,true,0.93,2.59,536,true,SUP0221
+PRD0975,Bottled Water #975,beverage,,,false,2.05,5.62,1204,true,SUP0112
+PRD0976,Garlic Knots #976,side,,,false,1.08,4.09,1335,true,SUP0022
+PRD0977,Chocolate Brownie #977,side,,,true,3.32,9.55,1200,true,SUP0770
+PRD0978,Cinnamon Twists #978,addon,,,false,3.11,11.46,194,true,SUP0861
+PRD0979,Garlic Knots #979,dessert,,,false,1.38,3.44,1011,true,SUP0312
+PRD0980,Soft Drink #980,addon,,,false,3.51,12.94,959,true,SUP0873
+PRD0981,Chocolate Brownie #981,beverage,,,false,2.82,7.01,768,true,SUP0438
+PRD0982,Chocolate Brownie #982,addon,,,true,1.70,4.24,1164,true,SUP0106
+PRD0983,Chocolate Brownie #983,beverage,,,false,2.19,6.67,202,true,SUP0342
+PRD0984,Caesar Salad #984,dessert,,,false,0.62,1.73,1372,true,SUP0232
+PRD0985,Garlic Knots #985,dessert,,,true,0.85,2.84,643,true,SUP0976
+PRD0986,Mozzarella Sticks #986,addon,,,true,1.20,2.43,187,true,SUP0473
+PRD0987,Chicken Wings #987,side,,,false,3.04,7.31,1174,true,SUP0663
+PRD0988,Caesar Salad #988,beverage,,,false,2.07,6.93,376,true,SUP0572
+PRD0989,Garden Salad #989,addon,,,true,3.14,9.52,246,true,SUP0367
+PRD0990,Garden Salad #990,addon,,,true,3.00,10.16,547,true,SUP0505
+PRD0991,Cinnamon Twists #991,dessert,,,false,1.18,2.91,846,true,SUP0164
+PRD0992,Soft Drink #992,dessert,,,true,2.08,7.49,568,true,SUP0181
+PRD0993,Caesar Salad #993,beverage,,,false,3.10,7.37,589,true,SUP0845
+PRD0994,Garlic Knots #994,side,,,false,2.36,7.19,545,true,SUP0918
+PRD0995,Garlic Knots #995,dessert,,,false,3.08,6.21,597,true,SUP0202
+PRD0996,Cheese Breadsticks #996,dessert,,,true,2.32,6.17,288,true,SUP0662
+PRD0997,Chocolate Brownie #997,side,,,false,1.37,3.28,1192,true,SUP0658
+PRD0998,Mozzarella Sticks #998,side,,,true,2.12,5.84,1226,false,SUP0669
+PRD0999,Cinnamon Twists #999,beverage,,,false,1.73,5.66,415,true,SUP0502
+PRD1000,Soft Drink #1000,dessert,,,false,2.07,6.63,181,true,SUP0731

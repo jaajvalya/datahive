@@ -1,0 +1,1001 @@
+supplier_id,supplier_name,category,contact_name,email,phone,city,state,zip,payment_terms_days,is_preferred
+SUP0001,Harvest Flour Mills 1,dry_goods,David Sanchez,orders1@supplier1.example.com,(491) 862-3525,San Antonio,TX,78205,15,false
+SUP0002,Urban Beverage Dist 2,beverages,Henry Hill,orders2@supplier2.example.com,(334) 567-2574,Nashville,TN,37203,45,false
+SUP0003,Artisan Cheese Works 3,dry_goods,Zoey Moore,orders3@supplier3.example.com,(776) 814-7931,Portland,OR,97201,15,true
+SUP0004,FireOven Packaging 4,packaging,Mason Ramirez,orders4@supplier4.example.com,(845) 636-2522,Nashville,TN,37203,15,false
+SUP0005,Coastal Seafoods 5,beverages,Matthew Martinez,orders5@supplier5.example.com,(707) 739-9596,Portland,OR,97201,15,false
+SUP0006,Roma Tomato Co 6,equipment,Zoey Martin,orders6@supplier6.example.com,(352) 330-5921,Seattle,WA,98101,30,false
+SUP0007,Valley Farms Dairy 7,packaging,Emma Williams,orders7@supplier7.example.com,(725) 310-9366,Denver,CO,80202,60,false
+SUP0008,GreenLeaf Produce 8,meat,Evelyn Nguyen,orders8@supplier8.example.com,(283) 987-9248,Portland,OR,97201,15,false
+SUP0009,Artisan Cheese Works 9,produce,Mason Sanchez,orders9@supplier9.example.com,(246) 285-7819,Miami,FL,33101,45,false
+SUP0010,Artisan Cheese Works 10,equipment,Aurora Lewis,orders10@supplier10.example.com,(838) 471-6592,Tampa,FL,33602,30,false
+SUP0011,GreenLeaf Produce 11,equipment,Matthew Miller,orders11@supplier11.example.com,(644) 747-1293,Dallas,TX,75201,15,false
+SUP0012,Harvest Flour Mills 12,beverages,Zoey Robinson,orders12@supplier12.example.com,(908) 614-8974,Austin,TX,78701,45,false
+SUP0013,FireOven Packaging 13,beverages,Matthew Sanchez,orders13@supplier13.example.com,(509) 289-3049,Atlanta,GA,30303,30,false
+SUP0014,Valley Farms Dairy 14,beverages,Amelia Johnson,orders14@supplier14.example.com,(414) 692-3378,Dallas,TX,75201,30,false
+SUP0015,Coastal Seafoods 15,dairy,Henry Robinson,orders15@supplier15.example.com,(351) 685-7912,Miami,FL,33101,15,false
+SUP0016,Harvest Flour Mills 16,beverages,Penelope Lewis,orders16@supplier16.example.com,(696) 682-1321,Columbus,OH,43215,60,false
+SUP0017,GreenLeaf Produce 17,packaging,Daniel Brown,orders17@supplier17.example.com,(541) 208-2682,San Antonio,TX,78205,60,true
+SUP0018,Artisan Cheese Works 18,beverages,Aiden Hill,orders18@supplier18.example.com,(948) 767-5764,Charlotte,NC,28202,15,false
+SUP0019,Artisan Cheese Works 19,produce,Joseph Brown,orders19@supplier19.example.com,(740) 219-7914,Portland,OR,97201,45,false
+SUP0020,Urban Beverage Dist 20,dry_goods,Elijah Young,orders20@supplier20.example.com,(837) 861-6681,Denver,CO,80202,60,false
+SUP0021,Harvest Flour Mills 21,meat,Layla Gonzalez,orders21@supplier21.example.com,(680) 552-8178,Austin,TX,78701,30,false
+SUP0022,FireOven Packaging 22,packaging,Joseph Robinson,orders22@supplier22.example.com,(334) 500-7395,Atlanta,GA,30303,60,true
+SUP0023,FireOven Packaging 23,equipment,Zoey Hernandez,orders23@supplier23.example.com,(836) 412-5627,Miami,FL,33101,15,false
+SUP0024,Harvest Flour Mills 24,produce,Mia Hill,orders24@supplier24.example.com,(703) 303-7815,Houston,TX,77002,60,false
+SUP0025,Valley Farms Dairy 25,dairy,Ella Taylor,orders25@supplier25.example.com,(565) 893-3598,San Antonio,TX,78205,30,true
+SUP0026,Valley Farms Dairy 26,equipment,Emma Perez,orders26@supplier26.example.com,(640) 316-4714,Columbus,OH,43215,15,false
+SUP0027,GreenLeaf Produce 27,meat,Ella Williams,orders27@supplier27.example.com,(988) 770-5382,Portland,OR,97201,30,true
+SUP0028,Roma Tomato Co 28,beverages,Noah Lewis,orders28@supplier28.example.com,(668) 973-2817,Charlotte,NC,28202,15,true
+SUP0029,Roma Tomato Co 29,equipment,Jack Williams,orders29@supplier29.example.com,(719) 307-3736,Atlanta,GA,30303,15,true
+SUP0030,FireOven Packaging 30,produce,Layla Jackson,orders30@supplier30.example.com,(925) 652-9288,Columbus,OH,43215,60,true
+SUP0031,Harvest Flour Mills 31,beverages,Michael Perez,orders31@supplier31.example.com,(341) 325-4307,Dallas,TX,75201,60,true
+SUP0032,Valley Farms Dairy 32,produce,Zoey Perez,orders32@supplier32.example.com,(493) 717-3805,Nashville,TN,37203,15,false
+SUP0033,Urban Beverage Dist 33,meat,Hazel Thomas,orders33@supplier33.example.com,(355) 971-9677,Tampa,FL,33602,60,true
+SUP0034,Urban Beverage Dist 34,dry_goods,Grace Robinson,orders34@supplier34.example.com,(728) 898-6927,Houston,TX,77002,15,false
+SUP0035,Valley Farms Dairy 35,beverages,Sebastian Jones,orders35@supplier35.example.com,(286) 546-6157,Nashville,TN,37203,60,true
+SUP0036,Urban Beverage Dist 36,dairy,Daniel Williams,orders36@supplier36.example.com,(876) 856-3473,Houston,TX,77002,15,true
+SUP0037,GreenLeaf Produce 37,dry_goods,Daniel Scott,orders37@supplier37.example.com,(511) 938-6139,Tampa,FL,33602,45,false
+SUP0038,Harvest Flour Mills 38,beverages,Daniel Lewis,orders38@supplier38.example.com,(859) 410-9919,Denver,CO,80202,60,false
+SUP0039,Urban Beverage Dist 39,equipment,Amelia Martin,orders39@supplier39.example.com,(286) 237-9805,Columbus,OH,43215,45,false
+SUP0040,Harvest Flour Mills 40,packaging,Aria Jackson,orders40@supplier40.example.com,(418) 295-9383,Tampa,FL,33602,45,false
+SUP0041,Harvest Flour Mills 41,dairy,Liam Wright,orders41@supplier41.example.com,(806) 464-4954,Nashville,TN,37203,45,true
+SUP0042,Roma Tomato Co 42,beverages,Noah White,orders42@supplier42.example.com,(465) 842-9314,Chicago,IL,60601,45,false
+SUP0043,Roma Tomato Co 43,dry_goods,Henry Torres,orders43@supplier43.example.com,(954) 205-8424,Nashville,TN,37203,45,true
+SUP0044,Coastal Seafoods 44,meat,Henry Jackson,orders44@supplier44.example.com,(882) 932-3293,Nashville,TN,37203,60,false
+SUP0045,Roma Tomato Co 45,meat,Sebastian Nguyen,orders45@supplier45.example.com,(397) 997-6919,San Antonio,TX,78205,60,false
+SUP0046,Urban Beverage Dist 46,equipment,Grace Garcia,orders46@supplier46.example.com,(294) 263-7961,Tampa,FL,33602,30,false
+SUP0047,Roma Tomato Co 47,meat,Matthew King,orders47@supplier47.example.com,(612) 802-9502,Portland,OR,97201,60,true
+SUP0048,Artisan Cheese Works 48,beverages,Jacob Lewis,orders48@supplier48.example.com,(905) 701-7830,Atlanta,GA,30303,30,false
+SUP0049,Artisan Cheese Works 49,beverages,Logan Rodriguez,orders49@supplier49.example.com,(921) 725-9669,Houston,TX,77002,15,false
+SUP0050,Artisan Cheese Works 50,dairy,Levi Hernandez,orders50@supplier50.example.com,(772) 578-2945,Portland,OR,97201,60,false
+SUP0051,GreenLeaf Produce 51,dairy,Sebastian Martinez,orders51@supplier51.example.com,(320) 580-5995,Phoenix,AZ,85004,45,false
+SUP0052,Valley Farms Dairy 52,equipment,Lucas Martinez,orders52@supplier52.example.com,(803) 631-1797,Portland,OR,97201,45,true
+SUP0053,Harvest Flour Mills 53,equipment,Levi Young,orders53@supplier53.example.com,(202) 325-9970,San Antonio,TX,78205,45,false
+SUP0054,Urban Beverage Dist 54,dry_goods,Riley Martin,orders54@supplier54.example.com,(779) 663-6534,Austin,TX,78701,60,false
+SUP0055,Harvest Flour Mills 55,equipment,Isabella Allen,orders55@supplier55.example.com,(851) 671-8371,Tampa,FL,33602,60,false
+SUP0056,FireOven Packaging 56,dairy,Owen Flores,orders56@supplier56.example.com,(619) 596-4814,Tampa,FL,33602,60,false
+SUP0057,Artisan Cheese Works 57,beverages,Benjamin Garcia,orders57@supplier57.example.com,(369) 924-1406,Austin,TX,78701,45,false
+SUP0058,Roma Tomato Co 58,produce,Owen Wright,orders58@supplier58.example.com,(790) 975-1866,Dallas,TX,75201,30,true
+SUP0059,Valley Farms Dairy 59,dairy,Aurora Wright,orders59@supplier59.example.com,(384) 219-5504,Chicago,IL,60601,30,false
+SUP0060,Artisan Cheese Works 60,dairy,Aria Hill,orders60@supplier60.example.com,(528) 611-1737,Tampa,FL,33602,60,true
+SUP0061,FireOven Packaging 61,dry_goods,Mason Clark,orders61@supplier61.example.com,(224) 740-6199,Austin,TX,78701,60,false
+SUP0062,Roma Tomato Co 62,packaging,Mia Jackson,orders62@supplier62.example.com,(347) 387-5187,Dallas,TX,75201,15,false
+SUP0063,Harvest Flour Mills 63,dairy,Owen Lee,orders63@supplier63.example.com,(385) 227-1958,Seattle,WA,98101,45,false
+SUP0064,Harvest Flour Mills 64,dry_goods,Emily Taylor,orders64@supplier64.example.com,(584) 323-1849,Phoenix,AZ,85004,30,false
+SUP0065,Coastal Seafoods 65,dry_goods,Lily Allen,orders65@supplier65.example.com,(594) 317-5412,Atlanta,GA,30303,15,false
+SUP0066,Urban Beverage Dist 66,dairy,Zoey Johnson,orders66@supplier66.example.com,(617) 848-4829,Chicago,IL,60601,15,false
+SUP0067,Roma Tomato Co 67,produce,Nova Scott,orders67@supplier67.example.com,(867) 328-5990,Atlanta,GA,30303,60,false
+SUP0068,Coastal Seafoods 68,equipment,Lucas White,orders68@supplier68.example.com,(753) 372-5016,Charlotte,NC,28202,60,true
+SUP0069,Artisan Cheese Works 69,dairy,Ava Robinson,orders69@supplier69.example.com,(835) 496-3742,Chicago,IL,60601,15,false
+SUP0070,Artisan Cheese Works 70,meat,Nora Taylor,orders70@supplier70.example.com,(896) 589-6757,Columbus,OH,43215,30,false
+SUP0071,GreenLeaf Produce 71,dairy,Mia Wright,orders71@supplier71.example.com,(776) 271-5925,Chicago,IL,60601,15,false
+SUP0072,Harvest Flour Mills 72,beverages,Jack Moore,orders72@supplier72.example.com,(642) 415-9270,Dallas,TX,75201,45,true
+SUP0073,GreenLeaf Produce 73,equipment,Joseph Lewis,orders73@supplier73.example.com,(479) 451-6269,Phoenix,AZ,85004,45,false
+SUP0074,FireOven Packaging 74,dairy,Penelope Rodriguez,orders74@supplier74.example.com,(861) 202-8807,Atlanta,GA,30303,15,true
+SUP0075,Harvest Flour Mills 75,dry_goods,Jack Young,orders75@supplier75.example.com,(980) 602-9816,Miami,FL,33101,15,true
+SUP0076,Roma Tomato Co 76,packaging,Liam Lewis,orders76@supplier76.example.com,(888) 326-6783,Miami,FL,33101,60,true
+SUP0077,Urban Beverage Dist 77,produce,David Smith,orders77@supplier77.example.com,(327) 673-7069,Phoenix,AZ,85004,30,false
+SUP0078,Valley Farms Dairy 78,equipment,Benjamin Thompson,orders78@supplier78.example.com,(396) 292-5967,San Antonio,TX,78205,30,false
+SUP0079,FireOven Packaging 79,dairy,Benjamin Young,orders79@supplier79.example.com,(920) 923-4425,Portland,OR,97201,15,false
+SUP0080,Urban Beverage Dist 80,dairy,Benjamin Torres,orders80@supplier80.example.com,(712) 705-3793,Charlotte,NC,28202,30,false
+SUP0081,Harvest Flour Mills 81,dairy,Aiden Rodriguez,orders81@supplier81.example.com,(963) 266-3087,Atlanta,GA,30303,45,true
+SUP0082,Coastal Seafoods 82,packaging,Layla Moore,orders82@supplier82.example.com,(396) 894-1378,Charlotte,NC,28202,45,false
+SUP0083,Artisan Cheese Works 83,dairy,Jacob Brown,orders83@supplier83.example.com,(530) 642-7666,Columbus,OH,43215,45,false
+SUP0084,Artisan Cheese Works 84,dry_goods,Michael King,orders84@supplier84.example.com,(977) 244-4678,Chicago,IL,60601,15,false
+SUP0085,Artisan Cheese Works 85,meat,Ava Sanchez,orders85@supplier85.example.com,(399) 542-2340,Seattle,WA,98101,15,true
+SUP0086,Urban Beverage Dist 86,dairy,James Gonzalez,orders86@supplier86.example.com,(368) 537-6092,San Antonio,TX,78205,15,false
+SUP0087,Valley Farms Dairy 87,dry_goods,Jacob Johnson,orders87@supplier87.example.com,(806) 841-6477,Dallas,TX,75201,45,false
+SUP0088,Coastal Seafoods 88,meat,Noah Perez,orders88@supplier88.example.com,(732) 442-2194,Portland,OR,97201,60,true
+SUP0089,Artisan Cheese Works 89,packaging,Elijah Garcia,orders89@supplier89.example.com,(262) 234-7183,Miami,FL,33101,45,true
+SUP0090,Roma Tomato Co 90,equipment,Isabella Brown,orders90@supplier90.example.com,(652) 256-5939,Tampa,FL,33602,60,false
+SUP0091,Valley Farms Dairy 91,packaging,Noah Jackson,orders91@supplier91.example.com,(590) 611-2570,Miami,FL,33101,60,false
+SUP0092,Valley Farms Dairy 92,dry_goods,Scarlett Robinson,orders92@supplier92.example.com,(638) 835-2659,Atlanta,GA,30303,45,false
+SUP0093,Valley Farms Dairy 93,dry_goods,Sebastian Perez,orders93@supplier93.example.com,(801) 397-2769,Miami,FL,33101,15,false
+SUP0094,Roma Tomato Co 94,packaging,Amelia Torres,orders94@supplier94.example.com,(329) 852-9337,Tampa,FL,33602,45,false
+SUP0095,Artisan Cheese Works 95,produce,James Rodriguez,orders95@supplier95.example.com,(245) 261-3091,Portland,OR,97201,45,false
+SUP0096,FireOven Packaging 96,meat,Aiden Wright,orders96@supplier96.example.com,(994) 349-3415,Chicago,IL,60601,60,false
+SUP0097,GreenLeaf Produce 97,meat,Ava King,orders97@supplier0.example.com,(800) 873-3369,Phoenix,AZ,85004,15,false
+SUP0098,Valley Farms Dairy 98,dry_goods,Ella Gonzalez,orders98@supplier1.example.com,(405) 855-4297,Charlotte,NC,28202,15,false
+SUP0099,Artisan Cheese Works 99,beverages,Penelope Robinson,orders99@supplier2.example.com,(814) 909-6425,Miami,FL,33101,45,false
+SUP0100,FireOven Packaging 100,produce,Sophia Robinson,orders100@supplier3.example.com,(243) 707-4594,Seattle,WA,98101,15,false
+SUP0101,Coastal Seafoods 101,dry_goods,Owen Wilson,orders101@supplier4.example.com,(444) 692-6431,Tampa,FL,33602,60,false
+SUP0102,Valley Farms Dairy 102,meat,Ava Jones,orders102@supplier5.example.com,(566) 230-2887,Houston,TX,77002,30,false
+SUP0103,FireOven Packaging 103,dairy,Liam Gonzalez,orders103@supplier6.example.com,(402) 490-3853,San Antonio,TX,78205,30,true
+SUP0104,Harvest Flour Mills 104,meat,Jack Thomas,orders104@supplier7.example.com,(382) 400-1352,Tampa,FL,33602,30,true
+SUP0105,Roma Tomato Co 105,dairy,Matthew Rodriguez,orders105@supplier8.example.com,(588) 870-2818,Columbus,OH,43215,45,true
+SUP0106,Artisan Cheese Works 106,produce,Michael White,orders106@supplier9.example.com,(876) 375-9633,Denver,CO,80202,60,true
+SUP0107,Roma Tomato Co 107,produce,Isabella Gonzalez,orders107@supplier10.example.com,(396) 745-7196,Dallas,TX,75201,45,false
+SUP0108,Coastal Seafoods 108,dairy,Nova Flores,orders108@supplier11.example.com,(801) 393-9773,Seattle,WA,98101,45,true
+SUP0109,Coastal Seafoods 109,dairy,Hazel Moore,orders109@supplier12.example.com,(329) 720-9011,Phoenix,AZ,85004,30,true
+SUP0110,Artisan Cheese Works 110,equipment,Aurora Flores,orders110@supplier13.example.com,(266) 371-9333,Nashville,TN,37203,60,true
+SUP0111,FireOven Packaging 111,dry_goods,Sebastian Robinson,orders111@supplier14.example.com,(383) 529-7125,Miami,FL,33101,60,true
+SUP0112,Artisan Cheese Works 112,meat,Aiden Sanchez,orders112@supplier15.example.com,(853) 797-1599,Portland,OR,97201,30,false
+SUP0113,Artisan Cheese Works 113,equipment,James Sanchez,orders113@supplier16.example.com,(423) 513-7963,San Antonio,TX,78205,60,false
+SUP0114,FireOven Packaging 114,meat,Jack Garcia,orders114@supplier17.example.com,(337) 969-2376,Columbus,OH,43215,45,false
+SUP0115,Coastal Seafoods 115,packaging,Olivia Robinson,orders115@supplier18.example.com,(724) 836-6511,Phoenix,AZ,85004,60,false
+SUP0116,Urban Beverage Dist 116,meat,Jackson Lee,orders116@supplier19.example.com,(479) 591-1404,Seattle,WA,98101,30,false
+SUP0117,Roma Tomato Co 117,meat,Oliver Jackson,orders117@supplier20.example.com,(713) 725-9956,Denver,CO,80202,15,true
+SUP0118,Coastal Seafoods 118,dairy,Elijah Jones,orders118@supplier21.example.com,(568) 239-9946,Columbus,OH,43215,30,false
+SUP0119,FireOven Packaging 119,meat,Henry Moore,orders119@supplier22.example.com,(395) 922-3258,Miami,FL,33101,45,false
+SUP0120,GreenLeaf Produce 120,equipment,Ella Sanchez,orders120@supplier23.example.com,(615) 793-1194,Denver,CO,80202,60,false
+SUP0121,Harvest Flour Mills 121,equipment,Daniel Anderson,orders121@supplier24.example.com,(432) 940-4438,Nashville,TN,37203,60,false
+SUP0122,Artisan Cheese Works 122,beverages,Logan Perez,orders122@supplier25.example.com,(287) 520-4077,Atlanta,GA,30303,60,true
+SUP0123,Urban Beverage Dist 123,produce,Chloe Lewis,orders123@supplier26.example.com,(771) 230-7139,Tampa,FL,33602,30,false
+SUP0124,GreenLeaf Produce 124,beverages,Ava Young,orders124@supplier27.example.com,(874) 563-6567,Houston,TX,77002,30,false
+SUP0125,Urban Beverage Dist 125,equipment,David Wright,orders125@supplier28.example.com,(506) 533-1380,Miami,FL,33101,15,true
+SUP0126,FireOven Packaging 126,packaging,Hazel Hill,orders126@supplier29.example.com,(822) 787-7404,Houston,TX,77002,60,false
+SUP0127,Roma Tomato Co 127,packaging,Scarlett Gonzalez,orders127@supplier30.example.com,(686) 311-6387,Seattle,WA,98101,60,false
+SUP0128,Roma Tomato Co 128,produce,Sophia Scott,orders128@supplier31.example.com,(381) 232-9005,Denver,CO,80202,15,false
+SUP0129,Urban Beverage Dist 129,meat,Ethan Anderson,orders129@supplier32.example.com,(498) 875-9591,Dallas,TX,75201,15,false
+SUP0130,Valley Farms Dairy 130,produce,Emily Clark,orders130@supplier33.example.com,(600) 360-2814,Phoenix,AZ,85004,30,false
+SUP0131,Roma Tomato Co 131,dry_goods,Ethan Rodriguez,orders131@supplier34.example.com,(410) 517-8081,Portland,OR,97201,60,false
+SUP0132,GreenLeaf Produce 132,packaging,Amelia Allen,orders132@supplier35.example.com,(933) 901-8519,Atlanta,GA,30303,45,false
+SUP0133,Artisan Cheese Works 133,dairy,Daniel Hill,orders133@supplier36.example.com,(452) 738-6388,Houston,TX,77002,60,false
+SUP0134,Valley Farms Dairy 134,beverages,Oliver Jackson,orders134@supplier37.example.com,(861) 667-6681,Atlanta,GA,30303,45,false
+SUP0135,Harvest Flour Mills 135,dry_goods,James Lopez,orders135@supplier38.example.com,(832) 950-8079,Charlotte,NC,28202,60,false
+SUP0136,Harvest Flour Mills 136,beverages,Riley Miller,orders136@supplier39.example.com,(602) 915-1715,Miami,FL,33101,30,true
+SUP0137,GreenLeaf Produce 137,beverages,Aria Jackson,orders137@supplier40.example.com,(882) 268-4559,Houston,TX,77002,60,false
+SUP0138,Roma Tomato Co 138,meat,Emma Miller,orders138@supplier41.example.com,(716) 984-6341,Nashville,TN,37203,60,false
+SUP0139,Coastal Seafoods 139,packaging,Olivia Robinson,orders139@supplier42.example.com,(227) 274-8567,Denver,CO,80202,60,false
+SUP0140,Coastal Seafoods 140,dry_goods,Olivia Smith,orders140@supplier43.example.com,(456) 317-3236,Seattle,WA,98101,45,false
+SUP0141,Artisan Cheese Works 141,dry_goods,Emma Garcia,orders141@supplier44.example.com,(761) 872-4969,Portland,OR,97201,60,false
+SUP0142,GreenLeaf Produce 142,equipment,Mia Hernandez,orders142@supplier45.example.com,(218) 821-2646,Charlotte,NC,28202,30,false
+SUP0143,Urban Beverage Dist 143,produce,Emma Smith,orders143@supplier46.example.com,(893) 479-3514,Chicago,IL,60601,60,false
+SUP0144,Valley Farms Dairy 144,beverages,Aria Wilson,orders144@supplier47.example.com,(652) 913-1782,San Antonio,TX,78205,15,false
+SUP0145,Artisan Cheese Works 145,dairy,Nora Smith,orders145@supplier48.example.com,(249) 990-7183,Denver,CO,80202,30,true
+SUP0146,Coastal Seafoods 146,produce,Oliver Johnson,orders146@supplier49.example.com,(631) 228-1238,Phoenix,AZ,85004,45,true
+SUP0147,Roma Tomato Co 147,produce,Sophia Hernandez,orders147@supplier50.example.com,(941) 371-1721,Miami,FL,33101,60,false
+SUP0148,FireOven Packaging 148,meat,Jack Gonzalez,orders148@supplier51.example.com,(839) 412-9875,Charlotte,NC,28202,60,true
+SUP0149,Coastal Seafoods 149,produce,Sophia Thompson,orders149@supplier52.example.com,(531) 377-1245,Dallas,TX,75201,60,false
+SUP0150,Urban Beverage Dist 150,produce,Logan Anderson,orders150@supplier53.example.com,(267) 873-5562,Austin,TX,78701,45,false
+SUP0151,Coastal Seafoods 151,dry_goods,Henry Hill,orders151@supplier54.example.com,(711) 304-9784,Columbus,OH,43215,30,false
+SUP0152,FireOven Packaging 152,beverages,Penelope Harris,orders152@supplier55.example.com,(894) 989-3177,Dallas,TX,75201,45,false
+SUP0153,FireOven Packaging 153,equipment,Aurora Walker,orders153@supplier56.example.com,(269) 543-1289,Nashville,TN,37203,60,false
+SUP0154,Coastal Seafoods 154,packaging,Aiden Smith,orders154@supplier57.example.com,(438) 221-3032,Miami,FL,33101,45,false
+SUP0155,Coastal Seafoods 155,packaging,Oliver Brown,orders155@supplier58.example.com,(340) 583-9171,Seattle,WA,98101,45,false
+SUP0156,Coastal Seafoods 156,beverages,Olivia Thomas,orders156@supplier59.example.com,(942) 812-8270,Seattle,WA,98101,45,false
+SUP0157,Valley Farms Dairy 157,packaging,Grace Jackson,orders157@supplier60.example.com,(968) 224-4752,Phoenix,AZ,85004,45,false
+SUP0158,Valley Farms Dairy 158,beverages,James Anderson,orders158@supplier61.example.com,(822) 590-9543,San Antonio,TX,78205,45,false
+SUP0159,Valley Farms Dairy 159,dairy,Jackson Jones,orders159@supplier62.example.com,(397) 253-3318,Miami,FL,33101,30,false
+SUP0160,Coastal Seafoods 160,produce,Lily Garcia,orders160@supplier63.example.com,(636) 942-8652,Houston,TX,77002,45,false
+SUP0161,Coastal Seafoods 161,dry_goods,Mason Hill,orders161@supplier64.example.com,(454) 510-5675,San Antonio,TX,78205,60,true
+SUP0162,GreenLeaf Produce 162,equipment,Zoey Garcia,orders162@supplier65.example.com,(568) 607-7188,San Antonio,TX,78205,30,false
+SUP0163,Urban Beverage Dist 163,equipment,Lucas Walker,orders163@supplier66.example.com,(220) 980-7249,Seattle,WA,98101,60,true
+SUP0164,GreenLeaf Produce 164,packaging,Aria Martinez,orders164@supplier67.example.com,(766) 944-3878,Nashville,TN,37203,45,false
+SUP0165,Artisan Cheese Works 165,meat,Scarlett Scott,orders165@supplier68.example.com,(820) 692-2178,Denver,CO,80202,45,false
+SUP0166,Coastal Seafoods 166,produce,Amelia Smith,orders166@supplier69.example.com,(213) 712-7131,Portland,OR,97201,60,false
+SUP0167,Urban Beverage Dist 167,beverages,Michael Harris,orders167@supplier70.example.com,(701) 515-2167,Seattle,WA,98101,60,true
+SUP0168,Roma Tomato Co 168,dry_goods,Riley Hernandez,orders168@supplier71.example.com,(398) 981-8148,Columbus,OH,43215,45,true
+SUP0169,FireOven Packaging 169,packaging,Joseph Young,orders169@supplier72.example.com,(850) 905-7032,Nashville,TN,37203,15,false
+SUP0170,Urban Beverage Dist 170,beverages,James Thomas,orders170@supplier73.example.com,(689) 235-6921,Columbus,OH,43215,15,false
+SUP0171,Harvest Flour Mills 171,meat,Nora Robinson,orders171@supplier74.example.com,(897) 350-5166,Miami,FL,33101,30,false
+SUP0172,Harvest Flour Mills 172,dairy,Elijah Garcia,orders172@supplier75.example.com,(859) 928-7297,Miami,FL,33101,60,true
+SUP0173,Roma Tomato Co 173,packaging,Amelia Ramirez,orders173@supplier76.example.com,(369) 637-5143,Columbus,OH,43215,45,false
+SUP0174,Urban Beverage Dist 174,packaging,Henry Clark,orders174@supplier77.example.com,(970) 945-2456,Chicago,IL,60601,15,false
+SUP0175,FireOven Packaging 175,equipment,Lucas Moore,orders175@supplier78.example.com,(966) 414-7520,Nashville,TN,37203,45,false
+SUP0176,Artisan Cheese Works 176,dairy,Sophia Jones,orders176@supplier79.example.com,(992) 913-7845,Houston,TX,77002,60,false
+SUP0177,Urban Beverage Dist 177,produce,Mason White,orders177@supplier80.example.com,(390) 920-3200,Tampa,FL,33602,30,false
+SUP0178,Roma Tomato Co 178,dry_goods,Riley Wilson,orders178@supplier81.example.com,(390) 405-1966,Chicago,IL,60601,30,true
+SUP0179,GreenLeaf Produce 179,equipment,Grace Lewis,orders179@supplier82.example.com,(841) 839-2789,San Antonio,TX,78205,30,false
+SUP0180,Urban Beverage Dist 180,dairy,Benjamin Jones,orders180@supplier83.example.com,(550) 230-4846,Dallas,TX,75201,60,false
+SUP0181,Roma Tomato Co 181,dairy,Noah Moore,orders181@supplier84.example.com,(969) 207-1685,Nashville,TN,37203,15,false
+SUP0182,Valley Farms Dairy 182,dry_goods,Nora King,orders182@supplier85.example.com,(979) 472-8961,Nashville,TN,37203,60,true
+SUP0183,Urban Beverage Dist 183,meat,Michael Perez,orders183@supplier86.example.com,(522) 445-6918,Atlanta,GA,30303,60,false
+SUP0184,FireOven Packaging 184,equipment,Alexander Miller,orders184@supplier87.example.com,(203) 667-7583,Austin,TX,78701,30,false
+SUP0185,GreenLeaf Produce 185,beverages,Nova Thomas,orders185@supplier88.example.com,(577) 662-8785,Dallas,TX,75201,60,false
+SUP0186,FireOven Packaging 186,dairy,Hazel White,orders186@supplier89.example.com,(246) 953-6333,Austin,TX,78701,60,false
+SUP0187,Urban Beverage Dist 187,beverages,Owen Garcia,orders187@supplier90.example.com,(556) 638-8800,Portland,OR,97201,15,true
+SUP0188,Coastal Seafoods 188,beverages,Lucas King,orders188@supplier91.example.com,(785) 933-9267,Denver,CO,80202,15,false
+SUP0189,Roma Tomato Co 189,meat,Matthew Scott,orders189@supplier92.example.com,(678) 372-8311,Nashville,TN,37203,15,false
+SUP0190,Coastal Seafoods 190,produce,Ethan Hernandez,orders190@supplier93.example.com,(971) 875-2465,Chicago,IL,60601,15,false
+SUP0191,Valley Farms Dairy 191,produce,Emily Harris,orders191@supplier94.example.com,(984) 487-4610,Tampa,FL,33602,45,false
+SUP0192,Roma Tomato Co 192,beverages,Isabella Wright,orders192@supplier95.example.com,(848) 942-9060,Columbus,OH,43215,15,true
+SUP0193,Coastal Seafoods 193,packaging,David Hill,orders193@supplier96.example.com,(266) 859-6623,Phoenix,AZ,85004,60,true
+SUP0194,Urban Beverage Dist 194,beverages,Samuel Scott,orders194@supplier0.example.com,(647) 438-4662,Tampa,FL,33602,45,false
+SUP0195,Roma Tomato Co 195,dairy,Alexander Nguyen,orders195@supplier1.example.com,(392) 962-2902,Dallas,TX,75201,45,false
+SUP0196,Urban Beverage Dist 196,packaging,Levi Smith,orders196@supplier2.example.com,(518) 263-9775,Phoenix,AZ,85004,30,true
+SUP0197,FireOven Packaging 197,equipment,Michael Rodriguez,orders197@supplier3.example.com,(732) 879-4639,Seattle,WA,98101,15,false
+SUP0198,Artisan Cheese Works 198,meat,Lucas Jackson,orders198@supplier4.example.com,(424) 711-8467,Chicago,IL,60601,30,false
+SUP0199,Valley Farms Dairy 199,packaging,Emily Martin,orders199@supplier5.example.com,(714) 905-3022,Houston,TX,77002,45,true
+SUP0200,Artisan Cheese Works 200,beverages,Ethan Young,orders200@supplier6.example.com,(498) 921-7171,Tampa,FL,33602,15,true
+SUP0201,Harvest Flour Mills 201,equipment,Joseph Wilson,orders201@supplier7.example.com,(950) 430-1861,Phoenix,AZ,85004,30,true
+SUP0202,Urban Beverage Dist 202,meat,Aurora Hernandez,orders202@supplier8.example.com,(222) 761-7427,Tampa,FL,33602,45,false
+SUP0203,FireOven Packaging 203,equipment,Daniel Sanchez,orders203@supplier9.example.com,(273) 740-5637,Portland,OR,97201,45,false
+SUP0204,Urban Beverage Dist 204,dairy,Isabella Lee,orders204@supplier10.example.com,(970) 794-1886,San Antonio,TX,78205,45,false
+SUP0205,Harvest Flour Mills 205,dry_goods,Penelope Walker,orders205@supplier11.example.com,(498) 348-4436,Houston,TX,77002,30,true
+SUP0206,Valley Farms Dairy 206,meat,Layla Torres,orders206@supplier12.example.com,(304) 894-3418,San Antonio,TX,78205,60,true
+SUP0207,Harvest Flour Mills 207,dairy,Sophia Thompson,orders207@supplier13.example.com,(685) 383-1859,Seattle,WA,98101,15,true
+SUP0208,FireOven Packaging 208,packaging,Jacob Martinez,orders208@supplier14.example.com,(842) 939-7619,Miami,FL,33101,30,false
+SUP0209,Urban Beverage Dist 209,dry_goods,Henry Hill,orders209@supplier15.example.com,(376) 868-7150,San Antonio,TX,78205,15,true
+SUP0210,Urban Beverage Dist 210,meat,Hazel Lewis,orders210@supplier16.example.com,(576) 211-2966,Charlotte,NC,28202,15,false
+SUP0211,Coastal Seafoods 211,dairy,Aiden Torres,orders211@supplier17.example.com,(786) 691-5484,Portland,OR,97201,15,true
+SUP0212,Urban Beverage Dist 212,dry_goods,Samuel Ramirez,orders212@supplier18.example.com,(505) 785-3051,Houston,TX,77002,15,false
+SUP0213,Harvest Flour Mills 213,dry_goods,Penelope Johnson,orders213@supplier19.example.com,(603) 769-9788,Tampa,FL,33602,60,false
+SUP0214,Roma Tomato Co 214,equipment,Nova Wilson,orders214@supplier20.example.com,(874) 320-3960,Charlotte,NC,28202,30,false
+SUP0215,FireOven Packaging 215,dairy,Olivia Rodriguez,orders215@supplier21.example.com,(788) 411-3641,Portland,OR,97201,15,false
+SUP0216,Valley Farms Dairy 216,dairy,Elijah Allen,orders216@supplier22.example.com,(505) 572-9919,Charlotte,NC,28202,30,false
+SUP0217,Valley Farms Dairy 217,produce,Henry Williams,orders217@supplier23.example.com,(731) 500-9750,Miami,FL,33101,60,false
+SUP0218,FireOven Packaging 218,packaging,Ella Hill,orders218@supplier24.example.com,(751) 722-4438,Portland,OR,97201,15,false
+SUP0219,Coastal Seafoods 219,dairy,Amelia Martinez,orders219@supplier25.example.com,(506) 420-3198,Austin,TX,78701,30,false
+SUP0220,Harvest Flour Mills 220,beverages,Owen Ramirez,orders220@supplier26.example.com,(276) 763-5177,Denver,CO,80202,45,false
+SUP0221,Harvest Flour Mills 221,dry_goods,Logan Garcia,orders221@supplier27.example.com,(460) 892-7968,Columbus,OH,43215,30,false
+SUP0222,GreenLeaf Produce 222,beverages,Penelope Gonzalez,orders222@supplier28.example.com,(931) 581-9379,Dallas,TX,75201,30,false
+SUP0223,FireOven Packaging 223,equipment,Jacob Harris,orders223@supplier29.example.com,(226) 818-5055,Houston,TX,77002,15,false
+SUP0224,Roma Tomato Co 224,beverages,Jack Clark,orders224@supplier30.example.com,(267) 537-2457,Chicago,IL,60601,45,true
+SUP0225,GreenLeaf Produce 225,produce,Harper Moore,orders225@supplier31.example.com,(210) 300-7179,Nashville,TN,37203,30,false
+SUP0226,Roma Tomato Co 226,produce,Sebastian Martin,orders226@supplier32.example.com,(802) 701-2565,Dallas,TX,75201,45,true
+SUP0227,GreenLeaf Produce 227,packaging,Benjamin Hill,orders227@supplier33.example.com,(301) 249-3797,Charlotte,NC,28202,45,true
+SUP0228,Harvest Flour Mills 228,meat,Levi Wright,orders228@supplier34.example.com,(764) 808-7597,Seattle,WA,98101,60,false
+SUP0229,Valley Farms Dairy 229,beverages,Lily Martinez,orders229@supplier35.example.com,(873) 329-3337,Denver,CO,80202,60,false
+SUP0230,Valley Farms Dairy 230,beverages,Hazel White,orders230@supplier36.example.com,(924) 996-5081,Denver,CO,80202,60,true
+SUP0231,Artisan Cheese Works 231,meat,Logan Allen,orders231@supplier37.example.com,(493) 482-8008,Houston,TX,77002,30,false
+SUP0232,Roma Tomato Co 232,meat,Grace Lee,orders232@supplier38.example.com,(292) 849-2302,Charlotte,NC,28202,15,true
+SUP0233,Harvest Flour Mills 233,packaging,Noah Garcia,orders233@supplier39.example.com,(961) 492-9074,Dallas,TX,75201,15,true
+SUP0234,Harvest Flour Mills 234,dry_goods,Jackson Allen,orders234@supplier40.example.com,(901) 893-9722,Seattle,WA,98101,15,false
+SUP0235,Coastal Seafoods 235,equipment,Levi Smith,orders235@supplier41.example.com,(931) 635-9754,Atlanta,GA,30303,45,false
+SUP0236,Valley Farms Dairy 236,packaging,Chloe Hernandez,orders236@supplier42.example.com,(890) 982-9577,Tampa,FL,33602,30,false
+SUP0237,Harvest Flour Mills 237,packaging,Ella Brown,orders237@supplier43.example.com,(632) 707-7211,Phoenix,AZ,85004,30,false
+SUP0238,FireOven Packaging 238,beverages,James Wright,orders238@supplier44.example.com,(984) 320-5752,Dallas,TX,75201,45,false
+SUP0239,Coastal Seafoods 239,dairy,Levi Torres,orders239@supplier45.example.com,(603) 422-5994,Denver,CO,80202,15,true
+SUP0240,Artisan Cheese Works 240,dairy,Ella Smith,orders240@supplier46.example.com,(830) 671-6382,Columbus,OH,43215,45,false
+SUP0241,FireOven Packaging 241,beverages,Mason Sanchez,orders241@supplier47.example.com,(563) 209-2660,Austin,TX,78701,60,false
+SUP0242,Harvest Flour Mills 242,dry_goods,Elijah Young,orders242@supplier48.example.com,(207) 359-5098,Dallas,TX,75201,30,false
+SUP0243,GreenLeaf Produce 243,meat,Jacob Lopez,orders243@supplier49.example.com,(749) 475-2780,Phoenix,AZ,85004,60,false
+SUP0244,Harvest Flour Mills 244,produce,Ella Ramirez,orders244@supplier50.example.com,(205) 567-4251,Portland,OR,97201,15,false
+SUP0245,Harvest Flour Mills 245,dry_goods,Grace Perez,orders245@supplier51.example.com,(232) 364-4260,Austin,TX,78701,60,true
+SUP0246,Roma Tomato Co 246,dry_goods,Jackson Scott,orders246@supplier52.example.com,(707) 898-3087,Denver,CO,80202,45,true
+SUP0247,Urban Beverage Dist 247,packaging,Layla Harris,orders247@supplier53.example.com,(334) 312-2767,Nashville,TN,37203,15,false
+SUP0248,Valley Farms Dairy 248,equipment,Matthew Thomas,orders248@supplier54.example.com,(253) 894-6605,Phoenix,AZ,85004,60,true
+SUP0249,Valley Farms Dairy 249,dry_goods,Zoey Jackson,orders249@supplier55.example.com,(488) 697-2353,Tampa,FL,33602,60,false
+SUP0250,Harvest Flour Mills 250,produce,Benjamin Davis,orders250@supplier56.example.com,(469) 917-5052,Houston,TX,77002,60,false
+SUP0251,Roma Tomato Co 251,beverages,Layla Allen,orders251@supplier57.example.com,(825) 385-4091,Tampa,FL,33602,30,false
+SUP0252,Urban Beverage Dist 252,dairy,Benjamin Gonzalez,orders252@supplier58.example.com,(349) 636-1289,Houston,TX,77002,30,false
+SUP0253,Urban Beverage Dist 253,dry_goods,Sebastian Martin,orders253@supplier59.example.com,(916) 848-4791,Austin,TX,78701,30,false
+SUP0254,Valley Farms Dairy 254,packaging,Jacob Brown,orders254@supplier60.example.com,(511) 312-5411,Portland,OR,97201,45,false
+SUP0255,Urban Beverage Dist 255,produce,Emily Brown,orders255@supplier61.example.com,(386) 241-1008,Phoenix,AZ,85004,15,false
+SUP0256,Coastal Seafoods 256,meat,Zoey Moore,orders256@supplier62.example.com,(821) 303-8059,Phoenix,AZ,85004,30,false
+SUP0257,FireOven Packaging 257,meat,Henry Davis,orders257@supplier63.example.com,(299) 885-1223,Portland,OR,97201,30,false
+SUP0258,FireOven Packaging 258,beverages,David Nguyen,orders258@supplier64.example.com,(741) 819-7088,Tampa,FL,33602,30,false
+SUP0259,Urban Beverage Dist 259,dairy,Sophia Rodriguez,orders259@supplier65.example.com,(844) 960-2971,San Antonio,TX,78205,15,false
+SUP0260,Coastal Seafoods 260,produce,Joseph Lewis,orders260@supplier66.example.com,(301) 276-9955,Columbus,OH,43215,45,false
+SUP0261,Coastal Seafoods 261,packaging,Layla Martinez,orders261@supplier67.example.com,(244) 330-4140,Portland,OR,97201,60,false
+SUP0262,FireOven Packaging 262,meat,Chloe Davis,orders262@supplier68.example.com,(646) 269-8910,Denver,CO,80202,60,false
+SUP0263,Valley Farms Dairy 263,produce,Nora Moore,orders263@supplier69.example.com,(913) 332-5745,Chicago,IL,60601,15,true
+SUP0264,Coastal Seafoods 264,beverages,Daniel Young,orders264@supplier70.example.com,(901) 745-9412,Austin,TX,78701,15,false
+SUP0265,Urban Beverage Dist 265,packaging,David Harris,orders265@supplier71.example.com,(610) 821-5448,Nashville,TN,37203,30,false
+SUP0266,Coastal Seafoods 266,packaging,Penelope Smith,orders266@supplier72.example.com,(725) 666-9254,Houston,TX,77002,45,false
+SUP0267,GreenLeaf Produce 267,beverages,Benjamin Scott,orders267@supplier73.example.com,(321) 375-4668,San Antonio,TX,78205,15,false
+SUP0268,Valley Farms Dairy 268,beverages,Lucas Moore,orders268@supplier74.example.com,(336) 476-1844,Denver,CO,80202,30,true
+SUP0269,Roma Tomato Co 269,dairy,Samuel Thompson,orders269@supplier75.example.com,(847) 819-7047,San Antonio,TX,78205,45,false
+SUP0270,GreenLeaf Produce 270,beverages,Isabella Clark,orders270@supplier76.example.com,(826) 501-6318,Tampa,FL,33602,15,false
+SUP0271,FireOven Packaging 271,produce,Layla Moore,orders271@supplier77.example.com,(380) 462-1256,Austin,TX,78701,15,true
+SUP0272,Urban Beverage Dist 272,beverages,Evelyn Hill,orders272@supplier78.example.com,(764) 411-8244,Tampa,FL,33602,30,false
+SUP0273,Urban Beverage Dist 273,produce,Chloe Anderson,orders273@supplier79.example.com,(947) 943-8109,San Antonio,TX,78205,45,false
+SUP0274,Roma Tomato Co 274,dry_goods,Mason Robinson,orders274@supplier80.example.com,(389) 380-4094,Portland,OR,97201,60,true
+SUP0275,GreenLeaf Produce 275,dairy,Henry Hernandez,orders275@supplier81.example.com,(381) 603-4077,Houston,TX,77002,15,false
+SUP0276,Coastal Seafoods 276,dry_goods,Samuel Sanchez,orders276@supplier82.example.com,(302) 941-9630,Seattle,WA,98101,30,true
+SUP0277,Valley Farms Dairy 277,packaging,Sophia Harris,orders277@supplier83.example.com,(593) 221-2802,Nashville,TN,37203,15,true
+SUP0278,Valley Farms Dairy 278,produce,James Garcia,orders278@supplier84.example.com,(474) 346-1221,Miami,FL,33101,15,true
+SUP0279,FireOven Packaging 279,equipment,Joseph Garcia,orders279@supplier85.example.com,(407) 342-8871,Dallas,TX,75201,60,true
+SUP0280,FireOven Packaging 280,dry_goods,Lucas Thomas,orders280@supplier86.example.com,(257) 756-5382,Denver,CO,80202,15,false
+SUP0281,Roma Tomato Co 281,packaging,Abigail Miller,orders281@supplier87.example.com,(723) 625-3323,Austin,TX,78701,15,true
+SUP0282,Coastal Seafoods 282,dry_goods,Scarlett Martinez,orders282@supplier88.example.com,(561) 871-5699,Austin,TX,78701,30,true
+SUP0283,Urban Beverage Dist 283,beverages,Joseph Davis,orders283@supplier89.example.com,(703) 373-2804,Miami,FL,33101,30,false
+SUP0284,FireOven Packaging 284,dairy,Owen Perez,orders284@supplier90.example.com,(321) 569-2389,Denver,CO,80202,15,false
+SUP0285,Urban Beverage Dist 285,packaging,Alexander Hill,orders285@supplier91.example.com,(385) 895-7967,Houston,TX,77002,30,true
+SUP0286,GreenLeaf Produce 286,packaging,Abigail Thompson,orders286@supplier92.example.com,(306) 477-9179,Miami,FL,33101,45,true
+SUP0287,Roma Tomato Co 287,equipment,Ava Martinez,orders287@supplier93.example.com,(996) 871-3401,Nashville,TN,37203,45,false
+SUP0288,Artisan Cheese Works 288,equipment,Emma Davis,orders288@supplier94.example.com,(791) 637-5562,Portland,OR,97201,30,false
+SUP0289,Harvest Flour Mills 289,equipment,Scarlett Thompson,orders289@supplier95.example.com,(526) 706-7944,Houston,TX,77002,60,false
+SUP0290,FireOven Packaging 290,produce,Samuel Thomas,orders290@supplier96.example.com,(592) 628-9144,Seattle,WA,98101,60,false
+SUP0291,Coastal Seafoods 291,dry_goods,Oliver Nguyen,orders291@supplier0.example.com,(932) 631-9633,Charlotte,NC,28202,30,true
+SUP0292,FireOven Packaging 292,dairy,Ethan Johnson,orders292@supplier1.example.com,(571) 771-8764,San Antonio,TX,78205,30,true
+SUP0293,FireOven Packaging 293,meat,David Rodriguez,orders293@supplier2.example.com,(501) 671-3361,Austin,TX,78701,60,false
+SUP0294,Coastal Seafoods 294,dairy,Levi Rodriguez,orders294@supplier3.example.com,(320) 912-3344,Charlotte,NC,28202,60,true
+SUP0295,Urban Beverage Dist 295,meat,Noah Miller,orders295@supplier4.example.com,(878) 795-2208,Tampa,FL,33602,60,true
+SUP0296,Harvest Flour Mills 296,dairy,Lucas White,orders296@supplier5.example.com,(344) 280-5014,Charlotte,NC,28202,15,false
+SUP0297,Urban Beverage Dist 297,produce,Nova Lopez,orders297@supplier6.example.com,(681) 961-3295,Charlotte,NC,28202,45,false
+SUP0298,FireOven Packaging 298,dry_goods,Samuel Smith,orders298@supplier7.example.com,(493) 313-3554,Tampa,FL,33602,15,true
+SUP0299,Harvest Flour Mills 299,packaging,Mia Smith,orders299@supplier8.example.com,(605) 633-8443,Austin,TX,78701,45,true
+SUP0300,GreenLeaf Produce 300,beverages,Harper Ramirez,orders300@supplier9.example.com,(360) 478-2506,Chicago,IL,60601,60,true
+SUP0301,Coastal Seafoods 301,dry_goods,Owen Brown,orders301@supplier10.example.com,(424) 601-4009,Houston,TX,77002,15,true
+SUP0302,Artisan Cheese Works 302,meat,Samuel Sanchez,orders302@supplier11.example.com,(589) 368-1895,Portland,OR,97201,45,false
+SUP0303,GreenLeaf Produce 303,dairy,Sophia Jones,orders303@supplier12.example.com,(571) 817-6496,San Antonio,TX,78205,15,false
+SUP0304,Roma Tomato Co 304,dairy,Ethan Hill,orders304@supplier13.example.com,(211) 974-6064,Houston,TX,77002,30,false
+SUP0305,Valley Farms Dairy 305,produce,Benjamin Garcia,orders305@supplier14.example.com,(783) 778-1735,Miami,FL,33101,60,false
+SUP0306,Roma Tomato Co 306,meat,Ava Thompson,orders306@supplier15.example.com,(969) 489-7523,Phoenix,AZ,85004,30,false
+SUP0307,FireOven Packaging 307,produce,Penelope Miller,orders307@supplier16.example.com,(539) 617-9250,Seattle,WA,98101,15,false
+SUP0308,Harvest Flour Mills 308,dairy,Aiden Harris,orders308@supplier17.example.com,(688) 800-1612,Nashville,TN,37203,45,false
+SUP0309,Artisan Cheese Works 309,dairy,Hazel Garcia,orders309@supplier18.example.com,(935) 437-4533,Miami,FL,33101,30,true
+SUP0310,FireOven Packaging 310,dry_goods,Isabella Perez,orders310@supplier19.example.com,(497) 568-8059,Houston,TX,77002,15,true
+SUP0311,Urban Beverage Dist 311,produce,Ethan Flores,orders311@supplier20.example.com,(821) 276-3496,Nashville,TN,37203,60,false
+SUP0312,Harvest Flour Mills 312,equipment,Henry Scott,orders312@supplier21.example.com,(289) 710-2541,Austin,TX,78701,60,false
+SUP0313,GreenLeaf Produce 313,produce,Emma Moore,orders313@supplier22.example.com,(790) 572-6789,Columbus,OH,43215,15,false
+SUP0314,Artisan Cheese Works 314,meat,Zoey Taylor,orders314@supplier23.example.com,(981) 652-3301,Tampa,FL,33602,15,true
+SUP0315,Valley Farms Dairy 315,meat,Abigail Sanchez,orders315@supplier24.example.com,(618) 834-3113,Portland,OR,97201,60,false
+SUP0316,FireOven Packaging 316,meat,Oliver Clark,orders316@supplier25.example.com,(718) 660-5306,Charlotte,NC,28202,15,false
+SUP0317,Valley Farms Dairy 317,beverages,James Scott,orders317@supplier26.example.com,(208) 358-2725,Miami,FL,33101,45,false
+SUP0318,Urban Beverage Dist 318,equipment,Emma Anderson,orders318@supplier27.example.com,(597) 673-2531,Atlanta,GA,30303,45,false
+SUP0319,Artisan Cheese Works 319,dairy,Oliver Lopez,orders319@supplier28.example.com,(949) 310-7503,Miami,FL,33101,60,false
+SUP0320,Roma Tomato Co 320,meat,Alexander Hill,orders320@supplier29.example.com,(697) 417-8802,Phoenix,AZ,85004,15,false
+SUP0321,Harvest Flour Mills 321,dry_goods,Lucas Wilson,orders321@supplier30.example.com,(527) 781-1513,Austin,TX,78701,60,false
+SUP0322,FireOven Packaging 322,equipment,Jacob Walker,orders322@supplier31.example.com,(418) 255-4465,Nashville,TN,37203,15,true
+SUP0323,Urban Beverage Dist 323,meat,Evelyn Lopez,orders323@supplier32.example.com,(285) 345-2134,Miami,FL,33101,45,false
+SUP0324,Artisan Cheese Works 324,equipment,Grace King,orders324@supplier33.example.com,(419) 885-5250,Denver,CO,80202,30,true
+SUP0325,Urban Beverage Dist 325,meat,Nova Martin,orders325@supplier34.example.com,(368) 403-6722,Dallas,TX,75201,60,false
+SUP0326,Harvest Flour Mills 326,beverages,Jacob Thompson,orders326@supplier35.example.com,(909) 784-7375,Chicago,IL,60601,15,false
+SUP0327,Coastal Seafoods 327,dairy,Layla Nguyen,orders327@supplier36.example.com,(831) 348-6304,Columbus,OH,43215,45,false
+SUP0328,Artisan Cheese Works 328,produce,Jackson Lee,orders328@supplier37.example.com,(316) 890-7658,Columbus,OH,43215,45,false
+SUP0329,Artisan Cheese Works 329,equipment,Isabella Lewis,orders329@supplier38.example.com,(854) 792-2596,Austin,TX,78701,15,false
+SUP0330,Urban Beverage Dist 330,beverages,Aria Hernandez,orders330@supplier39.example.com,(815) 586-4541,San Antonio,TX,78205,45,false
+SUP0331,Valley Farms Dairy 331,meat,Michael Johnson,orders331@supplier40.example.com,(509) 514-9226,San Antonio,TX,78205,15,false
+SUP0332,Artisan Cheese Works 332,dry_goods,Grace Thompson,orders332@supplier41.example.com,(560) 755-7977,Miami,FL,33101,45,false
+SUP0333,Artisan Cheese Works 333,dry_goods,Michael Lopez,orders333@supplier42.example.com,(766) 809-3664,Houston,TX,77002,60,false
+SUP0334,Urban Beverage Dist 334,beverages,Abigail Flores,orders334@supplier43.example.com,(301) 289-2700,Charlotte,NC,28202,15,false
+SUP0335,Urban Beverage Dist 335,dairy,Jackson Flores,orders335@supplier44.example.com,(757) 302-8276,Atlanta,GA,30303,15,false
+SUP0336,Urban Beverage Dist 336,produce,Harper Robinson,orders336@supplier45.example.com,(764) 590-2875,Charlotte,NC,28202,30,true
+SUP0337,FireOven Packaging 337,equipment,Logan Clark,orders337@supplier46.example.com,(860) 920-7484,Dallas,TX,75201,15,true
+SUP0338,Coastal Seafoods 338,packaging,Abigail Moore,orders338@supplier47.example.com,(874) 470-6036,Nashville,TN,37203,60,false
+SUP0339,Urban Beverage Dist 339,dairy,Ava Johnson,orders339@supplier48.example.com,(357) 583-9502,Austin,TX,78701,45,false
+SUP0340,Urban Beverage Dist 340,produce,Jack Sanchez,orders340@supplier49.example.com,(397) 831-7444,Atlanta,GA,30303,15,true
+SUP0341,Urban Beverage Dist 341,produce,Hazel Harris,orders341@supplier50.example.com,(945) 377-7604,Atlanta,GA,30303,45,false
+SUP0342,Coastal Seafoods 342,dairy,Joseph Rodriguez,orders342@supplier51.example.com,(716) 321-7422,Seattle,WA,98101,45,true
+SUP0343,FireOven Packaging 343,produce,Oliver Garcia,orders343@supplier52.example.com,(226) 647-1189,Houston,TX,77002,30,false
+SUP0344,Roma Tomato Co 344,packaging,Scarlett Johnson,orders344@supplier53.example.com,(960) 951-3138,Tampa,FL,33602,60,false
+SUP0345,FireOven Packaging 345,produce,James Anderson,orders345@supplier54.example.com,(504) 398-9772,Nashville,TN,37203,30,true
+SUP0346,Urban Beverage Dist 346,equipment,Evelyn Brown,orders346@supplier55.example.com,(481) 284-3355,Nashville,TN,37203,15,false
+SUP0347,Roma Tomato Co 347,dairy,Logan Hill,orders347@supplier56.example.com,(325) 309-3323,Atlanta,GA,30303,45,false
+SUP0348,Roma Tomato Co 348,dairy,Jackson White,orders348@supplier57.example.com,(412) 600-2649,Houston,TX,77002,60,true
+SUP0349,Roma Tomato Co 349,dry_goods,Hazel Jones,orders349@supplier58.example.com,(415) 903-7879,Seattle,WA,98101,60,true
+SUP0350,Artisan Cheese Works 350,equipment,Mia Lopez,orders350@supplier59.example.com,(505) 210-3927,Miami,FL,33101,15,false
+SUP0351,FireOven Packaging 351,dry_goods,Owen Hill,orders351@supplier60.example.com,(759) 205-3595,Phoenix,AZ,85004,45,true
+SUP0352,Valley Farms Dairy 352,packaging,Liam King,orders352@supplier61.example.com,(724) 979-3496,San Antonio,TX,78205,30,true
+SUP0353,Coastal Seafoods 353,dairy,Emily Rodriguez,orders353@supplier62.example.com,(425) 285-3073,Dallas,TX,75201,45,false
+SUP0354,Roma Tomato Co 354,meat,Joseph Scott,orders354@supplier63.example.com,(867) 501-8652,San Antonio,TX,78205,60,false
+SUP0355,Coastal Seafoods 355,meat,Mason Gonzalez,orders355@supplier64.example.com,(903) 934-5605,Seattle,WA,98101,60,false
+SUP0356,GreenLeaf Produce 356,produce,Ethan Young,orders356@supplier65.example.com,(643) 656-7942,Nashville,TN,37203,45,true
+SUP0357,Roma Tomato Co 357,packaging,Scarlett Ramirez,orders357@supplier66.example.com,(404) 780-6782,Atlanta,GA,30303,45,true
+SUP0358,Roma Tomato Co 358,dry_goods,Mia Williams,orders358@supplier67.example.com,(723) 459-7714,Charlotte,NC,28202,45,false
+SUP0359,FireOven Packaging 359,dry_goods,Liam Davis,orders359@supplier68.example.com,(384) 530-8035,Columbus,OH,43215,30,false
+SUP0360,Coastal Seafoods 360,beverages,Michael White,orders360@supplier69.example.com,(348) 998-6151,Dallas,TX,75201,15,false
+SUP0361,Valley Farms Dairy 361,beverages,Alexander Wilson,orders361@supplier70.example.com,(676) 781-6268,Tampa,FL,33602,30,false
+SUP0362,GreenLeaf Produce 362,packaging,Ethan King,orders362@supplier71.example.com,(422) 305-5555,Seattle,WA,98101,15,false
+SUP0363,Urban Beverage Dist 363,beverages,Nova Ramirez,orders363@supplier72.example.com,(525) 527-4246,Miami,FL,33101,30,false
+SUP0364,Artisan Cheese Works 364,dairy,Benjamin Clark,orders364@supplier73.example.com,(322) 327-8418,Portland,OR,97201,30,false
+SUP0365,Urban Beverage Dist 365,produce,Riley Johnson,orders365@supplier74.example.com,(491) 218-1076,Atlanta,GA,30303,60,false
+SUP0366,Urban Beverage Dist 366,dairy,Aria King,orders366@supplier75.example.com,(240) 545-1266,Charlotte,NC,28202,15,false
+SUP0367,Urban Beverage Dist 367,beverages,Henry Moore,orders367@supplier76.example.com,(524) 971-6665,Charlotte,NC,28202,60,false
+SUP0368,FireOven Packaging 368,dry_goods,Owen Brown,orders368@supplier77.example.com,(602) 505-8447,Nashville,TN,37203,60,true
+SUP0369,Roma Tomato Co 369,equipment,Michael Flores,orders369@supplier78.example.com,(305) 229-4670,Columbus,OH,43215,15,true
+SUP0370,Roma Tomato Co 370,meat,Penelope Ramirez,orders370@supplier79.example.com,(431) 374-2442,Houston,TX,77002,30,true
+SUP0371,FireOven Packaging 371,equipment,Aria Smith,orders371@supplier80.example.com,(904) 253-5254,Nashville,TN,37203,15,false
+SUP0372,Roma Tomato Co 372,meat,Alexander Flores,orders372@supplier81.example.com,(588) 476-3790,Denver,CO,80202,30,false
+SUP0373,Harvest Flour Mills 373,meat,Lucas Nguyen,orders373@supplier82.example.com,(623) 852-8320,Dallas,TX,75201,15,false
+SUP0374,Artisan Cheese Works 374,beverages,Jackson Moore,orders374@supplier83.example.com,(529) 991-8908,San Antonio,TX,78205,30,false
+SUP0375,GreenLeaf Produce 375,beverages,Oliver Thompson,orders375@supplier84.example.com,(771) 448-4373,Nashville,TN,37203,15,false
+SUP0376,Valley Farms Dairy 376,produce,Ava Wilson,orders376@supplier85.example.com,(679) 594-4078,Portland,OR,97201,60,false
+SUP0377,FireOven Packaging 377,equipment,Henry Robinson,orders377@supplier86.example.com,(871) 357-9265,San Antonio,TX,78205,15,true
+SUP0378,FireOven Packaging 378,dry_goods,Chloe Flores,orders378@supplier87.example.com,(725) 407-7556,San Antonio,TX,78205,30,false
+SUP0379,Harvest Flour Mills 379,beverages,Henry Torres,orders379@supplier88.example.com,(863) 304-3413,Seattle,WA,98101,60,true
+SUP0380,Roma Tomato Co 380,produce,Liam Robinson,orders380@supplier89.example.com,(391) 473-1468,Tampa,FL,33602,60,false
+SUP0381,FireOven Packaging 381,meat,Elijah Scott,orders381@supplier90.example.com,(286) 562-8069,Portland,OR,97201,30,false
+SUP0382,Urban Beverage Dist 382,packaging,Alexander Brown,orders382@supplier91.example.com,(651) 479-7058,Chicago,IL,60601,15,false
+SUP0383,Urban Beverage Dist 383,produce,Abigail Gonzalez,orders383@supplier92.example.com,(612) 380-5520,Seattle,WA,98101,60,false
+SUP0384,Valley Farms Dairy 384,beverages,James Davis,orders384@supplier93.example.com,(424) 317-1870,Dallas,TX,75201,15,false
+SUP0385,Roma Tomato Co 385,packaging,Sophia Moore,orders385@supplier94.example.com,(431) 835-7628,San Antonio,TX,78205,60,false
+SUP0386,GreenLeaf Produce 386,dry_goods,Ethan Hernandez,orders386@supplier95.example.com,(408) 555-5718,San Antonio,TX,78205,45,true
+SUP0387,Harvest Flour Mills 387,packaging,Penelope Flores,orders387@supplier96.example.com,(688) 956-6002,Dallas,TX,75201,30,false
+SUP0388,Roma Tomato Co 388,produce,Mason Perez,orders388@supplier0.example.com,(666) 345-1208,Miami,FL,33101,60,false
+SUP0389,Harvest Flour Mills 389,meat,Emma Hernandez,orders389@supplier1.example.com,(895) 978-1159,Austin,TX,78701,45,true
+SUP0390,Valley Farms Dairy 390,dry_goods,James Walker,orders390@supplier2.example.com,(312) 246-1284,Atlanta,GA,30303,45,true
+SUP0391,Harvest Flour Mills 391,equipment,Lucas Miller,orders391@supplier3.example.com,(302) 511-6499,Chicago,IL,60601,60,false
+SUP0392,GreenLeaf Produce 392,beverages,Jackson Taylor,orders392@supplier4.example.com,(573) 669-1222,Phoenix,AZ,85004,45,false
+SUP0393,Artisan Cheese Works 393,dairy,Benjamin King,orders393@supplier5.example.com,(945) 855-1339,Phoenix,AZ,85004,30,true
+SUP0394,Coastal Seafoods 394,beverages,Lucas Thompson,orders394@supplier6.example.com,(709) 231-5003,Charlotte,NC,28202,60,false
+SUP0395,Roma Tomato Co 395,produce,Scarlett Miller,orders395@supplier7.example.com,(480) 841-9927,Tampa,FL,33602,60,true
+SUP0396,Harvest Flour Mills 396,meat,Matthew Thompson,orders396@supplier8.example.com,(539) 600-7836,Columbus,OH,43215,45,false
+SUP0397,FireOven Packaging 397,equipment,Owen Davis,orders397@supplier9.example.com,(643) 665-6685,Austin,TX,78701,45,false
+SUP0398,Artisan Cheese Works 398,beverages,Lucas Robinson,orders398@supplier10.example.com,(897) 353-9571,Austin,TX,78701,45,false
+SUP0399,Harvest Flour Mills 399,meat,Jackson Jackson,orders399@supplier11.example.com,(266) 501-1255,Miami,FL,33101,60,false
+SUP0400,Roma Tomato Co 400,dairy,Jackson Martin,orders400@supplier12.example.com,(205) 640-6771,Denver,CO,80202,15,false
+SUP0401,FireOven Packaging 401,meat,Lily Scott,orders401@supplier13.example.com,(358) 288-5434,Houston,TX,77002,30,true
+SUP0402,Urban Beverage Dist 402,packaging,Oliver Jackson,orders402@supplier14.example.com,(424) 232-8752,San Antonio,TX,78205,45,false
+SUP0403,Urban Beverage Dist 403,dry_goods,Daniel Miller,orders403@supplier15.example.com,(467) 509-6091,Miami,FL,33101,30,false
+SUP0404,FireOven Packaging 404,equipment,Aiden Rodriguez,orders404@supplier16.example.com,(899) 986-4268,Miami,FL,33101,45,false
+SUP0405,Coastal Seafoods 405,meat,Henry Garcia,orders405@supplier17.example.com,(504) 780-8555,Chicago,IL,60601,30,false
+SUP0406,Urban Beverage Dist 406,dairy,Isabella King,orders406@supplier18.example.com,(652) 910-6132,Columbus,OH,43215,45,false
+SUP0407,Artisan Cheese Works 407,dry_goods,Grace Robinson,orders407@supplier19.example.com,(228) 772-1432,Seattle,WA,98101,60,false
+SUP0408,GreenLeaf Produce 408,equipment,James Nguyen,orders408@supplier20.example.com,(724) 582-3085,Houston,TX,77002,45,false
+SUP0409,Urban Beverage Dist 409,produce,Daniel Smith,orders409@supplier21.example.com,(673) 981-9487,Charlotte,NC,28202,60,true
+SUP0410,Valley Farms Dairy 410,meat,Samuel Miller,orders410@supplier22.example.com,(541) 808-2595,Dallas,TX,75201,45,false
+SUP0411,FireOven Packaging 411,equipment,Noah Davis,orders411@supplier23.example.com,(958) 798-9369,Tampa,FL,33602,15,true
+SUP0412,Harvest Flour Mills 412,packaging,Levi Young,orders412@supplier24.example.com,(339) 428-3535,Chicago,IL,60601,45,false
+SUP0413,Valley Farms Dairy 413,equipment,Jackson Flores,orders413@supplier25.example.com,(904) 405-2879,Tampa,FL,33602,15,false
+SUP0414,Roma Tomato Co 414,packaging,Sophia Thomas,orders414@supplier26.example.com,(409) 306-8761,Atlanta,GA,30303,15,true
+SUP0415,Urban Beverage Dist 415,dairy,Elijah Martin,orders415@supplier27.example.com,(614) 695-4015,Portland,OR,97201,30,true
+SUP0416,GreenLeaf Produce 416,equipment,Owen Lewis,orders416@supplier28.example.com,(873) 831-3018,Chicago,IL,60601,60,false
+SUP0417,Harvest Flour Mills 417,produce,Levi Thomas,orders417@supplier29.example.com,(374) 723-9956,Austin,TX,78701,30,false
+SUP0418,GreenLeaf Produce 418,beverages,Sophia Nguyen,orders418@supplier30.example.com,(704) 576-5508,Denver,CO,80202,60,false
+SUP0419,Roma Tomato Co 419,dry_goods,Grace Ramirez,orders419@supplier31.example.com,(351) 228-5643,Nashville,TN,37203,60,false
+SUP0420,Valley Farms Dairy 420,packaging,Henry Williams,orders420@supplier32.example.com,(860) 866-8282,Seattle,WA,98101,15,true
+SUP0421,Harvest Flour Mills 421,dry_goods,Layla Robinson,orders421@supplier33.example.com,(483) 209-3593,Phoenix,AZ,85004,45,false
+SUP0422,Coastal Seafoods 422,meat,Joseph King,orders422@supplier34.example.com,(599) 725-2028,Charlotte,NC,28202,30,false
+SUP0423,FireOven Packaging 423,dry_goods,Joseph Rodriguez,orders423@supplier35.example.com,(485) 980-5963,Phoenix,AZ,85004,60,false
+SUP0424,Artisan Cheese Works 424,dry_goods,Zoey Hill,orders424@supplier36.example.com,(874) 384-9306,Charlotte,NC,28202,45,false
+SUP0425,FireOven Packaging 425,packaging,Owen Sanchez,orders425@supplier37.example.com,(269) 246-1483,Phoenix,AZ,85004,30,false
+SUP0426,Roma Tomato Co 426,dry_goods,Matthew Walker,orders426@supplier38.example.com,(531) 978-4793,Miami,FL,33101,30,false
+SUP0427,Harvest Flour Mills 427,beverages,Scarlett Clark,orders427@supplier39.example.com,(265) 263-5103,Columbus,OH,43215,15,false
+SUP0428,Roma Tomato Co 428,dry_goods,Nova White,orders428@supplier40.example.com,(821) 846-1482,Tampa,FL,33602,30,false
+SUP0429,Artisan Cheese Works 429,dry_goods,Isabella Torres,orders429@supplier41.example.com,(769) 404-4206,Tampa,FL,33602,45,false
+SUP0430,GreenLeaf Produce 430,produce,Amelia Hernandez,orders430@supplier42.example.com,(644) 741-4150,Miami,FL,33101,15,false
+SUP0431,Roma Tomato Co 431,produce,Olivia Rodriguez,orders431@supplier43.example.com,(205) 568-7685,Miami,FL,33101,15,false
+SUP0432,Artisan Cheese Works 432,produce,Ethan Torres,orders432@supplier44.example.com,(685) 712-6768,Miami,FL,33101,45,false
+SUP0433,Harvest Flour Mills 433,equipment,Emma Lewis,orders433@supplier45.example.com,(637) 840-7162,Chicago,IL,60601,15,false
+SUP0434,GreenLeaf Produce 434,dairy,Elijah Young,orders434@supplier46.example.com,(436) 252-9856,Houston,TX,77002,45,false
+SUP0435,GreenLeaf Produce 435,equipment,Evelyn Harris,orders435@supplier47.example.com,(920) 566-2113,Charlotte,NC,28202,30,true
+SUP0436,Coastal Seafoods 436,equipment,Sebastian Flores,orders436@supplier48.example.com,(712) 519-7540,Dallas,TX,75201,15,false
+SUP0437,Roma Tomato Co 437,packaging,Zoey Taylor,orders437@supplier49.example.com,(868) 230-1528,Columbus,OH,43215,45,false
+SUP0438,FireOven Packaging 438,equipment,Noah Rodriguez,orders438@supplier50.example.com,(409) 760-6400,San Antonio,TX,78205,15,false
+SUP0439,Valley Farms Dairy 439,meat,Emma Clark,orders439@supplier51.example.com,(812) 957-2320,Dallas,TX,75201,60,true
+SUP0440,Valley Farms Dairy 440,dairy,Olivia Young,orders440@supplier52.example.com,(719) 430-6738,Denver,CO,80202,60,false
+SUP0441,Coastal Seafoods 441,dairy,Noah Johnson,orders441@supplier53.example.com,(992) 400-9752,Nashville,TN,37203,60,false
+SUP0442,Valley Farms Dairy 442,packaging,Zoey Brown,orders442@supplier54.example.com,(596) 984-7180,Tampa,FL,33602,30,false
+SUP0443,Harvest Flour Mills 443,dairy,Chloe Davis,orders443@supplier55.example.com,(830) 576-6763,Seattle,WA,98101,30,false
+SUP0444,Valley Farms Dairy 444,produce,Harper Garcia,orders444@supplier56.example.com,(802) 210-4721,Columbus,OH,43215,60,true
+SUP0445,Valley Farms Dairy 445,equipment,Ava Thomas,orders445@supplier57.example.com,(258) 278-1928,Columbus,OH,43215,30,false
+SUP0446,Valley Farms Dairy 446,meat,Ella Hill,orders446@supplier58.example.com,(870) 450-5790,Denver,CO,80202,30,false
+SUP0447,Roma Tomato Co 447,beverages,Emma Jones,orders447@supplier59.example.com,(456) 756-4372,Portland,OR,97201,60,true
+SUP0448,FireOven Packaging 448,equipment,Harper Lewis,orders448@supplier60.example.com,(930) 509-7011,Charlotte,NC,28202,45,true
+SUP0449,GreenLeaf Produce 449,meat,Penelope Wright,orders449@supplier61.example.com,(715) 306-1884,San Antonio,TX,78205,45,true
+SUP0450,Artisan Cheese Works 450,meat,Oliver Wilson,orders450@supplier62.example.com,(340) 733-4777,Tampa,FL,33602,45,true
+SUP0451,Roma Tomato Co 451,meat,Layla Martinez,orders451@supplier63.example.com,(236) 440-8213,San Antonio,TX,78205,60,true
+SUP0452,Artisan Cheese Works 452,equipment,Olivia Moore,orders452@supplier64.example.com,(484) 802-7294,Austin,TX,78701,45,true
+SUP0453,Valley Farms Dairy 453,meat,Owen Harris,orders453@supplier65.example.com,(707) 219-7268,Dallas,TX,75201,60,false
+SUP0454,Coastal Seafoods 454,dry_goods,Mason Ramirez,orders454@supplier66.example.com,(745) 253-5999,San Antonio,TX,78205,15,false
+SUP0455,Valley Farms Dairy 455,packaging,Nova Perez,orders455@supplier67.example.com,(468) 971-4547,Phoenix,AZ,85004,15,false
+SUP0456,Urban Beverage Dist 456,equipment,Jacob Brown,orders456@supplier68.example.com,(311) 766-7358,Charlotte,NC,28202,45,true
+SUP0457,Artisan Cheese Works 457,dry_goods,Riley Torres,orders457@supplier69.example.com,(987) 731-5261,Chicago,IL,60601,30,true
+SUP0458,Coastal Seafoods 458,produce,Ava Moore,orders458@supplier70.example.com,(898) 480-2401,Portland,OR,97201,30,true
+SUP0459,FireOven Packaging 459,packaging,Daniel Williams,orders459@supplier71.example.com,(830) 480-6926,Denver,CO,80202,45,false
+SUP0460,Valley Farms Dairy 460,dairy,Henry Torres,orders460@supplier72.example.com,(876) 528-5333,Nashville,TN,37203,30,false
+SUP0461,Artisan Cheese Works 461,dairy,Logan Williams,orders461@supplier73.example.com,(567) 691-4569,Austin,TX,78701,60,false
+SUP0462,GreenLeaf Produce 462,packaging,Jack Lee,orders462@supplier74.example.com,(265) 651-3945,Dallas,TX,75201,45,true
+SUP0463,GreenLeaf Produce 463,equipment,Jackson Rodriguez,orders463@supplier75.example.com,(432) 845-3858,Denver,CO,80202,30,true
+SUP0464,Valley Farms Dairy 464,produce,Elijah Williams,orders464@supplier76.example.com,(388) 900-9302,Miami,FL,33101,60,false
+SUP0465,Coastal Seafoods 465,dairy,Joseph Taylor,orders465@supplier77.example.com,(463) 216-6789,Austin,TX,78701,15,false
+SUP0466,Roma Tomato Co 466,dairy,Lily Lewis,orders466@supplier78.example.com,(315) 723-2268,Phoenix,AZ,85004,30,false
+SUP0467,FireOven Packaging 467,equipment,Matthew Clark,orders467@supplier79.example.com,(273) 857-7987,Atlanta,GA,30303,45,false
+SUP0468,FireOven Packaging 468,meat,Grace White,orders468@supplier80.example.com,(681) 501-1510,Phoenix,AZ,85004,30,false
+SUP0469,Harvest Flour Mills 469,packaging,Liam Miller,orders469@supplier81.example.com,(823) 416-6129,Denver,CO,80202,45,true
+SUP0470,Valley Farms Dairy 470,beverages,Layla Martinez,orders470@supplier82.example.com,(590) 980-2285,Seattle,WA,98101,15,true
+SUP0471,Urban Beverage Dist 471,packaging,Layla Davis,orders471@supplier83.example.com,(740) 252-8738,San Antonio,TX,78205,60,false
+SUP0472,GreenLeaf Produce 472,produce,Alexander Thomas,orders472@supplier84.example.com,(986) 570-4782,San Antonio,TX,78205,60,false
+SUP0473,Coastal Seafoods 473,dry_goods,Layla Clark,orders473@supplier85.example.com,(570) 281-6766,Dallas,TX,75201,15,true
+SUP0474,Artisan Cheese Works 474,packaging,Harper Lewis,orders474@supplier86.example.com,(628) 435-3052,Miami,FL,33101,30,true
+SUP0475,Harvest Flour Mills 475,packaging,Evelyn Jackson,orders475@supplier87.example.com,(549) 521-2932,Seattle,WA,98101,15,false
+SUP0476,Harvest Flour Mills 476,packaging,Jackson Gonzalez,orders476@supplier88.example.com,(384) 664-1254,Chicago,IL,60601,30,false
+SUP0477,Artisan Cheese Works 477,beverages,Sophia Rodriguez,orders477@supplier89.example.com,(234) 641-1392,Denver,CO,80202,30,true
+SUP0478,Urban Beverage Dist 478,dry_goods,Ella Rodriguez,orders478@supplier90.example.com,(611) 913-4955,Houston,TX,77002,45,false
+SUP0479,FireOven Packaging 479,packaging,Nora Flores,orders479@supplier91.example.com,(310) 939-1741,Columbus,OH,43215,15,true
+SUP0480,Artisan Cheese Works 480,dry_goods,Hazel Lewis,orders480@supplier92.example.com,(958) 646-5739,Phoenix,AZ,85004,60,true
+SUP0481,Harvest Flour Mills 481,beverages,David Nguyen,orders481@supplier93.example.com,(721) 285-3494,Tampa,FL,33602,15,false
+SUP0482,Artisan Cheese Works 482,dry_goods,Emily Lewis,orders482@supplier94.example.com,(380) 720-5576,Phoenix,AZ,85004,15,false
+SUP0483,FireOven Packaging 483,dairy,Riley King,orders483@supplier95.example.com,(737) 793-9326,Portland,OR,97201,60,false
+SUP0484,FireOven Packaging 484,equipment,Mason Martinez,orders484@supplier96.example.com,(242) 952-4451,Seattle,WA,98101,60,false
+SUP0485,FireOven Packaging 485,dairy,Ella Jackson,orders485@supplier0.example.com,(369) 321-5716,Atlanta,GA,30303,45,false
+SUP0486,Harvest Flour Mills 486,meat,Evelyn Hill,orders486@supplier1.example.com,(971) 308-4795,San Antonio,TX,78205,45,false
+SUP0487,Harvest Flour Mills 487,dairy,Nora Williams,orders487@supplier2.example.com,(752) 750-4197,San Antonio,TX,78205,15,false
+SUP0488,Valley Farms Dairy 488,meat,Ethan Jackson,orders488@supplier3.example.com,(784) 636-8288,Charlotte,NC,28202,30,true
+SUP0489,Roma Tomato Co 489,beverages,Joseph Davis,orders489@supplier4.example.com,(655) 642-9081,Denver,CO,80202,45,false
+SUP0490,GreenLeaf Produce 490,beverages,Aurora Davis,orders490@supplier5.example.com,(562) 280-4644,Houston,TX,77002,15,false
+SUP0491,FireOven Packaging 491,meat,Logan Allen,orders491@supplier6.example.com,(888) 995-2213,Chicago,IL,60601,45,true
+SUP0492,Urban Beverage Dist 492,dairy,Joseph King,orders492@supplier7.example.com,(525) 394-1583,Austin,TX,78701,15,false
+SUP0493,Urban Beverage Dist 493,equipment,Harper Gonzalez,orders493@supplier8.example.com,(471) 681-3481,Atlanta,GA,30303,60,true
+SUP0494,Artisan Cheese Works 494,meat,Isabella Gonzalez,orders494@supplier9.example.com,(850) 290-9459,Tampa,FL,33602,30,false
+SUP0495,Artisan Cheese Works 495,packaging,Owen Wilson,orders495@supplier10.example.com,(927) 382-1635,Dallas,TX,75201,60,false
+SUP0496,Urban Beverage Dist 496,beverages,Aiden Thomas,orders496@supplier11.example.com,(853) 557-8933,Atlanta,GA,30303,30,true
+SUP0497,Coastal Seafoods 497,meat,Aurora Young,orders497@supplier12.example.com,(701) 845-7425,Charlotte,NC,28202,45,false
+SUP0498,Roma Tomato Co 498,produce,Elijah Jackson,orders498@supplier13.example.com,(629) 657-6331,Denver,CO,80202,30,false
+SUP0499,Harvest Flour Mills 499,dry_goods,Emily Davis,orders499@supplier14.example.com,(555) 913-7522,Dallas,TX,75201,30,true
+SUP0500,Artisan Cheese Works 500,packaging,Grace Thomas,orders500@supplier15.example.com,(229) 497-5389,Portland,OR,97201,30,true
+SUP0501,Urban Beverage Dist 501,dairy,Jack Lee,orders501@supplier16.example.com,(467) 891-6203,Nashville,TN,37203,60,false
+SUP0502,Urban Beverage Dist 502,dry_goods,Evelyn Brown,orders502@supplier17.example.com,(474) 697-4587,Portland,OR,97201,45,false
+SUP0503,GreenLeaf Produce 503,dry_goods,Grace Anderson,orders503@supplier18.example.com,(786) 370-9782,Austin,TX,78701,30,true
+SUP0504,FireOven Packaging 504,produce,Nora Wright,orders504@supplier19.example.com,(220) 939-1345,Dallas,TX,75201,60,false
+SUP0505,FireOven Packaging 505,meat,David Scott,orders505@supplier20.example.com,(264) 870-1806,Tampa,FL,33602,30,false
+SUP0506,Harvest Flour Mills 506,equipment,Aria Sanchez,orders506@supplier21.example.com,(935) 434-5754,San Antonio,TX,78205,30,true
+SUP0507,Urban Beverage Dist 507,produce,Jack Thomas,orders507@supplier22.example.com,(213) 236-1328,Phoenix,AZ,85004,15,false
+SUP0508,Artisan Cheese Works 508,dairy,Mia Jackson,orders508@supplier23.example.com,(508) 224-4768,Nashville,TN,37203,30,false
+SUP0509,Roma Tomato Co 509,equipment,Scarlett Sanchez,orders509@supplier24.example.com,(334) 958-5423,Tampa,FL,33602,15,false
+SUP0510,Urban Beverage Dist 510,dairy,Ava Wright,orders510@supplier25.example.com,(819) 355-2565,Chicago,IL,60601,60,false
+SUP0511,GreenLeaf Produce 511,equipment,Emily Ramirez,orders511@supplier26.example.com,(724) 961-1383,Atlanta,GA,30303,45,false
+SUP0512,Roma Tomato Co 512,meat,Samuel Torres,orders512@supplier27.example.com,(682) 585-5771,San Antonio,TX,78205,60,false
+SUP0513,GreenLeaf Produce 513,dry_goods,Abigail Wright,orders513@supplier28.example.com,(718) 450-7265,Seattle,WA,98101,15,true
+SUP0514,Urban Beverage Dist 514,meat,Nova Wright,orders514@supplier29.example.com,(931) 310-8409,Tampa,FL,33602,30,false
+SUP0515,Urban Beverage Dist 515,equipment,Harper Lewis,orders515@supplier30.example.com,(578) 688-2785,Austin,TX,78701,45,false
+SUP0516,Roma Tomato Co 516,dairy,Jack Hernandez,orders516@supplier31.example.com,(412) 701-5095,Nashville,TN,37203,15,false
+SUP0517,Artisan Cheese Works 517,packaging,Layla Torres,orders517@supplier32.example.com,(978) 438-1965,Atlanta,GA,30303,60,false
+SUP0518,FireOven Packaging 518,equipment,Lucas Williams,orders518@supplier33.example.com,(529) 905-7660,Denver,CO,80202,15,false
+SUP0519,Artisan Cheese Works 519,packaging,Jackson Lee,orders519@supplier34.example.com,(867) 441-6272,San Antonio,TX,78205,60,true
+SUP0520,Roma Tomato Co 520,dairy,Jacob Jones,orders520@supplier35.example.com,(584) 330-1223,Chicago,IL,60601,30,false
+SUP0521,Harvest Flour Mills 521,produce,Chloe Davis,orders521@supplier36.example.com,(239) 634-9113,Dallas,TX,75201,30,false
+SUP0522,Artisan Cheese Works 522,produce,Levi Scott,orders522@supplier37.example.com,(628) 608-1151,Chicago,IL,60601,45,false
+SUP0523,GreenLeaf Produce 523,packaging,Emily Flores,orders523@supplier38.example.com,(580) 777-3718,Denver,CO,80202,30,false
+SUP0524,Coastal Seafoods 524,equipment,Owen White,orders524@supplier39.example.com,(731) 819-5116,Miami,FL,33101,60,false
+SUP0525,FireOven Packaging 525,beverages,Layla Rodriguez,orders525@supplier40.example.com,(368) 736-8763,Columbus,OH,43215,15,false
+SUP0526,Harvest Flour Mills 526,dry_goods,Emma Smith,orders526@supplier41.example.com,(519) 918-4074,Houston,TX,77002,30,false
+SUP0527,Artisan Cheese Works 527,meat,Sophia Brown,orders527@supplier42.example.com,(839) 679-3563,Chicago,IL,60601,15,false
+SUP0528,Coastal Seafoods 528,meat,Hazel Smith,orders528@supplier43.example.com,(397) 481-5656,Chicago,IL,60601,60,false
+SUP0529,FireOven Packaging 529,packaging,David Sanchez,orders529@supplier44.example.com,(460) 774-9864,Denver,CO,80202,30,false
+SUP0530,Roma Tomato Co 530,beverages,Ethan Moore,orders530@supplier45.example.com,(382) 469-2676,Houston,TX,77002,30,true
+SUP0531,Urban Beverage Dist 531,meat,Riley Nguyen,orders531@supplier46.example.com,(819) 483-8756,Atlanta,GA,30303,30,false
+SUP0532,Coastal Seafoods 532,produce,Oliver Flores,orders532@supplier47.example.com,(350) 346-3700,Nashville,TN,37203,60,true
+SUP0533,Roma Tomato Co 533,dairy,Isabella Allen,orders533@supplier48.example.com,(650) 635-8728,Phoenix,AZ,85004,45,false
+SUP0534,Roma Tomato Co 534,produce,Jack Sanchez,orders534@supplier49.example.com,(586) 992-7316,Nashville,TN,37203,60,false
+SUP0535,FireOven Packaging 535,packaging,Oliver Hill,orders535@supplier50.example.com,(419) 370-5550,Charlotte,NC,28202,30,true
+SUP0536,Artisan Cheese Works 536,dry_goods,Penelope Taylor,orders536@supplier51.example.com,(901) 323-8133,Chicago,IL,60601,45,false
+SUP0537,FireOven Packaging 537,equipment,Logan Thompson,orders537@supplier52.example.com,(945) 634-4502,Charlotte,NC,28202,30,false
+SUP0538,Valley Farms Dairy 538,produce,Chloe White,orders538@supplier53.example.com,(738) 399-1091,Houston,TX,77002,45,false
+SUP0539,FireOven Packaging 539,meat,Lily Smith,orders539@supplier54.example.com,(821) 479-1549,Columbus,OH,43215,45,false
+SUP0540,Valley Farms Dairy 540,beverages,Joseph Taylor,orders540@supplier55.example.com,(480) 840-1937,Seattle,WA,98101,15,true
+SUP0541,Artisan Cheese Works 541,packaging,Hazel Robinson,orders541@supplier56.example.com,(702) 377-8756,Columbus,OH,43215,15,false
+SUP0542,Harvest Flour Mills 542,beverages,Levi Lopez,orders542@supplier57.example.com,(334) 284-7874,Austin,TX,78701,15,false
+SUP0543,Valley Farms Dairy 543,meat,Sophia Wright,orders543@supplier58.example.com,(484) 398-1273,Miami,FL,33101,45,true
+SUP0544,FireOven Packaging 544,beverages,Mia Nguyen,orders544@supplier59.example.com,(939) 575-9459,Charlotte,NC,28202,15,true
+SUP0545,Urban Beverage Dist 545,equipment,Aurora Brown,orders545@supplier60.example.com,(266) 397-9216,Seattle,WA,98101,30,true
+SUP0546,Harvest Flour Mills 546,dry_goods,Olivia Moore,orders546@supplier61.example.com,(823) 403-9281,Dallas,TX,75201,60,false
+SUP0547,Valley Farms Dairy 547,meat,Benjamin Scott,orders547@supplier62.example.com,(559) 320-6594,Tampa,FL,33602,60,false
+SUP0548,Roma Tomato Co 548,packaging,Logan Garcia,orders548@supplier63.example.com,(319) 292-3990,Tampa,FL,33602,15,false
+SUP0549,Valley Farms Dairy 549,equipment,Mia Smith,orders549@supplier64.example.com,(422) 853-7136,Atlanta,GA,30303,60,false
+SUP0550,Coastal Seafoods 550,meat,Matthew Gonzalez,orders550@supplier65.example.com,(965) 973-3174,Tampa,FL,33602,45,false
+SUP0551,GreenLeaf Produce 551,produce,Benjamin Rodriguez,orders551@supplier66.example.com,(778) 523-7782,Tampa,FL,33602,30,true
+SUP0552,Coastal Seafoods 552,produce,Abigail Taylor,orders552@supplier67.example.com,(914) 650-5334,Denver,CO,80202,15,false
+SUP0553,FireOven Packaging 553,meat,David King,orders553@supplier68.example.com,(660) 846-3793,Atlanta,GA,30303,15,true
+SUP0554,Urban Beverage Dist 554,produce,Aria Torres,orders554@supplier69.example.com,(415) 919-8108,Atlanta,GA,30303,45,false
+SUP0555,GreenLeaf Produce 555,produce,Alexander Allen,orders555@supplier70.example.com,(764) 960-5406,Miami,FL,33101,15,false
+SUP0556,GreenLeaf Produce 556,produce,Logan Taylor,orders556@supplier71.example.com,(232) 318-9471,San Antonio,TX,78205,30,false
+SUP0557,FireOven Packaging 557,meat,Riley Harris,orders557@supplier72.example.com,(874) 802-1554,Portland,OR,97201,45,true
+SUP0558,FireOven Packaging 558,equipment,Ava Hernandez,orders558@supplier73.example.com,(631) 686-6483,Miami,FL,33101,45,false
+SUP0559,Harvest Flour Mills 559,meat,Henry Hernandez,orders559@supplier74.example.com,(678) 759-4050,Dallas,TX,75201,15,false
+SUP0560,Artisan Cheese Works 560,packaging,Riley Ramirez,orders560@supplier75.example.com,(948) 608-8759,Atlanta,GA,30303,30,false
+SUP0561,FireOven Packaging 561,dry_goods,Matthew Sanchez,orders561@supplier76.example.com,(507) 241-4838,Phoenix,AZ,85004,15,false
+SUP0562,GreenLeaf Produce 562,packaging,Daniel Nguyen,orders562@supplier77.example.com,(229) 367-9391,Nashville,TN,37203,30,true
+SUP0563,Coastal Seafoods 563,packaging,Nova Rodriguez,orders563@supplier78.example.com,(333) 879-6458,Columbus,OH,43215,15,true
+SUP0564,Harvest Flour Mills 564,equipment,Ella Robinson,orders564@supplier79.example.com,(605) 369-8546,Denver,CO,80202,15,false
+SUP0565,Harvest Flour Mills 565,meat,Henry Garcia,orders565@supplier80.example.com,(389) 441-4331,San Antonio,TX,78205,60,false
+SUP0566,Harvest Flour Mills 566,beverages,Jack White,orders566@supplier81.example.com,(205) 688-3610,San Antonio,TX,78205,45,false
+SUP0567,Urban Beverage Dist 567,beverages,Ethan Walker,orders567@supplier82.example.com,(884) 585-8593,Chicago,IL,60601,30,true
+SUP0568,Urban Beverage Dist 568,produce,Emily Rodriguez,orders568@supplier83.example.com,(609) 991-6359,Dallas,TX,75201,45,true
+SUP0569,Urban Beverage Dist 569,packaging,Daniel Wright,orders569@supplier84.example.com,(273) 555-9000,Tampa,FL,33602,15,false
+SUP0570,Harvest Flour Mills 570,equipment,James White,orders570@supplier85.example.com,(570) 548-9215,Atlanta,GA,30303,15,false
+SUP0571,Urban Beverage Dist 571,dairy,Samuel Anderson,orders571@supplier86.example.com,(341) 711-4079,Nashville,TN,37203,15,false
+SUP0572,Roma Tomato Co 572,meat,Scarlett Lopez,orders572@supplier87.example.com,(635) 354-5668,Seattle,WA,98101,45,false
+SUP0573,Artisan Cheese Works 573,dairy,Evelyn Clark,orders573@supplier88.example.com,(383) 367-7524,Charlotte,NC,28202,15,false
+SUP0574,FireOven Packaging 574,beverages,Layla Miller,orders574@supplier89.example.com,(871) 614-1200,Dallas,TX,75201,30,false
+SUP0575,Urban Beverage Dist 575,beverages,Logan Smith,orders575@supplier90.example.com,(697) 869-7581,Atlanta,GA,30303,60,true
+SUP0576,Urban Beverage Dist 576,meat,Levi Davis,orders576@supplier91.example.com,(818) 661-9225,Denver,CO,80202,45,true
+SUP0577,FireOven Packaging 577,equipment,Aria White,orders577@supplier92.example.com,(314) 383-7947,Tampa,FL,33602,60,true
+SUP0578,Harvest Flour Mills 578,dairy,Alexander Nguyen,orders578@supplier93.example.com,(464) 402-9436,Dallas,TX,75201,60,false
+SUP0579,GreenLeaf Produce 579,dairy,Elijah Young,orders579@supplier94.example.com,(671) 575-1820,Portland,OR,97201,45,false
+SUP0580,GreenLeaf Produce 580,equipment,Liam Wright,orders580@supplier95.example.com,(473) 383-5804,Phoenix,AZ,85004,45,false
+SUP0581,FireOven Packaging 581,meat,Hazel Williams,orders581@supplier96.example.com,(810) 314-6853,Portland,OR,97201,15,false
+SUP0582,Coastal Seafoods 582,produce,Oliver Wright,orders582@supplier0.example.com,(296) 329-3369,Seattle,WA,98101,60,false
+SUP0583,FireOven Packaging 583,dry_goods,Penelope Flores,orders583@supplier1.example.com,(449) 950-9577,Denver,CO,80202,60,false
+SUP0584,FireOven Packaging 584,dairy,Lucas Hill,orders584@supplier2.example.com,(941) 853-2656,Phoenix,AZ,85004,60,false
+SUP0585,Roma Tomato Co 585,meat,Hazel Martin,orders585@supplier3.example.com,(632) 610-1366,Tampa,FL,33602,30,true
+SUP0586,Roma Tomato Co 586,equipment,Jacob Davis,orders586@supplier4.example.com,(396) 784-5275,Denver,CO,80202,45,false
+SUP0587,Coastal Seafoods 587,beverages,Noah White,orders587@supplier5.example.com,(787) 684-4525,Chicago,IL,60601,60,false
+SUP0588,Harvest Flour Mills 588,meat,Lily Williams,orders588@supplier6.example.com,(819) 608-3969,Tampa,FL,33602,45,false
+SUP0589,Coastal Seafoods 589,dairy,Grace Rodriguez,orders589@supplier7.example.com,(481) 473-8576,Seattle,WA,98101,45,false
+SUP0590,Valley Farms Dairy 590,beverages,Emily Anderson,orders590@supplier8.example.com,(265) 826-5715,San Antonio,TX,78205,60,false
+SUP0591,FireOven Packaging 591,packaging,Scarlett Walker,orders591@supplier9.example.com,(771) 212-6618,Miami,FL,33101,45,false
+SUP0592,Artisan Cheese Works 592,produce,Logan Young,orders592@supplier10.example.com,(415) 745-3785,Charlotte,NC,28202,60,false
+SUP0593,Roma Tomato Co 593,beverages,Jackson Scott,orders593@supplier11.example.com,(553) 285-4400,Austin,TX,78701,45,false
+SUP0594,FireOven Packaging 594,dry_goods,Matthew Robinson,orders594@supplier12.example.com,(230) 359-3731,Nashville,TN,37203,45,false
+SUP0595,Valley Farms Dairy 595,equipment,Abigail Scott,orders595@supplier13.example.com,(961) 702-4845,Seattle,WA,98101,60,true
+SUP0596,Urban Beverage Dist 596,packaging,Elijah Miller,orders596@supplier14.example.com,(605) 423-4462,Houston,TX,77002,15,false
+SUP0597,Harvest Flour Mills 597,equipment,David Sanchez,orders597@supplier15.example.com,(763) 618-6767,Houston,TX,77002,30,false
+SUP0598,GreenLeaf Produce 598,meat,David White,orders598@supplier16.example.com,(845) 308-6206,Atlanta,GA,30303,60,false
+SUP0599,Artisan Cheese Works 599,equipment,Logan Jackson,orders599@supplier17.example.com,(660) 360-3910,Seattle,WA,98101,60,false
+SUP0600,FireOven Packaging 600,equipment,Logan Lopez,orders600@supplier18.example.com,(899) 300-7280,Chicago,IL,60601,60,true
+SUP0601,Coastal Seafoods 601,beverages,Liam Flores,orders601@supplier19.example.com,(429) 341-9247,Seattle,WA,98101,15,false
+SUP0602,Urban Beverage Dist 602,dairy,Emily Flores,orders602@supplier20.example.com,(455) 370-8731,Tampa,FL,33602,15,true
+SUP0603,Urban Beverage Dist 603,packaging,Lily Gonzalez,orders603@supplier21.example.com,(365) 668-7046,Austin,TX,78701,30,false
+SUP0604,Coastal Seafoods 604,meat,Isabella Jackson,orders604@supplier22.example.com,(266) 231-4391,Columbus,OH,43215,60,false
+SUP0605,Artisan Cheese Works 605,produce,Mason Robinson,orders605@supplier23.example.com,(712) 856-2821,Miami,FL,33101,45,true
+SUP0606,Harvest Flour Mills 606,produce,Logan Jones,orders606@supplier24.example.com,(207) 966-1529,Columbus,OH,43215,60,true
+SUP0607,Urban Beverage Dist 607,dairy,Grace Taylor,orders607@supplier25.example.com,(933) 750-2982,Portland,OR,97201,15,false
+SUP0608,Valley Farms Dairy 608,meat,Daniel Williams,orders608@supplier26.example.com,(572) 609-9381,Charlotte,NC,28202,60,false
+SUP0609,Roma Tomato Co 609,produce,Evelyn Nguyen,orders609@supplier27.example.com,(971) 314-3768,Dallas,TX,75201,45,false
+SUP0610,Harvest Flour Mills 610,produce,Zoey Wilson,orders610@supplier28.example.com,(470) 299-6407,Phoenix,AZ,85004,15,false
+SUP0611,Artisan Cheese Works 611,equipment,James Taylor,orders611@supplier29.example.com,(550) 502-8285,Tampa,FL,33602,45,true
+SUP0612,GreenLeaf Produce 612,packaging,Benjamin Hill,orders612@supplier30.example.com,(236) 979-3294,Tampa,FL,33602,30,false
+SUP0613,Coastal Seafoods 613,meat,Riley White,orders613@supplier31.example.com,(930) 498-6024,Austin,TX,78701,30,false
+SUP0614,Artisan Cheese Works 614,beverages,Chloe Jackson,orders614@supplier32.example.com,(358) 961-3106,Denver,CO,80202,30,false
+SUP0615,Urban Beverage Dist 615,meat,Hazel Anderson,orders615@supplier33.example.com,(228) 416-5963,Charlotte,NC,28202,30,false
+SUP0616,FireOven Packaging 616,beverages,Lily King,orders616@supplier34.example.com,(615) 688-3791,Denver,CO,80202,45,false
+SUP0617,FireOven Packaging 617,packaging,Michael Harris,orders617@supplier35.example.com,(696) 863-3770,Atlanta,GA,30303,60,false
+SUP0618,Urban Beverage Dist 618,dairy,Aurora Jones,orders618@supplier36.example.com,(550) 430-6067,Columbus,OH,43215,30,false
+SUP0619,Roma Tomato Co 619,beverages,Amelia Thompson,orders619@supplier37.example.com,(710) 670-1199,Denver,CO,80202,30,true
+SUP0620,Valley Farms Dairy 620,dry_goods,Hazel Miller,orders620@supplier38.example.com,(537) 719-2100,Phoenix,AZ,85004,45,false
+SUP0621,Roma Tomato Co 621,equipment,Noah Lewis,orders621@supplier39.example.com,(780) 735-5062,Chicago,IL,60601,30,false
+SUP0622,Harvest Flour Mills 622,beverages,Samuel Thomas,orders622@supplier40.example.com,(433) 906-8472,Tampa,FL,33602,30,false
+SUP0623,GreenLeaf Produce 623,packaging,Benjamin Garcia,orders623@supplier41.example.com,(960) 394-2043,Atlanta,GA,30303,30,false
+SUP0624,Coastal Seafoods 624,produce,James Nguyen,orders624@supplier42.example.com,(979) 795-8819,Austin,TX,78701,60,false
+SUP0625,Valley Farms Dairy 625,meat,Hazel Jones,orders625@supplier43.example.com,(401) 689-2907,Columbus,OH,43215,60,false
+SUP0626,Roma Tomato Co 626,packaging,Aiden Wilson,orders626@supplier44.example.com,(812) 698-5914,San Antonio,TX,78205,15,false
+SUP0627,Roma Tomato Co 627,beverages,Chloe Gonzalez,orders627@supplier45.example.com,(803) 850-8475,Charlotte,NC,28202,15,false
+SUP0628,GreenLeaf Produce 628,dry_goods,Hazel Lopez,orders628@supplier46.example.com,(536) 719-8918,Seattle,WA,98101,45,true
+SUP0629,GreenLeaf Produce 629,equipment,Aria Thomas,orders629@supplier47.example.com,(549) 481-9242,Denver,CO,80202,45,false
+SUP0630,Harvest Flour Mills 630,dry_goods,Ava Lee,orders630@supplier48.example.com,(721) 681-9122,Dallas,TX,75201,30,false
+SUP0631,Urban Beverage Dist 631,beverages,Henry Miller,orders631@supplier49.example.com,(653) 550-9824,Nashville,TN,37203,30,false
+SUP0632,Coastal Seafoods 632,produce,Henry Allen,orders632@supplier50.example.com,(512) 527-9690,Dallas,TX,75201,60,false
+SUP0633,Coastal Seafoods 633,packaging,Matthew Martinez,orders633@supplier51.example.com,(531) 360-4144,Denver,CO,80202,60,true
+SUP0634,Harvest Flour Mills 634,packaging,Aurora Hernandez,orders634@supplier52.example.com,(533) 728-8762,Charlotte,NC,28202,60,true
+SUP0635,Coastal Seafoods 635,meat,Zoey Martin,orders635@supplier53.example.com,(579) 348-6017,Denver,CO,80202,45,true
+SUP0636,FireOven Packaging 636,dry_goods,Henry Ramirez,orders636@supplier54.example.com,(776) 602-7834,Charlotte,NC,28202,15,true
+SUP0637,Valley Farms Dairy 637,dry_goods,Ella Rodriguez,orders637@supplier55.example.com,(667) 985-5492,Seattle,WA,98101,15,true
+SUP0638,Coastal Seafoods 638,beverages,Joseph Taylor,orders638@supplier56.example.com,(501) 582-1387,San Antonio,TX,78205,45,false
+SUP0639,FireOven Packaging 639,packaging,Jack Gonzalez,orders639@supplier57.example.com,(420) 832-9240,Seattle,WA,98101,60,true
+SUP0640,Roma Tomato Co 640,produce,Mia Lee,orders640@supplier58.example.com,(940) 691-8698,Dallas,TX,75201,15,true
+SUP0641,Artisan Cheese Works 641,produce,Benjamin Hill,orders641@supplier59.example.com,(800) 584-1971,Seattle,WA,98101,15,false
+SUP0642,GreenLeaf Produce 642,packaging,Michael Lewis,orders642@supplier60.example.com,(491) 313-8730,Phoenix,AZ,85004,30,true
+SUP0643,FireOven Packaging 643,equipment,Layla Clark,orders643@supplier61.example.com,(355) 354-5896,Dallas,TX,75201,30,false
+SUP0644,Coastal Seafoods 644,meat,Riley Wright,orders644@supplier62.example.com,(981) 876-5271,Portland,OR,97201,45,false
+SUP0645,Roma Tomato Co 645,equipment,Penelope Lee,orders645@supplier63.example.com,(569) 991-8304,Houston,TX,77002,30,false
+SUP0646,Coastal Seafoods 646,dry_goods,Michael Perez,orders646@supplier64.example.com,(403) 893-5243,Portland,OR,97201,45,false
+SUP0647,Valley Farms Dairy 647,produce,Elijah Clark,orders647@supplier65.example.com,(637) 605-8968,Columbus,OH,43215,15,true
+SUP0648,FireOven Packaging 648,dairy,Riley Ramirez,orders648@supplier66.example.com,(232) 716-6358,Austin,TX,78701,60,false
+SUP0649,Roma Tomato Co 649,beverages,Emma Torres,orders649@supplier67.example.com,(294) 771-2840,Phoenix,AZ,85004,30,true
+SUP0650,Roma Tomato Co 650,packaging,Logan Flores,orders650@supplier68.example.com,(865) 395-2197,Charlotte,NC,28202,60,true
+SUP0651,Artisan Cheese Works 651,beverages,Lucas Perez,orders651@supplier69.example.com,(274) 386-6567,Portland,OR,97201,60,false
+SUP0652,Urban Beverage Dist 652,dairy,Daniel Torres,orders652@supplier70.example.com,(500) 206-7388,Tampa,FL,33602,15,false
+SUP0653,Urban Beverage Dist 653,produce,Evelyn Anderson,orders653@supplier71.example.com,(798) 890-6351,Phoenix,AZ,85004,60,false
+SUP0654,FireOven Packaging 654,beverages,Riley Martinez,orders654@supplier72.example.com,(393) 991-3429,San Antonio,TX,78205,30,false
+SUP0655,Valley Farms Dairy 655,packaging,Nora Williams,orders655@supplier73.example.com,(998) 330-9848,Dallas,TX,75201,45,true
+SUP0656,FireOven Packaging 656,produce,Aurora Wilson,orders656@supplier74.example.com,(406) 510-3675,Phoenix,AZ,85004,60,true
+SUP0657,Coastal Seafoods 657,equipment,Ella Johnson,orders657@supplier75.example.com,(340) 650-3017,San Antonio,TX,78205,60,false
+SUP0658,Coastal Seafoods 658,dry_goods,Noah Lewis,orders658@supplier76.example.com,(649) 608-4254,Charlotte,NC,28202,30,true
+SUP0659,Roma Tomato Co 659,dairy,Mason Allen,orders659@supplier77.example.com,(792) 941-9462,Atlanta,GA,30303,15,false
+SUP0660,Roma Tomato Co 660,dry_goods,Levi Hill,orders660@supplier78.example.com,(566) 967-6191,San Antonio,TX,78205,60,false
+SUP0661,FireOven Packaging 661,dry_goods,Evelyn Allen,orders661@supplier79.example.com,(314) 667-1264,Dallas,TX,75201,15,false
+SUP0662,Urban Beverage Dist 662,equipment,Sophia Thompson,orders662@supplier80.example.com,(569) 517-2069,Seattle,WA,98101,60,true
+SUP0663,GreenLeaf Produce 663,produce,Penelope Garcia,orders663@supplier81.example.com,(866) 859-7384,Miami,FL,33101,60,false
+SUP0664,FireOven Packaging 664,dairy,Lucas Thomas,orders664@supplier82.example.com,(381) 778-1151,Denver,CO,80202,30,false
+SUP0665,Artisan Cheese Works 665,equipment,Olivia Brown,orders665@supplier83.example.com,(810) 414-5801,Houston,TX,77002,45,false
+SUP0666,Harvest Flour Mills 666,dry_goods,Mason Lopez,orders666@supplier84.example.com,(731) 355-3975,Charlotte,NC,28202,45,true
+SUP0667,Harvest Flour Mills 667,dairy,Jackson Wilson,orders667@supplier85.example.com,(513) 613-7114,Dallas,TX,75201,45,false
+SUP0668,Valley Farms Dairy 668,meat,Liam Walker,orders668@supplier86.example.com,(235) 952-3364,Austin,TX,78701,60,false
+SUP0669,Harvest Flour Mills 669,produce,Sophia Smith,orders669@supplier87.example.com,(557) 428-2509,Seattle,WA,98101,60,true
+SUP0670,Artisan Cheese Works 670,dry_goods,Grace Wright,orders670@supplier88.example.com,(650) 337-1011,Dallas,TX,75201,45,false
+SUP0671,GreenLeaf Produce 671,produce,Emily Wright,orders671@supplier89.example.com,(574) 828-2579,Columbus,OH,43215,60,false
+SUP0672,Coastal Seafoods 672,produce,Harper Allen,orders672@supplier90.example.com,(332) 346-4695,Charlotte,NC,28202,15,true
+SUP0673,Urban Beverage Dist 673,meat,Owen Miller,orders673@supplier91.example.com,(455) 431-5106,Tampa,FL,33602,30,true
+SUP0674,FireOven Packaging 674,beverages,Logan Nguyen,orders674@supplier92.example.com,(732) 729-5370,Denver,CO,80202,30,false
+SUP0675,Harvest Flour Mills 675,packaging,Levi Williams,orders675@supplier93.example.com,(965) 594-1786,Phoenix,AZ,85004,30,true
+SUP0676,Harvest Flour Mills 676,beverages,Olivia Thomas,orders676@supplier94.example.com,(365) 606-6284,Austin,TX,78701,15,false
+SUP0677,FireOven Packaging 677,produce,Hazel Torres,orders677@supplier95.example.com,(615) 662-4519,Portland,OR,97201,60,false
+SUP0678,Artisan Cheese Works 678,dairy,Levi Moore,orders678@supplier96.example.com,(871) 986-9429,Chicago,IL,60601,45,false
+SUP0679,Harvest Flour Mills 679,meat,Alexander Young,orders679@supplier0.example.com,(990) 762-8476,Columbus,OH,43215,15,false
+SUP0680,GreenLeaf Produce 680,dairy,Michael Ramirez,orders680@supplier1.example.com,(857) 226-9901,Phoenix,AZ,85004,30,false
+SUP0681,Roma Tomato Co 681,dairy,Jack Jackson,orders681@supplier2.example.com,(329) 555-6030,Portland,OR,97201,60,false
+SUP0682,Harvest Flour Mills 682,dry_goods,Lily Gonzalez,orders682@supplier3.example.com,(345) 896-4634,Dallas,TX,75201,15,false
+SUP0683,FireOven Packaging 683,packaging,Nora Martinez,orders683@supplier4.example.com,(776) 743-9602,Tampa,FL,33602,15,true
+SUP0684,Coastal Seafoods 684,beverages,Sebastian Hernandez,orders684@supplier5.example.com,(583) 362-2640,Phoenix,AZ,85004,30,false
+SUP0685,Coastal Seafoods 685,equipment,Nova Martinez,orders685@supplier6.example.com,(753) 824-7947,Charlotte,NC,28202,30,false
+SUP0686,GreenLeaf Produce 686,dry_goods,Sebastian Clark,orders686@supplier7.example.com,(687) 679-6274,Seattle,WA,98101,30,true
+SUP0687,Valley Farms Dairy 687,dairy,Evelyn Scott,orders687@supplier8.example.com,(884) 519-4420,Denver,CO,80202,15,false
+SUP0688,Harvest Flour Mills 688,produce,Zoey Hernandez,orders688@supplier9.example.com,(982) 448-7410,Seattle,WA,98101,30,false
+SUP0689,Coastal Seafoods 689,produce,Ella Jones,orders689@supplier10.example.com,(431) 482-3300,Seattle,WA,98101,60,false
+SUP0690,Harvest Flour Mills 690,produce,Chloe Martinez,orders690@supplier11.example.com,(888) 482-6365,Tampa,FL,33602,15,false
+SUP0691,GreenLeaf Produce 691,packaging,Sophia Hill,orders691@supplier12.example.com,(682) 437-8180,Chicago,IL,60601,45,true
+SUP0692,Artisan Cheese Works 692,produce,Emma Perez,orders692@supplier13.example.com,(478) 241-7250,Chicago,IL,60601,45,false
+SUP0693,Urban Beverage Dist 693,packaging,Mia Young,orders693@supplier14.example.com,(976) 498-4680,Portland,OR,97201,15,false
+SUP0694,FireOven Packaging 694,produce,Aurora Young,orders694@supplier15.example.com,(918) 642-7908,Tampa,FL,33602,15,false
+SUP0695,GreenLeaf Produce 695,equipment,Layla Moore,orders695@supplier16.example.com,(457) 855-9320,Charlotte,NC,28202,45,false
+SUP0696,GreenLeaf Produce 696,meat,Oliver Smith,orders696@supplier17.example.com,(303) 930-8955,Charlotte,NC,28202,30,false
+SUP0697,Urban Beverage Dist 697,beverages,Benjamin Miller,orders697@supplier18.example.com,(999) 925-8993,San Antonio,TX,78205,60,false
+SUP0698,Urban Beverage Dist 698,dairy,Nora Miller,orders698@supplier19.example.com,(804) 858-2615,Charlotte,NC,28202,15,false
+SUP0699,Coastal Seafoods 699,meat,Aiden Hill,orders699@supplier20.example.com,(631) 603-1653,Nashville,TN,37203,45,false
+SUP0700,Artisan Cheese Works 700,packaging,Sebastian Williams,orders700@supplier21.example.com,(608) 843-8074,Portland,OR,97201,15,false
+SUP0701,Valley Farms Dairy 701,beverages,Alexander Miller,orders701@supplier22.example.com,(499) 622-1464,Houston,TX,77002,60,true
+SUP0702,FireOven Packaging 702,equipment,Matthew Thompson,orders702@supplier23.example.com,(560) 454-5532,Denver,CO,80202,60,true
+SUP0703,Artisan Cheese Works 703,beverages,Hazel Taylor,orders703@supplier24.example.com,(987) 364-4430,Phoenix,AZ,85004,45,true
+SUP0704,FireOven Packaging 704,equipment,Mason Young,orders704@supplier25.example.com,(291) 541-6763,Nashville,TN,37203,30,false
+SUP0705,Roma Tomato Co 705,beverages,Oliver Sanchez,orders705@supplier26.example.com,(520) 836-9146,Denver,CO,80202,30,true
+SUP0706,GreenLeaf Produce 706,equipment,Joseph Young,orders706@supplier27.example.com,(559) 545-8172,San Antonio,TX,78205,45,true
+SUP0707,FireOven Packaging 707,dairy,Elijah Gonzalez,orders707@supplier28.example.com,(795) 517-9292,Houston,TX,77002,45,true
+SUP0708,Harvest Flour Mills 708,dry_goods,Owen Jones,orders708@supplier29.example.com,(403) 295-2483,Chicago,IL,60601,60,true
+SUP0709,FireOven Packaging 709,packaging,Ella Sanchez,orders709@supplier30.example.com,(336) 594-2697,Houston,TX,77002,45,false
+SUP0710,FireOven Packaging 710,produce,Chloe Williams,orders710@supplier31.example.com,(451) 761-3539,Dallas,TX,75201,45,false
+SUP0711,Coastal Seafoods 711,produce,Harper Lewis,orders711@supplier32.example.com,(863) 421-3381,San Antonio,TX,78205,15,false
+SUP0712,Artisan Cheese Works 712,equipment,Chloe Clark,orders712@supplier33.example.com,(769) 764-4149,Austin,TX,78701,60,false
+SUP0713,Urban Beverage Dist 713,beverages,Riley Harris,orders713@supplier34.example.com,(964) 467-6963,Chicago,IL,60601,45,false
+SUP0714,Coastal Seafoods 714,meat,Aria Thompson,orders714@supplier35.example.com,(278) 909-3203,Phoenix,AZ,85004,45,true
+SUP0715,Coastal Seafoods 715,equipment,Aria Nguyen,orders715@supplier36.example.com,(331) 298-9314,Tampa,FL,33602,60,false
+SUP0716,Coastal Seafoods 716,beverages,Ella Scott,orders716@supplier37.example.com,(429) 676-5409,Dallas,TX,75201,15,false
+SUP0717,Artisan Cheese Works 717,packaging,Jacob Jones,orders717@supplier38.example.com,(375) 222-8347,Portland,OR,97201,15,true
+SUP0718,Harvest Flour Mills 718,dairy,Matthew Thompson,orders718@supplier39.example.com,(266) 936-5523,Portland,OR,97201,45,true
+SUP0719,Valley Farms Dairy 719,beverages,Nora Young,orders719@supplier40.example.com,(641) 921-3184,Tampa,FL,33602,60,false
+SUP0720,GreenLeaf Produce 720,packaging,Penelope Martin,orders720@supplier41.example.com,(538) 438-9322,Portland,OR,97201,60,false
+SUP0721,FireOven Packaging 721,equipment,Ava Flores,orders721@supplier42.example.com,(254) 929-6871,Chicago,IL,60601,15,true
+SUP0722,Roma Tomato Co 722,packaging,Grace Hernandez,orders722@supplier43.example.com,(950) 399-5076,Dallas,TX,75201,30,true
+SUP0723,Artisan Cheese Works 723,beverages,Elijah Perez,orders723@supplier44.example.com,(291) 296-7611,Austin,TX,78701,60,true
+SUP0724,Artisan Cheese Works 724,produce,Alexander Lopez,orders724@supplier45.example.com,(298) 518-6818,Seattle,WA,98101,30,true
+SUP0725,GreenLeaf Produce 725,dry_goods,Oliver Lopez,orders725@supplier46.example.com,(466) 611-4286,Columbus,OH,43215,30,false
+SUP0726,Roma Tomato Co 726,meat,Chloe Miller,orders726@supplier47.example.com,(736) 463-1334,Miami,FL,33101,15,true
+SUP0727,FireOven Packaging 727,dairy,Mia Smith,orders727@supplier48.example.com,(741) 212-1076,Austin,TX,78701,45,false
+SUP0728,FireOven Packaging 728,equipment,Emma Lopez,orders728@supplier49.example.com,(393) 851-9162,Austin,TX,78701,30,false
+SUP0729,Roma Tomato Co 729,equipment,Matthew Martinez,orders729@supplier50.example.com,(814) 583-3898,Phoenix,AZ,85004,60,true
+SUP0730,Harvest Flour Mills 730,packaging,Lucas Lewis,orders730@supplier51.example.com,(231) 837-1635,Columbus,OH,43215,15,true
+SUP0731,GreenLeaf Produce 731,dairy,Ella Lopez,orders731@supplier52.example.com,(804) 730-3742,Denver,CO,80202,15,false
+SUP0732,Harvest Flour Mills 732,packaging,Alexander Robinson,orders732@supplier53.example.com,(874) 761-7370,Atlanta,GA,30303,60,true
+SUP0733,Roma Tomato Co 733,meat,James White,orders733@supplier54.example.com,(344) 445-9040,Miami,FL,33101,30,true
+SUP0734,FireOven Packaging 734,dairy,Zoey Nguyen,orders734@supplier55.example.com,(301) 732-2490,Austin,TX,78701,45,true
+SUP0735,Urban Beverage Dist 735,equipment,Aria Gonzalez,orders735@supplier56.example.com,(489) 528-3219,Atlanta,GA,30303,60,true
+SUP0736,Urban Beverage Dist 736,dry_goods,Jacob Harris,orders736@supplier57.example.com,(284) 702-1390,Denver,CO,80202,60,false
+SUP0737,Artisan Cheese Works 737,packaging,Scarlett Martin,orders737@supplier58.example.com,(709) 989-5705,Chicago,IL,60601,15,false
+SUP0738,Coastal Seafoods 738,dairy,Henry Nguyen,orders738@supplier59.example.com,(965) 784-9893,Austin,TX,78701,30,false
+SUP0739,Valley Farms Dairy 739,packaging,Liam Brown,orders739@supplier60.example.com,(510) 594-4084,Tampa,FL,33602,45,true
+SUP0740,Urban Beverage Dist 740,beverages,Lily King,orders740@supplier61.example.com,(382) 720-7075,Austin,TX,78701,15,true
+SUP0741,Artisan Cheese Works 741,produce,Harper Lee,orders741@supplier62.example.com,(274) 931-4335,Dallas,TX,75201,60,false
+SUP0742,Valley Farms Dairy 742,dairy,Scarlett Wilson,orders742@supplier63.example.com,(905) 319-5758,Miami,FL,33101,15,true
+SUP0743,FireOven Packaging 743,produce,Scarlett Anderson,orders743@supplier64.example.com,(580) 611-1733,Miami,FL,33101,30,false
+SUP0744,GreenLeaf Produce 744,dry_goods,Matthew Torres,orders744@supplier65.example.com,(927) 841-6074,San Antonio,TX,78205,30,true
+SUP0745,GreenLeaf Produce 745,dry_goods,Penelope Smith,orders745@supplier66.example.com,(625) 623-7178,Miami,FL,33101,45,true
+SUP0746,Artisan Cheese Works 746,meat,Nora Smith,orders746@supplier67.example.com,(841) 909-7479,San Antonio,TX,78205,15,false
+SUP0747,Harvest Flour Mills 747,beverages,Penelope Anderson,orders747@supplier68.example.com,(272) 852-2874,Portland,OR,97201,15,false
+SUP0748,Artisan Cheese Works 748,dairy,Mason Wright,orders748@supplier69.example.com,(535) 371-5202,Nashville,TN,37203,60,false
+SUP0749,GreenLeaf Produce 749,equipment,Riley Taylor,orders749@supplier70.example.com,(311) 979-2956,Denver,CO,80202,60,true
+SUP0750,Coastal Seafoods 750,dairy,Jack Young,orders750@supplier71.example.com,(405) 330-9490,Columbus,OH,43215,15,false
+SUP0751,Roma Tomato Co 751,produce,Olivia Harris,orders751@supplier72.example.com,(388) 285-2104,Dallas,TX,75201,30,false
+SUP0752,Artisan Cheese Works 752,beverages,Lucas Lewis,orders752@supplier73.example.com,(811) 987-1672,Phoenix,AZ,85004,30,true
+SUP0753,FireOven Packaging 753,dairy,Riley Smith,orders753@supplier74.example.com,(356) 549-5109,Tampa,FL,33602,30,false
+SUP0754,Valley Farms Dairy 754,dry_goods,Scarlett Martinez,orders754@supplier75.example.com,(498) 717-2042,San Antonio,TX,78205,30,false
+SUP0755,FireOven Packaging 755,beverages,Layla Lewis,orders755@supplier76.example.com,(225) 651-2136,San Antonio,TX,78205,30,false
+SUP0756,Harvest Flour Mills 756,produce,Jack Lee,orders756@supplier77.example.com,(258) 314-2067,Denver,CO,80202,60,false
+SUP0757,Harvest Flour Mills 757,beverages,Emily White,orders757@supplier78.example.com,(239) 346-2700,Austin,TX,78701,30,false
+SUP0758,Valley Farms Dairy 758,equipment,Scarlett Torres,orders758@supplier79.example.com,(322) 429-1576,Austin,TX,78701,15,false
+SUP0759,Artisan Cheese Works 759,packaging,Samuel Harris,orders759@supplier80.example.com,(489) 902-7336,Charlotte,NC,28202,60,true
+SUP0760,Artisan Cheese Works 760,packaging,Evelyn Thompson,orders760@supplier81.example.com,(851) 665-8850,San Antonio,TX,78205,30,false
+SUP0761,FireOven Packaging 761,produce,Lucas Jackson,orders761@supplier82.example.com,(852) 948-3856,Columbus,OH,43215,60,true
+SUP0762,Harvest Flour Mills 762,meat,Levi Johnson,orders762@supplier83.example.com,(642) 507-3359,Columbus,OH,43215,15,false
+SUP0763,Coastal Seafoods 763,dry_goods,Isabella Thompson,orders763@supplier84.example.com,(413) 615-7899,Tampa,FL,33602,60,false
+SUP0764,Artisan Cheese Works 764,dry_goods,Logan White,orders764@supplier85.example.com,(545) 533-7535,Portland,OR,97201,30,true
+SUP0765,Coastal Seafoods 765,produce,Joseph Gonzalez,orders765@supplier86.example.com,(782) 399-6954,San Antonio,TX,78205,60,false
+SUP0766,Urban Beverage Dist 766,meat,Samuel Martin,orders766@supplier87.example.com,(418) 602-3315,Nashville,TN,37203,60,false
+SUP0767,Artisan Cheese Works 767,meat,David Flores,orders767@supplier88.example.com,(622) 252-4267,Miami,FL,33101,30,false
+SUP0768,Harvest Flour Mills 768,beverages,Scarlett King,orders768@supplier89.example.com,(642) 384-8257,Columbus,OH,43215,15,false
+SUP0769,Harvest Flour Mills 769,meat,Levi Torres,orders769@supplier90.example.com,(987) 359-7584,Seattle,WA,98101,30,false
+SUP0770,Artisan Cheese Works 770,produce,Levi Rodriguez,orders770@supplier91.example.com,(980) 698-6180,Phoenix,AZ,85004,15,false
+SUP0771,Roma Tomato Co 771,dairy,Liam Smith,orders771@supplier92.example.com,(254) 539-2473,Nashville,TN,37203,45,true
+SUP0772,Coastal Seafoods 772,beverages,Lucas Wilson,orders772@supplier93.example.com,(514) 267-6946,Phoenix,AZ,85004,45,false
+SUP0773,Artisan Cheese Works 773,dry_goods,Alexander Lopez,orders773@supplier94.example.com,(496) 510-2662,Charlotte,NC,28202,30,true
+SUP0774,Harvest Flour Mills 774,dry_goods,Elijah Wright,orders774@supplier95.example.com,(833) 619-3593,Houston,TX,77002,60,false
+SUP0775,Coastal Seafoods 775,dairy,Aurora Martinez,orders775@supplier96.example.com,(655) 299-1645,Denver,CO,80202,30,true
+SUP0776,Urban Beverage Dist 776,dry_goods,Mia Johnson,orders776@supplier0.example.com,(800) 904-6937,Portland,OR,97201,60,false
+SUP0777,Artisan Cheese Works 777,dairy,Jackson Torres,orders777@supplier1.example.com,(552) 547-2392,Houston,TX,77002,45,false
+SUP0778,GreenLeaf Produce 778,beverages,Daniel Martinez,orders778@supplier2.example.com,(313) 884-4229,Houston,TX,77002,45,false
+SUP0779,Roma Tomato Co 779,meat,Nora Young,orders779@supplier3.example.com,(216) 836-7844,Nashville,TN,37203,30,false
+SUP0780,Coastal Seafoods 780,packaging,Benjamin King,orders780@supplier4.example.com,(224) 701-6219,Denver,CO,80202,30,false
+SUP0781,GreenLeaf Produce 781,meat,Chloe Ramirez,orders781@supplier5.example.com,(545) 241-5470,San Antonio,TX,78205,60,false
+SUP0782,Valley Farms Dairy 782,produce,Owen Smith,orders782@supplier6.example.com,(952) 787-1314,Phoenix,AZ,85004,45,false
+SUP0783,Artisan Cheese Works 783,dry_goods,Scarlett Williams,orders783@supplier7.example.com,(911) 888-5428,Columbus,OH,43215,60,false
+SUP0784,Urban Beverage Dist 784,dry_goods,Joseph Perez,orders784@supplier8.example.com,(335) 554-5285,Nashville,TN,37203,30,false
+SUP0785,Roma Tomato Co 785,dry_goods,Aurora Garcia,orders785@supplier9.example.com,(882) 526-9336,Denver,CO,80202,15,false
+SUP0786,Roma Tomato Co 786,produce,Emma Lopez,orders786@supplier10.example.com,(582) 266-3523,Houston,TX,77002,30,true
+SUP0787,Roma Tomato Co 787,dairy,Layla Smith,orders787@supplier11.example.com,(954) 549-2153,Charlotte,NC,28202,30,false
+SUP0788,Artisan Cheese Works 788,beverages,Alexander Miller,orders788@supplier12.example.com,(827) 324-1920,Charlotte,NC,28202,30,false
+SUP0789,Roma Tomato Co 789,produce,Oliver Garcia,orders789@supplier13.example.com,(203) 643-4818,Tampa,FL,33602,30,false
+SUP0790,Urban Beverage Dist 790,meat,Hazel King,orders790@supplier14.example.com,(397) 687-4232,Dallas,TX,75201,60,false
+SUP0791,Artisan Cheese Works 791,meat,Layla Nguyen,orders791@supplier15.example.com,(262) 653-4029,Houston,TX,77002,15,false
+SUP0792,GreenLeaf Produce 792,produce,Aria Torres,orders792@supplier16.example.com,(393) 916-3031,San Antonio,TX,78205,15,false
+SUP0793,FireOven Packaging 793,equipment,Harper Hernandez,orders793@supplier17.example.com,(604) 850-5861,Charlotte,NC,28202,60,false
+SUP0794,Coastal Seafoods 794,dry_goods,Evelyn Thompson,orders794@supplier18.example.com,(953) 446-9692,Denver,CO,80202,15,false
+SUP0795,GreenLeaf Produce 795,meat,Nova Hernandez,orders795@supplier19.example.com,(266) 263-2028,Miami,FL,33101,60,false
+SUP0796,Valley Farms Dairy 796,packaging,Nova Ramirez,orders796@supplier20.example.com,(281) 890-8306,Tampa,FL,33602,15,true
+SUP0797,Roma Tomato Co 797,meat,Aiden White,orders797@supplier21.example.com,(914) 897-2079,Miami,FL,33101,45,true
+SUP0798,Artisan Cheese Works 798,meat,Levi Walker,orders798@supplier22.example.com,(579) 711-5919,Phoenix,AZ,85004,60,false
+SUP0799,Coastal Seafoods 799,produce,Aiden Hernandez,orders799@supplier23.example.com,(243) 907-6781,Tampa,FL,33602,60,false
+SUP0800,FireOven Packaging 800,equipment,Daniel Robinson,orders800@supplier24.example.com,(675) 663-3501,Portland,OR,97201,30,true
+SUP0801,Urban Beverage Dist 801,dairy,Isabella Lee,orders801@supplier25.example.com,(590) 847-3447,Seattle,WA,98101,60,false
+SUP0802,Harvest Flour Mills 802,produce,Aiden Lopez,orders802@supplier26.example.com,(422) 297-1268,Seattle,WA,98101,60,false
+SUP0803,FireOven Packaging 803,produce,Liam Young,orders803@supplier27.example.com,(601) 362-5972,Denver,CO,80202,45,false
+SUP0804,Artisan Cheese Works 804,dry_goods,Jacob Hernandez,orders804@supplier28.example.com,(699) 881-1979,Portland,OR,97201,45,true
+SUP0805,FireOven Packaging 805,beverages,Zoey Hill,orders805@supplier29.example.com,(496) 344-4852,Dallas,TX,75201,60,true
+SUP0806,Artisan Cheese Works 806,dairy,Henry Hernandez,orders806@supplier30.example.com,(546) 845-6089,Seattle,WA,98101,60,false
+SUP0807,Harvest Flour Mills 807,packaging,Abigail Perez,orders807@supplier31.example.com,(942) 582-3099,Atlanta,GA,30303,45,false
+SUP0808,Roma Tomato Co 808,dairy,Chloe White,orders808@supplier32.example.com,(627) 452-4431,Portland,OR,97201,45,false
+SUP0809,FireOven Packaging 809,beverages,Zoey Moore,orders809@supplier33.example.com,(768) 548-6424,Columbus,OH,43215,30,true
+SUP0810,Coastal Seafoods 810,beverages,Aiden Flores,orders810@supplier34.example.com,(442) 455-9005,Phoenix,AZ,85004,60,true
+SUP0811,Roma Tomato Co 811,dry_goods,Nova Martinez,orders811@supplier35.example.com,(838) 529-2332,Phoenix,AZ,85004,60,false
+SUP0812,GreenLeaf Produce 812,dairy,Chloe Harris,orders812@supplier36.example.com,(996) 397-5525,Columbus,OH,43215,30,false
+SUP0813,Valley Farms Dairy 813,dry_goods,James Anderson,orders813@supplier37.example.com,(848) 203-6361,Nashville,TN,37203,45,true
+SUP0814,Harvest Flour Mills 814,equipment,Benjamin Lee,orders814@supplier38.example.com,(696) 521-9786,Portland,OR,97201,30,true
+SUP0815,Coastal Seafoods 815,packaging,Nora Davis,orders815@supplier39.example.com,(502) 951-1992,Miami,FL,33101,30,false
+SUP0816,GreenLeaf Produce 816,produce,Scarlett Ramirez,orders816@supplier40.example.com,(917) 211-5885,Chicago,IL,60601,45,false
+SUP0817,Valley Farms Dairy 817,dairy,Samuel Clark,orders817@supplier41.example.com,(280) 577-8617,Denver,CO,80202,30,false
+SUP0818,Harvest Flour Mills 818,packaging,Chloe Lee,orders818@supplier42.example.com,(310) 480-8470,Seattle,WA,98101,45,false
+SUP0819,Artisan Cheese Works 819,meat,Mia Nguyen,orders819@supplier43.example.com,(331) 530-1277,Atlanta,GA,30303,15,false
+SUP0820,Artisan Cheese Works 820,meat,Lucas Lee,orders820@supplier44.example.com,(937) 584-1417,Phoenix,AZ,85004,60,false
+SUP0821,Harvest Flour Mills 821,meat,Owen Williams,orders821@supplier45.example.com,(859) 489-6308,Seattle,WA,98101,15,true
+SUP0822,Harvest Flour Mills 822,dry_goods,Emma Jones,orders822@supplier46.example.com,(343) 355-2675,Austin,TX,78701,30,true
+SUP0823,Roma Tomato Co 823,equipment,Michael Thompson,orders823@supplier47.example.com,(546) 283-7760,San Antonio,TX,78205,45,true
+SUP0824,Urban Beverage Dist 824,packaging,Noah King,orders824@supplier48.example.com,(626) 857-7487,Portland,OR,97201,30,false
+SUP0825,Coastal Seafoods 825,dry_goods,Mia Davis,orders825@supplier49.example.com,(981) 467-4725,Dallas,TX,75201,30,false
+SUP0826,Valley Farms Dairy 826,dairy,Samuel Anderson,orders826@supplier50.example.com,(690) 243-1691,Miami,FL,33101,30,true
+SUP0827,Harvest Flour Mills 827,packaging,Emily Lee,orders827@supplier51.example.com,(596) 974-7484,Houston,TX,77002,15,false
+SUP0828,Artisan Cheese Works 828,dairy,Aurora Clark,orders828@supplier52.example.com,(763) 269-1657,Denver,CO,80202,30,false
+SUP0829,Coastal Seafoods 829,packaging,Jackson Smith,orders829@supplier53.example.com,(557) 918-2320,San Antonio,TX,78205,45,false
+SUP0830,Harvest Flour Mills 830,dry_goods,Ethan Martinez,orders830@supplier54.example.com,(749) 207-5610,Charlotte,NC,28202,45,false
+SUP0831,Urban Beverage Dist 831,produce,Amelia Hill,orders831@supplier55.example.com,(462) 542-4207,Chicago,IL,60601,45,true
+SUP0832,Roma Tomato Co 832,beverages,Abigail Lewis,orders832@supplier56.example.com,(229) 656-9385,Seattle,WA,98101,60,false
+SUP0833,Valley Farms Dairy 833,dry_goods,Sophia Wilson,orders833@supplier57.example.com,(404) 977-5892,Dallas,TX,75201,30,true
+SUP0834,GreenLeaf Produce 834,meat,Logan Brown,orders834@supplier58.example.com,(863) 841-4765,Charlotte,NC,28202,45,false
+SUP0835,GreenLeaf Produce 835,dairy,Ethan Lopez,orders835@supplier59.example.com,(541) 411-9185,Austin,TX,78701,60,true
+SUP0836,Urban Beverage Dist 836,packaging,Nova Hernandez,orders836@supplier60.example.com,(703) 691-5675,Portland,OR,97201,30,false
+SUP0837,Valley Farms Dairy 837,equipment,Liam Flores,orders837@supplier61.example.com,(251) 211-5493,Dallas,TX,75201,15,false
+SUP0838,Harvest Flour Mills 838,dairy,Noah White,orders838@supplier62.example.com,(420) 861-4125,Seattle,WA,98101,60,true
+SUP0839,Roma Tomato Co 839,meat,Grace Johnson,orders839@supplier63.example.com,(504) 988-1573,Phoenix,AZ,85004,15,false
+SUP0840,Artisan Cheese Works 840,equipment,Ethan Davis,orders840@supplier64.example.com,(851) 962-1497,Denver,CO,80202,60,false
+SUP0841,Roma Tomato Co 841,beverages,James Robinson,orders841@supplier65.example.com,(793) 911-5475,Dallas,TX,75201,45,false
+SUP0842,Artisan Cheese Works 842,dairy,Layla Martinez,orders842@supplier66.example.com,(420) 266-7513,Atlanta,GA,30303,60,false
+SUP0843,Urban Beverage Dist 843,equipment,Logan Clark,orders843@supplier67.example.com,(379) 213-1721,Portland,OR,97201,15,true
+SUP0844,GreenLeaf Produce 844,beverages,Abigail Walker,orders844@supplier68.example.com,(407) 473-1399,Columbus,OH,43215,45,true
+SUP0845,Coastal Seafoods 845,beverages,Chloe Smith,orders845@supplier69.example.com,(865) 245-8132,San Antonio,TX,78205,60,true
+SUP0846,Valley Farms Dairy 846,meat,Michael Garcia,orders846@supplier70.example.com,(812) 576-8475,Tampa,FL,33602,60,false
+SUP0847,FireOven Packaging 847,beverages,Jack Wright,orders847@supplier71.example.com,(349) 528-6681,Phoenix,AZ,85004,60,false
+SUP0848,FireOven Packaging 848,dry_goods,Ella Jackson,orders848@supplier72.example.com,(351) 888-9102,Seattle,WA,98101,60,false
+SUP0849,Roma Tomato Co 849,packaging,Evelyn Rodriguez,orders849@supplier73.example.com,(540) 567-8644,Seattle,WA,98101,60,true
+SUP0850,Harvest Flour Mills 850,dairy,Alexander Allen,orders850@supplier74.example.com,(840) 348-6597,Charlotte,NC,28202,30,true
+SUP0851,Harvest Flour Mills 851,equipment,Ethan Sanchez,orders851@supplier75.example.com,(283) 629-2833,Atlanta,GA,30303,15,false
+SUP0852,Valley Farms Dairy 852,meat,Jack Hernandez,orders852@supplier76.example.com,(957) 432-6486,Atlanta,GA,30303,60,false
+SUP0853,FireOven Packaging 853,packaging,Daniel King,orders853@supplier77.example.com,(872) 602-4589,Tampa,FL,33602,45,true
+SUP0854,Roma Tomato Co 854,produce,Hazel Robinson,orders854@supplier78.example.com,(359) 910-4085,Tampa,FL,33602,15,true
+SUP0855,Roma Tomato Co 855,dry_goods,Lucas Jones,orders855@supplier79.example.com,(911) 513-4962,Chicago,IL,60601,60,false
+SUP0856,Roma Tomato Co 856,equipment,Amelia Johnson,orders856@supplier80.example.com,(216) 231-5846,San Antonio,TX,78205,15,false
+SUP0857,Roma Tomato Co 857,dairy,Evelyn Lewis,orders857@supplier81.example.com,(321) 632-6857,Charlotte,NC,28202,60,false
+SUP0858,GreenLeaf Produce 858,meat,Scarlett White,orders858@supplier82.example.com,(413) 511-8020,Atlanta,GA,30303,60,false
+SUP0859,Valley Farms Dairy 859,beverages,Jackson Williams,orders859@supplier83.example.com,(711) 527-6758,Atlanta,GA,30303,15,false
+SUP0860,Urban Beverage Dist 860,equipment,Aria Miller,orders860@supplier84.example.com,(632) 905-6751,Portland,OR,97201,60,true
+SUP0861,Valley Farms Dairy 861,dry_goods,Nova Garcia,orders861@supplier85.example.com,(686) 458-9908,Seattle,WA,98101,15,false
+SUP0862,Roma Tomato Co 862,dry_goods,Scarlett Perez,orders862@supplier86.example.com,(447) 818-8688,Tampa,FL,33602,15,false
+SUP0863,Artisan Cheese Works 863,produce,Owen Clark,orders863@supplier87.example.com,(297) 210-3103,Chicago,IL,60601,15,true
+SUP0864,Roma Tomato Co 864,packaging,Mason Robinson,orders864@supplier88.example.com,(481) 913-7359,Portland,OR,97201,15,false
+SUP0865,Artisan Cheese Works 865,produce,Chloe Jackson,orders865@supplier89.example.com,(366) 240-5756,Dallas,TX,75201,45,false
+SUP0866,Harvest Flour Mills 866,equipment,Emma Gonzalez,orders866@supplier90.example.com,(693) 697-5080,Miami,FL,33101,15,false
+SUP0867,Harvest Flour Mills 867,equipment,Scarlett Williams,orders867@supplier91.example.com,(509) 387-4660,Tampa,FL,33602,45,true
+SUP0868,Artisan Cheese Works 868,produce,Joseph Lewis,orders868@supplier92.example.com,(917) 318-2663,Atlanta,GA,30303,30,false
+SUP0869,Valley Farms Dairy 869,dry_goods,Jackson White,orders869@supplier93.example.com,(915) 640-1336,Tampa,FL,33602,45,false
+SUP0870,Urban Beverage Dist 870,dry_goods,Olivia Moore,orders870@supplier94.example.com,(646) 770-7918,Dallas,TX,75201,15,false
+SUP0871,FireOven Packaging 871,dry_goods,Daniel Allen,orders871@supplier95.example.com,(449) 340-2982,Denver,CO,80202,15,false
+SUP0872,Harvest Flour Mills 872,beverages,Amelia Lewis,orders872@supplier96.example.com,(875) 759-7116,Atlanta,GA,30303,45,false
+SUP0873,Harvest Flour Mills 873,packaging,Grace Davis,orders873@supplier0.example.com,(773) 240-4805,Nashville,TN,37203,30,false
+SUP0874,Urban Beverage Dist 874,dairy,Michael Brown,orders874@supplier1.example.com,(722) 212-2847,Houston,TX,77002,45,false
+SUP0875,GreenLeaf Produce 875,equipment,Isabella Lee,orders875@supplier2.example.com,(449) 691-4498,Austin,TX,78701,30,false
+SUP0876,Artisan Cheese Works 876,produce,Sophia Lopez,orders876@supplier3.example.com,(597) 766-9870,Portland,OR,97201,15,false
+SUP0877,Harvest Flour Mills 877,equipment,Nova Jones,orders877@supplier4.example.com,(689) 725-2189,Houston,TX,77002,30,false
+SUP0878,Urban Beverage Dist 878,equipment,Hazel White,orders878@supplier5.example.com,(430) 468-7658,Nashville,TN,37203,15,true
+SUP0879,FireOven Packaging 879,equipment,Daniel Johnson,orders879@supplier6.example.com,(397) 887-7122,Austin,TX,78701,60,false
+SUP0880,Coastal Seafoods 880,beverages,Isabella Walker,orders880@supplier7.example.com,(829) 721-7660,Charlotte,NC,28202,30,false
+SUP0881,GreenLeaf Produce 881,dry_goods,David Jones,orders881@supplier8.example.com,(643) 814-1506,Chicago,IL,60601,60,false
+SUP0882,Harvest Flour Mills 882,equipment,Samuel Williams,orders882@supplier9.example.com,(578) 484-7443,Dallas,TX,75201,45,false
+SUP0883,FireOven Packaging 883,meat,Aria Hill,orders883@supplier10.example.com,(534) 515-8699,Nashville,TN,37203,60,false
+SUP0884,Harvest Flour Mills 884,dry_goods,Alexander Garcia,orders884@supplier11.example.com,(908) 701-6610,Charlotte,NC,28202,15,false
+SUP0885,GreenLeaf Produce 885,equipment,Abigail Hill,orders885@supplier12.example.com,(725) 433-6129,Denver,CO,80202,45,true
+SUP0886,Coastal Seafoods 886,meat,Henry Gonzalez,orders886@supplier13.example.com,(543) 730-7742,Atlanta,GA,30303,45,false
+SUP0887,Coastal Seafoods 887,equipment,Owen Rodriguez,orders887@supplier14.example.com,(988) 904-5833,Seattle,WA,98101,30,false
+SUP0888,FireOven Packaging 888,produce,Logan Nguyen,orders888@supplier15.example.com,(732) 377-2920,Phoenix,AZ,85004,45,false
+SUP0889,FireOven Packaging 889,produce,Samuel Young,orders889@supplier16.example.com,(583) 451-7416,San Antonio,TX,78205,60,true
+SUP0890,Artisan Cheese Works 890,packaging,Alexander Martinez,orders890@supplier17.example.com,(460) 820-2180,Columbus,OH,43215,45,false
+SUP0891,Urban Beverage Dist 891,dairy,Emma Gonzalez,orders891@supplier18.example.com,(460) 706-8450,Seattle,WA,98101,45,false
+SUP0892,Coastal Seafoods 892,meat,Noah Ramirez,orders892@supplier19.example.com,(843) 701-2770,Seattle,WA,98101,60,false
+SUP0893,Roma Tomato Co 893,produce,Mason Davis,orders893@supplier20.example.com,(570) 978-1892,Phoenix,AZ,85004,15,true
+SUP0894,Roma Tomato Co 894,packaging,Aria Moore,orders894@supplier21.example.com,(330) 298-7934,Denver,CO,80202,30,false
+SUP0895,Valley Farms Dairy 895,dairy,Elijah Perez,orders895@supplier22.example.com,(839) 936-5541,Miami,FL,33101,45,false
+SUP0896,Coastal Seafoods 896,packaging,Nora Torres,orders896@supplier23.example.com,(969) 473-6792,San Antonio,TX,78205,30,false
+SUP0897,FireOven Packaging 897,equipment,Harper Hernandez,orders897@supplier24.example.com,(592) 408-9875,Chicago,IL,60601,15,true
+SUP0898,GreenLeaf Produce 898,equipment,Jackson Davis,orders898@supplier25.example.com,(297) 452-7658,Dallas,TX,75201,30,false
+SUP0899,Harvest Flour Mills 899,produce,Harper Moore,orders899@supplier26.example.com,(309) 203-4912,Atlanta,GA,30303,45,false
+SUP0900,Urban Beverage Dist 900,dry_goods,Ethan Anderson,orders900@supplier27.example.com,(302) 283-7693,Charlotte,NC,28202,60,false
+SUP0901,Urban Beverage Dist 901,equipment,Owen Harris,orders901@supplier28.example.com,(223) 754-5451,Tampa,FL,33602,30,true
+SUP0902,Urban Beverage Dist 902,equipment,Sebastian Perez,orders902@supplier29.example.com,(529) 221-9176,Portland,OR,97201,60,true
+SUP0903,Coastal Seafoods 903,meat,Lucas Jones,orders903@supplier30.example.com,(815) 915-7187,Atlanta,GA,30303,30,true
+SUP0904,Coastal Seafoods 904,meat,Ella Sanchez,orders904@supplier31.example.com,(480) 454-5762,San Antonio,TX,78205,30,false
+SUP0905,Artisan Cheese Works 905,dairy,Matthew Torres,orders905@supplier32.example.com,(449) 860-2059,Columbus,OH,43215,60,true
+SUP0906,Urban Beverage Dist 906,packaging,Ella White,orders906@supplier33.example.com,(590) 220-9043,Austin,TX,78701,60,true
+SUP0907,Urban Beverage Dist 907,dairy,Jacob Taylor,orders907@supplier34.example.com,(556) 434-5409,Columbus,OH,43215,45,true
+SUP0908,Artisan Cheese Works 908,produce,Mia Anderson,orders908@supplier35.example.com,(799) 860-9473,Denver,CO,80202,30,true
+SUP0909,FireOven Packaging 909,dairy,Nova Anderson,orders909@supplier36.example.com,(292) 924-3601,Seattle,WA,98101,15,false
+SUP0910,Valley Farms Dairy 910,meat,Oliver King,orders910@supplier37.example.com,(461) 663-3441,Chicago,IL,60601,45,false
+SUP0911,GreenLeaf Produce 911,equipment,Mason Anderson,orders911@supplier38.example.com,(619) 519-3730,Seattle,WA,98101,15,false
+SUP0912,Valley Farms Dairy 912,packaging,Samuel Lopez,orders912@supplier39.example.com,(495) 761-8704,Dallas,TX,75201,60,true
+SUP0913,Valley Farms Dairy 913,equipment,Amelia Hill,orders913@supplier40.example.com,(929) 278-2103,San Antonio,TX,78205,15,false
+SUP0914,Harvest Flour Mills 914,packaging,Elijah Robinson,orders914@supplier41.example.com,(766) 979-7044,Nashville,TN,37203,30,false
+SUP0915,Harvest Flour Mills 915,produce,Ava Lee,orders915@supplier42.example.com,(375) 984-5461,Columbus,OH,43215,15,false
+SUP0916,Valley Farms Dairy 916,dry_goods,Isabella Hernandez,orders916@supplier43.example.com,(249) 680-3554,Columbus,OH,43215,30,false
+SUP0917,FireOven Packaging 917,packaging,Benjamin Robinson,orders917@supplier44.example.com,(451) 665-3869,Atlanta,GA,30303,15,true
+SUP0918,Valley Farms Dairy 918,dairy,Scarlett Rodriguez,orders918@supplier45.example.com,(200) 494-8549,Houston,TX,77002,60,false
+SUP0919,Urban Beverage Dist 919,packaging,Logan King,orders919@supplier46.example.com,(562) 820-7638,Seattle,WA,98101,45,false
+SUP0920,Harvest Flour Mills 920,packaging,Jackson Rodriguez,orders920@supplier47.example.com,(237) 411-2202,Seattle,WA,98101,45,true
+SUP0921,Urban Beverage Dist 921,dry_goods,Scarlett Martin,orders921@supplier48.example.com,(582) 224-6153,Dallas,TX,75201,60,false
+SUP0922,Coastal Seafoods 922,dry_goods,David Martinez,orders922@supplier49.example.com,(660) 804-3291,Austin,TX,78701,45,false
+SUP0923,Valley Farms Dairy 923,produce,Chloe Taylor,orders923@supplier50.example.com,(698) 608-8640,Houston,TX,77002,60,false
+SUP0924,Artisan Cheese Works 924,produce,Grace Brown,orders924@supplier51.example.com,(451) 349-2659,San Antonio,TX,78205,45,false
+SUP0925,Artisan Cheese Works 925,dry_goods,Samuel Ramirez,orders925@supplier52.example.com,(279) 812-5816,Phoenix,AZ,85004,45,true
+SUP0926,Artisan Cheese Works 926,dairy,Zoey Jones,orders926@supplier53.example.com,(560) 539-4169,Chicago,IL,60601,45,true
+SUP0927,Valley Farms Dairy 927,dairy,Lucas Scott,orders927@supplier54.example.com,(476) 261-1404,Houston,TX,77002,30,false
+SUP0928,Valley Farms Dairy 928,dry_goods,Daniel Perez,orders928@supplier55.example.com,(827) 671-6684,Phoenix,AZ,85004,45,false
+SUP0929,Roma Tomato Co 929,dry_goods,Nova Young,orders929@supplier56.example.com,(643) 981-9420,Austin,TX,78701,15,false
+SUP0930,Roma Tomato Co 930,produce,Scarlett Perez,orders930@supplier57.example.com,(876) 931-8206,Chicago,IL,60601,45,false
+SUP0931,Coastal Seafoods 931,dairy,Owen Harris,orders931@supplier58.example.com,(482) 603-4608,Nashville,TN,37203,15,false
+SUP0932,Harvest Flour Mills 932,produce,Grace Torres,orders932@supplier59.example.com,(398) 627-3484,Austin,TX,78701,60,false
+SUP0933,Coastal Seafoods 933,dairy,Emma Hernandez,orders933@supplier60.example.com,(238) 471-8907,Denver,CO,80202,15,false
+SUP0934,Harvest Flour Mills 934,beverages,Jackson Davis,orders934@supplier61.example.com,(281) 885-8530,Columbus,OH,43215,45,false
+SUP0935,Artisan Cheese Works 935,meat,Riley Scott,orders935@supplier62.example.com,(761) 959-6416,Phoenix,AZ,85004,45,false
+SUP0936,GreenLeaf Produce 936,equipment,Nora Thomas,orders936@supplier63.example.com,(431) 222-8108,Miami,FL,33101,60,false
+SUP0937,GreenLeaf Produce 937,dry_goods,Layla Sanchez,orders937@supplier64.example.com,(252) 805-5920,Chicago,IL,60601,45,false
+SUP0938,Coastal Seafoods 938,equipment,Harper Thomas,orders938@supplier65.example.com,(675) 356-2615,Houston,TX,77002,45,false
+SUP0939,Urban Beverage Dist 939,packaging,Alexander Martin,orders939@supplier66.example.com,(283) 448-3661,Seattle,WA,98101,60,true
+SUP0940,Roma Tomato Co 940,equipment,Emily Brown,orders940@supplier67.example.com,(646) 615-8080,Miami,FL,33101,30,false
+SUP0941,FireOven Packaging 941,meat,Elijah Martin,orders941@supplier68.example.com,(441) 698-9058,Austin,TX,78701,60,false
+SUP0942,Urban Beverage Dist 942,equipment,James Jackson,orders942@supplier69.example.com,(449) 825-3701,Seattle,WA,98101,45,false
+SUP0943,Urban Beverage Dist 943,equipment,Oliver Miller,orders943@supplier70.example.com,(284) 284-1139,Phoenix,AZ,85004,30,false
+SUP0944,Roma Tomato Co 944,equipment,Penelope Martinez,orders944@supplier71.example.com,(252) 202-8720,Portland,OR,97201,30,false
+SUP0945,FireOven Packaging 945,beverages,Matthew Thompson,orders945@supplier72.example.com,(882) 785-2433,Denver,CO,80202,15,false
+SUP0946,FireOven Packaging 946,dairy,Olivia Nguyen,orders946@supplier73.example.com,(284) 240-1003,Denver,CO,80202,30,true
+SUP0947,Urban Beverage Dist 947,equipment,Jackson Miller,orders947@supplier74.example.com,(473) 807-5774,Columbus,OH,43215,15,true
+SUP0948,Harvest Flour Mills 948,dairy,Logan Hill,orders948@supplier75.example.com,(466) 361-9435,Denver,CO,80202,15,false
+SUP0949,GreenLeaf Produce 949,dairy,Daniel Perez,orders949@supplier76.example.com,(880) 366-8744,San Antonio,TX,78205,60,false
+SUP0950,GreenLeaf Produce 950,meat,Samuel Sanchez,orders950@supplier77.example.com,(628) 440-6067,Chicago,IL,60601,45,false
+SUP0951,Harvest Flour Mills 951,beverages,Lucas Williams,orders951@supplier78.example.com,(281) 260-2928,Portland,OR,97201,30,false
+SUP0952,Harvest Flour Mills 952,produce,Layla Jones,orders952@supplier79.example.com,(489) 988-6451,Portland,OR,97201,45,false
+SUP0953,Artisan Cheese Works 953,dry_goods,Grace Davis,orders953@supplier80.example.com,(859) 884-5956,Tampa,FL,33602,30,true
+SUP0954,Valley Farms Dairy 954,meat,Mia Sanchez,orders954@supplier81.example.com,(396) 553-2082,Miami,FL,33101,15,false
+SUP0955,GreenLeaf Produce 955,dry_goods,Mason Young,orders955@supplier82.example.com,(674) 874-7512,Charlotte,NC,28202,45,false
+SUP0956,FireOven Packaging 956,beverages,Joseph Ramirez,orders956@supplier83.example.com,(874) 522-4014,Charlotte,NC,28202,15,true
+SUP0957,GreenLeaf Produce 957,dry_goods,Oliver Young,orders957@supplier84.example.com,(542) 351-1688,Houston,TX,77002,30,false
+SUP0958,Artisan Cheese Works 958,meat,Amelia Lopez,orders958@supplier85.example.com,(627) 239-1151,Atlanta,GA,30303,45,true
+SUP0959,FireOven Packaging 959,meat,Ava Miller,orders959@supplier86.example.com,(694) 990-9209,Nashville,TN,37203,30,false
+SUP0960,GreenLeaf Produce 960,packaging,Daniel King,orders960@supplier87.example.com,(804) 827-4222,Phoenix,AZ,85004,60,true
+SUP0961,Valley Farms Dairy 961,dry_goods,Layla Nguyen,orders961@supplier88.example.com,(760) 497-9827,Tampa,FL,33602,60,false
+SUP0962,Valley Farms Dairy 962,dry_goods,Aiden Jones,orders962@supplier89.example.com,(685) 627-8594,Phoenix,AZ,85004,30,true
+SUP0963,Coastal Seafoods 963,dry_goods,Evelyn Martin,orders963@supplier90.example.com,(867) 239-4759,Charlotte,NC,28202,45,false
+SUP0964,Coastal Seafoods 964,dairy,Harper Lewis,orders964@supplier91.example.com,(444) 606-1036,Austin,TX,78701,60,false
+SUP0965,GreenLeaf Produce 965,packaging,Aria Clark,orders965@supplier92.example.com,(216) 713-6016,Dallas,TX,75201,15,false
+SUP0966,Coastal Seafoods 966,packaging,Aurora Scott,orders966@supplier93.example.com,(494) 998-2898,Atlanta,GA,30303,30,true
+SUP0967,FireOven Packaging 967,produce,Aria Gonzalez,orders967@supplier94.example.com,(214) 901-8036,Seattle,WA,98101,15,false
+SUP0968,Artisan Cheese Works 968,dairy,Sophia Rodriguez,orders968@supplier95.example.com,(967) 948-5230,San Antonio,TX,78205,30,false
+SUP0969,GreenLeaf Produce 969,dry_goods,Mia Ramirez,orders969@supplier96.example.com,(408) 946-3685,Miami,FL,33101,45,false
+SUP0970,GreenLeaf Produce 970,meat,Aria Scott,orders970@supplier0.example.com,(854) 270-2248,Columbus,OH,43215,30,true
+SUP0971,Valley Farms Dairy 971,produce,Emma Moore,orders971@supplier1.example.com,(383) 316-8393,Charlotte,NC,28202,45,false
+SUP0972,Artisan Cheese Works 972,packaging,Elijah Walker,orders972@supplier2.example.com,(884) 829-5559,Nashville,TN,37203,15,false
+SUP0973,FireOven Packaging 973,produce,Scarlett Gonzalez,orders973@supplier3.example.com,(758) 456-1298,Dallas,TX,75201,15,true
+SUP0974,Harvest Flour Mills 974,meat,Mia King,orders974@supplier4.example.com,(906) 747-4181,Houston,TX,77002,60,true
+SUP0975,FireOven Packaging 975,dairy,Alexander Harris,orders975@supplier5.example.com,(974) 642-2696,Nashville,TN,37203,60,false
+SUP0976,Artisan Cheese Works 976,equipment,Aiden Jones,orders976@supplier6.example.com,(962) 432-9099,San Antonio,TX,78205,60,false
+SUP0977,FireOven Packaging 977,produce,Olivia Williams,orders977@supplier7.example.com,(663) 392-1060,Miami,FL,33101,45,false
+SUP0978,FireOven Packaging 978,beverages,Alexander Clark,orders978@supplier8.example.com,(967) 207-6163,Miami,FL,33101,60,false
+SUP0979,Roma Tomato Co 979,packaging,Sebastian Scott,orders979@supplier9.example.com,(984) 319-3224,Charlotte,NC,28202,60,false
+SUP0980,FireOven Packaging 980,dairy,Owen Williams,orders980@supplier10.example.com,(853) 524-5031,Chicago,IL,60601,45,false
+SUP0981,GreenLeaf Produce 981,dairy,Sophia Brown,orders981@supplier11.example.com,(507) 880-3243,Seattle,WA,98101,45,true
+SUP0982,GreenLeaf Produce 982,meat,Grace Jones,orders982@supplier12.example.com,(743) 572-2230,Houston,TX,77002,60,false
+SUP0983,Urban Beverage Dist 983,dairy,Liam Jackson,orders983@supplier13.example.com,(535) 389-2524,Denver,CO,80202,30,true
+SUP0984,Roma Tomato Co 984,meat,Elijah Miller,orders984@supplier14.example.com,(470) 986-6468,Atlanta,GA,30303,45,true
+SUP0985,Coastal Seafoods 985,packaging,Oliver Anderson,orders985@supplier15.example.com,(250) 483-6103,Houston,TX,77002,15,true
+SUP0986,GreenLeaf Produce 986,packaging,Aurora Martin,orders986@supplier16.example.com,(302) 613-1667,Chicago,IL,60601,45,true
+SUP0987,Roma Tomato Co 987,beverages,Alexander Moore,orders987@supplier17.example.com,(958) 253-3242,Seattle,WA,98101,15,false
+SUP0988,Valley Farms Dairy 988,dairy,Zoey Williams,orders988@supplier18.example.com,(680) 569-7651,Atlanta,GA,30303,15,false
+SUP0989,Coastal Seafoods 989,dairy,Alexander Hernandez,orders989@supplier19.example.com,(389) 864-2701,Atlanta,GA,30303,15,false
+SUP0990,Harvest Flour Mills 990,produce,Levi Allen,orders990@supplier20.example.com,(444) 617-1086,Tampa,FL,33602,45,false
+SUP0991,Coastal Seafoods 991,dry_goods,Jack Thomas,orders991@supplier21.example.com,(260) 640-4457,Tampa,FL,33602,60,false
+SUP0992,GreenLeaf Produce 992,meat,Isabella Sanchez,orders992@supplier22.example.com,(804) 621-5713,Chicago,IL,60601,45,false
+SUP0993,Roma Tomato Co 993,beverages,Grace Taylor,orders993@supplier23.example.com,(863) 819-9153,Charlotte,NC,28202,15,true
+SUP0994,Coastal Seafoods 994,beverages,Evelyn Rodriguez,orders994@supplier24.example.com,(790) 388-2965,Seattle,WA,98101,30,false
+SUP0995,Coastal Seafoods 995,produce,Levi Williams,orders995@supplier25.example.com,(948) 273-7467,Austin,TX,78701,30,true
+SUP0996,Roma Tomato Co 996,packaging,Ava Wilson,orders996@supplier26.example.com,(934) 313-1225,Denver,CO,80202,60,false
+SUP0997,Artisan Cheese Works 997,produce,Lucas Davis,orders997@supplier27.example.com,(577) 532-7735,San Antonio,TX,78205,60,false
+SUP0998,GreenLeaf Produce 998,dry_goods,Aurora Gonzalez,orders998@supplier28.example.com,(850) 349-4387,Miami,FL,33101,60,false
+SUP0999,Coastal Seafoods 999,dry_goods,Jackson Moore,orders999@supplier29.example.com,(647) 250-5130,Charlotte,NC,28202,15,false
+SUP1000,Valley Farms Dairy 1000,equipment,Noah Robinson,orders1000@supplier30.example.com,(736) 496-4339,Houston,TX,77002,60,false

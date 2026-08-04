@@ -1,0 +1,1001 @@
+order_item_id,order_id,product_id,product_name,quantity,unit_price,line_discount,line_total,special_instructions
+ORI0001,ORD0001,PRD0905,Mozzarella Sticks #905,2,1.54,0.93,3.08,
+ORI0002,ORD0002,PRD0253,"Neapolitan (Personal, Hand-Tossed)",2,18.68,0.41,37.36,
+ORI0003,ORD0003,PRD0949,Garlic Knots #949,4,4.10,0.22,16.40,no onions
+ORI0004,ORD0004,PRD0702,Soft Drink #702,3,7.26,1.21,21.78,well done
+ORI0005,ORD0005,PRD0406,"BBQ Chicken (Personal, Thin)",2,12.18,2.73,24.36,light sauce
+ORI0006,ORD0006,PRD0946,Chocolate Brownie #946,3,5.34,0.08,16.02,well done
+ORI0007,ORD0007,PRD0739,Soft Drink #739,4,4.80,1.85,19.20,
+ORI0008,ORD0008,PRD0392,"Mushroom Truffle (Medium, Stuffed)",1,22.57,2.72,22.57,no onions
+ORI0009,ORD0009,PRD0755,Mozzarella Sticks #755,1,7.62,0.60,7.62,extra cheese
+ORI0010,ORD0010,PRD0644,"Margherita (Medium, Hand-Tossed)",1,10.01,0.47,10.01,well done
+ORI0011,ORD0011,PRD0574,"Sausage & Peppers (Large, Thin)",1,31.76,0.56,31.76,no onions
+ORI0012,ORD0012,PRD0174,"Spicy Diablo (Family, Stuffed)",1,7.27,1.80,7.27,light sauce
+ORI0013,ORD0013,PRD0487,"Pesto Chicken (Medium, Cauliflower)",4,27.24,0.14,108.96,light sauce
+ORI0014,ORD0014,PRD0060,"Sausage & Peppers (Large, Hand-Tossed)",3,22.15,0.44,66.45,
+ORI0015,ORD0015,PRD0296,"Meat Lovers (Personal, Cauliflower)",2,13.70,2.08,27.40,no onions
+ORI0016,ORD0016,PRD0323,"Pesto Chicken (Medium, Hand-Tossed)",4,16.10,0.46,64.40,
+ORI0017,ORD0017,PRD0892,Cheese Breadsticks #892,4,2.38,0.13,9.52,no onions
+ORI0018,ORD0018,PRD0305,"Spicy Diablo (Large, Pan)",2,10.66,0.08,21.32,
+ORI0019,ORD0019,PRD0450,"Sicilian (Medium, Thin)",2,23.70,0.92,47.40,no onions
+ORI0020,ORD0020,PRD0915,Garlic Knots #915,4,2.99,2.91,11.96,
+ORI0021,ORD0021,PRD0985,Garlic Knots #985,3,2.84,2.20,8.52,extra cheese
+ORI0022,ORD0022,PRD0074,"Pepperoni (Medium, Hand-Tossed)",2,9.62,1.85,19.24,cut in squares
+ORI0023,ORD0023,PRD0775,Soft Drink #775,2,3.44,1.39,6.88,cut in squares
+ORI0024,ORD0024,PRD0386,"Neapolitan (Medium, Stuffed)",4,28.33,2.38,113.32,extra cheese
+ORI0025,ORD0025,PRD0505,"Meat Lovers (Family, Pan)",4,22.34,2.18,89.36,
+ORI0026,ORD0026,PRD0313,"Ranch Special (Medium, Thin)",2,17.73,2.68,35.46,
+ORI0027,ORD0027,PRD0495,"Sicilian (Medium, Thin)",3,12.58,2.35,37.74,
+ORI0028,ORD0028,PRD0181,"BBQ Chicken (Personal, Pan)",4,24.24,1.92,96.96,
+ORI0029,ORD0029,PRD0137,"Pesto Chicken (Personal, Cauliflower)",2,26.31,1.28,52.62,
+ORI0030,ORD0030,PRD0164,"Meat Lovers (Personal, Pan)",3,17.96,2.50,53.88,cut in squares
+ORI0031,ORD0031,PRD0460,"Pepperoni (Family, Cauliflower)",3,27.68,1.98,83.04,
+ORI0032,ORD0032,PRD0597,"Four Cheese (Large, Hand-Tossed)",3,19.53,2.08,58.59,
+ORI0033,ORD0033,PRD0417,"BBQ Chicken (Medium, Cauliflower)",1,16.10,0.53,16.10,cut in squares
+ORI0034,ORD0034,PRD0356,"Sausage & Peppers (Family, Thin)",4,18.74,2.89,74.96,
+ORI0035,ORD0035,PRD0302,"Meat Lovers (Large, Stuffed)",1,19.76,1.68,19.76,cut in squares
+ORI0036,ORD0036,PRD0854,Garden Salad #854,2,3.94,0.43,7.88,no onions
+ORI0037,ORD0037,PRD0516,"Spinach Feta (Large, Pan)",3,12.65,1.56,37.95,
+ORI0038,ORD0038,PRD0388,"Ranch Special (Large, Thin)",2,30.01,0.83,60.02,
+ORI0039,ORD0039,PRD0965,Cheese Breadsticks #965,4,12.40,1.04,49.60,no onions
+ORI0040,ORD0040,PRD0631,"Sausage & Peppers (Medium, Stuffed)",2,20.03,1.89,40.06,no onions
+ORI0041,ORD0041,PRD0914,Bottled Water #914,3,12.33,0.21,36.99,
+ORI0042,ORD0042,PRD0027,"BBQ Chicken (Family, Thin)",3,9.27,0.79,27.81,well done
+ORI0043,ORD0043,PRD0811,Cinnamon Twists #811,2,6.96,1.51,13.92,cut in squares
+ORI0044,ORD0044,PRD0514,"Buffalo Chicken (Medium, Pan)",4,19.63,2.64,78.52,light sauce
+ORI0045,ORD0045,PRD0476,"Spicy Diablo (Family, Stuffed)",4,10.62,0.02,42.48,no onions
+ORI0046,ORD0046,PRD0969,Chicken Wings #969,4,3.87,3.00,15.48,
+ORI0047,ORD0047,PRD0907,Cheese Breadsticks #907,2,1.13,0.75,2.26,extra cheese
+ORI0048,ORD0048,PRD0390,"Hawaiian (Medium, Pan)",2,20.83,1.47,41.66,
+ORI0049,ORD0049,PRD0410,"Pepperoni (Large, Stuffed)",3,27.50,2.30,82.50,
+ORI0050,ORD0050,PRD0214,"Sicilian (Personal, Pan)",4,8.18,1.62,32.72,well done
+ORI0051,ORD0051,PRD0968,Soft Drink #968,4,1.88,1.30,7.52,extra cheese
+ORI0052,ORD0052,PRD0336,"White Garlic (Family, Stuffed)",3,25.09,2.59,75.27,well done
+ORI0053,ORD0053,PRD0666,"Ranch Special (Family, Thin)",1,16.66,0.49,16.66,
+ORI0054,ORD0054,PRD0319,"Four Cheese (Family, Thin)",3,15.15,1.63,45.45,no onions
+ORI0055,ORD0055,PRD0225,"White Garlic (Medium, Pan)",3,7.41,2.52,22.23,well done
+ORI0056,ORD0056,PRD0142,"Pesto Chicken (Family, Stuffed)",3,19.11,2.45,57.33,
+ORI0057,ORD0057,PRD0348,"Ranch Special (Personal, Cauliflower)",1,19.55,0.17,19.55,well done
+ORI0058,ORD0058,PRD0808,Caesar Salad #808,1,2.82,2.11,2.82,
+ORI0059,ORD0059,PRD0751,Chicken Wings #751,4,5.92,1.93,23.68,no onions
+ORI0060,ORD0060,PRD0013,"Sausage & Peppers (Personal, Stuffed)",3,18.19,1.67,54.57,
+ORI0061,ORD0061,PRD0593,"Margherita (Personal, Thin)",3,17.74,1.71,53.22,light sauce
+ORI0062,ORD0062,PRD0217,"Pepperoni (Family, Cauliflower)",1,12.62,1.01,12.62,extra cheese
+ORI0063,ORD0063,PRD0167,"Ranch Special (Medium, Pan)",2,13.65,2.84,27.30,cut in squares
+ORI0064,ORD0064,PRD0058,"Ranch Special (Medium, Thin)",2,16.15,0.33,32.30,no onions
+ORI0065,ORD0065,PRD0556,"Hawaiian (Family, Stuffed)",4,13.43,1.21,53.72,
+ORI0066,ORD0066,PRD0165,"Buffalo Chicken (Family, Cauliflower)",2,25.54,1.57,51.08,
+ORI0067,ORD0067,PRD0264,"Hawaiian (Personal, Cauliflower)",4,24.44,2.74,97.76,no onions
+ORI0068,ORD0068,PRD0881,Caesar Salad #881,1,6.12,2.48,6.12,cut in squares
+ORI0069,ORD0069,PRD0566,"Mushroom Truffle (Large, Cauliflower)",1,22.28,2.86,22.28,well done
+ORI0070,ORD0070,PRD0265,"Neapolitan (Personal, Stuffed)",2,21.62,2.90,43.24,
+ORI0071,ORD0071,PRD0759,Cheese Breadsticks #759,1,9.18,0.95,9.18,extra cheese
+ORI0072,ORD0072,PRD0228,"Spinach Feta (Large, Pan)",4,14.16,1.17,56.64,light sauce
+ORI0073,ORD0073,PRD0292,"Pesto Chicken (Personal, Cauliflower)",2,19.57,0.85,39.14,light sauce
+ORI0074,ORD0074,PRD0235,"BBQ Chicken (Family, Cauliflower)",1,23.38,0.70,23.38,
+ORI0075,ORD0075,PRD0441,"Pepperoni (Large, Cauliflower)",4,16.00,1.64,64.00,light sauce
+ORI0076,ORD0076,PRD0832,Mozzarella Sticks #832,3,3.37,2.40,10.11,no onions
+ORI0077,ORD0077,PRD0750,Chicken Wings #750,1,3.94,0.33,3.94,well done
+ORI0078,ORD0078,PRD0956,Mozzarella Sticks #956,3,10.95,1.20,32.85,
+ORI0079,ORD0079,PRD0916,Chicken Wings #916,4,7.25,2.76,29.00,no onions
+ORI0080,ORD0080,PRD0315,"Spinach Feta (Large, Hand-Tossed)",1,21.57,1.11,21.57,cut in squares
+ORI0081,ORD0081,PRD0870,Cinnamon Twists #870,4,6.74,1.25,26.96,
+ORI0082,ORD0082,PRD0483,"Buffalo Chicken (Large, Cauliflower)",2,23.00,2.03,46.00,no onions
+ORI0083,ORD0083,PRD0874,Caesar Salad #874,1,8.26,2.60,8.26,light sauce
+ORI0084,ORD0084,PRD0767,Cinnamon Twists #767,4,3.45,0.68,13.80,cut in squares
+ORI0085,ORD0085,PRD0300,"Buffalo Chicken (Personal, Hand-Tossed)",1,14.88,0.45,14.88,cut in squares
+ORI0086,ORD0086,PRD0749,Mozzarella Sticks #749,2,9.03,2.83,18.06,cut in squares
+ORI0087,ORD0087,PRD0208,"Mushroom Truffle (Family, Cauliflower)",1,29.57,0.34,29.57,no onions
+ORI0088,ORD0088,PRD0640,"Spinach Feta (Medium, Pan)",3,9.25,1.19,27.75,well done
+ORI0089,ORD0089,PRD0815,Soft Drink #815,2,4.57,0.32,9.14,light sauce
+ORI0090,ORD0090,PRD0896,Mozzarella Sticks #896,3,3.71,1.96,11.13,well done
+ORI0091,ORD0091,PRD0570,"Neapolitan (Medium, Hand-Tossed)",3,9.73,0.59,29.19,no onions
+ORI0092,ORD0092,PRD0576,"Spicy Diablo (Medium, Thin)",3,11.17,2.48,33.51,extra cheese
+ORI0093,ORD0093,PRD0706,Garden Salad #706,1,3.68,2.00,3.68,light sauce
+ORI0094,ORD0094,PRD0109,"Sausage & Peppers (Family, Cauliflower)",3,12.52,1.12,37.56,well done
+ORI0095,ORD0095,PRD0356,"Sausage & Peppers (Family, Thin)",4,18.74,0.59,74.96,
+ORI0096,ORD0096,PRD0351,"Sicilian (Personal, Stuffed)",4,15.50,2.15,62.00,cut in squares
+ORI0097,ORD0097,PRD0659,"Spicy Diablo (Personal, Pan)",2,8.68,1.59,17.36,well done
+ORI0098,ORD0098,PRD0953,Chocolate Brownie #953,4,7.69,0.25,30.76,
+ORI0099,ORD0099,PRD0129,"Neapolitan (Family, Cauliflower)",2,22.83,2.57,45.66,cut in squares
+ORI0100,ORD0100,PRD0894,Garlic Knots #894,4,12.28,0.65,49.12,
+ORI0101,ORD0101,PRD0404,"BBQ Chicken (Family, Pan)",3,24.13,2.34,72.39,cut in squares
+ORI0102,ORD0102,PRD0212,"Supreme (Personal, Stuffed)",4,22.45,1.18,89.80,cut in squares
+ORI0103,ORD0103,PRD0697,"Mushroom Truffle (Large, Stuffed)",4,15.83,1.10,63.32,no onions
+ORI0104,ORD0104,PRD0303,"Pesto Chicken (Medium, Thin)",4,27.91,0.33,111.64,
+ORI0105,ORD0105,PRD0691,"Spinach Feta (Family, Hand-Tossed)",4,23.41,1.07,93.64,extra cheese
+ORI0106,ORD0106,PRD0273,"Pepperoni (Medium, Hand-Tossed)",1,12.01,1.74,12.01,
+ORI0107,ORD0107,PRD0649,"Pepperoni (Family, Hand-Tossed)",4,14.03,2.32,56.12,well done
+ORI0108,ORD0108,PRD0117,"Margherita (Family, Hand-Tossed)",1,13.18,2.41,13.18,well done
+ORI0109,ORD0109,PRD0430,"White Garlic (Large, Pan)",2,19.98,2.47,39.96,light sauce
+ORI0110,ORD0110,PRD0841,Chicken Wings #841,3,9.59,0.18,28.77,
+ORI0111,ORD0111,PRD0157,"Four Cheese (Family, Stuffed)",1,11.84,0.10,11.84,
+ORI0112,ORD0112,PRD0908,Garlic Knots #908,4,5.12,2.44,20.48,
+ORI0113,ORD0113,PRD0444,"Supreme (Personal, Pan)",4,12.09,1.86,48.36,no onions
+ORI0114,ORD0114,PRD0946,Chocolate Brownie #946,4,5.34,0.49,21.36,cut in squares
+ORI0115,ORD0115,PRD0808,Caesar Salad #808,2,2.82,0.61,5.64,
+ORI0116,ORD0116,PRD0389,"Neapolitan (Personal, Cauliflower)",2,17.80,2.93,35.60,extra cheese
+ORI0117,ORD0117,PRD0067,"Buffalo Chicken (Personal, Stuffed)",4,12.38,2.39,49.52,
+ORI0118,ORD0118,PRD0312,"Meat Lovers (Large, Hand-Tossed)",2,20.99,1.26,41.98,
+ORI0119,ORD0119,PRD0773,Cheese Breadsticks #773,2,5.60,2.66,11.20,
+ORI0120,ORD0120,PRD0441,"Pepperoni (Large, Cauliflower)",4,16.00,1.67,64.00,cut in squares
+ORI0121,ORD0121,PRD0162,"Four Cheese (Large, Cauliflower)",4,25.87,1.38,103.48,well done
+ORI0122,ORD0122,PRD0989,Garden Salad #989,4,9.52,1.75,38.08,light sauce
+ORI0123,ORD0123,PRD0742,Cinnamon Twists #742,4,2.49,2.01,9.96,
+ORI0124,ORD0124,PRD0075,"Neapolitan (Medium, Hand-Tossed)",2,21.83,1.86,43.66,extra cheese
+ORI0125,ORD0125,PRD0975,Bottled Water #975,3,5.62,2.06,16.86,light sauce
+ORI0126,ORD0126,PRD0081,"Spicy Diablo (Large, Thin)",4,8.55,0.83,34.20,
+ORI0127,ORD0127,PRD0500,"Supreme (Family, Pan)",1,16.07,1.05,16.07,
+ORI0128,ORD0128,PRD0442,"Ranch Special (Personal, Pan)",4,6.25,1.04,25.00,
+ORI0129,ORD0129,PRD0562,"Meat Lovers (Family, Stuffed)",3,14.25,2.71,42.75,
+ORI0130,ORD0130,PRD0033,"Spinach Feta (Personal, Cauliflower)",3,9.71,0.98,29.13,cut in squares
+ORI0131,ORD0131,PRD0712,Garden Salad #712,4,1.40,0.75,5.60,well done
+ORI0132,ORD0132,PRD0634,"Meat Lovers (Family, Thin)",2,14.57,0.45,29.14,
+ORI0133,ORD0133,PRD0887,Garlic Knots #887,1,10.12,0.06,10.12,no onions
+ORI0134,ORD0134,PRD0950,Chocolate Brownie #950,3,1.69,1.22,5.07,cut in squares
+ORI0135,ORD0135,PRD0663,"Margherita (Medium, Thin)",4,13.75,0.92,55.00,
+ORI0136,ORD0136,PRD0305,"Spicy Diablo (Large, Pan)",3,10.66,0.41,31.98,
+ORI0137,ORD0137,PRD0085,"Ranch Special (Large, Pan)",1,23.88,0.63,23.88,light sauce
+ORI0138,ORD0138,PRD0969,Chicken Wings #969,2,3.87,0.00,7.74,no onions
+ORI0139,ORD0139,PRD0752,Mozzarella Sticks #752,4,6.76,2.54,27.04,
+ORI0140,ORD0140,PRD0070,"Four Cheese (Large, Stuffed)",4,5.67,0.08,22.68,no onions
+ORI0141,ORD0141,PRD0428,"Buffalo Chicken (Large, Hand-Tossed)",4,9.15,1.93,36.60,
+ORI0142,ORD0142,PRD0983,Chocolate Brownie #983,1,6.67,2.40,6.67,no onions
+ORI0143,ORD0143,PRD0146,"Hawaiian (Medium, Thin)",1,22.43,0.24,22.43,no onions
+ORI0144,ORD0144,PRD0496,"Four Cheese (Family, Cauliflower)",1,19.10,0.44,19.10,
+ORI0145,ORD0145,PRD0272,"Sausage & Peppers (Personal, Hand-Tossed)",4,20.34,2.09,81.36,extra cheese
+ORI0146,ORD0146,PRD0904,Cheese Breadsticks #904,4,2.89,2.33,11.56,
+ORI0147,ORD0147,PRD0766,Chicken Wings #766,1,7.19,1.22,7.19,no onions
+ORI0148,ORD0148,PRD0367,"Mushroom Truffle (Large, Hand-Tossed)",1,20.70,2.50,20.70,no onions
+ORI0149,ORD0149,PRD0818,Mozzarella Sticks #818,4,7.18,2.11,28.72,
+ORI0150,ORD0150,PRD0780,Garden Salad #780,2,4.01,2.88,8.02,
+ORI0151,ORD0151,PRD0557,"Meat Lovers (Personal, Cauliflower)",4,6.55,2.59,26.20,
+ORI0152,ORD0152,PRD0143,"Four Cheese (Personal, Hand-Tossed)",1,20.93,0.71,20.93,
+ORI0153,ORD0153,PRD0727,Caesar Salad #727,3,4.22,0.07,12.66,no onions
+ORI0154,ORD0154,PRD0851,Chocolate Brownie #851,2,6.56,1.81,13.12,light sauce
+ORI0155,ORD0155,PRD0497,"Supreme (Personal, Pan)",2,12.22,2.68,24.44,
+ORI0156,ORD0156,PRD0712,Garden Salad #712,3,1.40,0.56,4.20,
+ORI0157,ORD0157,PRD0267,"Mushroom Truffle (Large, Pan)",4,11.38,0.91,45.52,cut in squares
+ORI0158,ORD0158,PRD0581,"Margherita (Large, Hand-Tossed)",3,13.19,2.78,39.57,light sauce
+ORI0159,ORD0159,PRD0320,"BBQ Chicken (Personal, Stuffed)",3,21.41,2.39,64.23,cut in squares
+ORI0160,ORD0160,PRD0843,Chicken Wings #843,3,14.16,1.13,42.48,no onions
+ORI0161,ORD0161,PRD0092,"Sicilian (Family, Stuffed)",4,8.64,0.56,34.56,extra cheese
+ORI0162,ORD0162,PRD0175,"Pepperoni (Medium, Stuffed)",2,23.39,1.75,46.78,
+ORI0163,ORD0163,PRD0636,"Pepperoni (Large, Pan)",3,14.83,0.03,44.49,cut in squares
+ORI0164,ORD0164,PRD0830,Chocolate Brownie #830,4,5.32,0.25,21.28,extra cheese
+ORI0165,ORD0165,PRD0138,"Four Cheese (Large, Hand-Tossed)",1,12.75,1.18,12.75,
+ORI0166,ORD0166,PRD0997,Chocolate Brownie #997,4,3.28,0.45,13.12,cut in squares
+ORI0167,ORD0167,PRD0695,"Meat Lovers (Family, Thin)",1,7.65,2.62,7.65,well done
+ORI0168,ORD0168,PRD0675,"BBQ Chicken (Family, Cauliflower)",1,28.53,2.19,28.53,extra cheese
+ORI0169,ORD0169,PRD0866,Garlic Knots #866,2,13.04,2.79,26.08,
+ORI0170,ORD0170,PRD0618,"Hawaiian (Medium, Thin)",1,15.05,0.81,15.05,
+ORI0171,ORD0171,PRD0405,"White Garlic (Medium, Thin)",4,18.35,2.51,73.40,
+ORI0172,ORD0172,PRD0616,"Ranch Special (Personal, Stuffed)",2,6.23,0.03,12.46,
+ORI0173,ORD0173,PRD0799,Chocolate Brownie #799,1,4.79,0.26,4.79,well done
+ORI0174,ORD0174,PRD0600,"Four Cheese (Personal, Hand-Tossed)",1,25.45,2.32,25.45,
+ORI0175,ORD0175,PRD0490,"White Garlic (Personal, Thin)",2,20.77,0.33,41.54,cut in squares
+ORI0176,ORD0176,PRD0899,Caesar Salad #899,4,10.75,1.05,43.00,no onions
+ORI0177,ORD0177,PRD0504,"Spinach Feta (Personal, Stuffed)",2,15.11,0.56,30.22,
+ORI0178,ORD0178,PRD0161,"Veggie Supreme (Family, Thin)",4,6.08,2.77,24.32,
+ORI0179,ORD0179,PRD0717,Garden Salad #717,2,3.16,2.88,6.32,light sauce
+ORI0180,ORD0180,PRD0128,"Pepperoni (Large, Pan)",1,15.84,0.29,15.84,well done
+ORI0181,ORD0181,PRD0825,Caesar Salad #825,2,3.02,0.48,6.04,light sauce
+ORI0182,ORD0182,PRD0600,"Four Cheese (Personal, Hand-Tossed)",2,25.45,2.07,50.90,light sauce
+ORI0183,ORD0183,PRD0261,"Margherita (Medium, Stuffed)",3,19.38,0.08,58.14,no onions
+ORI0184,ORD0184,PRD0443,"Sicilian (Medium, Cauliflower)",1,20.49,2.56,20.49,
+ORI0185,ORD0185,PRD0711,Cinnamon Twists #711,2,7.95,0.40,15.90,cut in squares
+ORI0186,ORD0186,PRD0847,Chicken Wings #847,4,2.51,1.76,10.04,light sauce
+ORI0187,ORD0187,PRD0839,Bottled Water #839,4,6.24,0.20,24.96,extra cheese
+ORI0188,ORD0188,PRD0767,Cinnamon Twists #767,2,3.45,1.05,6.90,well done
+ORI0189,ORD0189,PRD0706,Garden Salad #706,1,3.68,0.88,3.68,
+ORI0190,ORD0190,PRD0825,Caesar Salad #825,1,3.02,2.39,3.02,cut in squares
+ORI0191,ORD0191,PRD0175,"Pepperoni (Medium, Stuffed)",3,23.39,1.05,70.17,
+ORI0192,ORD0192,PRD0799,Chocolate Brownie #799,3,4.79,0.23,14.37,
+ORI0193,ORD0193,PRD0057,"Pesto Chicken (Family, Pan)",1,22.54,1.66,22.54,
+ORI0194,ORD0194,PRD0828,Chocolate Brownie #828,4,8.86,2.82,35.44,
+ORI0195,ORD0195,PRD0539,"Sausage & Peppers (Personal, Thin)",4,7.87,2.76,31.48,extra cheese
+ORI0196,ORD0196,PRD0349,"Pesto Chicken (Personal, Cauliflower)",2,10.90,2.88,21.80,light sauce
+ORI0197,ORD0197,PRD0453,"Hawaiian (Personal, Cauliflower)",2,15.56,0.45,31.12,light sauce
+ORI0198,ORD0198,PRD0159,"Spinach Feta (Family, Hand-Tossed)",1,16.97,2.67,16.97,well done
+ORI0199,ORD0199,PRD0476,"Spicy Diablo (Family, Stuffed)",1,10.62,2.24,10.62,no onions
+ORI0200,ORD0200,PRD0373,"Spinach Feta (Family, Cauliflower)",3,12.66,1.74,37.98,well done
+ORI0201,ORD0201,PRD0490,"White Garlic (Personal, Thin)",1,20.77,1.48,20.77,
+ORI0202,ORD0202,PRD0809,Cinnamon Twists #809,4,9.90,2.53,39.60,
+ORI0203,ORD0203,PRD0616,"Ranch Special (Personal, Stuffed)",1,6.23,2.10,6.23,no onions
+ORI0204,ORD0204,PRD0764,Bottled Water #764,1,7.75,2.69,7.75,
+ORI0205,ORD0205,PRD0746,Cheese Breadsticks #746,4,2.12,0.30,8.48,
+ORI0206,ORD0206,PRD0666,"Ranch Special (Family, Thin)",2,16.66,1.44,33.32,
+ORI0207,ORD0207,PRD0720,Caesar Salad #720,4,7.43,2.17,29.72,no onions
+ORI0208,ORD0208,PRD0501,"Supreme (Family, Thin)",1,23.11,1.16,23.11,cut in squares
+ORI0209,ORD0209,PRD0186,"Four Cheese (Family, Hand-Tossed)",4,15.65,0.16,62.60,
+ORI0210,ORD0210,PRD0749,Mozzarella Sticks #749,3,9.03,0.24,27.09,
+ORI0211,ORD0211,PRD0428,"Buffalo Chicken (Large, Hand-Tossed)",2,9.15,0.29,18.30,extra cheese
+ORI0212,ORD0212,PRD0014,"Spicy Diablo (Medium, Hand-Tossed)",2,14.02,2.50,28.04,
+ORI0213,ORD0213,PRD0783,Garden Salad #783,1,8.71,0.91,8.71,extra cheese
+ORI0214,ORD0214,PRD0653,"Hawaiian (Personal, Hand-Tossed)",1,13.71,2.51,13.71,extra cheese
+ORI0215,ORD0215,PRD0549,"Buffalo Chicken (Family, Cauliflower)",3,20.05,2.53,60.15,well done
+ORI0216,ORD0216,PRD0821,Mozzarella Sticks #821,2,2.99,2.96,5.98,
+ORI0217,ORD0217,PRD0724,Soft Drink #724,2,5.70,0.69,11.40,cut in squares
+ORI0218,ORD0218,PRD0842,Garlic Knots #842,2,2.52,0.20,5.04,cut in squares
+ORI0219,ORD0219,PRD0147,"Spicy Diablo (Family, Hand-Tossed)",4,27.94,2.45,111.76,cut in squares
+ORI0220,ORD0220,PRD0953,Chocolate Brownie #953,4,7.69,0.22,30.76,
+ORI0221,ORD0221,PRD0310,"BBQ Chicken (Personal, Hand-Tossed)",2,11.82,2.56,23.64,cut in squares
+ORI0222,ORD0222,PRD0687,"Buffalo Chicken (Large, Stuffed)",4,9.17,1.51,36.68,
+ORI0223,ORD0223,PRD0760,Bottled Water #760,1,6.53,0.04,6.53,cut in squares
+ORI0224,ORD0224,PRD0833,Garlic Knots #833,4,2.84,1.75,11.36,light sauce
+ORI0225,ORD0225,PRD0162,"Four Cheese (Large, Cauliflower)",4,25.87,2.63,103.48,
+ORI0226,ORD0226,PRD0621,"White Garlic (Large, Cauliflower)",4,22.21,1.59,88.84,well done
+ORI0227,ORD0227,PRD0153,"Pesto Chicken (Personal, Stuffed)",3,18.22,0.74,54.66,
+ORI0228,ORD0228,PRD0193,"Spicy Diablo (Personal, Pan)",3,6.19,2.55,18.57,
+ORI0229,ORD0229,PRD0232,"Hawaiian (Medium, Cauliflower)",1,6.78,2.58,6.78,cut in squares
+ORI0230,ORD0230,PRD0643,"White Garlic (Medium, Hand-Tossed)",3,13.32,0.75,39.96,well done
+ORI0231,ORD0231,PRD0829,Cheese Breadsticks #829,1,6.35,2.39,6.35,well done
+ORI0232,ORD0232,PRD0259,"Spicy Diablo (Medium, Pan)",3,19.44,2.84,58.32,extra cheese
+ORI0233,ORD0233,PRD0211,"Spinach Feta (Large, Hand-Tossed)",3,11.57,0.77,34.71,
+ORI0234,ORD0234,PRD0382,"Meat Lovers (Medium, Stuffed)",3,14.49,2.38,43.47,
+ORI0235,ORD0235,PRD0010,"Meat Lovers (Family, Pan)",2,13.19,1.90,26.38,
+ORI0236,ORD0236,PRD0455,"Hawaiian (Family, Pan)",1,16.51,2.99,16.51,cut in squares
+ORI0237,ORD0237,PRD0281,"BBQ Chicken (Large, Stuffed)",3,28.88,0.73,86.64,well done
+ORI0238,ORD0238,PRD0617,"Hawaiian (Personal, Hand-Tossed)",4,18.64,0.86,74.56,no onions
+ORI0239,ORD0239,PRD0715,Caesar Salad #715,1,8.02,1.68,8.02,cut in squares
+ORI0240,ORD0240,PRD0697,"Mushroom Truffle (Large, Stuffed)",2,15.83,2.47,31.66,well done
+ORI0241,ORD0241,PRD0257,"Meat Lovers (Personal, Thin)",4,22.15,2.59,88.60,cut in squares
+ORI0242,ORD0242,PRD0339,"Four Cheese (Large, Cauliflower)",2,8.60,2.84,17.20,
+ORI0243,ORD0243,PRD0763,Cheese Breadsticks #763,4,11.96,2.38,47.84,extra cheese
+ORI0244,ORD0244,PRD0378,"Buffalo Chicken (Family, Hand-Tossed)",2,20.30,0.39,40.60,cut in squares
+ORI0245,ORD0245,PRD0537,"Sausage & Peppers (Family, Cauliflower)",1,14.77,2.42,14.77,
+ORI0246,ORD0246,PRD0012,"BBQ Chicken (Personal, Hand-Tossed)",1,21.28,2.38,21.28,
+ORI0247,ORD0247,PRD0117,"Margherita (Family, Hand-Tossed)",4,13.18,0.77,52.72,light sauce
+ORI0248,ORD0248,PRD0432,"Sicilian (Large, Pan)",2,16.01,0.27,32.02,
+ORI0249,ORD0249,PRD0826,Garlic Knots #826,3,1.76,1.19,5.28,
+ORI0250,ORD0250,PRD0398,"Spinach Feta (Large, Pan)",3,17.60,1.85,52.80,
+ORI0251,ORD0251,PRD0506,"Spinach Feta (Personal, Stuffed)",1,18.21,1.90,18.21,light sauce
+ORI0252,ORD0252,PRD0350,"BBQ Chicken (Personal, Thin)",1,20.03,1.80,20.03,no onions
+ORI0253,ORD0253,PRD0296,"Meat Lovers (Personal, Cauliflower)",2,13.70,0.72,27.40,
+ORI0254,ORD0254,PRD0390,"Hawaiian (Medium, Pan)",4,20.83,0.20,83.32,
+ORI0255,ORD0255,PRD0118,"Ranch Special (Family, Hand-Tossed)",4,5.77,1.96,23.08,light sauce
+ORI0256,ORD0256,PRD0168,"Supreme (Medium, Pan)",3,7.99,0.48,23.97,no onions
+ORI0257,ORD0257,PRD0864,Caesar Salad #864,4,4.08,0.36,16.32,extra cheese
+ORI0258,ORD0258,PRD0064,"BBQ Chicken (Personal, Cauliflower)",4,13.27,2.14,53.08,light sauce
+ORI0259,ORD0259,PRD0845,Caesar Salad #845,4,7.41,2.74,29.64,
+ORI0260,ORD0260,PRD0789,Garlic Knots #789,4,7.79,1.06,31.16,well done
+ORI0261,ORD0261,PRD0547,"Sicilian (Medium, Thin)",2,9.60,0.49,19.20,light sauce
+ORI0262,ORD0262,PRD0987,Chicken Wings #987,2,7.31,0.99,14.62,well done
+ORI0263,ORD0263,PRD0938,Cheese Breadsticks #938,1,5.08,0.71,5.08,extra cheese
+ORI0264,ORD0264,PRD0071,"Spinach Feta (Personal, Pan)",4,16.30,2.23,65.20,well done
+ORI0265,ORD0265,PRD0930,Cinnamon Twists #930,3,14.14,0.59,42.42,extra cheese
+ORI0266,ORD0266,PRD0188,"Pesto Chicken (Family, Stuffed)",3,23.43,1.25,70.29,extra cheese
+ORI0267,ORD0267,PRD0360,"Spinach Feta (Medium, Pan)",3,25.59,0.37,76.77,cut in squares
+ORI0268,ORD0268,PRD0565,"Spicy Diablo (Medium, Cauliflower)",2,18.57,1.97,37.14,cut in squares
+ORI0269,ORD0269,PRD0832,Mozzarella Sticks #832,4,3.37,1.45,13.48,
+ORI0270,ORD0270,PRD0779,Chicken Wings #779,1,5.44,0.92,5.44,cut in squares
+ORI0271,ORD0271,PRD0877,Cheese Breadsticks #877,1,7.11,1.51,7.11,light sauce
+ORI0272,ORD0272,PRD0146,"Hawaiian (Medium, Thin)",4,22.43,2.54,89.72,no onions
+ORI0273,ORD0273,PRD0742,Cinnamon Twists #742,4,2.49,0.79,9.96,light sauce
+ORI0274,ORD0274,PRD0952,Chicken Wings #952,3,5.03,1.08,15.09,extra cheese
+ORI0275,ORD0275,PRD0809,Cinnamon Twists #809,2,9.90,1.56,19.80,
+ORI0276,ORD0276,PRD0895,Cheese Breadsticks #895,2,5.96,2.83,11.92,cut in squares
+ORI0277,ORD0277,PRD0443,"Sicilian (Medium, Cauliflower)",4,20.49,0.90,81.96,well done
+ORI0278,ORD0278,PRD0711,Cinnamon Twists #711,3,7.95,2.79,23.85,light sauce
+ORI0279,ORD0279,PRD0001,"Four Cheese (Medium, Pan)",4,14.64,1.18,58.56,light sauce
+ORI0280,ORD0280,PRD0154,"Pesto Chicken (Large, Cauliflower)",3,14.61,0.65,43.83,extra cheese
+ORI0281,ORD0281,PRD0407,"Veggie Supreme (Family, Thin)",2,17.74,0.02,35.48,
+ORI0282,ORD0282,PRD0076,"Ranch Special (Family, Hand-Tossed)",1,6.28,1.94,6.28,cut in squares
+ORI0283,ORD0283,PRD0180,"Mushroom Truffle (Family, Thin)",1,28.33,1.95,28.33,extra cheese
+ORI0284,ORD0284,PRD0747,Cinnamon Twists #747,1,6.75,2.76,6.75,
+ORI0285,ORD0285,PRD0712,Garden Salad #712,1,1.40,1.13,1.40,no onions
+ORI0286,ORD0286,PRD0643,"White Garlic (Medium, Hand-Tossed)",3,13.32,1.34,39.96,
+ORI0287,ORD0287,PRD0682,"Meat Lovers (Family, Cauliflower)",2,23.00,1.61,46.00,
+ORI0288,ORD0288,PRD0418,"Margherita (Personal, Thin)",1,26.24,0.23,26.24,no onions
+ORI0289,ORD0289,PRD0072,"Spicy Diablo (Large, Pan)",1,18.36,2.65,18.36,extra cheese
+ORI0290,ORD0290,PRD0966,Garlic Knots #966,4,6.70,2.03,26.80,
+ORI0291,ORD0291,PRD0707,Caesar Salad #707,4,3.27,1.78,13.08,
+ORI0292,ORD0292,PRD0801,Garlic Knots #801,3,9.05,2.24,27.15,
+ORI0293,ORD0293,PRD0525,"Buffalo Chicken (Large, Pan)",3,27.16,0.14,81.48,cut in squares
+ORI0294,ORD0294,PRD0931,Cinnamon Twists #931,4,8.56,0.72,34.24,
+ORI0295,ORD0295,PRD0242,"Margherita (Large, Pan)",1,8.88,1.54,8.88,light sauce
+ORI0296,ORD0296,PRD0602,"Sausage & Peppers (Medium, Thin)",4,10.97,2.49,43.88,
+ORI0297,ORD0297,PRD0398,"Spinach Feta (Large, Pan)",2,17.60,0.55,35.20,well done
+ORI0298,ORD0298,PRD0364,"Four Cheese (Large, Thin)",4,9.42,2.57,37.68,extra cheese
+ORI0299,ORD0299,PRD0842,Garlic Knots #842,2,2.52,1.06,5.04,
+ORI0300,ORD0300,PRD0978,Cinnamon Twists #978,2,11.46,0.67,22.92,
+ORI0301,ORD0301,PRD0893,Garden Salad #893,1,12.29,1.49,12.29,
+ORI0302,ORD0302,PRD0912,Garden Salad #912,1,4.53,0.35,4.53,
+ORI0303,ORD0303,PRD0981,Chocolate Brownie #981,1,7.01,0.74,7.01,well done
+ORI0304,ORD0304,PRD0076,"Ranch Special (Family, Hand-Tossed)",1,6.28,0.47,6.28,
+ORI0305,ORD0305,PRD0626,"Neapolitan (Personal, Pan)",1,12.52,1.05,12.52,
+ORI0306,ORD0306,PRD0272,"Sausage & Peppers (Personal, Hand-Tossed)",4,20.34,3.00,81.36,no onions
+ORI0307,ORD0307,PRD0684,"Pesto Chicken (Medium, Pan)",1,18.51,2.12,18.51,no onions
+ORI0308,ORD0308,PRD0144,"Meat Lovers (Family, Cauliflower)",2,15.83,2.93,31.66,extra cheese
+ORI0309,ORD0309,PRD0037,"Spinach Feta (Personal, Thin)",3,9.15,1.38,27.45,cut in squares
+ORI0310,ORD0310,PRD0414,"BBQ Chicken (Large, Cauliflower)",3,15.87,2.18,47.61,extra cheese
+ORI0311,ORD0311,PRD0268,"White Garlic (Large, Pan)",4,12.22,2.40,48.88,light sauce
+ORI0312,ORD0312,PRD0333,"Spinach Feta (Large, Hand-Tossed)",2,11.02,1.83,22.04,light sauce
+ORI0313,ORD0313,PRD0413,"Sausage & Peppers (Family, Stuffed)",2,20.84,2.90,41.68,cut in squares
+ORI0314,ORD0314,PRD0213,"Pesto Chicken (Medium, Pan)",2,14.95,0.66,29.90,
+ORI0315,ORD0315,PRD0043,"Mushroom Truffle (Personal, Hand-Tossed)",2,8.07,2.19,16.14,light sauce
+ORI0316,ORD0316,PRD0468,"White Garlic (Personal, Hand-Tossed)",1,26.37,1.14,26.37,no onions
+ORI0317,ORD0317,PRD0832,Mozzarella Sticks #832,2,3.37,0.71,6.74,
+ORI0318,ORD0318,PRD0375,"Margherita (Large, Hand-Tossed)",2,13.27,2.23,26.54,
+ORI0319,ORD0319,PRD0124,"Neapolitan (Family, Pan)",2,20.73,1.90,41.46,
+ORI0320,ORD0320,PRD0608,"BBQ Chicken (Medium, Pan)",3,23.11,0.04,69.33,
+ORI0321,ORD0321,PRD0112,"Four Cheese (Large, Cauliflower)",1,19.37,0.41,19.37,well done
+ORI0322,ORD0322,PRD0138,"Four Cheese (Large, Hand-Tossed)",1,12.75,1.46,12.75,
+ORI0323,ORD0323,PRD0549,"Buffalo Chicken (Family, Cauliflower)",4,20.05,2.20,80.20,light sauce
+ORI0324,ORD0324,PRD0101,"BBQ Chicken (Large, Hand-Tossed)",3,21.15,1.16,63.45,no onions
+ORI0325,ORD0325,PRD0847,Chicken Wings #847,4,2.51,1.63,10.04,cut in squares
+ORI0326,ORD0326,PRD0046,"Hawaiian (Family, Hand-Tossed)",4,13.82,0.11,55.28,light sauce
+ORI0327,ORD0327,PRD0786,Chicken Wings #786,2,5.99,1.92,11.98,cut in squares
+ORI0328,ORD0328,PRD0200,"Ranch Special (Family, Thin)",4,14.32,2.11,57.28,
+ORI0329,ORD0329,PRD0262,"Supreme (Medium, Cauliflower)",2,18.49,1.12,36.98,extra cheese
+ORI0330,ORD0330,PRD0881,Caesar Salad #881,3,6.12,1.05,18.36,light sauce
+ORI0331,ORD0331,PRD0439,"Sicilian (Family, Hand-Tossed)",2,9.41,0.38,18.82,light sauce
+ORI0332,ORD0332,PRD0470,"Margherita (Family, Thin)",4,13.50,1.16,54.00,
+ORI0333,ORD0333,PRD0626,"Neapolitan (Personal, Pan)",4,12.52,0.92,50.08,
+ORI0334,ORD0334,PRD0590,"Sicilian (Family, Cauliflower)",1,24.67,1.94,24.67,no onions
+ORI0335,ORD0335,PRD0111,"Hawaiian (Large, Cauliflower)",2,25.64,1.12,51.28,
+ORI0336,ORD0336,PRD0378,"Buffalo Chicken (Family, Hand-Tossed)",1,20.30,0.89,20.30,well done
+ORI0337,ORD0337,PRD0638,"Supreme (Medium, Pan)",3,13.73,0.17,41.19,light sauce
+ORI0338,ORD0338,PRD0977,Chocolate Brownie #977,4,9.55,1.01,38.20,
+ORI0339,ORD0339,PRD0566,"Mushroom Truffle (Large, Cauliflower)",3,22.28,1.16,66.84,well done
+ORI0340,ORD0340,PRD0278,"White Garlic (Large, Cauliflower)",3,18.05,1.79,54.15,well done
+ORI0341,ORD0341,PRD0928,Soft Drink #928,4,12.94,2.23,51.76,cut in squares
+ORI0342,ORD0342,PRD0981,Chocolate Brownie #981,4,7.01,1.08,28.04,no onions
+ORI0343,ORD0343,PRD0936,Chicken Wings #936,1,4.52,0.48,4.52,light sauce
+ORI0344,ORD0344,PRD0018,"Mushroom Truffle (Personal, Pan)",1,8.11,2.95,8.11,well done
+ORI0345,ORD0345,PRD0137,"Pesto Chicken (Personal, Cauliflower)",2,26.31,1.84,52.62,light sauce
+ORI0346,ORD0346,PRD0026,"Hawaiian (Medium, Stuffed)",1,11.88,1.07,11.88,cut in squares
+ORI0347,ORD0347,PRD0441,"Pepperoni (Large, Cauliflower)",2,16.00,1.78,32.00,light sauce
+ORI0348,ORD0348,PRD0175,"Pepperoni (Medium, Stuffed)",1,23.39,0.29,23.39,
+ORI0349,ORD0349,PRD0471,"Mushroom Truffle (Family, Stuffed)",2,18.79,2.33,37.58,
+ORI0350,ORD0350,PRD0607,"Sicilian (Medium, Stuffed)",3,18.18,0.67,54.54,
+ORI0351,ORD0351,PRD0192,"Supreme (Family, Pan)",1,8.58,1.55,8.58,
+ORI0352,ORD0352,PRD0305,"Spicy Diablo (Large, Pan)",1,10.66,2.02,10.66,well done
+ORI0353,ORD0353,PRD0475,"Hawaiian (Family, Thin)",4,24.99,2.18,99.96,cut in squares
+ORI0354,ORD0354,PRD0217,"Pepperoni (Family, Cauliflower)",3,12.62,0.33,37.86,extra cheese
+ORI0355,ORD0355,PRD0984,Caesar Salad #984,4,1.73,0.26,6.92,
+ORI0356,ORD0356,PRD0735,Bottled Water #735,4,10.40,0.68,41.60,cut in squares
+ORI0357,ORD0357,PRD0102,"Margherita (Family, Pan)",2,9.89,1.17,19.78,
+ORI0358,ORD0358,PRD0514,"Buffalo Chicken (Medium, Pan)",4,19.63,1.40,78.52,cut in squares
+ORI0359,ORD0359,PRD0527,"Pesto Chicken (Family, Pan)",3,30.04,0.63,90.12,well done
+ORI0360,ORD0360,PRD0930,Cinnamon Twists #930,2,14.14,0.96,28.28,well done
+ORI0361,ORD0361,PRD0890,Chocolate Brownie #890,2,4.83,2.43,9.66,well done
+ORI0362,ORD0362,PRD0651,"Spicy Diablo (Medium, Pan)",3,20.04,0.36,60.12,light sauce
+ORI0363,ORD0363,PRD0108,"Spicy Diablo (Large, Thin)",3,10.53,0.74,31.59,
+ORI0364,ORD0364,PRD0296,"Meat Lovers (Personal, Cauliflower)",2,13.70,1.64,27.40,
+ORI0365,ORD0365,PRD0912,Garden Salad #912,3,4.53,0.71,13.59,light sauce
+ORI0366,ORD0366,PRD0572,"Spicy Diablo (Large, Pan)",4,18.74,2.19,74.96,no onions
+ORI0367,ORD0367,PRD0872,Chocolate Brownie #872,3,9.19,1.95,27.57,light sauce
+ORI0368,ORD0368,PRD0308,"Mushroom Truffle (Personal, Stuffed)",2,27.57,1.09,55.14,
+ORI0369,ORD0369,PRD0582,"Margherita (Personal, Stuffed)",4,13.18,1.74,52.72,extra cheese
+ORI0370,ORD0370,PRD0800,Caesar Salad #800,4,1.46,0.48,5.84,cut in squares
+ORI0371,ORD0371,PRD0588,"Margherita (Personal, Thin)",1,14.46,0.30,14.46,well done
+ORI0372,ORD0372,PRD0981,Chocolate Brownie #981,1,7.01,1.59,7.01,
+ORI0373,ORD0373,PRD0889,Chocolate Brownie #889,4,14.64,0.61,58.56,well done
+ORI0374,ORD0374,PRD0534,"Mushroom Truffle (Personal, Hand-Tossed)",3,19.22,1.00,57.66,well done
+ORI0375,ORD0375,PRD0007,"Spicy Diablo (Family, Cauliflower)",3,30.26,2.69,90.78,
+ORI0376,ORD0376,PRD0993,Caesar Salad #993,4,7.37,1.03,29.48,cut in squares
+ORI0377,ORD0377,PRD0048,"Veggie Supreme (Medium, Hand-Tossed)",3,16.24,1.42,48.72,
+ORI0378,ORD0378,PRD0623,"Spicy Diablo (Personal, Pan)",3,16.66,2.84,49.98,no onions
+ORI0379,ORD0379,PRD0562,"Meat Lovers (Family, Stuffed)",2,14.25,2.73,28.50,
+ORI0380,ORD0380,PRD0364,"Four Cheese (Large, Thin)",1,9.42,2.47,9.42,extra cheese
+ORI0381,ORD0381,PRD0284,"Spicy Diablo (Family, Hand-Tossed)",3,8.12,3.00,24.36,
+ORI0382,ORD0382,PRD0469,"Four Cheese (Family, Hand-Tossed)",3,12.88,1.09,38.64,cut in squares
+ORI0383,ORD0383,PRD0693,"Mushroom Truffle (Medium, Cauliflower)",1,24.90,0.37,24.90,light sauce
+ORI0384,ORD0384,PRD0182,"Pesto Chicken (Family, Hand-Tossed)",3,19.81,0.06,59.43,extra cheese
+ORI0385,ORD0385,PRD0439,"Sicilian (Family, Hand-Tossed)",2,9.41,1.14,18.82,extra cheese
+ORI0386,ORD0386,PRD0307,"Pepperoni (Family, Pan)",1,15.84,0.46,15.84,
+ORI0387,ORD0387,PRD0127,"Ranch Special (Personal, Stuffed)",1,21.27,0.81,21.27,light sauce
+ORI0388,ORD0388,PRD0771,Mozzarella Sticks #771,1,9.61,1.88,9.61,light sauce
+ORI0389,ORD0389,PRD0399,"Spinach Feta (Large, Pan)",1,9.58,1.18,9.58,extra cheese
+ORI0390,ORD0390,PRD0929,Chicken Wings #929,3,5.49,1.90,16.47,extra cheese
+ORI0391,ORD0391,PRD0022,"Pesto Chicken (Family, Thin)",4,15.21,1.23,60.84,no onions
+ORI0392,ORD0392,PRD0934,Chocolate Brownie #934,2,1.82,0.56,3.64,
+ORI0393,ORD0393,PRD0426,"Veggie Supreme (Medium, Pan)",4,26.35,2.60,105.40,well done
+ORI0394,ORD0394,PRD0761,Garden Salad #761,3,6.54,1.48,19.62,extra cheese
+ORI0395,ORD0395,PRD0871,Mozzarella Sticks #871,1,4.59,0.78,4.59,well done
+ORI0396,ORD0396,PRD0653,"Hawaiian (Personal, Hand-Tossed)",3,13.71,0.58,41.13,
+ORI0397,ORD0397,PRD0825,Caesar Salad #825,2,3.02,0.58,6.04,extra cheese
+ORI0398,ORD0398,PRD0076,"Ranch Special (Family, Hand-Tossed)",2,6.28,2.06,12.56,
+ORI0399,ORD0399,PRD0569,"Veggie Supreme (Large, Thin)",1,14.66,0.35,14.66,
+ORI0400,ORD0400,PRD0223,"Hawaiian (Personal, Hand-Tossed)",4,10.95,1.41,43.80,
+ORI0401,ORD0401,PRD0910,Chicken Wings #910,1,2.14,2.03,2.14,cut in squares
+ORI0402,ORD0402,PRD0802,Chicken Wings #802,1,7.80,2.58,7.80,no onions
+ORI0403,ORD0403,PRD0566,"Mushroom Truffle (Large, Cauliflower)",4,22.28,2.75,89.12,no onions
+ORI0404,ORD0404,PRD0883,Chicken Wings #883,4,3.95,2.82,15.80,light sauce
+ORI0405,ORD0405,PRD0954,Cheese Breadsticks #954,2,12.95,2.47,25.90,
+ORI0406,ORD0406,PRD0444,"Supreme (Personal, Pan)",3,12.09,0.10,36.27,extra cheese
+ORI0407,ORD0407,PRD0231,"Supreme (Large, Cauliflower)",1,23.47,1.99,23.47,cut in squares
+ORI0408,ORD0408,PRD0144,"Meat Lovers (Family, Cauliflower)",3,15.83,1.82,47.49,
+ORI0409,ORD0409,PRD0111,"Hawaiian (Large, Cauliflower)",3,25.64,0.16,76.92,light sauce
+ORI0410,ORD0410,PRD0205,"Sicilian (Family, Thin)",2,25.38,0.84,50.76,light sauce
+ORI0411,ORD0411,PRD0490,"White Garlic (Personal, Thin)",2,20.77,1.55,41.54,light sauce
+ORI0412,ORD0412,PRD0255,"Sausage & Peppers (Large, Pan)",3,19.56,2.45,58.68,cut in squares
+ORI0413,ORD0413,PRD0183,"Spicy Diablo (Personal, Pan)",3,9.42,2.16,28.26,
+ORI0414,ORD0414,PRD0093,"Buffalo Chicken (Personal, Thin)",3,15.45,2.31,46.35,well done
+ORI0415,ORD0415,PRD0534,"Mushroom Truffle (Personal, Hand-Tossed)",3,19.22,1.71,57.66,
+ORI0416,ORD0416,PRD0887,Garlic Knots #887,1,10.12,0.11,10.12,
+ORI0417,ORD0417,PRD0861,Mozzarella Sticks #861,2,1.56,0.06,3.12,
+ORI0418,ORD0418,PRD0115,"Spicy Diablo (Medium, Hand-Tossed)",2,11.45,1.14,22.90,no onions
+ORI0419,ORD0419,PRD0062,"Margherita (Large, Hand-Tossed)",1,20.14,1.47,20.14,well done
+ORI0420,ORD0420,PRD0332,"Mushroom Truffle (Family, Thin)",3,11.50,1.09,34.50,
+ORI0421,ORD0421,PRD0354,"Spinach Feta (Medium, Stuffed)",1,12.10,1.88,12.10,
+ORI0422,ORD0422,PRD0846,Chocolate Brownie #846,4,9.83,2.54,39.32,no onions
+ORI0423,ORD0423,PRD0959,Mozzarella Sticks #959,1,3.97,0.90,3.97,no onions
+ORI0424,ORD0424,PRD0811,Cinnamon Twists #811,4,6.96,0.42,27.84,light sauce
+ORI0425,ORD0425,PRD0233,"Sausage & Peppers (Family, Hand-Tossed)",4,7.66,1.48,30.64,
+ORI0426,ORD0426,PRD0848,Garden Salad #848,3,14.53,1.89,43.59,
+ORI0427,ORD0427,PRD0089,"Neapolitan (Medium, Stuffed)",1,17.20,1.50,17.20,
+ORI0428,ORD0428,PRD0647,"Margherita (Large, Thin)",2,14.65,1.93,29.30,no onions
+ORI0429,ORD0429,PRD0915,Garlic Knots #915,3,2.99,1.85,8.97,extra cheese
+ORI0430,ORD0430,PRD0950,Chocolate Brownie #950,3,1.69,1.11,5.07,cut in squares
+ORI0431,ORD0431,PRD0265,"Neapolitan (Personal, Stuffed)",3,21.62,2.83,64.86,light sauce
+ORI0432,ORD0432,PRD0144,"Meat Lovers (Family, Cauliflower)",3,15.83,0.45,47.49,well done
+ORI0433,ORD0433,PRD0763,Cheese Breadsticks #763,2,11.96,0.27,23.92,cut in squares
+ORI0434,ORD0434,PRD0773,Cheese Breadsticks #773,1,5.60,0.02,5.60,extra cheese
+ORI0435,ORD0435,PRD0453,"Hawaiian (Personal, Cauliflower)",2,15.56,2.97,31.12,no onions
+ORI0436,ORD0436,PRD0353,"White Garlic (Large, Cauliflower)",4,11.76,0.67,47.04,extra cheese
+ORI0437,ORD0437,PRD0509,"Sausage & Peppers (Personal, Thin)",2,19.64,2.87,39.28,extra cheese
+ORI0438,ORD0438,PRD0869,Chocolate Brownie #869,3,8.46,1.64,25.38,
+ORI0439,ORD0439,PRD0633,"Buffalo Chicken (Personal, Hand-Tossed)",1,8.93,0.08,8.93,
+ORI0440,ORD0440,PRD0947,Chocolate Brownie #947,1,11.99,0.51,11.99,
+ORI0441,ORD0441,PRD0023,"Pepperoni (Medium, Pan)",1,11.75,2.41,11.75,cut in squares
+ORI0442,ORD0442,PRD0474,"Hawaiian (Personal, Thin)",4,16.81,2.38,67.24,no onions
+ORI0443,ORD0443,PRD0985,Garlic Knots #985,4,2.84,2.81,11.36,
+ORI0444,ORD0444,PRD0383,"Pesto Chicken (Family, Pan)",3,29.07,2.93,87.21,cut in squares
+ORI0445,ORD0445,PRD0558,"Spinach Feta (Large, Thin)",4,7.90,0.89,31.60,
+ORI0446,ORD0446,PRD0100,"Mushroom Truffle (Personal, Cauliflower)",2,17.37,2.20,34.74,light sauce
+ORI0447,ORD0447,PRD0514,"Buffalo Chicken (Medium, Pan)",3,19.63,0.52,58.89,cut in squares
+ORI0448,ORD0448,PRD0997,Chocolate Brownie #997,2,3.28,2.99,6.56,cut in squares
+ORI0449,ORD0449,PRD0260,"BBQ Chicken (Family, Stuffed)",2,10.51,0.23,21.02,light sauce
+ORI0450,ORD0450,PRD0057,"Pesto Chicken (Family, Pan)",3,22.54,2.95,67.62,cut in squares
+ORI0451,ORD0451,PRD0571,"Mushroom Truffle (Medium, Cauliflower)",1,18.52,0.61,18.52,cut in squares
+ORI0452,ORD0452,PRD0114,"Sausage & Peppers (Personal, Hand-Tossed)",4,12.06,0.21,48.24,no onions
+ORI0453,ORD0453,PRD0538,"Pesto Chicken (Medium, Cauliflower)",3,11.21,2.28,33.63,
+ORI0454,ORD0454,PRD0649,"Pepperoni (Family, Hand-Tossed)",2,14.03,1.15,28.06,extra cheese
+ORI0455,ORD0455,PRD0707,Caesar Salad #707,2,3.27,1.35,6.54,light sauce
+ORI0456,ORD0456,PRD0089,"Neapolitan (Medium, Stuffed)",3,17.20,1.05,51.60,well done
+ORI0457,ORD0457,PRD0004,"Spicy Diablo (Personal, Cauliflower)",4,10.26,0.72,41.04,extra cheese
+ORI0458,ORD0458,PRD0201,"Neapolitan (Medium, Hand-Tossed)",1,11.71,1.81,11.71,cut in squares
+ORI0459,ORD0459,PRD0048,"Veggie Supreme (Medium, Hand-Tossed)",2,16.24,2.56,32.48,
+ORI0460,ORD0460,PRD0722,Chocolate Brownie #722,3,1.77,1.49,5.31,well done
+ORI0461,ORD0461,PRD0768,Cinnamon Twists #768,2,12.53,1.49,25.06,light sauce
+ORI0462,ORD0462,PRD0630,"White Garlic (Medium, Pan)",4,13.15,1.88,52.60,extra cheese
+ORI0463,ORD0463,PRD0285,"Margherita (Personal, Stuffed)",3,10.02,2.73,30.06,no onions
+ORI0464,ORD0464,PRD0901,Caesar Salad #901,2,12.18,2.42,24.36,light sauce
+ORI0465,ORD0465,PRD0393,"Neapolitan (Family, Hand-Tossed)",3,30.06,1.44,90.18,no onions
+ORI0466,ORD0466,PRD0872,Chocolate Brownie #872,3,9.19,1.70,27.57,extra cheese
+ORI0467,ORD0467,PRD0101,"BBQ Chicken (Large, Hand-Tossed)",1,21.15,0.04,21.15,well done
+ORI0468,ORD0468,PRD0131,"Ranch Special (Personal, Hand-Tossed)",2,8.29,2.16,16.58,
+ORI0469,ORD0469,PRD0360,"Spinach Feta (Medium, Pan)",3,25.59,2.81,76.77,
+ORI0470,ORD0470,PRD0168,"Supreme (Medium, Pan)",2,7.99,1.28,15.98,no onions
+ORI0471,ORD0471,PRD0394,"Meat Lovers (Personal, Stuffed)",1,13.01,1.52,13.01,
+ORI0472,ORD0472,PRD0238,"Pepperoni (Large, Stuffed)",2,16.31,0.71,32.62,well done
+ORI0473,ORD0473,PRD0104,"Buffalo Chicken (Medium, Cauliflower)",1,24.15,0.74,24.15,well done
+ORI0474,ORD0474,PRD0728,Soft Drink #728,2,4.21,0.52,8.42,light sauce
+ORI0475,ORD0475,PRD0590,"Sicilian (Family, Cauliflower)",3,24.67,1.08,74.01,
+ORI0476,ORD0476,PRD0215,"Neapolitan (Personal, Stuffed)",1,9.40,1.41,9.40,
+ORI0477,ORD0477,PRD0058,"Ranch Special (Medium, Thin)",1,16.15,2.98,16.15,extra cheese
+ORI0478,ORD0478,PRD0851,Chocolate Brownie #851,2,6.56,0.83,13.12,
+ORI0479,ORD0479,PRD0870,Cinnamon Twists #870,4,6.74,0.56,26.96,
+ORI0480,ORD0480,PRD0300,"Buffalo Chicken (Personal, Hand-Tossed)",1,14.88,0.83,14.88,extra cheese
+ORI0481,ORD0481,PRD0450,"Sicilian (Medium, Thin)",3,23.70,1.31,71.10,light sauce
+ORI0482,ORD0482,PRD0726,Caesar Salad #726,3,3.39,2.04,10.17,well done
+ORI0483,ORD0483,PRD0885,Cheese Breadsticks #885,1,8.72,3.00,8.72,cut in squares
+ORI0484,ORD0484,PRD0778,Bottled Water #778,2,2.95,2.24,5.90,extra cheese
+ORI0485,ORD0485,PRD0006,"Veggie Supreme (Family, Thin)",1,13.92,1.22,13.92,light sauce
+ORI0486,ORD0486,PRD0862,Garlic Knots #862,4,10.56,1.18,42.24,cut in squares
+ORI0487,ORD0487,PRD0544,"White Garlic (Large, Hand-Tossed)",1,10.45,2.88,10.45,well done
+ORI0488,ORD0488,PRD0755,Mozzarella Sticks #755,1,7.62,1.26,7.62,well done
+ORI0489,ORD0489,PRD0344,"Buffalo Chicken (Family, Pan)",1,11.05,2.37,11.05,
+ORI0490,ORD0490,PRD0802,Chicken Wings #802,4,7.80,0.75,31.20,
+ORI0491,ORD0491,PRD0787,Cinnamon Twists #787,2,8.15,1.30,16.30,
+ORI0492,ORD0492,PRD0492,"Mushroom Truffle (Family, Pan)",1,17.89,0.91,17.89,cut in squares
+ORI0493,ORD0493,PRD0934,Chocolate Brownie #934,2,1.82,1.60,3.64,
+ORI0494,ORD0494,PRD0836,Mozzarella Sticks #836,2,7.15,1.82,14.30,light sauce
+ORI0495,ORD0495,PRD0339,"Four Cheese (Large, Cauliflower)",2,8.60,2.84,17.20,no onions
+ORI0496,ORD0496,PRD0724,Soft Drink #724,3,5.70,0.24,17.10,light sauce
+ORI0497,ORD0497,PRD0812,Bottled Water #812,3,6.08,2.64,18.24,
+ORI0498,ORD0498,PRD0561,"Mushroom Truffle (Family, Cauliflower)",1,9.44,2.35,9.44,light sauce
+ORI0499,ORD0499,PRD0877,Cheese Breadsticks #877,1,7.11,0.08,7.11,well done
+ORI0500,ORD0500,PRD0744,Soft Drink #744,2,12.48,1.55,24.96,
+ORI0501,ORD0501,PRD0681,"Margherita (Medium, Hand-Tossed)",3,16.51,2.31,49.53,
+ORI0502,ORD0502,PRD0800,Caesar Salad #800,4,1.46,1.11,5.84,no onions
+ORI0503,ORD0503,PRD0710,Chicken Wings #710,1,4.36,2.09,4.36,
+ORI0504,ORD0504,PRD0882,Cinnamon Twists #882,4,3.92,1.77,15.68,no onions
+ORI0505,ORD0505,PRD0338,"Pesto Chicken (Personal, Thin)",1,24.81,0.68,24.81,
+ORI0506,ORD0506,PRD0570,"Neapolitan (Medium, Hand-Tossed)",4,9.73,0.07,38.92,cut in squares
+ORI0507,ORD0507,PRD0532,"Supreme (Family, Pan)",1,22.84,1.00,22.84,light sauce
+ORI0508,ORD0508,PRD0711,Cinnamon Twists #711,1,7.95,1.27,7.95,cut in squares
+ORI0509,ORD0509,PRD0069,"Sicilian (Personal, Stuffed)",4,10.83,2.64,43.32,no onions
+ORI0510,ORD0510,PRD0484,"BBQ Chicken (Large, Stuffed)",1,22.51,2.03,22.51,no onions
+ORI0511,ORD0511,PRD0441,"Pepperoni (Large, Cauliflower)",4,16.00,2.44,64.00,well done
+ORI0512,ORD0512,PRD0122,"Spicy Diablo (Family, Cauliflower)",4,22.44,1.65,89.76,
+ORI0513,ORD0513,PRD0207,"Four Cheese (Large, Pan)",3,11.31,0.44,33.93,well done
+ORI0514,ORD0514,PRD0480,"Veggie Supreme (Medium, Stuffed)",3,15.82,2.42,47.46,
+ORI0515,ORD0515,PRD0891,Mozzarella Sticks #891,3,9.32,2.84,27.96,light sauce
+ORI0516,ORD0516,PRD0956,Mozzarella Sticks #956,1,10.95,2.00,10.95,
+ORI0517,ORD0517,PRD0409,"Spicy Diablo (Family, Thin)",3,9.20,0.27,27.60,
+ORI0518,ORD0518,PRD0083,"Pepperoni (Personal, Thin)",4,17.00,2.04,68.00,cut in squares
+ORI0519,ORD0519,PRD0865,Soft Drink #865,4,2.42,0.48,9.68,
+ORI0520,ORD0520,PRD0573,"Sausage & Peppers (Personal, Pan)",3,22.60,0.35,67.80,light sauce
+ORI0521,ORD0521,PRD0630,"White Garlic (Medium, Pan)",4,13.15,2.59,52.60,cut in squares
+ORI0522,ORD0522,PRD0384,"BBQ Chicken (Medium, Pan)",4,9.13,1.98,36.52,no onions
+ORI0523,ORD0523,PRD0586,"Pepperoni (Personal, Pan)",3,8.81,0.87,26.43,
+ORI0524,ORD0524,PRD0197,"Meat Lovers (Large, Pan)",1,19.76,2.96,19.76,extra cheese
+ORI0525,ORD0525,PRD0780,Garden Salad #780,3,4.01,2.89,12.03,no onions
+ORI0526,ORD0526,PRD0574,"Sausage & Peppers (Large, Thin)",2,31.76,1.84,63.52,no onions
+ORI0527,ORD0527,PRD0602,"Sausage & Peppers (Medium, Thin)",3,10.97,1.39,32.91,extra cheese
+ORI0528,ORD0528,PRD0833,Garlic Knots #833,3,2.84,1.32,8.52,
+ORI0529,ORD0529,PRD0109,"Sausage & Peppers (Family, Cauliflower)",4,12.52,1.64,50.08,light sauce
+ORI0530,ORD0530,PRD0356,"Sausage & Peppers (Family, Thin)",1,18.74,1.88,18.74,
+ORI0531,ORD0531,PRD0750,Chicken Wings #750,3,3.94,2.65,11.82,
+ORI0532,ORD0532,PRD0179,"Veggie Supreme (Medium, Cauliflower)",2,16.08,1.56,32.16,cut in squares
+ORI0533,ORD0533,PRD0828,Chocolate Brownie #828,2,8.86,0.13,17.72,
+ORI0534,ORD0534,PRD0924,Garlic Knots #924,3,7.46,2.19,22.38,no onions
+ORI0535,ORD0535,PRD0971,Chocolate Brownie #971,1,1.19,0.33,1.19,no onions
+ORI0536,ORD0536,PRD0896,Mozzarella Sticks #896,2,3.71,2.21,7.42,no onions
+ORI0537,ORD0537,PRD0148,"Spicy Diablo (Medium, Cauliflower)",2,22.25,0.45,44.50,well done
+ORI0538,ORD0538,PRD0208,"Mushroom Truffle (Family, Cauliflower)",4,29.57,1.28,118.28,
+ORI0539,ORD0539,PRD0878,Cinnamon Twists #878,1,5.81,2.17,5.81,well done
+ORI0540,ORD0540,PRD0205,"Sicilian (Family, Thin)",2,25.38,2.15,50.76,
+ORI0541,ORD0541,PRD0450,"Sicilian (Medium, Thin)",2,23.70,2.39,47.40,
+ORI0542,ORD0542,PRD0443,"Sicilian (Medium, Cauliflower)",4,20.49,1.39,81.96,light sauce
+ORI0543,ORD0543,PRD0902,Mozzarella Sticks #902,1,7.39,1.09,7.39,cut in squares
+ORI0544,ORD0544,PRD0220,"Veggie Supreme (Personal, Pan)",1,21.05,0.72,21.05,well done
+ORI0545,ORD0545,PRD0683,"Supreme (Family, Hand-Tossed)",2,8.86,1.42,17.72,light sauce
+ORI0546,ORD0546,PRD0384,"BBQ Chicken (Medium, Pan)",1,9.13,2.84,9.13,extra cheese
+ORI0547,ORD0547,PRD0005,"Ranch Special (Medium, Cauliflower)",4,7.78,1.68,31.12,
+ORI0548,ORD0548,PRD0578,"Four Cheese (Large, Pan)",3,18.89,1.55,56.67,cut in squares
+ORI0549,ORD0549,PRD0946,Chocolate Brownie #946,1,5.34,0.83,5.34,no onions
+ORI0550,ORD0550,PRD0500,"Supreme (Family, Pan)",2,16.07,1.75,32.14,
+ORI0551,ORD0551,PRD0457,"Pepperoni (Family, Thin)",1,12.90,2.73,12.90,
+ORI0552,ORD0552,PRD0440,"Spicy Diablo (Medium, Pan)",2,23.09,1.36,46.18,
+ORI0553,ORD0553,PRD0037,"Spinach Feta (Personal, Thin)",3,9.15,2.27,27.45,cut in squares
+ORI0554,ORD0554,PRD0150,"White Garlic (Medium, Thin)",1,18.10,0.50,18.10,
+ORI0555,ORD0555,PRD0219,"Margherita (Personal, Cauliflower)",4,9.94,1.69,39.76,cut in squares
+ORI0556,ORD0556,PRD0003,"Veggie Supreme (Large, Stuffed)",4,17.19,1.43,68.76,
+ORI0557,ORD0557,PRD0324,"Mushroom Truffle (Personal, Thin)",2,19.60,2.68,39.20,light sauce
+ORI0558,ORD0558,PRD0703,Chicken Wings #703,2,4.50,2.95,9.00,light sauce
+ORI0559,ORD0559,PRD0255,"Sausage & Peppers (Large, Pan)",1,19.56,0.13,19.56,
+ORI0560,ORD0560,PRD0636,"Pepperoni (Large, Pan)",2,14.83,2.43,29.66,
+ORI0561,ORD0561,PRD0023,"Pepperoni (Medium, Pan)",2,11.75,2.99,23.50,cut in squares
+ORI0562,ORD0562,PRD0669,"BBQ Chicken (Personal, Pan)",3,19.77,2.45,59.31,
+ORI0563,ORD0563,PRD0603,"Pepperoni (Medium, Hand-Tossed)",2,21.39,3.00,42.78,well done
+ORI0564,ORD0564,PRD0843,Chicken Wings #843,3,14.16,0.44,42.48,
+ORI0565,ORD0565,PRD0813,Caesar Salad #813,2,2.85,0.31,5.70,
+ORI0566,ORD0566,PRD0967,Cinnamon Twists #967,1,4.32,0.71,4.32,light sauce
+ORI0567,ORD0567,PRD0193,"Spicy Diablo (Personal, Pan)",1,6.19,2.74,6.19,
+ORI0568,ORD0568,PRD0310,"BBQ Chicken (Personal, Hand-Tossed)",2,11.82,2.64,23.64,well done
+ORI0569,ORD0569,PRD0765,Chicken Wings #765,3,4.93,1.04,14.79,
+ORI0570,ORD0570,PRD0947,Chocolate Brownie #947,4,11.99,1.91,47.96,no onions
+ORI0571,ORD0571,PRD0531,"Spinach Feta (Family, Cauliflower)",3,19.36,3.00,58.08,
+ORI0572,ORD0572,PRD0610,"Sicilian (Large, Cauliflower)",4,29.93,0.84,119.72,light sauce
+ORI0573,ORD0573,PRD0427,"Meat Lovers (Medium, Stuffed)",4,27.41,0.77,109.64,
+ORI0574,ORD0574,PRD0175,"Pepperoni (Medium, Stuffed)",2,23.39,0.51,46.78,no onions
+ORI0575,ORD0575,PRD0994,Garlic Knots #994,3,7.19,0.50,21.57,well done
+ORI0576,ORD0576,PRD0009,"Four Cheese (Large, Cauliflower)",3,13.66,1.22,40.98,cut in squares
+ORI0577,ORD0577,PRD0096,"Spinach Feta (Large, Cauliflower)",4,11.32,0.88,45.28,no onions
+ORI0578,ORD0578,PRD0371,"BBQ Chicken (Family, Pan)",3,21.79,2.74,65.37,no onions
+ORI0579,ORD0579,PRD0446,"White Garlic (Medium, Cauliflower)",1,10.20,2.74,10.20,light sauce
+ORI0580,ORD0580,PRD0354,"Spinach Feta (Medium, Stuffed)",1,12.10,0.25,12.10,no onions
+ORI0581,ORD0581,PRD0685,"Spicy Diablo (Large, Stuffed)",1,13.32,2.43,13.32,
+ORI0582,ORD0582,PRD0820,Chocolate Brownie #820,3,9.65,2.11,28.95,
+ORI0583,ORD0583,PRD0854,Garden Salad #854,1,3.94,0.30,3.94,no onions
+ORI0584,ORD0584,PRD0055,"Margherita (Large, Thin)",4,22.57,1.19,90.28,
+ORI0585,ORD0585,PRD0024,"Sicilian (Large, Stuffed)",4,10.33,1.83,41.32,
+ORI0586,ORD0586,PRD0419,"Mushroom Truffle (Family, Stuffed)",2,13.78,0.28,27.56,light sauce
+ORI0587,ORD0587,PRD0481,"Neapolitan (Personal, Hand-Tossed)",2,15.53,2.19,31.06,
+ORI0588,ORD0588,PRD0049,"Veggie Supreme (Medium, Pan)",4,27.64,0.58,110.56,light sauce
+ORI0589,ORD0589,PRD0070,"Four Cheese (Large, Stuffed)",1,5.67,2.75,5.67,
+ORI0590,ORD0590,PRD0288,"Veggie Supreme (Personal, Cauliflower)",3,8.54,0.64,25.62,well done
+ORI0591,ORD0591,PRD0765,Chicken Wings #765,3,4.93,0.01,14.79,well done
+ORI0592,ORD0592,PRD0817,Garlic Knots #817,4,7.11,2.58,28.44,no onions
+ORI0593,ORD0593,PRD0293,"Ranch Special (Personal, Thin)",2,21.31,2.85,42.62,no onions
+ORI0594,ORD0594,PRD0763,Cheese Breadsticks #763,1,11.96,2.12,11.96,cut in squares
+ORI0595,ORD0595,PRD0178,"Pesto Chicken (Family, Hand-Tossed)",3,18.53,2.37,55.59,cut in squares
+ORI0596,ORD0596,PRD0930,Cinnamon Twists #930,2,14.14,2.41,28.28,extra cheese
+ORI0597,ORD0597,PRD0070,"Four Cheese (Large, Stuffed)",4,5.67,0.11,22.68,
+ORI0598,ORD0598,PRD0317,"Ranch Special (Family, Thin)",3,25.27,1.17,75.81,
+ORI0599,ORD0599,PRD0216,"Margherita (Personal, Cauliflower)",4,9.34,0.84,37.36,light sauce
+ORI0600,ORD0600,PRD0750,Chicken Wings #750,3,3.94,1.43,11.82,
+ORI0601,ORD0601,PRD0684,"Pesto Chicken (Medium, Pan)",4,18.51,2.04,74.04,extra cheese
+ORI0602,ORD0602,PRD0289,"Neapolitan (Personal, Stuffed)",2,20.49,2.56,40.98,
+ORI0603,ORD0603,PRD0261,"Margherita (Medium, Stuffed)",2,19.38,2.86,38.76,
+ORI0604,ORD0604,PRD0286,"Supreme (Large, Cauliflower)",1,19.01,1.39,19.01,
+ORI0605,ORD0605,PRD0885,Cheese Breadsticks #885,2,8.72,2.90,17.44,no onions
+ORI0606,ORD0606,PRD0842,Garlic Knots #842,3,2.52,1.51,7.56,
+ORI0607,ORD0607,PRD0507,"Buffalo Chicken (Personal, Cauliflower)",1,19.98,0.57,19.98,extra cheese
+ORI0608,ORD0608,PRD0870,Cinnamon Twists #870,3,6.74,0.52,20.22,
+ORI0609,ORD0609,PRD0871,Mozzarella Sticks #871,2,4.59,2.18,9.18,
+ORI0610,ORD0610,PRD0305,"Spicy Diablo (Large, Pan)",4,10.66,0.17,42.64,light sauce
+ORI0611,ORD0611,PRD0682,"Meat Lovers (Family, Cauliflower)",2,23.00,0.38,46.00,
+ORI0612,ORD0612,PRD0323,"Pesto Chicken (Medium, Hand-Tossed)",4,16.10,2.40,64.40,
+ORI0613,ORD0613,PRD0432,"Sicilian (Large, Pan)",3,16.01,0.15,48.03,
+ORI0614,ORD0614,PRD0287,"Supreme (Large, Stuffed)",3,20.05,2.47,60.15,light sauce
+ORI0615,ORD0615,PRD0121,"Four Cheese (Family, Cauliflower)",3,19.21,0.67,57.63,light sauce
+ORI0616,ORD0616,PRD0806,Garlic Knots #806,3,1.34,0.57,4.02,no onions
+ORI0617,ORD0617,PRD0939,Garden Salad #939,4,1.97,0.43,7.88,cut in squares
+ORI0618,ORD0618,PRD0082,"Hawaiian (Medium, Hand-Tossed)",1,11.72,2.52,11.72,
+ORI0619,ORD0619,PRD0750,Chicken Wings #750,1,3.94,1.16,3.94,extra cheese
+ORI0620,ORD0620,PRD0363,"Veggie Supreme (Personal, Cauliflower)",4,14.31,1.07,57.24,cut in squares
+ORI0621,ORD0621,PRD0635,"Veggie Supreme (Large, Thin)",3,9.19,1.79,27.57,well done
+ORI0622,ORD0622,PRD0917,Mozzarella Sticks #917,4,9.76,1.38,39.04,no onions
+ORI0623,ORD0623,PRD0288,"Veggie Supreme (Personal, Cauliflower)",4,8.54,1.98,34.16,cut in squares
+ORI0624,ORD0624,PRD0387,"Hawaiian (Family, Stuffed)",4,17.55,2.81,70.20,light sauce
+ORI0625,ORD0625,PRD0988,Caesar Salad #988,1,6.93,0.66,6.93,
+ORI0626,ORD0626,PRD0403,"Mushroom Truffle (Medium, Thin)",3,12.63,2.73,37.89,extra cheese
+ORI0627,ORD0627,PRD0171,"Four Cheese (Personal, Hand-Tossed)",3,24.34,2.34,73.02,
+ORI0628,ORD0628,PRD0114,"Sausage & Peppers (Personal, Hand-Tossed)",4,12.06,2.98,48.24,light sauce
+ORI0629,ORD0629,PRD0761,Garden Salad #761,3,6.54,0.60,19.62,
+ORI0630,ORD0630,PRD0894,Garlic Knots #894,3,12.28,2.16,36.84,light sauce
+ORI0631,ORD0631,PRD0708,Cheese Breadsticks #708,2,5.46,0.36,10.92,no onions
+ORI0632,ORD0632,PRD0098,"Buffalo Chicken (Medium, Hand-Tossed)",1,16.98,0.05,16.98,extra cheese
+ORI0633,ORD0633,PRD0323,"Pesto Chicken (Medium, Hand-Tossed)",1,16.10,2.51,16.10,well done
+ORI0634,ORD0634,PRD0864,Caesar Salad #864,1,4.08,2.29,4.08,extra cheese
+ORI0635,ORD0635,PRD0433,"Mushroom Truffle (Family, Pan)",3,9.40,0.23,28.20,light sauce
+ORI0636,ORD0636,PRD0410,"Pepperoni (Large, Stuffed)",1,27.50,0.97,27.50,
+ORI0637,ORD0637,PRD0550,"Margherita (Family, Stuffed)",2,28.46,1.44,56.92,well done
+ORI0638,ORD0638,PRD0210,"Neapolitan (Family, Hand-Tossed)",4,27.13,1.73,108.52,
+ORI0639,ORD0639,PRD0038,"Sausage & Peppers (Large, Stuffed)",3,20.34,1.38,61.02,extra cheese
+ORI0640,ORD0640,PRD0784,Garlic Knots #784,3,6.66,0.27,19.98,
+ORI0641,ORD0641,PRD0510,"Four Cheese (Family, Stuffed)",3,9.33,0.11,27.99,well done
+ORI0642,ORD0642,PRD0061,"Sicilian (Large, Pan)",2,27.97,3.00,55.94,light sauce
+ORI0643,ORD0643,PRD0925,Caesar Salad #925,3,5.19,0.34,15.57,no onions
+ORI0644,ORD0644,PRD0282,"Hawaiian (Medium, Cauliflower)",1,24.06,0.38,24.06,light sauce
+ORI0645,ORD0645,PRD0180,"Mushroom Truffle (Family, Thin)",2,28.33,2.07,56.66,
+ORI0646,ORD0646,PRD0682,"Meat Lovers (Family, Cauliflower)",3,23.00,1.76,69.00,
+ORI0647,ORD0647,PRD0966,Garlic Knots #966,2,6.70,2.97,13.40,
+ORI0648,ORD0648,PRD0149,"Ranch Special (Large, Hand-Tossed)",1,14.35,1.08,14.35,well done
+ORI0649,ORD0649,PRD0589,"Sicilian (Large, Cauliflower)",3,19.43,1.71,58.29,
+ORI0650,ORD0650,PRD0935,Cheese Breadsticks #935,3,5.76,0.21,17.28,cut in squares
+ORI0651,ORD0651,PRD0114,"Sausage & Peppers (Personal, Hand-Tossed)",4,12.06,1.17,48.24,well done
+ORI0652,ORD0652,PRD0932,Bottled Water #932,2,2.25,0.85,4.50,
+ORI0653,ORD0653,PRD0121,"Four Cheese (Family, Cauliflower)",1,19.21,0.33,19.21,cut in squares
+ORI0654,ORD0654,PRD0786,Chicken Wings #786,1,5.99,0.61,5.99,
+ORI0655,ORD0655,PRD0687,"Buffalo Chicken (Large, Stuffed)",2,9.17,0.45,18.34,well done
+ORI0656,ORD0656,PRD0206,"Neapolitan (Family, Cauliflower)",2,13.15,1.19,26.30,light sauce
+ORI0657,ORD0657,PRD0274,"BBQ Chicken (Large, Pan)",1,26.14,1.41,26.14,
+ORI0658,ORD0658,PRD0843,Chicken Wings #843,1,14.16,1.96,14.16,well done
+ORI0659,ORD0659,PRD0076,"Ranch Special (Family, Hand-Tossed)",3,6.28,2.50,18.84,
+ORI0660,ORD0660,PRD0896,Mozzarella Sticks #896,1,3.71,0.30,3.71,light sauce
+ORI0661,ORD0661,PRD0920,Chocolate Brownie #920,4,12.91,1.66,51.64,
+ORI0662,ORD0662,PRD0389,"Neapolitan (Personal, Cauliflower)",1,17.80,0.35,17.80,extra cheese
+ORI0663,ORD0663,PRD0490,"White Garlic (Personal, Thin)",1,20.77,0.52,20.77,well done
+ORI0664,ORD0664,PRD0214,"Sicilian (Personal, Pan)",3,8.18,1.05,24.54,extra cheese
+ORI0665,ORD0665,PRD0372,"Ranch Special (Medium, Cauliflower)",3,20.29,1.88,60.87,no onions
+ORI0666,ORD0666,PRD0950,Chocolate Brownie #950,4,1.69,0.38,6.76,extra cheese
+ORI0667,ORD0667,PRD0681,"Margherita (Medium, Hand-Tossed)",1,16.51,0.46,16.51,extra cheese
+ORI0668,ORD0668,PRD0823,Mozzarella Sticks #823,1,3.87,2.91,3.87,
+ORI0669,ORD0669,PRD0318,"Spinach Feta (Personal, Pan)",2,14.50,0.77,29.00,no onions
+ORI0670,ORD0670,PRD0389,"Neapolitan (Personal, Cauliflower)",4,17.80,0.38,71.20,
+ORI0671,ORD0671,PRD0984,Caesar Salad #984,2,1.73,1.60,3.46,no onions
+ORI0672,ORD0672,PRD0997,Chocolate Brownie #997,2,3.28,0.23,6.56,extra cheese
+ORI0673,ORD0673,PRD0607,"Sicilian (Medium, Stuffed)",3,18.18,2.86,54.54,light sauce
+ORI0674,ORD0674,PRD0015,"Hawaiian (Medium, Pan)",4,23.07,0.01,92.28,light sauce
+ORI0675,ORD0675,PRD0430,"White Garlic (Large, Pan)",1,19.98,2.09,19.98,
+ORI0676,ORD0676,PRD0352,"Neapolitan (Medium, Cauliflower)",3,16.18,1.79,48.54,light sauce
+ORI0677,ORD0677,PRD0264,"Hawaiian (Personal, Cauliflower)",4,24.44,1.12,97.76,extra cheese
+ORI0678,ORD0678,PRD0436,"BBQ Chicken (Large, Cauliflower)",1,10.91,0.08,10.91,light sauce
+ORI0679,ORD0679,PRD0529,"Sausage & Peppers (Medium, Thin)",1,21.32,2.76,21.32,extra cheese
+ORI0680,ORD0680,PRD0379,"BBQ Chicken (Family, Cauliflower)",2,7.58,0.63,15.16,extra cheese
+ORI0681,ORD0681,PRD0976,Garlic Knots #976,4,4.09,2.73,16.36,light sauce
+ORI0682,ORD0682,PRD0065,"Neapolitan (Family, Thin)",4,7.96,1.05,31.84,
+ORI0683,ORD0683,PRD0690,"Margherita (Family, Stuffed)",1,15.53,1.35,15.53,well done
+ORI0684,ORD0684,PRD0396,"Pepperoni (Personal, Pan)",3,9.87,1.61,29.61,well done
+ORI0685,ORD0685,PRD0982,Chocolate Brownie #982,3,4.24,0.78,12.72,extra cheese
+ORI0686,ORD0686,PRD0519,"Margherita (Medium, Pan)",4,26.38,1.68,105.52,no onions
+ORI0687,ORD0687,PRD0091,"Pesto Chicken (Personal, Hand-Tossed)",2,7.76,0.60,15.52,well done
+ORI0688,ORD0688,PRD0786,Chicken Wings #786,4,5.99,1.83,23.96,well done
+ORI0689,ORD0689,PRD0005,"Ranch Special (Medium, Cauliflower)",4,7.78,2.44,31.12,
+ORI0690,ORD0690,PRD0720,Caesar Salad #720,1,7.43,1.44,7.43,
+ORI0691,ORD0691,PRD0580,"Pepperoni (Medium, Stuffed)",3,20.10,2.87,60.30,well done
+ORI0692,ORD0692,PRD0396,"Pepperoni (Personal, Pan)",2,9.87,1.16,19.74,no onions
+ORI0693,ORD0693,PRD0453,"Hawaiian (Personal, Cauliflower)",2,15.56,0.29,31.12,extra cheese
+ORI0694,ORD0694,PRD0775,Soft Drink #775,4,3.44,2.25,13.76,no onions
+ORI0695,ORD0695,PRD0253,"Neapolitan (Personal, Hand-Tossed)",2,18.68,1.63,37.36,cut in squares
+ORI0696,ORD0696,PRD0343,"Mushroom Truffle (Large, Thin)",3,22.03,1.47,66.09,
+ORI0697,ORD0697,PRD0685,"Spicy Diablo (Large, Stuffed)",1,13.32,0.54,13.32,light sauce
+ORI0698,ORD0698,PRD0202,"Hawaiian (Personal, Cauliflower)",3,8.27,1.82,24.81,extra cheese
+ORI0699,ORD0699,PRD0918,Chocolate Brownie #918,2,4.23,1.71,8.46,
+ORI0700,ORD0700,PRD0921,Garlic Knots #921,4,5.20,2.96,20.80,
+ORI0701,ORD0701,PRD0933,Chicken Wings #933,1,4.38,2.31,4.38,no onions
+ORI0702,ORD0702,PRD0377,"Meat Lovers (Family, Cauliflower)",4,28.58,0.04,114.32,
+ORI0703,ORD0703,PRD0180,"Mushroom Truffle (Family, Thin)",4,28.33,0.84,113.32,cut in squares
+ORI0704,ORD0704,PRD0476,"Spicy Diablo (Family, Stuffed)",1,10.62,1.15,10.62,
+ORI0705,ORD0705,PRD0211,"Spinach Feta (Large, Hand-Tossed)",2,11.57,1.01,23.14,
+ORI0706,ORD0706,PRD0633,"Buffalo Chicken (Personal, Hand-Tossed)",2,8.93,0.80,17.86,light sauce
+ORI0707,ORD0707,PRD0952,Chicken Wings #952,2,5.03,0.70,10.06,well done
+ORI0708,ORD0708,PRD0794,Garden Salad #794,1,4.06,1.22,4.06,light sauce
+ORI0709,ORD0709,PRD0221,"Spinach Feta (Medium, Pan)",2,9.31,1.77,18.62,extra cheese
+ORI0710,ORD0710,PRD0683,"Supreme (Family, Hand-Tossed)",4,8.86,0.08,35.44,
+ORI0711,ORD0711,PRD0894,Garlic Knots #894,4,12.28,0.59,49.12,
+ORI0712,ORD0712,PRD0236,"Spicy Diablo (Medium, Hand-Tossed)",1,27.10,1.80,27.10,light sauce
+ORI0713,ORD0713,PRD0482,"Spinach Feta (Medium, Cauliflower)",4,23.42,0.84,93.68,light sauce
+ORI0714,ORD0714,PRD0824,Bottled Water #824,3,5.54,1.26,16.62,
+ORI0715,ORD0715,PRD0881,Caesar Salad #881,2,6.12,1.99,12.24,no onions
+ORI0716,ORD0716,PRD0517,"Meat Lovers (Personal, Pan)",4,8.97,1.08,35.88,
+ORI0717,ORD0717,PRD0487,"Pesto Chicken (Medium, Cauliflower)",3,27.24,2.78,81.72,
+ORI0718,ORD0718,PRD0840,Caesar Salad #840,2,11.10,1.82,22.20,no onions
+ORI0719,ORD0719,PRD0302,"Meat Lovers (Large, Stuffed)",3,19.76,2.91,59.28,light sauce
+ORI0720,ORD0720,PRD0533,"Veggie Supreme (Family, Hand-Tossed)",2,11.07,1.38,22.14,
+ORI0721,ORD0721,PRD0580,"Pepperoni (Medium, Stuffed)",3,20.10,1.81,60.30,
+ORI0722,ORD0722,PRD0639,"Spinach Feta (Medium, Stuffed)",3,12.14,0.33,36.42,extra cheese
+ORI0723,ORD0723,PRD0409,"Spicy Diablo (Family, Thin)",3,9.20,0.93,27.60,cut in squares
+ORI0724,ORD0724,PRD0483,"Buffalo Chicken (Large, Cauliflower)",2,23.00,1.74,46.00,
+ORI0725,ORD0725,PRD0556,"Hawaiian (Family, Stuffed)",3,13.43,2.59,40.29,
+ORI0726,ORD0726,PRD0752,Mozzarella Sticks #752,1,6.76,2.39,6.76,cut in squares
+ORI0727,ORD0727,PRD0799,Chocolate Brownie #799,1,4.79,1.67,4.79,extra cheese
+ORI0728,ORD0728,PRD0091,"Pesto Chicken (Personal, Hand-Tossed)",4,7.76,0.33,31.04,
+ORI0729,ORD0729,PRD0362,"Buffalo Chicken (Family, Cauliflower)",2,16.53,2.05,33.06,light sauce
+ORI0730,ORD0730,PRD0705,Garden Salad #705,3,11.42,2.75,34.26,
+ORI0731,ORD0731,PRD0976,Garlic Knots #976,4,4.09,2.92,16.36,
+ORI0732,ORD0732,PRD0271,"White Garlic (Family, Cauliflower)",3,20.99,0.98,62.97,
+ORI0733,ORD0733,PRD1000,Soft Drink #1000,2,6.63,2.78,13.26,well done
+ORI0734,ORD0734,PRD0119,"Veggie Supreme (Personal, Thin)",2,26.78,0.33,53.56,cut in squares
+ORI0735,ORD0735,PRD0925,Caesar Salad #925,3,5.19,2.26,15.57,light sauce
+ORI0736,ORD0736,PRD0831,Soft Drink #831,4,4.25,2.79,17.00,no onions
+ORI0737,ORD0737,PRD0769,Garden Salad #769,2,12.07,1.17,24.14,
+ORI0738,ORD0738,PRD0873,Mozzarella Sticks #873,2,4.38,2.35,8.76,cut in squares
+ORI0739,ORD0739,PRD0025,"BBQ Chicken (Family, Thin)",3,21.21,1.38,63.63,
+ORI0740,ORD0740,PRD0198,"Supreme (Large, Cauliflower)",4,27.88,2.29,111.52,
+ORI0741,ORD0741,PRD0372,"Ranch Special (Medium, Cauliflower)",1,20.29,1.13,20.29,
+ORI0742,ORD0742,PRD0114,"Sausage & Peppers (Personal, Hand-Tossed)",2,12.06,0.02,24.12,extra cheese
+ORI0743,ORD0743,PRD0878,Cinnamon Twists #878,3,5.81,1.54,17.43,extra cheese
+ORI0744,ORD0744,PRD0997,Chocolate Brownie #997,4,3.28,2.96,13.12,well done
+ORI0745,ORD0745,PRD0085,"Ranch Special (Large, Pan)",4,23.88,1.90,95.52,light sauce
+ORI0746,ORD0746,PRD0384,"BBQ Chicken (Medium, Pan)",2,9.13,0.79,18.26,well done
+ORI0747,ORD0747,PRD0371,"BBQ Chicken (Family, Pan)",4,21.79,0.52,87.16,well done
+ORI0748,ORD0748,PRD0610,"Sicilian (Large, Cauliflower)",1,29.93,2.37,29.93,well done
+ORI0749,ORD0749,PRD0795,Cheese Breadsticks #795,3,2.25,0.35,6.75,
+ORI0750,ORD0750,PRD0615,"BBQ Chicken (Large, Hand-Tossed)",2,22.13,1.83,44.26,cut in squares
+ORI0751,ORD0751,PRD0806,Garlic Knots #806,1,1.34,0.24,1.34,light sauce
+ORI0752,ORD0752,PRD0364,"Four Cheese (Large, Thin)",3,9.42,2.74,28.26,light sauce
+ORI0753,ORD0753,PRD0140,"Ranch Special (Medium, Pan)",2,9.69,2.52,19.38,well done
+ORI0754,ORD0754,PRD0302,"Meat Lovers (Large, Stuffed)",4,19.76,2.80,79.04,
+ORI0755,ORD0755,PRD0191,"Veggie Supreme (Large, Pan)",4,19.04,1.34,76.16,extra cheese
+ORI0756,ORD0756,PRD0668,"White Garlic (Personal, Hand-Tossed)",3,11.43,2.03,34.29,extra cheese
+ORI0757,ORD0757,PRD0467,"Neapolitan (Family, Stuffed)",1,12.84,2.53,12.84,no onions
+ORI0758,ORD0758,PRD0765,Chicken Wings #765,2,4.93,0.44,9.86,
+ORI0759,ORD0759,PRD0004,"Spicy Diablo (Personal, Cauliflower)",1,10.26,1.32,10.26,well done
+ORI0760,ORD0760,PRD0990,Garden Salad #990,3,10.16,2.63,30.48,cut in squares
+ORI0761,ORD0761,PRD0814,Cheese Breadsticks #814,4,7.00,0.57,28.00,well done
+ORI0762,ORD0762,PRD0665,"Sausage & Peppers (Large, Thin)",1,13.10,1.18,13.10,no onions
+ORI0763,ORD0763,PRD0130,"Ranch Special (Personal, Pan)",1,15.02,2.63,15.02,no onions
+ORI0764,ORD0764,PRD0651,"Spicy Diablo (Medium, Pan)",4,20.04,0.81,80.16,no onions
+ORI0765,ORD0765,PRD0211,"Spinach Feta (Large, Hand-Tossed)",4,11.57,0.85,46.28,cut in squares
+ORI0766,ORD0766,PRD0053,"Pesto Chicken (Large, Thin)",2,23.19,1.93,46.38,extra cheese
+ORI0767,ORD0767,PRD0424,"Pepperoni (Large, Hand-Tossed)",4,10.41,0.73,41.64,no onions
+ORI0768,ORD0768,PRD0684,"Pesto Chicken (Medium, Pan)",1,18.51,0.38,18.51,cut in squares
+ORI0769,ORD0769,PRD0848,Garden Salad #848,1,14.53,2.04,14.53,well done
+ORI0770,ORD0770,PRD0958,Garlic Knots #958,3,8.89,2.72,26.67,
+ORI0771,ORD0771,PRD0342,"Four Cheese (Large, Stuffed)",2,29.45,2.90,58.90,
+ORI0772,ORD0772,PRD0545,"Spinach Feta (Personal, Hand-Tossed)",4,15.05,1.00,60.20,well done
+ORI0773,ORD0773,PRD0187,"White Garlic (Medium, Cauliflower)",2,21.58,1.52,43.16,cut in squares
+ORI0774,ORD0774,PRD0400,"Veggie Supreme (Family, Stuffed)",1,24.81,1.34,24.81,cut in squares
+ORI0775,ORD0775,PRD0280,"Spicy Diablo (Medium, Cauliflower)",4,24.06,0.17,96.24,extra cheese
+ORI0776,ORD0776,PRD0899,Caesar Salad #899,3,10.75,0.27,32.25,well done
+ORI0777,ORD0777,PRD0887,Garlic Knots #887,2,10.12,2.41,20.24,cut in squares
+ORI0778,ORD0778,PRD0029,"Ranch Special (Personal, Pan)",2,7.42,1.12,14.84,cut in squares
+ORI0779,ORD0779,PRD0089,"Neapolitan (Medium, Stuffed)",3,17.20,2.01,51.60,cut in squares
+ORI0780,ORD0780,PRD0265,"Neapolitan (Personal, Stuffed)",3,21.62,0.05,64.86,
+ORI0781,ORD0781,PRD0619,"Buffalo Chicken (Personal, Cauliflower)",4,25.65,0.15,102.60,light sauce
+ORI0782,ORD0782,PRD0972,Garden Salad #972,3,3.48,0.15,10.44,cut in squares
+ORI0783,ORD0783,PRD0676,"Spinach Feta (Medium, Hand-Tossed)",1,27.27,1.92,27.27,well done
+ORI0784,ORD0784,PRD0235,"BBQ Chicken (Family, Cauliflower)",3,23.38,2.90,70.14,
+ORI0785,ORD0785,PRD0100,"Mushroom Truffle (Personal, Cauliflower)",3,17.37,2.54,52.11,well done
+ORI0786,ORD0786,PRD0641,"Mushroom Truffle (Personal, Cauliflower)",3,27.19,0.55,81.57,light sauce
+ORI0787,ORD0787,PRD0645,"Sausage & Peppers (Family, Thin)",1,8.70,2.37,8.70,cut in squares
+ORI0788,ORD0788,PRD0574,"Sausage & Peppers (Large, Thin)",2,31.76,0.16,63.52,well done
+ORI0789,ORD0789,PRD0566,"Mushroom Truffle (Large, Cauliflower)",1,22.28,0.34,22.28,
+ORI0790,ORD0790,PRD0916,Chicken Wings #916,2,7.25,1.78,14.50,extra cheese
+ORI0791,ORD0791,PRD0114,"Sausage & Peppers (Personal, Hand-Tossed)",1,12.06,2.31,12.06,well done
+ORI0792,ORD0792,PRD0651,"Spicy Diablo (Medium, Pan)",1,20.04,1.06,20.04,
+ORI0793,ORD0793,PRD0151,"BBQ Chicken (Personal, Hand-Tossed)",2,19.04,0.79,38.08,
+ORI0794,ORD0794,PRD0852,Mozzarella Sticks #852,4,6.53,0.09,26.12,cut in squares
+ORI0795,ORD0795,PRD0804,Chicken Wings #804,1,3.01,2.71,3.01,extra cheese
+ORI0796,ORD0796,PRD0500,"Supreme (Family, Pan)",4,16.07,1.15,64.28,cut in squares
+ORI0797,ORD0797,PRD0013,"Sausage & Peppers (Personal, Stuffed)",1,18.19,1.15,18.19,
+ORI0798,ORD0798,PRD0439,"Sicilian (Family, Hand-Tossed)",1,9.41,2.79,9.41,
+ORI0799,ORD0799,PRD0729,Cinnamon Twists #729,4,6.90,0.87,27.60,well done
+ORI0800,ORD0800,PRD0098,"Buffalo Chicken (Medium, Hand-Tossed)",1,16.98,1.62,16.98,
+ORI0801,ORD0801,PRD0565,"Spicy Diablo (Medium, Cauliflower)",3,18.57,0.07,55.71,
+ORI0802,ORD0802,PRD0676,"Spinach Feta (Medium, Hand-Tossed)",3,27.27,2.18,81.81,
+ORI0803,ORD0803,PRD0466,"Sicilian (Medium, Hand-Tossed)",1,24.24,0.82,24.24,extra cheese
+ORI0804,ORD0804,PRD0329,"Neapolitan (Large, Hand-Tossed)",2,13.80,0.30,27.60,extra cheese
+ORI0805,ORD0805,PRD0757,Garlic Knots #757,2,8.69,2.59,17.38,no onions
+ORI0806,ORD0806,PRD0112,"Four Cheese (Large, Cauliflower)",3,19.37,2.71,58.11,well done
+ORI0807,ORD0807,PRD0161,"Veggie Supreme (Family, Thin)",2,6.08,0.87,12.16,
+ORI0808,ORD0808,PRD0069,"Sicilian (Personal, Stuffed)",2,10.83,2.79,21.66,
+ORI0809,ORD0809,PRD0301,"Veggie Supreme (Large, Pan)",1,10.28,0.41,10.28,
+ORI0810,ORD0810,PRD0895,Cheese Breadsticks #895,4,5.96,1.11,23.84,extra cheese
+ORI0811,ORD0811,PRD0336,"White Garlic (Family, Stuffed)",2,25.09,1.42,50.18,extra cheese
+ORI0812,ORD0812,PRD0870,Cinnamon Twists #870,4,6.74,2.36,26.96,well done
+ORI0813,ORD0813,PRD0418,"Margherita (Personal, Thin)",1,26.24,2.15,26.24,no onions
+ORI0814,ORD0814,PRD0993,Caesar Salad #993,3,7.37,0.98,22.11,no onions
+ORI0815,ORD0815,PRD0523,"Buffalo Chicken (Family, Cauliflower)",3,14.99,1.32,44.97,extra cheese
+ORI0816,ORD0816,PRD0900,Caesar Salad #900,1,11.13,1.86,11.13,cut in squares
+ORI0817,ORD0817,PRD0582,"Margherita (Personal, Stuffed)",4,13.18,0.99,52.72,
+ORI0818,ORD0818,PRD0185,"Ranch Special (Family, Cauliflower)",2,17.33,1.78,34.66,light sauce
+ORI0819,ORD0819,PRD0892,Cheese Breadsticks #892,3,2.38,1.95,7.14,light sauce
+ORI0820,ORD0820,PRD0632,"Neapolitan (Family, Pan)",2,19.18,0.01,38.36,light sauce
+ORI0821,ORD0821,PRD0337,"Mushroom Truffle (Family, Thin)",4,12.48,2.57,49.92,light sauce
+ORI0822,ORD0822,PRD0257,"Meat Lovers (Personal, Thin)",1,22.15,2.21,22.15,
+ORI0823,ORD0823,PRD0829,Cheese Breadsticks #829,2,6.35,0.18,12.70,cut in squares
+ORI0824,ORD0824,PRD0118,"Ranch Special (Family, Hand-Tossed)",3,5.77,1.97,17.31,well done
+ORI0825,ORD0825,PRD0943,Bottled Water #943,1,9.67,1.96,9.67,
+ORI0826,ORD0826,PRD0570,"Neapolitan (Medium, Hand-Tossed)",4,9.73,0.04,38.92,
+ORI0827,ORD0827,PRD0079,"Buffalo Chicken (Medium, Cauliflower)",2,12.69,1.33,25.38,
+ORI0828,ORD0828,PRD0033,"Spinach Feta (Personal, Cauliflower)",1,9.71,2.36,9.71,
+ORI0829,ORD0829,PRD0712,Garden Salad #712,2,1.40,0.66,2.80,
+ORI0830,ORD0830,PRD0116,"Mushroom Truffle (Large, Thin)",1,20.12,0.13,20.12,cut in squares
+ORI0831,ORD0831,PRD0004,"Spicy Diablo (Personal, Cauliflower)",3,10.26,0.83,30.78,light sauce
+ORI0832,ORD0832,PRD0262,"Supreme (Medium, Cauliflower)",3,18.49,2.57,55.47,extra cheese
+ORI0833,ORD0833,PRD0794,Garden Salad #794,2,4.06,1.05,8.12,cut in squares
+ORI0834,ORD0834,PRD0138,"Four Cheese (Large, Hand-Tossed)",1,12.75,2.92,12.75,
+ORI0835,ORD0835,PRD0577,"Pesto Chicken (Family, Cauliflower)",3,11.49,0.23,34.47,
+ORI0836,ORD0836,PRD0008,"White Garlic (Large, Stuffed)",3,9.33,1.09,27.99,
+ORI0837,ORD0837,PRD0412,"Meat Lovers (Large, Thin)",3,14.28,2.70,42.84,
+ORI0838,ORD0838,PRD0073,"Meat Lovers (Family, Stuffed)",4,18.10,1.02,72.40,
+ORI0839,ORD0839,PRD0308,"Mushroom Truffle (Personal, Stuffed)",4,27.57,0.52,110.28,
+ORI0840,ORD0840,PRD0871,Mozzarella Sticks #871,1,4.59,0.02,4.59,cut in squares
+ORI0841,ORD0841,PRD0658,"Pepperoni (Medium, Pan)",4,7.05,0.90,28.20,
+ORI0842,ORD0842,PRD0316,"Neapolitan (Personal, Stuffed)",2,12.53,1.37,25.06,cut in squares
+ORI0843,ORD0843,PRD0170,"Margherita (Large, Pan)",2,9.39,0.54,18.78,well done
+ORI0844,ORD0844,PRD0334,"Mushroom Truffle (Family, Thin)",4,22.95,2.37,91.80,extra cheese
+ORI0845,ORD0845,PRD0081,"Spicy Diablo (Large, Thin)",3,8.55,1.69,25.65,well done
+ORI0846,ORD0846,PRD0295,"Margherita (Family, Thin)",1,15.31,2.17,15.31,cut in squares
+ORI0847,ORD0847,PRD0206,"Neapolitan (Family, Cauliflower)",2,13.15,1.39,26.30,
+ORI0848,ORD0848,PRD0606,"Spinach Feta (Personal, Thin)",1,15.89,0.71,15.89,cut in squares
+ORI0849,ORD0849,PRD0463,"Buffalo Chicken (Personal, Pan)",2,20.46,0.27,40.92,
+ORI0850,ORD0850,PRD0813,Caesar Salad #813,2,2.85,2.33,5.70,well done
+ORI0851,ORD0851,PRD0707,Caesar Salad #707,2,3.27,2.35,6.54,well done
+ORI0852,ORD0852,PRD0879,Mozzarella Sticks #879,2,6.57,0.63,13.14,well done
+ORI0853,ORD0853,PRD0118,"Ranch Special (Family, Hand-Tossed)",3,5.77,2.00,17.31,light sauce
+ORI0854,ORD0854,PRD0589,"Sicilian (Large, Cauliflower)",3,19.43,0.12,58.29,
+ORI0855,ORD0855,PRD0507,"Buffalo Chicken (Personal, Cauliflower)",3,19.98,2.77,59.94,no onions
+ORI0856,ORD0856,PRD0892,Cheese Breadsticks #892,4,2.38,0.32,9.52,cut in squares
+ORI0857,ORD0857,PRD0792,Mozzarella Sticks #792,1,5.20,0.31,5.20,
+ORI0858,ORD0858,PRD0099,"Ranch Special (Family, Cauliflower)",1,15.97,1.32,15.97,
+ORI0859,ORD0859,PRD0332,"Mushroom Truffle (Family, Thin)",3,11.50,2.68,34.50,cut in squares
+ORI0860,ORD0860,PRD0789,Garlic Knots #789,1,7.79,0.76,7.79,well done
+ORI0861,ORD0861,PRD0229,"Pesto Chicken (Medium, Cauliflower)",4,12.23,2.73,48.92,no onions
+ORI0862,ORD0862,PRD0608,"BBQ Chicken (Medium, Pan)",4,23.11,1.44,92.44,extra cheese
+ORI0863,ORD0863,PRD0135,"White Garlic (Family, Stuffed)",3,21.82,2.66,65.46,no onions
+ORI0864,ORD0864,PRD0392,"Mushroom Truffle (Medium, Stuffed)",1,22.57,2.70,22.57,cut in squares
+ORI0865,ORD0865,PRD0804,Chicken Wings #804,1,3.01,0.53,3.01,cut in squares
+ORI0866,ORD0866,PRD0220,"Veggie Supreme (Personal, Pan)",4,21.05,2.52,84.20,extra cheese
+ORI0867,ORD0867,PRD0564,"Four Cheese (Medium, Thin)",1,17.23,1.08,17.23,
+ORI0868,ORD0868,PRD1000,Soft Drink #1000,2,6.63,0.35,13.26,no onions
+ORI0869,ORD0869,PRD0185,"Ranch Special (Family, Cauliflower)",4,17.33,2.02,69.32,no onions
+ORI0870,ORD0870,PRD0535,"Ranch Special (Large, Cauliflower)",2,7.02,1.43,14.04,light sauce
+ORI0871,ORD0871,PRD0174,"Spicy Diablo (Family, Stuffed)",1,7.27,1.96,7.27,light sauce
+ORI0872,ORD0872,PRD0175,"Pepperoni (Medium, Stuffed)",4,23.39,1.63,93.56,light sauce
+ORI0873,ORD0873,PRD0298,"Pepperoni (Large, Stuffed)",4,20.79,2.47,83.16,no onions
+ORI0874,ORD0874,PRD0519,"Margherita (Medium, Pan)",3,26.38,2.81,79.14,extra cheese
+ORI0875,ORD0875,PRD0150,"White Garlic (Medium, Thin)",1,18.10,1.87,18.10,extra cheese
+ORI0876,ORD0876,PRD0194,"Hawaiian (Family, Pan)",1,17.05,2.76,17.05,light sauce
+ORI0877,ORD0877,PRD0130,"Ranch Special (Personal, Pan)",1,15.02,1.44,15.02,well done
+ORI0878,ORD0878,PRD0216,"Margherita (Personal, Cauliflower)",3,9.34,2.87,28.02,well done
+ORI0879,ORD0879,PRD0427,"Meat Lovers (Medium, Stuffed)",3,27.41,2.61,82.23,
+ORI0880,ORD0880,PRD0291,"Meat Lovers (Family, Pan)",3,22.81,1.24,68.43,light sauce
+ORI0881,ORD0881,PRD0026,"Hawaiian (Medium, Stuffed)",3,11.88,2.05,35.64,light sauce
+ORI0882,ORD0882,PRD0921,Garlic Knots #921,1,5.20,1.21,5.20,extra cheese
+ORI0883,ORD0883,PRD0094,"Supreme (Family, Hand-Tossed)",4,11.45,2.17,45.80,no onions
+ORI0884,ORD0884,PRD0787,Cinnamon Twists #787,3,8.15,2.53,24.45,cut in squares
+ORI0885,ORD0885,PRD0057,"Pesto Chicken (Family, Pan)",1,22.54,0.19,22.54,extra cheese
+ORI0886,ORD0886,PRD0452,"Margherita (Family, Pan)",1,9.65,0.77,9.65,cut in squares
+ORI0887,ORD0887,PRD0273,"Pepperoni (Medium, Hand-Tossed)",2,12.01,0.35,24.02,
+ORI0888,ORD0888,PRD0436,"BBQ Chicken (Large, Cauliflower)",4,10.91,0.06,43.64,
+ORI0889,ORD0889,PRD0711,Cinnamon Twists #711,3,7.95,1.26,23.85,
+ORI0890,ORD0890,PRD0771,Mozzarella Sticks #771,2,9.61,2.17,19.22,
+ORI0891,ORD0891,PRD0643,"White Garlic (Medium, Hand-Tossed)",4,13.32,0.16,53.28,
+ORI0892,ORD0892,PRD0450,"Sicilian (Medium, Thin)",2,23.70,0.83,47.40,
+ORI0893,ORD0893,PRD0489,"Four Cheese (Medium, Thin)",3,12.99,0.70,38.97,cut in squares
+ORI0894,ORD0894,PRD0893,Garden Salad #893,4,12.29,0.44,49.16,no onions
+ORI0895,ORD0895,PRD0855,Garden Salad #855,4,8.94,2.32,35.76,no onions
+ORI0896,ORD0896,PRD0954,Cheese Breadsticks #954,4,12.95,0.68,51.80,well done
+ORI0897,ORD0897,PRD0912,Garden Salad #912,4,4.53,2.92,18.12,
+ORI0898,ORD0898,PRD0755,Mozzarella Sticks #755,3,7.62,2.14,22.86,
+ORI0899,ORD0899,PRD0542,"Four Cheese (Medium, Pan)",3,9.93,2.37,29.79,well done
+ORI0900,ORD0900,PRD0778,Bottled Water #778,3,2.95,1.70,8.85,light sauce
+ORI0901,ORD0901,PRD0707,Caesar Salad #707,4,3.27,1.05,13.08,no onions
+ORI0902,ORD0902,PRD0919,Garden Salad #919,4,11.21,2.36,44.84,
+ORI0903,ORD0903,PRD0983,Chocolate Brownie #983,1,6.67,0.43,6.67,
+ORI0904,ORD0904,PRD0737,Chocolate Brownie #737,3,1.03,0.15,3.09,
+ORI0905,ORD0905,PRD0495,"Sicilian (Medium, Thin)",1,12.58,1.54,12.58,cut in squares
+ORI0906,ORD0906,PRD0062,"Margherita (Large, Hand-Tossed)",4,20.14,1.52,80.56,cut in squares
+ORI0907,ORD0907,PRD0144,"Meat Lovers (Family, Cauliflower)",1,15.83,2.99,15.83,no onions
+ORI0908,ORD0908,PRD0262,"Supreme (Medium, Cauliflower)",3,18.49,2.82,55.47,cut in squares
+ORI0909,ORD0909,PRD0081,"Spicy Diablo (Large, Thin)",2,8.55,0.66,17.10,well done
+ORI0910,ORD0910,PRD0568,"Pepperoni (Personal, Stuffed)",1,16.20,2.10,16.20,no onions
+ORI0911,ORD0911,PRD0214,"Sicilian (Personal, Pan)",3,8.18,1.66,24.54,
+ORI0912,ORD0912,PRD0234,"BBQ Chicken (Family, Hand-Tossed)",1,8.49,2.53,8.49,light sauce
+ORI0913,ORD0913,PRD0697,"Mushroom Truffle (Large, Stuffed)",2,15.83,2.65,31.66,
+ORI0914,ORD0914,PRD0381,"Spinach Feta (Large, Hand-Tossed)",4,6.53,1.70,26.12,well done
+ORI0915,ORD0915,PRD0252,"White Garlic (Medium, Stuffed)",2,17.50,0.02,35.00,
+ORI0916,ORD0916,PRD0959,Mozzarella Sticks #959,4,3.97,2.08,15.88,
+ORI0917,ORD0917,PRD0941,Cinnamon Twists #941,3,13.79,0.01,41.37,no onions
+ORI0918,ORD0918,PRD0388,"Ranch Special (Large, Thin)",1,30.01,0.08,30.01,
+ORI0919,ORD0919,PRD0036,"Spicy Diablo (Large, Pan)",4,16.51,2.91,66.04,
+ORI0920,ORD0920,PRD0587,"Meat Lovers (Family, Pan)",3,22.29,2.23,66.87,
+ORI0921,ORD0921,PRD0812,Bottled Water #812,4,6.08,0.27,24.32,extra cheese
+ORI0922,ORD0922,PRD0733,Soft Drink #733,2,1.49,0.86,2.98,no onions
+ORI0923,ORD0923,PRD0333,"Spinach Feta (Large, Hand-Tossed)",2,11.02,2.99,22.04,no onions
+ORI0924,ORD0924,PRD0793,Chocolate Brownie #793,1,7.85,0.90,7.85,
+ORI0925,ORD0925,PRD0687,"Buffalo Chicken (Large, Stuffed)",1,9.17,1.66,9.17,cut in squares
+ORI0926,ORD0926,PRD0573,"Sausage & Peppers (Personal, Pan)",3,22.60,2.62,67.80,extra cheese
+ORI0927,ORD0927,PRD0835,Mozzarella Sticks #835,4,9.47,0.90,37.88,extra cheese
+ORI0928,ORD0928,PRD0395,"Spinach Feta (Family, Thin)",1,8.92,0.53,8.92,
+ORI0929,ORD0929,PRD0292,"Pesto Chicken (Personal, Cauliflower)",2,19.57,2.27,39.14,no onions
+ORI0930,ORD0930,PRD0897,Caesar Salad #897,1,9.02,2.89,9.02,
+ORI0931,ORD0931,PRD0134,"Ranch Special (Medium, Cauliflower)",3,20.18,0.19,60.54,
+ORI0932,ORD0932,PRD0069,"Sicilian (Personal, Stuffed)",2,10.83,0.24,21.66,extra cheese
+ORI0933,ORD0933,PRD0810,Garden Salad #810,2,1.96,1.07,3.92,extra cheese
+ORI0934,ORD0934,PRD0018,"Mushroom Truffle (Personal, Pan)",1,8.11,2.05,8.11,
+ORI0935,ORD0935,PRD0816,Cinnamon Twists #816,2,7.73,1.95,15.46,cut in squares
+ORI0936,ORD0936,PRD0617,"Hawaiian (Personal, Hand-Tossed)",3,18.64,2.84,55.92,extra cheese
+ORI0937,ORD0937,PRD0480,"Veggie Supreme (Medium, Stuffed)",4,15.82,1.10,63.28,light sauce
+ORI0938,ORD0938,PRD0659,"Spicy Diablo (Personal, Pan)",1,8.68,0.06,8.68,light sauce
+ORI0939,ORD0939,PRD0379,"BBQ Chicken (Family, Cauliflower)",2,7.58,0.09,15.16,
+ORI0940,ORD0940,PRD0992,Soft Drink #992,3,7.49,1.83,22.47,light sauce
+ORI0941,ORD0941,PRD0763,Cheese Breadsticks #763,1,11.96,0.58,11.96,no onions
+ORI0942,ORD0942,PRD0269,"BBQ Chicken (Medium, Cauliflower)",3,16.99,2.08,50.97,extra cheese
+ORI0943,ORD0943,PRD0243,"Pesto Chicken (Large, Hand-Tossed)",1,20.50,2.80,20.50,light sauce
+ORI0944,ORD0944,PRD0750,Chicken Wings #750,3,3.94,1.08,11.82,
+ORI0945,ORD0945,PRD0843,Chicken Wings #843,3,14.16,0.97,42.48,light sauce
+ORI0946,ORD0946,PRD0829,Cheese Breadsticks #829,2,6.35,0.51,12.70,well done
+ORI0947,ORD0947,PRD0888,Garden Salad #888,1,3.78,0.78,3.78,extra cheese
+ORI0948,ORD0948,PRD0771,Mozzarella Sticks #771,4,9.61,2.21,38.44,
+ORI0949,ORD0949,PRD0360,"Spinach Feta (Medium, Pan)",3,25.59,1.58,76.77,no onions
+ORI0950,ORD0950,PRD0878,Cinnamon Twists #878,1,5.81,0.71,5.81,extra cheese
+ORI0951,ORD0951,PRD0950,Chocolate Brownie #950,2,1.69,0.02,3.38,no onions
+ORI0952,ORD0952,PRD0102,"Margherita (Family, Pan)",2,9.89,0.32,19.78,
+ORI0953,ORD0953,PRD0688,"Sausage & Peppers (Personal, Cauliflower)",2,6.70,1.48,13.40,extra cheese
+ORI0954,ORD0954,PRD0714,Garlic Knots #714,4,6.71,1.41,26.84,
+ORI0955,ORD0955,PRD0524,"White Garlic (Family, Cauliflower)",2,23.31,2.23,46.62,
+ORI0956,ORD0956,PRD0968,Soft Drink #968,2,1.88,1.39,3.76,well done
+ORI0957,ORD0957,PRD0744,Soft Drink #744,2,12.48,2.22,24.96,
+ORI0958,ORD0958,PRD0079,"Buffalo Chicken (Medium, Cauliflower)",1,12.69,0.23,12.69,
+ORI0959,ORD0959,PRD0968,Soft Drink #968,2,1.88,1.25,3.76,
+ORI0960,ORD0960,PRD0520,"Supreme (Personal, Cauliflower)",4,17.97,1.75,71.88,extra cheese
+ORI0961,ORD0961,PRD0907,Cheese Breadsticks #907,2,1.13,0.23,2.26,
+ORI0962,ORD0962,PRD0193,"Spicy Diablo (Personal, Pan)",1,6.19,1.89,6.19,no onions
+ORI0963,ORD0963,PRD0842,Garlic Knots #842,1,2.52,0.41,2.52,
+ORI0964,ORD0964,PRD0576,"Spicy Diablo (Medium, Thin)",4,11.17,1.97,44.68,
+ORI0965,ORD0965,PRD0559,"Margherita (Personal, Cauliflower)",1,13.27,0.80,13.27,extra cheese
+ORI0966,ORD0966,PRD0783,Garden Salad #783,3,8.71,2.77,26.13,no onions
+ORI0967,ORD0967,PRD0184,"Neapolitan (Personal, Thin)",2,14.86,2.65,29.72,well done
+ORI0968,ORD0968,PRD0518,"Buffalo Chicken (Medium, Thin)",1,17.17,1.09,17.17,cut in squares
+ORI0969,ORD0969,PRD0498,"Ranch Special (Medium, Hand-Tossed)",4,10.59,1.50,42.36,cut in squares
+ORI0970,ORD0970,PRD0418,"Margherita (Personal, Thin)",4,26.24,1.71,104.96,
+ORI0971,ORD0971,PRD0287,"Supreme (Large, Stuffed)",3,20.05,1.26,60.15,light sauce
+ORI0972,ORD0972,PRD0163,"Buffalo Chicken (Large, Pan)",2,18.50,1.97,37.00,no onions
+ORI0973,ORD0973,PRD0279,"Margherita (Medium, Cauliflower)",3,19.94,0.08,59.82,
+ORI0974,ORD0974,PRD0703,Chicken Wings #703,4,4.50,0.09,18.00,
+ORI0975,ORD0975,PRD0591,"Neapolitan (Medium, Stuffed)",1,6.34,2.42,6.34,well done
+ORI0976,ORD0976,PRD0262,"Supreme (Medium, Cauliflower)",2,18.49,2.39,36.98,
+ORI0977,ORD0977,PRD0949,Garlic Knots #949,3,4.10,1.66,12.30,
+ORI0978,ORD0978,PRD0093,"Buffalo Chicken (Personal, Thin)",3,15.45,1.39,46.35,extra cheese
+ORI0979,ORD0979,PRD0845,Caesar Salad #845,4,7.41,0.57,29.64,
+ORI0980,ORD0980,PRD0344,"Buffalo Chicken (Family, Pan)",4,11.05,1.07,44.20,no onions
+ORI0981,ORD0981,PRD0427,"Meat Lovers (Medium, Stuffed)",1,27.41,0.82,27.41,extra cheese
+ORI0982,ORD0982,PRD0855,Garden Salad #855,3,8.94,1.62,26.82,light sauce
+ORI0983,ORD0983,PRD0909,Bottled Water #909,3,7.59,2.89,22.77,well done
+ORI0984,ORD0984,PRD0248,"White Garlic (Personal, Pan)",4,16.88,1.36,67.52,extra cheese
+ORI0985,ORD0985,PRD0668,"White Garlic (Personal, Hand-Tossed)",2,11.43,2.72,22.86,extra cheese
+ORI0986,ORD0986,PRD0224,"Meat Lovers (Family, Pan)",3,10.44,1.03,31.32,cut in squares
+ORI0987,ORD0987,PRD0060,"Sausage & Peppers (Large, Hand-Tossed)",1,22.15,0.22,22.15,cut in squares
+ORI0988,ORD0988,PRD0368,"Neapolitan (Medium, Pan)",4,30.25,1.22,121.00,
+ORI0989,ORD0989,PRD0976,Garlic Knots #976,3,4.09,0.92,12.27,no onions
+ORI0990,ORD0990,PRD0399,"Spinach Feta (Large, Pan)",3,9.58,1.56,28.74,light sauce
+ORI0991,ORD0991,PRD0957,Soft Drink #957,1,9.66,1.57,9.66,well done
+ORI0992,ORD0992,PRD0482,"Spinach Feta (Medium, Cauliflower)",1,23.42,0.15,23.42,
+ORI0993,ORD0993,PRD0394,"Meat Lovers (Personal, Stuffed)",1,13.01,0.29,13.01,
+ORI0994,ORD0994,PRD0962,Chocolate Brownie #962,2,9.78,0.50,19.56,extra cheese
+ORI0995,ORD0995,PRD0847,Chicken Wings #847,3,2.51,2.24,7.53,no onions
+ORI0996,ORD0996,PRD0012,"BBQ Chicken (Personal, Hand-Tossed)",4,21.28,2.77,85.12,well done
+ORI0997,ORD0997,PRD0875,Chicken Wings #875,3,11.80,0.52,35.40,well done
+ORI0998,ORD0998,PRD0024,"Sicilian (Large, Stuffed)",3,10.33,0.87,30.99,no onions
+ORI0999,ORD0999,PRD0020,"Hawaiian (Family, Thin)",3,26.99,1.60,80.97,light sauce
+ORI1000,ORD1000,PRD0547,"Sicilian (Medium, Thin)",4,9.60,2.16,38.40,
