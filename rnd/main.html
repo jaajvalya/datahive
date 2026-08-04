@@ -71,10 +71,13 @@
   .rail .grp.bottom { margin-top:auto; }
   .rail a { position:relative; display:flex; flex-direction:column; align-items:center; gap:4px;
     padding:10px 0; color:var(--ink-700); font-size:10px; font-weight:500; }
-  .rail a .ic { font-size:18px; line-height:1; filter:grayscale(1); }
-  .rail a:hover { background:var(--gray-100); }
+  .rail a .ic {
+    width:20px; height:20px; display:inline-flex; align-items:center; justify-content:center;
+    color:currentColor; line-height:0;
+  }
+  .rail a .ic svg { width:20px; height:20px; stroke-width:1.75; }
+  .rail a:hover { background:var(--gray-100); color:var(--ink-900); }
   .rail a.active { color:var(--orange-500); }
-  .rail a.active .ic { filter:none; }
   .rail a.active::before { content:""; position:absolute; left:0; top:6px; bottom:6px; width:3px;
     background:var(--orange-500); border-radius:0 3px 3px 0; }
 
@@ -509,18 +512,6 @@
     display:flex; align-items:center; justify-content:center;
     font-size:22px; font-weight:800; color:var(--orange-500); min-width:36px;
   }
-  .etl-mode {
-    display:flex; gap:8px; flex-wrap:wrap;
-  }
-  .etl-mode label {
-    display:inline-flex; align-items:center; gap:8px; padding:8px 12px;
-    border:1px solid var(--gray-200); border-radius:8px; font-size:13px; font-weight:600;
-    cursor:pointer; user-select:none; color:var(--ink-900); background:#fff;
-  }
-  .etl-mode label:has(input:checked) {
-    border-color:var(--orange-500); background:rgba(255,103,31,.06);
-  }
-  .etl-mode input { accent-color:var(--orange-500); width:16px; height:16px; }
   .etl-ok {
     margin:0 0 12px; padding:10px 12px; border-radius:8px;
     background:rgba(31,169,113,.10); color:var(--ok); font-size:13px; font-weight:600;
@@ -553,20 +544,20 @@
   <!-- ===== Left rail ===== -->
   <nav class="rail" aria-label="Primary">
     <div class="grp">
-      <a href="#" class="active" data-view="assets" aria-current="page"><span class="ic">🧭</span>Assets</a>
-      <a href="#" data-view="connectors"><span class="ic">🔀</span>Connectors</a>
-      <a href="#" data-view="etl"><span class="ic">🔁</span>ETL/ELT</a>
-      <a href="#" data-view="insights"><span class="ic">⚡</span>Insights</a>
+      <a href="#" class="active" data-view="assets" aria-current="page"><span class="ic" aria-hidden="true"><i data-lucide="layers"></i></span>Assets</a>
+      <a href="#" data-view="connectors"><span class="ic" aria-hidden="true"><i data-lucide="unplug"></i></span>Connectors</a>
+      <a href="#" data-view="etl"><span class="ic" aria-hidden="true"><i data-lucide="arrow-left-right"></i></span>ETL/ELT</a>
+      <a href="#" data-view="insights"><span class="ic" aria-hidden="true"><i data-lucide="sparkles"></i></span>Insights</a>
     </div>
     <div class="grp" style="margin-top:14px">
-      <a href="../frontend/index-v2.html"><span class="ic">📘</span>Glossary</a>
-      <a href="../frontend/index-v2.html"><span class="ic">🏛️</span>Governance</a>
-      <a href="#" data-view="admin"><span class="ic">🛡️</span>Admin</a>
-      <a href="#"><span class="ic">📊</span>Reporting</a>
+      <a href="../frontend/index-v2.html"><span class="ic" aria-hidden="true"><i data-lucide="book-text"></i></span>Glossary</a>
+      <a href="../frontend/index-v2.html"><span class="ic" aria-hidden="true"><i data-lucide="scale"></i></span>Governance</a>
+      <a href="#" data-view="admin"><span class="ic" aria-hidden="true"><i data-lucide="shield-check"></i></span>Admin</a>
+      <a href="#"><span class="ic" aria-hidden="true"><i data-lucide="chart-column"></i></span>Reporting</a>
     </div>
     <div class="grp bottom">
-      <a href="#"><span class="ic">🎧</span>Support</a>
-      <a href="#"><span class="ic">📖</span>Docs</a>
+      <a href="#"><span class="ic" aria-hidden="true"><i data-lucide="headset"></i></span>Support</a>
+      <a href="#"><span class="ic" aria-hidden="true"><i data-lucide="file-text"></i></span>Docs</a>
     </div>
   </nav>
 
@@ -692,18 +683,9 @@
         <div class="etl-hd"><h2 id="etlFormTitle">New pipeline</h2></div>
         <div class="etl-bd">
           <form id="etlForm" novalidate>
-            <div class="row2">
-              <div class="field">
-                <label for="etl_name">Pipeline name <span class="req">*</span></label>
-                <input id="etl_name" name="name" required maxlength="128" placeholder="e.g. Snowflake → Postgres nightly sync" />
-              </div>
-              <div class="field">
-                <label>Mode <span class="req">*</span></label>
-                <div class="etl-mode" role="radiogroup" aria-label="Pipeline mode">
-                  <label><input type="radio" name="etl_mode" value="ETL" checked /> ETL</label>
-                  <label><input type="radio" name="etl_mode" value="ELT" /> ELT</label>
-                </div>
-              </div>
+            <div class="field">
+              <label for="etl_name">Pipeline name <span class="req">*</span></label>
+              <input id="etl_name" name="name" required maxlength="128" placeholder="e.g. Snowflake → Postgres nightly sync" />
             </div>
 
             <div class="etl-endpoints">
@@ -989,11 +971,16 @@
   </section>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.468.0/dist/umd/lucide.min.js"></script>
 <script src="connector_session.js"></script>
 <script src="save-connector.js"></script>
 <script src="assets.js"></script>
 <script src="sql-explorer.js"></script>
 <script>
+if (window.lucide && typeof lucide.createIcons === "function") {
+  lucide.createIcons({ attrs: { "stroke-width": "1.75", "aria-hidden": "true" } });
+}
+
 const $ = (sel, root=document) => root.querySelector(sel);
 const $$ = (sel, root=document) => [...root.querySelectorAll(sel)];
 
@@ -2836,8 +2823,6 @@ function showEtlOk(msg) {
 function resetEtlForm() {
   const form = $("#etlForm");
   if (form) form.reset();
-  const etlRadio = document.querySelector('input[name="etl_mode"][value="ETL"]');
-  if (etlRadio) etlRadio.checked = true;
   fillEtlConnectionSelect($("#etl_source_conn"), "", "");
   fillEtlConnectionSelect($("#etl_target_conn"), "", "");
   const err = $("#etlFormError");
@@ -2857,7 +2842,7 @@ function renderEtlPipelines() {
   }
   body.innerHTML =
     '<table class="admin-table" aria-label="Saved pipelines">' +
-    "<thead><tr><th>Pipeline</th><th>Mode</th><th>Source</th><th>Target</th><th>Updated</th><th></th></tr></thead><tbody>" +
+    "<thead><tr><th>Pipeline</th><th>Source</th><th>Target</th><th>Updated</th><th></th></tr></thead><tbody>" +
     etlPipelines.map((p) => {
       const srcCloud = CLOUDS[p.source_type];
       const tgtCloud = CLOUDS[p.target_type];
@@ -2867,7 +2852,6 @@ function renderEtlPipelines() {
         '<td><div class="nm">' + escapeHtml(p.name) + "</div>" +
         (p.notes ? '<div class="muted">' + escapeHtml(p.notes) + "</div>" : "") +
         "</td>" +
-        "<td><span class=\"role-pill\">" + escapeHtml(p.mode) + "</span></td>" +
         "<td><div class=\"nm\">" + escapeHtml((srcCloud && srcCloud.short) || p.source_type) + "</div>" +
         '<div class="muted">' + escapeHtml(p.source_label || "—") + "</div></td>" +
         "<td><div class=\"nm\">" + escapeHtml((tgtCloud && tgtCloud.short) || p.target_type) + "</div>" +
@@ -2910,8 +2894,6 @@ function bindEtlEvents() {
   $("#etlForm").addEventListener("submit", (e) => {
     e.preventDefault();
     const name = ($("#etl_name").value || "").trim();
-    const modeEl = document.querySelector('input[name="etl_mode"]:checked');
-    const mode = modeEl ? modeEl.value : "ETL";
     const sourceType = $("#etl_source_type").value;
     const targetType = $("#etl_target_type").value;
     const sourceConnKey = $("#etl_source_conn").value;
@@ -2937,7 +2919,6 @@ function bindEtlEvents() {
     etlPipelines.unshift({
       id: "etl-" + Math.random().toString(36).slice(2, 9),
       name,
-      mode,
       source_type: sourceType,
       target_type: targetType,
       source_conn_id: sourceConnKey,
