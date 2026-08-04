@@ -475,6 +475,56 @@
   .role-pill.admin { background:rgba(255,103,31,.12); color:var(--orange-500); }
   .role-pill.editor { background:rgba(4,107,210,.10); color:var(--blue-600); }
   .admin-modal.panel { margin:0; width:100%; max-width:560px; max-height:min(92vh,720px); overflow:auto; }
+
+  /* ---------- ETL / ELT ---------- */
+  .etl-pane { text-align:left; width:99%; margin:0 auto; }
+  .etl-pane-hd { margin-bottom:16px; }
+  .etl-pane-hd h1 { margin:0 0 6px; font-size:22px; font-weight:800; color:var(--ink-900); }
+  .etl-pane-hd p { margin:0; font-size:13.5px; color:#8a93a3; }
+  .etl-card {
+    background:#fff; border:1px solid var(--gray-200); border-radius:var(--radius);
+    box-shadow:var(--shadow); margin-bottom:18px; overflow:hidden;
+  }
+  .etl-card .etl-hd {
+    display:flex; align-items:center; gap:12px; padding:14px 18px;
+    border-bottom:1px solid var(--gray-200);
+  }
+  .etl-card .etl-hd h2 { margin:0; font-size:16px; font-weight:800; color:var(--ink-900); flex:1; }
+  .etl-card .etl-bd { padding:16px 18px 18px; }
+  .etl-endpoints {
+    display:grid; grid-template-columns:1fr auto 1fr; gap:14px; align-items:stretch; margin:4px 0 14px;
+  }
+  @media (max-width:800px) {
+    .etl-endpoints { grid-template-columns:1fr; }
+    .etl-arrow { transform:rotate(90deg); margin:0 auto; }
+  }
+  .etl-endpoint {
+    border:1px solid var(--gray-200); border-radius:10px; padding:14px 16px; background:#fafbfd;
+  }
+  .etl-endpoint .ep-label {
+    margin:0 0 12px; font-size:12px; font-weight:800; letter-spacing:.04em;
+    text-transform:uppercase; color:var(--navy-700);
+  }
+  .etl-arrow {
+    display:flex; align-items:center; justify-content:center;
+    font-size:22px; font-weight:800; color:var(--orange-500); min-width:36px;
+  }
+  .etl-mode {
+    display:flex; gap:8px; flex-wrap:wrap;
+  }
+  .etl-mode label {
+    display:inline-flex; align-items:center; gap:8px; padding:8px 12px;
+    border:1px solid var(--gray-200); border-radius:8px; font-size:13px; font-weight:600;
+    cursor:pointer; user-select:none; color:var(--ink-900); background:#fff;
+  }
+  .etl-mode label:has(input:checked) {
+    border-color:var(--orange-500); background:rgba(255,103,31,.06);
+  }
+  .etl-mode input { accent-color:var(--orange-500); width:16px; height:16px; }
+  .etl-ok {
+    margin:0 0 12px; padding:10px 12px; border-radius:8px;
+    background:rgba(31,169,113,.10); color:var(--ok); font-size:13px; font-weight:600;
+  }
 </style>
 </head>
 <body>
@@ -505,6 +555,7 @@
     <div class="grp">
       <a href="#" class="active" data-view="assets" aria-current="page"><span class="ic">🧭</span>Assets</a>
       <a href="#" data-view="connectors"><span class="ic">🔀</span>Connectors</a>
+      <a href="#" data-view="etl"><span class="ic">🔁</span>ETL/ELT</a>
       <a href="#" data-view="insights"><span class="ic">⚡</span>Insights</a>
     </div>
     <div class="grp" style="margin-top:14px">
@@ -629,6 +680,94 @@
         <div class="pill pending" id="statusPill">Ready to fetch</div>
       </section>
     </div>
+    </div>
+
+    <div id="view-etl" class="etl-pane hidden">
+      <div class="etl-pane-hd">
+        <h1>ETL / ELT</h1>
+        <p>Define a pipeline by selecting source and target connection details from the dropdowns.</p>
+      </div>
+
+      <section class="etl-card" aria-labelledby="etlFormTitle">
+        <div class="etl-hd"><h2 id="etlFormTitle">New pipeline</h2></div>
+        <div class="etl-bd">
+          <form id="etlForm" novalidate>
+            <div class="row2">
+              <div class="field">
+                <label for="etl_name">Pipeline name <span class="req">*</span></label>
+                <input id="etl_name" name="name" required maxlength="128" placeholder="e.g. Snowflake → Postgres nightly sync" />
+              </div>
+              <div class="field">
+                <label>Mode <span class="req">*</span></label>
+                <div class="etl-mode" role="radiogroup" aria-label="Pipeline mode">
+                  <label><input type="radio" name="etl_mode" value="ETL" checked /> ETL</label>
+                  <label><input type="radio" name="etl_mode" value="ELT" /> ELT</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="etl-endpoints">
+              <div class="etl-endpoint" aria-label="Source details">
+                <p class="ep-label">Source</p>
+                <div class="field">
+                  <label for="etl_source_type">Source connector <span class="req">*</span></label>
+                  <select id="etl_source_type" required>
+                    <option value="">Select source connector…</option>
+                  </select>
+                </div>
+                <div class="field" style="margin-bottom:0">
+                  <label for="etl_source_conn">Source connection <span class="req">*</span></label>
+                  <select id="etl_source_conn" required disabled>
+                    <option value="">Select a source connector first…</option>
+                  </select>
+                  <div class="help">Saved connections for the selected source connector.</div>
+                </div>
+              </div>
+
+              <div class="etl-arrow" aria-hidden="true">→</div>
+
+              <div class="etl-endpoint" aria-label="Target details">
+                <p class="ep-label">Target</p>
+                <div class="field">
+                  <label for="etl_target_type">Target connector <span class="req">*</span></label>
+                  <select id="etl_target_type" required>
+                    <option value="">Select target connector…</option>
+                  </select>
+                </div>
+                <div class="field" style="margin-bottom:0">
+                  <label for="etl_target_conn">Target connection <span class="req">*</span></label>
+                  <select id="etl_target_conn" required disabled>
+                    <option value="">Select a target connector first…</option>
+                  </select>
+                  <div class="help">Saved connections for the selected target connector.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="etl_notes">Notes</label>
+              <input id="etl_notes" name="notes" maxlength="512" placeholder="Optional context for this pipeline" />
+            </div>
+
+            <div class="err hidden" id="etlFormError"></div>
+            <div class="etl-ok hidden" id="etlFormOk"></div>
+            <div class="actions">
+              <button type="button" class="btn btn-ghost" id="etlResetBtn">Reset</button>
+              <button type="submit" class="btn btn-primary" id="etlSaveBtn">Save pipeline</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section class="etl-card" aria-labelledby="etlListTitle">
+        <div class="etl-hd">
+          <h2 id="etlListTitle">Saved pipelines</h2>
+          <span class="count" id="etlPipelineCount" style="font-size:12px;font-weight:700;color:#8a93a3;background:var(--gray-100);border-radius:999px;padding:3px 10px">0</span>
+        </div>
+        <div class="admin-table-wrap">
+          <div id="etlPipelinesBody"></div>
+        </div>
+      </section>
     </div>
 
     <div id="view-admin" class="admin-pane hidden">
@@ -949,6 +1088,42 @@ const CLOUDS = {
     saHelp: "Paste the certificate or credential JSON for the app registration.",
     saPlaceholder: '{"clientId":"...","tenantId":"...","certificate":"..."}'
   },
+  snowflake: {
+    id: "snowflake",
+    type: "snowflake",
+    name: "Snowflake",
+    short: "Snowflake",
+    logo: "../images/logos/snowflake.svg",
+    lead: "Provide account credentials and the Snowflake objects you want DataHive to use when fetching assets.",
+    accountLabel: "Account identifier",
+    accountPlaceholder: "xy12345.us-east-1 or orgname-account",
+    namePlaceholder: "Prod Snowflake — Analytics",
+    scopeLabel: "Database / schema scope",
+    scopePlaceholder: "ANALYTICS.*, RAW.PUBLIC (optional filter)",
+    scopeHelp: "Optional allow-list of databases, schemas, or object patterns.",
+    regions: [
+      "us-east-1", "us-west-2", "eu-west-1", "eu-central-1",
+      "ap-southeast-1", "ap-southeast-2", "ap-south-1", "east-us-2.azure", "west-europe.azure"
+    ],
+    auth: [
+      { value: "key_pair", label: "Key-pair (private key)" },
+      { value: "password", label: "Username + password" },
+      { value: "oauth2", label: "OAuth 2.0 (Client ID + Secret)" }
+    ],
+    apis: [
+      { value: "databases", label: "Databases & schemas", checked: true },
+      { value: "tables", label: "Tables & views", checked: true },
+      { value: "warehouses", label: "Warehouses", checked: true },
+      { value: "stages", label: "Stages" },
+      { value: "shares", label: "Shares" }
+    ],
+    saLabel: "Private key (PEM)",
+    saHelp: "Paste the RSA private key used for Snowflake key-pair authentication. Prefer key-pair over passwords.",
+    saPlaceholder: "-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----",
+    hint: "Configure Snowflake connectivity",
+    accessKeyLabel: "Username",
+    secretKeyLabel: "Password"
+  },
   upload: {
     id: "upload",
     type: "manualupload",
@@ -1194,15 +1369,22 @@ function configureForm(cloud){
   }
   $("#cf_api_key_label").innerHTML = 'API key <span class="req">*</span>';
 
+  const accessKeyLabel = cloud.accessKeyLabel || "Access key ID";
+  const secretKeyLabel = cloud.secretKeyLabel || "Secret access key";
+  const accessKeyLbl = document.querySelector('label[for="cf_access_key_id"]');
+  const secretKeyLbl = document.querySelector('label[for="cf_secret_access_key"]');
+  if (accessKeyLbl) accessKeyLbl.innerHTML = accessKeyLabel + ' <span class="req">*</span>';
+  if (secretKeyLbl) secretKeyLbl.innerHTML = secretKeyLabel + ' <span class="req">*</span>';
+
   toggleAuth(cloud.auth[0].value, cloud);
 }
 
 function toggleAuth(type, cloud = CLOUDS[activeCloud]){
   if (!cloud) return;
-  const showSa = type === "service_account" || type === "client_certificate";
+  const showSa = type === "service_account" || type === "client_certificate" || type === "key_pair";
   const showApiKey = type === "api_key";
   const showOauth = type === "oauth2" || type === "service_principal";
-  const showAccessKeys = type === "access_keys";
+  const showAccessKeys = type === "access_keys" || type === "password" || type === "key_pair";
   const showRole = type === "iam_role" || type === "assume_role";
 
   $("#group_sa").classList.toggle("hidden", !showSa);
@@ -1210,6 +1392,29 @@ function toggleAuth(type, cloud = CLOUDS[activeCloud]){
   $("#group_oauth").classList.toggle("hidden", !showOauth);
   $("#group_access_keys").classList.toggle("hidden", !showAccessKeys);
   $("#group_role_arn").classList.toggle("hidden", !showRole);
+
+  // Key-pair needs username + private key; password field optional (encrypted key passphrase).
+  const secretField = $("#cf_secret_access_key");
+  const secretWrap = secretField ? secretField.closest(".field") : null;
+  if (secretWrap) {
+    const optionalPassphrase = type === "key_pair";
+    secretWrap.classList.toggle("hidden", false);
+    const secretLbl = document.querySelector('label[for="cf_secret_access_key"]');
+    if (optionalPassphrase) {
+      if (secretLbl) secretLbl.innerHTML = 'Private key passphrase <span style="color:#8a93a3;font-weight:600">(optional)</span>';
+      secretField.placeholder = "Only if the PEM key is encrypted";
+    } else if (cloud.secretKeyLabel) {
+      if (secretLbl) secretLbl.innerHTML = cloud.secretKeyLabel + ' <span class="req">*</span>';
+      secretField.placeholder = "";
+    } else {
+      if (secretLbl) secretLbl.innerHTML = 'Secret access key <span class="req">*</span>';
+      secretField.placeholder = "";
+    }
+  }
+  if (type === "key_pair" || type === "password") {
+    const accessLbl = document.querySelector('label[for="cf_access_key_id"]');
+    if (accessLbl) accessLbl.innerHTML = (cloud.accessKeyLabel || "Username") + ' <span class="req">*</span>';
+  }
 }
 
 function openPanel(cloudId){
@@ -1417,6 +1622,15 @@ form.addEventListener("submit", async (e)=>{
       } catch {
         return showError("Service account JSON is not valid JSON.");
       }
+    } else if (authType === "key_pair") {
+      if (!$("#cf_access_key_id").value.trim()) {
+        return showError((cloud.accessKeyLabel || "Username") + " is required.");
+      }
+      const raw = $("#cf_sa_json").value.trim();
+      if (!raw) return showError("Private key (PEM) is required.");
+      if (!/BEGIN ([A-Z ]*PRIVATE KEY|RSA PRIVATE KEY)/.test(raw)) {
+        return showError("Private key should be PEM format (BEGIN PRIVATE KEY).");
+      }
     } else if (authType === "api_key") {
       if (!$("#cf_api_key").value.trim()) return showError("API key is required.");
     } else if (authType === "oauth2" || authType === "service_principal") {
@@ -1426,6 +1640,11 @@ form.addEventListener("submit", async (e)=>{
     } else if (authType === "access_keys") {
       if (!$("#cf_access_key_id").value.trim() || !$("#cf_secret_access_key").value.trim()) {
         return showError("Access key ID and secret access key are required.");
+      }
+    } else if (authType === "password") {
+      if (!$("#cf_access_key_id").value.trim() || !$("#cf_secret_access_key").value.trim()) {
+        return showError((cloud.accessKeyLabel || "Username") + " and " +
+          (cloud.secretKeyLabel || "password").toLowerCase() + " are required.");
       }
     } else if (authType === "iam_role" || authType === "assume_role") {
       if (!$("#cf_role_arn").value.trim()) return showError("IAM role ARN is required.");
@@ -1901,12 +2120,15 @@ document.querySelectorAll("nav.rail a[data-view]").forEach((a) => {
     $("#view-assets").classList.toggle("hidden", view !== "assets");
     $("#view-sql").classList.toggle("hidden", view !== "insights");
     $("#view-connectors").classList.toggle("hidden", view !== "connectors");
+    const etlView = $("#view-etl");
+    if (etlView) etlView.classList.toggle("hidden", view !== "etl");
     const adminView = $("#view-admin");
     if (adminView) adminView.classList.toggle("hidden", view !== "admin");
     if (view === "assets") initAssetsView();
     if (view === "insights" && typeof DataHiveSqlExplorer !== "undefined") {
       DataHiveSqlExplorer.init();
     }
+    if (view === "etl") initEtlView();
     if (view === "admin") initAdminView();
   });
 });
@@ -2478,6 +2700,280 @@ function initAdminView() {
   bindAdminEvents();
   setAdminTab(adminActiveTab || "groups");
   renderAdminAll();
+}
+
+/* ========== ETL / ELT pipelines ========== */
+const ETL_STORAGE_KEY = "datahive.etl.pipelines.v1";
+let etlConnections = [];
+let etlPipelines = [];
+let etlBound = false;
+
+function etlConnectorOptions() {
+  return Object.values(CLOUDS).filter((c) => c.mode !== "upload");
+}
+
+function loadEtlPipelines() {
+  try {
+    const raw = localStorage.getItem(ETL_STORAGE_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed)) return parsed;
+    }
+  } catch (_) { /* ignore */ }
+  return [];
+}
+
+function saveEtlPipelines() {
+  localStorage.setItem(ETL_STORAGE_KEY, JSON.stringify(etlPipelines));
+}
+
+function fillEtlConnectorSelects() {
+  const opts =
+    '<option value="">Select connector…</option>' +
+    etlConnectorOptions().map((c) =>
+      '<option value="' + escapeHtml(c.id) + '">' + escapeHtml(c.name) + "</option>"
+    ).join("");
+  const src = $("#etl_source_type");
+  const tgt = $("#etl_target_type");
+  if (src) {
+    const prev = src.value;
+    src.innerHTML = opts.replace("Select connector…", "Select source connector…");
+    if (prev) src.value = prev;
+  }
+  if (tgt) {
+    const prev = tgt.value;
+    tgt.innerHTML = opts.replace("Select connector…", "Select target connector…");
+    if (prev) tgt.value = prev;
+  }
+}
+
+function connectionLabel(conn) {
+  const name = conn.display_name || conn.account_id || "Untitled";
+  const region = conn.region ? " · " + conn.region : "";
+  const account = conn.account_id && conn.account_id !== conn.display_name
+    ? " (" + conn.account_id + ")"
+    : "";
+  return name + account + region;
+}
+
+function fillEtlConnectionSelect(selectEl, cloudId, selectedValue) {
+  if (!selectEl) return;
+  if (!cloudId) {
+    selectEl.disabled = true;
+    selectEl.innerHTML = '<option value="">Select a connector first…</option>';
+    return;
+  }
+  const matches = etlConnections.filter((c) =>
+    c.cloud === cloudId || c.connector_type === (CLOUDS[cloudId] && CLOUDS[cloudId].type)
+  );
+  if (!matches.length) {
+    selectEl.disabled = false;
+    selectEl.innerHTML =
+      '<option value="">No saved connections for this connector</option>' +
+      '<option value="__configure__">Configure in Connectors…</option>';
+    return;
+  }
+  selectEl.disabled = false;
+  selectEl.innerHTML =
+    '<option value="">Select connection…</option>' +
+    matches.map((c) => {
+      const key = c.id || (c.cloud + "|" + c.display_name + "|" + (c.saved_at || ""));
+      return (
+        '<option value="' + escapeHtml(key) + '"' +
+        (selectedValue === key ? " selected" : "") + ">" +
+        escapeHtml(connectionLabel(c)) + "</option>"
+      );
+    }).join("");
+}
+
+function findEtlConnection(key) {
+  if (!key) return null;
+  return etlConnections.find((c) => {
+    const id = c.id || (c.cloud + "|" + c.display_name + "|" + (c.saved_at || ""));
+    return id === key;
+  }) || null;
+}
+
+async function refreshEtlConnections() {
+  etlConnections = [];
+  if (typeof fetchRecentConnectors === "function") {
+    try {
+      const data = await fetchRecentConnectors(50);
+      etlConnections = (data && data.items) || [];
+    } catch (_) {
+      etlConnections = [];
+    }
+  }
+  // Also include session-local recently saved connectors if present.
+  try {
+    const local = JSON.parse(localStorage.getItem("datahive.recentConnectors") || "[]");
+    if (Array.isArray(local)) {
+      local.forEach((c) => {
+        const key = c.id || (c.cloud + "|" + c.display_name + "|" + (c.saved_at || ""));
+        if (!findEtlConnection(key)) etlConnections.push(c);
+      });
+    }
+  } catch (_) { /* ignore */ }
+
+  fillEtlConnectionSelect($("#etl_source_conn"), $("#etl_source_type").value, $("#etl_source_conn").value);
+  fillEtlConnectionSelect($("#etl_target_conn"), $("#etl_target_type").value, $("#etl_target_conn").value);
+}
+
+function showEtlError(msg) {
+  const err = $("#etlFormError");
+  const ok = $("#etlFormOk");
+  if (ok) { ok.classList.add("hidden"); ok.textContent = ""; }
+  if (err) { err.textContent = msg; err.classList.remove("hidden"); }
+}
+
+function showEtlOk(msg) {
+  const err = $("#etlFormError");
+  const ok = $("#etlFormOk");
+  if (err) { err.classList.add("hidden"); err.textContent = ""; }
+  if (ok) { ok.textContent = msg; ok.classList.remove("hidden"); }
+}
+
+function resetEtlForm() {
+  const form = $("#etlForm");
+  if (form) form.reset();
+  const etlRadio = document.querySelector('input[name="etl_mode"][value="ETL"]');
+  if (etlRadio) etlRadio.checked = true;
+  fillEtlConnectionSelect($("#etl_source_conn"), "", "");
+  fillEtlConnectionSelect($("#etl_target_conn"), "", "");
+  const err = $("#etlFormError");
+  const ok = $("#etlFormOk");
+  if (err) err.classList.add("hidden");
+  if (ok) ok.classList.add("hidden");
+}
+
+function renderEtlPipelines() {
+  const body = $("#etlPipelinesBody");
+  const count = $("#etlPipelineCount");
+  if (count) count.textContent = String(etlPipelines.length);
+  if (!body) return;
+  if (!etlPipelines.length) {
+    body.innerHTML = '<div class="admin-empty">No pipelines yet. Select source and target details above, then save.</div>';
+    return;
+  }
+  body.innerHTML =
+    '<table class="admin-table" aria-label="Saved pipelines">' +
+    "<thead><tr><th>Pipeline</th><th>Mode</th><th>Source</th><th>Target</th><th>Updated</th><th></th></tr></thead><tbody>" +
+    etlPipelines.map((p) => {
+      const srcCloud = CLOUDS[p.source_type];
+      const tgtCloud = CLOUDS[p.target_type];
+      const updated = p.updated_at ? new Date(p.updated_at).toLocaleString() : "—";
+      return (
+        "<tr>" +
+        '<td><div class="nm">' + escapeHtml(p.name) + "</div>" +
+        (p.notes ? '<div class="muted">' + escapeHtml(p.notes) + "</div>" : "") +
+        "</td>" +
+        "<td><span class=\"role-pill\">" + escapeHtml(p.mode) + "</span></td>" +
+        "<td><div class=\"nm\">" + escapeHtml((srcCloud && srcCloud.short) || p.source_type) + "</div>" +
+        '<div class="muted">' + escapeHtml(p.source_label || "—") + "</div></td>" +
+        "<td><div class=\"nm\">" + escapeHtml((tgtCloud && tgtCloud.short) || p.target_type) + "</div>" +
+        '<div class="muted">' + escapeHtml(p.target_label || "—") + "</div></td>" +
+        "<td>" + escapeHtml(updated) + "</td>" +
+        '<td><div class="admin-actions">' +
+        '<button type="button" class="btn-sm danger" data-etl-del="' + escapeHtml(p.id) + '">Delete</button>' +
+        "</div></td></tr>"
+      );
+    }).join("") +
+    "</tbody></table>";
+}
+
+function bindEtlEvents() {
+  if (etlBound) return;
+  etlBound = true;
+
+  $("#etl_source_type").addEventListener("change", (e) => {
+    fillEtlConnectionSelect($("#etl_source_conn"), e.target.value, "");
+  });
+  $("#etl_target_type").addEventListener("change", (e) => {
+    fillEtlConnectionSelect($("#etl_target_conn"), e.target.value, "");
+  });
+
+  $("#etl_source_conn").addEventListener("change", (e) => {
+    if (e.target.value === "__configure__") {
+      e.target.value = "";
+      document.querySelector('nav.rail a[data-view="connectors"]').click();
+    }
+  });
+  $("#etl_target_conn").addEventListener("change", (e) => {
+    if (e.target.value === "__configure__") {
+      e.target.value = "";
+      document.querySelector('nav.rail a[data-view="connectors"]').click();
+    }
+  });
+
+  $("#etlResetBtn").addEventListener("click", resetEtlForm);
+
+  $("#etlForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = ($("#etl_name").value || "").trim();
+    const modeEl = document.querySelector('input[name="etl_mode"]:checked');
+    const mode = modeEl ? modeEl.value : "ETL";
+    const sourceType = $("#etl_source_type").value;
+    const targetType = $("#etl_target_type").value;
+    const sourceConnKey = $("#etl_source_conn").value;
+    const targetConnKey = $("#etl_target_conn").value;
+    const notes = ($("#etl_notes").value || "").trim();
+
+    if (!name) return showEtlError("Pipeline name is required.");
+    if (!sourceType) return showEtlError("Select a source connector.");
+    if (!targetType) return showEtlError("Select a target connector.");
+    if (!sourceConnKey || sourceConnKey === "__configure__") {
+      return showEtlError("Select a source connection. Save one under Connectors if the list is empty.");
+    }
+    if (!targetConnKey || targetConnKey === "__configure__") {
+      return showEtlError("Select a target connection. Save one under Connectors if the list is empty.");
+    }
+    if (sourceConnKey === targetConnKey) {
+      return showEtlError("Source and target connections must be different.");
+    }
+
+    const srcConn = findEtlConnection(sourceConnKey);
+    const tgtConn = findEtlConnection(targetConnKey);
+    const now = new Date().toISOString();
+    etlPipelines.unshift({
+      id: "etl-" + Math.random().toString(36).slice(2, 9),
+      name,
+      mode,
+      source_type: sourceType,
+      target_type: targetType,
+      source_conn_id: sourceConnKey,
+      target_conn_id: targetConnKey,
+      source_label: srcConn ? connectionLabel(srcConn) : sourceConnKey,
+      target_label: tgtConn ? connectionLabel(tgtConn) : targetConnKey,
+      notes,
+      created_at: now,
+      updated_at: now
+    });
+    saveEtlPipelines();
+    renderEtlPipelines();
+    showEtlOk("Pipeline \"" + name + "\" saved.");
+    $("#etl_name").value = "";
+    $("#etl_notes").value = "";
+  });
+
+  $("#etlPipelinesBody").addEventListener("click", (e) => {
+    const del = e.target.closest("[data-etl-del]");
+    if (!del) return;
+    const id = del.dataset.etlDel;
+    const p = etlPipelines.find((x) => x.id === id);
+    if (!p) return;
+    if (!confirm('Delete pipeline "' + p.name + '"?')) return;
+    etlPipelines = etlPipelines.filter((x) => x.id !== id);
+    saveEtlPipelines();
+    renderEtlPipelines();
+  });
+}
+
+async function initEtlView() {
+  etlPipelines = loadEtlPipelines();
+  fillEtlConnectorSelects();
+  bindEtlEvents();
+  await refreshEtlConnections();
+  renderEtlPipelines();
 }
 </script>
 </body>
