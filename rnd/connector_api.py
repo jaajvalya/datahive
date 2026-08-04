@@ -301,7 +301,11 @@ def health(recent: int = 0) -> dict[str, Any]:
             payload["postgres_ok"] = False
             payload["postgres_error"] = str(pg_exc)
         if recent > 0:
-            payload["recent_connectors"] = _fetch_recent_connectors(recent)
+            try:
+                payload["recent_connectors"] = _fetch_recent_connectors(recent)
+            except Exception as recent_exc:  # noqa: BLE001
+                payload["recent_connectors"] = []
+                payload["recent_connectors_error"] = str(recent_exc)
         return payload
     except Exception as exc:  # noqa: BLE001
         raise HTTPException(status_code=503, detail=f"MongoDB unavailable: {exc}") from exc

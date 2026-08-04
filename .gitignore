@@ -2,3 +2,4 @@
 rnd/.venv/
 rnd/UPLOAD/*
 !rnd/UPLOAD/.gitkeep
+*.env.example

@@ -3,3 +3,4 @@ uvicorn[standard]>=0.32
 pymongo>=4.9
 python-multipart>=0.0.9
 psycopg[binary]>=3.2
+eval_type_backport>=0.2
