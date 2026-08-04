@@ -635,6 +635,13 @@ def table_structure(schema: str, table: str) -> dict[str, Any]:
             }
         )
 
+    columns = _overlay_asset_glossary(
+        columns,
+        database=postgres_database_name(),
+        schema=nsp,
+        table=table,
+    )
+
     return {
         "schema": nsp,
         "table": table,
@@ -643,6 +650,65 @@ def table_structure(schema: str, table: str) -> dict[str, Any]:
         "metadata": _parse_column_metadata(table_comment),
         "columns": columns,
     }
+
+
+def _overlay_asset_glossary(
+    columns: list[dict[str, Any]],
+    *,
+    database: str,
+    schema: str,
+    table: str,
+) -> list[dict[str, Any]]:
+    """Merge Mongo asset_glossary terms onto column metadata (glossary wins)."""
+    try:
+        import mongo_store
+
+        terms = mongo_store.find_asset_glossary_for_table(
+            database=database, schema=schema, table=table
+        )
+    except Exception as exc:  # noqa: BLE001
+        _log.warning("asset_glossary overlay skipped: %s", exc)
+        return columns
+    if not terms:
+        return columns
+
+    meta_keys = (
+        "business_name",
+        "description",
+        "business_definition",
+        "classification",
+        "sensitivity",
+        "source_system",
+        "owner",
+        "steward",
+    )
+    by_col: dict[str, dict[str, Any]] = {}
+    for term in terms:
+        key = str(term.get("column") or "").lower()
+        if not key:
+            continue
+        # Prefer postgres-platform terms when multiple connections match.
+        prev = by_col.get(key)
+        platform = str(term.get("platform") or "").lower()
+        if prev is None or platform in ("postgres", "postgresql", "pg"):
+            by_col[key] = term
+
+    for col in columns:
+        term = by_col.get(str(col.get("name") or "").lower())
+        if not term:
+            continue
+        meta = dict(col.get("metadata") or {})
+        term_meta = term.get("metadata") if isinstance(term.get("metadata"), dict) else {}
+        for key in meta_keys:
+            val = term.get(key) or term_meta.get(key)
+            if val not in (None, ""):
+                meta[key] = val
+        for key in ("connection", "platform", "database"):
+            if term.get(key):
+                meta[key] = term[key]
+        col["metadata"] = meta or None
+        col["glossary_registry"] = True
+    return columns
 
 
 def _parse_column_metadata(comment: Any) -> dict[str, Any] | None:
@@ -681,6 +747,9 @@ _GLOSSARY_HEADER_ALIASES = {
     "db": "database",
     "column_name": "column",
     "col": "column",
+    "cloud": "platform",
+    "connector": "connection",
+    "connector_name": "connection",
 }
 
 
@@ -870,148 +939,10 @@ def _set_column_comment(cur: Any, schema: str, table: str, column: str, comment:
 
 
 def apply_glossary_file(path: Path | str) -> dict[str, Any]:
-    """
-    Apply glossary spreadsheet rows as PostgreSQL column comments.
+    """Apply glossary for all connectors via glossary_store (Mongo registry + Postgres sync)."""
+    import glossary_store
 
-    Identifier columns: connection, database, schema, table, column
-    Metadata columns: business_name, description, business_definition,
-    classification, sensitivity, source_system, owner, steward
-    """
-    file_path = Path(path)
-    rows = _read_glossary_rows(file_path)
-    if not rows:
-        return {
-            "rows_total": 0,
-            "updated": 0,
-            "skipped": 0,
-            "failed": 0,
-            "errors": ["No data rows found in glossary file."],
-            "updates": [],
-        }
-
-    # Validate required headers exist in at least one usable form.
-    present = set()
-    for row in rows:
-        present.update(k for k, v in row.items() if k)
-    missing_headers = [h for h in ("schema", "table", "column") if h not in present]
-    if missing_headers:
-        return {
-            "rows_total": len(rows),
-            "updated": 0,
-            "skipped": 0,
-            "failed": len(rows),
-            "errors": [
-                "Missing required columns: "
-                + ", ".join(missing_headers)
-                + ". Expected identifiers: connection, database, schema, table, column."
-            ],
-            "updates": [],
-        }
-
-    updated = 0
-    skipped = 0
-    failed = 0
-    errors: list[str] = []
-    updates: list[dict[str, Any]] = []
-    # Cache connections per database name
-    conn_cache: dict[str, Any] = {}
-
-    try:
-        for idx, row in enumerate(rows, start=2):  # 1-based sheet rows; header is row 1
-            connection = row.get("connection", "")
-            database = row.get("database", "") or postgres_database_name()
-            schema = row.get("schema", "")
-            table = row.get("table", "")
-            column = row.get("column", "")
-
-            if not schema or not table or not column:
-                skipped += 1
-                errors.append(f"Row {idx}: skipped — schema/table/column are required.")
-                continue
-
-            meta: dict[str, Any] = {}
-            for key in GLOSSARY_META_FIELDS:
-                val = row.get(key, "")
-                if val != "":
-                    meta[key] = val
-            if connection:
-                meta["connection"] = connection
-            if database:
-                meta["database"] = database
-            if not meta:
-                skipped += 1
-                errors.append(f"Row {idx}: skipped — no metadata fields to apply.")
-                continue
-
-            try:
-                if database not in conn_cache:
-                    conn_cache[database] = _postgres_connect_to(database)
-                    conn_cache[database].autocommit = True
-                conn = conn_cache[database]
-                with conn.cursor() as cur:
-                    resolved = _column_exists(cur, schema, table, column)
-                    if not resolved:
-                        failed += 1
-                        hint = _suggest_column_target(cur, schema, table, column)
-                        msg = (
-                            f"Row {idx}: column not found — "
-                            f"{database}.{schema}.{table}.{column}"
-                        )
-                        if hint:
-                            msg += f" ({hint})"
-                        errors.append(msg)
-                        continue
-                    nsp, rel, att = resolved
-                    # Preserve unknown keys from an existing JSON comment.
-                    cur.execute(
-                        """
-                        SELECT pg_catalog.col_description(c.oid, a.attnum)
-                        FROM pg_catalog.pg_attribute a
-                        JOIN pg_catalog.pg_class c ON c.oid = a.attrelid
-                        JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
-                        WHERE n.nspname = %s AND c.relname = %s AND a.attname = %s
-                        """,
-                        (nsp, rel, att),
-                    )
-                    existing_raw = cur.fetchone()
-                    existing = _parse_column_metadata(existing_raw[0] if existing_raw else None) or {}
-                    if not isinstance(existing, dict):
-                        existing = {}
-                    merged = dict(existing)
-                    merged.update(meta)
-                    comment = json.dumps(merged, ensure_ascii=False)
-                    _set_column_comment(cur, nsp, rel, att, comment)
-                updated += 1
-                updates.append(
-                    {
-                        "row": idx,
-                        "connection": connection,
-                        "database": database,
-                        "schema": nsp,
-                        "table": rel,
-                        "column": att,
-                    }
-                )
-            except Exception as exc:  # noqa: BLE001
-                failed += 1
-                errors.append(
-                    f"Row {idx}: failed — {database}.{schema}.{table}.{column}: {exc}"
-                )
-    finally:
-        for conn in conn_cache.values():
-            try:
-                conn.close()
-            except Exception:  # noqa: BLE001
-                pass
-
-    return {
-        "rows_total": len(rows),
-        "updated": updated,
-        "skipped": skipped,
-        "failed": failed,
-        "errors": errors[:50],
-        "updates": updates[:100],
-    }
+    return glossary_store.apply_glossary_file(path)
 
 
 _SQL_COMMENT_BLOCK = re.compile(r"/\*.*?\*/", re.DOTALL)

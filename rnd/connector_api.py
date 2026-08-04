@@ -35,6 +35,8 @@ _REPO_ROOT = _RND_DIR.parent
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
+import asset_catalog  # noqa: E402
+import glossary_store  # noqa: E402
 import mongo_store  # noqa: E402
 import postgres_store  # noqa: E402
 
@@ -57,6 +59,7 @@ COLLECTION = mongo_store.connectors_collection_name()
 CONNECTION_LOGS_COLLECTION = mongo_store.connection_logs_collection_name()
 QUERY_LOGS_COLLECTION = mongo_store.query_logs_collection_name()
 GLOSSARY_UPLOAD_LOG_COLLECTION = mongo_store.glossary_upload_logs_collection_name()
+ASSET_GLOSSARY_COLLECTION = mongo_store.asset_glossary_collection_name()
 
 _CONNECTION_LOG_PATH_PREFIXES = (
     "/api/connectors",
@@ -99,6 +102,13 @@ def _resolve_user(request: Request | None, explicit: str | None = None) -> str:
         if isinstance(state_user, str) and state_user.strip():
             return state_user.strip()
     return "unknown"
+
+
+def _resolve_role(request: Request | None) -> str | None:
+    if request is None:
+        return None
+    role = request.headers.get("X-DataHive-Role")
+    return role.strip() if role and role.strip() else None
 
 
 def log_connection_failure(
@@ -326,6 +336,7 @@ def health(recent: int = 0) -> dict[str, Any]:
             "connection_logs_collection": CONNECTION_LOGS_COLLECTION,
             "query_logs_collection": QUERY_LOGS_COLLECTION,
             "glossary_upload_log_collection": GLOSSARY_UPLOAD_LOG_COLLECTION,
+            "asset_glossary_collection": ASSET_GLOSSARY_COLLECTION,
             "sql_query_api": True,
             "query_log_api": True,
             "credentials_encrypted": True,
@@ -357,18 +368,70 @@ def health(recent: int = 0) -> dict[str, Any]:
         raise HTTPException(status_code=503, detail=f"MongoDB unavailable: {exc}") from exc
 
 
+@app.get("/api/assets/connectors")
+def assets_connectors(request: Request) -> dict[str, Any]:
+    """Connectors the current user may browse (privilege-aware)."""
+    user = _resolve_user(request)
+    role = _resolve_role(request)
+    try:
+        items = asset_catalog.list_accessible_connectors(user, role)
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(status_code=503, detail=f"Connector list failed: {exc}") from exc
+    return {
+        "ok": True,
+        "user": user,
+        "admin": asset_catalog.user_is_admin(user, role),
+        "count": len(items),
+        "items": items,
+    }
+
+
+@app.get("/api/assets/catalog")
+def assets_catalog(
+    request: Request,
+    connector_id: str | None = None,
+) -> dict[str, Any]:
+    """Unified assets across accessible connectors, optionally filtered to one."""
+    user = _resolve_user(request)
+    role = _resolve_role(request)
+    try:
+        return asset_catalog.build_catalog(
+            user, role=role, connector_id=connector_id or "all"
+        )
+    except ValueError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(status_code=503, detail=f"Asset catalog failed: {exc}") from exc
+
+
 @app.get("/api/assets/relevant")
 def assets_relevant(
     request: Request,
     tab: str = "recently_verified",
     type: str | None = None,
+    connector_id: str | None = None,
 ) -> dict[str, Any]:
     if tab not in ("recently_verified", "my_drafts"):
         raise HTTPException(status_code=422, detail="invalid tab")
+    user = _resolve_user(request)
+    role = _resolve_role(request)
     try:
-        return postgres_store.relevant_assets(_resolve_user(request), tab, type)
+        if connector_id and connector_id not in ("all", asset_catalog.LOCAL_POSTGRES_ID):
+            catalog = asset_catalog.build_catalog(
+                user, role=role, connector_id=connector_id
+            )
+            items = catalog["items"]
+            if type:
+                items = [i for i in items if str(i.get("type") or "").lower() == type.lower()]
+            return {
+                "tab": tab,
+                "items": items[:50],
+                "counts": catalog.get("counts") or {},
+                "connector_id": connector_id,
+            }
+        return postgres_store.relevant_assets(user, tab, type)
     except Exception as exc:  # noqa: BLE001
-        raise HTTPException(status_code=503, detail=f"PostgreSQL read failed: {exc}") from exc
+        raise HTTPException(status_code=503, detail=f"Assets relevant failed: {exc}") from exc
 
 
 @app.get("/api/assets/search")
@@ -377,63 +440,246 @@ def assets_search(
     q: str = "",
     limit: int = 10,
     offset: int = 0,
+    connector_id: str | None = None,
 ) -> dict[str, Any]:
+    user = _resolve_user(request)
+    role = _resolve_role(request)
+    query = (q or "").strip().lower()
+    capped = min(max(limit, 1), 50)
     try:
-        return postgres_store.search_assets(
-            _resolve_user(request), q, limit=limit, offset=offset
+        catalog = asset_catalog.build_catalog(
+            user, role=role, connector_id=connector_id or "all"
         )
+        items = catalog["items"]
+        if query:
+            items = [
+                i
+                for i in items
+                if query in str(i.get("name") or "").lower()
+                or query in str(i.get("schema") or "").lower()
+                or query in str(i.get("crumb") or "").lower()
+                or query in str(i.get("connector_name") or "").lower()
+                or query in str(i.get("platform") or "").lower()
+            ]
+        page = items[offset : offset + capped]
+        # Also include classic Postgres hits when browsing all / local postgres.
+        if (not connector_id or connector_id in ("all", asset_catalog.LOCAL_POSTGRES_ID)) and query:
+            try:
+                pg = postgres_store.search_assets(user, q, limit=capped, offset=0)
+                for hit in pg.get("items") or []:
+                    hit = dict(hit)
+                    hit.setdefault("connector_id", asset_catalog.LOCAL_POSTGRES_ID)
+                    hit.setdefault("connector_name", "Local Postgres")
+                    hit.setdefault("platform", "postgres")
+                    page.append(hit)
+            except Exception:  # noqa: BLE001
+                pass
+        # de-dupe by crumb+connector
+        seen: set[str] = set()
+        unique: list[dict[str, Any]] = []
+        for hit in page:
+            key = f"{hit.get('connector_id')}|{hit.get('crumb') or hit.get('name')}"
+            if key in seen:
+                continue
+            seen.add(key)
+            unique.append(hit)
+        return {
+            "q": q,
+            "count": len(unique),
+            "items": unique[:capped],
+            "connector_id": connector_id or "all",
+        }
     except Exception as exc:  # noqa: BLE001
-        raise HTTPException(status_code=503, detail=f"PostgreSQL search failed: {exc}") from exc
+        raise HTTPException(status_code=503, detail=f"Asset search failed: {exc}") from exc
 
 
 @app.get("/api/assets/discover")
-def assets_discover(request: Request, limit: int = 100) -> dict[str, Any]:
+def assets_discover(
+    request: Request,
+    limit: int = 100,
+    connector_id: str | None = None,
+) -> dict[str, Any]:
     capped = min(max(limit, 1), 500)
+    user = _resolve_user(request)
+    role = _resolve_role(request)
     try:
-        return postgres_store.discover_assets(_resolve_user(request), limit=capped)
+        catalog = asset_catalog.build_catalog(
+            user, role=role, connector_id=connector_id or "all"
+        )
+        return {
+            "items": catalog["items"][:capped],
+            "counts": catalog.get("counts") or {},
+            "schemas": catalog.get("schemas") or [],
+            "connectors": catalog.get("connectors") or [],
+            "connector_id": catalog.get("selected_connector_id"),
+            "asset_count": catalog.get("asset_count"),
+        }
     except Exception as exc:  # noqa: BLE001
-        raise HTTPException(status_code=503, detail=f"PostgreSQL discover failed: {exc}") from exc
+        raise HTTPException(status_code=503, detail=f"Asset discover failed: {exc}") from exc
 
 
 @app.get("/api/assets/schemas")
-def assets_schemas() -> dict[str, Any]:
+def assets_schemas(
+    request: Request,
+    connector_id: str | None = None,
+) -> dict[str, Any]:
+    user = _resolve_user(request)
+    role = _resolve_role(request)
     try:
+        if not connector_id or connector_id == "all":
+            catalog = asset_catalog.build_catalog(user, role=role, connector_id="all")
+            return {
+                "items": catalog.get("schemas") or [],
+                "configured_schemas": list(postgres_store.asset_schemas()),
+                "counts": catalog.get("counts") or {},
+                "connectors": catalog.get("connectors") or [],
+                "connector_count": catalog.get("connector_count"),
+                "asset_count": catalog.get("asset_count"),
+                "selected_connector_id": "all",
+            }
+        if connector_id == asset_catalog.LOCAL_POSTGRES_ID:
+            return {
+                "items": postgres_store.list_schemas(),
+                "configured_schemas": list(postgres_store.asset_schemas()),
+                "counts": postgres_store.catalog_counts(),
+                "selected_connector_id": connector_id,
+            }
+        catalog = asset_catalog.build_catalog(
+            user, role=role, connector_id=connector_id
+        )
         return {
-            "items": postgres_store.list_schemas(),
-            "configured_schemas": list(postgres_store.asset_schemas()),
-            "counts": postgres_store.catalog_counts(),
+            "items": catalog.get("schemas") or [],
+            "configured_schemas": [],
+            "counts": catalog.get("counts") or {},
+            "selected_connector_id": connector_id,
+            "asset_count": catalog.get("asset_count"),
         }
+    except ValueError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
     except Exception as exc:  # noqa: BLE001
-        raise HTTPException(status_code=503, detail=f"PostgreSQL schemas failed: {exc}") from exc
+        raise HTTPException(status_code=503, detail=f"Asset schemas failed: {exc}") from exc
 
 
 @app.get("/api/assets/counts")
-def assets_counts() -> dict[str, Any]:
+def assets_counts(
+    request: Request,
+    connector_id: str | None = None,
+) -> dict[str, Any]:
+    user = _resolve_user(request)
+    role = _resolve_role(request)
     try:
-        return {"counts": postgres_store.catalog_counts()}
+        catalog = asset_catalog.build_catalog(
+            user, role=role, connector_id=connector_id or "all"
+        )
+        return {
+            "counts": catalog.get("counts") or {},
+            "connector_count": catalog.get("connector_count"),
+            "asset_count": catalog.get("asset_count"),
+            "selected_connector_id": catalog.get("selected_connector_id"),
+        }
     except Exception as exc:  # noqa: BLE001
-        raise HTTPException(status_code=503, detail=f"PostgreSQL counts failed: {exc}") from exc
+        raise HTTPException(status_code=503, detail=f"Asset counts failed: {exc}") from exc
 
 
 @app.get("/api/assets/tables")
-def assets_tables(schema: str) -> dict[str, Any]:
+def assets_tables(
+    request: Request,
+    schema: str,
+    connector_id: str | None = None,
+) -> dict[str, Any]:
+    user = _resolve_user(request)
+    role = _resolve_role(request)
     try:
-        items = postgres_store.list_tables(schema)
-        return {"schema": schema, "count": len(items), "items": items}
+        if not connector_id or connector_id in ("all", asset_catalog.LOCAL_POSTGRES_ID):
+            # For "all", still list Postgres tables for the selected schema when it exists there.
+            if not connector_id or connector_id == asset_catalog.LOCAL_POSTGRES_ID:
+                items = postgres_store.list_tables(schema)
+                return {
+                    "schema": schema,
+                    "count": len(items),
+                    "items": items,
+                    "connector_id": asset_catalog.LOCAL_POSTGRES_ID,
+                    "structure_supported": True,
+                }
+            catalog = asset_catalog.build_catalog(user, role=role, connector_id="all")
+            items = [
+                {
+                    "name": a["name"],
+                    "type": a.get("type") or "Table",
+                    "connector_id": a.get("connector_id"),
+                    "connector_name": a.get("connector_name"),
+                    "platform": a.get("platform"),
+                    "structure_supported": a.get("structure_supported"),
+                    "crumb": a.get("crumb"),
+                }
+                for a in catalog["items"]
+                if str(a.get("schema") or "").lower() == schema.lower()
+            ]
+            return {
+                "schema": schema,
+                "count": len(items),
+                "items": items,
+                "connector_id": "all",
+                "structure_supported": any(i.get("structure_supported") for i in items),
+            }
+
+        catalog = asset_catalog.build_catalog(
+            user, role=role, connector_id=connector_id
+        )
+        items = [
+            {
+                "name": a["name"],
+                "type": a.get("type") or "Table",
+                "connector_id": a.get("connector_id"),
+                "connector_name": a.get("connector_name"),
+                "platform": a.get("platform"),
+                "structure_supported": a.get("structure_supported"),
+                "crumb": a.get("crumb"),
+                "columns": a.get("columns"),
+            }
+            for a in catalog["items"]
+            if str(a.get("schema") or "").lower() == schema.lower()
+        ]
+        return {
+            "schema": schema,
+            "count": len(items),
+            "items": items,
+            "connector_id": connector_id,
+            "structure_supported": any(i.get("structure_supported") for i in items),
+        }
     except ValueError as exc:
         raise HTTPException(status_code=422, detail=str(exc)) from exc
     except Exception as exc:  # noqa: BLE001
-        raise HTTPException(status_code=503, detail=f"PostgreSQL tables failed: {exc}") from exc
+        raise HTTPException(status_code=503, detail=f"Asset tables failed: {exc}") from exc
 
 
 @app.get("/api/assets/structure")
-def assets_structure(schema: str, table: str) -> dict[str, Any]:
+def assets_structure(
+    request: Request,
+    schema: str,
+    table: str,
+    connector_id: str | None = None,
+) -> dict[str, Any]:
+    user = _resolve_user(request)
+    role = _resolve_role(request)
     try:
-        return postgres_store.table_structure(schema, table)
+        if not connector_id or connector_id in ("all", asset_catalog.LOCAL_POSTGRES_ID):
+            structure = postgres_store.table_structure(schema, table)
+            structure["connector_id"] = asset_catalog.LOCAL_POSTGRES_ID
+            structure["connector_name"] = "Local Postgres"
+            structure["platform"] = "postgres"
+            return structure
+        return asset_catalog.connector_structure(
+            user,
+            role=role,
+            connector_id=connector_id,
+            schema=schema,
+            table=table,
+        )
     except ValueError as exc:
         raise HTTPException(status_code=422, detail=str(exc)) from exc
     except Exception as exc:  # noqa: BLE001
-        raise HTTPException(status_code=503, detail=f"PostgreSQL structure failed: {exc}") from exc
+        raise HTTPException(status_code=503, detail=f"Asset structure failed: {exc}") from exc
 
 
 @app.post("/api/sql/query")
@@ -611,6 +857,21 @@ def recent_glossaries(limit: int = 20) -> dict[str, Any]:
     }
 
 
+@app.get("/api/glossary/terms")
+def recent_glossary_terms(limit: int = 50) -> dict[str, Any]:
+    """Unified asset glossary terms across AWS / Azure / GCP / Snowflake / Postgres."""
+    try:
+        items = mongo_store.recent_asset_glossary_terms(limit)
+    except RuntimeError as exc:
+        raise HTTPException(status_code=503, detail=str(exc)) from exc
+    return {
+        "ok": True,
+        "items": items,
+        "db": DB_NAME,
+        "collection": ASSET_GLOSSARY_COLLECTION,
+    }
+
+
 @app.post("/api/glossary/upload")
 async def upload_glossary(
     request: Request,
@@ -635,7 +896,7 @@ async def upload_glossary(
 
     term_count = _count_glossary_terms(dest)
     try:
-        apply_result = postgres_store.apply_glossary_file(dest)
+        apply_result = glossary_store.apply_glossary_file(dest)
     except Exception as exc:  # noqa: BLE001
         dest.unlink(missing_ok=True)
         raise HTTPException(
@@ -646,10 +907,14 @@ async def upload_glossary(
     user = _resolve_user(request)
     apply_summary = {
         "updated": apply_result.get("updated", 0),
+        "registry_updated": apply_result.get("registry_updated", 0),
+        "source_synced": apply_result.get("source_synced", 0),
         "skipped": apply_result.get("skipped", 0),
         "failed": apply_result.get("failed", 0),
         "rows_total": apply_result.get("rows_total", 0),
+        "platforms": apply_result.get("platforms") or [],
         "errors": apply_result.get("errors") or [],
+        "collection": apply_result.get("collection") or ASSET_GLOSSARY_COLLECTION,
     }
     doc = {
         "event": "glossary.upload",
@@ -677,6 +942,7 @@ async def upload_glossary(
         "id": inserted_id,
         "db": DB_NAME,
         "collection": GLOSSARY_UPLOAD_LOG_COLLECTION,
+        "asset_glossary_collection": ASSET_GLOSSARY_COLLECTION,
         "file_name": original_name,
         "stored_file_name": stored_name,
         "upload_relative_path": doc["upload_relative_path"],

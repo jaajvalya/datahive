@@ -5,11 +5,13 @@ Collections (override via repo-root `.env`, URI from MONGO_URI):
   - connection_log          connect / save outcomes
   - query_log               Insights SQL executions
   - glossary_upload_log     glossary file uploads
+  - asset_glossary          column business metadata (all connectors)
 """
 from __future__ import annotations
 
 import logging
 import os
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Literal
@@ -89,6 +91,12 @@ def glossary_upload_logs_collection_name() -> str:
     return glossary_collection_name()
 
 
+def asset_glossary_collection_name() -> str:
+    """Unified business metadata for columns across all connectors."""
+    load_repo_dotenv()
+    return os.environ.get("MONGO_ASSET_GLOSSARY_COLLECTION", "asset_glossary")
+
+
 def database_name() -> str:
     global _db_name
     if _db_name is None:
@@ -125,6 +133,150 @@ def glossary_collection() -> Collection:
 
 def glossary_upload_logs_collection() -> Collection:
     return glossary_collection()
+
+
+def asset_glossary_collection() -> Collection:
+    return _get_client()[database_name()][asset_glossary_collection_name()]
+
+
+def _ensure_asset_glossary_indexes() -> None:
+    try:
+        asset_glossary_collection().create_index(
+            [
+                ("connection_key", 1),
+                ("database", 1),
+                ("schema", 1),
+                ("table", 1),
+                ("column", 1),
+            ],
+            unique=True,
+            name="asset_glossary_identity",
+        )
+    except PyMongoError as exc:
+        _log.warning("asset_glossary index ensure failed: %s", exc)
+
+
+def find_connector_by_name(name: str) -> dict[str, Any] | None:
+    """Match connector_dtls by display_name, connection_id, or id string."""
+    text = (name or "").strip()
+    if not text:
+        return None
+    coll = connectors_collection()
+    try:
+        from bson import ObjectId
+        from bson.errors import InvalidId
+
+        try:
+            doc = coll.find_one({"_id": ObjectId(text)})
+            if doc:
+                item = dict(doc)
+                item["id"] = str(item.pop("_id"))
+                return item
+        except InvalidId:
+            pass
+
+        pattern = f"^{re.escape(text)}$"
+        doc = coll.find_one(
+            {
+                "$or": [
+                    {"display_name": {"$regex": pattern, "$options": "i"}},
+                    {"connection_id": {"$regex": pattern, "$options": "i"}},
+                    {"account_id": {"$regex": pattern, "$options": "i"}},
+                ]
+            }
+        )
+    except PyMongoError as exc:
+        raise RuntimeError(f"MongoDB connector lookup failed: {exc}") from exc
+    if not doc:
+        return None
+    item = dict(doc)
+    item["id"] = str(item.pop("_id"))
+    return item
+
+
+def upsert_asset_glossary_term(doc: dict[str, Any]) -> str:
+    """Upsert one column glossary term into asset_glossary."""
+    _ensure_asset_glossary_indexes()
+    connection_key = str(doc.get("connection_key") or doc.get("connection") or "").strip().lower()
+    database = str(doc.get("database") or "").strip()
+    schema = str(doc.get("schema") or "").strip()
+    table = str(doc.get("table") or "").strip()
+    column = str(doc.get("column") or "").strip()
+    if not schema or not table or not column:
+        raise ValueError("schema, table, and column are required for asset_glossary")
+
+    now = datetime.now(timezone.utc).isoformat()
+    payload = dict(doc)
+    payload["connection_key"] = connection_key or "postgres"
+    payload["database"] = database
+    payload["schema"] = schema
+    payload["table"] = table
+    payload["column"] = column
+    payload["updated_at"] = now
+    payload.setdefault("saved_at", now)
+
+    filt = {
+        "connection_key": payload["connection_key"],
+        "database": database,
+        "schema": schema,
+        "table": table,
+        "column": column,
+    }
+    try:
+        result = asset_glossary_collection().update_one(
+            filt, {"$set": payload}, upsert=True
+        )
+    except PyMongoError as exc:
+        raise RuntimeError(f"MongoDB asset_glossary write failed: {exc}") from exc
+    if result.upserted_id is not None:
+        return str(result.upserted_id)
+    existing = asset_glossary_collection().find_one(filt, {"_id": 1})
+    return str(existing["_id"]) if existing else ""
+
+
+def find_asset_glossary_for_table(
+    *,
+    database: str,
+    schema: str,
+    table: str,
+    connection: str | None = None,
+) -> list[dict[str, Any]]:
+    """Return glossary terms for a table (optionally scoped to one connection)."""
+    query: dict[str, Any] = {
+        "database": {"$regex": f"^{re.escape(database or '')}$", "$options": "i"},
+        "schema": {"$regex": f"^{re.escape(schema)}$", "$options": "i"},
+        "table": {"$regex": f"^{re.escape(table)}$", "$options": "i"},
+    }
+    if connection and connection.strip():
+        query["connection_key"] = connection.strip().lower()
+    try:
+        cursor = asset_glossary_collection().find(query).sort("column", 1)
+    except PyMongoError as exc:
+        raise RuntimeError(f"MongoDB asset_glossary read failed: {exc}") from exc
+    items: list[dict[str, Any]] = []
+    for doc in cursor:
+        item = dict(doc)
+        item["id"] = str(item.pop("_id"))
+        items.append(item)
+    return items
+
+
+def recent_asset_glossary_terms(limit: int = 50) -> list[dict[str, Any]]:
+    try:
+        cursor = (
+            asset_glossary_collection()
+            .find({})
+            .sort([("updated_at", -1), ("_id", -1)])
+            .limit(max(1, min(limit, 200)))
+        )
+    except PyMongoError as exc:
+        raise RuntimeError(f"MongoDB asset_glossary read failed: {exc}") from exc
+    items: list[dict[str, Any]] = []
+    for doc in cursor:
+        item = dict(doc)
+        item["id"] = str(item.pop("_id"))
+        items.append(item)
+    return items
 
 
 def insert_glossary_document(doc: dict[str, Any]) -> str:

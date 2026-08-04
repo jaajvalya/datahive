@@ -1,5 +1,5 @@
 /**
- * Assets search & discovery — PostgreSQL via connector API (POSTGRES_* in repo `.env`).
+ * Assets search & discovery — multi-connector catalog via connector API.
  */
 (function (global) {
   "use strict";
@@ -21,8 +21,27 @@
     return name || "Admin";
   }
 
+  function roleHeader() {
+    if (typeof global.getDataHiveUserRole === "function") {
+      return global.getDataHiveUserRole() || "admin";
+    }
+    // Default Admin chip → full access until a signed-in user model exists.
+    var name = userHeader().toLowerCase();
+    if (name === "admin" || name === "administrator") return "admin";
+    return "editor";
+  }
+
   function headers() {
-    return { "X-DataHive-User": userHeader() };
+    return {
+      "X-DataHive-User": userHeader(),
+      "X-DataHive-Role": roleHeader(),
+    };
+  }
+
+  function withConnector(path, connectorId) {
+    if (!connectorId) return path;
+    var sep = path.indexOf("?") >= 0 ? "&" : "?";
+    return path + sep + "connector_id=" + encodeURIComponent(connectorId);
   }
 
   async function fetchJson(path) {
@@ -52,45 +71,60 @@
     return text ? JSON.parse(text) : {};
   }
 
-  async function summary() {
+  async function summary(connectorId) {
     try {
-      return await fetchJson("/api/assets/schemas");
+      return await fetchJson(withConnector("/api/assets/schemas", connectorId || "all"));
     } catch (err) {
       if (err && err.httpStatus === 404) {
-        return fetchJson("/api/assets/counts");
+        return fetchJson(withConnector("/api/assets/counts", connectorId || "all"));
       }
       throw err;
     }
   }
 
   global.DataHiveAssets = {
-    relevant: function (tab, type) {
+    connectors: function () {
+      return fetchJson("/api/assets/connectors");
+    },
+    catalog: function (connectorId) {
+      return fetchJson(withConnector("/api/assets/catalog", connectorId || "all"));
+    },
+    relevant: function (tab, type, connectorId) {
       var q = new URLSearchParams({ tab: tab || "recently_verified" });
       if (type) q.set("type", type);
+      if (connectorId) q.set("connector_id", connectorId);
       return fetchJson("/api/assets/relevant?" + q.toString());
     },
-    search: function (query) {
-      return fetchJson(
-        "/api/assets/search?q=" + encodeURIComponent(query || "")
-      );
+    search: function (query, connectorId) {
+      var q = new URLSearchParams({ q: query || "" });
+      if (connectorId) q.set("connector_id", connectorId);
+      return fetchJson("/api/assets/search?" + q.toString());
     },
-    discover: function () {
-      return fetchJson("/api/assets/discover?limit=200");
+    discover: function (connectorId) {
+      return fetchJson(withConnector("/api/assets/discover?limit=200", connectorId || "all"));
     },
     summary: summary,
-    schemas: function () {
-      return summary();
+    schemas: function (connectorId) {
+      return summary(connectorId);
     },
-    tables: function (schema) {
-      return fetchJson("/api/assets/tables?schema=" + encodeURIComponent(schema));
-    },
-    structure: function (schema, table) {
+    tables: function (schema, connectorId) {
       return fetchJson(
-        "/api/assets/structure?schema=" +
-          encodeURIComponent(schema) +
-          "&table=" +
-          encodeURIComponent(table)
+        withConnector(
+          "/api/assets/tables?schema=" + encodeURIComponent(schema),
+          connectorId
+        )
       );
-    }
+    },
+    structure: function (schema, table, connectorId) {
+      return fetchJson(
+        withConnector(
+          "/api/assets/structure?schema=" +
+            encodeURIComponent(schema) +
+            "&table=" +
+            encodeURIComponent(table),
+          connectorId
+        )
+      );
+    },
   };
 })(window);

@@ -322,6 +322,28 @@
   /* ---------- Assets: schema/table drill-down ---------- */
   .asset-picker { display:flex; flex-direction:row; flex-wrap:wrap; gap:16px; margin:4px 0 20px; }
   .asset-picker-block { flex:1; min-width:220px; padding:14px 16px; border:1px solid var(--gray-200); border-radius:10px; background:#fafbfd; }
+  .asset-picker-block.connector-block { flex:1 1 100%; min-width:100%; }
+  .asset-conn-help { margin:8px 0 0; font-size:12px; color:#8a93a3; }
+  .asset-browser {
+    border:1px solid var(--gray-200); border-radius:10px; margin:0 0 18px; max-height:260px; overflow:auto;
+    background:#fff;
+  }
+  .asset-browser .ab-row {
+    display:flex; align-items:center; gap:10px; padding:10px 12px; border-bottom:1px solid var(--gray-200);
+    cursor:pointer; text-align:left; width:100%; appearance:none; background:#fff; border-left:none; border-right:none; border-top:none;
+    font:inherit; color:inherit;
+  }
+  .asset-browser .ab-row:last-child { border-bottom:none; }
+  .asset-browser .ab-row:hover { background:var(--gray-100); }
+  .asset-browser .ab-row.active { background:rgba(255,103,31,.06); }
+  .asset-browser .ab-main { flex:1; min-width:0; }
+  .asset-browser .ab-name { font-weight:700; color:var(--navy-700); font-size:13.5px; }
+  .asset-browser .ab-crumb { font-size:12px; color:#8a93a3; margin-top:2px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .asset-browser .ab-pill {
+    flex:0 0 auto; font-size:11px; font-weight:700; padding:3px 8px; border-radius:999px;
+    background:var(--gray-100); color:var(--navy-700); text-transform:uppercase;
+  }
+  .asset-browser .ab-empty { padding:16px; color:#8a93a3; font-size:13px; text-align:center; }
   .asset-picker-block label { display:block; font-size:13px; font-weight:700; color:var(--ink-900); margin-bottom:8px; }
   .asset-picker-block select { width:100%; padding:9px 10px; border:1px solid var(--gray-200);
     border-radius:8px; font-family:inherit; font-size:14px; color:var(--ink-900); background:#fff; }
@@ -559,6 +581,91 @@
   }
   .glossary-step h3 { margin:0 0 4px; font-size:14px; font-weight:800; color:var(--ink-900); }
   .glossary-step p { margin:0; font-size:12.5px; color:#8a93a3; line-height:1.45; }
+
+  /* ---------- Governance ---------- */
+  .gov-pane { text-align:left; width:99%; margin:0 auto; }
+  .gov-pane-hd { margin-bottom:16px; }
+  .gov-pane-hd h1 { margin:0 0 6px; font-size:22px; font-weight:800; color:var(--ink-900); }
+  .gov-pane-hd p { margin:0; font-size:13.5px; color:#8a93a3; }
+  .gov-grid {
+    display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:14px;
+  }
+  .gov-tile {
+    appearance:none; width:100%; text-align:left; font:inherit;
+    border:1px solid var(--gray-200); border-radius:var(--radius); background:#fff;
+    padding:22px 20px; cursor:pointer;
+    transition:border-color .15s, box-shadow .15s, transform .15s;
+  }
+  .gov-tile:hover {
+    border-color:var(--orange-500); box-shadow:var(--shadow); transform:translateY(-1px);
+  }
+  .gov-tile:focus-visible { outline:3px solid rgba(255,103,31,.35); outline-offset:2px; }
+  .gov-tile .gic {
+    width:44px; height:44px; border-radius:10px; margin-bottom:14px;
+    display:inline-flex; align-items:center; justify-content:center;
+    background:rgba(4,107,210,.08); color:var(--navy-700);
+  }
+  .gov-tile .gic svg { width:22px; height:22px; stroke-width:1.75; }
+  .gov-tile .gnm { font-size:15px; font-weight:800; color:var(--ink-900); margin:0 0 6px; }
+  .gov-tile .gdesc { margin:0; font-size:12.5px; color:#8a93a3; line-height:1.5; }
+
+  .gov-lineage { display:flex; flex-direction:column; gap:12px; min-height:520px; }
+  .gov-lineage-toolbar {
+    display:flex; flex-wrap:wrap; align-items:center; gap:10px;
+  }
+  .gov-lineage-toolbar h2 {
+    margin:0; font-size:16px; font-weight:800; color:var(--ink-900); flex:1; min-width:140px;
+  }
+  .gov-lineage-toolbar .hint { font-size:12.5px; color:#8a93a3; }
+  .gov-lineage-canvas {
+    position:relative; flex:1; min-height:480px;
+    border:1px solid var(--gray-200); border-radius:var(--radius);
+    background:
+      radial-gradient(circle at 12% 18%, rgba(4,107,210,.06), transparent 42%),
+      radial-gradient(circle at 88% 78%, rgba(255,103,31,.06), transparent 40%),
+      linear-gradient(180deg, #fafbfd 0%, #fff 55%);
+    overflow:auto;
+  }
+  .gov-lineage-svg { display:block; width:100%; min-width:980px; height:520px; }
+  .gov-lineage-svg .edge {
+    fill:none; stroke:#c5cedd; stroke-width:2; opacity:.85;
+    transition:stroke .18s, opacity .18s, stroke-width .18s;
+  }
+  .gov-lineage-svg .edge.active { stroke:var(--orange-500); stroke-width:2.5; opacity:1; }
+  .gov-lineage-svg .edge.dim { opacity:.18; }
+  .gov-lineage-svg .node { cursor:pointer; }
+  .gov-lineage-svg .node rect {
+    fill:#fff; stroke:var(--gray-200); stroke-width:1.5; rx:10; ry:10;
+    transition:stroke .18s, fill .18s, filter .18s;
+  }
+  .gov-lineage-svg .node:hover rect { stroke:var(--navy-700); }
+  .gov-lineage-svg .node.selected rect {
+    stroke:var(--orange-500); stroke-width:2.25;
+    filter:drop-shadow(0 2px 6px rgba(255,103,31,.22));
+  }
+  .gov-lineage-svg .node.active rect { stroke:var(--navy-700); stroke-width:2; }
+  .gov-lineage-svg .node.dim { opacity:.28; }
+  .gov-lineage-svg .node .layer {
+    font-size:10px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;
+  }
+  .gov-lineage-svg .node .title { font-size:12.5px; font-weight:800; fill:var(--ink-900); }
+  .gov-lineage-svg .node .sub { font-size:11px; fill:#8a93a3; }
+  .gov-lineage-svg .col-label {
+    font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; fill:#8a93a3;
+  }
+  .gov-lineage-detail {
+    border:1px solid var(--gray-200); border-radius:10px; padding:12px 14px; background:#fafbfd;
+    font-size:13px; color:var(--ink-700); min-height:52px;
+  }
+  .gov-lineage-detail strong { color:var(--ink-900); }
+  .gov-lineage-detail .muted { color:#8a93a3; }
+  .gov-lineage-legend {
+    display:flex; flex-wrap:wrap; gap:14px; font-size:12px; color:#8a93a3;
+  }
+  .gov-lineage-legend span { display:inline-flex; align-items:center; gap:6px; }
+  .gov-lineage-legend i {
+    width:10px; height:10px; border-radius:3px; display:inline-block;
+  }
 </style>
 </head>
 <body>
@@ -594,7 +701,7 @@
     </div>
     <div class="grp" style="margin-top:14px">
       <a href="#" data-view="glossary"><span class="ic" aria-hidden="true"><i data-lucide="book-text"></i></span>Glossary</a>
-      <a href="../frontend/index-v2.html"><span class="ic" aria-hidden="true"><i data-lucide="scale"></i></span>Governance</a>
+      <a href="#" data-view="governance"><span class="ic" aria-hidden="true"><i data-lucide="scale"></i></span>Governance</a>
       <a href="#" data-view="admin"><span class="ic" aria-hidden="true"><i data-lucide="shield-check"></i></span>Admin</a>
       <a href="#"><span class="ic" aria-hidden="true"><i data-lucide="chart-column"></i></span>Reporting</a>
     </div>
@@ -622,6 +729,10 @@
       <div class="assets-grid">
         <div class="asset-summary" id="assetSummary" aria-label="Data catalog summary">
           <div class="asset-summary-item">
+            <span class="lbl">Connectors</span>
+            <span class="val" id="assetSummaryConnectors">—</span>
+          </div>
+          <div class="asset-summary-item">
             <span class="lbl">Number of schemas</span>
             <span class="val" id="assetSummarySchemas">—</span>
           </div>
@@ -640,22 +751,34 @@
           </div>
           <div class="bd">
             <div class="asset-picker">
+              <div class="asset-picker-block connector-block">
+                <label for="assetConnectorSelect">Connector</label>
+                <select id="assetConnectorSelect">
+                  <option value="all">All connectors</option>
+                </select>
+                <p class="asset-conn-help" id="assetConnectorHelp">
+                  Showing assets you can access across all connectors.
+                </p>
+              </div>
               <div class="asset-picker-block">
-                <label for="assetSchemaSelect">Schema</label>
+                <label for="assetSchemaSelect">Schema / namespace</label>
                 <select id="assetSchemaSelect">
                   <option value="">Select schema…</option>
                 </select>
               </div>
               <div class="asset-picker-block">
-                <label for="assetTableSelect">Table</label>
+                <label for="assetTableSelect">Table / object</label>
                 <select id="assetTableSelect" disabled>
                   <option value="">Select a schema first…</option>
                 </select>
                 <div id="assetTableMeta" class="asset-table-meta hidden" aria-live="polite"></div>
               </div>
             </div>
+            <div class="asset-browser" id="assetBrowser" aria-label="Assets for selected connector">
+              <div class="ab-empty">Loading assets…</div>
+            </div>
             <div id="assetStructureWrap" class="asset-structure">
-              <div class="state">Select a schema, then a table to view its structure.</div>
+              <div class="state">Pick a connector, then a schema and table — or choose an asset from the list.</div>
             </div>
           </div>
         </section>
@@ -798,24 +921,24 @@
     <div id="view-glossary" class="glossary-pane hidden">
       <div class="glossary-pane-hd">
         <h1>Glossary</h1>
-        <p>Download the glossary template, update terms offline, then upload the file back to DataHive.</p>
+        <p>Define business metadata once and apply it to assets across AWS, Azure, GCP, Snowflake, Postgres, and other connectors.</p>
       </div>
 
       <div class="glossary-steps" aria-label="Glossary workflow">
         <div class="glossary-step">
           <div class="n">1</div>
           <h3>Download template</h3>
-          <p>Get <code>glossary_template.xlsx</code> with the required columns and a sample term.</p>
+          <p>Get <code>glossary_template.xlsx</code> with samples for each major connector platform.</p>
         </div>
         <div class="glossary-step">
           <div class="n">2</div>
           <h3>Update offline</h3>
-          <p>Fill one row per column. Keep identifier and metadata header names unchanged.</p>
+          <p>Set <code>connection</code> to a saved Connectors display name (or platform). One row per column.</p>
         </div>
         <div class="glossary-step">
           <div class="n">3</div>
           <h3>Upload back</h3>
-          <p>Upload any file name — matching Assets columns get their comments/metadata updated.</p>
+          <p>Terms land in the shared glossary registry; Postgres assets also sync column comments.</p>
         </div>
       </div>
 
@@ -829,7 +952,7 @@
             Template file: <strong>glossary_template.xlsx</strong>
           </p>
           <p class="lead" style="margin:0">
-            <strong>Identifiers:</strong> connection, database, schema, table, column &nbsp;·&nbsp;
+            <strong>Identifiers:</strong> connection, platform, database, schema, table, column &nbsp;·&nbsp;
             <strong>Metadata:</strong> business_name, description, business_definition, classification,
             sensitivity, source_system, owner, steward
           </p>
@@ -872,6 +995,63 @@
           <div id="glossaryListBody"></div>
         </div>
       </section>
+
+      <section class="etl-card" aria-labelledby="glossaryTermsTitle">
+        <div class="etl-hd">
+          <h2 id="glossaryTermsTitle">Registered terms</h2>
+          <span class="count" id="glossaryTermsCount" style="font-size:12px;font-weight:700;color:#8a93a3;background:var(--gray-100);border-radius:999px;padding:3px 10px">0</span>
+        </div>
+        <div class="admin-table-wrap">
+          <div id="glossaryTermsBody"></div>
+        </div>
+      </section>
+    </div>
+
+    <div id="view-governance" class="gov-pane hidden">
+      <div id="govHome">
+        <div class="gov-pane-hd">
+          <h1>Governance</h1>
+          <p>Monitor quality, trace lineage, and track cloud spend across your data estate.</p>
+        </div>
+        <div class="gov-grid" role="list" aria-label="Governance areas">
+          <button type="button" class="gov-tile" role="listitem" data-gov="data-quality">
+            <span class="gic" aria-hidden="true"><i data-lucide="badge-check"></i></span>
+            <div class="gnm">Data Quality</div>
+            <p class="gdesc">Configure quality rules and monitor checks across data assets.</p>
+          </button>
+          <button type="button" class="gov-tile" role="listitem" data-gov="data-lineage">
+            <span class="gic" aria-hidden="true"><i data-lucide="git-branch"></i></span>
+            <div class="gnm">Data Lineage</div>
+            <p class="gdesc">Trace upstream and downstream dependencies for tables and pipelines.</p>
+          </button>
+          <button type="button" class="gov-tile" role="listitem" data-gov="finops">
+            <span class="gic" aria-hidden="true"><i data-lucide="wallet"></i></span>
+            <div class="gnm">FinOps</div>
+            <p class="gdesc">Track storage and compute spend, budgets, and cost anomalies.</p>
+          </button>
+        </div>
+      </div>
+
+      <div id="govLineage" class="gov-lineage hidden" aria-label="Data lineage map">
+        <div class="gov-lineage-toolbar">
+          <button type="button" class="btn btn-ghost" id="govLineageBackBtn">← Back</button>
+          <h2>Data Lineage</h2>
+          <span class="hint">Click a node to highlight upstream and downstream paths</span>
+        </div>
+        <div class="gov-lineage-legend" aria-hidden="true">
+          <span><i style="background:#3375B3"></i> Source</span>
+          <span><i style="background:#0056A7"></i> Bronze</span>
+          <span><i style="background:#046BD2"></i> Silver</span>
+          <span><i style="background:#FF671F"></i> Gold</span>
+          <span><i style="background:#1FA971"></i> Consumption</span>
+        </div>
+        <div class="gov-lineage-canvas" id="govLineageCanvas">
+          <svg class="gov-lineage-svg" id="govLineageSvg" role="img" aria-label="Lineage map"></svg>
+        </div>
+        <div class="gov-lineage-detail" id="govLineageDetail">
+          <span class="muted">Select an asset on the map to inspect its lineage path.</span>
+        </div>
+      </div>
     </div>
 
     <div id="view-admin" class="admin-pane hidden">
@@ -1947,12 +2127,24 @@ try {
   if (saved) showStatus(saved, "Previously configured", "pending");
 } catch { /* ignore */ }
 
-/* ---------- Assets (PostgreSQL via connector API) ---------- */
+/* ---------- Assets (multi-connector catalog via connector API) ---------- */
 const CONFIGURED_ASSET_SCHEMAS = ["bronze", "silver", "gold"];
-const assetState = { offline: false, loaded: false, schema: null, table: null };
+const assetState = {
+  offline: false,
+  loaded: false,
+  schema: null,
+  table: null,
+  connectorId: "all",
+  connectors: [],
+  catalogItems: [],
+};
+
+function currentAssetConnectorId() {
+  const sel = $("#assetConnectorSelect");
+  return (sel && sel.value) || assetState.connectorId || "all";
+}
 
 function mergedAssetSchemas(apiItems) {
-  // Prefer live schemas returned by the Postgres catalog API.
   const fromApi = (apiItems || []).map((s) => String(s)).filter(Boolean);
   const source = fromApi.length ? fromApi : CONFIGURED_ASSET_SCHEMAS;
   const out = [];
@@ -1968,10 +2160,11 @@ function mergedAssetSchemas(apiItems) {
 
 function fillAssetSchemaSelect(schemas) {
   const sel = $("#assetSchemaSelect");
-  if (!sel || !schemas.length) return;
+  if (!sel) return;
+  const list = schemas && schemas.length ? schemas : [];
   sel.innerHTML =
     '<option value="">Select schema…</option>' +
-    schemas.map((s) => '<option value="' + escapeHtml(s) + '">' + escapeHtml(s) + "</option>").join("");
+    list.map((s) => '<option value="' + escapeHtml(s) + '">' + escapeHtml(s) + "</option>").join("");
 }
 
 function formatAssetApiError(err) {
@@ -1988,46 +2181,182 @@ function formatAssetApiError(err) {
       "(or POSTGRES_CONNINFO) in .env, then restart connector_api.py."
     );
   }
-  return "PostgreSQL / connector API error: " + m;
+  return "Assets / connector API error: " + m;
 }
 
-function renderAssetSummary(counts, schemaCount) {
+function renderAssetSummary(counts, schemaCount, connectorCount) {
+  const connEl = $("#assetSummaryConnectors");
   const schemasEl = $("#assetSummarySchemas");
   const viewsEl = $("#assetSummaryViews");
   const tablesEl = $("#assetSummaryTables");
+  if (connEl) connEl.textContent = connectorCount != null ? String(connectorCount) : "—";
   if (schemasEl) schemasEl.textContent = schemaCount != null ? String(schemaCount) : "—";
   if (viewsEl) viewsEl.textContent = counts && counts.View != null ? String(counts.View) : "—";
   if (tablesEl) tablesEl.textContent = counts && counts.Table != null ? String(counts.Table) : "—";
+}
+
+function fillAssetConnectorSelect(connectors) {
+  const sel = $("#assetConnectorSelect");
+  if (!sel) return;
+  const prev = assetState.connectorId || "all";
+  const opts =
+    '<option value="all">All connectors</option>' +
+    (connectors || [])
+      .map((c) => {
+        const label =
+          (c.display_name || c.id) +
+          (c.platform || c.cloud ? " · " + (c.platform || c.cloud) : "");
+        return (
+          '<option value="' +
+          escapeHtml(c.id) +
+          '">' +
+          escapeHtml(label) +
+          "</option>"
+        );
+      })
+      .join("");
+  sel.innerHTML = opts;
+  if ([...sel.options].some((o) => o.value === prev)) sel.value = prev;
+  else sel.value = "all";
+  assetState.connectorId = sel.value;
+  updateAssetConnectorHelp();
+}
+
+function updateAssetConnectorHelp() {
+  const help = $("#assetConnectorHelp");
+  if (!help) return;
+  const id = currentAssetConnectorId();
+  if (id === "all") {
+    help.textContent = "Showing assets you can access across all connectors.";
+    return;
+  }
+  const conn = (assetState.connectors || []).find((c) => c.id === id);
+  if (!conn) {
+    help.textContent = "Filtered to the selected connector.";
+    return;
+  }
+  help.textContent =
+    "Filtered to " +
+    (conn.display_name || id) +
+    " (" +
+    (conn.platform || conn.cloud || "connector") +
+    ")" +
+    (conn.structure_supported
+      ? " — live structure available."
+      : " — metadata from glossary / scope.");
+}
+
+function renderAssetBrowser(items) {
+  const box = $("#assetBrowser");
+  if (!box) return;
+  const list = items || [];
+  assetState.catalogItems = list;
+  if (!list.length) {
+    box.innerHTML =
+      '<div class="ab-empty">No assets for this connector yet. Save a connector, upload glossary terms, or browse Local Postgres.</div>';
+    return;
+  }
+  box.innerHTML = list
+    .slice(0, 200)
+    .map((a, idx) => {
+      const active =
+        assetState.schema &&
+        assetState.table &&
+        String(a.schema || "").toLowerCase() === String(assetState.schema).toLowerCase() &&
+        String(a.name || "").toLowerCase() === String(assetState.table).toLowerCase() &&
+        (currentAssetConnectorId() === "all" ||
+          a.connector_id === currentAssetConnectorId());
+      return (
+        '<button type="button" class="ab-row' +
+        (active ? " active" : "") +
+        '" data-asset-idx="' +
+        idx +
+        '">' +
+        '<div class="ab-main">' +
+        '<div class="ab-name">' +
+        escapeHtml(a.name || "—") +
+        "</div>" +
+        '<div class="ab-crumb">' +
+        escapeHtml(
+          (a.connector_name ? a.connector_name + " · " : "") +
+            (a.crumb || [a.schema, a.name].filter(Boolean).join("."))
+        ) +
+        "</div></div>" +
+        '<span class="ab-pill">' +
+        escapeHtml(a.platform || a.type || "asset") +
+        "</span></button>"
+      );
+    })
+    .join("");
 }
 
 async function refreshAssetsCatalog() {
   if (typeof ensureDataHiveConnectorApi === "function") {
     await ensureDataHiveConnectorApi();
   }
-  await loadAssetCounts();
-  await populateSchemaSelect();
+  await loadAssetConnectors();
+  await loadAssetCatalog();
 }
 
-async function loadAssetCounts() {
+async function loadAssetConnectors() {
   try {
     if (typeof DataHiveAssets === "undefined") throw new Error("Assets API not loaded");
-    const data = await DataHiveAssets.summary();
-    const schemas = mergedAssetSchemas(data.items);
-    renderAssetSummary(data.counts || {}, schemas.length);
+    const data = await DataHiveAssets.connectors();
+    assetState.connectors = data.items || [];
+    fillAssetConnectorSelect(assetState.connectors);
+  } catch (err) {
+    assetState.connectors = [
+      {
+        id: "local-postgres",
+        display_name: "Local Postgres",
+        platform: "postgres",
+        structure_supported: true,
+      },
+    ];
+    fillAssetConnectorSelect(assetState.connectors);
+    console.warn("[assets] connector list failed", err);
+  }
+}
+
+async function loadAssetCatalog() {
+  const connectorId = currentAssetConnectorId();
+  assetState.connectorId = connectorId;
+  try {
+    if (typeof DataHiveAssets === "undefined") throw new Error("Assets API not loaded");
+    const data = await DataHiveAssets.catalog(connectorId);
+    const schemas = mergedAssetSchemas(data.schemas || data.items || []);
+    // Prefer explicit schemas list; if catalog returns assets, derive schemas.
+    let schemaList = data.schemas || [];
+    if (!schemaList.length && Array.isArray(data.items)) {
+      schemaList = [...new Set(data.items.map((i) => i.schema).filter(Boolean))];
+    }
+    schemaList = mergedAssetSchemas(schemaList);
+    renderAssetSummary(
+      data.counts || {},
+      schemaList.length,
+      data.connector_count != null ? data.connector_count : (assetState.connectors || []).length
+    );
+    fillAssetSchemaSelect(schemaList);
+    renderAssetBrowser(data.items || []);
     assetState.offline = false;
     const pgBanner = $("#pgBanner");
     if (pgBanner) pgBanner.classList.add("hidden");
-    fillAssetSchemaSelect(schemas);
+    updateAssetConnectorHelp();
   } catch (err) {
     assetState.offline = true;
-    renderAssetSummary(null, null);
+    renderAssetSummary(null, null, null);
     fillAssetSchemaSelect(mergedAssetSchemas([]));
+    renderAssetBrowser([]);
     const pgBanner = $("#pgBanner");
     if (pgBanner) {
       pgBanner.classList.remove("hidden");
       pgBanner.textContent = formatAssetApiError(err);
     }
   }
+}
+
+async function loadAssetCounts() {
+  await loadAssetCatalog();
 }
 
 function assetEl(tag, cls) {
@@ -2134,24 +2463,39 @@ function renderTableStructure(structure) {
     '<div class="structure-hd">' +
     '<span class="snm">' + escapeHtml(structure.schema) + "." + escapeHtml(structure.table) + "</span>" +
     '<span class="stype">' + escapeHtml(structure.table_type || "Table") + "</span>" +
+    (structure.connector_name
+      ? '<span class="stype">' + escapeHtml(structure.connector_name) + "</span>"
+      : "") +
+    (structure.platform
+      ? '<span class="stype">' + escapeHtml(structure.platform) + "</span>"
+      : "") +
     "</div>" +
+    (structure.note
+      ? '<p class="asset-table-meta" style="margin:0 0 10px">' + escapeHtml(structure.note) + "</p>"
+      : "") +
     '<table class="structure-table" aria-label="Table structure and metadata">' +
     "<thead><tr><th>Column</th><th>Type</th><th>Nullable</th><th>Default</th><th>Classification</th><th>Sensitivity</th></tr></thead>" +
     "<tbody>" + rows + "</tbody></table>";
 }
 
-async function onTableSelected(schema, table) {
+async function onTableSelected(schema, table, connectorId) {
   const wrap = $("#assetStructureWrap");
   if (!wrap) return;
   if (!table) {
-    wrap.innerHTML = '<div class="state">Select a schema, then a table to view its structure.</div>';
+    wrap.innerHTML = '<div class="state">Pick a connector, then a schema and table — or choose an asset from the list.</div>';
     return;
   }
+  const cid = connectorId || currentAssetConnectorId();
   wrap.innerHTML = '<div class="state">Loading table structure…</div>';
   try {
     if (typeof DataHiveAssets === "undefined") throw new Error("Assets API not loaded");
-    const structure = await DataHiveAssets.structure(schema, table);
+    const structure = await DataHiveAssets.structure(
+      schema,
+      table,
+      cid === "all" ? "local-postgres" : cid
+    );
     renderTableStructure(structure);
+    renderAssetBrowser(assetState.catalogItems);
   } catch (err) {
     wrap.innerHTML =
       '<div class="state">Could not load structure: ' +
@@ -2172,17 +2516,20 @@ async function populateTableSelect(schema) {
     meta.classList.remove("err");
     meta.textContent = "";
   }
-  if (wrap) wrap.innerHTML = '<div class="state">Select a schema, then a table to view its structure.</div>';
+  if (wrap) {
+    wrap.innerHTML =
+      '<div class="state">Pick a connector, then a schema and table — or choose an asset from the list.</div>';
+  }
   assetState.table = null;
 
   let tables = [];
   try {
     if (typeof DataHiveAssets === "undefined") throw new Error("Assets API not loaded");
-    const data = await DataHiveAssets.tables(schema);
+    const data = await DataHiveAssets.tables(schema, currentAssetConnectorId());
     tables = data.items || [];
     if (meta && data.count != null) {
       meta.textContent =
-        data.count + " object" + (data.count === 1 ? "" : "s") + " in schema " + schema;
+        data.count + " object" + (data.count === 1 ? "" : "s") + " in " + schema;
       meta.classList.remove("hidden");
     }
     assetState.offline = false;
@@ -2204,11 +2551,25 @@ async function populateTableSelect(schema) {
   select.innerHTML =
     '<option value="">Select table… (' + tables.length + ")</option>" +
     tables
-      .map(
-        (t) =>
-          '<option value="' + escapeHtml(t.name) + '">' +
-          escapeHtml(t.name) + " (" + escapeHtml(t.type) + ")</option>"
-      )
+      .map((t) => {
+        const label =
+          t.name +
+          " (" +
+          (t.type || "Table") +
+          (t.connector_name && currentAssetConnectorId() === "all"
+            ? " · " + t.connector_name
+            : "") +
+          ")";
+        return (
+          '<option value="' +
+          escapeHtml(t.name) +
+          '" data-connector-id="' +
+          escapeHtml(t.connector_id || currentAssetConnectorId()) +
+          '">' +
+          escapeHtml(label) +
+          "</option>"
+        );
+      })
       .join("");
   select.disabled = false;
 }
@@ -2219,13 +2580,29 @@ async function populateSchemaSelect() {
   let schemas = mergedAssetSchemas(CONFIGURED_ASSET_SCHEMAS);
   try {
     if (typeof DataHiveAssets !== "undefined") {
-      const data = await DataHiveAssets.schemas();
+      const data = await DataHiveAssets.schemas(currentAssetConnectorId());
       schemas = mergedAssetSchemas(data.items);
     }
   } catch {
     /* keep merged defaults */
   }
   fillAssetSchemaSelect(schemas);
+}
+
+const assetConnectorSelect = $("#assetConnectorSelect");
+if (assetConnectorSelect) {
+  assetConnectorSelect.addEventListener("change", async () => {
+    assetState.connectorId = currentAssetConnectorId();
+    assetState.schema = null;
+    assetState.table = null;
+    updateAssetConnectorHelp();
+    const tableSelect = $("#assetTableSelect");
+    if (tableSelect) {
+      tableSelect.innerHTML = '<option value="">Select a schema first…</option>';
+      tableSelect.disabled = true;
+    }
+    await loadAssetCatalog();
+  });
 }
 
 const assetSchemaSelect = $("#assetSchemaSelect");
@@ -2241,7 +2618,10 @@ if (assetSchemaSelect) {
         tableSelect.disabled = true;
       }
       const wrap = $("#assetStructureWrap");
-      if (wrap) wrap.innerHTML = '<div class="state">Select a schema, then a table to view its structure.</div>';
+      if (wrap) {
+        wrap.innerHTML =
+          '<div class="state">Pick a connector, then a schema and table — or choose an asset from the list.</div>';
+      }
     }
   });
 }
@@ -2251,13 +2631,64 @@ if (assetTableSelect) {
   assetTableSelect.addEventListener("change", (e) => {
     const table = e.target.value;
     assetState.table = table || null;
-    onTableSelected(assetState.schema, table);
+    const opt = e.target.selectedOptions && e.target.selectedOptions[0];
+    const cid =
+      (opt && opt.getAttribute("data-connector-id")) || currentAssetConnectorId();
+    onTableSelected(assetState.schema, table, cid);
+  });
+}
+
+const assetBrowser = $("#assetBrowser");
+if (assetBrowser) {
+  assetBrowser.addEventListener("click", async (e) => {
+    const row = e.target.closest(".ab-row");
+    if (!row) return;
+    const idx = Number(row.getAttribute("data-asset-idx"));
+    const asset = assetState.catalogItems[idx];
+    if (!asset) return;
+    const schema = asset.schema || "";
+    const table = asset.name || "";
+    const cid = asset.connector_id || currentAssetConnectorId();
+    if (cid && cid !== "all" && currentAssetConnectorId() === "all") {
+      // Keep All connectors selected; structure uses asset's connector.
+    }
+    assetState.schema = schema || null;
+    assetState.table = table || null;
+    const schemaSel = $("#assetSchemaSelect");
+    const tableSel = $("#assetTableSelect");
+    if (schemaSel && schema) {
+      if (![...schemaSel.options].some((o) => o.value === schema)) {
+        schemaSel.insertAdjacentHTML(
+          "beforeend",
+          '<option value="' + escapeHtml(schema) + '">' + escapeHtml(schema) + "</option>"
+        );
+      }
+      schemaSel.value = schema;
+      await populateTableSelect(schema);
+    }
+    if (tableSel && table) {
+      if (![...tableSel.options].some((o) => o.value === table)) {
+        tableSel.insertAdjacentHTML(
+          "beforeend",
+          '<option value="' +
+            escapeHtml(table) +
+            '" data-connector-id="' +
+            escapeHtml(cid) +
+            '">' +
+            escapeHtml(table) +
+            "</option>"
+        );
+      }
+      tableSel.value = table;
+      tableSel.disabled = false;
+    }
+    await onTableSelected(schema, table, cid === "all" ? "local-postgres" : cid);
   });
 }
 
 async function initAssetsView() {
   if (assetState.loaded) {
-    if (assetState.offline) await refreshAssetsCatalog();
+    await refreshAssetsCatalog();
     return;
   }
   assetState.loaded = true;
@@ -2301,6 +2732,8 @@ document.querySelectorAll("nav.rail a[data-view]").forEach((a) => {
     if (etlView) etlView.classList.toggle("hidden", view !== "etl");
     const glossaryView = $("#view-glossary");
     if (glossaryView) glossaryView.classList.toggle("hidden", view !== "glossary");
+    const governanceView = $("#view-governance");
+    if (governanceView) governanceView.classList.toggle("hidden", view !== "governance");
     const adminView = $("#view-admin");
     if (adminView) adminView.classList.toggle("hidden", view !== "admin");
     if (view === "assets") initAssetsView();
@@ -2309,6 +2742,7 @@ document.querySelectorAll("nav.rail a[data-view]").forEach((a) => {
     }
     if (view === "etl") initEtlView();
     if (view === "glossary") initGlossaryView();
+    if (view === "governance") initGovernanceView();
     if (view === "admin") initAdminView();
   });
 });
@@ -2327,8 +2761,8 @@ if (assetSearchInput) {
     assetSearchTimer = setTimeout(async () => {
       let items = [];
       try {
-        if (assetState.offline || typeof DataHiveAssets === "undefined") throw new Error("offline");
-        items = (await DataHiveAssets.search(q)).items || [];
+        if (typeof DataHiveAssets === "undefined") throw new Error("offline");
+        items = (await DataHiveAssets.search(q, currentAssetConnectorId())).items || [];
       } catch {
         items = [];
       }
@@ -2340,14 +2774,16 @@ if (assetSearchInput) {
           const r = assetEl("div", "r");
           r.innerHTML =
             '<span class="tile" style="width:26px;height:26px;background:var(--navy-700);color:#fff;border-radius:6px;display:flex;align-items:center;justify-content:center">▦</span> ' +
-            "<span>" + escapeHtml(it.name) + ' <small style="color:#8a93a3">· ' + escapeHtml(it.type) +
+            "<span>" + escapeHtml(it.name) + ' <small style="color:#8a93a3">· ' +
+            escapeHtml(it.platform || it.type || "asset") +
+            (it.connector_name ? " · " + escapeHtml(it.connector_name) : "") +
             (it.schema ? " · " + escapeHtml(it.schema) : "") + "</small></span>";
-          if (it.schema && (it.type === "Table" || it.type === "View")) {
+          if (it.schema && it.name) {
             r.style.cursor = "pointer";
             r.addEventListener("click", () => {
               box.classList.add("hidden");
               assetSearchInput.value = "";
-              selectSchemaAndTable(it.schema, it.name);
+              selectSchemaAndTable(it.schema, it.name, it.connector_id);
             });
           }
           box.appendChild(r);
@@ -2358,19 +2794,32 @@ if (assetSearchInput) {
   });
 }
 
-async function selectSchemaAndTable(schema, table) {
+async function selectSchemaAndTable(schema, table, connectorId) {
+  if (connectorId && connectorId !== "all") {
+    const connSel = $("#assetConnectorSelect");
+    if (connSel && [...connSel.options].some((o) => o.value === connectorId)) {
+      connSel.value = connectorId;
+      assetState.connectorId = connectorId;
+      await loadAssetCatalog();
+    }
+  }
   if (assetSchemaSelect) assetSchemaSelect.value = schema;
   assetState.schema = schema;
   await populateTableSelect(schema);
   if (assetTableSelect) assetTableSelect.value = table;
   assetState.table = table;
-  onTableSelected(schema, table);
+  onTableSelected(schema, table, connectorId || currentAssetConnectorId());
 }
 
 const assetDiscover = $("#assetDiscover");
 if (assetDiscover) {
   assetDiscover.addEventListener("click", async (e) => {
     e.preventDefault();
+    const connSel = $("#assetConnectorSelect");
+    if (connSel) {
+      connSel.value = "all";
+      assetState.connectorId = "all";
+    }
     if (assetSchemaSelect) assetSchemaSelect.value = "";
     assetState.schema = null;
     assetState.table = null;
@@ -2380,8 +2829,11 @@ if (assetDiscover) {
       tableSelect.disabled = true;
     }
     const wrap = $("#assetStructureWrap");
-    if (wrap) wrap.innerHTML = '<div class="state">Select a schema, then a table to view its structure.</div>';
-    loadAssetCounts();
+    if (wrap) {
+      wrap.innerHTML =
+        '<div class="state">Pick a connector, then a schema and table — or choose an asset from the list.</div>';
+    }
+    refreshAssetsCatalog();
   });
 }
 
@@ -2465,6 +2917,25 @@ function adminMatches(query, parts) {
   if (!q) return true;
   return parts.some((p) => String(p || "").toLowerCase().includes(q));
 }
+
+function getDataHiveUserRole() {
+  try {
+    if (!adminState) loadAdminState();
+  } catch (_e) {
+    /* ignore */
+  }
+  const nm = ($("#userNm") && $("#userNm").textContent.trim()) || "Admin";
+  const users = (adminState && adminState.users) || [];
+  const match = users.find(
+    (u) =>
+      String(u.displayName || "").toLowerCase() === nm.toLowerCase() ||
+      String(u.username || "").toLowerCase() === nm.toLowerCase()
+  );
+  if (match && match.role) return String(match.role).toLowerCase();
+  if (nm.toLowerCase() === "admin" || nm.toLowerCase() === "administrator") return "admin";
+  return "editor";
+}
+window.getDataHiveUserRole = getDataHiveUserRole;
 
 function loadAdminState() {
   try {
@@ -3215,12 +3686,17 @@ function renderGlossaryList(items) {
   }
   body.innerHTML =
     '<table class="admin-table" aria-label="Uploaded glossaries">' +
-    "<thead><tr><th>File</th><th>Rows</th><th>Updated</th><th>Failed</th><th>Uploaded by</th><th>Saved at</th><th></th></tr></thead><tbody>" +
+    "<thead><tr><th>File</th><th>Rows</th><th>Registry</th><th>Platforms</th><th>Failed</th><th>Uploaded by</th><th>Saved at</th><th></th></tr></thead><tbody>" +
     list.map((g) => {
       const saved = g.saved_at ? new Date(g.saved_at).toLocaleString() : "—";
       const apply = g.apply || {};
       const rows = apply.rows_total != null ? String(apply.rows_total) : (g.term_count != null ? String(g.term_count) : "—");
-      const updated = apply.updated != null ? String(apply.updated) : "—";
+      const updated = apply.registry_updated != null
+        ? String(apply.registry_updated)
+        : (apply.updated != null ? String(apply.updated) : "—");
+      const platforms = Array.isArray(apply.platforms) && apply.platforms.length
+        ? apply.platforms.join(", ")
+        : "—";
       const failed = apply.failed != null ? String(apply.failed) : "—";
       const dl = g.stored_file_name
         ? glossaryApiBase() + "/api/glossary/files/" + encodeURIComponent(g.stored_file_name)
@@ -3232,6 +3708,7 @@ function renderGlossaryList(items) {
         "</td>" +
         "<td>" + escapeHtml(rows) + "</td>" +
         "<td>" + escapeHtml(updated) + "</td>" +
+        "<td>" + escapeHtml(platforms) + "</td>" +
         "<td>" + escapeHtml(failed) + "</td>" +
         "<td>" + escapeHtml(g.user || "—") + "</td>" +
         "<td>" + escapeHtml(saved) + "</td>" +
@@ -3245,8 +3722,39 @@ function renderGlossaryList(items) {
     "</tbody></table>";
 }
 
+function renderGlossaryTerms(items) {
+  const body = $("#glossaryTermsBody");
+  const count = $("#glossaryTermsCount");
+  const list = items || [];
+  if (count) count.textContent = String(list.length);
+  if (!body) return;
+  if (!list.length) {
+    body.innerHTML = '<div class="admin-empty">No registered terms yet. Upload a glossary to populate asset_glossary across connectors.</div>';
+    return;
+  }
+  body.innerHTML =
+    '<table class="admin-table" aria-label="Registered glossary terms">' +
+    "<thead><tr><th>Platform</th><th>Connection</th><th>Asset</th><th>Business name</th><th>Classification</th><th>Updated</th></tr></thead><tbody>" +
+    list.map((t) => {
+      const asset = [t.database, t.schema, t.table, t.column].filter(Boolean).join(".");
+      const updated = t.updated_at ? new Date(t.updated_at).toLocaleString() : "—";
+      return (
+        "<tr>" +
+        "<td>" + escapeHtml(t.platform || "—") + "</td>" +
+        "<td>" + escapeHtml(t.connection || "—") + "</td>" +
+        '<td><div class="nm">' + escapeHtml(asset || "—") + "</div></td>" +
+        "<td>" + escapeHtml(t.business_name || "—") + "</td>" +
+        "<td>" + escapeHtml(t.classification || "—") + "</td>" +
+        "<td>" + escapeHtml(updated) + "</td>" +
+        "</tr>"
+      );
+    }).join("") +
+    "</tbody></table>";
+}
+
 async function refreshGlossaryList() {
   const body = $("#glossaryListBody");
+  const count = $("#glossaryCount");
   if (body) body.innerHTML = '<div class="admin-empty">Loading uploaded glossaries…</div>';
   try {
     const res = await fetch(glossaryApiBase() + "/api/glossary/recent?limit=20", {
@@ -3265,6 +3773,32 @@ async function refreshGlossaryList() {
         escapeHtml(err && err.message ? err.message : String(err)) +
         "</div>";
     }
+    if (count) count.textContent = "0";
+  }
+}
+
+async function refreshGlossaryTerms() {
+  const body = $("#glossaryTermsBody");
+  const count = $("#glossaryTermsCount");
+  if (body) body.innerHTML = '<div class="admin-empty">Loading registered terms…</div>';
+  try {
+    const res = await fetch(glossaryApiBase() + "/api/glossary/terms?limit=50", {
+      headers: { "X-DataHive-User": ($("#userNm") && $("#userNm").textContent.trim()) || "Admin" },
+      cache: "no-store",
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      throw new Error((data && data.detail) || ("HTTP " + res.status));
+    }
+    renderGlossaryTerms((data && data.items) || []);
+  } catch (err) {
+    if (body) {
+      body.innerHTML =
+        '<div class="admin-empty">Could not load terms. ' +
+        escapeHtml(err && err.message ? err.message : String(err)) +
+        "</div>";
+    }
+    if (count) count.textContent = "0";
   }
 }
 
@@ -3336,9 +3870,14 @@ function bindGlossaryEvents() {
           throw new Error((data && data.detail) || ("HTTP " + res.status));
         }
         const apply = data.apply || {};
+        const platforms = Array.isArray(apply.platforms) && apply.platforms.length
+          ? apply.platforms.join(", ")
+          : "n/a";
         const msg =
           'Uploaded "' + (data.file_name || glossarySelectedFile.name) + '". ' +
-          "Assets comments updated: " + (apply.updated != null ? apply.updated : 0) +
+          "Registry updated: " + (apply.registry_updated != null ? apply.registry_updated : (apply.updated || 0)) +
+          ", Postgres synced: " + (apply.source_synced != null ? apply.source_synced : 0) +
+          ", platforms: " + platforms +
           (apply.failed ? (", failed: " + apply.failed) : "") +
           (apply.skipped ? (", skipped: " + apply.skipped) : "") + ".";
         if (apply.failed && apply.errors && apply.errors.length) {
@@ -3349,6 +3888,7 @@ function bindGlossaryEvents() {
         clearGlossarySelection();
         if ($("#glossaryNotes")) $("#glossaryNotes").value = "";
         await refreshGlossaryList();
+        await refreshGlossaryTerms();
       } catch (err) {
         showGlossaryError(err && err.message ? err.message : String(err));
       } finally {
@@ -3362,6 +3902,324 @@ function bindGlossaryEvents() {
 async function initGlossaryView() {
   bindGlossaryEvents();
   await refreshGlossaryList();
+  await refreshGlossaryTerms();
+}
+
+const LINEAGE_LAYERS = {
+  source: { label: "Source", color: "#3375B3", x: 40 },
+  bronze: { label: "Bronze", color: "#0056A7", x: 280 },
+  silver: { label: "Silver", color: "#046BD2", x: 520 },
+  gold: { label: "Gold", color: "#FF671F", x: 760 },
+  consume: { label: "Consume", color: "#1FA971", x: 1000 },
+};
+
+const LINEAGE_GRAPH = {
+  nodes: [
+    { id: "src_crm", layer: "source", title: "CRM API", sub: "Salesforce / REST" },
+    { id: "src_cdr", layer: "source", title: "CDR Landing", sub: "S3 / Parquet" },
+    { id: "src_billing", layer: "source", title: "Billing Feed", sub: "CSV drop" },
+    { id: "br_customer", layer: "bronze", title: "test_customer_tbl", sub: "dhpoc-bronze" },
+    { id: "br_cdr", layer: "bronze", title: "cdr_raw", sub: "dhpoc-bronze" },
+    { id: "br_invoice", layer: "bronze", title: "invoice_raw", sub: "dhpoc-bronze" },
+    { id: "sv_customer", layer: "silver", title: "dh_customer", sub: "dhpoc-silver" },
+    { id: "sv_cdr", layer: "silver", title: "dh_cdr", sub: "dhpoc-silver" },
+    { id: "sv_invoice", layer: "silver", title: "dh_invoice", sub: "dhpoc-silver" },
+    { id: "sv_churn", layer: "silver", title: "dh_churn_score", sub: "dhpoc-silver" },
+    { id: "gd_360", layer: "gold", title: "customer_360", sub: "dhpoc-gold" },
+    { id: "gd_usage", layer: "gold", title: "usage_daily", sub: "dhpoc-gold" },
+    { id: "gd_ar", layer: "gold", title: "ar_aging", sub: "dhpoc-gold" },
+    { id: "ui_insights", layer: "consume", title: "Insights", sub: "SQL workbench" },
+    { id: "ui_dash", layer: "consume", title: "Exec dashboard", sub: "Reporting" },
+  ],
+  edges: [
+    ["src_crm", "br_customer"],
+    ["src_cdr", "br_cdr"],
+    ["src_billing", "br_invoice"],
+    ["br_customer", "sv_customer"],
+    ["br_cdr", "sv_cdr"],
+    ["br_invoice", "sv_invoice"],
+    ["sv_customer", "sv_churn"],
+    ["sv_cdr", "sv_churn"],
+    ["sv_customer", "gd_360"],
+    ["sv_churn", "gd_360"],
+    ["sv_invoice", "gd_360"],
+    ["sv_cdr", "gd_usage"],
+    ["sv_invoice", "gd_ar"],
+    ["gd_360", "ui_insights"],
+    ["gd_usage", "ui_insights"],
+    ["gd_360", "ui_dash"],
+    ["gd_ar", "ui_dash"],
+  ],
+};
+
+let govBound = false;
+let lineageSelectedId = null;
+
+function showGovernanceHome() {
+  const home = $("#govHome");
+  const lineage = $("#govLineage");
+  if (home) home.classList.remove("hidden");
+  if (lineage) lineage.classList.add("hidden");
+  lineageSelectedId = null;
+}
+
+function showLineageMap() {
+  const home = $("#govHome");
+  const lineage = $("#govLineage");
+  if (home) home.classList.add("hidden");
+  if (lineage) lineage.classList.remove("hidden");
+  renderLineageMap(lineageSelectedId);
+  if (window.lucide && typeof lucide.createIcons === "function") {
+    lucide.createIcons({ attrs: { "stroke-width": "1.75", "aria-hidden": "true" } });
+  }
+}
+
+function lineageNeighbors(nodeId) {
+  const upstream = new Set();
+  const downstream = new Set();
+  const incoming = {};
+  const outgoing = {};
+  LINEAGE_GRAPH.edges.forEach(([from, to]) => {
+    (outgoing[from] = outgoing[from] || []).push(to);
+    (incoming[to] = incoming[to] || []).push(from);
+  });
+  function walk(start, map, bucket) {
+    const stack = [start];
+    while (stack.length) {
+      const cur = stack.pop();
+      (map[cur] || []).forEach((next) => {
+        if (!bucket.has(next)) {
+          bucket.add(next);
+          stack.push(next);
+        }
+      });
+    }
+  }
+  walk(nodeId, incoming, upstream);
+  walk(nodeId, outgoing, downstream);
+  return { upstream, downstream };
+}
+
+function lineageNodeById(id) {
+  return LINEAGE_GRAPH.nodes.find((n) => n.id === id) || null;
+}
+
+function updateLineageDetail(nodeId) {
+  const el = $("#govLineageDetail");
+  if (!el) return;
+  if (!nodeId) {
+    el.innerHTML = '<span class="muted">Select an asset on the map to inspect its lineage path.</span>';
+    return;
+  }
+  const node = lineageNodeById(nodeId);
+  if (!node) return;
+  const { upstream, downstream } = lineageNeighbors(nodeId);
+  const upNames = [...upstream].map((id) => lineageNodeById(id)?.title).filter(Boolean);
+  const downNames = [...downstream].map((id) => lineageNodeById(id)?.title).filter(Boolean);
+  el.innerHTML =
+    "<strong>" +
+    escapeHtml(node.title) +
+    "</strong> <span class=\"muted\">· " +
+    escapeHtml(node.sub) +
+    " · " +
+    escapeHtml(LINEAGE_LAYERS[node.layer].label) +
+    "</span><br>" +
+    "<span class=\"muted\">Upstream:</span> " +
+    (upNames.length ? escapeHtml(upNames.join(", ")) : "—") +
+    " &nbsp;·&nbsp; <span class=\"muted\">Downstream:</span> " +
+    (downNames.length ? escapeHtml(downNames.join(", ")) : "—");
+}
+
+function renderLineageMap(selectedId) {
+  const svg = $("#govLineageSvg");
+  if (!svg) return;
+
+  const nodeW = 168;
+  const nodeH = 62;
+  const layerOrder = ["source", "bronze", "silver", "gold", "consume"];
+  const byLayer = {};
+  layerOrder.forEach((layer) => {
+    byLayer[layer] = LINEAGE_GRAPH.nodes.filter((n) => n.layer === layer);
+  });
+  const maxRows = Math.max(...layerOrder.map((l) => byLayer[l].length), 1);
+  const topPad = 48;
+  const rowGap = 18;
+  const totalH = topPad + maxRows * (nodeH + rowGap) + 24;
+  const totalW = 1200;
+  svg.setAttribute("viewBox", "0 0 " + totalW + " " + totalH);
+  svg.style.height = Math.max(480, totalH) + "px";
+
+  const positions = {};
+  layerOrder.forEach((layer) => {
+    const nodes = byLayer[layer];
+    const colH = nodes.length * nodeH + Math.max(0, nodes.length - 1) * rowGap;
+    const startY = topPad + (maxRows * (nodeH + rowGap) - rowGap - colH) / 2;
+    nodes.forEach((node, idx) => {
+      positions[node.id] = {
+        x: LINEAGE_LAYERS[layer].x,
+        y: startY + idx * (nodeH + rowGap),
+        cx: LINEAGE_LAYERS[layer].x + nodeW,
+        cy: startY + idx * (nodeH + rowGap) + nodeH / 2,
+        lx: LINEAGE_LAYERS[layer].x,
+        ly: startY + idx * (nodeH + rowGap) + nodeH / 2,
+      };
+    });
+  });
+
+  let related = null;
+  if (selectedId) {
+    const nbr = lineageNeighbors(selectedId);
+    related = new Set([selectedId, ...nbr.upstream, ...nbr.downstream]);
+  }
+
+  const edgePaths = LINEAGE_GRAPH.edges
+    .map(([from, to], i) => {
+      const a = positions[from];
+      const b = positions[to];
+      if (!a || !b) return "";
+      const midX = (a.cx + b.lx) / 2;
+      const d =
+        "M" +
+        a.cx +
+        "," +
+        a.cy +
+        " C" +
+        midX +
+        "," +
+        a.cy +
+        " " +
+        midX +
+        "," +
+        b.ly +
+        " " +
+        b.lx +
+        "," +
+        b.ly;
+      let cls = "edge";
+      if (related) {
+        cls = related.has(from) && related.has(to) ? "edge active" : "edge dim";
+      }
+      return '<path class="' + cls + '" data-edge="' + i + '" d="' + d + '" />';
+    })
+    .join("");
+
+  const colLabels = layerOrder
+    .map((layer) => {
+      const x = LINEAGE_LAYERS[layer].x + nodeW / 2;
+      return (
+        '<text class="col-label" text-anchor="middle" x="' +
+        x +
+        '" y="28">' +
+        LINEAGE_LAYERS[layer].label +
+        "</text>"
+      );
+    })
+    .join("");
+
+  const nodeMarkup = LINEAGE_GRAPH.nodes
+    .map((node) => {
+      const p = positions[node.id];
+      const color = LINEAGE_LAYERS[node.layer].color;
+      let cls = "node";
+      if (selectedId) {
+        if (node.id === selectedId) cls += " selected";
+        else if (related && related.has(node.id)) cls += " active";
+        else cls += " dim";
+      }
+      return (
+        '<g class="' +
+        cls +
+        '" data-node-id="' +
+        escapeHtml(node.id) +
+        '" transform="translate(' +
+        p.x +
+        "," +
+        p.y +
+        ')">' +
+        '<rect width="' +
+        nodeW +
+        '" height="' +
+        nodeH +
+        '"></rect>' +
+        '<rect x="0" y="0" width="5" height="' +
+        nodeH +
+        '" rx="2" fill="' +
+        color +
+        '" stroke="none"></rect>' +
+        '<text class="layer" x="16" y="20" fill="' +
+        color +
+        '">' +
+        escapeHtml(LINEAGE_LAYERS[node.layer].label) +
+        "</text>" +
+        '<text class="title" x="16" y="38">' +
+        escapeHtml(node.title) +
+        "</text>" +
+        '<text class="sub" x="16" y="53">' +
+        escapeHtml(node.sub) +
+        "</text>" +
+        "</g>"
+      );
+    })
+    .join("");
+
+  svg.innerHTML =
+    '<defs><marker id="linArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">' +
+    '<path d="M 0 0 L 10 5 L 0 10 z" fill="#c5cedd"></path></marker>' +
+    '<marker id="linArrowActive" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">' +
+    '<path d="M 0 0 L 10 5 L 0 10 z" fill="#FF671F"></path></marker></defs>' +
+    colLabels +
+    '<g class="edges">' +
+    edgePaths +
+    "</g><g class=\"nodes\">" +
+    nodeMarkup +
+    "</g>";
+
+  // Apply arrow markers
+  svg.querySelectorAll(".edge").forEach((path) => {
+    path.setAttribute(
+      "marker-end",
+      path.classList.contains("active") ? "url(#linArrowActive)" : "url(#linArrow)"
+    );
+  });
+
+  updateLineageDetail(selectedId || null);
+}
+
+function bindGovernanceEvents() {
+  if (govBound) return;
+  govBound = true;
+
+  const view = $("#view-governance");
+  if (!view) return;
+
+  view.addEventListener("click", (e) => {
+    const tile = e.target.closest(".gov-tile");
+    if (tile && tile.dataset.gov === "data-lineage") {
+      e.preventDefault();
+      showLineageMap();
+      return;
+    }
+    const back = e.target.closest("#govLineageBackBtn");
+    if (back) {
+      e.preventDefault();
+      showGovernanceHome();
+      return;
+    }
+    const node = e.target.closest(".node");
+    if (node && node.dataset.nodeId) {
+      lineageSelectedId =
+        lineageSelectedId === node.dataset.nodeId ? null : node.dataset.nodeId;
+      renderLineageMap(lineageSelectedId);
+    }
+  });
+}
+
+function initGovernanceView() {
+  bindGovernanceEvents();
+  showGovernanceHome();
+  if (window.lucide && typeof lucide.createIcons === "function") {
+    lucide.createIcons({ attrs: { "stroke-width": "1.75", "aria-hidden": "true" } });
+  }
 }
 </script>
 </body>
