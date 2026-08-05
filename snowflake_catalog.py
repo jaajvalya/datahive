@@ -155,6 +155,73 @@ def _show_result_name(row: tuple | list, fallback_idx: int = 1) -> str:
     return str(row[0])
 
 
+def prepare_session(
+    cur,
+    doc: dict[str, Any] | None = None,
+    *,
+    database: str | None = None,
+    schema: str | None = None,
+) -> dict[str, str]:
+    """
+    Activate warehouse + secondary roles so USAGE grants on child roles apply.
+    Snowflake: SYSADMIN does not inherit ACCOUNTADMIN-owned object privileges.
+    """
+    scope_opts = parse_scope_options(_norm((doc or {}).get("dataset_scope")))
+    database = database or scope_opts.get("database") or "SALES_DB"
+    schema = schema or scope_opts.get("schema") or "RAW"
+    try:
+        cur.execute("USE SECONDARY ROLES ALL")
+    except Exception as exc:  # noqa: BLE001
+        _log.debug("USE SECONDARY ROLES ALL skipped: %s", exc)
+
+    warehouses: list[str] = []
+    for key in ("warehouse", "compute"):
+        val = _norm((doc or {}).get(key)) if doc else ""
+        if val:
+            warehouses.append(val)
+    if scope_opts.get("warehouse"):
+        warehouses.append(scope_opts["warehouse"])
+    warehouses.extend(["DEV_WH", "COMPUTE_WH"])
+    seen_wh: set[str] = set()
+    for wh in warehouses:
+        key = wh.upper()
+        if not wh or key in seen_wh:
+            continue
+        seen_wh.add(key)
+        try:
+            cur.execute(f"USE WAREHOUSE {_ident(wh)}")
+            break
+        except Exception:  # noqa: BLE001
+            continue
+
+    try:
+        cur.execute(f"USE DATABASE {_ident(database)}")
+    except Exception as exc:  # noqa: BLE001
+        _log.debug("USE DATABASE %s skipped: %s", database, exc)
+    try:
+        cur.execute(f"USE SCHEMA {_ident(schema)}")
+    except Exception as exc:  # noqa: BLE001
+        _log.debug("USE SCHEMA %s skipped: %s", schema, exc)
+
+    info = {"user": "", "role": "", "warehouse": "", "database": "", "schema": ""}
+    try:
+        cur.execute(
+            "SELECT CURRENT_USER(), CURRENT_ROLE(), CURRENT_WAREHOUSE(), "
+            "CURRENT_DATABASE(), CURRENT_SCHEMA()"
+        )
+        row = cur.fetchone() or ()
+        info = {
+            "user": str(row[0] or ""),
+            "role": str(row[1] or ""),
+            "warehouse": str(row[2] or ""),
+            "database": str(row[3] or ""),
+            "schema": str(row[4] or ""),
+        }
+    except Exception as exc:  # noqa: BLE001
+        _log.debug("session info skipped: %s", exc)
+    return info
+
+
 def list_databases(conn, preferred: str | None = None) -> list[str]:
     with conn.cursor() as cur:
         if preferred:
@@ -409,13 +476,11 @@ def list_stages_for_doc(doc: dict[str, Any]) -> list[dict[str, Any]]:
     conn = None
     stages: list[dict[str, Any]] = []
     seen: set[str] = set()
+    session_info: dict[str, str] = {}
     try:
         conn = open_connection(doc)
         with conn.cursor() as cur:
-            try:
-                cur.execute('USE WAREHOUSE "DEV_WH"')
-            except Exception:  # noqa: BLE001
-                pass
+            session_info = prepare_session(cur, doc, database=database, schema=schema)
             queries = [
                 f"SHOW STAGES IN SCHEMA {_ident(database)}.{_ident(schema)}",
                 f"SHOW STAGES IN DATABASE {_ident(database)}",
@@ -457,6 +522,15 @@ def list_stages_for_doc(doc: dict[str, Any]) -> list[dict[str, Any]]:
             except Exception:  # noqa: BLE001
                 pass
 
+    privilege_note = (
+        f"Connected as {session_info.get('user') or '?'} / {session_info.get('role') or '?'}. "
+        f"{database}.{schema} is owned by ACCOUNTADMIN; schema USAGE alone does not grant stage access. "
+        "Run as ACCOUNTADMIN: "
+        f"GRANT READ, WRITE ON STAGE {database}.{schema}.RAW_STAGE TO ROLE DATA_ENGINEER; "
+        f"GRANT USAGE ON DATABASE {database} TO ROLE SYSADMIN; "
+        f"GRANT USAGE, CREATE STAGE ON SCHEMA {database}.{schema} TO ROLE SYSADMIN;"
+    )
+
     # Always surface the example landing stage used by DataHive ELT into RAW.
     example_fqn = _stage_fqn(database, schema, "RAW_STAGE")
     if example_fqn.lower() not in seen:
@@ -471,17 +545,20 @@ def list_stages_for_doc(doc: dict[str, Any]) -> list[dict[str, Any]]:
                 "type": "INTERNAL",
                 "recommended": True,
                 "exists": False,
+                "visible": False,
+                "session": session_info,
                 "note": (
-                    "Recommended landing stage for files → RAW tables. "
-                    "If SHOW/LIST returns empty, the connector role likely lacks READ on the stage "
-                    "(not that the stage is missing)."
+                    "RAW_STAGE is not visible to this connector role (SHOW STAGES empty). "
+                    + privilege_note
                 ),
+                "grant_sql": ensure_raw_stage_grant_sql(database, schema),
             },
         )
     else:
         for s in stages:
             if s["fqn"].lower() == example_fqn.lower():
                 s["exists"] = True
+                s["visible"] = True
                 s["recommended"] = True
 
     # User stage is always available without schema CREATE STAGE privilege.
@@ -496,12 +573,14 @@ def list_stages_for_doc(doc: dict[str, Any]) -> list[dict[str, Any]]:
                 "type": "USER",
                 "recommended": False,
                 "exists": True,
+                "visible": True,
                 "note": "Personal user stage (@~). Usable without CREATE STAGE on SALES_DB.RAW.",
             }
         )
 
     for s in stages:
         s.setdefault("exists", True)
+        s.setdefault("visible", bool(s.get("exists", True)))
     return stages
 
 
@@ -529,16 +608,7 @@ def list_stage_files_for_doc(
     try:
         conn = open_connection(doc)
         with conn.cursor() as cur:
-            try:
-                cur.execute('USE WAREHOUSE "DEV_WH"')
-            except Exception:  # noqa: BLE001
-                pass
-            # Prefer schema context so unqualified @RAW_STAGE works when granted.
-            try:
-                cur.execute(f"USE DATABASE {_ident(database)}")
-                cur.execute(f"USE SCHEMA {_ident(schema)}")
-            except Exception:  # noqa: BLE001
-                pass
+            session_info = prepare_session(cur, doc, database=database, schema=schema)
 
             candidates = []
             if stage:
@@ -598,14 +668,15 @@ def list_stage_files_for_doc(
                     last_err = exc
                     continue
 
-            detail = str(last_err or "Stage not accessible")
             # Snowflake collapses missing + unauthorized into the same SQL compilation error.
+            who = f"{session_info.get('user') or '?'}/{session_info.get('role') or '?'}"
             raise StageAccessError(
                 (
-                    f"Stage '{stage or short}' is not visible to this connector role. "
-                    "In Snowflake UI it may exist under another role, but the saved connector "
-                    f"user cannot LIST it. Grant READ on the stage to the connector role, e.g.\n"
-                    f"GRANT READ ON STAGE {database}.{schema}.{short} TO ROLE DATA_ENGINEER;"
+                    f"Stage '{stage or short}' is not visible to connector {who}. "
+                    f"{database}.{schema} is owned by ACCOUNTADMIN; SYSADMIN/DATA_ENGINEER "
+                    "only have schema USAGE unless stage READ is granted. Run as ACCOUNTADMIN:\n"
+                    f"GRANT READ, WRITE ON STAGE {database}.{schema}.{short} TO ROLE DATA_ENGINEER;\n"
+                    f"GRANT READ, WRITE ON STAGE {database}.{schema}.{short} TO ROLE SYSADMIN;"
                 ),
                 stage_fqn=stage or f"{database}.{schema}.{short}",
                 reason="unauthorized_or_missing",
@@ -620,18 +691,22 @@ def list_stage_files_for_doc(
 
 def ensure_raw_stage_grant_sql(database: str = "SALES_DB", schema: str = "RAW") -> str:
     return (
-        f"-- Run as ACCOUNTADMIN / SYSADMIN (or schema owner)\n"
+        f"-- Run as ACCOUNTADMIN (schema owner). SYSADMIN does NOT inherit these privileges.\n"
         f"USE ROLE ACCOUNTADMIN;\n"
         f"USE DATABASE {database};\n"
         f"USE SCHEMA {schema};\n"
+        f"-- Only if the stage truly does not exist yet:\n"
         f"CREATE STAGE IF NOT EXISTS RAW_STAGE\n"
         f"  DIRECTORY = (ENABLE = TRUE)\n"
         f"  COMMENT = 'DataHive landing stage for files loaded into {database}.{schema}';\n"
+        f"-- Required for connector users (SDEVELOPER / DHENG / DATA_ENGINEER):\n"
         f"GRANT USAGE ON DATABASE {database} TO ROLE DATA_ENGINEER;\n"
         f"GRANT USAGE ON SCHEMA {database}.{schema} TO ROLE DATA_ENGINEER;\n"
-        f"GRANT CREATE STAGE ON SCHEMA {database}.{schema} TO ROLE DATA_ENGINEER;\n"
         f"GRANT READ, WRITE ON STAGE {database}.{schema}.RAW_STAGE TO ROLE DATA_ENGINEER;\n"
-        f"-- Optional if Ensure should keep working for this role:\n"
+        f"GRANT USAGE ON DATABASE {database} TO ROLE SYSADMIN;\n"
+        f"GRANT USAGE, CREATE STAGE ON SCHEMA {database}.{schema} TO ROLE SYSADMIN;\n"
+        f"GRANT READ, WRITE ON STAGE {database}.{schema}.RAW_STAGE TO ROLE SYSADMIN;\n"
+        f"-- Optional: let DATA_ENGINEER create stages too\n"
         f"-- GRANT CREATE STAGE ON SCHEMA {database}.{schema} TO ROLE DATA_ENGINEER;"
     )
 
@@ -648,12 +723,7 @@ def ensure_raw_stage_for_doc(doc: dict[str, Any]) -> dict[str, Any]:
     try:
         conn = open_connection(doc)
         with conn.cursor() as cur:
-            try:
-                cur.execute('USE WAREHOUSE "DEV_WH"')
-            except Exception:  # noqa: BLE001
-                pass
-            cur.execute(f"USE DATABASE {_ident(database)}")
-            cur.execute(f"USE SCHEMA {_ident(schema)}")
+            session_info = prepare_session(cur, doc, database=database, schema=schema)
             cur.execute(
                 f"""
                 CREATE STAGE IF NOT EXISTS {_ident(stage)}
@@ -668,14 +738,15 @@ def ensure_raw_stage_for_doc(doc: dict[str, Any]) -> dict[str, Any]:
             "database": database,
             "schema": schema,
             "name": stage,
+            "session": session_info,
         }
     except Exception as exc:  # noqa: BLE001
         msg = str(exc)
         if "Insufficient privileges" in msg or "42501" in msg or "CREATE STAGE" in msg:
             raise PermissionError(
-                "Role DATA_ENGINEER can USE schema "
-                f"{database}.{schema} but cannot CREATE STAGE. "
-                "Ask an admin to run:\n\n"
+                f"Connector role can USE schema {database}.{schema} but cannot CREATE STAGE "
+                "(schema is owned by ACCOUNTADMIN). Do not recreate from DataHive — ask "
+                "ACCOUNTADMIN to grant stage access:\n\n"
                 + grant_sql
             ) from exc
         raise

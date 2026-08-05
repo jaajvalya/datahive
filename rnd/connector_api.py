@@ -882,10 +882,7 @@ def snowflake_list_stage_files(
             "visible": False,
             "reason": exc.reason,
             "note": str(exc),
-            "grant_sql": (
-                "GRANT READ ON STAGE SALES_DB.RAW.RAW_STAGE TO ROLE DATA_ENGINEER;\n"
-                "GRANT WRITE ON STAGE SALES_DB.RAW.RAW_STAGE TO ROLE DATA_ENGINEER;"
-            ),
+            "grant_sql": snowflake_catalog.ensure_raw_stage_grant_sql(),
         }
     except Exception as exc:  # noqa: BLE001
         detail = str(exc)
@@ -900,13 +897,11 @@ def snowflake_list_stage_files(
                 "visible": False,
                 "note": (
                     "Stage is not visible to this connector role (Snowflake returns "
-                    "'does not exist or not authorized'). If you can see RAW_STAGE in the UI, "
-                    "grant READ on it to DATA_ENGINEER — do not recreate it."
+                    "'does not exist or not authorized'). SALES_DB.RAW is owned by ACCOUNTADMIN; "
+                    "SYSADMIN does not inherit those privileges. Grant READ/WRITE on the stage "
+                    "— do not recreate it from DataHive."
                 ),
-                "grant_sql": (
-                    "GRANT READ ON STAGE SALES_DB.RAW.RAW_STAGE TO ROLE DATA_ENGINEER;\n"
-                    "GRANT WRITE ON STAGE SALES_DB.RAW.RAW_STAGE TO ROLE DATA_ENGINEER;"
-                ),
+                "grant_sql": snowflake_catalog.ensure_raw_stage_grant_sql(),
             }
         raise HTTPException(status_code=503, detail=f"Snowflake stage file list failed: {exc}") from exc
     return {

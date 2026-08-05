@@ -997,7 +997,7 @@
                     <button type="button" class="btn btn-ghost" id="etlRefreshStageBtn" title="Reload stages and files">Refresh</button>
                     <button type="button" class="btn btn-ghost" id="etlEnsureStageBtn" title="Only if the stage truly does not exist">Create if missing</button>
                   </div>
-                  <div class="help" id="etl_stage_help">Uses SALES_DB.RAW.RAW_STAGE when visible to the connector role.</div>
+                  <div class="help" id="etl_stage_help">Uses SALES_DB.RAW.RAW_STAGE when the connector role has READ on the stage (schema USAGE alone is not enough).</div>
                 </div>
                 <div class="field hidden" id="etl_stage_file_wrap">
                   <label for="etl_source_file">Stage file</label>
