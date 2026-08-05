@@ -126,5 +126,45 @@
         )
       );
     },
+    snowflakeStages: function (connectorId) {
+      return fetchJson(
+        "/api/snowflake/" + encodeURIComponent(connectorId) + "/stages"
+      );
+    },
+    snowflakeStageFiles: function (connectorId, stageFqn, pattern) {
+      var path =
+        "/api/snowflake/" +
+        encodeURIComponent(connectorId) +
+        "/stages/" +
+        encodeURIComponent(stageFqn) +
+        "/files";
+      if (pattern) path += "?pattern=" + encodeURIComponent(pattern);
+      return fetchJson(path);
+    },
+    snowflakeEnsureRawStage: function (connectorId) {
+      return fetch(apiBase() + "/api/snowflake/" + encodeURIComponent(connectorId) + "/stages/ensure-raw", {
+        method: "POST",
+        headers: headers(),
+      }).then(function (res) {
+        return res.text().then(function (text) {
+          var data = {};
+          try {
+            data = text ? JSON.parse(text) : {};
+          } catch (_e) {
+            data = { detail: text };
+          }
+          if (!res.ok) {
+            var detail = (data && data.detail) || text || "HTTP " + res.status;
+            var err = new Error(
+              typeof detail === "string" ? detail : JSON.stringify(detail)
+            );
+            err.detail = detail;
+            err.httpStatus = res.status;
+            throw err;
+          }
+          return data;
+        });
+      });
+    },
   };
 })(window);

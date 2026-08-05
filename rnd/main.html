@@ -980,10 +980,35 @@
                   </select>
                   <div class="help">Saved connections for the selected source connector.</div>
                 </div>
-                <div class="field" style="margin-bottom:0">
+                <div class="field" id="etl_source_kind_wrap">
+                  <label for="etl_source_kind">Source kind</label>
+                  <select id="etl_source_kind">
+                    <option value="object">Table / object</option>
+                    <option value="stage_file">Snowflake stage file</option>
+                  </select>
+                  <div class="help">Use stage file to land files from RAW_STAGE into RAW tables.</div>
+                </div>
+                <div class="field hidden" id="etl_stage_wrap">
+                  <label for="etl_source_stage">Stage</label>
+                  <div style="display:flex;gap:8px;align-items:center">
+                    <select id="etl_source_stage" style="flex:1" disabled>
+                      <option value="">Select Snowflake connection first…</option>
+                    </select>
+                    <button type="button" class="btn btn-ghost" id="etlEnsureStageBtn" title="Create RAW_STAGE if missing">Ensure</button>
+                  </div>
+                  <div class="help" id="etl_stage_help">Example: SALES_DB.RAW.RAW_STAGE</div>
+                </div>
+                <div class="field hidden" id="etl_stage_file_wrap">
+                  <label for="etl_source_file">Stage file</label>
+                  <select id="etl_source_file" disabled>
+                    <option value="">Select a stage first…</option>
+                  </select>
+                  <div class="help">Files listed from the selected stage (CSV / JSON / Parquet).</div>
+                </div>
+                <div class="field" style="margin-bottom:0" id="etl_source_object_wrap">
                   <label for="etl_source_object">Source object</label>
-                  <input id="etl_source_object" maxlength="256" placeholder="e.g. bronze.customers or s3://bucket/path/" />
-                  <div class="help">Schema.table, dataset.table, or path used in the generated script.</div>
+                  <input id="etl_source_object" maxlength="512" placeholder="e.g. bronze.customers or @SALES_DB.RAW.RAW_STAGE/file.csv" />
+                  <div class="help" id="etl_source_object_help">Schema.table, dataset.table, stage path, or file used in the generated script.</div>
                 </div>
               </div>
 
@@ -1006,8 +1031,8 @@
                 </div>
                 <div class="field" style="margin-bottom:0">
                   <label for="etl_target_object">Destination object</label>
-                  <input id="etl_target_object" maxlength="256" placeholder="e.g. silver.customers or dhpoc-silver.dh_customer" />
-                  <div class="help">Where transformed rows should land.</div>
+                  <input id="etl_target_object" maxlength="256" placeholder="e.g. SALES_DB.RAW.CUSTOMERS" />
+                  <div class="help">For stage loads, defaults to SALES_DB.RAW.&lt;FILE_TABLE&gt;.</div>
                 </div>
               </div>
             </div>
@@ -4010,7 +4035,121 @@ function etlSqlDialect(cloudId) {
   return "postgres";
 }
 
+function etlSuggestTableFromFile(path) {
+  let base = String(path || "STAGE_FILE").split("/").pop() || "STAGE_FILE";
+  base = base.replace(/\.(csv|tsv|json|jsonl|parquet|gz|zip)(\.(gz|zip))?$/i, "");
+  base = base.replace(/\.(csv|tsv|json|jsonl|parquet)$/i, "");
+  let safe = base.replace(/[^A-Za-z0-9_]+/g, "_").replace(/^_+|_+$/g, "");
+  if (!safe) safe = "STAGE_FILE";
+  if (/^\d/.test(safe)) safe = "T_" + safe;
+  return safe.toUpperCase();
+}
+
+function etlFileFormatSpec(ext) {
+  const e = String(ext || "").toLowerCase().replace(/^\./, "");
+  if (e === "parquet") {
+    return {
+      name: "DH_PARQUET_FF",
+      ddl: "TYPE = PARQUET",
+      copyOptions: "MATCH_BY_COLUMN_NAME = CASE_INSENSITIVE",
+    };
+  }
+  if (e === "json" || e === "jsonl" || e === "ndjson") {
+    return {
+      name: "DH_JSON_FF",
+      ddl: "TYPE = JSON STRIP_OUTER_ARRAY = TRUE",
+      copyOptions: "MATCH_BY_COLUMN_NAME = CASE_INSENSITIVE",
+    };
+  }
+  if (e === "tsv") {
+    return {
+      name: "DH_TSV_FF",
+      ddl: "TYPE = CSV FIELD_DELIMITER = '\\t' SKIP_HEADER = 1 FIELD_OPTIONALLY_ENCLOSED_BY = '\"' NULL_IF = ('', 'NULL')",
+      copyOptions: "",
+    };
+  }
+  return {
+    name: "DH_CSV_FF",
+    ddl: "TYPE = CSV FIELD_DELIMITER = ',' SKIP_HEADER = 1 FIELD_OPTIONALLY_ENCLOSED_BY = '\"' NULL_IF = ('', 'NULL') ERROR_ON_COLUMN_COUNT_MISMATCH = FALSE",
+    copyOptions: "",
+  };
+}
+
+function generateSnowflakeStageIngestSql(ctx) {
+  const stageFqn = (ctx.stageFqn || "SALES_DB.RAW.RAW_STAGE").replace(/^@/, "");
+  const filePath = ctx.stageFilePath || ctx.sourceObject.replace(/^@[^/]+\//, "");
+  const location = "@" + stageFqn + "/" + String(filePath).replace(/^\//, "");
+  const target = ctx.targetObject || ("SALES_DB.RAW." + etlSuggestTableFromFile(filePath));
+  const parts = target.split(".");
+  const database = parts.length >= 3 ? parts[0] : "SALES_DB";
+  const schema = parts.length >= 2 ? parts[parts.length - 2] : "RAW";
+  const table = parts[parts.length - 1] || etlSuggestTableFromFile(filePath);
+  const fqTable = database + "." + schema + "." + table;
+  const ff = etlFileFormatSpec(ctx.stageFileExt || (filePath.split(".").pop() || "csv"));
+  const copyOpts = ff.copyOptions ? "\n  " + ff.copyOptions : "";
+
+  return [
+    "-- DataHive generated Snowflake ELT",
+    "-- Pipeline : " + ctx.name,
+    "-- Pattern  : Stage file → RAW table (DDL + ingestion)",
+    "-- Source   : " + location,
+    "-- Target   : " + fqTable,
+    "-- Notes    : " + (ctx.notes || "n/a"),
+    "",
+    "USE WAREHOUSE DEV_WH;",
+    "USE DATABASE " + database + ";",
+    "USE SCHEMA " + schema + ";",
+    "",
+    "-- 1) File format for this landing file",
+    "CREATE FILE FORMAT IF NOT EXISTS " + database + "." + schema + "." + ff.name,
+    "  " + ff.ddl + ";",
+    "",
+    "-- 2) DDL — infer columns from the stage file (Snowflake INFER_SCHEMA)",
+    "CREATE TABLE IF NOT EXISTS " + fqTable,
+    "  USING TEMPLATE (",
+    "    SELECT ARRAY_AGG(OBJECT_CONSTRUCT(*))",
+    "    FROM TABLE(",
+    "      INFER_SCHEMA(",
+    "        LOCATION => '" + location + "',",
+    "        FILE_FORMAT => '" + database + "." + schema + "." + ff.name + "',",
+    "        IGNORE_CASE => TRUE",
+    "      )",
+    "    )",
+    "  );",
+    "",
+    "-- Fallback DDL if INFER_SCHEMA is unavailable / file empty:",
+    "-- CREATE TABLE IF NOT EXISTS " + fqTable + " (",
+    "--   col1 VARCHAR,",
+    "--   col2 VARCHAR,",
+    "--   _dh_ingested_at TIMESTAMP_NTZ DEFAULT CURRENT_TIMESTAMP(),",
+    "--   _dh_source_file VARCHAR",
+    "-- );",
+    "",
+    "-- 3) Data ingestion from stage",
+    "COPY INTO " + fqTable,
+    "  FROM '" + location + "'",
+    "  FILE_FORMAT = (FORMAT_NAME = '" + database + "." + schema + "." + ff.name + "')",
+    "  ON_ERROR = 'ABORT_STATEMENT'" + copyOpts + ";",
+    "",
+    "-- 4) Optional lineage / audit columns (run once if not inferred)",
+    "ALTER TABLE " + fqTable + " ADD COLUMN IF NOT EXISTS _dh_ingested_at TIMESTAMP_NTZ;",
+    "ALTER TABLE " + fqTable + " ADD COLUMN IF NOT EXISTS _dh_source_file VARCHAR;",
+    "UPDATE " + fqTable,
+    "SET _dh_ingested_at = COALESCE(_dh_ingested_at, CURRENT_TIMESTAMP()),",
+    "    _dh_source_file = COALESCE(_dh_source_file, '" + String(filePath).replace(/'/g, "''") + "')",
+    "WHERE _dh_ingested_at IS NULL OR _dh_source_file IS NULL;",
+    "",
+    "-- 5) Validate",
+    "SELECT COUNT(*) AS row_count FROM " + fqTable + ";",
+    "SELECT * FROM " + fqTable + " LIMIT 20;",
+    "",
+  ].join("\n");
+}
+
 function generateEtlSqlScript(ctx) {
+  if (ctx.sourceKind === "stage_file" || ctx.isStageIngest) {
+    return generateSnowflakeStageIngestSql(ctx);
+  }
   const srcDialect = etlSqlDialect(ctx.sourceType);
   const tgtDialect = etlSqlDialect(ctx.targetType);
   const srcObj = etlQuoteIdent(ctx.sourceObject, srcDialect);
@@ -4073,6 +4212,43 @@ function generateEtlSqlScript(ctx) {
 }
 
 function generateEtlPythonScript(ctx) {
+  if (ctx.sourceKind === "stage_file" || ctx.isStageIngest) {
+    const sql = generateSnowflakeStageIngestSql(ctx);
+    return [
+      '"""DataHive generated Snowflake stage → RAW table load (Python).',
+      "Executes the DDL + COPY INTO script via snowflake-connector-python.",
+      '"""',
+      "from __future__ import annotations",
+      "",
+      "import snowflake.connector",
+      "",
+      "SQL_SCRIPT = " + JSON.stringify(sql),
+      "",
+      "",
+      "def main() -> None:",
+      "    # Fill connection from connector_dtls / env — do not hardcode secrets.",
+      "    conn = snowflake.connector.connect(",
+      "        account=\"...\",",
+      "        user=\"...\",",
+      "        password=\"...\",",
+      "        warehouse=\"DEV_WH\",",
+      "        database=\"SALES_DB\",",
+      "        schema=\"RAW\",",
+      "    )",
+      "    try:",
+      "        with conn.cursor() as cur:",
+      "            for stmt in [s.strip() for s in SQL_SCRIPT.split(\";\") if s.strip()]:",
+      "                cur.execute(stmt)",
+      "                print(\"OK:\", stmt.splitlines()[0][:120])",
+      "    finally:",
+      "        conn.close()",
+      "",
+      "",
+      'if __name__ == "__main__":',
+      "    main()",
+      "",
+    ].join("\n");
+  }
   const src = ctx.sourceObject;
   const tgt = ctx.targetObject;
   return [
@@ -4280,10 +4456,27 @@ function buildEtlScriptContext() {
   const targetConnKey = $("#etl_target_conn").value;
   const srcConn = findEtlConnection(sourceConnKey);
   const tgtConn = findEtlConnection(targetConnKey);
-  const sourceObject =
+  const sourceKind = ($("#etl_source_kind") && $("#etl_source_kind").value) || "object";
+  const stageFqn = ($("#etl_source_stage") && $("#etl_source_stage").value) || "";
+  const stageFilePath = ($("#etl_source_file") && $("#etl_source_file").value) || "";
+  const stageFileOpt =
+    $("#etl_source_file") && $("#etl_source_file").selectedOptions[0]
+      ? $("#etl_source_file").selectedOptions[0]
+      : null;
+  const stageFileExt = stageFileOpt ? stageFileOpt.dataset.ext || "" : "";
+  let sourceObject =
     ($("#etl_source_object").value || "").trim() || etlDefaultObject("source", sourceType);
-  const targetObject =
+  if (sourceKind === "stage_file" && stageFqn && stageFilePath) {
+    sourceObject = "@" + stageFqn.replace(/^@/, "") + "/" + stageFilePath.replace(/^\//, "");
+  }
+  let targetObject =
     ($("#etl_target_object").value || "").trim() || etlDefaultObject("target", targetType);
+  if (sourceKind === "stage_file" && !($("#etl_target_object") && $("#etl_target_object").value.trim())) {
+    targetObject = "SALES_DB.RAW." + etlSuggestTableFromFile(stageFilePath || sourceObject);
+  }
+  const isStageIngest =
+    sourceKind === "stage_file" ||
+    (sourceType === "snowflake" && String(sourceObject).startsWith("@"));
   return {
     name,
     sourceType,
@@ -4294,9 +4487,201 @@ function buildEtlScriptContext() {
     targetLabel: tgtConn ? connectionLabel(tgtConn) : targetConnKey || etlPlatformLabel(targetType),
     sourceObject,
     targetObject,
+    sourceKind,
+    stageFqn: stageFqn.replace(/^@/, ""),
+    stageFilePath,
+    stageFileExt,
+    isStageIngest,
     notes: ($("#etl_notes").value || "").trim(),
     language: selectedEtlLanguage(),
   };
+}
+
+function etlSnowflakeConnectorId() {
+  const key = ($("#etl_source_conn") && $("#etl_source_conn").value) || "";
+  if (!key || key === "__configure__") return "";
+  const conn = findEtlConnection(key);
+  return (conn && conn.id) || key;
+}
+
+function updateEtlSourceKindUi() {
+  const sourceType = ($("#etl_source_type") && $("#etl_source_type").value) || "";
+  const kindSel = $("#etl_source_kind");
+  const kindWrap = $("#etl_source_kind_wrap");
+  const stageWrap = $("#etl_stage_wrap");
+  const fileWrap = $("#etl_stage_file_wrap");
+  const isSnowflake = sourceType === "snowflake";
+  if (kindWrap) kindWrap.classList.toggle("hidden", !isSnowflake);
+  if (!isSnowflake && kindSel) kindSel.value = "object";
+  const stageMode = isSnowflake && kindSel && kindSel.value === "stage_file";
+  if (stageWrap) stageWrap.classList.toggle("hidden", !stageMode);
+  if (fileWrap) fileWrap.classList.toggle("hidden", !stageMode);
+  const help = $("#etl_source_object_help");
+  if (help) {
+    help.textContent = stageMode
+      ? "Auto-filled from the selected stage file. Used in COPY INTO LOCATION."
+      : "Schema.table, dataset.table, or path used in the generated script.";
+  }
+  if (stageMode) {
+    if ($("#etl_target_type") && !$("#etl_target_type").value) {
+      $("#etl_target_type").value = "snowflake";
+      fillEtlConnectionSelect($("#etl_target_conn"), "snowflake", $("#etl_source_conn").value);
+    }
+    if ($("#etl_target_conn") && !$("#etl_target_conn").value && $("#etl_source_conn").value) {
+      $("#etl_target_conn").value = $("#etl_source_conn").value;
+    }
+  }
+}
+
+async function loadEtlSnowflakeStages() {
+  const sel = $("#etl_source_stage");
+  if (!sel) return;
+  const connectorId = etlSnowflakeConnectorId();
+  if (!connectorId) {
+    sel.disabled = true;
+    sel.innerHTML = '<option value="">Select Snowflake connection first…</option>';
+    return;
+  }
+  sel.disabled = true;
+  sel.innerHTML = '<option value="">Loading stages…</option>';
+  try {
+    if (typeof DataHiveAssets === "undefined") throw new Error("Assets API not loaded");
+    const data = await DataHiveAssets.snowflakeStages(connectorId);
+    const items = data.items || [];
+    if (!items.length) {
+      sel.innerHTML = '<option value="SALES_DB.RAW.RAW_STAGE">SALES_DB.RAW.RAW_STAGE (example)</option>';
+      sel.disabled = false;
+      await loadEtlSnowflakeStageFiles();
+      return;
+    }
+    sel.innerHTML =
+      '<option value="">Select stage…</option>' +
+      items
+        .map((s) => {
+          const label =
+            s.fqn +
+            (s.recommended ? " · recommended" : "") +
+            (s.exists === false ? " · not created yet" : "");
+          return (
+            '<option value="' +
+            escapeHtml(s.fqn) +
+            '"' +
+            (s.recommended ? " selected" : "") +
+            ">" +
+            escapeHtml(label) +
+            "</option>"
+          );
+        })
+        .join("");
+    sel.disabled = false;
+    if (!sel.value) {
+      const rec = items.find((s) => s.recommended) || items[0];
+      if (rec) sel.value = rec.fqn;
+    }
+    const help = $("#etl_stage_help");
+    if (help) {
+      const cur = items.find((s) => s.fqn === sel.value);
+      help.textContent = cur && cur.note
+        ? cur.note
+        : "Files in this stage will be loaded into SALES_DB.RAW tables.";
+    }
+    await loadEtlSnowflakeStageFiles();
+  } catch (err) {
+    sel.innerHTML =
+      '<option value="SALES_DB.RAW.RAW_STAGE">SALES_DB.RAW.RAW_STAGE (example)</option>';
+    sel.disabled = false;
+    showEtlError(
+      "Could not list Snowflake stages: " + (err && err.message ? err.message : err)
+    );
+    await loadEtlSnowflakeStageFiles();
+  }
+}
+
+async function loadEtlSnowflakeStageFiles() {
+  const sel = $("#etl_source_file");
+  if (!sel) return;
+  const connectorId = etlSnowflakeConnectorId();
+  const stageFqn = ($("#etl_source_stage") && $("#etl_source_stage").value) || "";
+  if (!connectorId || !stageFqn) {
+    sel.disabled = true;
+    sel.innerHTML = '<option value="">Select a stage first…</option>';
+    return;
+  }
+  sel.disabled = true;
+  sel.innerHTML = '<option value="">Loading files…</option>';
+  try {
+    if (typeof DataHiveAssets === "undefined") throw new Error("Assets API not loaded");
+    const data = await DataHiveAssets.snowflakeStageFiles(connectorId, stageFqn);
+    const items = data.items || [];
+    if (!items.length) {
+      // Keep the flow usable: offer example filenames the user can rename after PUT.
+      const examples = [
+        { path: "customers.csv", extension: "csv" },
+        { path: "orders.json", extension: "json" },
+        { path: "events.parquet", extension: "parquet" },
+      ];
+      sel.innerHTML =
+        '<option value="">No files in stage — pick an example pattern…</option>' +
+        examples
+          .map(
+            (f) =>
+              '<option value="' +
+              escapeHtml(f.path) +
+              '" data-ext="' +
+              escapeHtml(f.extension) +
+              '">' +
+              escapeHtml(f.path + " (example)") +
+              "</option>"
+          )
+          .join("");
+      sel.disabled = false;
+      if (data.note) {
+        const help = $("#etl_stage_help");
+        if (help) help.textContent = data.note + " Use Ensure to create RAW_STAGE, then PUT files.";
+      }
+      return;
+    }
+    sel.innerHTML =
+      '<option value="">Select file…</option>' +
+      items
+        .map((f) => {
+          const path = f.path || f.name;
+          const size =
+            f.size != null ? " · " + Number(f.size).toLocaleString() + " B" : "";
+          return (
+            '<option value="' +
+            escapeHtml(path) +
+            '" data-ext="' +
+            escapeHtml(f.extension || "") +
+            '">' +
+            escapeHtml(path + size) +
+            "</option>"
+          );
+        })
+        .join("");
+    sel.disabled = false;
+  } catch (err) {
+    sel.innerHTML = '<option value="">Failed to list stage files</option>';
+    showEtlError(
+      "Could not list stage files: " + (err && err.message ? err.message : err)
+    );
+  }
+}
+
+function applyEtlStageFileSelection() {
+  const stageFqn = ($("#etl_source_stage") && $("#etl_source_stage").value) || "";
+  const filePath = ($("#etl_source_file") && $("#etl_source_file").value) || "";
+  if (!stageFqn || !filePath) return;
+  if ($("#etl_source_object")) {
+    $("#etl_source_object").value =
+      "@" + stageFqn.replace(/^@/, "") + "/" + filePath.replace(/^\//, "");
+  }
+  if ($("#etl_target_object")) {
+    $("#etl_target_object").value = "SALES_DB.RAW." + etlSuggestTableFromFile(filePath);
+  }
+  if ($("#etl_name") && !$("#etl_name").value.trim()) {
+    $("#etl_name").value = "stage_" + etlSuggestTableFromFile(filePath).toLowerCase() + "_to_raw";
+  }
 }
 
 function generateEtlTransformationScript() {
@@ -4316,6 +4701,16 @@ function generateEtlTransformationScript() {
   if (!ctx.targetConnKey || ctx.targetConnKey === "__configure__") {
     showEtlError("Select a destination connection before generating a script.");
     return null;
+  }
+  if (ctx.sourceKind === "stage_file") {
+    if (!ctx.stageFqn) {
+      showEtlError("Select a Snowflake stage (e.g. SALES_DB.RAW.RAW_STAGE).");
+      return null;
+    }
+    if (!ctx.stageFilePath) {
+      showEtlError("Select a stage file to generate DDL and COPY INTO.");
+      return null;
+    }
   }
   let script = "";
   if (ctx.language === "python") script = generateEtlPythonScript(ctx);
@@ -4495,10 +4890,20 @@ function resetEtlForm() {
   const form = $("#etlForm");
   if (form) form.reset();
   if ($("#etl_language")) $("#etl_language").value = "sql";
+  if ($("#etl_source_kind")) $("#etl_source_kind").value = "object";
   fillEtlConnectionSelect($("#etl_source_conn"), "", "");
   fillEtlConnectionSelect($("#etl_target_conn"), "", "");
   if ($("#etl_source_object")) $("#etl_source_object").value = "";
   if ($("#etl_target_object")) $("#etl_target_object").value = "";
+  if ($("#etl_source_stage")) {
+    $("#etl_source_stage").disabled = true;
+    $("#etl_source_stage").innerHTML = '<option value="">Select Snowflake connection first…</option>';
+  }
+  if ($("#etl_source_file")) {
+    $("#etl_source_file").disabled = true;
+    $("#etl_source_file").innerHTML = '<option value="">Select a stage first…</option>';
+  }
+  updateEtlSourceKindUi();
   etlGeneratedScript = "";
   if ($("#etlScriptEditor")) $("#etlScriptEditor").value = "";
   if ($("#etlScriptHint")) {
@@ -4565,6 +4970,10 @@ function bindEtlEvents() {
     if ($("#etl_source_object") && !$("#etl_source_object").value) {
       $("#etl_source_object").placeholder = etlDefaultObject("source", e.target.value);
     }
+    updateEtlSourceKindUi();
+    if (e.target.value === "snowflake" && $("#etl_source_kind") && $("#etl_source_kind").value === "stage_file") {
+      loadEtlSnowflakeStages();
+    }
   });
   $("#etl_target_type").addEventListener("change", (e) => {
     fillEtlConnectionSelect($("#etl_target_conn"), e.target.value, "");
@@ -4573,10 +4982,88 @@ function bindEtlEvents() {
     }
   });
 
+  const sourceKind = $("#etl_source_kind");
+  if (sourceKind) {
+    sourceKind.addEventListener("change", () => {
+      updateEtlSourceKindUi();
+      if (sourceKind.value === "stage_file") loadEtlSnowflakeStages();
+    });
+  }
+  const stageSel = $("#etl_source_stage");
+  if (stageSel) {
+    stageSel.addEventListener("change", () => loadEtlSnowflakeStageFiles());
+  }
+  const fileSel = $("#etl_source_file");
+  if (fileSel) {
+    fileSel.addEventListener("change", () => applyEtlStageFileSelection());
+  }
+  const ensureBtn = $("#etlEnsureStageBtn");
+  if (ensureBtn) {
+    ensureBtn.addEventListener("click", async () => {
+      const connectorId = etlSnowflakeConnectorId();
+      if (!connectorId) {
+        showEtlError("Select a Snowflake source connection first.");
+        return;
+      }
+      ensureBtn.disabled = true;
+      ensureBtn.textContent = "Creating…";
+      try {
+        if (typeof DataHiveAssets === "undefined") throw new Error("Assets API not loaded");
+        const result = await DataHiveAssets.snowflakeEnsureRawStage(connectorId);
+        showEtlOk("Stage ready: " + (result.fqn || "RAW_STAGE"));
+        await loadEtlSnowflakeStages();
+      } catch (err) {
+        const detail = err && err.detail;
+        let msg = "";
+        if (detail && typeof detail === "object" && detail.message) {
+          msg =
+            detail.message +
+            (detail.workaround ? "\n\nWorkaround: " + detail.workaround : "");
+        } else {
+          const raw = err && err.message ? err.message : String(err);
+          try {
+            const parsed = JSON.parse(raw);
+            if (parsed && parsed.message) {
+              msg =
+                parsed.message +
+                (parsed.workaround ? "\n\nWorkaround: " + parsed.workaround : "");
+            }
+          } catch (_e) {
+            /* keep raw */
+          }
+          if (!msg) {
+            if (/CREATE STAGE|Insufficient privileges/i.test(raw)) {
+              msg =
+                "DATA_ENGINEER can USE SALES_DB.RAW but cannot CREATE STAGE.\n\n" +
+                "Ask an admin to run:\n" +
+                "USE ROLE ACCOUNTADMIN;\n" +
+                "USE DATABASE SALES_DB; USE SCHEMA RAW;\n" +
+                "CREATE STAGE IF NOT EXISTS RAW_STAGE DIRECTORY = (ENABLE = TRUE);\n" +
+                "GRANT READ, WRITE ON STAGE SALES_DB.RAW.RAW_STAGE TO ROLE DATA_ENGINEER;\n" +
+                "GRANT CREATE STAGE ON SCHEMA SALES_DB.RAW TO ROLE DATA_ENGINEER;\n\n" +
+                "Until then, select stage \"~\" (user stage) in ETL, PUT files there, and generate the load script.";
+            } else {
+              msg = "Could not ensure RAW_STAGE: " + raw;
+            }
+          }
+        }
+        showEtlError(msg);
+      } finally {
+        ensureBtn.disabled = false;
+        ensureBtn.textContent = "Ensure";
+      }
+    });
+  }
+
   $("#etl_source_conn").addEventListener("change", (e) => {
     if (e.target.value === "__configure__") {
       e.target.value = "";
       document.querySelector('nav.rail a[data-view="connectors"]').click();
+      return;
+    }
+    updateEtlSourceKindUi();
+    if ($("#etl_source_kind") && $("#etl_source_kind").value === "stage_file") {
+      loadEtlSnowflakeStages();
     }
   });
   $("#etl_target_conn").addEventListener("change", (e) => {
@@ -4754,6 +5241,7 @@ async function initEtlView() {
   fillEtlConnectorSelects();
   bindEtlEvents();
   await refreshEtlConnections();
+  updateEtlSourceKindUi();
   renderEtlPipelines();
 }
 

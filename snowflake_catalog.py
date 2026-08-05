@@ -388,3 +388,293 @@ def table_structure_for_doc(doc: dict[str, Any], schema: str, table: str) -> dic
 
 def table_structure_for_connector(connector_id: str, schema: str, table: str) -> dict[str, Any]:
     return table_structure_for_doc(load_connector_doc(connector_id), schema, table)
+
+
+def _stage_fqn(database: str, schema: str, stage: str) -> str:
+    stage_name = stage.lstrip("@")
+    if stage_name.count(".") >= 2:
+        return stage_name
+    if database and schema:
+        return f"{database}.{schema}.{stage_name}"
+    if schema:
+        return f"{schema}.{stage_name}"
+    return stage_name
+
+
+def list_stages_for_doc(doc: dict[str, Any]) -> list[dict[str, Any]]:
+    """List stages visible to the connector (scoped database/schema preferred)."""
+    scope_opts = parse_scope_options(_norm(doc.get("dataset_scope")))
+    database = scope_opts.get("database") or "SALES_DB"
+    schema = scope_opts.get("schema") or "RAW"
+    conn = None
+    stages: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    try:
+        conn = open_connection(doc)
+        with conn.cursor() as cur:
+            try:
+                cur.execute('USE WAREHOUSE "DEV_WH"')
+            except Exception:  # noqa: BLE001
+                pass
+            queries = [
+                f"SHOW STAGES IN SCHEMA {_ident(database)}.{_ident(schema)}",
+                f"SHOW STAGES IN DATABASE {_ident(database)}",
+                "SHOW STAGES",
+            ]
+            for q in queries:
+                try:
+                    cur.execute(q)
+                except Exception:  # noqa: BLE001
+                    continue
+                cols = [d[0].lower() for d in (cur.description or [])]
+                for row in _fetch_all(cur):
+                    data = dict(zip(cols, row))
+                    name = str(data.get("name") or _show_result_name(row, 1) or "").strip()
+                    if not name:
+                        continue
+                    db = str(data.get("database_name") or database)
+                    sch = str(data.get("schema_name") or schema)
+                    fqn = _stage_fqn(db, sch, name)
+                    key = fqn.lower()
+                    if key in seen:
+                        continue
+                    seen.add(key)
+                    stages.append(
+                        {
+                            "name": name,
+                            "database": db,
+                            "schema": sch,
+                            "fqn": fqn,
+                            "url": data.get("url") or "",
+                            "type": data.get("type") or "INTERNAL",
+                            "recommended": name.upper() == "RAW_STAGE",
+                        }
+                    )
+    finally:
+        if conn is not None:
+            try:
+                conn.close()
+            except Exception:  # noqa: BLE001
+                pass
+
+    # Always surface the example landing stage used by DataHive ELT into RAW.
+    example_fqn = _stage_fqn(database, schema, "RAW_STAGE")
+    if example_fqn.lower() not in seen:
+        stages.insert(
+            0,
+            {
+                "name": "RAW_STAGE",
+                "database": database,
+                "schema": schema,
+                "fqn": example_fqn,
+                "url": "",
+                "type": "INTERNAL",
+                "recommended": True,
+                "exists": False,
+                "note": (
+                    "Recommended landing stage for files → RAW tables. "
+                    "Requires CREATE STAGE on the schema (DATA_ENGINEER currently has USAGE only)."
+                ),
+            },
+        )
+    else:
+        for s in stages:
+            if s["fqn"].lower() == example_fqn.lower():
+                s["exists"] = True
+                s["recommended"] = True
+
+    # User stage is always available without schema CREATE STAGE privilege.
+    if "~" not in seen and "~/" not in seen:
+        stages.append(
+            {
+                "name": "~",
+                "database": "",
+                "schema": "",
+                "fqn": "~",
+                "url": "",
+                "type": "USER",
+                "recommended": False,
+                "exists": True,
+                "note": "Personal user stage (@~). Usable without CREATE STAGE on SALES_DB.RAW.",
+            }
+        )
+
+    for s in stages:
+        s.setdefault("exists", True)
+    return stages
+
+
+def list_stage_files_for_doc(
+    doc: dict[str, Any],
+    stage_fqn: str,
+    *,
+    pattern: str = "",
+) -> list[dict[str, Any]]:
+    """LIST files for a Snowflake stage."""
+    stage = stage_fqn.lstrip("@")
+    conn = None
+    try:
+        conn = open_connection(doc)
+        with conn.cursor() as cur:
+            try:
+                cur.execute('USE WAREHOUSE "DEV_WH"')
+            except Exception:  # noqa: BLE001
+                pass
+            loc = f"@{stage}"
+            if pattern:
+                loc = f"{loc}/{pattern.lstrip('/')}"
+            cur.execute(f"LIST {loc}")
+            cols = [d[0].lower() for d in (cur.description or [])]
+            files = []
+            for row in _fetch_all(cur):
+                data = dict(zip(cols, row)) if cols else {}
+                name = str(data.get("name") or (row[0] if row else "") or "")
+                if not name:
+                    continue
+                # LIST returns stage/path; keep relative path after stage root when possible.
+                rel = name
+                marker = stage.split(".")[-1].lower() + "/"
+                lower = name.lower()
+                if marker in lower:
+                    rel = name[lower.index(marker) + len(marker) :]
+                elif "/" in name:
+                    rel = name.split("/", 1)[-1]
+                size = data.get("size") if "size" in data else (row[1] if len(row) > 1 else None)
+                md5 = data.get("md5") if "md5" in data else None
+                last_modified = (
+                    data.get("last_modified")
+                    if "last_modified" in data
+                    else (row[3] if len(row) > 3 else None)
+                )
+                ext = ""
+                base = rel.rsplit("/", 1)[-1]
+                if "." in base:
+                    ext = base.rsplit(".", 1)[-1].lower()
+                files.append(
+                    {
+                        "name": name,
+                        "path": rel,
+                        "size": size,
+                        "md5": md5,
+                        "last_modified": str(last_modified) if last_modified is not None else None,
+                        "extension": ext,
+                        "stage_fqn": stage,
+                        "stage_location": f"@{stage}/{rel}",
+                    }
+                )
+            return files
+    finally:
+        if conn is not None:
+            try:
+                conn.close()
+            except Exception:  # noqa: BLE001
+                pass
+
+
+def ensure_raw_stage_grant_sql(database: str = "SALES_DB", schema: str = "RAW") -> str:
+    return (
+        f"-- Run as ACCOUNTADMIN / SYSADMIN (or schema owner)\n"
+        f"USE ROLE ACCOUNTADMIN;\n"
+        f"USE DATABASE {database};\n"
+        f"USE SCHEMA {schema};\n"
+        f"CREATE STAGE IF NOT EXISTS RAW_STAGE\n"
+        f"  DIRECTORY = (ENABLE = TRUE)\n"
+        f"  COMMENT = 'DataHive landing stage for files loaded into {database}.{schema}';\n"
+        f"GRANT USAGE ON DATABASE {database} TO ROLE DATA_ENGINEER;\n"
+        f"GRANT USAGE ON SCHEMA {database}.{schema} TO ROLE DATA_ENGINEER;\n"
+        f"GRANT CREATE STAGE ON SCHEMA {database}.{schema} TO ROLE DATA_ENGINEER;\n"
+        f"GRANT READ, WRITE ON STAGE {database}.{schema}.RAW_STAGE TO ROLE DATA_ENGINEER;\n"
+        f"-- Optional if Ensure should keep working for this role:\n"
+        f"-- GRANT CREATE STAGE ON SCHEMA {database}.{schema} TO ROLE DATA_ENGINEER;"
+    )
+
+
+def ensure_raw_stage_for_doc(doc: dict[str, Any]) -> dict[str, Any]:
+    """Create SALES_DB.RAW.RAW_STAGE (or scoped equivalent) if the role allows it."""
+    scope_opts = parse_scope_options(_norm(doc.get("dataset_scope")))
+    database = scope_opts.get("database") or "SALES_DB"
+    schema = scope_opts.get("schema") or "RAW"
+    stage = "RAW_STAGE"
+    fqn = _stage_fqn(database, schema, stage)
+    grant_sql = ensure_raw_stage_grant_sql(database, schema)
+    conn = None
+    try:
+        conn = open_connection(doc)
+        with conn.cursor() as cur:
+            try:
+                cur.execute('USE WAREHOUSE "DEV_WH"')
+            except Exception:  # noqa: BLE001
+                pass
+            cur.execute(f"USE DATABASE {_ident(database)}")
+            cur.execute(f"USE SCHEMA {_ident(schema)}")
+            cur.execute(
+                f"""
+                CREATE STAGE IF NOT EXISTS {_ident(stage)}
+                DIRECTORY = (ENABLE = TRUE)
+                COMMENT = 'DataHive landing stage for files loaded into {database}.{schema}'
+                """
+            )
+        return {
+            "ok": True,
+            "created_or_exists": True,
+            "fqn": fqn,
+            "database": database,
+            "schema": schema,
+            "name": stage,
+        }
+    except Exception as exc:  # noqa: BLE001
+        msg = str(exc)
+        if "Insufficient privileges" in msg or "42501" in msg or "CREATE STAGE" in msg:
+            raise PermissionError(
+                "Role DATA_ENGINEER can USE schema "
+                f"{database}.{schema} but cannot CREATE STAGE. "
+                "Ask an admin to run:\n\n"
+                + grant_sql
+            ) from exc
+        raise
+    finally:
+        if conn is not None:
+            try:
+                conn.close()
+            except Exception:  # noqa: BLE001
+                pass
+
+
+def suggest_table_name_from_file(path: str) -> str:
+    base = (path or "stage_file").rsplit("/", 1)[-1]
+    base = re.sub(r"\.(csv|tsv|json|jsonl|parquet|gz|zip|xml)$", "", base, flags=re.I)
+    base = re.sub(r"\.(csv|tsv|json|jsonl|parquet)$", "", base, flags=re.I)
+    safe = re.sub(r"[^A-Za-z0-9_]+", "_", base).strip("_")
+    if not safe:
+        safe = "STAGE_FILE"
+    if safe[0].isdigit():
+        safe = "T_" + safe
+    return safe.upper()
+
+
+def file_format_for_extension(ext: str) -> dict[str, str]:
+    e = (ext or "").lower().lstrip(".")
+    if e in {"parquet"}:
+        return {
+            "name": "DH_PARQUET_FF",
+            "ddl": "TYPE = PARQUET",
+            "copy_options": "MATCH_BY_COLUMN_NAME = CASE_INSENSITIVE",
+        }
+    if e in {"json", "jsonl", "ndjson"}:
+        return {
+            "name": "DH_JSON_FF",
+            "ddl": "TYPE = JSON STRIP_OUTER_ARRAY = TRUE",
+            "copy_options": "MATCH_BY_COLUMN_NAME = CASE_INSENSITIVE",
+        }
+    if e in {"tsv"}:
+        return {
+            "name": "DH_TSV_FF",
+            "ddl": "TYPE = CSV FIELD_DELIMITER = '\\t' SKIP_HEADER = 1 FIELD_OPTIONALLY_ENCLOSED_BY = '\"' NULL_IF = ('', 'NULL')",
+            "copy_options": "",
+        }
+    # default CSV
+    return {
+        "name": "DH_CSV_FF",
+        "ddl": "TYPE = CSV FIELD_DELIMITER = ',' SKIP_HEADER = 1 FIELD_OPTIONALLY_ENCLOSED_BY = '\"' NULL_IF = ('', 'NULL') ERROR_ON_COLUMN_COUNT_MISMATCH = FALSE",
+        "copy_options": "",
+    }
