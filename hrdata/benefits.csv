@@ -1,0 +1,1001 @@
+benefit_id,employee_id,plan_code,plan_name,plan_type,coverage_level,employer_contribution,employee_contribution,currency,enrollment_date,effective_date,end_date,status
+BEN0001,EMP0876,MED-PPO,Medical PPO,health,family,184.19,134.52,USD,2021-04-20,2021-04-20,2022-07-12,waived
+BEN0002,EMP0747,LIFE-2X,Life 2x Salary,life,employee_children,575.31,297.62,USD,2025-01-18,2025-01-18,,active
+BEN0003,EMP0587,DEN-PLUS,Dental Plus,dental,employee_children,262.18,316.47,USD,2025-06-03,2025-06-03,,active
+BEN0004,EMP0040,VIS-STD,Vision Standard,vision,family,173.58,46.16,GBP,2023-04-03,2023-04-03,,active
+BEN0005,EMP0461,LIFE-1X,Life 1x Salary,life,employee_children,457.69,248.22,USD,2022-03-28,2022-03-28,,active
+BEN0006,EMP0409,MED-HMO,Medical HMO,health,employee_children,189.28,27.39,USD,2021-10-27,2021-10-27,,active
+BEN0007,EMP0674,VIS-STD,Vision Standard,vision,employee,132.77,125.44,USD,2025-12-02,2025-12-02,,active
+BEN0008,EMP0635,DEN-PLUS,Dental Plus,dental,employee_children,83.48,189.88,USD,2024-07-18,2024-07-18,2024-07-30,terminated
+BEN0009,EMP0019,WEL-GYM,Wellness Gym,wellness,employee,206.93,274.17,USD,2024-11-29,2024-11-29,,active
+BEN0010,EMP0572,DEN-PLUS,Dental Plus,dental,employee_children,238.41,310.85,USD,2021-06-24,2021-06-24,,waived
+BEN0011,EMP0813,MED-PPO,Medical PPO,health,employee_children,60.91,73.65,USD,2026-07-27,2026-07-27,,active
+BEN0012,EMP0861,401K-STD,401(k) Standard,retirement,family,594.03,302.05,INR,2025-08-08,2025-08-08,,terminated
+BEN0013,EMP0706,DEN-BASIC,Dental Basic,dental,family,420.94,172.24,INR,2021-10-18,2021-10-18,2023-01-20,active
+BEN0014,EMP0607,DEN-BASIC,Dental Basic,dental,employee_children,77.76,281.54,USD,2026-06-12,2026-06-12,,terminated
+BEN0015,EMP0825,DEN-PLUS,Dental Plus,dental,family,178.05,165.37,USD,2026-06-09,2026-06-09,,terminated
+BEN0016,EMP0071,WEL-GYM,Wellness Gym,wellness,employee_children,277.82,294.33,USD,2024-05-02,2024-05-02,,waived
+BEN0017,EMP0284,VIS-STD,Vision Standard,vision,employee_spouse,477.75,110.81,USD,2024-09-13,2024-09-13,,terminated
+BEN0018,EMP0500,401K-PLUS,401(k) Plus Match,retirement,employee_children,624.41,86.25,USD,2025-07-02,2025-07-02,,active
+BEN0019,EMP0633,VIS-STD,Vision Standard,vision,family,426.12,155.35,USD,2025-03-05,2025-03-05,,waived
+BEN0020,EMP0714,VIS-STD,Vision Standard,vision,family,583.53,60.13,GBP,2026-07-23,2026-07-23,,active
+BEN0021,EMP0327,DEN-BASIC,Dental Basic,dental,employee,432.24,41.28,USD,2026-06-07,2026-06-07,2026-06-23,waived
+BEN0022,EMP0733,DEN-BASIC,Dental Basic,dental,employee_spouse,421.91,11.67,USD,2025-02-09,2025-02-09,,waived
+BEN0023,EMP0756,401K-STD,401(k) Standard,retirement,family,506.76,64.84,USD,2025-04-09,2025-04-09,,active
+BEN0024,EMP0518,DEN-BASIC,Dental Basic,dental,employee_children,539.40,174.73,INR,2023-08-01,2023-08-01,,terminated
+BEN0025,EMP0282,401K-PLUS,401(k) Plus Match,retirement,employee,632.63,344.34,USD,2023-07-28,2023-07-28,2026-03-13,terminated
+BEN0026,EMP0847,LIFE-2X,Life 2x Salary,life,family,362.92,162.94,USD,2025-06-23,2025-06-23,2026-05-08,active
+BEN0027,EMP0705,LIFE-2X,Life 2x Salary,life,family,230.36,321.13,USD,2020-01-10,2020-01-10,,active
+BEN0028,EMP0181,LIFE-1X,Life 1x Salary,life,employee,117.61,227.87,USD,2024-07-21,2024-07-21,,active
+BEN0029,EMP0016,VIS-STD,Vision Standard,vision,employee_children,81.58,306.56,INR,2015-07-20,2015-07-20,2021-05-20,terminated
+BEN0030,EMP0043,LIFE-1X,Life 1x Salary,life,employee,451.61,128.01,USD,2024-10-22,2024-10-22,,active
+BEN0031,EMP0741,401K-STD,401(k) Standard,retirement,employee_children,561.70,254.71,USD,2025-07-14,2025-07-14,,active
+BEN0032,EMP0074,DEN-BASIC,Dental Basic,dental,family,370.02,141.63,INR,2020-10-22,2020-10-22,,terminated
+BEN0033,EMP0964,401K-STD,401(k) Standard,retirement,employee_children,581.87,96.64,INR,2022-03-06,2022-03-06,,active
+BEN0034,EMP0722,DEN-PLUS,Dental Plus,dental,employee_spouse,63.33,259.49,USD,2026-03-19,2026-03-19,,active
+BEN0035,EMP0924,LIFE-2X,Life 2x Salary,life,employee_spouse,278.46,44.51,USD,2020-09-13,2020-09-13,,terminated
+BEN0036,EMP0262,WEL-GYM,Wellness Gym,wellness,employee_children,143.22,178.22,USD,2024-08-12,2024-08-12,,active
+BEN0037,EMP0594,DEN-PLUS,Dental Plus,dental,family,509.33,105.08,USD,2021-07-01,2021-07-01,,active
+BEN0038,EMP0398,LIFE-1X,Life 1x Salary,life,employee,213.48,218.62,USD,2025-11-12,2025-11-12,,terminated
+BEN0039,EMP0158,DEN-BASIC,Dental Basic,dental,employee,333.58,285.33,INR,2021-03-11,2021-03-11,,active
+BEN0040,EMP0525,VIS-STD,Vision Standard,vision,employee_spouse,69.72,47.57,USD,2025-10-26,2025-10-26,2025-11-09,terminated
+BEN0041,EMP0897,401K-STD,401(k) Standard,retirement,employee_children,176.33,347.19,USD,2023-03-16,2023-03-16,,waived
+BEN0042,EMP0236,VIS-STD,Vision Standard,vision,employee_spouse,375.01,38.21,USD,2017-09-28,2017-09-28,,active
+BEN0043,EMP0040,401K-PLUS,401(k) Plus Match,retirement,family,479.35,257.40,GBP,2020-09-13,2020-09-13,,active
+BEN0044,EMP0137,MED-HMO,Medical HMO,health,employee_spouse,315.16,36.11,USD,2023-06-01,2023-06-01,,active
+BEN0045,EMP0373,LIFE-1X,Life 1x Salary,life,family,646.99,325.71,USD,2022-07-15,2022-07-15,,waived
+BEN0046,EMP0031,401K-STD,401(k) Standard,retirement,employee_spouse,277.80,135.47,USD,2024-07-05,2024-07-05,,terminated
+BEN0047,EMP0946,DEN-BASIC,Dental Basic,dental,employee_spouse,516.48,143.02,USD,2024-07-06,2024-07-06,,terminated
+BEN0048,EMP0950,401K-STD,401(k) Standard,retirement,family,611.07,119.30,USD,2023-10-23,2023-10-23,,terminated
+BEN0049,EMP0098,MED-HMO,Medical HMO,health,employee_spouse,351.29,311.50,INR,2024-02-21,2024-02-21,,active
+BEN0050,EMP0044,401K-PLUS,401(k) Plus Match,retirement,family,122.29,103.21,USD,2016-01-27,2016-01-27,,waived
+BEN0051,EMP0133,401K-STD,401(k) Standard,retirement,family,250.59,180.28,USD,2022-05-01,2022-05-01,,waived
+BEN0052,EMP0903,LIFE-2X,Life 2x Salary,life,family,595.77,59.09,USD,2023-03-22,2023-03-22,,active
+BEN0053,EMP0540,WEL-GYM,Wellness Gym,wellness,family,438.28,342.89,USD,2026-04-13,2026-04-13,,active
+BEN0054,EMP0539,LIFE-1X,Life 1x Salary,life,employee_children,589.96,240.98,USD,2026-06-20,2026-06-20,,terminated
+BEN0055,EMP0800,VIS-STD,Vision Standard,vision,employee,466.62,97.73,USD,2026-01-31,2026-01-31,,terminated
+BEN0056,EMP0044,LIFE-1X,Life 1x Salary,life,employee_spouse,253.58,251.96,USD,2015-11-19,2015-11-19,,active
+BEN0057,EMP0957,DEN-BASIC,Dental Basic,dental,employee_spouse,260.37,234.88,GBP,2026-06-13,2026-06-13,,waived
+BEN0058,EMP0302,401K-STD,401(k) Standard,retirement,family,208.19,258.99,USD,2024-09-07,2024-09-07,2024-12-19,waived
+BEN0059,EMP0154,LIFE-1X,Life 1x Salary,life,employee,281.01,338.08,USD,2020-04-15,2020-04-15,,waived
+BEN0060,EMP0092,401K-STD,401(k) Standard,retirement,employee_children,340.34,215.04,USD,2024-05-12,2024-05-12,,terminated
+BEN0061,EMP0226,401K-PLUS,401(k) Plus Match,retirement,employee_children,428.90,33.96,INR,2025-03-02,2025-03-02,2026-04-13,terminated
+BEN0062,EMP0452,DEN-PLUS,Dental Plus,dental,employee,206.81,9.34,INR,2019-03-14,2019-03-14,,active
+BEN0063,EMP0024,WEL-GYM,Wellness Gym,wellness,family,257.67,191.32,USD,2025-01-20,2025-01-20,,active
+BEN0064,EMP0905,DEN-PLUS,Dental Plus,dental,employee_children,300.88,102.57,USD,2024-05-30,2024-05-30,,waived
+BEN0065,EMP0981,MED-HMO,Medical HMO,health,family,622.64,349.04,INR,2026-07-07,2026-07-07,,waived
+BEN0066,EMP0546,DEN-BASIC,Dental Basic,dental,employee_spouse,352.48,272.15,USD,2025-03-21,2025-03-21,,terminated
+BEN0067,EMP0579,LIFE-2X,Life 2x Salary,life,family,170.12,151.63,USD,2025-01-14,2025-01-14,,terminated
+BEN0068,EMP0552,LIFE-1X,Life 1x Salary,life,employee,619.40,335.55,USD,2018-06-03,2018-06-03,,waived
+BEN0069,EMP0841,LIFE-1X,Life 1x Salary,life,employee_children,489.99,70.00,USD,2024-03-18,2024-03-18,,waived
+BEN0070,EMP0562,401K-PLUS,401(k) Plus Match,retirement,employee_spouse,629.58,208.92,INR,2022-11-14,2022-11-14,,active
+BEN0071,EMP0047,WEL-GYM,Wellness Gym,wellness,employee,642.24,271.84,GBP,2025-11-14,2025-11-14,2025-11-28,terminated
+BEN0072,EMP0433,401K-PLUS,401(k) Plus Match,retirement,family,566.33,324.27,INR,2021-01-03,2021-01-03,,waived
+BEN0073,EMP0899,DEN-PLUS,Dental Plus,dental,employee,297.37,42.39,USD,2024-11-18,2024-11-18,,waived
+BEN0074,EMP0954,VIS-STD,Vision Standard,vision,employee_spouse,68.27,273.22,USD,2024-09-02,2024-09-02,2025-11-24,terminated
+BEN0075,EMP0125,DEN-PLUS,Dental Plus,dental,employee_spouse,441.51,84.20,USD,2023-01-28,2023-01-28,,active
+BEN0076,EMP0035,LIFE-1X,Life 1x Salary,life,employee_children,170.59,295.44,USD,2018-08-25,2018-08-25,,terminated
+BEN0077,EMP0541,401K-STD,401(k) Standard,retirement,employee,50.51,192.01,USD,2025-01-11,2025-01-11,,active
+BEN0078,EMP0479,MED-PPO,Medical PPO,health,employee_spouse,202.54,218.33,USD,2025-10-16,2025-10-16,,terminated
+BEN0079,EMP0933,WEL-GYM,Wellness Gym,wellness,employee_spouse,582.98,17.17,GBP,2026-06-27,2026-06-27,,active
+BEN0080,EMP0393,MED-HMO,Medical HMO,health,employee_spouse,53.38,272.57,GBP,2024-09-19,2024-09-19,2025-01-30,active
+BEN0081,EMP0998,401K-STD,401(k) Standard,retirement,employee_children,243.09,173.20,USD,2022-07-25,2022-07-25,,active
+BEN0082,EMP0730,DEN-BASIC,Dental Basic,dental,employee_children,95.61,282.37,USD,2024-05-09,2024-05-09,2024-09-11,active
+BEN0083,EMP0948,MED-HMO,Medical HMO,health,employee,322.91,38.38,USD,2023-03-24,2023-03-24,2026-02-27,terminated
+BEN0084,EMP0321,401K-PLUS,401(k) Plus Match,retirement,family,581.94,181.79,USD,2026-03-19,2026-03-19,2026-06-10,active
+BEN0085,EMP0460,VIS-STD,Vision Standard,vision,employee_spouse,51.61,71.77,INR,2022-12-06,2022-12-06,,active
+BEN0086,EMP0912,401K-PLUS,401(k) Plus Match,retirement,employee,447.96,42.59,USD,2026-07-11,2026-07-11,,active
+BEN0087,EMP0002,LIFE-2X,Life 2x Salary,life,employee_spouse,381.44,323.96,USD,2023-11-23,2023-11-23,,waived
+BEN0088,EMP0664,LIFE-2X,Life 2x Salary,life,family,229.22,128.05,USD,2021-06-17,2021-06-17,,active
+BEN0089,EMP0065,401K-PLUS,401(k) Plus Match,retirement,employee_spouse,464.55,250.46,USD,2025-10-17,2025-10-17,,active
+BEN0090,EMP0110,401K-STD,401(k) Standard,retirement,employee,75.55,230.05,GBP,2024-06-17,2024-06-17,2025-02-18,active
+BEN0091,EMP0132,DEN-PLUS,Dental Plus,dental,employee_spouse,274.02,182.52,USD,2026-07-28,2026-07-28,,active
+BEN0092,EMP0610,MED-HMO,Medical HMO,health,family,205.20,103.41,USD,2025-03-24,2025-03-24,,terminated
+BEN0093,EMP0731,LIFE-1X,Life 1x Salary,life,family,625.73,230.08,USD,2026-05-15,2026-05-15,2026-07-29,terminated
+BEN0094,EMP0946,DEN-BASIC,Dental Basic,dental,family,380.70,150.68,USD,2020-07-03,2020-07-03,,active
+BEN0095,EMP0199,DEN-BASIC,Dental Basic,dental,employee_children,443.28,218.40,USD,2018-05-05,2018-05-05,,active
+BEN0096,EMP0176,DEN-PLUS,Dental Plus,dental,employee,502.32,182.77,GBP,2025-06-02,2025-06-02,,active
+BEN0097,EMP0963,DEN-BASIC,Dental Basic,dental,employee_spouse,180.20,301.45,USD,2020-11-22,2020-11-22,,terminated
+BEN0098,EMP0218,WEL-GYM,Wellness Gym,wellness,family,495.57,64.48,USD,2019-07-24,2019-07-24,,waived
+BEN0099,EMP0755,LIFE-2X,Life 2x Salary,life,family,333.79,170.34,INR,2025-12-21,2025-12-21,,active
+BEN0100,EMP0248,MED-HMO,Medical HMO,health,family,577.98,325.88,USD,2018-06-07,2018-06-07,,terminated
+BEN0101,EMP0306,MED-HMO,Medical HMO,health,family,88.20,252.61,GBP,2022-12-03,2022-12-03,,active
+BEN0102,EMP0671,WEL-GYM,Wellness Gym,wellness,employee,339.97,24.30,USD,2024-11-13,2024-11-13,,terminated
+BEN0103,EMP0099,LIFE-1X,Life 1x Salary,life,family,225.08,21.07,USD,2025-08-27,2025-08-27,,active
+BEN0104,EMP0897,VIS-STD,Vision Standard,vision,employee,566.43,97.86,USD,2022-02-22,2022-02-22,,active
+BEN0105,EMP0522,DEN-BASIC,Dental Basic,dental,employee_children,350.16,187.38,USD,2023-01-21,2023-01-21,2023-10-06,active
+BEN0106,EMP0667,401K-STD,401(k) Standard,retirement,employee_children,252.51,276.13,USD,2024-07-27,2024-07-27,,active
+BEN0107,EMP0036,401K-STD,401(k) Standard,retirement,employee,339.75,2.41,USD,2018-02-19,2018-02-19,,active
+BEN0108,EMP0008,LIFE-2X,Life 2x Salary,life,employee,568.87,83.65,USD,2025-10-26,2025-10-26,,active
+BEN0109,EMP0509,401K-STD,401(k) Standard,retirement,employee_spouse,502.98,92.56,USD,2026-07-25,2026-07-25,,terminated
+BEN0110,EMP0486,401K-STD,401(k) Standard,retirement,employee_spouse,165.14,50.50,USD,2026-06-30,2026-06-30,,active
+BEN0111,EMP0841,401K-PLUS,401(k) Plus Match,retirement,employee,614.29,19.14,USD,2026-02-02,2026-02-02,,terminated
+BEN0112,EMP0412,WEL-GYM,Wellness Gym,wellness,employee_children,582.83,192.72,USD,2020-09-15,2020-09-15,,active
+BEN0113,EMP0426,LIFE-2X,Life 2x Salary,life,employee_spouse,397.82,285.86,USD,2026-01-01,2026-01-01,,waived
+BEN0114,EMP0079,DEN-BASIC,Dental Basic,dental,employee_spouse,493.77,113.57,USD,2026-06-15,2026-06-15,,waived
+BEN0115,EMP0156,401K-PLUS,401(k) Plus Match,retirement,employee,405.57,162.56,USD,2018-07-16,2018-07-16,,terminated
+BEN0116,EMP0208,LIFE-1X,Life 1x Salary,life,family,65.80,172.76,INR,2026-07-11,2026-07-11,2026-07-22,active
+BEN0117,EMP0217,401K-STD,401(k) Standard,retirement,employee,351.09,276.30,USD,2023-05-16,2023-05-16,,active
+BEN0118,EMP0189,VIS-STD,Vision Standard,vision,employee_children,169.35,67.28,INR,2022-10-28,2022-10-28,,active
+BEN0119,EMP0888,LIFE-1X,Life 1x Salary,life,employee_children,593.57,129.67,USD,2024-03-30,2024-03-30,2025-04-02,active
+BEN0120,EMP0729,401K-PLUS,401(k) Plus Match,retirement,employee,251.89,141.58,USD,2026-04-02,2026-04-02,,active
+BEN0121,EMP0546,DEN-PLUS,Dental Plus,dental,employee,203.42,166.54,USD,2026-06-05,2026-06-05,,waived
+BEN0122,EMP0708,VIS-STD,Vision Standard,vision,employee_spouse,451.22,89.16,USD,2026-02-22,2026-02-22,,waived
+BEN0123,EMP0845,WEL-GYM,Wellness Gym,wellness,employee,554.30,313.37,USD,2021-07-21,2021-07-21,,terminated
+BEN0124,EMP0666,LIFE-2X,Life 2x Salary,life,employee,315.38,193.13,INR,2024-10-17,2024-10-17,,waived
+BEN0125,EMP0670,LIFE-1X,Life 1x Salary,life,employee_children,427.41,12.56,GBP,2023-02-15,2023-02-15,,active
+BEN0126,EMP0370,DEN-BASIC,Dental Basic,dental,family,444.29,132.54,USD,2026-07-14,2026-07-14,,terminated
+BEN0127,EMP0249,DEN-PLUS,Dental Plus,dental,family,317.29,22.13,USD,2025-06-17,2025-06-17,,active
+BEN0128,EMP0242,401K-STD,401(k) Standard,retirement,employee,171.33,58.57,USD,2022-01-11,2022-01-11,,waived
+BEN0129,EMP0385,401K-STD,401(k) Standard,retirement,employee_spouse,622.14,204.08,USD,2020-11-10,2020-11-10,,terminated
+BEN0130,EMP0234,401K-PLUS,401(k) Plus Match,retirement,employee,441.34,148.39,USD,2017-11-10,2017-11-10,,terminated
+BEN0131,EMP0609,MED-HMO,Medical HMO,health,family,314.95,202.55,USD,2022-03-02,2022-03-02,,terminated
+BEN0132,EMP0611,401K-STD,401(k) Standard,retirement,employee,171.21,17.99,INR,2025-05-29,2025-05-29,,waived
+BEN0133,EMP0064,MED-PPO,Medical PPO,health,family,533.58,210.90,USD,2021-02-24,2021-02-24,,terminated
+BEN0134,EMP0720,401K-PLUS,401(k) Plus Match,retirement,employee_children,78.28,300.34,USD,2024-12-08,2024-12-08,2025-11-25,active
+BEN0135,EMP0801,401K-PLUS,401(k) Plus Match,retirement,employee,129.01,262.28,INR,2022-04-11,2022-04-11,,active
+BEN0136,EMP0524,MED-HMO,Medical HMO,health,employee_spouse,196.16,206.11,USD,2024-04-06,2024-04-06,,active
+BEN0137,EMP0519,401K-PLUS,401(k) Plus Match,retirement,family,498.32,236.79,USD,2025-11-04,2025-11-04,2026-08-03,active
+BEN0138,EMP0441,LIFE-1X,Life 1x Salary,life,family,535.45,206.39,USD,2026-05-01,2026-05-01,,terminated
+BEN0139,EMP0886,LIFE-1X,Life 1x Salary,life,employee_children,378.19,66.69,USD,2024-10-20,2024-10-20,,active
+BEN0140,EMP0258,MED-HMO,Medical HMO,health,family,106.00,343.41,USD,2019-06-03,2019-06-03,,terminated
+BEN0141,EMP0374,401K-PLUS,401(k) Plus Match,retirement,employee,290.83,78.84,USD,2022-02-27,2022-02-27,,terminated
+BEN0142,EMP0703,VIS-STD,Vision Standard,vision,family,588.49,323.11,USD,2024-03-30,2024-03-30,,waived
+BEN0143,EMP0833,DEN-PLUS,Dental Plus,dental,family,369.29,281.90,INR,2026-05-19,2026-05-19,,active
+BEN0144,EMP0025,MED-PPO,Medical PPO,health,family,642.91,271.74,USD,2026-06-24,2026-06-24,,terminated
+BEN0145,EMP0193,WEL-GYM,Wellness Gym,wellness,employee_children,167.28,98.92,INR,2024-07-01,2024-07-01,,active
+BEN0146,EMP0793,MED-PPO,Medical PPO,health,employee_spouse,329.23,134.33,USD,2019-11-03,2019-11-03,,active
+BEN0147,EMP0093,LIFE-2X,Life 2x Salary,life,employee_children,459.81,156.63,GBP,2024-10-03,2024-10-03,,active
+BEN0148,EMP0219,DEN-BASIC,Dental Basic,dental,family,474.17,285.51,USD,2025-11-12,2025-11-12,,active
+BEN0149,EMP0321,LIFE-1X,Life 1x Salary,life,family,548.51,82.33,USD,2025-08-17,2025-08-17,,active
+BEN0150,EMP0848,DEN-BASIC,Dental Basic,dental,employee,242.70,229.92,USD,2021-07-06,2021-07-06,2022-05-07,waived
+BEN0151,EMP0776,LIFE-1X,Life 1x Salary,life,employee_spouse,490.51,150.36,GBP,2019-08-20,2019-08-20,,waived
+BEN0152,EMP0568,WEL-GYM,Wellness Gym,wellness,family,384.98,85.13,USD,2024-01-19,2024-01-19,,terminated
+BEN0153,EMP0809,401K-PLUS,401(k) Plus Match,retirement,employee_spouse,111.26,118.04,USD,2021-01-06,2021-01-06,,active
+BEN0154,EMP0511,MED-HMO,Medical HMO,health,family,105.19,49.10,INR,2026-06-03,2026-06-03,,terminated
+BEN0155,EMP0121,LIFE-2X,Life 2x Salary,life,employee,628.33,241.37,USD,2024-06-27,2024-06-27,,active
+BEN0156,EMP0498,DEN-PLUS,Dental Plus,dental,family,252.50,145.85,USD,2022-03-26,2022-03-26,2022-04-11,terminated
+BEN0157,EMP0583,401K-STD,401(k) Standard,retirement,family,435.70,174.18,USD,2025-01-13,2025-01-13,,active
+BEN0158,EMP0457,LIFE-1X,Life 1x Salary,life,employee_children,239.64,132.25,USD,2026-07-19,2026-07-19,,waived
+BEN0159,EMP0603,MED-PPO,Medical PPO,health,employee_children,620.66,74.36,USD,2022-06-02,2022-06-02,,terminated
+BEN0160,EMP0442,401K-PLUS,401(k) Plus Match,retirement,employee_spouse,446.59,76.12,USD,2020-05-01,2020-05-01,2022-06-20,waived
+BEN0161,EMP0722,LIFE-1X,Life 1x Salary,life,employee_children,172.48,131.44,USD,2023-06-14,2023-06-14,,terminated
+BEN0162,EMP0585,VIS-STD,Vision Standard,vision,employee,576.58,196.24,USD,2026-06-05,2026-06-05,,active
+BEN0163,EMP0892,DEN-PLUS,Dental Plus,dental,employee_spouse,366.10,117.77,USD,2025-08-03,2025-08-03,,waived
+BEN0164,EMP0262,401K-STD,401(k) Standard,retirement,employee_spouse,146.78,135.16,USD,2023-10-30,2023-10-30,2026-05-07,terminated
+BEN0165,EMP0056,LIFE-2X,Life 2x Salary,life,family,527.36,128.10,USD,2020-08-24,2020-08-24,,terminated
+BEN0166,EMP0470,401K-PLUS,401(k) Plus Match,retirement,employee,331.74,203.98,USD,2021-12-12,2021-12-12,,active
+BEN0167,EMP0717,LIFE-1X,Life 1x Salary,life,employee_spouse,339.87,8.70,USD,2025-08-10,2025-08-10,,waived
+BEN0168,EMP0476,DEN-BASIC,Dental Basic,dental,employee,246.06,332.26,USD,2024-05-14,2024-05-14,2025-01-17,active
+BEN0169,EMP0570,401K-STD,401(k) Standard,retirement,family,439.68,136.48,INR,2017-12-04,2017-12-04,,active
+BEN0170,EMP0619,MED-PPO,Medical PPO,health,employee_children,584.91,316.59,USD,2024-03-15,2024-03-15,,active
+BEN0171,EMP0874,LIFE-1X,Life 1x Salary,life,family,647.62,212.38,USD,2025-09-27,2025-09-27,,terminated
+BEN0172,EMP0010,DEN-PLUS,Dental Plus,dental,employee,611.83,334.07,USD,2025-10-24,2025-10-24,,waived
+BEN0173,EMP0042,MED-PPO,Medical PPO,health,employee,583.93,214.31,USD,2024-10-27,2024-10-27,,active
+BEN0174,EMP0414,MED-PPO,Medical PPO,health,employee,614.05,67.57,USD,2020-01-31,2020-01-31,2026-06-11,active
+BEN0175,EMP0998,WEL-GYM,Wellness Gym,wellness,family,172.53,348.42,USD,2020-04-22,2020-04-22,,terminated
+BEN0176,EMP0968,MED-HMO,Medical HMO,health,family,145.31,293.78,INR,2025-05-04,2025-05-04,,waived
+BEN0177,EMP0395,401K-PLUS,401(k) Plus Match,retirement,employee,245.80,333.30,USD,2016-07-21,2016-07-21,,active
+BEN0178,EMP0820,WEL-GYM,Wellness Gym,wellness,family,216.83,243.04,USD,2020-04-27,2020-04-27,,active
+BEN0179,EMP0725,401K-STD,401(k) Standard,retirement,employee_children,241.00,21.14,USD,2026-01-23,2026-01-23,,active
+BEN0180,EMP0121,DEN-PLUS,Dental Plus,dental,employee_spouse,59.91,272.16,USD,2022-10-31,2022-10-31,,waived
+BEN0181,EMP0758,WEL-GYM,Wellness Gym,wellness,family,570.41,271.87,USD,2026-03-22,2026-03-22,,waived
+BEN0182,EMP0297,DEN-PLUS,Dental Plus,dental,employee,563.88,75.40,USD,2021-07-20,2021-07-20,,active
+BEN0183,EMP0837,WEL-GYM,Wellness Gym,wellness,employee,393.67,139.97,USD,2021-04-16,2021-04-16,,waived
+BEN0184,EMP0131,VIS-STD,Vision Standard,vision,family,79.22,251.72,USD,2025-11-11,2025-11-11,,active
+BEN0185,EMP0312,VIS-STD,Vision Standard,vision,family,594.63,266.68,USD,2019-08-19,2019-08-19,,waived
+BEN0186,EMP0671,MED-PPO,Medical PPO,health,family,559.50,312.67,USD,2026-04-14,2026-04-14,,active
+BEN0187,EMP0959,MED-PPO,Medical PPO,health,family,511.24,57.33,GBP,2023-09-09,2023-09-09,2026-08-01,terminated
+BEN0188,EMP0280,401K-STD,401(k) Standard,retirement,employee_spouse,182.46,40.06,USD,2022-12-12,2022-12-12,2025-07-06,active
+BEN0189,EMP0472,LIFE-1X,Life 1x Salary,life,employee_spouse,269.42,211.27,GBP,2016-08-22,2016-08-22,,active
+BEN0190,EMP0843,DEN-BASIC,Dental Basic,dental,employee_spouse,404.14,298.44,USD,2021-09-15,2021-09-15,2022-06-08,active
+BEN0191,EMP0956,DEN-BASIC,Dental Basic,dental,employee_spouse,133.63,89.83,USD,2025-11-29,2025-11-29,,waived
+BEN0192,EMP0490,WEL-GYM,Wellness Gym,wellness,employee_children,368.11,32.38,USD,2024-12-02,2024-12-02,,active
+BEN0193,EMP0493,DEN-PLUS,Dental Plus,dental,employee_children,332.90,29.24,GBP,2025-03-17,2025-03-17,,active
+BEN0194,EMP0439,401K-PLUS,401(k) Plus Match,retirement,family,183.18,88.45,USD,2022-08-13,2022-08-13,,active
+BEN0195,EMP0248,LIFE-1X,Life 1x Salary,life,employee_spouse,260.18,271.26,USD,2019-05-17,2019-05-17,,active
+BEN0196,EMP0876,LIFE-2X,Life 2x Salary,life,family,53.55,111.87,USD,2016-06-15,2016-06-15,,active
+BEN0197,EMP0367,LIFE-2X,Life 2x Salary,life,employee,472.68,63.87,USD,2025-09-14,2025-09-14,,active
+BEN0198,EMP0352,DEN-BASIC,Dental Basic,dental,employee_spouse,367.83,127.34,USD,2025-02-16,2025-02-16,2026-03-15,waived
+BEN0199,EMP0791,MED-PPO,Medical PPO,health,employee_spouse,177.53,53.42,USD,2022-07-27,2022-07-27,,terminated
+BEN0200,EMP0507,VIS-STD,Vision Standard,vision,employee,227.06,259.33,INR,2018-02-01,2018-02-01,,active
+BEN0201,EMP0191,401K-STD,401(k) Standard,retirement,employee,273.67,115.12,USD,2023-08-09,2023-08-09,,active
+BEN0202,EMP0555,VIS-STD,Vision Standard,vision,employee_spouse,69.66,206.20,INR,2016-06-12,2016-06-12,,active
+BEN0203,EMP0376,MED-PPO,Medical PPO,health,employee_children,532.00,75.12,USD,2022-01-13,2022-01-13,,active
+BEN0204,EMP0536,401K-PLUS,401(k) Plus Match,retirement,employee,177.26,166.10,USD,2025-11-04,2025-11-04,,terminated
+BEN0205,EMP0154,LIFE-1X,Life 1x Salary,life,employee,176.20,58.47,USD,2024-02-10,2024-02-10,,waived
+BEN0206,EMP0318,LIFE-2X,Life 2x Salary,life,employee,538.79,45.76,USD,2024-07-08,2024-07-08,,waived
+BEN0207,EMP0202,LIFE-1X,Life 1x Salary,life,employee_children,386.26,238.23,USD,2022-07-30,2022-07-30,,terminated
+BEN0208,EMP0640,401K-PLUS,401(k) Plus Match,retirement,family,643.79,88.90,USD,2019-04-25,2019-04-25,,active
+BEN0209,EMP0075,WEL-GYM,Wellness Gym,wellness,employee,383.86,211.57,USD,2025-06-14,2025-06-14,2026-07-14,active
+BEN0210,EMP0751,MED-HMO,Medical HMO,health,employee,89.76,17.94,USD,2022-04-26,2022-04-26,,waived
+BEN0211,EMP0423,LIFE-1X,Life 1x Salary,life,employee_spouse,480.57,45.11,USD,2026-07-10,2026-07-10,,active
+BEN0212,EMP0911,WEL-GYM,Wellness Gym,wellness,family,465.99,36.56,GBP,2026-03-30,2026-03-30,,active
+BEN0213,EMP0078,401K-PLUS,401(k) Plus Match,retirement,employee_spouse,162.27,68.86,GBP,2021-12-24,2021-12-24,,terminated
+BEN0214,EMP0627,VIS-STD,Vision Standard,vision,employee_children,297.40,263.15,USD,2020-06-10,2020-06-10,,active
+BEN0215,EMP0031,WEL-GYM,Wellness Gym,wellness,employee_spouse,108.22,73.37,USD,2026-01-14,2026-01-14,,terminated
+BEN0216,EMP0780,VIS-STD,Vision Standard,vision,employee_spouse,554.83,255.03,USD,2026-07-10,2026-07-10,,waived
+BEN0217,EMP0963,VIS-STD,Vision Standard,vision,employee_children,161.51,251.44,USD,2023-04-05,2023-04-05,,waived
+BEN0218,EMP0033,MED-HMO,Medical HMO,health,employee,594.37,210.69,USD,2020-02-26,2020-02-26,,active
+BEN0219,EMP0973,WEL-GYM,Wellness Gym,wellness,employee,549.65,212.03,USD,2025-07-16,2025-07-16,,terminated
+BEN0220,EMP0733,WEL-GYM,Wellness Gym,wellness,employee,111.37,86.48,USD,2023-09-15,2023-09-15,,active
+BEN0221,EMP0919,MED-HMO,Medical HMO,health,employee_spouse,453.70,286.21,USD,2026-02-08,2026-02-08,,terminated
+BEN0222,EMP0476,MED-HMO,Medical HMO,health,employee,400.63,11.55,USD,2023-07-29,2023-07-29,,terminated
+BEN0223,EMP0426,MED-PPO,Medical PPO,health,employee_spouse,521.64,75.56,USD,2026-08-01,2026-08-01,,waived
+BEN0224,EMP0828,DEN-PLUS,Dental Plus,dental,employee_children,377.28,68.81,INR,2020-10-13,2020-10-13,,terminated
+BEN0225,EMP0470,DEN-PLUS,Dental Plus,dental,employee_spouse,372.74,29.50,USD,2026-03-23,2026-03-23,,waived
+BEN0226,EMP0076,DEN-BASIC,Dental Basic,dental,family,474.59,244.70,USD,2024-07-08,2024-07-08,,terminated
+BEN0227,EMP0056,401K-PLUS,401(k) Plus Match,retirement,employee_children,591.58,311.83,USD,2019-10-22,2019-10-22,,waived
+BEN0228,EMP0656,WEL-GYM,Wellness Gym,wellness,employee_spouse,135.18,108.94,USD,2016-03-13,2016-03-13,,terminated
+BEN0229,EMP0702,MED-PPO,Medical PPO,health,employee,494.61,135.26,GBP,2026-04-14,2026-04-14,,waived
+BEN0230,EMP0155,DEN-BASIC,Dental Basic,dental,employee,444.85,185.23,USD,2024-06-09,2024-06-09,,terminated
+BEN0231,EMP0392,401K-STD,401(k) Standard,retirement,employee_spouse,448.35,134.50,USD,2021-12-29,2021-12-29,,waived
+BEN0232,EMP0542,MED-PPO,Medical PPO,health,employee_spouse,431.95,303.69,USD,2026-07-27,2026-07-27,2026-08-04,active
+BEN0233,EMP0969,LIFE-1X,Life 1x Salary,life,employee_children,129.12,260.51,INR,2021-09-27,2021-09-27,,waived
+BEN0234,EMP0377,WEL-GYM,Wellness Gym,wellness,employee_spouse,148.24,318.14,USD,2025-05-28,2025-05-28,,waived
+BEN0235,EMP0278,VIS-STD,Vision Standard,vision,employee_children,415.05,337.41,USD,2020-09-20,2020-09-20,,waived
+BEN0236,EMP0507,WEL-GYM,Wellness Gym,wellness,employee_spouse,536.95,83.92,INR,2017-10-15,2017-10-15,,terminated
+BEN0237,EMP0081,LIFE-2X,Life 2x Salary,life,employee,129.29,5.96,USD,2025-10-22,2025-10-22,,active
+BEN0238,EMP0572,MED-HMO,Medical HMO,health,employee_spouse,62.86,223.46,USD,2022-03-26,2022-03-26,,active
+BEN0239,EMP0181,DEN-PLUS,Dental Plus,dental,family,649.32,67.94,USD,2024-07-21,2024-07-21,,waived
+BEN0240,EMP0779,401K-STD,401(k) Standard,retirement,employee_spouse,522.56,183.92,USD,2018-02-10,2018-02-10,,active
+BEN0241,EMP0267,MED-PPO,Medical PPO,health,employee,316.21,36.29,INR,2017-06-19,2017-06-19,,terminated
+BEN0242,EMP0234,401K-STD,401(k) Standard,retirement,employee,320.73,301.70,USD,2021-02-13,2021-02-13,,terminated
+BEN0243,EMP0341,DEN-BASIC,Dental Basic,dental,family,114.05,273.71,INR,2024-10-08,2024-10-08,2024-10-31,waived
+BEN0244,EMP0034,DEN-BASIC,Dental Basic,dental,employee_children,152.04,43.60,USD,2024-10-03,2024-10-03,2026-06-16,waived
+BEN0245,EMP0043,WEL-GYM,Wellness Gym,wellness,family,441.92,111.27,USD,2022-10-20,2022-10-20,,active
+BEN0246,EMP0940,MED-PPO,Medical PPO,health,employee,557.98,46.27,USD,2023-06-13,2023-06-13,,active
+BEN0247,EMP0166,MED-PPO,Medical PPO,health,family,335.18,74.10,USD,2025-05-17,2025-05-17,,terminated
+BEN0248,EMP0029,401K-STD,401(k) Standard,retirement,employee_children,244.73,106.64,USD,2024-05-01,2024-05-01,,terminated
+BEN0249,EMP0790,VIS-STD,Vision Standard,vision,family,196.06,285.30,USD,2019-11-17,2019-11-17,,waived
+BEN0250,EMP0329,LIFE-1X,Life 1x Salary,life,employee_spouse,569.88,212.97,INR,2024-02-16,2024-02-16,,active
+BEN0251,EMP0370,LIFE-1X,Life 1x Salary,life,employee_children,78.56,280.18,USD,2018-03-25,2018-03-25,2020-02-03,terminated
+BEN0252,EMP0299,WEL-GYM,Wellness Gym,wellness,family,100.50,341.06,GBP,2020-11-14,2020-11-14,,active
+BEN0253,EMP0805,DEN-BASIC,Dental Basic,dental,employee_children,302.26,218.59,GBP,2022-05-06,2022-05-06,,waived
+BEN0254,EMP0136,LIFE-2X,Life 2x Salary,life,employee_children,489.27,186.00,USD,2017-08-18,2017-08-18,,waived
+BEN0255,EMP0985,WEL-GYM,Wellness Gym,wellness,employee_spouse,459.69,251.79,INR,2022-04-05,2022-04-05,,active
+BEN0256,EMP0076,WEL-GYM,Wellness Gym,wellness,employee,630.05,227.85,USD,2025-05-15,2025-05-15,,active
+BEN0257,EMP0981,LIFE-2X,Life 2x Salary,life,employee_spouse,497.24,269.40,INR,2024-12-15,2024-12-15,,active
+BEN0258,EMP0887,MED-PPO,Medical PPO,health,employee_spouse,613.94,131.63,USD,2014-08-07,2014-08-07,,active
+BEN0259,EMP0843,MED-PPO,Medical PPO,health,employee,365.67,342.87,USD,2024-07-05,2024-07-05,,active
+BEN0260,EMP0817,MED-PPO,Medical PPO,health,employee,504.80,323.29,USD,2025-05-01,2025-05-01,,active
+BEN0261,EMP0141,VIS-STD,Vision Standard,vision,family,344.09,273.52,USD,2024-02-17,2024-02-17,,waived
+BEN0262,EMP0702,LIFE-2X,Life 2x Salary,life,family,413.01,195.67,GBP,2025-10-21,2025-10-21,,waived
+BEN0263,EMP0083,401K-PLUS,401(k) Plus Match,retirement,employee,84.16,256.57,USD,2023-03-30,2023-03-30,,terminated
+BEN0264,EMP0440,MED-PPO,Medical PPO,health,family,363.66,220.50,USD,2025-05-20,2025-05-20,,active
+BEN0265,EMP0527,MED-HMO,Medical HMO,health,employee_spouse,118.71,103.14,USD,2026-04-11,2026-04-11,2026-06-27,terminated
+BEN0266,EMP0178,LIFE-2X,Life 2x Salary,life,employee_spouse,59.43,103.43,USD,2024-07-12,2024-07-12,,terminated
+BEN0267,EMP0591,LIFE-1X,Life 1x Salary,life,family,77.56,181.09,USD,2024-12-24,2024-12-24,,active
+BEN0268,EMP0343,LIFE-2X,Life 2x Salary,life,employee_children,414.14,202.81,USD,2025-08-25,2025-08-25,,active
+BEN0269,EMP0774,WEL-GYM,Wellness Gym,wellness,employee_spouse,412.31,202.45,USD,2017-07-19,2017-07-19,,terminated
+BEN0270,EMP0296,DEN-PLUS,Dental Plus,dental,family,319.96,2.56,GBP,2024-08-30,2024-08-30,,active
+BEN0271,EMP0344,VIS-STD,Vision Standard,vision,employee_spouse,477.50,334.08,USD,2025-12-14,2025-12-14,,active
+BEN0272,EMP0167,LIFE-2X,Life 2x Salary,life,family,238.12,134.57,INR,2020-01-04,2020-01-04,,active
+BEN0273,EMP0736,401K-STD,401(k) Standard,retirement,employee_spouse,307.73,255.41,USD,2024-04-01,2024-04-01,,terminated
+BEN0274,EMP0804,DEN-PLUS,Dental Plus,dental,family,580.37,190.80,USD,2020-01-16,2020-01-16,2020-07-03,active
+BEN0275,EMP0540,MED-HMO,Medical HMO,health,employee_spouse,583.11,231.97,USD,2024-11-29,2024-11-29,,waived
+BEN0276,EMP0407,DEN-BASIC,Dental Basic,dental,family,285.73,280.10,USD,2020-01-15,2020-01-15,,terminated
+BEN0277,EMP0258,WEL-GYM,Wellness Gym,wellness,employee,98.26,81.93,USD,2023-12-24,2023-12-24,,waived
+BEN0278,EMP0292,VIS-STD,Vision Standard,vision,employee_children,233.72,153.33,GBP,2020-10-18,2020-10-18,,active
+BEN0279,EMP0657,VIS-STD,Vision Standard,vision,employee_spouse,298.80,65.89,USD,2015-08-08,2015-08-08,,active
+BEN0280,EMP0019,WEL-GYM,Wellness Gym,wellness,employee_spouse,433.03,148.28,USD,2024-06-21,2024-06-21,,waived
+BEN0281,EMP0546,LIFE-1X,Life 1x Salary,life,employee_children,379.58,268.71,USD,2024-04-21,2024-04-21,2025-05-10,terminated
+BEN0282,EMP0072,401K-STD,401(k) Standard,retirement,family,388.97,46.89,USD,2026-02-04,2026-02-04,,active
+BEN0283,EMP0112,LIFE-2X,Life 2x Salary,life,employee_spouse,112.90,51.22,USD,2025-04-22,2025-04-22,,waived
+BEN0284,EMP0448,401K-STD,401(k) Standard,retirement,employee_children,644.20,109.61,USD,2021-02-09,2021-02-09,2021-06-15,active
+BEN0285,EMP0787,401K-PLUS,401(k) Plus Match,retirement,employee_children,492.49,15.73,USD,2025-01-13,2025-01-13,,active
+BEN0286,EMP0339,LIFE-1X,Life 1x Salary,life,employee_children,526.76,31.40,USD,2019-01-04,2019-01-04,2022-01-31,terminated
+BEN0287,EMP0632,DEN-PLUS,Dental Plus,dental,employee_spouse,296.11,268.47,USD,2026-04-08,2026-04-08,,active
+BEN0288,EMP0330,DEN-PLUS,Dental Plus,dental,family,187.06,239.26,USD,2023-11-16,2023-11-16,,terminated
+BEN0289,EMP0860,LIFE-1X,Life 1x Salary,life,employee_children,169.53,112.04,USD,2024-09-22,2024-09-22,2026-06-14,active
+BEN0290,EMP0520,MED-PPO,Medical PPO,health,family,304.11,60.31,GBP,2018-01-11,2018-01-11,,terminated
+BEN0291,EMP0166,401K-PLUS,401(k) Plus Match,retirement,employee,306.85,260.42,USD,2021-09-20,2021-09-20,,terminated
+BEN0292,EMP0614,401K-STD,401(k) Standard,retirement,employee_spouse,573.77,334.82,GBP,2025-05-23,2025-05-23,,active
+BEN0293,EMP0618,VIS-STD,Vision Standard,vision,employee_spouse,151.87,265.93,INR,2026-07-09,2026-07-09,2026-07-29,active
+BEN0294,EMP0347,401K-STD,401(k) Standard,retirement,employee_children,513.27,76.60,USD,2023-02-14,2023-02-14,,active
+BEN0295,EMP0474,DEN-BASIC,Dental Basic,dental,employee,562.45,120.21,USD,2025-03-30,2025-03-30,,active
+BEN0296,EMP0639,401K-PLUS,401(k) Plus Match,retirement,employee_spouse,464.97,159.78,USD,2020-08-05,2020-08-05,,active
+BEN0297,EMP0634,401K-PLUS,401(k) Plus Match,retirement,employee,239.50,215.51,USD,2026-04-10,2026-04-10,2026-05-29,waived
+BEN0298,EMP0811,MED-PPO,Medical PPO,health,employee_spouse,215.48,171.94,GBP,2026-03-19,2026-03-19,,active
+BEN0299,EMP0510,LIFE-1X,Life 1x Salary,life,family,77.86,317.46,USD,2018-01-21,2018-01-21,2020-11-18,terminated
+BEN0300,EMP0471,MED-PPO,Medical PPO,health,employee_spouse,548.53,309.34,USD,2025-04-07,2025-04-07,,waived
+BEN0301,EMP0893,MED-HMO,Medical HMO,health,employee_children,366.01,185.07,USD,2025-05-17,2025-05-17,2026-07-14,active
+BEN0302,EMP0729,MED-PPO,Medical PPO,health,employee_children,450.31,310.64,USD,2023-08-12,2023-08-12,,active
+BEN0303,EMP0084,401K-PLUS,401(k) Plus Match,retirement,employee_spouse,183.11,37.31,USD,2026-01-01,2026-01-01,,active
+BEN0304,EMP0400,DEN-PLUS,Dental Plus,dental,employee_spouse,110.18,24.03,INR,2026-01-18,2026-01-18,2026-02-26,active
+BEN0305,EMP0038,WEL-GYM,Wellness Gym,wellness,family,229.14,201.87,USD,2026-04-19,2026-04-19,2026-06-12,waived
+BEN0306,EMP0584,DEN-PLUS,Dental Plus,dental,employee,216.85,85.81,USD,2019-12-23,2019-12-23,,active
+BEN0307,EMP0168,DEN-PLUS,Dental Plus,dental,employee_children,217.75,70.72,USD,2024-06-02,2024-06-02,,active
+BEN0308,EMP0950,MED-HMO,Medical HMO,health,employee,574.45,223.49,USD,2022-07-14,2022-07-14,,terminated
+BEN0309,EMP0754,WEL-GYM,Wellness Gym,wellness,employee_spouse,123.35,308.13,USD,2026-02-25,2026-02-25,2026-03-29,waived
+BEN0310,EMP0035,VIS-STD,Vision Standard,vision,employee_spouse,69.82,54.37,USD,2025-06-10,2025-06-10,,active
+BEN0311,EMP0853,LIFE-2X,Life 2x Salary,life,employee_spouse,69.15,208.67,GBP,2021-12-23,2021-12-23,,active
+BEN0312,EMP0635,MED-PPO,Medical PPO,health,family,304.58,124.10,USD,2020-12-20,2020-12-20,,terminated
+BEN0313,EMP0206,LIFE-2X,Life 2x Salary,life,family,366.17,340.71,USD,2025-01-23,2025-01-23,,waived
+BEN0314,EMP0299,DEN-BASIC,Dental Basic,dental,employee_children,580.23,295.52,GBP,2023-08-30,2023-08-30,,active
+BEN0315,EMP0154,401K-PLUS,401(k) Plus Match,retirement,family,365.99,246.86,USD,2023-12-23,2023-12-23,,waived
+BEN0316,EMP0279,LIFE-2X,Life 2x Salary,life,family,570.65,173.44,INR,2026-01-04,2026-01-04,,active
+BEN0317,EMP0323,LIFE-2X,Life 2x Salary,life,employee_spouse,519.41,88.54,USD,2025-04-11,2025-04-11,,active
+BEN0318,EMP0104,401K-PLUS,401(k) Plus Match,retirement,family,567.07,238.34,USD,2019-12-14,2019-12-14,,terminated
+BEN0319,EMP0650,VIS-STD,Vision Standard,vision,family,622.19,120.63,INR,2024-01-19,2024-01-19,,active
+BEN0320,EMP0034,VIS-STD,Vision Standard,vision,employee,255.04,142.82,USD,2019-06-22,2019-06-22,,active
+BEN0321,EMP0703,MED-PPO,Medical PPO,health,employee_spouse,378.33,30.13,USD,2024-09-07,2024-09-07,,active
+BEN0322,EMP0558,MED-HMO,Medical HMO,health,employee_children,252.35,245.23,USD,2023-11-08,2023-11-08,,active
+BEN0323,EMP0895,401K-PLUS,401(k) Plus Match,retirement,employee_children,76.62,2.01,USD,2018-01-01,2018-01-01,,active
+BEN0324,EMP0157,DEN-PLUS,Dental Plus,dental,family,399.45,332.57,USD,2024-11-10,2024-11-10,,waived
+BEN0325,EMP0562,MED-HMO,Medical HMO,health,employee_children,518.27,301.23,INR,2024-04-22,2024-04-22,,terminated
+BEN0326,EMP0675,401K-PLUS,401(k) Plus Match,retirement,employee,426.85,212.83,INR,2026-04-20,2026-04-20,,waived
+BEN0327,EMP0802,DEN-PLUS,Dental Plus,dental,family,565.15,205.19,GBP,2021-05-07,2021-05-07,,waived
+BEN0328,EMP0727,DEN-PLUS,Dental Plus,dental,employee,293.73,293.09,INR,2024-03-13,2024-03-13,2026-06-03,active
+BEN0329,EMP0733,MED-HMO,Medical HMO,health,employee_children,232.80,62.32,USD,2024-10-09,2024-10-09,,active
+BEN0330,EMP0131,VIS-STD,Vision Standard,vision,employee,366.67,66.23,USD,2023-03-04,2023-03-04,,active
+BEN0331,EMP0887,VIS-STD,Vision Standard,vision,employee,294.06,343.19,USD,2021-06-27,2021-06-27,,terminated
+BEN0332,EMP0532,WEL-GYM,Wellness Gym,wellness,employee_children,159.65,122.77,USD,2024-01-25,2024-01-25,,terminated
+BEN0333,EMP0764,DEN-PLUS,Dental Plus,dental,employee_children,556.75,183.78,USD,2025-03-28,2025-03-28,,active
+BEN0334,EMP0803,DEN-BASIC,Dental Basic,dental,employee_spouse,229.72,325.74,GBP,2018-02-11,2018-02-11,,active
+BEN0335,EMP0730,LIFE-2X,Life 2x Salary,life,employee_spouse,636.66,291.00,USD,2015-08-01,2015-08-01,,waived
+BEN0336,EMP0634,LIFE-2X,Life 2x Salary,life,family,476.24,261.17,USD,2023-04-08,2023-04-08,,active
+BEN0337,EMP0834,WEL-GYM,Wellness Gym,wellness,employee,571.93,238.80,USD,2025-09-12,2025-09-12,,active
+BEN0338,EMP0536,DEN-BASIC,Dental Basic,dental,family,124.24,295.89,USD,2026-05-01,2026-05-01,,terminated
+BEN0339,EMP0576,401K-STD,401(k) Standard,retirement,employee_children,381.06,81.46,USD,2024-11-26,2024-11-26,,waived
+BEN0340,EMP0754,DEN-PLUS,Dental Plus,dental,employee_children,629.08,29.40,USD,2026-02-19,2026-02-19,,active
+BEN0341,EMP0309,MED-HMO,Medical HMO,health,employee_children,133.26,138.50,USD,2023-04-01,2023-04-01,,active
+BEN0342,EMP0548,MED-PPO,Medical PPO,health,employee_spouse,130.74,84.99,USD,2018-11-07,2018-11-07,2019-03-14,active
+BEN0343,EMP0874,401K-STD,401(k) Standard,retirement,employee_children,228.46,118.43,USD,2025-08-23,2025-08-23,2025-11-27,active
+BEN0344,EMP0068,WEL-GYM,Wellness Gym,wellness,family,97.77,47.65,USD,2016-12-11,2016-12-11,,terminated
+BEN0345,EMP0083,401K-STD,401(k) Standard,retirement,family,262.64,306.44,USD,2019-09-08,2019-09-08,,active
+BEN0346,EMP0972,401K-PLUS,401(k) Plus Match,retirement,employee,169.67,42.01,USD,2022-10-08,2022-10-08,,active
+BEN0347,EMP0901,LIFE-2X,Life 2x Salary,life,employee_spouse,456.55,42.85,USD,2026-06-28,2026-06-28,2026-07-12,active
+BEN0348,EMP0117,DEN-PLUS,Dental Plus,dental,employee,400.07,295.49,USD,2021-09-25,2021-09-25,,active
+BEN0349,EMP0055,401K-PLUS,401(k) Plus Match,retirement,employee_spouse,619.64,182.86,USD,2025-08-25,2025-08-25,,waived
+BEN0350,EMP0339,401K-PLUS,401(k) Plus Match,retirement,employee_children,146.65,37.79,USD,2018-04-02,2018-04-02,,waived
+BEN0351,EMP0711,401K-STD,401(k) Standard,retirement,employee_children,285.64,266.55,INR,2023-03-07,2023-03-07,,terminated
+BEN0352,EMP0652,401K-STD,401(k) Standard,retirement,employee,579.65,193.33,USD,2024-01-18,2024-01-18,2025-10-14,terminated
+BEN0353,EMP0153,DEN-BASIC,Dental Basic,dental,employee_spouse,247.13,40.24,INR,2025-10-04,2025-10-04,,active
+BEN0354,EMP0812,401K-PLUS,401(k) Plus Match,retirement,family,516.30,12.89,USD,2026-04-14,2026-04-14,,terminated
+BEN0355,EMP0111,LIFE-2X,Life 2x Salary,life,employee_spouse,239.88,323.27,GBP,2019-06-16,2019-06-16,,active
+BEN0356,EMP0819,401K-STD,401(k) Standard,retirement,employee_children,337.86,237.25,USD,2023-08-06,2023-08-06,,active
+BEN0357,EMP0608,DEN-PLUS,Dental Plus,dental,employee_spouse,229.04,122.49,USD,2021-12-23,2021-12-23,,waived
+BEN0358,EMP0933,LIFE-2X,Life 2x Salary,life,family,110.16,129.48,GBP,2026-03-19,2026-03-19,2026-07-04,active
+BEN0359,EMP0028,WEL-GYM,Wellness Gym,wellness,family,491.82,176.79,USD,2023-05-09,2023-05-09,,active
+BEN0360,EMP0204,401K-STD,401(k) Standard,retirement,employee,357.31,200.34,USD,2026-03-14,2026-03-14,,active
+BEN0361,EMP0223,MED-HMO,Medical HMO,health,employee,522.72,283.32,USD,2026-06-19,2026-06-19,2026-06-21,active
+BEN0362,EMP0422,WEL-GYM,Wellness Gym,wellness,family,440.06,104.05,USD,2020-06-02,2020-06-02,,waived
+BEN0363,EMP0346,MED-PPO,Medical PPO,health,employee_children,638.06,284.24,USD,2026-08-02,2026-08-02,,active
+BEN0364,EMP0328,401K-STD,401(k) Standard,retirement,employee_children,527.41,245.74,USD,2026-02-03,2026-02-03,,terminated
+BEN0365,EMP0254,MED-PPO,Medical PPO,health,employee_spouse,176.52,254.31,INR,2026-06-08,2026-06-08,,terminated
+BEN0366,EMP0845,401K-STD,401(k) Standard,retirement,family,375.34,133.27,USD,2024-05-26,2024-05-26,,terminated
+BEN0367,EMP0253,DEN-PLUS,Dental Plus,dental,employee,156.76,185.68,INR,2024-09-20,2024-09-20,,terminated
+BEN0368,EMP0268,DEN-BASIC,Dental Basic,dental,employee_children,595.56,3.07,USD,2025-08-27,2025-08-27,,active
+BEN0369,EMP0924,WEL-GYM,Wellness Gym,wellness,employee_spouse,282.85,179.45,USD,2026-06-12,2026-06-12,,active
+BEN0370,EMP0340,LIFE-1X,Life 1x Salary,life,employee,295.18,153.15,GBP,2023-11-20,2023-11-20,,active
+BEN0371,EMP0848,VIS-STD,Vision Standard,vision,employee_children,384.95,65.92,USD,2025-10-21,2025-10-21,,active
+BEN0372,EMP0266,LIFE-2X,Life 2x Salary,life,employee_children,201.52,80.44,INR,2025-04-12,2025-04-12,2025-08-19,active
+BEN0373,EMP0396,LIFE-1X,Life 1x Salary,life,employee_spouse,178.35,334.60,USD,2025-09-13,2025-09-13,,active
+BEN0374,EMP0954,WEL-GYM,Wellness Gym,wellness,employee_spouse,222.06,178.95,USD,2026-05-29,2026-05-29,2026-07-31,active
+BEN0375,EMP0818,DEN-PLUS,Dental Plus,dental,employee,572.46,266.45,USD,2024-09-05,2024-09-05,,active
+BEN0376,EMP0642,DEN-PLUS,Dental Plus,dental,employee,529.03,139.74,USD,2023-09-27,2023-09-27,,active
+BEN0377,EMP0555,MED-HMO,Medical HMO,health,family,140.59,120.75,INR,2024-03-09,2024-03-09,,waived
+BEN0378,EMP0868,DEN-PLUS,Dental Plus,dental,employee,229.37,349.57,INR,2026-04-20,2026-04-20,,active
+BEN0379,EMP0278,LIFE-1X,Life 1x Salary,life,employee,72.42,78.64,USD,2025-01-04,2025-01-04,2025-06-26,active
+BEN0380,EMP0245,401K-STD,401(k) Standard,retirement,employee,620.67,57.55,GBP,2025-01-30,2025-01-30,,active
+BEN0381,EMP0175,WEL-GYM,Wellness Gym,wellness,family,598.82,258.28,USD,2023-03-03,2023-03-03,,terminated
+BEN0382,EMP0138,LIFE-2X,Life 2x Salary,life,employee,186.77,283.32,GBP,2025-03-14,2025-03-14,,active
+BEN0383,EMP0582,MED-HMO,Medical HMO,health,employee_children,344.79,86.95,INR,2022-07-22,2022-07-22,,active
+BEN0384,EMP0422,VIS-STD,Vision Standard,vision,employee_children,267.74,342.19,USD,2025-05-09,2025-05-09,,active
+BEN0385,EMP0767,WEL-GYM,Wellness Gym,wellness,employee_children,581.49,254.39,USD,2024-01-16,2024-01-16,,active
+BEN0386,EMP0452,WEL-GYM,Wellness Gym,wellness,employee,568.35,138.60,INR,2019-07-24,2019-07-24,,terminated
+BEN0387,EMP0786,DEN-BASIC,Dental Basic,dental,employee_children,622.05,296.23,USD,2015-08-03,2015-08-03,,active
+BEN0388,EMP0348,MED-PPO,Medical PPO,health,employee_children,220.70,259.32,USD,2022-09-16,2022-09-16,,waived
+BEN0389,EMP0487,DEN-BASIC,Dental Basic,dental,employee,374.37,157.52,USD,2020-08-29,2020-08-29,2023-03-20,active
+BEN0390,EMP0385,WEL-GYM,Wellness Gym,wellness,employee_spouse,387.58,208.03,USD,2022-04-02,2022-04-02,,active
+BEN0391,EMP0249,WEL-GYM,Wellness Gym,wellness,employee,124.76,320.86,USD,2025-10-30,2025-10-30,,active
+BEN0392,EMP0755,WEL-GYM,Wellness Gym,wellness,employee_spouse,395.42,126.55,INR,2022-01-01,2022-01-01,,terminated
+BEN0393,EMP0139,WEL-GYM,Wellness Gym,wellness,employee_children,463.45,16.15,GBP,2023-11-25,2023-11-25,,terminated
+BEN0394,EMP0643,WEL-GYM,Wellness Gym,wellness,employee_spouse,248.20,302.15,USD,2025-05-23,2025-05-23,,active
+BEN0395,EMP0966,DEN-BASIC,Dental Basic,dental,employee,524.01,102.39,USD,2015-10-15,2015-10-15,,waived
+BEN0396,EMP0261,401K-STD,401(k) Standard,retirement,employee_children,61.35,254.66,USD,2019-11-20,2019-11-20,,waived
+BEN0397,EMP0362,DEN-BASIC,Dental Basic,dental,employee,424.09,24.39,USD,2024-05-12,2024-05-12,2026-03-03,active
+BEN0398,EMP0253,VIS-STD,Vision Standard,vision,employee_children,277.91,159.61,INR,2024-08-29,2024-08-29,,active
+BEN0399,EMP0444,LIFE-1X,Life 1x Salary,life,employee_spouse,623.26,295.64,USD,2022-12-17,2022-12-17,2024-12-24,terminated
+BEN0400,EMP0268,DEN-BASIC,Dental Basic,dental,employee_spouse,641.19,242.14,USD,2025-12-04,2025-12-04,,terminated
+BEN0401,EMP0164,DEN-PLUS,Dental Plus,dental,family,376.71,123.19,USD,2020-06-02,2020-06-02,,terminated
+BEN0402,EMP0276,VIS-STD,Vision Standard,vision,employee_spouse,208.93,333.35,INR,2023-01-18,2023-01-18,,terminated
+BEN0403,EMP0420,LIFE-1X,Life 1x Salary,life,employee_children,522.35,294.22,USD,2025-11-27,2025-11-27,,waived
+BEN0404,EMP0069,LIFE-2X,Life 2x Salary,life,family,240.41,296.43,USD,2018-05-24,2018-05-24,,waived
+BEN0405,EMP0897,MED-PPO,Medical PPO,health,employee,606.52,174.91,USD,2020-11-24,2020-11-24,,active
+BEN0406,EMP0149,401K-STD,401(k) Standard,retirement,employee,642.42,104.35,INR,2024-10-20,2024-10-20,2026-08-04,waived
+BEN0407,EMP0753,DEN-PLUS,Dental Plus,dental,employee_children,539.75,183.43,USD,2026-04-15,2026-04-15,2026-07-13,active
+BEN0408,EMP0357,401K-PLUS,401(k) Plus Match,retirement,family,380.82,212.03,INR,2025-06-29,2025-06-29,,active
+BEN0409,EMP0109,LIFE-2X,Life 2x Salary,life,employee_spouse,336.60,25.98,USD,2020-09-11,2020-09-11,,active
+BEN0410,EMP0451,DEN-BASIC,Dental Basic,dental,employee_children,628.79,174.55,USD,2021-06-09,2021-06-09,2021-08-27,waived
+BEN0411,EMP0164,LIFE-1X,Life 1x Salary,life,family,596.38,196.22,USD,2023-01-03,2023-01-03,,active
+BEN0412,EMP0803,401K-STD,401(k) Standard,retirement,employee,76.67,133.67,GBP,2018-06-11,2018-06-11,,active
+BEN0413,EMP0386,MED-HMO,Medical HMO,health,employee_spouse,419.15,257.29,USD,2026-06-11,2026-06-11,,terminated
+BEN0414,EMP0843,MED-PPO,Medical PPO,health,employee,507.30,117.16,USD,2024-08-21,2024-08-21,2025-11-16,active
+BEN0415,EMP0341,LIFE-2X,Life 2x Salary,life,employee_spouse,291.76,331.96,INR,2024-08-26,2024-08-26,,waived
+BEN0416,EMP0534,401K-STD,401(k) Standard,retirement,employee_spouse,270.62,121.99,USD,2025-02-03,2025-02-03,,active
+BEN0417,EMP0207,401K-STD,401(k) Standard,retirement,employee,643.32,336.21,USD,2026-06-09,2026-06-09,,active
+BEN0418,EMP0401,MED-PPO,Medical PPO,health,employee_spouse,335.11,161.84,GBP,2022-04-06,2022-04-06,,active
+BEN0419,EMP0244,401K-STD,401(k) Standard,retirement,family,166.52,109.43,INR,2024-12-17,2024-12-17,,active
+BEN0420,EMP0383,DEN-BASIC,Dental Basic,dental,employee,375.72,202.21,USD,2025-04-22,2025-04-22,,terminated
+BEN0421,EMP0840,DEN-BASIC,Dental Basic,dental,employee_spouse,259.05,114.59,USD,2024-09-12,2024-09-12,,active
+BEN0422,EMP0817,MED-HMO,Medical HMO,health,employee_children,234.68,250.03,USD,2026-06-12,2026-06-12,,waived
+BEN0423,EMP0665,LIFE-2X,Life 2x Salary,life,family,393.60,202.25,INR,2025-06-01,2025-06-01,,active
+BEN0424,EMP0845,DEN-BASIC,Dental Basic,dental,employee,247.55,206.47,USD,2026-05-30,2026-05-30,,active
+BEN0425,EMP0882,401K-PLUS,401(k) Plus Match,retirement,employee_children,207.75,336.31,USD,2024-02-28,2024-02-28,,terminated
+BEN0426,EMP0809,LIFE-1X,Life 1x Salary,life,family,292.96,194.86,USD,2022-01-02,2022-01-02,,terminated
+BEN0427,EMP0369,WEL-GYM,Wellness Gym,wellness,employee_children,396.52,223.36,USD,2017-02-27,2017-02-27,,terminated
+BEN0428,EMP0573,401K-PLUS,401(k) Plus Match,retirement,family,413.26,254.56,USD,2024-03-05,2024-03-05,,active
+BEN0429,EMP0791,DEN-BASIC,Dental Basic,dental,employee,408.76,23.88,USD,2020-11-06,2020-11-06,,terminated
+BEN0430,EMP0787,VIS-STD,Vision Standard,vision,employee_spouse,91.16,66.55,USD,2019-02-06,2019-02-06,,waived
+BEN0431,EMP0746,LIFE-1X,Life 1x Salary,life,family,186.26,258.45,USD,2026-06-02,2026-06-02,2026-07-02,active
+BEN0432,EMP0424,LIFE-1X,Life 1x Salary,life,employee,538.65,291.22,USD,2026-01-19,2026-01-19,2026-04-07,active
+BEN0433,EMP0850,MED-HMO,Medical HMO,health,employee_spouse,512.93,150.06,INR,2024-08-24,2024-08-24,2026-06-30,active
+BEN0434,EMP0047,WEL-GYM,Wellness Gym,wellness,employee_spouse,558.30,17.06,GBP,2026-07-20,2026-07-20,2026-07-27,active
+BEN0435,EMP0432,LIFE-2X,Life 2x Salary,life,employee_spouse,514.64,116.08,INR,2026-04-08,2026-04-08,2026-06-01,active
+BEN0436,EMP0417,WEL-GYM,Wellness Gym,wellness,employee_spouse,514.32,163.18,USD,2017-06-08,2017-06-08,,active
+BEN0437,EMP0048,401K-PLUS,401(k) Plus Match,retirement,employee_spouse,61.12,282.81,USD,2026-07-03,2026-07-03,,terminated
+BEN0438,EMP0916,WEL-GYM,Wellness Gym,wellness,employee_children,472.53,65.34,USD,2022-02-02,2022-02-02,,terminated
+BEN0439,EMP0733,DEN-PLUS,Dental Plus,dental,employee_spouse,572.38,80.23,USD,2023-12-06,2023-12-06,,active
+BEN0440,EMP0242,VIS-STD,Vision Standard,vision,family,107.71,324.48,USD,2025-12-23,2025-12-23,,waived
+BEN0441,EMP0384,LIFE-2X,Life 2x Salary,life,employee,252.21,303.71,USD,2026-06-07,2026-06-07,,terminated
+BEN0442,EMP0632,LIFE-1X,Life 1x Salary,life,employee,347.10,130.68,USD,2026-08-04,2026-08-04,,active
+BEN0443,EMP0252,MED-PPO,Medical PPO,health,employee,232.00,173.68,USD,2026-06-06,2026-06-06,,active
+BEN0444,EMP0101,401K-PLUS,401(k) Plus Match,retirement,employee_spouse,305.09,240.71,USD,2019-08-07,2019-08-07,,terminated
+BEN0445,EMP0041,DEN-BASIC,Dental Basic,dental,employee_children,246.41,43.31,USD,2022-02-07,2022-02-07,,waived
+BEN0446,EMP0655,VIS-STD,Vision Standard,vision,family,199.84,34.34,GBP,2025-04-15,2025-04-15,2026-08-03,active
+BEN0447,EMP0365,LIFE-2X,Life 2x Salary,life,family,282.74,10.99,USD,2025-02-05,2025-02-05,2025-04-29,active
+BEN0448,EMP0564,401K-PLUS,401(k) Plus Match,retirement,family,449.90,123.70,USD,2019-07-18,2019-07-18,,active
+BEN0449,EMP0015,DEN-BASIC,Dental Basic,dental,employee_spouse,265.01,86.89,USD,2025-03-28,2025-03-28,,waived
+BEN0450,EMP0639,VIS-STD,Vision Standard,vision,employee_children,471.52,29.32,USD,2022-12-31,2022-12-31,,active
+BEN0451,EMP0455,VIS-STD,Vision Standard,vision,employee_children,113.02,235.07,USD,2023-10-26,2023-10-26,,terminated
+BEN0452,EMP0426,401K-PLUS,401(k) Plus Match,retirement,employee_children,84.77,279.77,USD,2026-03-13,2026-03-13,,terminated
+BEN0453,EMP0310,DEN-BASIC,Dental Basic,dental,employee_children,567.00,19.10,USD,2024-11-27,2024-11-27,,active
+BEN0454,EMP0642,DEN-PLUS,Dental Plus,dental,family,283.36,335.37,USD,2024-03-06,2024-03-06,2024-04-20,active
+BEN0455,EMP0358,MED-HMO,Medical HMO,health,family,415.39,198.54,INR,2025-12-14,2025-12-14,,active
+BEN0456,EMP0892,WEL-GYM,Wellness Gym,wellness,employee_spouse,149.54,241.93,USD,2025-04-22,2025-04-22,,active
+BEN0457,EMP0713,MED-HMO,Medical HMO,health,employee,528.02,263.44,INR,2014-06-20,2014-06-20,2017-11-28,active
+BEN0458,EMP0875,VIS-STD,Vision Standard,vision,employee_children,401.99,38.48,USD,2019-10-01,2019-10-01,,terminated
+BEN0459,EMP0776,MED-PPO,Medical PPO,health,employee,585.32,239.16,GBP,2024-01-02,2024-01-02,,waived
+BEN0460,EMP0038,401K-PLUS,401(k) Plus Match,retirement,employee_children,405.49,95.96,USD,2025-11-09,2025-11-09,,active
+BEN0461,EMP0379,401K-STD,401(k) Standard,retirement,employee_children,611.40,106.99,USD,2017-10-08,2017-10-08,,active
+BEN0462,EMP0423,401K-PLUS,401(k) Plus Match,retirement,employee,582.66,121.33,USD,2026-07-28,2026-07-28,,terminated
+BEN0463,EMP0231,DEN-PLUS,Dental Plus,dental,family,531.59,156.31,INR,2025-01-28,2025-01-28,,active
+BEN0464,EMP0536,MED-HMO,Medical HMO,health,employee,487.48,166.50,USD,2025-09-21,2025-09-21,,active
+BEN0465,EMP0026,DEN-BASIC,Dental Basic,dental,employee,271.48,67.69,USD,2024-04-25,2024-04-25,,waived
+BEN0466,EMP0480,DEN-BASIC,Dental Basic,dental,family,296.25,347.77,GBP,2024-02-12,2024-02-12,,waived
+BEN0467,EMP0503,LIFE-2X,Life 2x Salary,life,employee_children,515.03,2.74,USD,2023-04-29,2023-04-29,,active
+BEN0468,EMP0155,DEN-PLUS,Dental Plus,dental,family,614.14,274.18,USD,2025-04-14,2025-04-14,,waived
+BEN0469,EMP0002,MED-PPO,Medical PPO,health,employee,207.99,152.66,USD,2020-07-15,2020-07-15,,active
+BEN0470,EMP0768,401K-STD,401(k) Standard,retirement,family,567.26,138.09,USD,2022-05-03,2022-05-03,2025-12-12,terminated
+BEN0471,EMP0282,MED-PPO,Medical PPO,health,family,357.36,82.41,USD,2021-07-13,2021-07-13,,waived
+BEN0472,EMP0317,LIFE-2X,Life 2x Salary,life,employee,248.15,40.76,USD,2024-02-09,2024-02-09,,terminated
+BEN0473,EMP0603,VIS-STD,Vision Standard,vision,employee,190.89,253.68,USD,2020-04-07,2020-04-07,,active
+BEN0474,EMP0058,401K-STD,401(k) Standard,retirement,employee_children,327.16,52.75,USD,2026-07-28,2026-07-28,,waived
+BEN0475,EMP0746,LIFE-1X,Life 1x Salary,life,employee_spouse,571.57,185.98,USD,2025-09-13,2025-09-13,,active
+BEN0476,EMP0102,VIS-STD,Vision Standard,vision,employee_children,488.15,217.78,USD,2019-05-14,2019-05-14,,waived
+BEN0477,EMP0051,LIFE-2X,Life 2x Salary,life,employee_children,631.81,50.23,USD,2021-06-12,2021-06-12,2021-08-17,waived
+BEN0478,EMP0670,MED-PPO,Medical PPO,health,employee,490.65,196.50,GBP,2025-07-24,2025-07-24,,active
+BEN0479,EMP0013,LIFE-1X,Life 1x Salary,life,employee,474.30,155.83,USD,2016-10-19,2016-10-19,,active
+BEN0480,EMP0305,LIFE-2X,Life 2x Salary,life,family,592.61,245.22,USD,2024-02-04,2024-02-04,,active
+BEN0481,EMP0934,DEN-BASIC,Dental Basic,dental,family,214.16,266.66,USD,2026-05-31,2026-05-31,2026-07-29,terminated
+BEN0482,EMP0291,WEL-GYM,Wellness Gym,wellness,employee_spouse,375.54,266.22,USD,2019-04-04,2019-04-04,,active
+BEN0483,EMP0289,DEN-PLUS,Dental Plus,dental,employee_children,559.59,159.48,USD,2025-07-21,2025-07-21,,active
+BEN0484,EMP0557,MED-PPO,Medical PPO,health,employee,549.22,229.69,USD,2025-07-06,2025-07-06,,active
+BEN0485,EMP0931,401K-PLUS,401(k) Plus Match,retirement,family,169.39,14.52,USD,2025-03-05,2025-03-05,,active
+BEN0486,EMP0253,WEL-GYM,Wellness Gym,wellness,family,370.80,143.65,INR,2025-05-13,2025-05-13,,waived
+BEN0487,EMP0540,VIS-STD,Vision Standard,vision,employee_spouse,647.88,221.70,USD,2025-05-31,2025-05-31,,active
+BEN0488,EMP0397,MED-PPO,Medical PPO,health,employee_children,83.80,108.38,INR,2021-09-13,2021-09-13,,active
+BEN0489,EMP0458,DEN-BASIC,Dental Basic,dental,employee,160.79,195.92,USD,2014-08-29,2014-08-29,,active
+BEN0490,EMP0847,DEN-PLUS,Dental Plus,dental,employee_children,554.85,317.89,USD,2025-07-30,2025-07-30,,active
+BEN0491,EMP0664,MED-HMO,Medical HMO,health,employee_children,243.52,5.35,USD,2025-04-22,2025-04-22,2025-06-17,active
+BEN0492,EMP0848,MED-PPO,Medical PPO,health,employee,122.90,86.14,USD,2019-08-13,2019-08-13,2022-11-26,active
+BEN0493,EMP0655,WEL-GYM,Wellness Gym,wellness,employee_children,534.21,4.60,GBP,2023-01-07,2023-01-07,,active
+BEN0494,EMP0216,401K-PLUS,401(k) Plus Match,retirement,employee,156.32,4.13,USD,2018-11-29,2018-11-29,,waived
+BEN0495,EMP0938,DEN-PLUS,Dental Plus,dental,family,299.16,289.63,USD,2026-05-08,2026-05-08,,active
+BEN0496,EMP0964,MED-HMO,Medical HMO,health,employee,397.85,251.88,INR,2021-12-03,2021-12-03,,active
+BEN0497,EMP0114,401K-STD,401(k) Standard,retirement,family,521.21,196.42,USD,2024-05-05,2024-05-05,,waived
+BEN0498,EMP0284,401K-PLUS,401(k) Plus Match,retirement,employee_spouse,151.08,310.28,USD,2025-02-06,2025-02-06,,terminated
+BEN0499,EMP0424,DEN-PLUS,Dental Plus,dental,employee_children,201.01,260.41,USD,2026-07-30,2026-07-30,,active
+BEN0500,EMP0988,401K-PLUS,401(k) Plus Match,retirement,employee_children,77.19,95.41,USD,2021-03-08,2021-03-08,,terminated
+BEN0501,EMP0742,LIFE-2X,Life 2x Salary,life,family,618.52,238.39,USD,2026-06-06,2026-06-06,,active
+BEN0502,EMP0969,LIFE-1X,Life 1x Salary,life,family,74.01,259.71,INR,2025-09-03,2025-09-03,,active
+BEN0503,EMP0911,MED-PPO,Medical PPO,health,employee_children,240.86,98.14,GBP,2024-10-12,2024-10-12,2026-01-26,active
+BEN0504,EMP0113,401K-PLUS,401(k) Plus Match,retirement,family,90.50,156.21,USD,2022-10-14,2022-10-14,,active
+BEN0505,EMP0520,401K-PLUS,401(k) Plus Match,retirement,family,132.37,150.86,GBP,2022-11-02,2022-11-02,,waived
+BEN0506,EMP0160,MED-HMO,Medical HMO,health,employee_spouse,174.11,205.59,USD,2026-07-08,2026-07-08,2026-07-21,active
+BEN0507,EMP0334,VIS-STD,Vision Standard,vision,employee_children,474.71,8.48,INR,2021-06-17,2021-06-17,,active
+BEN0508,EMP0021,DEN-PLUS,Dental Plus,dental,employee,539.95,295.66,USD,2020-07-26,2020-07-26,2025-01-08,waived
+BEN0509,EMP0472,DEN-BASIC,Dental Basic,dental,employee_children,127.10,255.96,GBP,2025-10-31,2025-10-31,,waived
+BEN0510,EMP0319,401K-STD,401(k) Standard,retirement,employee_children,318.00,9.82,INR,2024-07-04,2024-07-04,,waived
+BEN0511,EMP0016,401K-PLUS,401(k) Plus Match,retirement,employee_spouse,543.44,109.65,INR,2020-10-05,2020-10-05,,waived
+BEN0512,EMP0507,WEL-GYM,Wellness Gym,wellness,employee_children,143.62,178.38,INR,2017-01-31,2017-01-31,,terminated
+BEN0513,EMP0681,401K-STD,401(k) Standard,retirement,employee,555.13,118.30,USD,2018-03-06,2018-03-06,,active
+BEN0514,EMP0789,401K-PLUS,401(k) Plus Match,retirement,employee_spouse,431.62,75.34,INR,2023-09-26,2023-09-26,,active
+BEN0515,EMP0630,DEN-PLUS,Dental Plus,dental,employee,94.30,109.99,USD,2023-07-19,2023-07-19,,active
+BEN0516,EMP0106,401K-PLUS,401(k) Plus Match,retirement,family,251.33,119.34,INR,2026-04-30,2026-04-30,,waived
+BEN0517,EMP0751,MED-HMO,Medical HMO,health,employee_spouse,542.60,330.83,USD,2021-12-13,2021-12-13,,active
+BEN0518,EMP0732,LIFE-2X,Life 2x Salary,life,employee,390.23,228.17,USD,2025-07-24,2025-07-24,,waived
+BEN0519,EMP0850,401K-STD,401(k) Standard,retirement,employee_spouse,372.45,289.56,INR,2023-09-02,2023-09-02,,terminated
+BEN0520,EMP0094,DEN-BASIC,Dental Basic,dental,employee_spouse,587.03,335.97,INR,2018-02-02,2018-02-02,,active
+BEN0521,EMP0665,401K-STD,401(k) Standard,retirement,employee_spouse,106.81,80.72,INR,2026-06-11,2026-06-11,2026-07-30,waived
+BEN0522,EMP0030,MED-PPO,Medical PPO,health,employee_spouse,427.38,25.57,INR,2019-09-12,2019-09-12,,active
+BEN0523,EMP0534,VIS-STD,Vision Standard,vision,employee,370.47,241.60,USD,2026-01-01,2026-01-01,,terminated
+BEN0524,EMP0011,DEN-BASIC,Dental Basic,dental,employee_spouse,521.02,48.54,USD,2021-11-16,2021-11-16,2025-02-06,active
+BEN0525,EMP0332,401K-STD,401(k) Standard,retirement,family,296.05,109.11,USD,2021-06-19,2021-06-19,,waived
+BEN0526,EMP0850,DEN-BASIC,Dental Basic,dental,family,384.48,307.27,INR,2018-09-17,2018-09-17,,terminated
+BEN0527,EMP0506,WEL-GYM,Wellness Gym,wellness,employee_children,356.91,144.35,GBP,2025-02-06,2025-02-06,,active
+BEN0528,EMP0377,LIFE-2X,Life 2x Salary,life,employee,629.28,2.77,USD,2025-03-16,2025-03-16,,active
+BEN0529,EMP0263,MED-HMO,Medical HMO,health,employee_spouse,532.49,108.66,USD,2025-08-13,2025-08-13,,active
+BEN0530,EMP0661,VIS-STD,Vision Standard,vision,family,360.29,233.99,USD,2026-05-01,2026-05-01,,active
+BEN0531,EMP0265,MED-PPO,Medical PPO,health,employee_children,253.19,308.70,USD,2025-11-25,2025-11-25,,terminated
+BEN0532,EMP0612,DEN-PLUS,Dental Plus,dental,family,76.18,335.20,USD,2026-05-22,2026-05-22,,active
+BEN0533,EMP0362,VIS-STD,Vision Standard,vision,employee_children,311.39,311.97,USD,2024-03-07,2024-03-07,,waived
+BEN0534,EMP0855,WEL-GYM,Wellness Gym,wellness,employee,75.52,172.87,USD,2024-07-23,2024-07-23,,active
+BEN0535,EMP0825,DEN-PLUS,Dental Plus,dental,family,209.02,184.29,USD,2026-03-13,2026-03-13,,active
+BEN0536,EMP0374,WEL-GYM,Wellness Gym,wellness,employee_spouse,486.22,29.89,USD,2019-06-24,2019-06-24,,active
+BEN0537,EMP0694,401K-STD,401(k) Standard,retirement,employee_spouse,493.80,70.62,USD,2026-03-03,2026-03-03,,active
+BEN0538,EMP0670,MED-HMO,Medical HMO,health,employee_children,51.69,279.21,GBP,2017-11-11,2017-11-11,2021-11-08,active
+BEN0539,EMP0544,VIS-STD,Vision Standard,vision,employee_spouse,588.44,348.36,INR,2024-05-13,2024-05-13,,active
+BEN0540,EMP0703,401K-STD,401(k) Standard,retirement,employee_children,396.56,335.24,USD,2025-04-28,2025-04-28,,waived
+BEN0541,EMP0675,MED-HMO,Medical HMO,health,employee_spouse,241.92,160.66,INR,2022-12-13,2022-12-13,,waived
+BEN0542,EMP0904,VIS-STD,Vision Standard,vision,employee,140.47,281.41,USD,2024-09-27,2024-09-27,,waived
+BEN0543,EMP0422,MED-PPO,Medical PPO,health,employee,408.42,11.07,USD,2020-11-29,2020-11-29,,waived
+BEN0544,EMP0744,VIS-STD,Vision Standard,vision,employee,598.93,61.24,USD,2021-02-28,2021-02-28,,terminated
+BEN0545,EMP0440,DEN-BASIC,Dental Basic,dental,employee_spouse,550.78,263.59,USD,2025-10-22,2025-10-22,,active
+BEN0546,EMP0182,401K-PLUS,401(k) Plus Match,retirement,employee_spouse,462.34,183.97,INR,2026-01-03,2026-01-03,,terminated
+BEN0547,EMP0399,WEL-GYM,Wellness Gym,wellness,employee_children,484.28,246.49,USD,2025-04-09,2025-04-09,2025-11-18,active
+BEN0548,EMP0793,VIS-STD,Vision Standard,vision,employee,440.62,305.25,USD,2025-03-23,2025-03-23,,waived
+BEN0549,EMP0503,DEN-BASIC,Dental Basic,dental,family,128.78,238.61,USD,2021-09-05,2021-09-05,,waived
+BEN0550,EMP0883,WEL-GYM,Wellness Gym,wellness,employee_children,141.53,290.63,USD,2023-07-11,2023-07-11,,active
+BEN0551,EMP0505,WEL-GYM,Wellness Gym,wellness,family,435.51,328.52,USD,2018-11-06,2018-11-06,2024-02-15,terminated
+BEN0552,EMP0709,LIFE-2X,Life 2x Salary,life,family,481.87,97.48,USD,2025-07-26,2025-07-26,,active
+BEN0553,EMP0039,DEN-BASIC,Dental Basic,dental,family,328.20,289.78,USD,2024-06-20,2024-06-20,,active
+BEN0554,EMP0729,LIFE-1X,Life 1x Salary,life,employee_children,351.47,231.34,USD,2026-03-20,2026-03-20,,terminated
+BEN0555,EMP0790,LIFE-1X,Life 1x Salary,life,employee_children,409.20,249.67,USD,2017-09-25,2017-09-25,2018-03-10,active
+BEN0556,EMP0382,DEN-PLUS,Dental Plus,dental,employee,544.39,224.98,USD,2025-08-09,2025-08-09,,waived
+BEN0557,EMP0953,MED-HMO,Medical HMO,health,employee,515.15,269.29,USD,2017-09-08,2017-09-08,,active
+BEN0558,EMP0217,LIFE-1X,Life 1x Salary,life,family,61.12,124.56,USD,2019-04-30,2019-04-30,,terminated
+BEN0559,EMP0522,VIS-STD,Vision Standard,vision,family,163.10,34.74,USD,2021-07-05,2021-07-05,,active
+BEN0560,EMP0232,401K-STD,401(k) Standard,retirement,employee,514.13,34.81,USD,2018-09-20,2018-09-20,2025-05-18,waived
+BEN0561,EMP0309,WEL-GYM,Wellness Gym,wellness,employee_spouse,322.16,134.40,USD,2019-11-05,2019-11-05,,active
+BEN0562,EMP0884,WEL-GYM,Wellness Gym,wellness,employee,407.19,225.55,GBP,2024-07-12,2024-07-12,,terminated
+BEN0563,EMP0703,LIFE-1X,Life 1x Salary,life,employee_spouse,142.47,87.25,USD,2020-02-06,2020-02-06,,active
+BEN0564,EMP0033,WEL-GYM,Wellness Gym,wellness,employee_children,550.48,255.84,USD,2025-01-20,2025-01-20,,terminated
+BEN0565,EMP0648,MED-PPO,Medical PPO,health,family,269.57,43.10,USD,2024-01-18,2024-01-18,,terminated
+BEN0566,EMP0477,WEL-GYM,Wellness Gym,wellness,employee,243.21,307.87,USD,2023-10-15,2023-10-15,,active
+BEN0567,EMP0227,401K-STD,401(k) Standard,retirement,family,73.83,309.12,USD,2020-06-10,2020-06-10,,waived
+BEN0568,EMP0817,WEL-GYM,Wellness Gym,wellness,employee,222.20,317.63,USD,2025-01-31,2025-01-31,,terminated
+BEN0569,EMP0138,WEL-GYM,Wellness Gym,wellness,employee,69.39,157.46,GBP,2022-02-12,2022-02-12,,terminated
+BEN0570,EMP0383,VIS-STD,Vision Standard,vision,employee_children,272.11,52.12,USD,2023-02-09,2023-02-09,,active
+BEN0571,EMP0588,WEL-GYM,Wellness Gym,wellness,family,154.05,270.66,USD,2021-07-02,2021-07-02,,waived
+BEN0572,EMP0073,LIFE-2X,Life 2x Salary,life,family,415.66,270.21,USD,2025-06-19,2025-06-19,,waived
+BEN0573,EMP0317,401K-STD,401(k) Standard,retirement,employee_spouse,492.62,243.34,USD,2020-06-10,2020-06-10,,waived
+BEN0574,EMP0392,DEN-BASIC,Dental Basic,dental,employee_children,320.38,164.33,USD,2024-12-15,2024-12-15,,waived
+BEN0575,EMP0748,LIFE-1X,Life 1x Salary,life,employee,208.20,165.60,GBP,2026-06-12,2026-06-12,,terminated
+BEN0576,EMP0614,LIFE-2X,Life 2x Salary,life,family,482.93,321.78,GBP,2025-01-27,2025-01-27,,active
+BEN0577,EMP0853,WEL-GYM,Wellness Gym,wellness,employee_spouse,381.69,175.26,GBP,2023-07-11,2023-07-11,,active
+BEN0578,EMP0576,401K-STD,401(k) Standard,retirement,employee,274.91,5.71,USD,2024-09-04,2024-09-04,2026-05-19,active
+BEN0579,EMP0050,MED-PPO,Medical PPO,health,family,269.71,192.10,USD,2026-07-05,2026-07-05,,active
+BEN0580,EMP0292,VIS-STD,Vision Standard,vision,employee_children,274.26,2.32,GBP,2019-09-06,2019-09-06,,terminated
+BEN0581,EMP0668,LIFE-1X,Life 1x Salary,life,employee_children,399.67,163.92,USD,2025-04-27,2025-04-27,,waived
+BEN0582,EMP0267,MED-HMO,Medical HMO,health,employee_children,85.69,335.23,INR,2025-06-30,2025-06-30,,active
+BEN0583,EMP0053,401K-STD,401(k) Standard,retirement,employee_children,209.18,47.13,INR,2026-03-10,2026-03-10,,active
+BEN0584,EMP0613,401K-PLUS,401(k) Plus Match,retirement,family,304.61,323.56,USD,2024-10-06,2024-10-06,,active
+BEN0585,EMP0220,DEN-BASIC,Dental Basic,dental,employee_spouse,99.38,247.69,USD,2023-01-13,2023-01-13,,active
+BEN0586,EMP0217,LIFE-1X,Life 1x Salary,life,family,55.84,156.20,USD,2017-10-07,2017-10-07,,waived
+BEN0587,EMP0558,LIFE-1X,Life 1x Salary,life,family,351.64,75.81,USD,2023-11-23,2023-11-23,,waived
+BEN0588,EMP0671,MED-PPO,Medical PPO,health,family,181.20,266.11,USD,2025-04-12,2025-04-12,,active
+BEN0589,EMP0652,MED-PPO,Medical PPO,health,employee_children,477.67,221.90,USD,2022-05-07,2022-05-07,,terminated
+BEN0590,EMP0818,WEL-GYM,Wellness Gym,wellness,employee_spouse,440.41,293.74,USD,2020-04-17,2020-04-17,2022-06-16,terminated
+BEN0591,EMP0031,DEN-PLUS,Dental Plus,dental,employee_spouse,220.45,297.30,USD,2024-06-23,2024-06-23,,active
+BEN0592,EMP0887,VIS-STD,Vision Standard,vision,employee,100.52,220.88,USD,2024-08-26,2024-08-26,,waived
+BEN0593,EMP0906,MED-PPO,Medical PPO,health,employee_children,156.89,32.29,INR,2025-03-29,2025-03-29,2025-09-01,terminated
+BEN0594,EMP0068,MED-PPO,Medical PPO,health,family,519.10,132.66,USD,2021-11-06,2021-11-06,2025-08-11,waived
+BEN0595,EMP0212,DEN-BASIC,Dental Basic,dental,family,556.05,321.07,USD,2021-02-26,2021-02-26,,waived
+BEN0596,EMP0645,MED-HMO,Medical HMO,health,employee_children,353.14,110.04,USD,2021-10-02,2021-10-02,,active
+BEN0597,EMP0648,VIS-STD,Vision Standard,vision,employee,576.53,83.38,USD,2019-06-06,2019-06-06,,active
+BEN0598,EMP0378,VIS-STD,Vision Standard,vision,employee_spouse,614.25,80.67,INR,2023-06-19,2023-06-19,,waived
+BEN0599,EMP0994,401K-PLUS,401(k) Plus Match,retirement,family,239.52,243.71,USD,2025-12-06,2025-12-06,,terminated
+BEN0600,EMP0076,MED-PPO,Medical PPO,health,family,620.50,218.53,USD,2024-02-11,2024-02-11,2025-12-08,active
+BEN0601,EMP0893,DEN-PLUS,Dental Plus,dental,employee_children,420.69,59.68,USD,2024-07-19,2024-07-19,,waived
+BEN0602,EMP0997,WEL-GYM,Wellness Gym,wellness,employee,412.41,292.00,USD,2026-07-22,2026-07-22,,waived
+BEN0603,EMP0535,MED-PPO,Medical PPO,health,employee_children,114.51,92.29,USD,2020-11-09,2020-11-09,,active
+BEN0604,EMP0221,MED-HMO,Medical HMO,health,employee,85.26,125.04,USD,2024-01-20,2024-01-20,,active
+BEN0605,EMP0198,MED-PPO,Medical PPO,health,employee,232.17,315.47,USD,2023-10-29,2023-10-29,2026-02-22,active
+BEN0606,EMP0434,MED-HMO,Medical HMO,health,employee_children,172.14,284.02,USD,2018-09-14,2018-09-14,,active
+BEN0607,EMP0389,DEN-PLUS,Dental Plus,dental,employee_children,278.32,92.84,USD,2026-05-04,2026-05-04,,waived
+BEN0608,EMP0640,MED-HMO,Medical HMO,health,family,328.19,94.60,USD,2020-03-03,2020-03-03,,waived
+BEN0609,EMP0568,401K-PLUS,401(k) Plus Match,retirement,family,334.63,281.57,USD,2024-04-18,2024-04-18,,active
+BEN0610,EMP0681,401K-STD,401(k) Standard,retirement,employee_spouse,71.71,79.85,USD,2022-08-13,2022-08-13,2023-02-01,terminated
+BEN0611,EMP0653,LIFE-2X,Life 2x Salary,life,family,404.61,215.41,GBP,2020-07-30,2020-07-30,,active
+BEN0612,EMP0377,MED-PPO,Medical PPO,health,employee_children,376.96,235.38,USD,2025-11-18,2025-11-18,,active
+BEN0613,EMP0953,VIS-STD,Vision Standard,vision,employee_spouse,404.73,35.36,USD,2017-11-10,2017-11-10,,active
+BEN0614,EMP0133,401K-PLUS,401(k) Plus Match,retirement,employee_spouse,240.52,91.91,USD,2020-10-07,2020-10-07,,active
+BEN0615,EMP0048,WEL-GYM,Wellness Gym,wellness,employee,488.13,77.17,USD,2026-06-21,2026-06-21,,active
+BEN0616,EMP0141,MED-PPO,Medical PPO,health,employee,622.62,48.74,USD,2022-12-16,2022-12-16,,terminated
+BEN0617,EMP0244,DEN-BASIC,Dental Basic,dental,employee,442.55,318.49,INR,2025-03-26,2025-03-26,,terminated
+BEN0618,EMP0412,WEL-GYM,Wellness Gym,wellness,family,648.22,30.82,USD,2020-08-20,2020-08-20,,terminated
+BEN0619,EMP0822,401K-STD,401(k) Standard,retirement,employee_spouse,104.53,249.89,GBP,2025-09-07,2025-09-07,,active
+BEN0620,EMP0168,VIS-STD,Vision Standard,vision,employee,154.82,77.09,USD,2024-10-17,2024-10-17,,active
+BEN0621,EMP0617,DEN-BASIC,Dental Basic,dental,family,118.55,273.29,USD,2026-04-29,2026-04-29,,active
+BEN0622,EMP0067,MED-HMO,Medical HMO,health,employee_spouse,361.17,317.23,GBP,2019-08-01,2019-08-01,,waived
+BEN0623,EMP0764,MED-PPO,Medical PPO,health,employee_spouse,159.75,35.52,USD,2025-07-14,2025-07-14,,waived
+BEN0624,EMP0893,401K-PLUS,401(k) Plus Match,retirement,employee_spouse,81.76,148.04,USD,2025-08-03,2025-08-03,,active
+BEN0625,EMP0431,LIFE-2X,Life 2x Salary,life,family,476.43,98.48,USD,2021-06-16,2021-06-16,,active
+BEN0626,EMP0078,MED-PPO,Medical PPO,health,employee_children,402.12,325.64,GBP,2023-09-04,2023-09-04,,waived
+BEN0627,EMP0701,LIFE-1X,Life 1x Salary,life,family,648.30,248.11,USD,2025-11-10,2025-11-10,,active
+BEN0628,EMP0757,WEL-GYM,Wellness Gym,wellness,employee,299.34,113.49,USD,2023-06-06,2023-06-06,,active
+BEN0629,EMP0659,401K-PLUS,401(k) Plus Match,retirement,employee_children,264.67,10.83,USD,2026-04-30,2026-04-30,,active
+BEN0630,EMP0561,WEL-GYM,Wellness Gym,wellness,family,143.57,249.40,USD,2022-08-31,2022-08-31,2024-01-08,waived
+BEN0631,EMP0343,401K-STD,401(k) Standard,retirement,family,218.40,130.62,USD,2024-09-02,2024-09-02,,active
+BEN0632,EMP0142,LIFE-2X,Life 2x Salary,life,family,539.10,112.14,USD,2020-10-12,2020-10-12,,active
+BEN0633,EMP0057,VIS-STD,Vision Standard,vision,family,131.97,300.65,USD,2025-03-05,2025-03-05,,active
+BEN0634,EMP0424,WEL-GYM,Wellness Gym,wellness,employee_spouse,612.22,348.30,USD,2026-04-27,2026-04-27,2026-06-08,terminated
+BEN0635,EMP0167,401K-STD,401(k) Standard,retirement,family,258.39,168.64,INR,2021-11-02,2021-11-02,,active
+BEN0636,EMP0097,DEN-BASIC,Dental Basic,dental,family,224.42,38.24,USD,2026-07-09,2026-07-09,,active
+BEN0637,EMP0677,VIS-STD,Vision Standard,vision,employee_spouse,382.43,24.84,GBP,2020-01-18,2020-01-18,2022-03-29,terminated
+BEN0638,EMP0274,MED-PPO,Medical PPO,health,employee_children,393.87,313.02,GBP,2016-10-11,2016-10-11,,active
+BEN0639,EMP0836,MED-PPO,Medical PPO,health,employee,539.01,239.50,USD,2023-11-09,2023-11-09,,active
+BEN0640,EMP0147,DEN-PLUS,Dental Plus,dental,family,484.05,207.38,USD,2026-02-16,2026-02-16,,terminated
+BEN0641,EMP0426,401K-PLUS,401(k) Plus Match,retirement,family,84.25,113.99,USD,2026-01-12,2026-01-12,,active
+BEN0642,EMP0656,MED-HMO,Medical HMO,health,employee_spouse,420.45,159.74,USD,2021-01-14,2021-01-14,,terminated
+BEN0643,EMP0148,DEN-PLUS,Dental Plus,dental,employee,480.24,60.39,USD,2024-01-13,2024-01-13,,active
+BEN0644,EMP0046,WEL-GYM,Wellness Gym,wellness,employee_spouse,414.76,262.28,USD,2025-05-12,2025-05-12,2025-12-17,active
+BEN0645,EMP0291,401K-PLUS,401(k) Plus Match,retirement,employee_spouse,465.45,269.28,USD,2018-03-02,2018-03-02,,active
+BEN0646,EMP0181,MED-PPO,Medical PPO,health,employee,543.69,158.05,USD,2023-05-14,2023-05-14,,active
+BEN0647,EMP0858,VIS-STD,Vision Standard,vision,employee,411.48,323.27,INR,2026-05-07,2026-05-07,,waived
+BEN0648,EMP0040,DEN-PLUS,Dental Plus,dental,family,551.84,323.46,GBP,2020-06-06,2020-06-06,,terminated
+BEN0649,EMP0806,WEL-GYM,Wellness Gym,wellness,employee,294.72,85.20,USD,2025-10-03,2025-10-03,,active
+BEN0650,EMP0176,DEN-PLUS,Dental Plus,dental,employee,602.51,294.95,GBP,2022-05-01,2022-05-01,,terminated
+BEN0651,EMP0557,VIS-STD,Vision Standard,vision,employee,405.30,47.89,USD,2026-01-14,2026-01-14,,active
+BEN0652,EMP0196,VIS-STD,Vision Standard,vision,employee_children,600.30,313.52,GBP,2023-11-18,2023-11-18,,waived
+BEN0653,EMP0670,MED-PPO,Medical PPO,health,employee_spouse,628.31,336.86,GBP,2018-01-01,2018-01-01,,active
+BEN0654,EMP0088,VIS-STD,Vision Standard,vision,family,206.98,215.73,USD,2025-10-21,2025-10-21,,active
+BEN0655,EMP0052,VIS-STD,Vision Standard,vision,family,374.56,118.13,INR,2024-08-25,2024-08-25,,terminated
+BEN0656,EMP0321,LIFE-1X,Life 1x Salary,life,employee_children,239.75,270.02,USD,2026-05-19,2026-05-19,2026-06-13,terminated
+BEN0657,EMP0323,LIFE-1X,Life 1x Salary,life,employee,591.49,267.45,USD,2023-09-20,2023-09-20,2025-03-05,active
+BEN0658,EMP0339,LIFE-2X,Life 2x Salary,life,employee_children,474.32,205.06,USD,2019-04-07,2019-04-07,,active
+BEN0659,EMP0229,401K-PLUS,401(k) Plus Match,retirement,family,497.70,16.57,USD,2022-12-05,2022-12-05,,active
+BEN0660,EMP0579,401K-PLUS,401(k) Plus Match,retirement,employee,98.32,188.53,USD,2020-12-05,2020-12-05,,active
+BEN0661,EMP0235,VIS-STD,Vision Standard,vision,employee_children,386.77,105.36,USD,2020-03-17,2020-03-17,,terminated
+BEN0662,EMP0505,401K-PLUS,401(k) Plus Match,retirement,family,166.30,165.29,USD,2022-02-24,2022-02-24,,waived
+BEN0663,EMP0025,MED-HMO,Medical HMO,health,employee_children,191.44,233.81,USD,2026-03-28,2026-03-28,,waived
+BEN0664,EMP0321,MED-PPO,Medical PPO,health,family,522.79,153.82,USD,2025-11-16,2025-11-16,,active
+BEN0665,EMP0369,LIFE-2X,Life 2x Salary,life,employee_spouse,313.60,141.41,USD,2020-04-18,2020-04-18,2025-08-23,terminated
+BEN0666,EMP0628,MED-PPO,Medical PPO,health,family,372.33,272.69,USD,2018-06-23,2018-06-23,,terminated
+BEN0667,EMP0788,DEN-BASIC,Dental Basic,dental,employee,219.70,226.14,USD,2021-06-25,2021-06-25,,terminated
+BEN0668,EMP0340,WEL-GYM,Wellness Gym,wellness,employee_children,207.71,120.15,GBP,2025-07-21,2025-07-21,,active
+BEN0669,EMP0850,VIS-STD,Vision Standard,vision,family,456.79,164.59,INR,2020-11-13,2020-11-13,,active
+BEN0670,EMP0061,WEL-GYM,Wellness Gym,wellness,employee_children,174.77,224.67,USD,2021-05-28,2021-05-28,,waived
+BEN0671,EMP0403,LIFE-1X,Life 1x Salary,life,employee_spouse,103.23,281.55,USD,2025-11-23,2025-11-23,,active
+BEN0672,EMP0796,DEN-PLUS,Dental Plus,dental,employee_spouse,144.73,40.20,USD,2026-03-06,2026-03-06,,terminated
+BEN0673,EMP0760,401K-PLUS,401(k) Plus Match,retirement,employee_spouse,339.97,33.16,GBP,2024-11-27,2024-11-27,,waived
+BEN0674,EMP0718,MED-PPO,Medical PPO,health,employee_spouse,168.72,317.03,USD,2026-01-17,2026-01-17,2026-05-16,active
+BEN0675,EMP0872,401K-STD,401(k) Standard,retirement,employee_children,242.50,212.50,USD,2020-11-15,2020-11-15,2022-03-16,active
+BEN0676,EMP0929,WEL-GYM,Wellness Gym,wellness,family,620.95,223.60,INR,2026-02-06,2026-02-06,,active
+BEN0677,EMP0154,DEN-BASIC,Dental Basic,dental,employee_children,627.01,51.40,USD,2018-06-04,2018-06-04,,terminated
+BEN0678,EMP0884,LIFE-2X,Life 2x Salary,life,employee_spouse,354.13,192.30,GBP,2026-04-05,2026-04-05,,terminated
+BEN0679,EMP0148,MED-HMO,Medical HMO,health,employee_children,435.00,339.04,USD,2024-04-22,2024-04-22,,active
+BEN0680,EMP0166,MED-HMO,Medical HMO,health,employee_spouse,430.59,103.40,USD,2023-12-13,2023-12-13,,active
+BEN0681,EMP0335,LIFE-1X,Life 1x Salary,life,family,138.20,62.86,USD,2014-06-29,2014-06-29,,waived
+BEN0682,EMP0513,DEN-PLUS,Dental Plus,dental,employee_children,584.82,332.05,USD,2024-01-31,2024-01-31,,waived
+BEN0683,EMP0313,LIFE-2X,Life 2x Salary,life,employee_spouse,308.29,291.01,USD,2018-08-05,2018-08-05,,active
+BEN0684,EMP0710,DEN-PLUS,Dental Plus,dental,family,265.61,155.48,USD,2026-08-04,2026-08-04,2026-08-04,active
+BEN0685,EMP0566,DEN-PLUS,Dental Plus,dental,employee_spouse,625.95,285.17,USD,2022-07-31,2022-07-31,2026-07-22,active
+BEN0686,EMP0533,DEN-BASIC,Dental Basic,dental,employee_spouse,303.11,116.50,USD,2026-06-07,2026-06-07,,active
+BEN0687,EMP0730,401K-PLUS,401(k) Plus Match,retirement,employee_spouse,563.71,90.89,USD,2026-05-15,2026-05-15,,active
+BEN0688,EMP0031,LIFE-1X,Life 1x Salary,life,employee,56.84,185.65,USD,2025-05-13,2025-05-13,,terminated
+BEN0689,EMP0471,MED-HMO,Medical HMO,health,employee_spouse,644.06,248.18,USD,2022-07-07,2022-07-07,,active
+BEN0690,EMP0674,DEN-BASIC,Dental Basic,dental,employee_spouse,372.11,244.71,USD,2025-12-10,2025-12-10,,terminated
+BEN0691,EMP0304,VIS-STD,Vision Standard,vision,employee_children,446.13,331.23,USD,2025-12-31,2025-12-31,,active
+BEN0692,EMP0470,401K-STD,401(k) Standard,retirement,employee,389.06,44.44,USD,2019-04-12,2019-04-12,,waived
+BEN0693,EMP0187,DEN-BASIC,Dental Basic,dental,employee,441.12,232.40,USD,2022-06-24,2022-06-24,,terminated
+BEN0694,EMP0168,401K-STD,401(k) Standard,retirement,employee,410.71,218.64,USD,2025-09-21,2025-09-21,,waived
+BEN0695,EMP0489,401K-STD,401(k) Standard,retirement,employee,473.49,249.25,USD,2020-07-09,2020-07-09,,active
+BEN0696,EMP0476,DEN-BASIC,Dental Basic,dental,family,548.25,277.84,USD,2025-05-22,2025-05-22,,active
+BEN0697,EMP0027,WEL-GYM,Wellness Gym,wellness,employee_spouse,603.19,241.12,USD,2019-05-24,2019-05-24,,active
+BEN0698,EMP0040,DEN-PLUS,Dental Plus,dental,family,519.43,315.56,GBP,2024-11-03,2024-11-03,,active
+BEN0699,EMP0957,LIFE-2X,Life 2x Salary,life,employee_children,569.59,43.35,GBP,2025-04-22,2025-04-22,,terminated
+BEN0700,EMP0960,WEL-GYM,Wellness Gym,wellness,employee_spouse,641.24,98.21,USD,2022-08-09,2022-08-09,,active
+BEN0701,EMP0459,LIFE-2X,Life 2x Salary,life,employee_children,115.56,22.51,USD,2025-02-07,2025-02-07,,terminated
+BEN0702,EMP0255,401K-STD,401(k) Standard,retirement,family,552.14,318.86,USD,2020-05-30,2020-05-30,,active
+BEN0703,EMP0463,DEN-BASIC,Dental Basic,dental,employee_children,152.35,86.35,USD,2022-02-03,2022-02-03,,active
+BEN0704,EMP0238,DEN-PLUS,Dental Plus,dental,employee_children,564.25,292.42,INR,2026-03-12,2026-03-12,2026-04-08,active
+BEN0705,EMP0968,DEN-BASIC,Dental Basic,dental,employee_spouse,350.60,239.54,INR,2023-11-25,2023-11-25,,active
+BEN0706,EMP0755,DEN-BASIC,Dental Basic,dental,employee_children,459.15,121.80,INR,2023-05-16,2023-05-16,,active
+BEN0707,EMP0723,VIS-STD,Vision Standard,vision,employee_spouse,441.43,334.84,USD,2026-07-07,2026-07-07,,waived
+BEN0708,EMP0609,401K-PLUS,401(k) Plus Match,retirement,employee_spouse,452.04,287.81,USD,2018-01-13,2018-01-13,2025-12-25,active
+BEN0709,EMP0254,DEN-BASIC,Dental Basic,dental,employee,421.50,127.15,INR,2026-07-10,2026-07-10,,terminated
+BEN0710,EMP0017,VIS-STD,Vision Standard,vision,employee_children,332.14,67.76,USD,2026-04-14,2026-04-14,2026-04-18,active
+BEN0711,EMP0450,401K-STD,401(k) Standard,retirement,family,457.35,69.48,GBP,2025-10-11,2025-10-11,,active
+BEN0712,EMP0406,DEN-BASIC,Dental Basic,dental,employee,162.51,306.95,USD,2022-06-21,2022-06-21,2022-08-07,active
+BEN0713,EMP0192,LIFE-1X,Life 1x Salary,life,employee_children,452.53,286.82,USD,2025-11-28,2025-11-28,,waived
+BEN0714,EMP0563,MED-PPO,Medical PPO,health,employee_children,378.11,46.59,USD,2023-08-07,2023-08-07,,active
+BEN0715,EMP0031,LIFE-2X,Life 2x Salary,life,employee_spouse,612.08,71.81,USD,2025-08-17,2025-08-17,,terminated
+BEN0716,EMP0793,401K-STD,401(k) Standard,retirement,family,107.39,157.27,USD,2020-01-29,2020-01-29,2025-10-14,terminated
+BEN0717,EMP0922,DEN-PLUS,Dental Plus,dental,employee_spouse,521.75,107.87,USD,2026-03-16,2026-03-16,,terminated
+BEN0718,EMP0218,401K-PLUS,401(k) Plus Match,retirement,family,386.46,66.64,USD,2023-10-17,2023-10-17,,terminated
+BEN0719,EMP0975,DEN-BASIC,Dental Basic,dental,family,320.06,82.16,GBP,2026-04-13,2026-04-13,,active
+BEN0720,EMP0948,401K-PLUS,401(k) Plus Match,retirement,employee,223.12,269.89,USD,2024-05-13,2024-05-13,,active
+BEN0721,EMP0555,VIS-STD,Vision Standard,vision,employee_spouse,559.98,79.88,INR,2026-02-20,2026-02-20,,terminated
+BEN0722,EMP0371,MED-HMO,Medical HMO,health,employee_children,648.18,87.21,INR,2026-06-30,2026-06-30,,terminated
+BEN0723,EMP0444,VIS-STD,Vision Standard,vision,employee,384.84,320.05,USD,2023-06-10,2023-06-10,,waived
+BEN0724,EMP0837,WEL-GYM,Wellness Gym,wellness,employee_children,160.50,266.34,USD,2015-04-29,2015-04-29,,waived
+BEN0725,EMP0364,VIS-STD,Vision Standard,vision,employee_children,315.25,271.46,USD,2026-02-15,2026-02-15,,active
+BEN0726,EMP0448,LIFE-2X,Life 2x Salary,life,employee,447.76,270.26,USD,2025-05-02,2025-05-02,,active
+BEN0727,EMP0804,VIS-STD,Vision Standard,vision,employee,311.97,80.67,USD,2024-11-12,2024-11-12,,terminated
+BEN0728,EMP0984,LIFE-1X,Life 1x Salary,life,family,240.84,270.69,USD,2025-10-31,2025-10-31,,active
+BEN0729,EMP0104,MED-HMO,Medical HMO,health,employee,197.04,299.84,USD,2024-01-23,2024-01-23,,active
+BEN0730,EMP0250,WEL-GYM,Wellness Gym,wellness,family,293.80,119.55,USD,2026-01-01,2026-01-01,2026-02-02,active
+BEN0731,EMP0342,LIFE-1X,Life 1x Salary,life,employee_spouse,320.13,174.22,USD,2024-12-25,2024-12-25,2025-09-01,active
+BEN0732,EMP0487,VIS-STD,Vision Standard,vision,employee_children,155.29,34.40,USD,2015-12-06,2015-12-06,,waived
+BEN0733,EMP0519,DEN-BASIC,Dental Basic,dental,employee_spouse,626.85,26.75,USD,2022-05-28,2022-05-28,,active
+BEN0734,EMP0600,VIS-STD,Vision Standard,vision,employee_spouse,386.31,133.45,GBP,2025-12-08,2025-12-08,,active
+BEN0735,EMP0476,MED-HMO,Medical HMO,health,employee_spouse,284.70,86.63,USD,2026-03-07,2026-03-07,,waived
+BEN0736,EMP0196,401K-STD,401(k) Standard,retirement,employee_spouse,465.36,146.20,GBP,2021-02-18,2021-02-18,,active
+BEN0737,EMP0930,LIFE-2X,Life 2x Salary,life,family,350.43,86.93,INR,2018-05-07,2018-05-07,2025-11-09,terminated
+BEN0738,EMP0634,401K-STD,401(k) Standard,retirement,family,374.94,309.66,USD,2025-08-18,2025-08-18,,active
+BEN0739,EMP0665,MED-PPO,Medical PPO,health,family,163.86,113.80,INR,2026-01-10,2026-01-10,,active
+BEN0740,EMP0044,WEL-GYM,Wellness Gym,wellness,employee_children,257.59,254.87,USD,2015-08-07,2015-08-07,,active
+BEN0741,EMP0555,LIFE-1X,Life 1x Salary,life,family,212.51,8.96,INR,2018-01-14,2018-01-14,,terminated
+BEN0742,EMP0249,401K-PLUS,401(k) Plus Match,retirement,employee_children,189.67,264.04,USD,2026-03-30,2026-03-30,,waived
+BEN0743,EMP0260,401K-STD,401(k) Standard,retirement,family,263.19,5.72,USD,2021-07-27,2021-07-27,,waived
+BEN0744,EMP0421,MED-PPO,Medical PPO,health,employee_children,59.20,265.54,USD,2021-12-27,2021-12-27,,waived
+BEN0745,EMP0594,MED-PPO,Medical PPO,health,employee,556.33,15.26,USD,2016-05-31,2016-05-31,,active
+BEN0746,EMP0574,VIS-STD,Vision Standard,vision,employee_spouse,393.91,318.13,GBP,2024-11-20,2024-11-20,2025-07-26,active
+BEN0747,EMP0167,MED-HMO,Medical HMO,health,employee_children,459.51,15.35,INR,2025-08-24,2025-08-24,,terminated
+BEN0748,EMP0618,MED-HMO,Medical HMO,health,employee_spouse,535.89,48.82,INR,2026-05-17,2026-05-17,,active
+BEN0749,EMP0082,DEN-BASIC,Dental Basic,dental,employee_spouse,374.77,39.63,USD,2021-10-14,2021-10-14,,waived
+BEN0750,EMP0843,LIFE-2X,Life 2x Salary,life,family,313.90,189.32,USD,2017-03-08,2017-03-08,,terminated
+BEN0751,EMP0413,VIS-STD,Vision Standard,vision,employee,330.55,269.51,USD,2021-03-05,2021-03-05,,active
+BEN0752,EMP0052,MED-PPO,Medical PPO,health,employee_spouse,251.91,165.24,INR,2024-02-27,2024-02-27,,waived
+BEN0753,EMP0613,VIS-STD,Vision Standard,vision,family,407.39,253.03,USD,2025-01-30,2025-01-30,,active
+BEN0754,EMP0750,MED-HMO,Medical HMO,health,employee,575.71,346.89,USD,2021-10-22,2021-10-22,2025-06-20,terminated
+BEN0755,EMP0283,MED-PPO,Medical PPO,health,employee_children,141.98,240.61,USD,2026-01-30,2026-01-30,,terminated
+BEN0756,EMP0702,MED-PPO,Medical PPO,health,employee_children,412.43,205.75,GBP,2026-07-25,2026-07-25,,terminated
+BEN0757,EMP0130,401K-PLUS,401(k) Plus Match,retirement,employee_spouse,426.00,87.08,USD,2026-04-29,2026-04-29,,active
+BEN0758,EMP0518,VIS-STD,Vision Standard,vision,employee_children,313.81,237.63,INR,2025-06-09,2025-06-09,2026-03-25,active
+BEN0759,EMP0700,LIFE-1X,Life 1x Salary,life,employee_children,437.04,131.02,USD,2026-05-31,2026-05-31,,active
+BEN0760,EMP0619,WEL-GYM,Wellness Gym,wellness,employee_children,605.20,210.11,USD,2024-04-15,2024-04-15,,active
+BEN0761,EMP0350,401K-STD,401(k) Standard,retirement,employee,331.14,209.37,USD,2020-01-17,2020-01-17,2024-07-01,active
+BEN0762,EMP0878,LIFE-2X,Life 2x Salary,life,employee,460.11,5.33,USD,2024-01-29,2024-01-29,2026-05-28,active
+BEN0763,EMP0550,MED-HMO,Medical HMO,health,family,84.37,263.55,USD,2022-11-17,2022-11-17,,active
+BEN0764,EMP0087,MED-PPO,Medical PPO,health,employee,630.75,260.70,USD,2022-06-20,2022-06-20,,active
+BEN0765,EMP0621,LIFE-1X,Life 1x Salary,life,family,587.85,273.75,USD,2023-09-17,2023-09-17,,terminated
+BEN0766,EMP0428,DEN-BASIC,Dental Basic,dental,employee_children,104.39,207.93,USD,2020-10-17,2020-10-17,,terminated
+BEN0767,EMP0556,401K-STD,401(k) Standard,retirement,employee_children,343.08,95.56,USD,2020-05-05,2020-05-05,,active
+BEN0768,EMP0957,401K-PLUS,401(k) Plus Match,retirement,employee_children,645.16,72.77,GBP,2026-02-02,2026-02-02,,waived
+BEN0769,EMP0056,401K-PLUS,401(k) Plus Match,retirement,family,98.58,331.08,USD,2023-02-18,2023-02-18,2024-12-11,active
+BEN0770,EMP0262,LIFE-2X,Life 2x Salary,life,employee,409.50,76.95,USD,2025-03-03,2025-03-03,,terminated
+BEN0771,EMP0668,VIS-STD,Vision Standard,vision,employee_spouse,368.71,176.31,USD,2016-07-10,2016-07-10,,active
+BEN0772,EMP0013,401K-PLUS,401(k) Plus Match,retirement,family,225.06,284.08,USD,2025-10-04,2025-10-04,,active
+BEN0773,EMP0525,MED-PPO,Medical PPO,health,employee_children,247.23,165.79,USD,2015-06-07,2015-06-07,,active
+BEN0774,EMP0830,401K-PLUS,401(k) Plus Match,retirement,employee_spouse,434.48,57.10,USD,2025-10-09,2025-10-09,,terminated
+BEN0775,EMP0300,DEN-PLUS,Dental Plus,dental,employee,589.56,248.59,USD,2016-11-09,2016-11-09,,waived
+BEN0776,EMP0388,LIFE-2X,Life 2x Salary,life,employee_children,565.89,299.84,USD,2024-02-12,2024-02-12,,active
+BEN0777,EMP0912,DEN-PLUS,Dental Plus,dental,employee_children,151.12,83.11,USD,2026-06-12,2026-06-12,,active
+BEN0778,EMP0692,LIFE-1X,Life 1x Salary,life,employee_spouse,510.13,288.59,USD,2026-03-11,2026-03-11,,active
+BEN0779,EMP0583,WEL-GYM,Wellness Gym,wellness,employee_children,407.55,118.24,USD,2019-03-03,2019-03-03,2023-03-29,active
+BEN0780,EMP0228,401K-PLUS,401(k) Plus Match,retirement,employee_spouse,365.16,263.05,USD,2021-04-20,2021-04-20,,waived
+BEN0781,EMP0661,MED-HMO,Medical HMO,health,family,482.28,323.16,USD,2025-07-14,2025-07-14,2025-10-22,terminated
+BEN0782,EMP0211,LIFE-1X,Life 1x Salary,life,employee_children,534.95,41.50,USD,2026-02-14,2026-02-14,,terminated
+BEN0783,EMP0351,LIFE-2X,Life 2x Salary,life,employee_children,594.56,330.27,USD,2026-07-30,2026-07-30,,active
+BEN0784,EMP0713,VIS-STD,Vision Standard,vision,employee_spouse,333.63,273.82,INR,2023-05-21,2023-05-21,,terminated
+BEN0785,EMP0302,401K-STD,401(k) Standard,retirement,employee,646.85,185.19,USD,2025-07-24,2025-07-24,,active
+BEN0786,EMP0109,WEL-GYM,Wellness Gym,wellness,employee_spouse,586.39,347.54,USD,2025-10-11,2025-10-11,,waived
+BEN0787,EMP0776,DEN-BASIC,Dental Basic,dental,family,342.09,151.12,GBP,2024-12-05,2024-12-05,,waived
+BEN0788,EMP0822,VIS-STD,Vision Standard,vision,employee,159.40,295.91,GBP,2025-06-22,2025-06-22,,active
+BEN0789,EMP0446,DEN-PLUS,Dental Plus,dental,employee_children,620.67,171.79,USD,2026-05-28,2026-05-28,,active
+BEN0790,EMP0218,MED-HMO,Medical HMO,health,family,468.06,55.82,USD,2025-02-16,2025-02-16,,active
+BEN0791,EMP0830,LIFE-1X,Life 1x Salary,life,family,515.71,103.87,USD,2026-05-16,2026-05-16,,active
+BEN0792,EMP0106,DEN-PLUS,Dental Plus,dental,employee_children,583.94,88.54,INR,2026-04-15,2026-04-15,,waived
+BEN0793,EMP0614,VIS-STD,Vision Standard,vision,employee_spouse,437.10,257.54,GBP,2025-05-07,2025-05-07,,active
+BEN0794,EMP0466,WEL-GYM,Wellness Gym,wellness,employee_spouse,165.72,45.04,USD,2024-12-10,2024-12-10,,waived
+BEN0795,EMP0071,DEN-BASIC,Dental Basic,dental,employee,619.56,323.71,USD,2025-10-31,2025-10-31,,terminated
+BEN0796,EMP0066,DEN-BASIC,Dental Basic,dental,employee,123.38,10.98,USD,2021-07-18,2021-07-18,,terminated
+BEN0797,EMP0444,MED-HMO,Medical HMO,health,employee,218.84,277.78,USD,2025-12-30,2025-12-30,,terminated
+BEN0798,EMP0018,DEN-BASIC,Dental Basic,dental,employee_children,443.76,118.17,INR,2020-01-04,2020-01-04,2022-07-16,active
+BEN0799,EMP0107,WEL-GYM,Wellness Gym,wellness,employee_children,422.91,33.30,USD,2025-08-27,2025-08-27,,waived
+BEN0800,EMP0940,401K-STD,401(k) Standard,retirement,employee_children,517.02,226.83,USD,2022-03-10,2022-03-10,,waived
+BEN0801,EMP0519,WEL-GYM,Wellness Gym,wellness,family,620.11,106.46,USD,2022-09-17,2022-09-17,,active
+BEN0802,EMP0230,MED-HMO,Medical HMO,health,employee_children,317.79,233.49,USD,2018-07-15,2018-07-15,,waived
+BEN0803,EMP0871,VIS-STD,Vision Standard,vision,employee_spouse,151.93,226.82,USD,2020-12-01,2020-12-01,,active
+BEN0804,EMP0246,MED-PPO,Medical PPO,health,family,215.91,321.09,USD,2018-03-26,2018-03-26,,active
+BEN0805,EMP0105,VIS-STD,Vision Standard,vision,employee_children,192.35,116.85,USD,2025-04-14,2025-04-14,,waived
+BEN0806,EMP0146,MED-HMO,Medical HMO,health,employee_children,387.34,102.44,USD,2023-08-27,2023-08-27,,active
+BEN0807,EMP0645,VIS-STD,Vision Standard,vision,employee_spouse,256.78,53.62,USD,2023-09-10,2023-09-10,,waived
+BEN0808,EMP0252,LIFE-1X,Life 1x Salary,life,employee_spouse,120.88,145.76,USD,2026-03-22,2026-03-22,2026-03-22,terminated
+BEN0809,EMP0845,WEL-GYM,Wellness Gym,wellness,family,50.95,20.52,USD,2026-07-19,2026-07-19,,waived
+BEN0810,EMP0627,DEN-BASIC,Dental Basic,dental,employee_spouse,129.79,215.59,USD,2022-10-26,2022-10-26,,terminated
+BEN0811,EMP0268,401K-STD,401(k) Standard,retirement,family,551.49,56.84,USD,2025-07-03,2025-07-03,,terminated
+BEN0812,EMP0203,DEN-BASIC,Dental Basic,dental,family,231.45,190.84,USD,2026-04-25,2026-04-25,2026-07-15,terminated
+BEN0813,EMP0664,MED-HMO,Medical HMO,health,family,179.49,225.29,USD,2025-08-25,2025-08-25,2026-03-17,active
+BEN0814,EMP0157,VIS-STD,Vision Standard,vision,employee,425.12,171.51,USD,2024-11-03,2024-11-03,,active
+BEN0815,EMP0246,401K-STD,401(k) Standard,retirement,employee_children,237.75,255.04,USD,2019-06-09,2019-06-09,,active
+BEN0816,EMP0126,401K-STD,401(k) Standard,retirement,employee_children,489.31,62.44,USD,2021-03-10,2021-03-10,,waived
+BEN0817,EMP0848,MED-HMO,Medical HMO,health,employee_children,138.65,281.65,USD,2024-04-05,2024-04-05,,active
+BEN0818,EMP0528,VIS-STD,Vision Standard,vision,employee_spouse,255.01,314.78,USD,2025-04-14,2025-04-14,,active
+BEN0819,EMP0134,MED-HMO,Medical HMO,health,employee_children,121.37,101.51,USD,2022-04-04,2022-04-04,,active
+BEN0820,EMP0875,VIS-STD,Vision Standard,vision,family,176.73,220.85,USD,2022-09-09,2022-09-09,,terminated
+BEN0821,EMP0129,401K-PLUS,401(k) Plus Match,retirement,family,369.76,341.07,INR,2021-04-05,2021-04-05,,terminated
+BEN0822,EMP0647,401K-PLUS,401(k) Plus Match,retirement,employee,55.54,132.01,USD,2025-01-25,2025-01-25,2025-05-04,active
+BEN0823,EMP0289,LIFE-2X,Life 2x Salary,life,employee_children,57.59,191.42,USD,2024-12-27,2024-12-27,,active
+BEN0824,EMP0936,401K-STD,401(k) Standard,retirement,employee,480.47,186.94,USD,2025-10-29,2025-10-29,,active
+BEN0825,EMP0904,MED-HMO,Medical HMO,health,employee_spouse,108.28,35.69,USD,2025-06-08,2025-06-08,,terminated
+BEN0826,EMP0583,401K-STD,401(k) Standard,retirement,family,468.52,162.41,USD,2018-09-10,2018-09-10,,active
+BEN0827,EMP0865,MED-HMO,Medical HMO,health,employee,287.81,21.10,USD,2026-03-08,2026-03-08,,waived
+BEN0828,EMP0708,MED-PPO,Medical PPO,health,employee_spouse,216.28,143.38,USD,2025-11-03,2025-11-03,,active
+BEN0829,EMP0293,DEN-BASIC,Dental Basic,dental,employee,281.74,92.71,USD,2026-03-23,2026-03-23,,active
+BEN0830,EMP0911,DEN-BASIC,Dental Basic,dental,employee_children,177.06,327.29,GBP,2024-12-28,2024-12-28,,waived
+BEN0831,EMP0167,DEN-PLUS,Dental Plus,dental,employee_children,407.59,277.73,INR,2021-12-15,2021-12-15,,active
+BEN0832,EMP0506,MED-PPO,Medical PPO,health,family,446.17,62.68,GBP,2022-01-10,2022-01-10,,terminated
+BEN0833,EMP0780,WEL-GYM,Wellness Gym,wellness,employee_spouse,207.75,227.21,USD,2026-06-23,2026-06-23,,waived
+BEN0834,EMP0276,WEL-GYM,Wellness Gym,wellness,employee,420.77,104.67,INR,2022-02-28,2022-02-28,,terminated
+BEN0835,EMP0654,DEN-BASIC,Dental Basic,dental,employee_spouse,235.34,51.94,USD,2026-06-13,2026-06-13,,active
+BEN0836,EMP0866,401K-PLUS,401(k) Plus Match,retirement,employee_spouse,392.73,39.66,INR,2024-04-09,2024-04-09,2025-12-31,active
+BEN0837,EMP0011,401K-PLUS,401(k) Plus Match,retirement,family,527.40,132.65,USD,2022-09-17,2022-09-17,,terminated
+BEN0838,EMP0099,401K-PLUS,401(k) Plus Match,retirement,family,368.03,227.52,USD,2020-01-07,2020-01-07,,terminated
+BEN0839,EMP0459,LIFE-1X,Life 1x Salary,life,employee_spouse,453.55,44.34,USD,2023-01-09,2023-01-09,,terminated
+BEN0840,EMP0474,MED-HMO,Medical HMO,health,employee,641.12,21.00,USD,2025-04-18,2025-04-18,,active
+BEN0841,EMP0355,401K-STD,401(k) Standard,retirement,employee_spouse,439.41,189.81,USD,2025-03-24,2025-03-24,,terminated
+BEN0842,EMP0201,LIFE-1X,Life 1x Salary,life,family,142.86,231.88,INR,2023-01-11,2023-01-11,2024-08-11,active
+BEN0843,EMP0359,VIS-STD,Vision Standard,vision,family,74.96,257.96,GBP,2026-07-12,2026-07-12,2026-07-15,terminated
+BEN0844,EMP0835,DEN-BASIC,Dental Basic,dental,employee,132.02,255.85,USD,2022-06-28,2022-06-28,,waived
+BEN0845,EMP0823,MED-PPO,Medical PPO,health,employee,52.62,286.50,USD,2021-12-09,2021-12-09,,active
+BEN0846,EMP0834,VIS-STD,Vision Standard,vision,employee_children,580.03,171.91,USD,2025-08-24,2025-08-24,,waived
+BEN0847,EMP0819,LIFE-2X,Life 2x Salary,life,employee_children,376.80,281.39,USD,2026-03-09,2026-03-09,,terminated
+BEN0848,EMP0087,LIFE-1X,Life 1x Salary,life,employee,393.33,291.20,USD,2023-02-04,2023-02-04,,terminated
+BEN0849,EMP0778,DEN-BASIC,Dental Basic,dental,family,279.18,342.78,INR,2023-09-18,2023-09-18,,active
+BEN0850,EMP0396,MED-HMO,Medical HMO,health,family,538.84,95.35,USD,2019-10-24,2019-10-24,,terminated
+BEN0851,EMP0511,WEL-GYM,Wellness Gym,wellness,employee_children,338.71,313.03,INR,2026-06-14,2026-06-14,,active
+BEN0852,EMP0244,DEN-BASIC,Dental Basic,dental,family,136.33,290.80,INR,2024-11-26,2024-11-26,,waived
+BEN0853,EMP0772,LIFE-1X,Life 1x Salary,life,employee,584.14,123.24,USD,2024-12-04,2024-12-04,,waived
+BEN0854,EMP0227,LIFE-1X,Life 1x Salary,life,family,559.74,154.04,USD,2025-08-22,2025-08-22,,waived
+BEN0855,EMP0727,DEN-BASIC,Dental Basic,dental,employee,559.23,127.34,INR,2026-03-14,2026-03-14,,active
+BEN0856,EMP0876,401K-STD,401(k) Standard,retirement,employee,538.75,317.50,USD,2016-09-11,2016-09-11,,active
+BEN0857,EMP0510,DEN-PLUS,Dental Plus,dental,employee_spouse,406.43,119.16,USD,2025-08-30,2025-08-30,,waived
+BEN0858,EMP0322,WEL-GYM,Wellness Gym,wellness,family,612.69,342.32,USD,2023-02-12,2023-02-12,,active
+BEN0859,EMP0282,MED-PPO,Medical PPO,health,employee_children,524.93,63.04,USD,2024-12-28,2024-12-28,,waived
+BEN0860,EMP0500,MED-PPO,Medical PPO,health,employee_spouse,243.51,195.52,USD,2026-04-15,2026-04-15,2026-06-02,active
+BEN0861,EMP0988,MED-PPO,Medical PPO,health,employee_children,120.47,29.05,USD,2021-05-16,2021-05-16,,waived
+BEN0862,EMP0218,MED-PPO,Medical PPO,health,employee_children,128.05,170.44,USD,2023-02-05,2023-02-05,2024-03-01,active
+BEN0863,EMP0058,MED-PPO,Medical PPO,health,employee_children,149.71,282.36,USD,2026-05-24,2026-05-24,,waived
+BEN0864,EMP0118,VIS-STD,Vision Standard,vision,employee,288.83,124.71,USD,2022-03-30,2022-03-30,,terminated
+BEN0865,EMP0368,DEN-PLUS,Dental Plus,dental,employee_spouse,66.45,6.86,USD,2023-03-10,2023-03-10,,active
+BEN0866,EMP0394,WEL-GYM,Wellness Gym,wellness,employee,347.27,188.39,USD,2025-12-11,2025-12-11,,active
+BEN0867,EMP0003,WEL-GYM,Wellness Gym,wellness,employee,209.91,315.65,USD,2024-12-28,2024-12-28,,waived
+BEN0868,EMP0221,MED-PPO,Medical PPO,health,employee,191.86,142.76,USD,2021-03-05,2021-03-05,,active
+BEN0869,EMP0643,LIFE-1X,Life 1x Salary,life,family,528.56,188.33,USD,2025-01-01,2025-01-01,,active
+BEN0870,EMP0390,LIFE-1X,Life 1x Salary,life,employee,206.56,326.00,USD,2022-09-22,2022-09-22,,terminated
+BEN0871,EMP0542,LIFE-2X,Life 2x Salary,life,family,361.50,238.54,USD,2025-12-27,2025-12-27,,terminated
+BEN0872,EMP0504,LIFE-2X,Life 2x Salary,life,family,547.28,206.70,USD,2025-07-18,2025-07-18,,waived
+BEN0873,EMP0592,WEL-GYM,Wellness Gym,wellness,family,420.60,19.60,USD,2026-07-10,2026-07-10,2026-07-21,terminated
+BEN0874,EMP0636,401K-STD,401(k) Standard,retirement,employee,313.86,314.26,USD,2020-03-12,2020-03-12,,active
+BEN0875,EMP0091,LIFE-2X,Life 2x Salary,life,employee_children,638.51,233.14,INR,2022-06-02,2022-06-02,,waived
+BEN0876,EMP0096,WEL-GYM,Wellness Gym,wellness,employee_children,402.15,326.04,USD,2023-08-08,2023-08-08,,terminated
+BEN0877,EMP0405,VIS-STD,Vision Standard,vision,employee,134.16,65.68,USD,2026-04-10,2026-04-10,,terminated
+BEN0878,EMP0466,MED-PPO,Medical PPO,health,employee_spouse,92.20,236.37,USD,2018-02-28,2018-02-28,,active
+BEN0879,EMP0911,LIFE-1X,Life 1x Salary,life,family,543.48,261.71,GBP,2025-03-11,2025-03-11,,active
+BEN0880,EMP0344,DEN-PLUS,Dental Plus,dental,employee_children,177.40,59.04,USD,2023-09-18,2023-09-18,,terminated
+BEN0881,EMP0889,VIS-STD,Vision Standard,vision,family,596.17,249.20,USD,2023-05-20,2023-05-20,2024-02-25,waived
+BEN0882,EMP0239,DEN-BASIC,Dental Basic,dental,employee,157.97,154.87,INR,2017-07-16,2017-07-16,,terminated
+BEN0883,EMP0571,LIFE-2X,Life 2x Salary,life,employee,188.73,135.28,USD,2025-06-21,2025-06-21,,active
+BEN0884,EMP0646,MED-HMO,Medical HMO,health,employee_spouse,280.38,322.41,USD,2025-04-25,2025-04-25,,active
+BEN0885,EMP0087,401K-PLUS,401(k) Plus Match,retirement,family,189.87,175.47,USD,2025-04-26,2025-04-26,,active
+BEN0886,EMP0620,LIFE-1X,Life 1x Salary,life,employee_spouse,520.01,146.76,USD,2026-06-18,2026-06-18,,waived
+BEN0887,EMP0865,LIFE-1X,Life 1x Salary,life,employee_children,185.90,159.24,USD,2025-08-18,2025-08-18,,waived
+BEN0888,EMP0641,WEL-GYM,Wellness Gym,wellness,family,175.38,23.40,USD,2026-07-29,2026-07-29,,active
+BEN0889,EMP0081,WEL-GYM,Wellness Gym,wellness,employee,170.38,181.35,USD,2025-10-13,2025-10-13,,active
+BEN0890,EMP0602,DEN-PLUS,Dental Plus,dental,employee,363.10,293.92,USD,2026-03-13,2026-03-13,,terminated
+BEN0891,EMP0180,LIFE-1X,Life 1x Salary,life,employee_children,583.58,217.61,USD,2022-06-26,2022-06-26,,active
+BEN0892,EMP0452,VIS-STD,Vision Standard,vision,family,610.23,97.59,INR,2023-06-01,2023-06-01,,waived
+BEN0893,EMP0549,DEN-BASIC,Dental Basic,dental,employee_children,580.22,349.05,USD,2024-10-25,2024-10-25,,active
+BEN0894,EMP0250,MED-HMO,Medical HMO,health,employee_children,425.49,331.30,USD,2026-06-14,2026-06-14,,active
+BEN0895,EMP0782,MED-HMO,Medical HMO,health,employee_spouse,533.10,274.86,USD,2026-03-01,2026-03-01,,terminated
+BEN0896,EMP0748,VIS-STD,Vision Standard,vision,family,526.83,40.11,GBP,2026-06-11,2026-06-11,,waived
+BEN0897,EMP0723,VIS-STD,Vision Standard,vision,employee_spouse,264.91,288.25,USD,2026-05-06,2026-05-06,,active
+BEN0898,EMP0134,VIS-STD,Vision Standard,vision,employee,112.02,343.25,USD,2026-04-14,2026-04-14,,terminated
+BEN0899,EMP0626,LIFE-1X,Life 1x Salary,life,employee_children,274.98,81.15,INR,2026-03-24,2026-03-24,,terminated
+BEN0900,EMP0596,401K-STD,401(k) Standard,retirement,employee_spouse,309.44,246.01,USD,2023-01-25,2023-01-25,,terminated
+BEN0901,EMP0682,MED-HMO,Medical HMO,health,employee,202.20,200.13,USD,2024-11-27,2024-11-27,2025-07-07,active
+BEN0902,EMP0518,401K-PLUS,401(k) Plus Match,retirement,employee_children,587.43,305.74,INR,2022-10-09,2022-10-09,,active
+BEN0903,EMP0949,DEN-BASIC,Dental Basic,dental,employee,489.20,12.46,USD,2024-03-24,2024-03-24,,active
+BEN0904,EMP0038,MED-PPO,Medical PPO,health,employee,209.42,187.61,USD,2025-09-22,2025-09-22,,active
+BEN0905,EMP0004,DEN-BASIC,Dental Basic,dental,employee,72.56,183.39,INR,2024-10-06,2024-10-06,,active
+BEN0906,EMP0605,VIS-STD,Vision Standard,vision,family,522.47,46.14,USD,2025-07-03,2025-07-03,,terminated
+BEN0907,EMP0412,401K-PLUS,401(k) Plus Match,retirement,employee_spouse,468.57,124.61,USD,2022-12-18,2022-12-18,,waived
+BEN0908,EMP0302,WEL-GYM,Wellness Gym,wellness,family,479.89,17.56,USD,2025-09-05,2025-09-05,,waived
+BEN0909,EMP0933,DEN-PLUS,Dental Plus,dental,employee_children,372.58,154.45,GBP,2026-04-19,2026-04-19,,active
+BEN0910,EMP0925,LIFE-2X,Life 2x Salary,life,employee,431.97,136.05,USD,2021-08-16,2021-08-16,,waived
+BEN0911,EMP0054,LIFE-2X,Life 2x Salary,life,family,68.90,345.69,INR,2023-06-23,2023-06-23,,active
+BEN0912,EMP0861,VIS-STD,Vision Standard,vision,employee_spouse,120.40,132.42,INR,2026-05-01,2026-05-01,,waived
+BEN0913,EMP0069,MED-PPO,Medical PPO,health,employee_spouse,593.83,271.01,USD,2019-01-02,2019-01-02,,active
+BEN0914,EMP0007,MED-HMO,Medical HMO,health,employee_spouse,200.78,271.31,INR,2026-05-09,2026-05-09,,terminated
+BEN0915,EMP0802,MED-HMO,Medical HMO,health,family,345.52,52.24,GBP,2023-05-15,2023-05-15,,active
+BEN0916,EMP0339,401K-PLUS,401(k) Plus Match,retirement,employee_spouse,570.08,65.85,USD,2021-04-07,2021-04-07,,active
+BEN0917,EMP0505,LIFE-1X,Life 1x Salary,life,family,454.45,152.15,USD,2020-07-01,2020-07-01,,terminated
+BEN0918,EMP0351,LIFE-2X,Life 2x Salary,life,employee_spouse,355.19,327.14,USD,2026-06-12,2026-06-12,,waived
+BEN0919,EMP0870,MED-PPO,Medical PPO,health,family,65.61,10.14,GBP,2021-10-04,2021-10-04,,active
+BEN0920,EMP0806,WEL-GYM,Wellness Gym,wellness,employee_children,444.85,186.96,USD,2025-12-23,2025-12-23,,active
+BEN0921,EMP0193,LIFE-1X,Life 1x Salary,life,family,447.30,162.42,INR,2024-11-07,2024-11-07,,terminated
+BEN0922,EMP0058,401K-PLUS,401(k) Plus Match,retirement,employee_children,497.16,167.71,USD,2026-07-31,2026-07-31,,terminated
+BEN0923,EMP0338,401K-STD,401(k) Standard,retirement,employee_children,340.82,76.16,USD,2026-07-12,2026-07-12,,terminated
+BEN0924,EMP0506,WEL-GYM,Wellness Gym,wellness,family,552.94,68.01,GBP,2024-02-01,2024-02-01,,active
+BEN0925,EMP0233,LIFE-2X,Life 2x Salary,life,employee,328.61,208.87,USD,2023-09-02,2023-09-02,2026-02-10,waived
+BEN0926,EMP0807,DEN-PLUS,Dental Plus,dental,employee,251.22,153.03,USD,2016-07-03,2016-07-03,,active
+BEN0927,EMP0681,MED-PPO,Medical PPO,health,family,59.68,215.45,USD,2018-03-27,2018-03-27,,active
+BEN0928,EMP0473,VIS-STD,Vision Standard,vision,employee,546.91,105.73,USD,2019-06-07,2019-06-07,,active
+BEN0929,EMP0907,DEN-PLUS,Dental Plus,dental,employee_spouse,520.35,242.45,INR,2024-08-30,2024-08-30,,terminated
+BEN0930,EMP0375,VIS-STD,Vision Standard,vision,employee_children,368.30,349.43,USD,2024-10-26,2024-10-26,,terminated
+BEN0931,EMP0595,MED-PPO,Medical PPO,health,employee_children,124.51,323.05,USD,2019-11-01,2019-11-01,,active
+BEN0932,EMP0279,MED-HMO,Medical HMO,health,family,208.00,301.19,INR,2023-05-15,2023-05-15,,active
+BEN0933,EMP0599,LIFE-2X,Life 2x Salary,life,employee_spouse,531.35,254.24,INR,2024-09-23,2024-09-23,,active
+BEN0934,EMP0208,MED-PPO,Medical PPO,health,family,234.27,68.39,INR,2026-01-06,2026-01-06,,active
+BEN0935,EMP0764,401K-STD,401(k) Standard,retirement,employee_spouse,114.26,72.04,USD,2026-07-29,2026-07-29,,active
+BEN0936,EMP0456,WEL-GYM,Wellness Gym,wellness,family,207.08,281.22,USD,2024-11-05,2024-11-05,,terminated
+BEN0937,EMP0578,DEN-PLUS,Dental Plus,dental,employee_children,623.10,252.84,USD,2025-10-07,2025-10-07,2026-06-01,terminated
+BEN0938,EMP0673,LIFE-2X,Life 2x Salary,life,employee_spouse,193.16,149.97,INR,2023-07-06,2023-07-06,,terminated
+BEN0939,EMP0470,401K-PLUS,401(k) Plus Match,retirement,family,433.39,39.44,USD,2024-10-16,2024-10-16,,terminated
+BEN0940,EMP0415,MED-HMO,Medical HMO,health,employee,320.68,190.86,USD,2024-04-28,2024-04-28,,active
+BEN0941,EMP0016,MED-PPO,Medical PPO,health,family,586.15,274.10,INR,2021-09-19,2021-09-19,,waived
+BEN0942,EMP0231,DEN-BASIC,Dental Basic,dental,employee_children,357.36,194.25,INR,2025-09-03,2025-09-03,,terminated
+BEN0943,EMP0949,VIS-STD,Vision Standard,vision,employee_spouse,162.56,55.01,USD,2025-03-20,2025-03-20,,waived
+BEN0944,EMP0803,MED-HMO,Medical HMO,health,employee_spouse,238.91,102.18,GBP,2020-04-24,2020-04-24,,waived
+BEN0945,EMP0789,WEL-GYM,Wellness Gym,wellness,employee_spouse,521.69,21.21,INR,2024-02-14,2024-02-14,,active
+BEN0946,EMP0108,VIS-STD,Vision Standard,vision,employee_children,468.16,100.76,USD,2015-07-17,2015-07-17,,active
+BEN0947,EMP0126,MED-HMO,Medical HMO,health,employee_spouse,249.52,201.65,USD,2024-08-21,2024-08-21,,waived
+BEN0948,EMP0653,LIFE-2X,Life 2x Salary,life,employee_spouse,57.41,136.44,GBP,2024-03-30,2024-03-30,,terminated
+BEN0949,EMP0079,LIFE-2X,Life 2x Salary,life,family,105.88,17.77,USD,2026-07-20,2026-07-20,2026-07-20,terminated
+BEN0950,EMP0822,MED-HMO,Medical HMO,health,employee_spouse,93.48,344.94,GBP,2025-12-09,2025-12-09,,terminated
+BEN0951,EMP0983,LIFE-2X,Life 2x Salary,life,family,537.68,70.20,USD,2026-06-15,2026-06-15,,active
+BEN0952,EMP0307,401K-STD,401(k) Standard,retirement,employee_children,540.02,91.51,USD,2025-05-27,2025-05-27,,active
+BEN0953,EMP0144,DEN-PLUS,Dental Plus,dental,employee_children,485.51,28.99,USD,2015-03-02,2015-03-02,2024-03-10,active
+BEN0954,EMP0881,MED-HMO,Medical HMO,health,employee_spouse,266.92,128.87,INR,2026-06-19,2026-06-19,,waived
+BEN0955,EMP0750,DEN-PLUS,Dental Plus,dental,employee,197.16,231.45,USD,2024-06-17,2024-06-17,,terminated
+BEN0956,EMP0648,MED-PPO,Medical PPO,health,employee_spouse,332.24,51.57,USD,2025-09-29,2025-09-29,,active
+BEN0957,EMP0425,MED-PPO,Medical PPO,health,employee_spouse,639.51,155.39,USD,2024-12-21,2024-12-21,,active
+BEN0958,EMP0604,LIFE-1X,Life 1x Salary,life,family,459.69,182.70,USD,2026-05-18,2026-05-18,,active
+BEN0959,EMP0763,VIS-STD,Vision Standard,vision,employee_spouse,51.50,71.83,USD,2024-12-16,2024-12-16,,active
+BEN0960,EMP0446,VIS-STD,Vision Standard,vision,employee,98.45,72.20,USD,2024-04-15,2024-04-15,,active
+BEN0961,EMP0553,DEN-PLUS,Dental Plus,dental,employee_children,187.75,283.63,USD,2020-12-29,2020-12-29,,waived
+BEN0962,EMP0808,401K-STD,401(k) Standard,retirement,family,68.60,242.23,INR,2018-10-09,2018-10-09,,active
+BEN0963,EMP0819,VIS-STD,Vision Standard,vision,employee_spouse,154.81,15.60,USD,2021-10-08,2021-10-08,,terminated
+BEN0964,EMP0808,LIFE-2X,Life 2x Salary,life,family,453.17,170.35,INR,2018-07-23,2018-07-23,,active
+BEN0965,EMP0174,DEN-PLUS,Dental Plus,dental,employee_children,292.62,288.77,USD,2026-07-14,2026-07-14,,active
+BEN0966,EMP0823,VIS-STD,Vision Standard,vision,employee_children,446.42,11.42,USD,2022-03-20,2022-03-20,,active
+BEN0967,EMP0170,401K-STD,401(k) Standard,retirement,employee_children,557.49,141.09,INR,2021-01-25,2021-01-25,,terminated
+BEN0968,EMP0725,DEN-BASIC,Dental Basic,dental,family,517.27,27.13,USD,2025-09-07,2025-09-07,,waived
+BEN0969,EMP0976,401K-STD,401(k) Standard,retirement,employee_children,86.79,236.73,USD,2017-03-21,2017-03-21,,waived
+BEN0970,EMP0332,MED-PPO,Medical PPO,health,family,449.39,343.07,USD,2025-02-18,2025-02-18,,active
+BEN0971,EMP0338,MED-PPO,Medical PPO,health,employee_spouse,257.64,234.34,USD,2025-11-18,2025-11-18,2026-03-22,terminated
+BEN0972,EMP0563,401K-STD,401(k) Standard,retirement,family,385.90,236.53,USD,2022-12-13,2022-12-13,,terminated
+BEN0973,EMP0967,LIFE-1X,Life 1x Salary,life,family,66.18,262.13,USD,2026-03-19,2026-03-19,2026-07-06,waived
+BEN0974,EMP0003,LIFE-1X,Life 1x Salary,life,employee_spouse,582.47,124.49,USD,2025-06-05,2025-06-05,,terminated
+BEN0975,EMP0825,MED-HMO,Medical HMO,health,employee,129.57,59.63,USD,2026-02-24,2026-02-24,,waived
+BEN0976,EMP0689,DEN-BASIC,Dental Basic,dental,employee_spouse,186.29,268.30,INR,2024-06-11,2024-06-11,,active
+BEN0977,EMP0839,LIFE-2X,Life 2x Salary,life,family,392.73,24.59,INR,2020-12-03,2020-12-03,,active
+BEN0978,EMP0287,DEN-BASIC,Dental Basic,dental,family,369.79,343.52,INR,2025-07-06,2025-07-06,,waived
+BEN0979,EMP0724,LIFE-2X,Life 2x Salary,life,employee,170.18,14.47,USD,2026-07-06,2026-07-06,2026-07-17,waived
+BEN0980,EMP0346,WEL-GYM,Wellness Gym,wellness,employee_children,180.20,246.12,USD,2026-07-23,2026-07-23,,terminated
+BEN0981,EMP0951,DEN-BASIC,Dental Basic,dental,employee_spouse,468.69,271.13,USD,2019-07-24,2019-07-24,,terminated
+BEN0982,EMP0763,WEL-GYM,Wellness Gym,wellness,employee_children,474.33,128.93,USD,2025-01-07,2025-01-07,,terminated
+BEN0983,EMP0302,LIFE-1X,Life 1x Salary,life,employee_spouse,616.93,9.65,USD,2025-07-12,2025-07-12,,active
+BEN0984,EMP0003,MED-HMO,Medical HMO,health,employee_children,517.56,251.28,USD,2026-04-11,2026-04-11,,terminated
+BEN0985,EMP0674,VIS-STD,Vision Standard,vision,family,144.04,116.52,USD,2025-07-25,2025-07-25,2025-12-05,terminated
+BEN0986,EMP0724,VIS-STD,Vision Standard,vision,employee_spouse,144.23,25.77,USD,2025-12-28,2025-12-28,,terminated
+BEN0987,EMP0218,LIFE-1X,Life 1x Salary,life,employee_children,575.34,30.65,USD,2023-08-11,2023-08-11,,active
+BEN0988,EMP0524,401K-STD,401(k) Standard,retirement,family,351.36,62.53,USD,2024-04-12,2024-04-12,,terminated
+BEN0989,EMP0354,DEN-PLUS,Dental Plus,dental,employee_children,332.87,232.83,USD,2023-12-21,2023-12-21,,waived
+BEN0990,EMP0876,VIS-STD,Vision Standard,vision,employee,614.39,184.13,USD,2022-08-27,2022-08-27,,active
+BEN0991,EMP0062,401K-STD,401(k) Standard,retirement,employee_spouse,343.61,56.69,USD,2019-03-08,2019-03-08,,waived
+BEN0992,EMP0547,MED-HMO,Medical HMO,health,employee_children,517.07,28.43,USD,2020-02-10,2020-02-10,,active
+BEN0993,EMP0580,LIFE-1X,Life 1x Salary,life,employee,265.30,26.14,USD,2020-10-27,2020-10-27,,terminated
+BEN0994,EMP0410,WEL-GYM,Wellness Gym,wellness,employee,632.94,80.39,USD,2026-02-02,2026-02-02,,terminated
+BEN0995,EMP0713,401K-STD,401(k) Standard,retirement,employee_children,356.30,166.80,INR,2017-10-06,2017-10-06,,active
+BEN0996,EMP0681,LIFE-1X,Life 1x Salary,life,employee_children,62.20,188.78,USD,2023-05-17,2023-05-17,,active
+BEN0997,EMP0417,DEN-BASIC,Dental Basic,dental,employee_children,132.62,180.81,USD,2017-08-21,2017-08-21,,active
+BEN0998,EMP0706,VIS-STD,Vision Standard,vision,family,260.92,209.43,INR,2026-03-17,2026-03-17,,active
+BEN0999,EMP0433,LIFE-1X,Life 1x Salary,life,employee_spouse,389.13,198.64,INR,2019-02-26,2019-02-26,,active
+BEN1000,EMP0661,MED-HMO,Medical HMO,health,employee_children,389.95,298.10,USD,2025-06-14,2025-06-14,,terminated

@@ -629,6 +629,21 @@
     margin:0; font-size:16px; font-weight:800; color:var(--ink-900); flex:1; min-width:140px;
   }
   .gov-lineage-toolbar .hint { font-size:12.5px; color:#8a93a3; }
+  .gov-lineage-filters {
+    display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:12px;
+    padding:12px 14px; border:1px solid var(--gray-200); border-radius:10px; background:#fafbfd;
+  }
+  .gov-lineage-filters .field { margin:0; }
+  .gov-lineage-filters label { font-size:12.5px; }
+  .gov-lineage-filters select {
+    width:100%; padding:8px 10px; border:1px solid var(--gray-200); border-radius:8px;
+    background:#fff; color:var(--ink-900); font-size:13px;
+  }
+  .gov-lineage-filters select:disabled { opacity:.55; background:#f3f5f8; }
+  .gov-lineage-empty {
+    display:flex; align-items:center; justify-content:center; min-height:320px;
+    padding:24px; text-align:center; color:#8a93a3; font-size:13.5px; line-height:1.5;
+  }
   .gov-lineage-canvas {
     position:relative; flex:1; min-height:480px;
     border:1px solid var(--gray-200); border-radius:var(--radius);
@@ -1143,7 +1158,22 @@
         <div class="gov-lineage-toolbar">
           <button type="button" class="btn btn-ghost" id="govLineageBackBtn">← Back</button>
           <h2>Data Lineage</h2>
-          <span class="hint">Click a node to highlight upstream and downstream paths</span>
+          <span class="hint">Choose a connector and layer / bucket / stage, then click a node to highlight paths</span>
+        </div>
+        <div class="gov-lineage-filters" aria-label="Lineage scope">
+          <div class="field">
+            <label for="govLineageConnector">Connector <span class="req">*</span></label>
+            <select id="govLineageConnector">
+              <option value="">Select connector…</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="govLineageScope" id="govLineageScopeLabel">Layer / bucket / stage <span class="req">*</span></label>
+            <select id="govLineageScope" disabled>
+              <option value="">Select connector first…</option>
+            </select>
+            <div class="help" id="govLineageScopeHelp">Scope adapts to the connector platform (layers, buckets, or stages).</div>
+          </div>
         </div>
         <div class="gov-lineage-legend" aria-hidden="true">
           <span><i style="background:#3375B3"></i> Source</span>
@@ -1153,7 +1183,10 @@
           <span><i style="background:#1FA971"></i> Consumption</span>
         </div>
         <div class="gov-lineage-canvas" id="govLineageCanvas">
-          <svg class="gov-lineage-svg" id="govLineageSvg" role="img" aria-label="Lineage map"></svg>
+          <div class="gov-lineage-empty" id="govLineageEmpty">
+            Select a connector and a layer / bucket / stage to load the lineage map.
+          </div>
+          <svg class="gov-lineage-svg hidden" id="govLineageSvg" role="img" aria-label="Lineage map"></svg>
         </div>
         <div class="gov-lineage-detail" id="govLineageDetail">
           <span class="muted">Select an asset on the map to inspect its lineage path.</span>
@@ -4638,7 +4671,7 @@ const LINEAGE_LAYERS = {
   consume: { label: "Consume", color: "#1FA971", x: 1000 },
 };
 
-const LINEAGE_GRAPH = {
+const LINEAGE_DEMO_GRAPH = {
   nodes: [
     { id: "src_crm", layer: "source", title: "CRM API", sub: "Salesforce / REST" },
     { id: "src_cdr", layer: "source", title: "CDR Landing", sub: "S3 / Parquet" },
@@ -4677,8 +4710,16 @@ const LINEAGE_GRAPH = {
   ],
 };
 
+let LINEAGE_GRAPH = { nodes: [], edges: [] };
+
 let govBound = false;
 let lineageSelectedId = null;
+const lineageState = {
+  connectors: [],
+  catalogItems: [],
+  connectorId: "",
+  scope: "",
+};
 
 function showGovernanceHome() {
   const home = $("#govHome");
@@ -4691,17 +4732,412 @@ function showGovernanceHome() {
   modelState.step = 1;
 }
 
-function showLineageMap() {
+async function showLineageMap() {
   const home = $("#govHome");
   const lineage = $("#govLineage");
   const modeling = $("#govModeling");
   if (home) home.classList.add("hidden");
   if (modeling) modeling.classList.add("hidden");
   if (lineage) lineage.classList.remove("hidden");
-  renderLineageMap(lineageSelectedId);
+  await loadLineageConnectors();
+  refreshLineageView();
   if (window.lucide && typeof lucide.createIcons === "function") {
     lucide.createIcons({ attrs: { "stroke-width": "1.75", "aria-hidden": "true" } });
   }
+}
+
+function lineagePlatformOf(connector) {
+  if (!connector) return "";
+  return String(connector.platform || connector.cloud || "").toLowerCase();
+}
+
+function lineageScopeMeta(platform) {
+  const p = String(platform || "").toLowerCase();
+  if (p === "aws" || p === "amazonwebservices") {
+    return {
+      label: "Bucket / stage",
+      help: "S3 buckets, Glue databases, or landing stages for this connection.",
+      empty: "Select connector first…",
+      placeholder: "Select bucket / stage…",
+    };
+  }
+  if (p === "gcp" || p === "googlecloud") {
+    return {
+      label: "Dataset / bucket",
+      help: "BigQuery datasets or Cloud Storage buckets in scope.",
+      empty: "Select connector first…",
+      placeholder: "Select dataset / bucket…",
+    };
+  }
+  if (p === "azure" || p === "microsoftazure") {
+    return {
+      label: "Container / layer",
+      help: "Blob / ADLS containers or medallion layers for this connection.",
+      empty: "Select connector first…",
+      placeholder: "Select container / layer…",
+    };
+  }
+  if (p === "snowflake") {
+    return {
+      label: "Database / stage",
+      help: "Snowflake databases or named stages to trace lineage from.",
+      empty: "Select connector first…",
+      placeholder: "Select database / stage…",
+    };
+  }
+  return {
+    label: "Layer / schema",
+    help: "Medallion layers (bronze / silver / gold) or schemas for this connection.",
+    empty: "Select connector first…",
+    placeholder: "Select layer / schema…",
+  };
+}
+
+function setLineageScopeLabels(platform) {
+  const meta = lineageScopeMeta(platform);
+  const label = $("#govLineageScopeLabel");
+  const help = $("#govLineageScopeHelp");
+  if (label) {
+    label.innerHTML = escapeHtml(meta.label) + ' <span class="req">*</span>';
+  }
+  if (help) help.textContent = meta.help;
+}
+
+async function loadLineageConnectors() {
+  const sel = $("#govLineageConnector");
+  if (!sel) return;
+  const prev = lineageState.connectorId || sel.value || "";
+  sel.innerHTML = '<option value="">Loading connectors…</option>';
+  try {
+    if (typeof ensureDataHiveConnectorApi === "function") {
+      await ensureDataHiveConnectorApi();
+    }
+    if (typeof DataHiveAssets === "undefined") throw new Error("Assets API not loaded");
+    const data = await DataHiveAssets.connectors();
+    lineageState.connectors = data.items || [];
+  } catch (_err) {
+    lineageState.connectors = [
+      {
+        id: "local-postgres",
+        display_name: "Local Postgres",
+        platform: "postgres",
+        dataset_scope: "datahivepoc",
+      },
+    ];
+  }
+  sel.innerHTML =
+    '<option value="">Select connector…</option>' +
+    lineageState.connectors
+      .map((c) => {
+        const label =
+          (c.display_name || c.id) +
+          (c.platform || c.cloud ? " · " + (c.platform || c.cloud) : "");
+        return (
+          '<option value="' +
+          escapeHtml(c.id) +
+          '">' +
+          escapeHtml(label) +
+          "</option>"
+        );
+      })
+      .join("");
+  if (prev && [...sel.options].some((o) => o.value === prev)) {
+    sel.value = prev;
+    lineageState.connectorId = prev;
+    await onLineageConnectorChange({ keepScope: true });
+  } else {
+    lineageState.connectorId = "";
+    lineageState.scope = "";
+    lineageState.catalogItems = [];
+    fillLineageScopeSelect(null);
+    setLineageScopeLabels("");
+  }
+}
+
+function fillLineageScopeSelect(connector, options, preferred) {
+  const sel = $("#govLineageScope");
+  if (!sel) return;
+  const platform = lineagePlatformOf(connector);
+  const meta = lineageScopeMeta(platform);
+  setLineageScopeLabels(platform);
+  if (!connector) {
+    sel.disabled = true;
+    sel.innerHTML = '<option value="">' + escapeHtml(meta.empty) + "</option>";
+    return;
+  }
+  const list = (options || []).filter(Boolean);
+  if (!list.length) {
+    sel.disabled = true;
+    sel.innerHTML = '<option value="">No layers / buckets / stages found…</option>';
+    return;
+  }
+  const prev = preferred || lineageState.scope || sel.value || "";
+  sel.disabled = false;
+  sel.innerHTML =
+    '<option value="">' +
+    escapeHtml(meta.placeholder) +
+    "</option>" +
+    '<option value="__all__">All layers / buckets / stages</option>' +
+    list
+      .map((d) => '<option value="' + escapeHtml(d) + '">' + escapeHtml(d) + "</option>")
+      .join("");
+  if (prev && [...sel.options].some((o) => o.value === prev)) sel.value = prev;
+}
+
+function collectLineageScopeOptions(connector, catalogItems, schemas) {
+  const platform = lineagePlatformOf(connector);
+  const scopes = new Set();
+  const add = (v) => {
+    const s = String(v || "").trim();
+    if (s) scopes.add(s);
+  };
+
+  (catalogItems || []).forEach((a) => {
+    add(a.database);
+    add(a.schema);
+    add(a.bucket);
+    add(a.stage);
+    add(a.container);
+    add(a.dataset);
+  });
+  (schemas || []).forEach(add);
+
+  if (connector && connector.dataset_scope) {
+    String(connector.dataset_scope)
+      .split(/[,;\n]/)
+      .map((s) => s.trim())
+      .filter(Boolean)
+      .forEach(add);
+  }
+
+  // Platform-aware defaults so the dropdown is useful even with sparse catalogs.
+  if (platform === "aws" || platform === "amazonwebservices") {
+    ["s3://raw", "s3://bronze", "s3://silver", "s3://gold", "glue:default"].forEach(add);
+  } else if (platform === "gcp" || platform === "googlecloud") {
+    ["raw", "bronze", "silver", "gold"].forEach(add);
+  } else if (platform === "azure" || platform === "microsoftazure") {
+    ["landing", "bronze", "silver", "gold"].forEach(add);
+  } else if (platform === "snowflake") {
+    ["RAW", "BRONZE", "SILVER", "GOLD", "@STAGE_LANDING"].forEach(add);
+    ["bronze", "silver", "gold"].forEach((layer) => {
+      if ((schemas || []).some((s) => String(s).toLowerCase().includes(layer))) add(layer);
+    });
+  } else {
+    ["bronze", "silver", "gold", "source"].forEach(add);
+    if (connector && connector.id === "local-postgres") add("datahivepoc");
+  }
+
+  return [...scopes].sort((a, b) => a.localeCompare(b));
+}
+
+async function onLineageConnectorChange(opts) {
+  const keepScope = opts && opts.keepScope;
+  const connectorId = ($("#govLineageConnector") && $("#govLineageConnector").value) || "";
+  lineageState.connectorId = connectorId;
+  if (!keepScope) {
+    lineageState.scope = "";
+    lineageSelectedId = null;
+  }
+  lineageState.catalogItems = [];
+  const connector = lineageState.connectors.find((c) => c.id === connectorId) || null;
+  if (!connectorId || !connector) {
+    fillLineageScopeSelect(null);
+    refreshLineageView();
+    return;
+  }
+  fillLineageScopeSelect(connector, [], keepScope ? lineageState.scope : "");
+  try {
+    if (typeof DataHiveAssets === "undefined") throw new Error("Assets API not loaded");
+    const catalog = await DataHiveAssets.catalog(connectorId);
+    lineageState.catalogItems = catalog.items || [];
+    const schemas = catalog.schemas || [
+      ...new Set(lineageState.catalogItems.map((i) => i.schema).filter(Boolean)),
+    ];
+    const options = collectLineageScopeOptions(connector, lineageState.catalogItems, schemas);
+    fillLineageScopeSelect(connector, options, keepScope ? lineageState.scope : "");
+  } catch (_err) {
+    const options = collectLineageScopeOptions(connector, [], []);
+    fillLineageScopeSelect(connector, options, keepScope ? lineageState.scope : "");
+  }
+  refreshLineageView();
+}
+
+function onLineageScopeChange() {
+  const sel = $("#govLineageScope");
+  lineageState.scope = (sel && sel.value) || "";
+  lineageSelectedId = null;
+  refreshLineageView();
+}
+
+function lineageInferLayer(assetOrName) {
+  const s = String(
+    (assetOrName && (assetOrName.schema || assetOrName.database || assetOrName.layer)) ||
+      assetOrName ||
+      ""
+  ).toLowerCase();
+  if (s.includes("bronze") || s.includes("raw") || s.includes("landing")) return "bronze";
+  if (s.includes("silver") || s.includes("curated") || s.includes("cleansed")) return "silver";
+  if (s.includes("consume") || s.includes("dashboard") || s.includes("report")) return "consume";
+  if (s.includes("gold") || s.includes("mart")) return "gold";
+  if (s.includes("source") || s.includes("stage") || s.startsWith("@") || s.startsWith("s3://")) {
+    return "source";
+  }
+  return "bronze";
+}
+
+function lineageNormalizeKey(name) {
+  return String(name || "")
+    .toLowerCase()
+    .replace(/^(dh_|test_|stg_|raw_|fact_|dim_)/, "")
+    .replace(/(_tbl|_raw|_curated|_score|_daily|_aging)$/, "")
+    .replace(/[^a-z0-9]+/g, "");
+}
+
+function buildLineageGraphFromCatalog(connector, scope, items) {
+  const connLabel = (connector && (connector.display_name || connector.id)) || "connector";
+  const scopeVal = String(scope || "");
+  const allScopes = scopeVal === "__all__";
+  const scopeLc = scopeVal.toLowerCase();
+  const filtered = (items || []).filter((a) => {
+    if (allScopes || !scopeVal) return true;
+    const fields = [a.database, a.schema, a.bucket, a.stage, a.container, a.dataset, a.name]
+      .map((x) => String(x || "").toLowerCase())
+      .filter(Boolean);
+    return fields.some((f) => f === scopeLc || f.includes(scopeLc) || scopeLc.includes(f));
+  });
+
+  if (!filtered.length) {
+    // Fall back to demo graph filtered by selected medallion scope when catalog is empty.
+    return filterDemoLineageGraph(scopeVal);
+  }
+
+  const nodes = [];
+  const byKeyLayer = {};
+  filtered.slice(0, 40).forEach((a, idx) => {
+    const layer = lineageInferLayer(a);
+    const title = a.name || a.table || a.id || "asset_" + (idx + 1);
+    const sub =
+      a.schema || a.database || a.bucket || a.stage || a.container || connLabel;
+    const id = "n_" + layer + "_" + idx + "_" + lineageNormalizeKey(title).slice(0, 24);
+    const node = { id, layer, title, sub: String(sub) };
+    nodes.push(node);
+    const key = lineageNormalizeKey(title);
+    if (key) {
+      (byKeyLayer[key] = byKeyLayer[key] || {})[layer] = id;
+    }
+  });
+
+  // Seed a source node for the selected scope when tracing a single landing zone.
+  if (!allScopes && scopeVal && !nodes.some((n) => n.layer === "source")) {
+    nodes.unshift({
+      id: "src_scope",
+      layer: "source",
+      title: scopeVal,
+      sub: connLabel,
+    });
+  }
+
+  const edges = [];
+  const layerFlow = ["source", "bronze", "silver", "gold", "consume"];
+  Object.keys(byKeyLayer).forEach((key) => {
+    const map = byKeyLayer[key];
+    for (let i = 0; i < layerFlow.length - 1; i++) {
+      const a = map[layerFlow[i]];
+      const b = map[layerFlow[i + 1]];
+      if (a && b) edges.push([a, b]);
+    }
+  });
+  if (nodes.some((n) => n.id === "src_scope")) {
+    nodes
+      .filter((n) => n.layer === "bronze")
+      .slice(0, 6)
+      .forEach((n) => edges.push(["src_scope", n.id]));
+  }
+
+  // If same-name edges are sparse, connect adjacent layers by position.
+  if (edges.length < 2) {
+    for (let i = 0; i < layerFlow.length - 1; i++) {
+      const left = nodes.filter((n) => n.layer === layerFlow[i]);
+      const right = nodes.filter((n) => n.layer === layerFlow[i + 1]);
+      left.slice(0, 4).forEach((ln, idx) => {
+        const rn = right[idx % Math.max(right.length, 1)];
+        if (rn) edges.push([ln.id, rn.id]);
+      });
+    }
+  }
+
+  return { nodes, edges };
+}
+
+function filterDemoLineageGraph(scope) {
+  const scopeVal = String(scope || "").toLowerCase();
+  if (!scopeVal || scopeVal === "__all__") {
+    return {
+      nodes: LINEAGE_DEMO_GRAPH.nodes.map((n) => ({ ...n })),
+      edges: LINEAGE_DEMO_GRAPH.edges.map((e) => e.slice()),
+    };
+  }
+  const layerHint = lineageInferLayer(scopeVal);
+  const keepLayers = new Set(["source", layerHint, "consume"]);
+  if (layerHint === "bronze") ["silver", "gold"].forEach((l) => keepLayers.add(l));
+  if (layerHint === "silver") {
+    keepLayers.add("bronze");
+    keepLayers.add("gold");
+  }
+  if (layerHint === "gold") {
+    keepLayers.add("silver");
+    keepLayers.add("bronze");
+  }
+  if (
+    scopeVal.includes("bucket") ||
+    scopeVal.startsWith("s3://") ||
+    scopeVal.startsWith("@") ||
+    scopeVal.includes("stage")
+  ) {
+    ["source", "bronze", "silver", "gold", "consume"].forEach((l) => keepLayers.add(l));
+  }
+  const nodes = LINEAGE_DEMO_GRAPH.nodes
+    .filter((n) => keepLayers.has(n.layer))
+    .map((n) => ({ ...n }));
+  const ids = new Set(nodes.map((n) => n.id));
+  const edges = LINEAGE_DEMO_GRAPH.edges.filter(([a, b]) => ids.has(a) && ids.has(b));
+  return { nodes, edges };
+}
+
+function refreshLineageView() {
+  const connectorId = lineageState.connectorId;
+  const scope = lineageState.scope || ($("#govLineageScope") && $("#govLineageScope").value) || "";
+  const empty = $("#govLineageEmpty");
+  const svg = $("#govLineageSvg");
+  if (!connectorId || !scope) {
+    LINEAGE_GRAPH = { nodes: [], edges: [] };
+    if (empty) {
+      empty.classList.remove("hidden");
+      empty.textContent =
+        "Select a connector and a layer / bucket / stage to load the lineage map.";
+    }
+    if (svg) svg.classList.add("hidden");
+    updateLineageDetail(null);
+    return;
+  }
+  const connector = lineageState.connectors.find((c) => c.id === connectorId) || null;
+  LINEAGE_GRAPH = buildLineageGraphFromCatalog(
+    connector,
+    scope,
+    lineageState.catalogItems
+  );
+  if (!LINEAGE_GRAPH.nodes.length) {
+    if (empty) {
+      empty.classList.remove("hidden");
+      empty.textContent = "No lineage assets found for this connector and scope.";
+    }
+    if (svg) svg.classList.add("hidden");
+    updateLineageDetail(null);
+    return;
+  }
+  if (empty) empty.classList.add("hidden");
+  if (svg) svg.classList.remove("hidden");
+  renderLineageMap(lineageSelectedId);
 }
 
 /* ---------- Governance: Data Modeling wizard ---------- */
@@ -5655,7 +6091,7 @@ function bindGovernanceEvents() {
     const tile = e.target.closest(".gov-tile");
     if (tile && tile.dataset.gov === "data-lineage") {
       e.preventDefault();
-      showLineageMap();
+      showLineageMap().catch((err) => console.warn("[lineage]", err));
       return;
     }
     if (tile && tile.dataset.gov === "data-modeling") {
@@ -5682,6 +6118,17 @@ function bindGovernanceEvents() {
       renderLineageMap(lineageSelectedId);
     }
   });
+
+  const lineageConnectorSel = $("#govLineageConnector");
+  if (lineageConnectorSel) {
+    lineageConnectorSel.addEventListener("change", () => {
+      onLineageConnectorChange().catch((err) => console.warn("[lineage]", err));
+    });
+  }
+  const lineageScopeSel = $("#govLineageScope");
+  if (lineageScopeSel) {
+    lineageScopeSel.addEventListener("change", () => onLineageScopeChange());
+  }
 
   const connectorSel = $("#govModelConnector");
   if (connectorSel) {

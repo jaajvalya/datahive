@@ -1,0 +1,1001 @@
+transfer_id,employee_id,transfer_type,from_job_id,to_job_id,from_department,to_department,from_location,to_location,from_manager_id,to_manager_id,effective_date,reason,status
+XFR0001,EMP0075,manager,JOB0788,JOB0969,Finance,Marketing,"Seattle, US","Hyderabad, IN",EMP0904,EMP0724,2024-06-21,employee_request,cancelled
+XFR0002,EMP0671,manager,JOB0366,JOB0013,Sales,Facilities,"Atlanta, US","Dallas, US",EMP0773,EMP0008,2025-11-11,org_redesign,completed
+XFR0003,EMP0375,entity,JOB0548,JOB0260,Security,Finance,"Chicago, US","Seattle, US",EMP0499,EMP0386,2024-05-15,org_redesign,completed
+XFR0004,EMP0371,manager,JOB0719,JOB0729,HR,Marketing,"San Francisco, US","Dallas, US",EMP0812,EMP0064,2025-04-26,business_need,approved
+XFR0005,EMP0708,location,JOB0804,JOB0113,Data,Security,"San Francisco, US","Chicago, US",EMP0795,EMP0967,2025-12-03,employee_request,cancelled
+XFR0006,EMP0248,temporary,JOB0030,JOB0021,IT,Security,"Hyderabad, IN","Seattle, US",EMP0950,EMP0434,2021-12-09,career_growth,cancelled
+XFR0007,EMP0488,manager,JOB0137,JOB0647,HR,Operations,"Toronto, CA","Austin, US",EMP0166,EMP0245,2025-03-10,backfill,completed
+XFR0008,EMP0426,department,JOB0861,JOB0115,Marketing,Sales,"Bengaluru, IN","Austin, US",EMP0406,EMP0495,2025-11-09,business_need,pending
+XFR0009,EMP0923,location,JOB0088,JOB0761,Engineering,Operations,"Austin, US","Seattle, US",EMP0408,EMP0732,2025-03-02,employee_request,approved
+XFR0010,EMP0912,manager,JOB0436,JOB0368,Supply Chain,IT,"Austin, US","San Francisco, US",EMP0062,EMP0696,2026-07-18,employee_request,approved
+XFR0011,EMP0128,location,JOB0372,JOB0124,Legal,Sales,"Austin, US","Austin, US",EMP0122,EMP0443,2021-04-16,backfill,completed
+XFR0012,EMP0151,temporary,JOB0514,JOB0464,Product,Supply Chain,"Denver, US","New York, US",EMP0487,EMP0599,2018-01-08,backfill,cancelled
+XFR0013,EMP0997,temporary,JOB0257,JOB0066,Operations,Facilities,"San Francisco, US","Denver, US",EMP0821,EMP0468,2026-05-13,career_growth,cancelled
+XFR0014,EMP0432,entity,JOB0845,JOB0314,Legal,Security,"Seattle, US","Dallas, US",EMP0689,EMP0144,2025-12-09,business_need,approved
+XFR0015,EMP0121,temporary,JOB0063,JOB0339,Legal,Engineering,"Dallas, US","Chicago, US",EMP0472,EMP0235,2023-07-23,org_redesign,pending
+XFR0016,EMP0793,manager,JOB0114,JOB0758,Sales,HR,"Austin, US","Seattle, US",EMP0391,EMP0306,2024-11-13,employee_request,approved
+XFR0017,EMP0929,department,JOB0577,JOB0616,Customer Success,Supply Chain,"Chicago, US","New York, US",EMP0229,EMP0566,2026-07-31,backfill,approved
+XFR0018,EMP0606,temporary,JOB0073,JOB0991,Engineering,Finance,"Dallas, US","Toronto, CA",EMP0550,EMP0100,2023-07-25,business_need,approved
+XFR0019,EMP0060,department,JOB0705,JOB0382,Sales,Product,"Dallas, US","Seattle, US",EMP0325,EMP0048,2020-01-13,career_growth,approved
+XFR0020,EMP0468,manager,JOB0561,JOB0296,Legal,Marketing,"Atlanta, US","London, UK",EMP0444,EMP0936,2024-09-29,career_growth,pending
+XFR0021,EMP0705,temporary,JOB0341,JOB0042,Operations,Marketing,"Bengaluru, IN","Atlanta, US",EMP0027,EMP0627,2021-09-07,org_redesign,approved
+XFR0022,EMP0017,department,JOB0617,JOB0112,Facilities,Facilities,"Toronto, CA","Toronto, CA",EMP0815,EMP0940,2015-05-21,career_growth,approved
+XFR0023,EMP0263,temporary,JOB0941,JOB0922,Engineering,Data,"London, UK","Denver, US",EMP0066,EMP0122,2019-12-29,employee_request,approved
+XFR0024,EMP0228,temporary,JOB0951,JOB0399,Legal,Finance,"San Francisco, US","Denver, US",EMP0342,EMP0243,2024-11-20,career_growth,approved
+XFR0025,EMP0578,location,JOB0276,JOB0053,Engineering,Legal,"Hyderabad, IN","Hyderabad, IN",EMP0206,EMP0575,2026-07-31,backfill,cancelled
+XFR0026,EMP0456,manager,JOB0651,JOB0763,Marketing,Data,"Seattle, US","Seattle, US",EMP0798,EMP0221,2020-12-10,business_need,cancelled
+XFR0027,EMP0260,entity,JOB0618,JOB0095,Legal,Sales,"Hyderabad, IN","London, UK",EMP0140,EMP0443,2024-11-16,business_need,approved
+XFR0028,EMP0322,department,JOB0492,JOB0063,Finance,Legal,"Seattle, US","Dallas, US",EMP0173,EMP0898,2022-05-14,business_need,approved
+XFR0029,EMP0030,entity,JOB0115,JOB0242,Sales,Facilities,"Austin, US","San Francisco, US",EMP0188,EMP0192,2023-05-20,backfill,completed
+XFR0030,EMP0223,temporary,JOB0666,JOB0624,HR,Facilities,"Bengaluru, IN","Atlanta, US",EMP0007,EMP0872,2026-07-31,career_growth,approved
+XFR0031,EMP0343,entity,JOB0859,JOB0773,Security,Security,"Austin, US","Toronto, CA",EMP0570,EMP0446,2025-12-02,employee_request,cancelled
+XFR0032,EMP0866,manager,JOB0723,JOB0457,Finance,Customer Success,"Denver, US","Dallas, US",EMP0486,EMP0971,2022-10-04,backfill,approved
+XFR0033,EMP0632,location,JOB0676,JOB0148,IT,Facilities,"London, UK","Denver, US",EMP0678,EMP0769,2026-03-08,org_redesign,approved
+XFR0034,EMP0681,entity,JOB0115,JOB0733,Sales,Legal,"Austin, US","Atlanta, US",EMP0271,EMP0898,2023-03-30,backfill,approved
+XFR0035,EMP0633,department,JOB0533,JOB0495,Product,Security,"Atlanta, US","Austin, US",EMP0542,EMP0820,2025-03-30,career_growth,completed
+XFR0036,EMP0117,department,JOB0108,JOB0482,HR,Operations,"San Francisco, US","New York, US",EMP0912,EMP0840,2017-07-15,employee_request,completed
+XFR0037,EMP0704,temporary,JOB0806,JOB0296,Finance,Marketing,"Seattle, US","London, UK",EMP0787,EMP0244,2026-02-08,career_growth,completed
+XFR0038,EMP0918,manager,JOB0509,JOB0518,Product,Product,"Chicago, US","Hyderabad, IN",EMP0176,EMP0263,2025-07-21,employee_request,approved
+XFR0039,EMP0130,manager,JOB0877,JOB0589,Security,Sales,"Dallas, US","Dallas, US",EMP0699,EMP0288,2024-02-18,employee_request,pending
+XFR0040,EMP0095,department,JOB0485,JOB0273,Marketing,Sales,"Dallas, US","Chicago, US",EMP0079,EMP0205,2022-07-21,business_need,approved
+XFR0041,EMP0343,department,JOB0423,JOB0127,Engineering,Security,"San Francisco, US","San Francisco, US",EMP0378,EMP0844,2024-11-10,org_redesign,approved
+XFR0042,EMP0546,temporary,JOB0115,JOB0302,Sales,HR,"Austin, US","Chicago, US",EMP0206,EMP0145,2025-03-02,org_redesign,approved
+XFR0043,EMP0986,location,JOB0450,JOB0772,Facilities,Security,"London, UK","Toronto, CA",EMP0208,EMP0970,2024-09-14,org_redesign,approved
+XFR0044,EMP0791,temporary,JOB0891,JOB0130,Engineering,Operations,"Bengaluru, IN","Austin, US",EMP0824,EMP0287,2018-09-24,employee_request,approved
+XFR0045,EMP0426,department,JOB0934,JOB0924,Legal,Security,"Denver, US","New York, US",EMP0869,EMP0292,2026-03-25,employee_request,approved
+XFR0046,EMP0247,entity,JOB0765,JOB0310,Security,HR,"Dallas, US","Chicago, US",EMP0397,EMP0933,2024-02-26,employee_request,completed
+XFR0047,EMP0777,department,JOB0015,JOB0525,Facilities,HR,"New York, US","San Francisco, US",EMP0687,EMP0684,2023-01-12,employee_request,pending
+XFR0048,EMP0372,location,JOB0799,JOB0263,Operations,Data,"Seattle, US","Dallas, US",EMP0848,EMP0910,2024-10-14,business_need,cancelled
+XFR0049,EMP0570,location,JOB0885,JOB0120,Customer Success,Facilities,"Austin, US","Seattle, US",EMP0109,EMP0482,2018-11-28,org_redesign,approved
+XFR0050,EMP0722,manager,JOB0749,JOB0470,IT,Marketing,"Seattle, US","Toronto, CA",EMP0239,EMP0108,2022-06-26,backfill,cancelled
+XFR0051,EMP0549,temporary,JOB0897,JOB0394,HR,Facilities,"Denver, US","Seattle, US",EMP0872,EMP0957,2026-02-16,career_growth,pending
+XFR0052,EMP0567,manager,JOB0008,JOB0212,Sales,IT,"Toronto, CA","Seattle, US",EMP0535,EMP0666,2023-03-30,employee_request,approved
+XFR0053,EMP0867,department,JOB0027,JOB0215,Supply Chain,IT,"Toronto, CA","Toronto, CA",EMP0735,EMP0087,2025-07-01,employee_request,approved
+XFR0054,EMP0391,manager,JOB0781,JOB0397,Data,Marketing,"Austin, US","Bengaluru, IN",EMP0675,EMP0262,2024-07-05,business_need,cancelled
+XFR0055,EMP0412,temporary,JOB0494,JOB0610,Product,Product,"Denver, US","Chicago, US",EMP0068,EMP0400,2025-07-21,career_growth,cancelled
+XFR0056,EMP0380,temporary,JOB0599,JOB0121,Facilities,HR,"Hyderabad, IN","Toronto, CA",EMP0147,EMP0499,2025-08-19,career_growth,approved
+XFR0057,EMP0486,location,JOB0602,JOB0056,Data,Engineering,"Atlanta, US","Denver, US",EMP0189,EMP0368,2026-05-11,business_need,approved
+XFR0058,EMP0499,location,JOB0891,JOB0111,Engineering,Security,"Bengaluru, IN","London, UK",EMP0268,EMP0647,2020-02-23,business_need,approved
+XFR0059,EMP0913,entity,JOB0895,JOB0439,Sales,Customer Success,"Atlanta, US","San Francisco, US",EMP0775,EMP0064,2025-08-14,business_need,completed
+XFR0060,EMP0637,location,JOB0741,JOB0341,Operations,Operations,"San Francisco, US","Bengaluru, IN",EMP0731,EMP0784,2023-11-17,backfill,approved
+XFR0061,EMP0742,manager,JOB0808,JOB0703,Security,HR,"Bengaluru, IN","New York, US",EMP0487,EMP0633,2022-10-26,employee_request,approved
+XFR0062,EMP0667,temporary,JOB0860,JOB0081,Legal,Finance,"Denver, US","San Francisco, US",EMP0423,EMP0559,2025-12-06,employee_request,approved
+XFR0063,EMP0162,manager,JOB0370,JOB0718,Finance,HR,"Toronto, CA","Austin, US",EMP0566,EMP0659,2025-09-13,career_growth,completed
+XFR0064,EMP0860,department,JOB0964,JOB0756,Security,Sales,"Hyderabad, IN","Austin, US",EMP0467,EMP0059,2026-04-01,org_redesign,completed
+XFR0065,EMP0406,location,JOB0155,JOB0868,Engineering,Security,"Atlanta, US","Bengaluru, IN",EMP0210,EMP0656,2025-01-09,career_growth,completed
+XFR0066,EMP0351,department,JOB0886,JOB0701,Customer Success,Customer Success,"Toronto, CA","San Francisco, US",EMP0509,EMP0855,2025-11-03,employee_request,approved
+XFR0067,EMP0818,location,JOB0539,JOB0964,Finance,Security,"Austin, US","Hyderabad, IN",EMP0272,EMP0358,2023-09-16,career_growth,cancelled
+XFR0068,EMP0693,entity,JOB0756,JOB0743,Sales,Supply Chain,"Austin, US","Austin, US",EMP0734,EMP0104,2026-06-04,backfill,pending
+XFR0069,EMP0156,entity,JOB0024,JOB0418,Supply Chain,Finance,"Austin, US","Dallas, US",EMP0392,EMP0325,2025-06-08,org_redesign,completed
+XFR0070,EMP0302,entity,JOB0630,JOB0513,Sales,Marketing,"New York, US","Chicago, US",EMP0695,EMP0272,2024-07-16,employee_request,approved
+XFR0071,EMP0388,manager,JOB0485,JOB0682,Marketing,Engineering,"Dallas, US","New York, US",EMP0629,EMP0049,2023-01-13,career_growth,completed
+XFR0072,EMP0059,entity,JOB0774,JOB0965,Customer Success,Engineering,"Seattle, US","San Francisco, US",EMP0383,EMP0807,2024-11-13,employee_request,cancelled
+XFR0073,EMP0457,department,JOB0226,JOB0339,Engineering,Engineering,"Hyderabad, IN","Chicago, US",EMP0374,EMP0754,2026-02-20,org_redesign,approved
+XFR0074,EMP0709,department,JOB0966,JOB0725,Supply Chain,HR,"San Francisco, US","Dallas, US",EMP0982,EMP0969,2022-05-29,career_growth,approved
+XFR0075,EMP0210,department,JOB0183,JOB0406,HR,Engineering,"Austin, US","New York, US",EMP0460,EMP0367,2019-02-18,career_growth,cancelled
+XFR0076,EMP0883,entity,JOB0802,JOB0492,Engineering,Finance,"London, UK","Seattle, US",EMP0472,EMP0743,2018-08-05,business_need,completed
+XFR0077,EMP0168,manager,JOB0493,JOB0990,HR,Engineering,"London, UK","Dallas, US",EMP0112,EMP0854,2023-01-29,backfill,cancelled
+XFR0078,EMP0385,entity,JOB0230,JOB0392,HR,Product,"San Francisco, US","New York, US",EMP0190,EMP0049,2025-05-05,career_growth,approved
+XFR0079,EMP0589,temporary,JOB0199,JOB0268,Engineering,IT,"Atlanta, US","New York, US",EMP0036,EMP0534,2025-10-31,org_redesign,approved
+XFR0080,EMP0245,entity,JOB0289,JOB0991,Legal,Finance,"Austin, US","Toronto, CA",EMP0971,EMP0566,2023-04-23,business_need,completed
+XFR0081,EMP0428,department,JOB0417,JOB0761,Sales,Operations,"San Francisco, US","Seattle, US",EMP0604,EMP0303,2025-05-02,business_need,approved
+XFR0082,EMP0511,temporary,JOB0297,JOB0534,Product,Facilities,"San Francisco, US","Austin, US",EMP0469,EMP0581,2025-06-07,career_growth,cancelled
+XFR0083,EMP0334,entity,JOB0623,JOB0196,Engineering,HR,"Atlanta, US","London, UK",EMP0830,EMP0734,2025-01-21,business_need,approved
+XFR0084,EMP0547,manager,JOB0603,JOB0735,Supply Chain,Legal,"Chicago, US","Bengaluru, IN",EMP0654,EMP0865,2022-08-25,backfill,completed
+XFR0085,EMP0297,department,JOB0430,JOB0549,IT,Data,"Denver, US","Dallas, US",EMP0348,EMP0043,2019-02-18,career_growth,approved
+XFR0086,EMP0571,entity,JOB0919,JOB0098,Engineering,Product,"Toronto, CA","Hyderabad, IN",EMP0210,EMP0246,2026-07-31,employee_request,cancelled
+XFR0087,EMP0024,temporary,JOB0215,JOB0867,IT,Finance,"Toronto, CA","London, UK",EMP0923,EMP0157,2022-08-30,employee_request,approved
+XFR0088,EMP0038,manager,JOB0254,JOB0883,Customer Success,HR,"Hyderabad, IN","New York, US",EMP0417,EMP0327,2026-01-12,employee_request,cancelled
+XFR0089,EMP0774,entity,JOB0831,JOB0577,Product,Customer Success,"New York, US","Chicago, US",EMP0378,EMP0762,2025-04-08,org_redesign,cancelled
+XFR0090,EMP0523,temporary,JOB0375,JOB0139,Legal,IT,"Atlanta, US","London, UK",EMP0944,EMP0861,2025-11-14,backfill,completed
+XFR0091,EMP0683,manager,JOB0936,JOB0094,Customer Success,Product,"San Francisco, US","Hyderabad, IN",EMP0208,EMP0704,2022-10-27,employee_request,cancelled
+XFR0092,EMP0136,temporary,JOB0526,JOB0364,Data,Marketing,"Seattle, US","Toronto, CA",EMP0872,EMP0735,2024-02-24,employee_request,cancelled
+XFR0093,EMP0252,entity,JOB0384,JOB0364,Marketing,Marketing,"Chicago, US","Toronto, CA",EMP0826,EMP0808,2026-07-22,employee_request,approved
+XFR0094,EMP0348,location,JOB0554,JOB0297,HR,Product,"Hyderabad, IN","San Francisco, US",EMP0339,EMP0693,2021-11-16,employee_request,approved
+XFR0095,EMP0052,department,JOB0652,JOB0045,Supply Chain,HR,"Austin, US","Chicago, US",EMP0076,EMP0139,2026-03-21,business_need,completed
+XFR0096,EMP0732,location,JOB0791,JOB0398,Data,Sales,"Seattle, US","Chicago, US",EMP0385,EMP0868,2025-09-10,org_redesign,completed
+XFR0097,EMP0644,entity,JOB0355,JOB0514,IT,Product,"Seattle, US","Denver, US",EMP0551,EMP0046,2026-01-14,career_growth,pending
+XFR0098,EMP0694,department,JOB0779,JOB0411,Facilities,Operations,"Chicago, US","Atlanta, US",EMP0720,EMP0905,2025-08-27,backfill,pending
+XFR0099,EMP0287,department,JOB0200,JOB0366,IT,Sales,"London, UK","Atlanta, US",EMP0532,EMP0573,2025-03-28,org_redesign,cancelled
+XFR0100,EMP0849,entity,JOB0325,JOB0838,HR,Engineering,"Bengaluru, IN","Bengaluru, IN",EMP0196,EMP0225,2024-02-27,backfill,pending
+XFR0101,EMP0585,entity,JOB0107,JOB0330,Facilities,Customer Success,"Chicago, US","Seattle, US",EMP0742,EMP0719,2023-11-05,backfill,approved
+XFR0102,EMP0229,manager,JOB0021,JOB0189,Security,Supply Chain,"Seattle, US","Bengaluru, IN",EMP0827,EMP0428,2022-06-29,career_growth,pending
+XFR0103,EMP0846,temporary,JOB0210,JOB0213,Facilities,Marketing,"London, UK","Seattle, US",EMP0076,EMP0022,2025-09-16,employee_request,pending
+XFR0104,EMP0327,location,JOB0732,JOB0486,Engineering,Product,"Atlanta, US","Denver, US",EMP0433,EMP0839,2026-06-09,backfill,approved
+XFR0105,EMP0620,temporary,JOB0561,JOB0120,Legal,Facilities,"Atlanta, US","Seattle, US",EMP0510,EMP0226,2025-01-30,career_growth,completed
+XFR0106,EMP0889,entity,JOB0205,JOB0355,Engineering,IT,"Toronto, CA","Seattle, US",EMP0998,EMP0733,2026-04-26,org_redesign,completed
+XFR0107,EMP0614,location,JOB0452,JOB0420,Legal,Marketing,"Bengaluru, IN","Seattle, US",EMP0821,EMP0249,2025-01-02,org_redesign,approved
+XFR0108,EMP0407,entity,JOB0586,JOB0809,Finance,Engineering,"Chicago, US","Denver, US",EMP0819,EMP0570,2020-12-03,career_growth,pending
+XFR0109,EMP0119,entity,JOB0866,JOB0742,Data,IT,"Hyderabad, IN","Seattle, US",EMP0657,EMP0657,2025-10-14,backfill,approved
+XFR0110,EMP0999,manager,JOB0757,JOB0797,Finance,Security,"Atlanta, US","Chicago, US",EMP0540,EMP0165,2026-03-12,backfill,approved
+XFR0111,EMP0436,temporary,JOB0526,JOB0569,Data,Data,"Seattle, US","New York, US",EMP0030,EMP0328,2022-05-16,career_growth,approved
+XFR0112,EMP0251,manager,JOB0618,JOB0013,Legal,Facilities,"Hyderabad, IN","Dallas, US",EMP0961,EMP0423,2025-06-07,backfill,completed
+XFR0113,EMP0703,entity,JOB0531,JOB0577,Marketing,Customer Success,"Atlanta, US","Chicago, US",EMP0741,EMP0767,2020-12-26,org_redesign,approved
+XFR0114,EMP0445,temporary,JOB0422,JOB0984,Data,Security,"San Francisco, US","San Francisco, US",EMP0239,EMP0826,2023-03-07,career_growth,cancelled
+XFR0115,EMP0351,entity,JOB0227,JOB0205,Sales,Engineering,"Dallas, US","Toronto, CA",EMP0324,EMP0848,2026-05-22,employee_request,approved
+XFR0116,EMP0055,entity,JOB0417,JOB0629,Sales,Supply Chain,"San Francisco, US","London, UK",EMP0187,EMP0096,2024-12-09,org_redesign,approved
+XFR0117,EMP0946,temporary,JOB0827,JOB0880,Customer Success,Marketing,"Hyderabad, IN","Seattle, US",EMP0156,EMP0881,2024-03-30,business_need,approved
+XFR0118,EMP0629,department,JOB0345,JOB0472,IT,Legal,"Dallas, US","London, UK",EMP0720,EMP0800,2026-07-24,org_redesign,completed
+XFR0119,EMP0956,department,JOB0969,JOB0445,Marketing,Security,"Hyderabad, IN","Toronto, CA",EMP0521,EMP0166,2020-09-26,business_need,completed
+XFR0120,EMP0398,department,JOB0898,JOB0629,Legal,Supply Chain,"Dallas, US","London, UK",EMP0390,EMP0771,2026-03-17,employee_request,approved
+XFR0121,EMP0396,temporary,JOB0634,JOB0894,Engineering,HR,"New York, US","Seattle, US",EMP0023,EMP0416,2018-04-21,employee_request,approved
+XFR0122,EMP0866,temporary,JOB0142,JOB0471,Operations,Security,"Atlanta, US","New York, US",EMP0175,EMP0311,2022-02-10,business_need,pending
+XFR0123,EMP0979,temporary,JOB0323,JOB0984,Legal,Security,"Austin, US","San Francisco, US",EMP0312,EMP0711,2025-11-02,employee_request,approved
+XFR0124,EMP0149,temporary,JOB0979,JOB0449,HR,Engineering,"London, UK","Chicago, US",EMP0938,EMP0044,2026-06-20,career_growth,approved
+XFR0125,EMP0186,manager,JOB0762,JOB0406,Security,Engineering,"Toronto, CA","New York, US",EMP0673,EMP0958,2020-02-18,business_need,approved
+XFR0126,EMP0476,temporary,JOB0551,JOB0262,Engineering,Marketing,"London, UK","New York, US",EMP0312,EMP0241,2025-08-19,backfill,approved
+XFR0127,EMP0942,temporary,JOB0106,JOB0364,Finance,Marketing,"Bengaluru, IN","Toronto, CA",EMP0996,EMP0048,2022-08-02,employee_request,completed
+XFR0128,EMP0623,entity,JOB0980,JOB0040,Sales,IT,"Seattle, US","London, UK",EMP0393,EMP0398,2020-04-14,career_growth,cancelled
+XFR0129,EMP0507,temporary,JOB0719,JOB0872,HR,Supply Chain,"San Francisco, US","Denver, US",EMP0106,EMP0397,2018-05-21,org_redesign,pending
+XFR0130,EMP0331,department,JOB0070,JOB0941,IT,Engineering,"San Francisco, US","London, UK",EMP0298,EMP0196,2022-10-15,business_need,pending
+XFR0131,EMP0456,location,JOB0889,JOB0168,Security,Engineering,"Toronto, CA","Atlanta, US",EMP0006,EMP0433,2023-08-24,org_redesign,cancelled
+XFR0132,EMP0549,location,JOB0941,JOB0581,Engineering,Marketing,"London, UK","Chicago, US",EMP0803,EMP0734,2021-11-18,employee_request,pending
+XFR0133,EMP0211,temporary,JOB0259,JOB0377,Customer Success,Supply Chain,"Atlanta, US","San Francisco, US",EMP0234,EMP0275,2022-11-26,employee_request,pending
+XFR0134,EMP0601,manager,JOB0309,JOB0508,HR,Data,"Chicago, US","San Francisco, US",EMP0796,EMP0238,2019-06-23,org_redesign,approved
+XFR0135,EMP0024,location,JOB0466,JOB0563,Customer Success,Marketing,"Seattle, US","San Francisco, US",EMP0955,EMP0115,2022-12-04,employee_request,pending
+XFR0136,EMP0101,temporary,JOB0930,JOB0817,IT,Engineering,"Bengaluru, IN","San Francisco, US",EMP0515,EMP0286,2025-05-09,career_growth,cancelled
+XFR0137,EMP0006,location,JOB0308,JOB0665,Marketing,Finance,"Seattle, US","Bengaluru, IN",EMP0941,EMP0062,2025-01-13,org_redesign,completed
+XFR0138,EMP0331,department,JOB0349,JOB0691,Operations,Security,"San Francisco, US","Seattle, US",EMP0608,EMP0256,2026-07-28,employee_request,approved
+XFR0139,EMP0681,temporary,JOB0581,JOB0180,Marketing,Legal,"Chicago, US","Chicago, US",EMP0039,EMP0734,2020-04-25,backfill,approved
+XFR0140,EMP0865,department,JOB0620,JOB0148,Supply Chain,Facilities,"Denver, US","Denver, US",EMP0155,EMP0408,2025-09-27,backfill,pending
+XFR0141,EMP0586,manager,JOB0392,JOB0565,Product,Supply Chain,"New York, US","Chicago, US",EMP0789,EMP0580,2022-11-26,career_growth,pending
+XFR0142,EMP0919,manager,JOB0629,JOB0209,Supply Chain,Engineering,"London, UK","Chicago, US",EMP0017,EMP0462,2024-10-21,business_need,completed
+XFR0143,EMP0899,entity,JOB0388,JOB0201,Data,Finance,"Atlanta, US","Hyderabad, IN",EMP0076,EMP0014,2025-05-20,employee_request,approved
+XFR0144,EMP0054,manager,JOB0625,JOB0442,Sales,Supply Chain,"Austin, US","Toronto, CA",EMP0713,EMP0282,2025-12-07,employee_request,approved
+XFR0145,EMP0568,location,JOB0057,JOB0236,Finance,Customer Success,"Atlanta, US","San Francisco, US",EMP0460,EMP0809,2024-09-14,career_growth,completed
+XFR0146,EMP0437,manager,JOB0919,JOB0636,Engineering,Marketing,"Toronto, CA","Atlanta, US",EMP0975,EMP0060,2020-07-14,business_need,cancelled
+XFR0147,EMP0875,location,JOB0354,JOB0741,Operations,Operations,"San Francisco, US","San Francisco, US",EMP0708,EMP0291,2019-08-21,org_redesign,approved
+XFR0148,EMP0587,department,JOB0793,JOB0620,HR,Supply Chain,"Seattle, US","Denver, US",EMP0058,EMP0269,2023-05-10,career_growth,approved
+XFR0149,EMP0124,temporary,JOB0112,JOB0360,Facilities,Sales,"Toronto, CA","New York, US",EMP0235,EMP0747,2018-07-08,business_need,approved
+XFR0150,EMP0555,department,JOB0560,JOB0044,Marketing,Operations,"Hyderabad, IN","Toronto, CA",EMP0772,EMP0749,2022-10-07,career_growth,approved
+XFR0151,EMP0661,manager,JOB0584,JOB0761,Finance,Operations,"Austin, US","Seattle, US",EMP0311,EMP0989,2025-12-27,employee_request,completed
+XFR0152,EMP0304,temporary,JOB0076,JOB0367,Security,Finance,"Chicago, US","Toronto, CA",EMP0296,EMP0543,2023-02-15,career_growth,pending
+XFR0153,EMP0269,entity,JOB0421,JOB0657,Sales,Facilities,"Atlanta, US","Denver, US",EMP0940,EMP0812,2026-02-19,career_growth,completed
+XFR0154,EMP0047,department,JOB0832,JOB0945,Legal,Operations,"Toronto, CA","San Francisco, US",EMP0537,EMP0806,2025-11-15,business_need,cancelled
+XFR0155,EMP0454,manager,JOB0697,JOB0005,Supply Chain,Data,"Dallas, US","Bengaluru, IN",EMP0878,EMP0261,2025-02-21,employee_request,completed
+XFR0156,EMP0373,location,JOB0118,JOB0919,Sales,Engineering,"Chicago, US","Toronto, CA",EMP0883,EMP0068,2023-10-11,business_need,cancelled
+XFR0157,EMP0714,manager,JOB0880,JOB0771,Marketing,Operations,"Seattle, US","Toronto, CA",EMP0563,EMP0132,2020-11-11,org_redesign,pending
+XFR0158,EMP0387,temporary,JOB0995,JOB0456,Supply Chain,Customer Success,"Toronto, CA","Seattle, US",EMP0618,EMP0487,2024-07-07,employee_request,pending
+XFR0159,EMP0506,temporary,JOB0660,JOB0434,Supply Chain,Finance,"Austin, US","Chicago, US",EMP0674,EMP0847,2025-04-19,career_growth,pending
+XFR0160,EMP0809,manager,JOB0103,JOB0149,Security,Facilities,"Denver, US","Hyderabad, IN",EMP0924,EMP0752,2026-05-06,employee_request,completed
+XFR0161,EMP0797,location,JOB0128,JOB0910,Sales,Legal,"New York, US","Denver, US",EMP0001,EMP0672,2025-05-08,backfill,completed
+XFR0162,EMP0330,department,JOB0628,JOB0648,IT,Marketing,"Atlanta, US","Toronto, CA",EMP0701,EMP0723,2025-10-11,career_growth,completed
+XFR0163,EMP0764,entity,JOB0060,JOB0890,Supply Chain,Product,"Bengaluru, IN","Hyderabad, IN",EMP0626,EMP0757,2024-04-16,career_growth,pending
+XFR0164,EMP0379,temporary,JOB0967,JOB0576,Sales,Facilities,"Toronto, CA","New York, US",EMP0739,EMP0528,2019-06-19,employee_request,cancelled
+XFR0165,EMP0097,manager,JOB0862,JOB0089,Facilities,Data,"Hyderabad, IN","Chicago, US",EMP0225,EMP0164,2026-07-02,employee_request,approved
+XFR0166,EMP0217,location,JOB0351,JOB0322,Marketing,IT,"Atlanta, US","Seattle, US",EMP0551,EMP0742,2015-02-13,employee_request,completed
+XFR0167,EMP0140,manager,JOB0149,JOB0007,Facilities,Operations,"Hyderabad, IN","Hyderabad, IN",EMP0014,EMP0389,2025-10-07,backfill,approved
+XFR0168,EMP0930,entity,JOB0018,JOB0207,Finance,Operations,"Bengaluru, IN","Atlanta, US",EMP0526,EMP0023,2020-02-01,backfill,cancelled
+XFR0169,EMP0327,temporary,JOB0581,JOB0114,Marketing,Sales,"Chicago, US","Austin, US",EMP0231,EMP0743,2026-07-13,career_growth,cancelled
+XFR0170,EMP0885,entity,JOB0314,JOB0957,Security,Engineering,"Dallas, US","London, UK",EMP0581,EMP0295,2016-05-14,org_redesign,cancelled
+XFR0171,EMP0699,location,JOB0745,JOB0853,Engineering,Sales,"Atlanta, US","London, UK",EMP0351,EMP0454,2026-04-29,employee_request,approved
+XFR0172,EMP0297,department,JOB0196,JOB0766,HR,Security,"London, UK","Chicago, US",EMP0212,EMP0878,2025-08-25,employee_request,approved
+XFR0173,EMP0145,temporary,JOB0756,JOB0233,Sales,Customer Success,"Austin, US","Atlanta, US",EMP0562,EMP0541,2022-06-19,org_redesign,completed
+XFR0174,EMP0868,department,JOB0623,JOB0188,Engineering,Marketing,"Atlanta, US","San Francisco, US",EMP0564,EMP0494,2025-05-06,career_growth,approved
+XFR0175,EMP0578,entity,JOB0391,JOB0808,Customer Success,Security,"London, UK","Bengaluru, IN",EMP0066,EMP0156,2026-03-25,org_redesign,pending
+XFR0176,EMP0638,temporary,JOB0636,JOB0811,Marketing,Product,"Atlanta, US","London, UK",EMP0085,EMP0732,2025-12-30,backfill,approved
+XFR0177,EMP0647,location,JOB0364,JOB0735,Marketing,Legal,"Toronto, CA","Bengaluru, IN",EMP0748,EMP0680,2026-02-16,career_growth,approved
+XFR0178,EMP0040,manager,JOB0229,JOB0332,Operations,IT,"Chicago, US","Seattle, US",EMP0397,EMP0584,2026-03-14,business_need,cancelled
+XFR0179,EMP0241,location,JOB0856,JOB0697,Finance,Supply Chain,"Toronto, CA","Dallas, US",EMP0826,EMP0778,2022-03-30,backfill,cancelled
+XFR0180,EMP0231,manager,JOB0557,JOB0859,Customer Success,Security,"New York, US","Austin, US",EMP0564,EMP0116,2025-05-30,business_need,cancelled
+XFR0181,EMP0871,temporary,JOB0573,JOB0417,Marketing,Sales,"San Francisco, US","San Francisco, US",EMP0973,EMP0263,2022-06-05,career_growth,approved
+XFR0182,EMP0289,temporary,JOB0916,JOB0329,Facilities,Operations,"Dallas, US","Bengaluru, IN",EMP0602,EMP0980,2026-01-23,business_need,approved
+XFR0183,EMP0794,department,JOB0570,JOB0038,Legal,Marketing,"Bengaluru, IN","Dallas, US",EMP0895,EMP0346,2025-03-03,career_growth,approved
+XFR0184,EMP0681,temporary,JOB0257,JOB0370,Operations,Finance,"San Francisco, US","Toronto, CA",EMP0350,EMP0327,2018-12-22,career_growth,approved
+XFR0185,EMP0397,entity,JOB0557,JOB0192,Customer Success,Operations,"New York, US","San Francisco, US",EMP0539,EMP0216,2018-02-25,org_redesign,completed
+XFR0186,EMP0981,manager,JOB0093,JOB0414,Security,Finance,"London, UK","Dallas, US",EMP0102,EMP0039,2026-01-27,career_growth,pending
+XFR0187,EMP0483,location,JOB0980,JOB0363,Sales,Engineering,"Seattle, US","Dallas, US",EMP0721,EMP0601,2022-08-20,employee_request,approved
+XFR0188,EMP0507,temporary,JOB0692,JOB0201,Security,Finance,"Atlanta, US","Hyderabad, IN",EMP0128,EMP0202,2025-07-01,org_redesign,cancelled
+XFR0189,EMP0770,entity,JOB0447,JOB0476,Marketing,Engineering,"London, UK","Austin, US",EMP0257,EMP0026,2024-09-23,backfill,approved
+XFR0190,EMP0799,location,JOB0701,JOB0545,Customer Success,Product,"San Francisco, US","London, UK",EMP0124,EMP0334,2019-06-19,career_growth,approved
+XFR0191,EMP0779,manager,JOB0296,JOB0083,Marketing,Data,"London, UK","Seattle, US",EMP0912,EMP0417,2023-03-02,employee_request,completed
+XFR0192,EMP0900,temporary,JOB0281,JOB0751,Product,Sales,"Hyderabad, IN","San Francisco, US",EMP0017,EMP0572,2025-07-19,business_need,approved
+XFR0193,EMP0551,temporary,JOB0054,JOB0833,Data,Engineering,"Hyderabad, IN","Bengaluru, IN",EMP0087,EMP0235,2026-06-14,employee_request,approved
+XFR0194,EMP0732,manager,JOB0627,JOB0238,Security,Customer Success,"San Francisco, US","Bengaluru, IN",EMP0657,EMP0504,2025-04-18,business_need,approved
+XFR0195,EMP0242,location,JOB0498,JOB0093,HR,Security,"San Francisco, US","London, UK",EMP0555,EMP0161,2024-10-31,career_growth,cancelled
+XFR0196,EMP0200,location,JOB0533,JOB0374,Product,Supply Chain,"Atlanta, US","Toronto, CA",EMP0345,EMP0309,2026-08-04,business_need,approved
+XFR0197,EMP0443,manager,JOB0672,JOB0315,Finance,Finance,"Dallas, US","London, UK",EMP0483,EMP0772,2023-06-05,business_need,approved
+XFR0198,EMP0532,location,JOB0147,JOB0747,Marketing,Supply Chain,"Denver, US","Toronto, CA",EMP0719,EMP0412,2023-12-22,business_need,cancelled
+XFR0199,EMP0225,department,JOB0534,JOB0425,Facilities,IT,"Austin, US","New York, US",EMP0192,EMP0016,2022-06-13,org_redesign,approved
+XFR0200,EMP0538,location,JOB0803,JOB0468,Legal,Marketing,"London, UK","Seattle, US",EMP0769,EMP0696,2024-06-18,backfill,approved
+XFR0201,EMP0948,temporary,JOB1000,JOB0926,IT,Facilities,"Dallas, US","New York, US",EMP0901,EMP0610,2024-04-27,backfill,cancelled
+XFR0202,EMP0721,entity,JOB0023,JOB0856,Engineering,Finance,"Chicago, US","Toronto, CA",EMP0345,EMP0114,2020-10-01,career_growth,cancelled
+XFR0203,EMP0421,department,JOB0771,JOB0272,Operations,Product,"Toronto, CA","Denver, US",EMP0050,EMP0972,2024-10-21,career_growth,cancelled
+XFR0204,EMP0809,manager,JOB0802,JOB0203,Engineering,Product,"London, UK","Chicago, US",EMP0435,EMP0056,2025-05-30,employee_request,pending
+XFR0205,EMP0861,manager,JOB0121,JOB0975,HR,IT,"Toronto, CA","London, UK",EMP0309,EMP0102,2025-05-21,business_need,completed
+XFR0206,EMP0440,department,JOB0331,JOB0635,IT,Facilities,"London, UK","Chicago, US",EMP0046,EMP0968,2026-04-07,backfill,pending
+XFR0207,EMP0525,manager,JOB0177,JOB0483,Data,Legal,"Dallas, US","Chicago, US",EMP0507,EMP0568,2017-08-21,business_need,completed
+XFR0208,EMP0460,entity,JOB0903,JOB0611,Customer Success,Marketing,"Toronto, CA","Hyderabad, IN",EMP0175,EMP0089,2025-10-12,business_need,approved
+XFR0209,EMP0225,department,JOB0732,JOB0963,Engineering,IT,"Atlanta, US","Seattle, US",EMP0375,EMP0764,2020-09-15,business_need,completed
+XFR0210,EMP0304,temporary,JOB0095,JOB0185,Sales,Marketing,"London, UK","Dallas, US",EMP0058,EMP0834,2025-08-23,org_redesign,approved
+XFR0211,EMP0432,entity,JOB0647,JOB0713,Operations,Finance,"Austin, US","Hyderabad, IN",EMP0201,EMP0775,2026-03-22,backfill,approved
+XFR0212,EMP0699,location,JOB0574,JOB0741,Sales,Operations,"London, UK","San Francisco, US",EMP0511,EMP0911,2026-07-20,backfill,cancelled
+XFR0213,EMP0433,location,JOB0841,JOB0131,Supply Chain,Data,"Austin, US","Atlanta, US",EMP0717,EMP0542,2024-01-06,org_redesign,pending
+XFR0214,EMP0390,entity,JOB0767,JOB0881,Facilities,Legal,"Chicago, US","Hyderabad, IN",EMP0630,EMP0405,2026-07-02,business_need,approved
+XFR0215,EMP0440,entity,JOB0107,JOB0783,Facilities,Customer Success,"Chicago, US","Austin, US",EMP0077,EMP0085,2023-12-16,employee_request,completed
+XFR0216,EMP0163,manager,JOB0423,JOB0416,Engineering,Engineering,"San Francisco, US","Bengaluru, IN",EMP0674,EMP0568,2026-05-13,backfill,cancelled
+XFR0217,EMP0172,manager,JOB0010,JOB0419,HR,Product,"Austin, US","Atlanta, US",EMP0512,EMP0694,2017-09-29,org_redesign,pending
+XFR0218,EMP0757,temporary,JOB0084,JOB0229,HR,Operations,"Toronto, CA","Chicago, US",EMP0957,EMP0754,2020-06-10,career_growth,approved
+XFR0219,EMP0421,temporary,JOB0415,JOB0090,Supply Chain,Operations,"Toronto, CA","Chicago, US",EMP0470,EMP0637,2020-04-04,employee_request,pending
+XFR0220,EMP0439,temporary,JOB0594,JOB0162,IT,Product,"Chicago, US","Austin, US",EMP0476,EMP0595,2026-01-14,business_need,completed
+XFR0221,EMP0191,department,JOB0464,JOB0866,Supply Chain,Data,"New York, US","Hyderabad, IN",EMP0172,EMP0611,2025-03-22,backfill,completed
+XFR0222,EMP0304,entity,JOB0256,JOB0603,Marketing,Supply Chain,"Toronto, CA","Chicago, US",EMP0757,EMP0823,2022-09-16,org_redesign,cancelled
+XFR0223,EMP0328,temporary,JOB0539,JOB0588,Finance,Customer Success,"Austin, US","San Francisco, US",EMP0978,EMP0286,2021-05-05,org_redesign,pending
+XFR0224,EMP0545,entity,JOB0078,JOB0873,Marketing,HR,"London, UK","Austin, US",EMP0081,EMP0320,2022-03-20,employee_request,completed
+XFR0225,EMP0882,temporary,JOB0573,JOB0678,Marketing,HR,"San Francisco, US","Seattle, US",EMP0062,EMP0052,2026-05-04,business_need,cancelled
+XFR0226,EMP0618,entity,JOB0495,JOB0657,Security,Facilities,"Austin, US","Denver, US",EMP0042,EMP0445,2026-05-26,backfill,completed
+XFR0227,EMP0005,entity,JOB0627,JOB0580,Security,Marketing,"San Francisco, US","Chicago, US",EMP0883,EMP0405,2025-12-20,business_need,approved
+XFR0228,EMP0672,department,JOB0001,JOB0666,Supply Chain,HR,"Denver, US","Bengaluru, IN",EMP0700,EMP0573,2025-03-25,career_growth,approved
+XFR0229,EMP0291,temporary,JOB0321,JOB0419,Facilities,Product,"Chicago, US","Atlanta, US",EMP0322,EMP0969,2018-01-01,business_need,approved
+XFR0230,EMP0409,location,JOB0034,JOB0551,Facilities,Engineering,"San Francisco, US","London, UK",EMP0636,EMP0567,2023-10-29,backfill,approved
+XFR0231,EMP0435,location,JOB0535,JOB0985,Marketing,Marketing,"Atlanta, US","Hyderabad, IN",EMP0105,EMP0213,2022-01-13,backfill,cancelled
+XFR0232,EMP0770,temporary,JOB0607,JOB0981,Facilities,IT,"Chicago, US","Hyderabad, IN",EMP0929,EMP0944,2025-01-18,career_growth,pending
+XFR0233,EMP0946,location,JOB0657,JOB0081,Facilities,Finance,"Denver, US","San Francisco, US",EMP0178,EMP0739,2024-07-24,employee_request,pending
+XFR0234,EMP0202,department,JOB0391,JOB0575,Customer Success,Engineering,"London, UK","Atlanta, US",EMP0927,EMP0831,2021-03-20,employee_request,approved
+XFR0235,EMP0127,entity,JOB0402,JOB0821,Operations,Finance,"Dallas, US","Hyderabad, IN",EMP0307,EMP0136,2026-02-06,business_need,cancelled
+XFR0236,EMP0539,location,JOB0969,JOB0066,Marketing,Facilities,"Hyderabad, IN","Denver, US",EMP0374,EMP0651,2026-07-05,backfill,pending
+XFR0237,EMP0561,temporary,JOB0743,JOB0257,Supply Chain,Operations,"Austin, US","San Francisco, US",EMP0777,EMP0042,2024-08-09,career_growth,pending
+XFR0238,EMP0012,location,JOB0067,JOB0144,Sales,Supply Chain,"London, UK","San Francisco, US",EMP0455,EMP0981,2019-03-25,backfill,completed
+XFR0239,EMP0643,location,JOB0547,JOB0824,Product,HR,"San Francisco, US","London, UK",EMP0653,EMP0441,2024-05-02,org_redesign,approved
+XFR0240,EMP0580,department,JOB0411,JOB0194,Operations,IT,"Atlanta, US","San Francisco, US",EMP0219,EMP0830,2016-02-04,business_need,approved
+XFR0241,EMP0039,location,JOB0933,JOB0543,Marketing,Security,"London, UK","Chicago, US",EMP0683,EMP0299,2026-01-05,business_need,cancelled
+XFR0242,EMP0715,location,JOB0150,JOB0073,Product,Engineering,"New York, US","Dallas, US",EMP0472,EMP0666,2018-02-12,career_growth,approved
+XFR0243,EMP0222,temporary,JOB0173,JOB0480,HR,Operations,"Dallas, US","London, UK",EMP0095,EMP0754,2024-02-03,backfill,completed
+XFR0244,EMP0683,entity,JOB0768,JOB0333,Facilities,Supply Chain,"Toronto, CA","New York, US",EMP0891,EMP0599,2022-11-26,employee_request,completed
+XFR0245,EMP0544,temporary,JOB0122,JOB0498,Finance,HR,"Seattle, US","San Francisco, US",EMP0890,EMP0158,2024-12-25,employee_request,completed
+XFR0246,EMP0641,department,JOB0649,JOB0767,Security,Facilities,"Austin, US","Chicago, US",EMP0412,EMP0086,2025-11-27,backfill,completed
+XFR0247,EMP0600,location,JOB0793,JOB0577,HR,Customer Success,"Seattle, US","Chicago, US",EMP0089,EMP0631,2025-10-18,org_redesign,cancelled
+XFR0248,EMP0125,entity,JOB0263,JOB0985,Data,Marketing,"Dallas, US","Hyderabad, IN",EMP0669,EMP0920,2024-10-28,org_redesign,pending
+XFR0249,EMP0390,department,JOB0398,JOB0777,Sales,HR,"Chicago, US","Austin, US",EMP0408,EMP0534,2024-08-13,business_need,approved
+XFR0250,EMP0856,manager,JOB0928,JOB0804,HR,Data,"San Francisco, US","San Francisco, US",EMP0752,EMP0657,2022-07-07,org_redesign,pending
+XFR0251,EMP0510,temporary,JOB0182,JOB0963,Product,IT,"Hyderabad, IN","Seattle, US",EMP0155,EMP0870,2023-12-13,employee_request,pending
+XFR0252,EMP0526,entity,JOB0342,JOB0931,Security,Engineering,"Chicago, US","Toronto, CA",EMP0038,EMP0119,2018-09-26,business_need,approved
+XFR0253,EMP0762,temporary,JOB0387,JOB0988,Security,Supply Chain,"Austin, US","Dallas, US",EMP0636,EMP0446,2024-07-04,org_redesign,pending
+XFR0254,EMP0360,temporary,JOB0110,JOB0858,IT,Security,"London, UK","Hyderabad, IN",EMP0026,EMP0089,2021-11-28,career_growth,completed
+XFR0255,EMP0285,manager,JOB0821,JOB0343,Finance,Product,"Hyderabad, IN","San Francisco, US",EMP0926,EMP0009,2025-03-02,org_redesign,cancelled
+XFR0256,EMP0761,department,JOB0672,JOB0906,Finance,Customer Success,"Dallas, US","Hyderabad, IN",EMP0798,EMP0391,2024-09-05,backfill,cancelled
+XFR0257,EMP0379,location,JOB0808,JOB0888,Security,Product,"Bengaluru, IN","Seattle, US",EMP0676,EMP0225,2018-07-12,employee_request,cancelled
+XFR0258,EMP0583,temporary,JOB0563,JOB0122,Marketing,Finance,"San Francisco, US","Seattle, US",EMP0654,EMP0678,2025-03-29,career_growth,completed
+XFR0259,EMP0621,temporary,JOB0074,JOB0369,Operations,Legal,"Bengaluru, IN","Chicago, US",EMP0368,EMP0785,2022-04-15,org_redesign,completed
+XFR0260,EMP0071,manager,JOB0918,JOB0051,Engineering,Security,"Chicago, US","Dallas, US",EMP0076,EMP0421,2025-10-06,business_need,completed
+XFR0261,EMP0793,manager,JOB0668,JOB0586,Finance,Finance,"Toronto, CA","Chicago, US",EMP0448,EMP0182,2017-10-31,business_need,cancelled
+XFR0262,EMP0147,department,JOB0941,JOB0385,Engineering,Customer Success,"London, UK","Toronto, CA",EMP0740,EMP0698,2025-11-21,business_need,pending
+XFR0263,EMP0346,department,JOB0360,JOB0954,Sales,Supply Chain,"New York, US","Dallas, US",EMP0240,EMP0005,2026-06-27,career_growth,approved
+XFR0264,EMP0956,temporary,JOB0764,JOB0121,Security,HR,"Dallas, US","Toronto, CA",EMP0081,EMP0009,2022-05-22,career_growth,pending
+XFR0265,EMP0637,department,JOB0387,JOB0519,Security,Finance,"Austin, US","San Francisco, US",EMP0096,EMP0920,2022-01-26,backfill,cancelled
+XFR0266,EMP0868,temporary,JOB0735,JOB0365,Legal,Product,"Bengaluru, IN","Austin, US",EMP0460,EMP0757,2025-12-05,employee_request,cancelled
+XFR0267,EMP0025,temporary,JOB0465,JOB0287,Product,Marketing,"London, UK","Bengaluru, IN",EMP0638,EMP0753,2026-05-20,backfill,completed
+XFR0268,EMP0970,temporary,JOB0992,JOB0015,Security,Facilities,"Dallas, US","New York, US",EMP0890,EMP0539,2025-12-05,career_growth,approved
+XFR0269,EMP0213,manager,JOB0494,JOB0373,Product,Operations,"Denver, US","Austin, US",EMP0933,EMP0622,2018-11-02,career_growth,pending
+XFR0270,EMP0610,manager,JOB0721,JOB0554,Product,HR,"Austin, US","Hyderabad, IN",EMP0768,EMP0492,2025-08-15,business_need,approved
+XFR0271,EMP0075,entity,JOB0340,JOB0131,Facilities,Data,"London, UK","Atlanta, US",EMP0407,EMP0642,2023-05-05,business_need,approved
+XFR0272,EMP0736,temporary,JOB0799,JOB0194,Operations,IT,"Seattle, US","San Francisco, US",EMP0737,EMP0567,2019-09-11,business_need,cancelled
+XFR0273,EMP0853,location,JOB0604,JOB0030,IT,IT,"Dallas, US","Hyderabad, IN",EMP0910,EMP0225,2021-03-14,employee_request,pending
+XFR0274,EMP0143,entity,JOB0624,JOB0814,Facilities,Customer Success,"Atlanta, US","Denver, US",EMP0789,EMP0974,2024-10-29,business_need,cancelled
+XFR0275,EMP0936,location,JOB0853,JOB0539,Sales,Finance,"London, UK","Austin, US",EMP0653,EMP0240,2024-12-18,career_growth,pending
+XFR0276,EMP0384,entity,JOB0764,JOB0970,Security,Facilities,"Dallas, US","Atlanta, US",EMP0689,EMP0262,2026-02-07,backfill,pending
+XFR0277,EMP0373,location,JOB0853,JOB0828,Sales,Sales,"London, UK","Hyderabad, IN",EMP0227,EMP0324,2024-10-31,business_need,approved
+XFR0278,EMP0780,temporary,JOB0434,JOB0196,Finance,HR,"Chicago, US","London, UK",EMP0838,EMP0311,2026-04-21,business_need,approved
+XFR0279,EMP0089,department,JOB0401,JOB0630,HR,Sales,"London, UK","New York, US",EMP0924,EMP0372,2025-06-26,employee_request,approved
+XFR0280,EMP0585,department,JOB0898,JOB0914,Legal,Security,"Dallas, US","Toronto, CA",EMP0607,EMP0610,2020-11-03,org_redesign,approved
+XFR0281,EMP0071,location,JOB0791,JOB0621,Data,Security,"Seattle, US","Denver, US",EMP0362,EMP0366,2023-05-12,employee_request,approved
+XFR0282,EMP0438,temporary,JOB0059,JOB0102,HR,Security,"San Francisco, US","Seattle, US",EMP0604,EMP0240,2025-07-06,backfill,cancelled
+XFR0283,EMP0204,temporary,JOB0214,JOB0626,Customer Success,Sales,"London, UK","Bengaluru, IN",EMP0353,EMP0398,2026-03-23,backfill,approved
+XFR0284,EMP0554,entity,JOB0094,JOB0743,Product,Supply Chain,"Hyderabad, IN","Austin, US",EMP0020,EMP0633,2024-10-24,employee_request,pending
+XFR0285,EMP0622,manager,JOB0136,JOB0511,Sales,Legal,"New York, US","Bengaluru, IN",EMP0007,EMP0402,2026-02-06,backfill,approved
+XFR0286,EMP0948,manager,JOB0626,JOB0827,Sales,Customer Success,"Bengaluru, IN","Hyderabad, IN",EMP0943,EMP0945,2023-07-22,org_redesign,pending
+XFR0287,EMP0892,entity,JOB0980,JOB0006,Sales,Security,"Seattle, US","Bengaluru, IN",EMP0098,EMP0185,2026-05-11,business_need,approved
+XFR0288,EMP0799,manager,JOB0703,JOB0607,HR,Facilities,"New York, US","Chicago, US",EMP0704,EMP0912,2026-02-21,employee_request,completed
+XFR0289,EMP0798,temporary,JOB0517,JOB0732,IT,Engineering,"San Francisco, US","Atlanta, US",EMP0524,EMP0409,2021-01-21,backfill,pending
+XFR0290,EMP0375,temporary,JOB0936,JOB0540,Customer Success,Marketing,"San Francisco, US","New York, US",EMP0950,EMP0202,2020-04-10,org_redesign,cancelled
+XFR0291,EMP0219,department,JOB0189,JOB0581,Supply Chain,Marketing,"Bengaluru, IN","Chicago, US",EMP0499,EMP0998,2025-02-06,business_need,completed
+XFR0292,EMP0943,department,JOB0133,JOB0383,IT,Legal,"New York, US","Denver, US",EMP0176,EMP0025,2024-04-12,employee_request,cancelled
+XFR0293,EMP0987,temporary,JOB0810,JOB0001,Data,Supply Chain,"New York, US","Denver, US",EMP0295,EMP0744,2026-05-06,career_growth,approved
+XFR0294,EMP0290,department,JOB0522,JOB0289,Marketing,Legal,"Toronto, CA","Austin, US",EMP0541,EMP0502,2024-02-01,employee_request,approved
+XFR0295,EMP0200,temporary,JOB0865,JOB0780,Finance,Marketing,"Chicago, US","Denver, US",EMP0662,EMP0464,2024-02-02,org_redesign,approved
+XFR0296,EMP0358,temporary,JOB0704,JOB0876,Product,Engineering,"New York, US","New York, US",EMP0180,EMP0160,2026-06-13,org_redesign,cancelled
+XFR0297,EMP0377,temporary,JOB0870,JOB0814,Data,Customer Success,"London, UK","Denver, US",EMP0336,EMP0831,2024-08-27,employee_request,pending
+XFR0298,EMP0892,location,JOB0090,JOB0521,Operations,HR,"Chicago, US","Chicago, US",EMP0660,EMP0078,2025-12-26,org_redesign,approved
+XFR0299,EMP0606,entity,JOB0081,JOB0967,Finance,Sales,"San Francisco, US","Toronto, CA",EMP0503,EMP0407,2017-03-03,employee_request,cancelled
+XFR0300,EMP0763,location,JOB0478,JOB0861,Finance,Marketing,"Denver, US","Bengaluru, IN",EMP0102,EMP0769,2023-07-13,business_need,approved
+XFR0301,EMP0539,entity,JOB0123,JOB0815,Legal,HR,"New York, US","Dallas, US",EMP0129,EMP0773,2026-06-13,backfill,completed
+XFR0302,EMP0197,temporary,JOB0640,JOB0934,Engineering,Legal,"Dallas, US","Denver, US",EMP0318,EMP0648,2025-11-23,org_redesign,approved
+XFR0303,EMP0892,location,JOB0965,JOB0773,Engineering,Security,"San Francisco, US","Toronto, CA",EMP0167,EMP0931,2026-07-06,employee_request,approved
+XFR0304,EMP0989,entity,JOB0869,JOB0056,Finance,Engineering,"Toronto, CA","Denver, US",EMP0011,EMP0482,2023-12-29,business_need,approved
+XFR0305,EMP0563,temporary,JOB0389,JOB0794,Marketing,Finance,"New York, US","Dallas, US",EMP0301,EMP0861,2024-07-14,backfill,completed
+XFR0306,EMP0323,department,JOB0942,JOB0009,IT,Security,"Chicago, US","Toronto, CA",EMP0906,EMP0766,2026-04-02,employee_request,cancelled
+XFR0307,EMP0361,temporary,JOB0587,JOB0453,IT,Operations,"Toronto, CA","San Francisco, US",EMP0461,EMP0074,2026-06-30,career_growth,cancelled
+XFR0308,EMP0804,entity,JOB0484,JOB0935,IT,Engineering,"London, UK","London, UK",EMP0295,EMP0216,2022-12-11,org_redesign,approved
+XFR0309,EMP0282,location,JOB0757,JOB0242,Finance,Facilities,"Atlanta, US","San Francisco, US",EMP0684,EMP0717,2020-09-27,career_growth,approved
+XFR0310,EMP0019,location,JOB0312,JOB0597,Facilities,HR,"Austin, US","Atlanta, US",EMP0673,EMP0432,2025-06-04,career_growth,completed
+XFR0311,EMP0474,department,JOB0365,JOB0026,Product,Operations,"Austin, US","Dallas, US",EMP0052,EMP0767,2024-08-18,career_growth,cancelled
+XFR0312,EMP0354,temporary,JOB0954,JOB0564,Supply Chain,Sales,"Dallas, US","San Francisco, US",EMP0287,EMP0174,2020-07-25,backfill,completed
+XFR0313,EMP0948,entity,JOB0886,JOB0777,Customer Success,HR,"Toronto, CA","Austin, US",EMP0630,EMP0538,2023-03-15,career_growth,approved
+XFR0314,EMP0688,location,JOB0775,JOB0498,Product,HR,"Bengaluru, IN","San Francisco, US",EMP0694,EMP0604,2025-07-12,org_redesign,cancelled
+XFR0315,EMP0553,entity,JOB0283,JOB0663,IT,Finance,"Denver, US","New York, US",EMP0376,EMP0678,2023-10-06,org_redesign,approved
+XFR0316,EMP0400,department,JOB0300,JOB0472,Security,Legal,"Seattle, US","London, UK",EMP0635,EMP0032,2025-06-12,org_redesign,cancelled
+XFR0317,EMP0263,location,JOB0500,JOB0541,Product,Operations,"Dallas, US","San Francisco, US",EMP0529,EMP0878,2020-04-25,backfill,completed
+XFR0318,EMP0028,temporary,JOB0446,JOB0721,Data,Product,"Seattle, US","Austin, US",EMP0687,EMP0304,2021-05-12,career_growth,approved
+XFR0319,EMP0144,manager,JOB0076,JOB0649,Security,Security,"Chicago, US","Austin, US",EMP0224,EMP0413,2018-09-11,career_growth,approved
+XFR0320,EMP0470,entity,JOB0727,JOB0150,Data,Product,"Bengaluru, IN","New York, US",EMP0974,EMP0317,2025-12-04,org_redesign,approved
+XFR0321,EMP0625,department,JOB0747,JOB0546,Supply Chain,Product,"Toronto, CA","Denver, US",EMP0372,EMP0080,2025-09-13,backfill,cancelled
+XFR0322,EMP0997,manager,JOB0248,JOB0771,Facilities,Operations,"New York, US","Toronto, CA",EMP0115,EMP0274,2026-07-23,career_growth,pending
+XFR0323,EMP0934,department,JOB0570,JOB0991,Legal,Finance,"Bengaluru, IN","Toronto, CA",EMP0864,EMP0253,2026-04-02,org_redesign,pending
+XFR0324,EMP0243,department,JOB0668,JOB0177,Finance,Data,"Toronto, CA","Dallas, US",EMP0953,EMP0702,2023-12-02,employee_request,approved
+XFR0325,EMP0317,temporary,JOB0786,JOB0419,HR,Product,"Chicago, US","Atlanta, US",EMP0740,EMP0751,2015-10-13,org_redesign,approved
+XFR0326,EMP0531,manager,JOB0205,JOB0193,Engineering,Data,"Toronto, CA","Bengaluru, IN",EMP0050,EMP0843,2025-10-16,career_growth,approved
+XFR0327,EMP0547,temporary,JOB0596,JOB0246,Facilities,Security,"New York, US","Atlanta, US",EMP0808,EMP0309,2017-07-20,org_redesign,pending
+XFR0328,EMP0492,department,JOB0488,JOB0342,Sales,Security,"Seattle, US","Chicago, US",EMP0684,EMP0980,2022-04-14,backfill,cancelled
+XFR0329,EMP0607,entity,JOB0079,JOB0823,Sales,IT,"New York, US","Atlanta, US",EMP0677,EMP0100,2026-08-02,employee_request,cancelled
+XFR0330,EMP0591,entity,JOB0276,JOB0042,Engineering,Marketing,"Hyderabad, IN","Atlanta, US",EMP0312,EMP0610,2026-05-10,career_growth,pending
+XFR0331,EMP0064,temporary,JOB0696,JOB0367,IT,Finance,"Chicago, US","Toronto, CA",EMP0584,EMP0291,2021-11-25,org_redesign,completed
+XFR0332,EMP0646,location,JOB0322,JOB0178,IT,Finance,"Seattle, US","Austin, US",EMP0317,EMP0834,2022-07-22,business_need,completed
+XFR0333,EMP0020,department,JOB0909,JOB0398,Finance,Sales,"Hyderabad, IN","Chicago, US",EMP0923,EMP0298,2026-02-28,org_redesign,approved
+XFR0334,EMP0264,manager,JOB0991,JOB0371,Finance,Finance,"Toronto, CA","Hyderabad, IN",EMP0330,EMP0297,2022-10-07,business_need,completed
+XFR0335,EMP0714,location,JOB0500,JOB0914,Product,Security,"Dallas, US","Toronto, CA",EMP0636,EMP0538,2023-02-20,backfill,cancelled
+XFR0336,EMP0337,department,JOB0388,JOB0670,Data,Finance,"Atlanta, US","London, UK",EMP0955,EMP0619,2023-06-29,employee_request,cancelled
+XFR0337,EMP0861,entity,JOB0344,JOB0325,Finance,HR,"Dallas, US","Bengaluru, IN",EMP0050,EMP0008,2025-04-27,backfill,pending
+XFR0338,EMP0485,temporary,JOB0886,JOB0345,Customer Success,IT,"Toronto, CA","Dallas, US",EMP0469,EMP0764,2026-07-31,career_growth,completed
+XFR0339,EMP0855,entity,JOB0249,JOB0032,Data,Security,"Dallas, US","Dallas, US",EMP0896,EMP0457,2023-07-01,career_growth,pending
+XFR0340,EMP0429,department,JOB0280,JOB0227,Operations,Sales,"Denver, US","Dallas, US",EMP0440,EMP0904,2023-09-22,career_growth,approved
+XFR0341,EMP0254,entity,JOB0657,JOB0839,Facilities,Supply Chain,"Denver, US","Hyderabad, IN",EMP0385,EMP0574,2026-03-04,business_need,approved
+XFR0342,EMP0885,temporary,JOB0953,JOB0028,Customer Success,HR,"Atlanta, US","Seattle, US",EMP0269,EMP0674,2026-03-25,org_redesign,cancelled
+XFR0343,EMP0931,department,JOB0928,JOB0039,HR,Data,"San Francisco, US","Toronto, CA",EMP0087,EMP0327,2018-08-03,career_growth,completed
+XFR0344,EMP0944,department,JOB0658,JOB0311,Finance,HR,"London, UK","Toronto, CA",EMP0632,EMP0926,2024-03-20,career_growth,approved
+XFR0345,EMP0920,location,JOB0146,JOB0543,Engineering,Security,"Chicago, US","Chicago, US",EMP0336,EMP0480,2023-06-27,backfill,cancelled
+XFR0346,EMP0576,department,JOB0899,JOB0541,Supply Chain,Operations,"Atlanta, US","San Francisco, US",EMP0919,EMP0965,2026-04-24,business_need,approved
+XFR0347,EMP0144,department,JOB0762,JOB0999,Security,Legal,"Toronto, CA","Hyderabad, IN",EMP0462,EMP0450,2016-06-25,business_need,cancelled
+XFR0348,EMP0964,entity,JOB0214,JOB0272,Customer Success,Product,"London, UK","Denver, US",EMP0124,EMP0840,2025-03-10,employee_request,pending
+XFR0349,EMP0636,manager,JOB0918,JOB0790,Engineering,Security,"Chicago, US","Atlanta, US",EMP0473,EMP0509,2025-05-15,org_redesign,cancelled
+XFR0350,EMP0497,temporary,JOB0787,JOB0104,Operations,Marketing,"New York, US","Austin, US",EMP0808,EMP0636,2020-09-11,org_redesign,cancelled
+XFR0351,EMP0212,manager,JOB0524,JOB0476,Product,Engineering,"Atlanta, US","Austin, US",EMP0774,EMP0120,2021-03-28,backfill,cancelled
+XFR0352,EMP0176,location,JOB0598,JOB0166,Sales,Security,"London, UK","Austin, US",EMP0970,EMP0547,2023-03-17,org_redesign,approved
+XFR0353,EMP0373,department,JOB0530,JOB0771,Marketing,Operations,"Atlanta, US","Toronto, CA",EMP0792,EMP0658,2024-06-23,career_growth,cancelled
+XFR0354,EMP0326,department,JOB0546,JOB0983,Product,HR,"Denver, US","San Francisco, US",EMP0651,EMP0425,2020-07-24,employee_request,pending
+XFR0355,EMP0163,location,JOB0694,JOB0476,IT,Engineering,"New York, US","Austin, US",EMP0827,EMP0488,2022-11-14,career_growth,approved
+XFR0356,EMP0199,entity,JOB0194,JOB0711,IT,Sales,"San Francisco, US","Bengaluru, IN",EMP0218,EMP0444,2019-04-03,business_need,pending
+XFR0357,EMP0517,entity,JOB0757,JOB0495,Finance,Security,"Atlanta, US","Austin, US",EMP0834,EMP0119,2026-06-29,business_need,pending
+XFR0358,EMP0863,entity,JOB0723,JOB0213,Finance,Marketing,"Denver, US","Seattle, US",EMP0813,EMP0088,2024-12-20,org_redesign,approved
+XFR0359,EMP0751,entity,JOB0554,JOB0145,HR,Marketing,"Hyderabad, IN","San Francisco, US",EMP0412,EMP0817,2021-11-30,business_need,approved
+XFR0360,EMP0396,entity,JOB0360,JOB0396,Sales,Engineering,"New York, US","New York, US",EMP0227,EMP0292,2019-06-13,career_growth,pending
+XFR0361,EMP0905,entity,JOB0823,JOB0022,IT,Data,"Atlanta, US","Dallas, US",EMP0875,EMP0868,2026-07-28,org_redesign,pending
+XFR0362,EMP0080,entity,JOB0792,JOB0186,Engineering,HR,"San Francisco, US","Toronto, CA",EMP0405,EMP0052,2025-02-08,org_redesign,approved
+XFR0363,EMP0263,temporary,JOB0567,JOB0041,Engineering,IT,"New York, US","Chicago, US",EMP0384,EMP0359,2021-01-25,org_redesign,pending
+XFR0364,EMP0686,entity,JOB0132,JOB0679,Facilities,Marketing,"New York, US","Toronto, CA",EMP0200,EMP0619,2024-09-28,backfill,approved
+XFR0365,EMP0856,temporary,JOB0284,JOB0558,Product,Marketing,"Denver, US","San Francisco, US",EMP0900,EMP0957,2022-07-19,business_need,approved
+XFR0366,EMP0301,entity,JOB0348,JOB0385,HR,Customer Success,"New York, US","Toronto, CA",EMP0982,EMP0262,2026-07-29,backfill,approved
+XFR0367,EMP0002,manager,JOB0398,JOB0540,Sales,Marketing,"Chicago, US","New York, US",EMP0065,EMP0268,2019-08-02,business_need,cancelled
+XFR0368,EMP0800,manager,JOB0876,JOB0617,Engineering,Facilities,"New York, US","Toronto, CA",EMP0118,EMP0768,2026-02-05,career_growth,approved
+XFR0369,EMP0046,department,JOB0291,JOB0170,Engineering,Facilities,"Dallas, US","Hyderabad, IN",EMP0741,EMP0765,2026-02-21,backfill,approved
+XFR0370,EMP0634,department,JOB0632,JOB0244,Operations,Data,"Toronto, CA","Hyderabad, IN",EMP0189,EMP0956,2026-01-31,employee_request,pending
+XFR0371,EMP0083,entity,JOB0844,JOB0054,Supply Chain,Data,"Atlanta, US","Hyderabad, IN",EMP0079,EMP0113,2023-12-20,business_need,completed
+XFR0372,EMP0234,department,JOB0807,JOB0017,Security,Marketing,"Dallas, US","San Francisco, US",EMP0373,EMP0938,2021-10-01,career_growth,completed
+XFR0373,EMP0913,temporary,JOB0510,JOB0557,Customer Success,Customer Success,"Atlanta, US","New York, US",EMP0919,EMP0474,2026-04-02,business_need,completed
+XFR0374,EMP0071,manager,JOB0236,JOB0109,Customer Success,Supply Chain,"San Francisco, US","Denver, US",EMP0605,EMP0811,2024-03-02,business_need,approved
+XFR0375,EMP0896,entity,JOB0417,JOB0876,Sales,Engineering,"San Francisco, US","New York, US",EMP0536,EMP0900,2025-07-25,business_need,completed
+XFR0376,EMP0127,entity,JOB0082,JOB0887,Data,Operations,"Seattle, US","Dallas, US",EMP0025,EMP0827,2024-04-04,backfill,completed
+XFR0377,EMP0168,location,JOB0959,JOB0169,Operations,Security,"London, UK","Atlanta, US",EMP0707,EMP0159,2025-05-17,org_redesign,cancelled
+XFR0378,EMP0120,temporary,JOB0591,JOB0583,Customer Success,IT,"Chicago, US","Dallas, US",EMP0620,EMP0953,2023-08-15,org_redesign,cancelled
+XFR0379,EMP0886,temporary,JOB0808,JOB0575,Security,Engineering,"Bengaluru, IN","Atlanta, US",EMP0104,EMP0519,2026-04-03,org_redesign,approved
+XFR0380,EMP0121,department,JOB0801,JOB0168,Finance,Engineering,"Bengaluru, IN","Atlanta, US",EMP0475,EMP0968,2024-08-30,employee_request,approved
+XFR0381,EMP0897,temporary,JOB0377,JOB0093,Supply Chain,Security,"San Francisco, US","London, UK",EMP0837,EMP0875,2025-04-09,business_need,completed
+XFR0382,EMP0496,location,JOB0960,JOB0342,Marketing,Security,"Dallas, US","Chicago, US",EMP0123,EMP0204,2026-07-02,business_need,approved
+XFR0383,EMP0812,manager,JOB0389,JOB0564,Marketing,Sales,"New York, US","San Francisco, US",EMP0365,EMP0796,2026-07-02,employee_request,completed
+XFR0384,EMP0015,location,JOB0210,JOB0550,Facilities,Customer Success,"London, UK","Chicago, US",EMP0118,EMP0328,2023-04-21,org_redesign,approved
+XFR0385,EMP0071,department,JOB0723,JOB0480,Finance,Operations,"Denver, US","London, UK",EMP0486,EMP0938,2023-11-27,career_growth,approved
+XFR0386,EMP0056,entity,JOB0165,JOB0561,Customer Success,Legal,"London, UK","Atlanta, US",EMP0441,EMP0493,2025-01-31,backfill,approved
+XFR0387,EMP0213,location,JOB0844,JOB0036,Supply Chain,Data,"Atlanta, US","Dallas, US",EMP0915,EMP0785,2017-06-16,career_growth,cancelled
+XFR0388,EMP0498,department,JOB0754,JOB0710,Marketing,Engineering,"New York, US","Toronto, CA",EMP0734,EMP0717,2017-09-23,career_growth,pending
+XFR0389,EMP0403,entity,JOB0497,JOB0967,Data,Sales,"Hyderabad, IN","Toronto, CA",EMP0258,EMP0561,2026-06-05,org_redesign,pending
+XFR0390,EMP0966,location,JOB0942,JOB0222,IT,Facilities,"Chicago, US","Hyderabad, IN",EMP0627,EMP0040,2015-12-07,org_redesign,approved
+XFR0391,EMP0334,manager,JOB0387,JOB0560,Security,Marketing,"Austin, US","Hyderabad, IN",EMP0162,EMP0350,2022-04-22,backfill,completed
+XFR0392,EMP0247,entity,JOB0706,JOB0232,Data,IT,"Bengaluru, IN","Austin, US",EMP0701,EMP0215,2026-03-26,employee_request,approved
+XFR0393,EMP0393,manager,JOB0538,JOB0440,Engineering,Facilities,"Atlanta, US","Atlanta, US",EMP0168,EMP0469,2020-03-26,career_growth,pending
+XFR0394,EMP0210,manager,JOB0389,JOB0865,Marketing,Finance,"New York, US","Chicago, US",EMP0183,EMP0362,2017-08-02,employee_request,approved
+XFR0395,EMP0037,entity,JOB0113,JOB0124,Security,Sales,"Chicago, US","Austin, US",EMP0469,EMP0181,2018-03-26,org_redesign,completed
+XFR0396,EMP0916,department,JOB0416,JOB0538,Engineering,Engineering,"Bengaluru, IN","Atlanta, US",EMP0597,EMP0284,2022-06-22,employee_request,completed
+XFR0397,EMP0082,manager,JOB0236,JOB0244,Customer Success,Data,"San Francisco, US","Hyderabad, IN",EMP0667,EMP0394,2021-04-19,business_need,completed
+XFR0398,EMP0027,location,JOB0110,JOB0171,IT,Sales,"London, UK","New York, US",EMP0730,EMP0078,2018-11-22,employee_request,pending
+XFR0399,EMP0210,temporary,JOB0780,JOB0143,Marketing,Product,"Denver, US","Atlanta, US",EMP0385,EMP0969,2017-10-07,employee_request,pending
+XFR0400,EMP0077,entity,JOB0469,JOB0287,Security,Marketing,"London, UK","Bengaluru, IN",EMP0381,EMP0100,2024-11-24,career_growth,cancelled
+XFR0401,EMP0341,temporary,JOB0560,JOB0408,Marketing,Supply Chain,"Hyderabad, IN","Bengaluru, IN",EMP0013,EMP0644,2017-11-12,backfill,approved
+XFR0402,EMP0191,temporary,JOB0041,JOB0459,IT,Engineering,"Chicago, US","Austin, US",EMP0224,EMP0628,2021-05-22,career_growth,pending
+XFR0403,EMP0121,temporary,JOB0272,JOB0785,Product,IT,"Denver, US","London, UK",EMP0606,EMP0150,2025-02-25,backfill,completed
+XFR0404,EMP0956,manager,JOB0219,JOB0226,Supply Chain,Engineering,"Toronto, CA","Hyderabad, IN",EMP0736,EMP0019,2022-02-14,career_growth,pending
+XFR0405,EMP0109,manager,JOB0713,JOB0026,Finance,Operations,"Hyderabad, IN","Dallas, US",EMP0620,EMP0704,2020-10-28,business_need,pending
+XFR0406,EMP0046,manager,JOB0778,JOB0126,IT,Sales,"Bengaluru, IN","Seattle, US",EMP0183,EMP0979,2024-06-21,backfill,completed
+XFR0407,EMP0349,temporary,JOB0519,JOB0393,Finance,Engineering,"San Francisco, US","London, UK",EMP0458,EMP0045,2024-07-18,career_growth,cancelled
+XFR0408,EMP0789,manager,JOB0166,JOB0676,Security,IT,"Austin, US","London, UK",EMP0632,EMP0602,2023-12-14,org_redesign,pending
+XFR0409,EMP0982,manager,JOB0542,JOB0789,Engineering,Finance,"Denver, US","Hyderabad, IN",EMP0993,EMP0640,2017-04-29,org_redesign,pending
+XFR0410,EMP0352,entity,JOB0426,JOB0542,Product,Engineering,"Seattle, US","Denver, US",EMP0870,EMP0557,2026-05-21,business_need,completed
+XFR0411,EMP0363,temporary,JOB0113,JOB0464,Security,Supply Chain,"Chicago, US","New York, US",EMP0964,EMP0334,2023-01-29,employee_request,completed
+XFR0412,EMP0785,department,JOB0318,JOB0653,Operations,IT,"Chicago, US","London, UK",EMP0756,EMP0022,2023-01-01,backfill,cancelled
+XFR0413,EMP0241,entity,JOB0559,JOB0146,IT,Engineering,"Bengaluru, IN","Chicago, US",EMP0376,EMP0312,2023-05-11,career_growth,approved
+XFR0414,EMP0962,entity,JOB0038,JOB0054,Marketing,Data,"Dallas, US","Hyderabad, IN",EMP0822,EMP0954,2026-03-26,employee_request,pending
+XFR0415,EMP0222,department,JOB0323,JOB0242,Legal,Facilities,"Austin, US","San Francisco, US",EMP0764,EMP0005,2025-08-15,backfill,approved
+XFR0416,EMP0795,entity,JOB0323,JOB0852,Legal,Data,"Austin, US","Dallas, US",EMP0042,EMP0882,2023-10-10,business_need,completed
+XFR0417,EMP0582,entity,JOB0509,JOB0076,Product,Security,"Chicago, US","Chicago, US",EMP0206,EMP0719,2020-08-07,business_need,pending
+XFR0418,EMP0891,temporary,JOB0923,JOB0876,Sales,Engineering,"San Francisco, US","New York, US",EMP0222,EMP0812,2025-10-30,career_growth,completed
+XFR0419,EMP0647,entity,JOB0413,JOB0897,Operations,HR,"Chicago, US","Denver, US",EMP0958,EMP0919,2024-08-18,career_growth,pending
+XFR0420,EMP0450,manager,JOB0530,JOB0343,Marketing,Product,"Atlanta, US","San Francisco, US",EMP0022,EMP0918,2025-09-02,org_redesign,approved
+XFR0421,EMP0996,temporary,JOB0679,JOB0763,Marketing,Data,"Toronto, CA","Seattle, US",EMP0099,EMP0936,2023-12-08,org_redesign,cancelled
+XFR0422,EMP0572,department,JOB0735,JOB0078,Legal,Marketing,"Bengaluru, IN","London, UK",EMP0454,EMP0228,2021-01-12,employee_request,cancelled
+XFR0423,EMP0859,location,JOB0102,JOB0144,Security,Supply Chain,"Seattle, US","San Francisco, US",EMP0245,EMP0414,2024-06-25,career_growth,cancelled
+XFR0424,EMP0455,location,JOB0004,JOB0404,Sales,Data,"Hyderabad, IN","Denver, US",EMP0597,EMP0981,2024-09-03,backfill,approved
+XFR0425,EMP0672,entity,JOB0351,JOB0994,Marketing,Customer Success,"Atlanta, US","Toronto, CA",EMP0048,EMP0769,2023-06-09,business_need,cancelled
+XFR0426,EMP0624,location,JOB0825,JOB0379,IT,Finance,"New York, US","Chicago, US",EMP0091,EMP0071,2026-05-01,backfill,cancelled
+XFR0427,EMP0965,manager,JOB0611,JOB0138,Marketing,Engineering,"Hyderabad, IN","London, UK",EMP0448,EMP0860,2024-06-23,career_growth,approved
+XFR0428,EMP0115,manager,JOB0348,JOB0791,HR,Data,"New York, US","Seattle, US",EMP0118,EMP0555,2026-01-25,employee_request,approved
+XFR0429,EMP0982,entity,JOB0239,JOB0382,Customer Success,Product,"Hyderabad, IN","Seattle, US",EMP0837,EMP0364,2018-03-30,backfill,pending
+XFR0430,EMP0670,department,JOB0658,JOB0695,Finance,HR,"London, UK","Atlanta, US",EMP0591,EMP0824,2014-05-02,business_need,approved
+XFR0431,EMP0260,entity,JOB0372,JOB0312,Legal,Facilities,"Austin, US","Austin, US",EMP0037,EMP0255,2018-02-27,business_need,cancelled
+XFR0432,EMP0292,department,JOB0878,JOB0466,Engineering,Customer Success,"Atlanta, US","Seattle, US",EMP0857,EMP0106,2024-11-24,backfill,completed
+XFR0433,EMP0502,department,JOB0883,JOB0969,HR,Marketing,"New York, US","Hyderabad, IN",EMP0161,EMP0369,2019-12-08,employee_request,approved
+XFR0434,EMP0738,department,JOB0954,JOB0096,Supply Chain,Legal,"Dallas, US","San Francisco, US",EMP0642,EMP0979,2025-08-16,backfill,completed
+XFR0435,EMP0665,temporary,JOB0795,JOB0471,Supply Chain,Security,"Bengaluru, IN","New York, US",EMP0246,EMP1000,2026-06-28,org_redesign,cancelled
+XFR0436,EMP0371,entity,JOB0554,JOB0167,HR,Facilities,"Hyderabad, IN","Hyderabad, IN",EMP0818,EMP0937,2025-04-01,employee_request,cancelled
+XFR0437,EMP0724,department,JOB0930,JOB0866,IT,Data,"Bengaluru, IN","Hyderabad, IN",EMP0057,EMP0951,2026-06-13,backfill,completed
+XFR0438,EMP0778,entity,JOB0095,JOB0701,Sales,Customer Success,"London, UK","San Francisco, US",EMP0530,EMP0253,2024-02-23,backfill,completed
+XFR0439,EMP0447,location,JOB0351,JOB0439,Marketing,Customer Success,"Atlanta, US","San Francisco, US",EMP0796,EMP0672,2026-07-12,career_growth,completed
+XFR0440,EMP0328,location,JOB0344,JOB0142,Finance,Operations,"Dallas, US","Atlanta, US",EMP0365,EMP0145,2023-07-14,career_growth,pending
+XFR0441,EMP0421,temporary,JOB0855,JOB0108,HR,HR,"New York, US","San Francisco, US",EMP0665,EMP0008,2025-03-31,employee_request,approved
+XFR0442,EMP0333,manager,JOB0872,JOB0987,Supply Chain,Facilities,"Denver, US","Denver, US",EMP0695,EMP0289,2025-06-19,backfill,pending
+XFR0443,EMP0512,manager,JOB0249,JOB0798,Data,Customer Success,"Dallas, US","Seattle, US",EMP0455,EMP0804,2022-05-29,employee_request,completed
+XFR0444,EMP0405,department,JOB0389,JOB0678,Marketing,HR,"New York, US","Seattle, US",EMP0434,EMP0360,2026-04-01,employee_request,completed
+XFR0445,EMP0342,temporary,JOB0527,JOB0830,Data,Engineering,"Austin, US","Atlanta, US",EMP0783,EMP0694,2023-07-13,backfill,pending
+XFR0446,EMP0562,location,JOB0074,JOB0839,Operations,Supply Chain,"Bengaluru, IN","Hyderabad, IN",EMP0393,EMP0988,2024-10-11,business_need,pending
+XFR0447,EMP0288,entity,JOB0865,JOB0144,Finance,Supply Chain,"Chicago, US","San Francisco, US",EMP0139,EMP0133,2021-04-29,org_redesign,approved
+XFR0448,EMP0330,location,JOB0325,JOB0944,HR,Supply Chain,"Bengaluru, IN","New York, US",EMP0762,EMP0830,2025-03-18,backfill,approved
+XFR0449,EMP0337,manager,JOB0782,JOB0797,Product,Security,"Seattle, US","Chicago, US",EMP0737,EMP0547,2024-10-09,backfill,cancelled
+XFR0450,EMP0566,department,JOB0850,JOB0036,Finance,Data,"Hyderabad, IN","Dallas, US",EMP0258,EMP0667,2021-08-25,org_redesign,completed
+XFR0451,EMP0964,department,JOB0193,JOB0147,Data,Marketing,"Bengaluru, IN","Denver, US",EMP0649,EMP0824,2023-12-24,career_growth,pending
+XFR0452,EMP0651,department,JOB0867,JOB0810,Finance,Data,"London, UK","New York, US",EMP0025,EMP0193,2017-08-10,org_redesign,cancelled
+XFR0453,EMP0685,manager,JOB0293,JOB0219,Finance,Supply Chain,"Chicago, US","Toronto, CA",EMP0499,EMP0432,2018-03-17,career_growth,cancelled
+XFR0454,EMP0230,manager,JOB0483,JOB0414,Legal,Finance,"Chicago, US","Dallas, US",EMP0537,EMP0295,2017-07-05,employee_request,cancelled
+XFR0455,EMP0451,temporary,JOB0452,JOB0006,Legal,Security,"Bengaluru, IN","Bengaluru, IN",EMP0029,EMP0018,2023-02-09,org_redesign,cancelled
+XFR0456,EMP0635,department,JOB0214,JOB0621,Customer Success,Security,"London, UK","Denver, US",EMP0824,EMP0186,2026-03-20,career_growth,pending
+XFR0457,EMP0829,temporary,JOB0294,JOB0752,Facilities,Legal,"Austin, US","Hyderabad, IN",EMP0368,EMP0486,2021-06-09,career_growth,completed
+XFR0458,EMP0307,temporary,JOB0566,JOB0462,Legal,Marketing,"Denver, US","Chicago, US",EMP0501,EMP0881,2026-02-07,backfill,pending
+XFR0459,EMP0616,department,JOB0313,JOB0676,Customer Success,IT,"New York, US","London, UK",EMP0622,EMP0146,2015-04-15,career_growth,pending
+XFR0460,EMP0313,department,JOB0605,JOB0707,Facilities,Sales,"Dallas, US","Dallas, US",EMP0295,EMP0541,2025-08-21,career_growth,cancelled
+XFR0461,EMP0032,manager,JOB0386,JOB0059,IT,HR,"San Francisco, US","San Francisco, US",EMP0074,EMP0159,2019-03-12,career_growth,approved
+XFR0462,EMP0898,entity,JOB0518,JOB0226,Product,Engineering,"Hyderabad, IN","Hyderabad, IN",EMP0117,EMP0657,2026-07-21,org_redesign,completed
+XFR0463,EMP0708,entity,JOB0589,JOB0808,Sales,Security,"Dallas, US","Bengaluru, IN",EMP0887,EMP0024,2025-07-12,backfill,cancelled
+XFR0464,EMP0600,temporary,JOB0957,JOB0231,Engineering,Engineering,"London, UK","Hyderabad, IN",EMP0417,EMP0725,2025-10-13,career_growth,approved
+XFR0465,EMP0327,temporary,JOB0520,JOB0308,Security,Marketing,"London, UK","Seattle, US",EMP0438,EMP0051,2026-06-26,org_redesign,approved
+XFR0466,EMP0709,temporary,JOB0453,JOB0542,Operations,Engineering,"San Francisco, US","Denver, US",EMP0032,EMP0977,2025-02-23,org_redesign,approved
+XFR0467,EMP0352,location,JOB0516,JOB0441,Data,Facilities,"Chicago, US","San Francisco, US",EMP0524,EMP0285,2018-06-24,backfill,completed
+XFR0468,EMP0106,temporary,JOB0011,JOB0708,Data,HR,"Austin, US","Toronto, CA",EMP0152,EMP0929,2026-07-20,business_need,approved
+XFR0469,EMP0767,temporary,JOB0510,JOB0705,Customer Success,Sales,"Atlanta, US","Dallas, US",EMP0246,EMP0813,2023-04-02,career_growth,completed
+XFR0470,EMP0732,location,JOB0924,JOB0340,Security,Facilities,"New York, US","London, UK",EMP0629,EMP0540,2025-04-14,employee_request,cancelled
+XFR0471,EMP0865,location,JOB0862,JOB0949,Facilities,Security,"Hyderabad, IN","Seattle, US",EMP0411,EMP0026,2026-04-06,business_need,pending
+XFR0472,EMP0575,department,JOB0369,JOB0865,Legal,Finance,"Chicago, US","Chicago, US",EMP0377,EMP0843,2023-12-04,business_need,approved
+XFR0473,EMP0516,manager,JOB0288,JOB0655,Marketing,Engineering,"New York, US","London, UK",EMP0987,EMP0823,2024-06-07,career_growth,pending
+XFR0474,EMP0217,temporary,JOB0821,JOB0324,Finance,Facilities,"Hyderabad, IN","Dallas, US",EMP0396,EMP0009,2024-02-03,employee_request,approved
+XFR0475,EMP0401,temporary,JOB0489,JOB0445,Engineering,Security,"Seattle, US","Toronto, CA",EMP0581,EMP0332,2024-11-26,career_growth,pending
+XFR0476,EMP0387,entity,JOB0861,JOB0683,Marketing,Operations,"Bengaluru, IN","Atlanta, US",EMP0601,EMP0639,2026-07-20,org_redesign,approved
+XFR0477,EMP0090,temporary,JOB0409,JOB0228,Customer Success,Legal,"Chicago, US","Austin, US",EMP0085,EMP0463,2024-11-03,employee_request,completed
+XFR0478,EMP0776,temporary,JOB0742,JOB0992,IT,Security,"Seattle, US","Dallas, US",EMP0140,EMP0097,2021-10-10,backfill,pending
+XFR0479,EMP0813,temporary,JOB0421,JOB0775,Sales,Product,"Atlanta, US","Bengaluru, IN",EMP0593,EMP0518,2023-04-07,business_need,cancelled
+XFR0480,EMP0463,manager,JOB0865,JOB0642,Finance,Product,"Chicago, US","Toronto, CA",EMP0373,EMP0550,2023-03-29,business_need,approved
+XFR0481,EMP0376,entity,JOB0807,JOB0334,Security,Data,"Dallas, US","Bengaluru, IN",EMP0557,EMP0994,2023-08-12,business_need,pending
+XFR0482,EMP0276,location,JOB0293,JOB0658,Finance,Finance,"Chicago, US","London, UK",EMP0834,EMP0104,2025-07-25,backfill,completed
+XFR0483,EMP0850,temporary,JOB0687,JOB0236,Product,Customer Success,"Chicago, US","San Francisco, US",EMP0232,EMP0352,2018-01-24,org_redesign,approved
+XFR0484,EMP0149,department,JOB0538,JOB0434,Engineering,Finance,"Atlanta, US","Chicago, US",EMP0648,EMP0205,2025-10-21,backfill,approved
+XFR0485,EMP0928,manager,JOB0805,JOB0677,Finance,Security,"London, UK","London, UK",EMP0630,EMP0348,2025-04-24,backfill,completed
+XFR0486,EMP0623,entity,JOB0188,JOB0803,Marketing,Legal,"San Francisco, US","London, UK",EMP0958,EMP0098,2018-01-02,org_redesign,approved
+XFR0487,EMP0079,department,JOB0195,JOB0400,Data,Facilities,"Hyderabad, IN","Bengaluru, IN",EMP0657,EMP0888,2026-07-16,org_redesign,cancelled
+XFR0488,EMP0601,entity,JOB0858,JOB0682,Security,Engineering,"Hyderabad, IN","New York, US",EMP0854,EMP0176,2025-03-22,backfill,completed
+XFR0489,EMP0965,entity,JOB0842,JOB0460,Supply Chain,Security,"Austin, US","Bengaluru, IN",EMP0368,EMP0789,2020-07-27,career_growth,pending
+XFR0490,EMP0940,location,JOB0027,JOB0647,Supply Chain,Operations,"Toronto, CA","Austin, US",EMP0767,EMP0499,2025-10-19,backfill,completed
+XFR0491,EMP0666,location,JOB0066,JOB0857,Facilities,HR,"Denver, US","Toronto, CA",EMP0629,EMP0563,2025-12-28,org_redesign,approved
+XFR0492,EMP0343,entity,JOB0367,JOB0560,Finance,Marketing,"Toronto, CA","Hyderabad, IN",EMP0325,EMP0490,2026-05-09,business_need,cancelled
+XFR0493,EMP0839,department,JOB0832,JOB0943,Legal,Legal,"Toronto, CA","Austin, US",EMP0578,EMP0406,2017-05-13,career_growth,approved
+XFR0494,EMP0021,entity,JOB0446,JOB0936,Data,Customer Success,"Seattle, US","San Francisco, US",EMP0916,EMP0018,2019-06-13,backfill,cancelled
+XFR0495,EMP0259,manager,JOB0313,JOB0141,Customer Success,Marketing,"New York, US","New York, US",EMP0265,EMP0668,2025-10-17,org_redesign,approved
+XFR0496,EMP0385,department,JOB0575,JOB0290,Engineering,HR,"Atlanta, US","Dallas, US",EMP0088,EMP0766,2025-09-22,org_redesign,cancelled
+XFR0497,EMP0828,temporary,JOB0383,JOB0752,Legal,Legal,"Denver, US","Hyderabad, IN",EMP0369,EMP0641,2019-05-22,backfill,cancelled
+XFR0498,EMP0618,manager,JOB0141,JOB0989,Marketing,IT,"New York, US","Toronto, CA",EMP0946,EMP0508,2026-02-02,business_need,completed
+XFR0499,EMP0047,temporary,JOB0740,JOB0589,Supply Chain,Sales,"Seattle, US","Dallas, US",EMP0214,EMP0713,2026-07-02,employee_request,approved
+XFR0500,EMP0998,department,JOB0561,JOB0520,Legal,Security,"Atlanta, US","London, UK",EMP0580,EMP0145,2023-12-19,career_growth,pending
+XFR0501,EMP0504,manager,JOB0893,JOB0239,Supply Chain,Customer Success,"Atlanta, US","Hyderabad, IN",EMP0273,EMP0709,2025-12-17,employee_request,approved
+XFR0502,EMP0765,location,JOB0798,JOB0757,Customer Success,Finance,"Seattle, US","Atlanta, US",EMP0184,EMP0882,2026-07-16,business_need,completed
+XFR0503,EMP0961,location,JOB0910,JOB0286,Legal,IT,"Denver, US","Austin, US",EMP0041,EMP0914,2024-01-06,business_need,approved
+XFR0504,EMP0817,manager,JOB0171,JOB0547,Sales,Product,"New York, US","San Francisco, US",EMP0771,EMP0739,2025-04-06,employee_request,cancelled
+XFR0505,EMP0485,entity,JOB0688,JOB0224,Marketing,Customer Success,"Dallas, US","Atlanta, US",EMP0115,EMP0053,2026-06-15,career_growth,approved
+XFR0506,EMP0467,temporary,JOB0339,JOB0761,Engineering,Operations,"Chicago, US","Seattle, US",EMP0128,EMP0008,2025-08-19,business_need,approved
+XFR0507,EMP0334,entity,JOB0341,JOB0738,Operations,Marketing,"Bengaluru, IN","Dallas, US",EMP0345,EMP0836,2024-04-25,org_redesign,completed
+XFR0508,EMP0686,temporary,JOB0395,JOB0124,IT,Sales,"San Francisco, US","Austin, US",EMP0086,EMP0138,2026-07-04,org_redesign,approved
+XFR0509,EMP0050,entity,JOB0597,JOB0665,HR,Finance,"Atlanta, US","Bengaluru, IN",EMP0641,EMP0202,2026-03-24,backfill,approved
+XFR0510,EMP0163,entity,JOB0903,JOB0169,Customer Success,Security,"Toronto, CA","Atlanta, US",EMP0807,EMP0256,2024-03-01,career_growth,pending
+XFR0511,EMP0917,manager,JOB0825,JOB0821,IT,Finance,"New York, US","Hyderabad, IN",EMP0645,EMP0078,2023-07-07,backfill,approved
+XFR0512,EMP0128,temporary,JOB0780,JOB0787,Marketing,Operations,"Denver, US","New York, US",EMP0736,EMP0926,2020-05-30,employee_request,completed
+XFR0513,EMP0942,department,JOB0083,JOB0907,Data,Customer Success,"Seattle, US","Bengaluru, IN",EMP0770,EMP0040,2026-02-25,business_need,pending
+XFR0514,EMP0184,entity,JOB0258,JOB0166,Operations,Security,"San Francisco, US","Austin, US",EMP0616,EMP0488,2023-06-11,org_redesign,pending
+XFR0515,EMP0509,department,JOB0004,JOB0119,Sales,Legal,"Hyderabad, IN","Bengaluru, IN",EMP0700,EMP0107,2025-05-10,backfill,approved
+XFR0516,EMP0939,department,JOB0928,JOB0520,HR,Security,"San Francisco, US","London, UK",EMP0016,EMP0586,2021-12-16,employee_request,cancelled
+XFR0517,EMP0070,location,JOB0762,JOB0828,Security,Sales,"Toronto, CA","Hyderabad, IN",EMP0888,EMP0337,2023-01-06,business_need,completed
+XFR0518,EMP0273,manager,JOB0247,JOB0249,Security,Data,"Atlanta, US","Dallas, US",EMP0526,EMP0420,2020-05-29,employee_request,cancelled
+XFR0519,EMP0889,department,JOB0118,JOB0360,Sales,Sales,"Chicago, US","New York, US",EMP0209,EMP0254,2025-07-25,employee_request,approved
+XFR0520,EMP0022,location,JOB0464,JOB0685,Supply Chain,IT,"New York, US","Austin, US",EMP0399,EMP0061,2023-09-12,org_redesign,pending
+XFR0521,EMP0255,department,JOB0930,JOB0330,IT,Customer Success,"Bengaluru, IN","Seattle, US",EMP0269,EMP0180,2022-01-31,career_growth,approved
+XFR0522,EMP0406,entity,JOB0161,JOB0377,Supply Chain,Supply Chain,"Denver, US","San Francisco, US",EMP0263,EMP0460,2026-04-26,business_need,approved
+XFR0523,EMP0417,entity,JOB0475,JOB0561,Security,Legal,"Hyderabad, IN","Atlanta, US",EMP0884,EMP0047,2025-11-05,career_growth,cancelled
+XFR0524,EMP0278,entity,JOB0057,JOB0212,Finance,IT,"Atlanta, US","Seattle, US",EMP0207,EMP0478,2016-08-11,org_redesign,pending
+XFR0525,EMP0043,temporary,JOB0725,JOB0255,HR,Facilities,"Dallas, US","Atlanta, US",EMP0163,EMP0636,2021-06-02,career_growth,cancelled
+XFR0526,EMP0309,manager,JOB0291,JOB0569,Engineering,Data,"Dallas, US","New York, US",EMP0063,EMP0797,2023-04-21,business_need,approved
+XFR0527,EMP0875,manager,JOB0524,JOB0298,Product,Marketing,"Atlanta, US","London, UK",EMP0130,EMP0131,2026-03-16,business_need,completed
+XFR0528,EMP0664,location,JOB0823,JOB0731,IT,Facilities,"Atlanta, US","Toronto, CA",EMP0232,EMP0996,2023-07-06,backfill,completed
+XFR0529,EMP0873,manager,JOB0422,JOB0634,Data,Engineering,"San Francisco, US","New York, US",EMP0956,EMP0730,2026-04-04,employee_request,approved
+XFR0530,EMP0234,temporary,JOB0895,JOB0668,Sales,Finance,"Atlanta, US","Toronto, CA",EMP0128,EMP0021,2026-03-04,backfill,approved
+XFR0531,EMP0022,department,JOB0022,JOB0771,Data,Operations,"Dallas, US","Toronto, CA",EMP0211,EMP0313,2021-10-05,business_need,completed
+XFR0532,EMP0918,department,JOB0300,JOB0797,Security,Security,"Seattle, US","Chicago, US",EMP0146,EMP0707,2019-03-28,career_growth,completed
+XFR0533,EMP0284,manager,JOB0700,JOB0220,IT,Engineering,"Seattle, US","Atlanta, US",EMP0209,EMP0191,2024-01-01,backfill,completed
+XFR0534,EMP0055,manager,JOB0510,JOB0898,Customer Success,Legal,"Atlanta, US","Dallas, US",EMP0738,EMP0790,2024-12-12,career_growth,cancelled
+XFR0535,EMP0578,entity,JOB0493,JOB0228,HR,Legal,"London, UK","Austin, US",EMP0808,EMP0639,2026-07-08,career_growth,approved
+XFR0536,EMP0843,manager,JOB0860,JOB0244,Legal,Data,"Denver, US","Hyderabad, IN",EMP0450,EMP0140,2026-04-27,org_redesign,approved
+XFR0537,EMP0382,department,JOB0097,JOB0564,Facilities,Sales,"Austin, US","San Francisco, US",EMP0053,EMP0841,2018-09-10,career_growth,pending
+XFR0538,EMP0308,temporary,JOB0800,JOB0590,Product,Customer Success,"San Francisco, US","San Francisco, US",EMP0938,EMP0219,2026-03-20,career_growth,pending
+XFR0539,EMP0887,location,JOB0631,JOB0092,HR,IT,"Denver, US","New York, US",EMP0161,EMP0582,2026-03-08,career_growth,completed
+XFR0540,EMP0287,location,JOB0770,JOB0553,Finance,Engineering,"Toronto, CA","Atlanta, US",EMP0962,EMP0900,2025-04-13,career_growth,approved
+XFR0541,EMP0448,entity,JOB0357,JOB0838,Sales,Engineering,"Hyderabad, IN","Bengaluru, IN",EMP0734,EMP0472,2020-01-13,org_redesign,approved
+XFR0542,EMP0007,manager,JOB0664,JOB0818,IT,IT,"Seattle, US","Toronto, CA",EMP0030,EMP0212,2025-07-11,business_need,approved
+XFR0543,EMP0267,department,JOB0419,JOB0304,Product,Customer Success,"Atlanta, US","San Francisco, US",EMP0144,EMP0920,2017-05-14,employee_request,approved
+XFR0544,EMP0803,entity,JOB0838,JOB0006,Engineering,Security,"Bengaluru, IN","Bengaluru, IN",EMP0845,EMP0106,2018-08-19,employee_request,cancelled
+XFR0545,EMP0976,temporary,JOB0466,JOB0197,Customer Success,Finance,"Seattle, US","Austin, US",EMP0355,EMP0473,2018-04-26,career_growth,pending
+XFR0546,EMP0052,manager,JOB0449,JOB0241,Engineering,IT,"Chicago, US","Chicago, US",EMP0686,EMP0633,2023-02-11,org_redesign,approved
+XFR0547,EMP0201,temporary,JOB0057,JOB0848,Finance,Sales,"Atlanta, US","Denver, US",EMP0774,EMP0797,2025-10-24,business_need,completed
+XFR0548,EMP0180,entity,JOB0055,JOB0610,Operations,Product,"Seattle, US","Chicago, US",EMP0037,EMP0923,2023-07-15,org_redesign,pending
+XFR0549,EMP0233,entity,JOB0876,JOB0406,Engineering,Engineering,"New York, US","New York, US",EMP0213,EMP0912,2019-11-14,employee_request,cancelled
+XFR0550,EMP0415,entity,JOB0706,JOB0275,Data,Legal,"Bengaluru, IN","Denver, US",EMP0222,EMP0381,2026-01-13,career_growth,approved
+XFR0551,EMP0954,location,JOB0816,JOB0882,Sales,Supply Chain,"Denver, US","Atlanta, US",EMP0223,EMP0522,2024-09-22,employee_request,completed
+XFR0552,EMP0936,manager,JOB0450,JOB0694,Facilities,IT,"London, UK","New York, US",EMP0057,EMP0176,2024-12-30,career_growth,completed
+XFR0553,EMP0967,entity,JOB0296,JOB0685,Marketing,IT,"London, UK","Austin, US",EMP0052,EMP0945,2026-05-11,org_redesign,cancelled
+XFR0554,EMP0498,entity,JOB0325,JOB0678,HR,HR,"Bengaluru, IN","Seattle, US",EMP0795,EMP0925,2024-12-24,career_growth,completed
+XFR0555,EMP0302,temporary,JOB0251,JOB0059,Data,HR,"Austin, US","San Francisco, US",EMP0898,EMP0536,2024-11-11,career_growth,approved
+XFR0556,EMP0468,location,JOB0745,JOB0030,Engineering,IT,"Atlanta, US","Hyderabad, IN",EMP0106,EMP0609,2024-12-28,career_growth,pending
+XFR0557,EMP0939,location,JOB0810,JOB0728,Data,Supply Chain,"New York, US","Seattle, US",EMP0542,EMP0698,2023-02-01,business_need,completed
+XFR0558,EMP0810,department,JOB0935,JOB0136,Engineering,Sales,"London, UK","New York, US",EMP0244,EMP0875,2025-06-17,org_redesign,cancelled
+XFR0559,EMP0487,department,JOB0696,JOB0547,IT,Product,"Chicago, US","San Francisco, US",EMP0744,EMP0446,2025-01-30,career_growth,pending
+XFR0560,EMP0394,temporary,JOB0863,JOB0635,Finance,Facilities,"Austin, US","Chicago, US",EMP0557,EMP0020,2024-09-06,backfill,completed
+XFR0561,EMP0197,entity,JOB0803,JOB0522,Legal,Marketing,"London, UK","Toronto, CA",EMP0832,EMP0484,2024-07-04,business_need,completed
+XFR0562,EMP0376,entity,JOB0453,JOB0473,Operations,Finance,"San Francisco, US","Atlanta, US",EMP0545,EMP0932,2020-11-14,business_need,approved
+XFR0563,EMP0550,location,JOB0133,JOB0121,IT,HR,"New York, US","Toronto, CA",EMP0113,EMP0564,2020-05-04,org_redesign,pending
+XFR0564,EMP0554,department,JOB0810,JOB0174,Data,Operations,"New York, US","Atlanta, US",EMP0889,EMP0471,2025-04-04,backfill,cancelled
+XFR0565,EMP0483,entity,JOB0247,JOB0509,Security,Product,"Atlanta, US","Chicago, US",EMP0373,EMP0270,2023-09-30,business_need,approved
+XFR0566,EMP0328,entity,JOB0736,JOB0292,Customer Success,Product,"Dallas, US","London, UK",EMP0347,EMP0744,2023-01-14,backfill,approved
+XFR0567,EMP0273,department,JOB0492,JOB0466,Finance,Customer Success,"Seattle, US","Seattle, US",EMP0358,EMP0458,2022-06-10,org_redesign,pending
+XFR0568,EMP0066,location,JOB0204,JOB0942,Product,IT,"New York, US","Chicago, US",EMP0232,EMP0454,2023-10-24,business_need,approved
+XFR0569,EMP0411,department,JOB0819,JOB0238,HR,Customer Success,"Seattle, US","Bengaluru, IN",EMP0637,EMP0843,2026-03-18,org_redesign,approved
+XFR0570,EMP0799,location,JOB0704,JOB0941,Product,Engineering,"New York, US","London, UK",EMP0220,EMP0554,2017-01-15,backfill,approved
+XFR0571,EMP0134,manager,JOB0261,JOB0221,Supply Chain,Finance,"Denver, US","New York, US",EMP0006,EMP0661,2019-10-15,backfill,cancelled
+XFR0572,EMP0277,department,JOB0501,JOB0004,Legal,Sales,"Toronto, CA","Hyderabad, IN",EMP0131,EMP0556,2016-09-20,employee_request,cancelled
+XFR0573,EMP0673,entity,JOB0009,JOB0744,Security,Sales,"Toronto, CA","Austin, US",EMP0787,EMP0520,2022-08-24,business_need,cancelled
+XFR0574,EMP0198,manager,JOB0443,JOB0375,Security,Legal,"Seattle, US","Atlanta, US",EMP0987,EMP0327,2025-05-31,backfill,approved
+XFR0575,EMP0454,manager,JOB0110,JOB0350,IT,Product,"London, UK","Dallas, US",EMP0409,EMP0329,2024-04-12,backfill,approved
+XFR0576,EMP0611,entity,JOB0772,JOB0243,Security,IT,"Toronto, CA","Denver, US",EMP0490,EMP0875,2021-10-18,career_growth,completed
+XFR0577,EMP0038,entity,JOB0789,JOB0206,Finance,Marketing,"Hyderabad, IN","Toronto, CA",EMP0770,EMP0904,2026-06-18,business_need,approved
+XFR0578,EMP0602,entity,JOB0783,JOB0705,Customer Success,Sales,"Austin, US","Dallas, US",EMP0553,EMP0740,2026-04-02,business_need,approved
+XFR0579,EMP0953,entity,JOB0734,JOB0207,Legal,Operations,"New York, US","Atlanta, US",EMP0784,EMP0475,2021-09-21,org_redesign,approved
+XFR0580,EMP0011,temporary,JOB0348,JOB0174,HR,Operations,"New York, US","Atlanta, US",EMP0756,EMP0653,2021-12-02,employee_request,approved
+XFR0581,EMP0326,manager,JOB0697,JOB0292,Supply Chain,Product,"Dallas, US","London, UK",EMP0493,EMP0785,2021-02-24,org_redesign,cancelled
+XFR0582,EMP0936,location,JOB0883,JOB0079,HR,Sales,"New York, US","New York, US",EMP0058,EMP0564,2026-05-15,employee_request,completed
+XFR0583,EMP0584,temporary,JOB0911,JOB0748,Customer Success,Security,"London, UK","London, UK",EMP0158,EMP0661,2025-08-22,org_redesign,cancelled
+XFR0584,EMP0860,department,JOB0838,JOB0377,Engineering,Supply Chain,"Bengaluru, IN","San Francisco, US",EMP0762,EMP0768,2024-02-22,business_need,approved
+XFR0585,EMP0994,temporary,JOB0022,JOB0707,Data,Sales,"Dallas, US","Dallas, US",EMP0499,EMP0332,2024-06-27,employee_request,cancelled
+XFR0586,EMP0005,location,JOB0230,JOB0585,HR,Finance,"San Francisco, US","Dallas, US",EMP0970,EMP0088,2024-12-23,career_growth,completed
+XFR0587,EMP0952,entity,JOB0011,JOB0396,Data,Engineering,"Austin, US","New York, US",EMP0686,EMP0756,2020-01-11,business_need,pending
+XFR0588,EMP0176,department,JOB0255,JOB0141,Facilities,Marketing,"Atlanta, US","New York, US",EMP0307,EMP0660,2021-04-14,career_growth,approved
+XFR0589,EMP0221,manager,JOB0420,JOB0478,Marketing,Finance,"Seattle, US","Denver, US",EMP0471,EMP0783,2019-12-28,career_growth,approved
+XFR0590,EMP0738,manager,JOB0060,JOB0694,Supply Chain,IT,"Bengaluru, IN","New York, US",EMP0144,EMP0620,2025-07-19,org_redesign,pending
+XFR0591,EMP0933,department,JOB0353,JOB0088,Security,Engineering,"Hyderabad, IN","Austin, US",EMP0274,EMP0843,2026-05-04,career_growth,pending
+XFR0592,EMP0935,location,JOB0181,JOB0329,Sales,Operations,"Austin, US","Bengaluru, IN",EMP0925,EMP0961,2022-03-06,employee_request,approved
+XFR0593,EMP0092,entity,JOB0516,JOB0927,Data,Security,"Chicago, US","London, UK",EMP0479,EMP0027,2023-12-18,backfill,cancelled
+XFR0594,EMP0508,manager,JOB0336,JOB0233,Facilities,Customer Success,"New York, US","Atlanta, US",EMP0579,EMP0477,2026-08-04,org_redesign,cancelled
+XFR0595,EMP0932,temporary,JOB0520,JOB0138,Security,Engineering,"London, UK","London, UK",EMP0940,EMP0719,2026-06-28,org_redesign,approved
+XFR0596,EMP0606,department,JOB0307,JOB0901,Facilities,Finance,"San Francisco, US","New York, US",EMP0917,EMP0276,2016-05-16,business_need,approved
+XFR0597,EMP0821,location,JOB0397,JOB0264,Marketing,Facilities,"Bengaluru, IN","Hyderabad, IN",EMP0768,EMP0234,2021-08-14,business_need,completed
+XFR0598,EMP0777,manager,JOB0608,JOB0912,Facilities,Product,"New York, US","Denver, US",EMP0424,EMP0460,2020-12-19,employee_request,approved
+XFR0599,EMP0200,location,JOB0121,JOB0994,HR,Customer Success,"Toronto, CA","Toronto, CA",EMP0480,EMP0778,2025-03-18,backfill,approved
+XFR0600,EMP0929,temporary,JOB0256,JOB0321,Marketing,Facilities,"Toronto, CA","Chicago, US",EMP0199,EMP0161,2026-05-22,employee_request,pending
+XFR0601,EMP0170,department,JOB0046,JOB0065,Operations,Product,"San Francisco, US","Seattle, US",EMP0450,EMP0552,2024-01-23,backfill,pending
+XFR0602,EMP0358,location,JOB0414,JOB0102,Finance,Security,"Dallas, US","Seattle, US",EMP0217,EMP0037,2026-04-11,org_redesign,approved
+XFR0603,EMP0802,department,JOB0338,JOB0885,Facilities,Customer Success,"Dallas, US","Austin, US",EMP0408,EMP0035,2021-07-12,career_growth,approved
+XFR0604,EMP0138,location,JOB0390,JOB0783,Sales,Customer Success,"Denver, US","Austin, US",EMP0718,EMP0376,2021-01-29,org_redesign,pending
+XFR0605,EMP0516,manager,JOB0476,JOB0447,Engineering,Marketing,"Austin, US","London, UK",EMP0976,EMP0891,2022-12-25,business_need,cancelled
+XFR0606,EMP0889,temporary,JOB0391,JOB0542,Customer Success,Engineering,"London, UK","Denver, US",EMP0939,EMP0807,2022-05-16,backfill,completed
+XFR0607,EMP0004,location,JOB0540,JOB0798,Marketing,Customer Success,"New York, US","Seattle, US",EMP0235,EMP0990,2024-04-11,business_need,approved
+XFR0608,EMP0536,manager,JOB0897,JOB0739,HR,Security,"Denver, US","Atlanta, US",EMP0026,EMP0652,2026-03-26,backfill,completed
+XFR0609,EMP0012,entity,JOB0942,JOB0063,IT,Legal,"Chicago, US","Dallas, US",EMP0396,EMP0353,2022-04-19,backfill,approved
+XFR0610,EMP0777,department,JOB0176,JOB0631,Operations,HR,"London, UK","Denver, US",EMP0902,EMP0656,2024-06-30,backfill,pending
+XFR0611,EMP0989,manager,JOB0701,JOB0184,Customer Success,Finance,"San Francisco, US","Denver, US",EMP0542,EMP0746,2022-11-19,backfill,approved
+XFR0612,EMP0218,manager,JOB0989,JOB0396,IT,Engineering,"Toronto, CA","New York, US",EMP0481,EMP0200,2020-06-04,employee_request,pending
+XFR0613,EMP0976,entity,JOB0980,JOB0316,Sales,HR,"Seattle, US","Seattle, US",EMP0913,EMP0405,2017-10-12,employee_request,completed
+XFR0614,EMP0306,temporary,JOB0067,JOB0736,Sales,Customer Success,"London, UK","Dallas, US",EMP0935,EMP0451,2024-07-11,backfill,approved
+XFR0615,EMP0235,manager,JOB0887,JOB0460,Operations,Security,"Dallas, US","Bengaluru, IN",EMP0048,EMP0034,2014-10-02,career_growth,cancelled
+XFR0616,EMP0975,location,JOB0745,JOB0035,Engineering,IT,"Atlanta, US","San Francisco, US",EMP0033,EMP0678,2025-10-22,business_need,pending
+XFR0617,EMP0894,temporary,JOB0254,JOB0331,Customer Success,IT,"Hyderabad, IN","London, UK",EMP0883,EMP0323,2020-01-28,org_redesign,approved
+XFR0618,EMP0960,manager,JOB0842,JOB0339,Supply Chain,Engineering,"Austin, US","Chicago, US",EMP0846,EMP0363,2018-03-15,career_growth,completed
+XFR0619,EMP0968,location,JOB0691,JOB0155,Security,Engineering,"Seattle, US","Atlanta, US",EMP0348,EMP0644,2024-07-04,employee_request,cancelled
+XFR0620,EMP0915,location,JOB0379,JOB0276,Finance,Engineering,"Chicago, US","Hyderabad, IN",EMP0659,EMP0134,2022-10-05,employee_request,approved
+XFR0621,EMP0392,temporary,JOB0447,JOB0943,Marketing,Legal,"London, UK","Austin, US",EMP0208,EMP0620,2022-07-04,career_growth,approved
+XFR0622,EMP0653,location,JOB0730,JOB0443,HR,Security,"Atlanta, US","Seattle, US",EMP0526,EMP0223,2016-08-07,business_need,completed
+XFR0623,EMP0712,manager,JOB0420,JOB0619,Marketing,Facilities,"Seattle, US","Atlanta, US",EMP0227,EMP0090,2023-08-30,employee_request,approved
+XFR0624,EMP0518,manager,JOB0767,JOB0734,Facilities,Legal,"Chicago, US","New York, US",EMP0813,EMP0545,2026-04-26,org_redesign,approved
+XFR0625,EMP0570,department,JOB0303,JOB0418,Legal,Finance,"Hyderabad, IN","Dallas, US",EMP0200,EMP0427,2019-07-01,business_need,approved
+XFR0626,EMP0874,entity,JOB0632,JOB0118,Operations,Sales,"Toronto, CA","Chicago, US",EMP0186,EMP0444,2025-10-21,business_need,completed
+XFR0627,EMP0579,temporary,JOB0400,JOB0204,Facilities,Product,"Bengaluru, IN","New York, US",EMP0161,EMP0445,2021-04-19,career_growth,pending
+XFR0628,EMP0726,manager,JOB0182,JOB0106,Product,Finance,"Hyderabad, IN","Bengaluru, IN",EMP0812,EMP0161,2025-11-14,business_need,pending
+XFR0629,EMP0224,entity,JOB0078,JOB0905,Marketing,Customer Success,"London, UK","San Francisco, US",EMP0061,EMP0756,2025-01-08,employee_request,approved
+XFR0630,EMP0070,temporary,JOB0223,JOB0499,Sales,HR,"Denver, US","Toronto, CA",EMP0216,EMP0134,2021-09-02,business_need,approved
+XFR0631,EMP0307,entity,JOB0512,JOB0466,Data,Customer Success,"Dallas, US","Seattle, US",EMP0622,EMP0075,2025-12-26,org_redesign,approved
+XFR0632,EMP0823,manager,JOB0988,JOB0125,Supply Chain,Data,"Dallas, US","Chicago, US",EMP0681,EMP0843,2026-06-28,business_need,approved
+XFR0633,EMP0315,manager,JOB0368,JOB0115,IT,Sales,"San Francisco, US","Austin, US",EMP0938,EMP0193,2025-03-01,business_need,approved
+XFR0634,EMP0528,manager,JOB0253,JOB0241,Supply Chain,IT,"Bengaluru, IN","Chicago, US",EMP0851,EMP0688,2023-11-21,employee_request,completed
+XFR0635,EMP0255,temporary,JOB0215,JOB0105,IT,Security,"Toronto, CA","Toronto, CA",EMP0563,EMP0964,2021-08-25,employee_request,pending
+XFR0636,EMP0945,manager,JOB0520,JOB0305,Security,Supply Chain,"London, UK","Seattle, US",EMP0643,EMP0947,2021-05-23,employee_request,approved
+XFR0637,EMP0816,temporary,JOB0881,JOB0928,Legal,HR,"Hyderabad, IN","San Francisco, US",EMP0927,EMP0861,2020-02-25,career_growth,approved
+XFR0638,EMP0693,entity,JOB0461,JOB0984,Legal,Security,"Atlanta, US","San Francisco, US",EMP0278,EMP0304,2026-08-03,employee_request,pending
+XFR0639,EMP0301,location,JOB0061,JOB0424,Sales,HR,"Seattle, US","Chicago, US",EMP0422,EMP0491,2026-08-01,org_redesign,cancelled
+XFR0640,EMP0952,entity,JOB0706,JOB0423,Data,Engineering,"Bengaluru, IN","San Francisco, US",EMP0317,EMP0515,2022-08-17,career_growth,pending
+XFR0641,EMP0922,department,JOB0062,JOB0749,Legal,IT,"New York, US","Seattle, US",EMP0410,EMP0051,2026-04-10,org_redesign,approved
+XFR0642,EMP0756,entity,JOB0677,JOB0644,Security,Supply Chain,"London, UK","Dallas, US",EMP0913,EMP0970,2024-07-12,career_growth,cancelled
+XFR0643,EMP0934,manager,JOB0484,JOB0449,IT,Engineering,"London, UK","Chicago, US",EMP0554,EMP0494,2026-06-06,backfill,completed
+XFR0644,EMP0043,department,JOB0470,JOB0658,Marketing,Finance,"Toronto, CA","London, UK",EMP0643,EMP0817,2022-09-22,employee_request,cancelled
+XFR0645,EMP0108,manager,JOB0161,JOB0927,Supply Chain,Security,"Denver, US","London, UK",EMP0816,EMP0559,2022-03-07,employee_request,approved
+XFR0646,EMP0474,manager,JOB0618,JOB0776,Legal,Finance,"Hyderabad, IN","London, UK",EMP0741,EMP0441,2024-08-01,career_growth,pending
+XFR0647,EMP0544,location,JOB0999,JOB0614,Legal,Operations,"Hyderabad, IN","London, UK",EMP0356,EMP0820,2025-03-27,org_redesign,approved
+XFR0648,EMP0173,entity,JOB0028,JOB0730,HR,HR,"Seattle, US","Atlanta, US",EMP0319,EMP0080,2023-01-30,employee_request,pending
+XFR0649,EMP0770,temporary,JOB0322,JOB0652,IT,Supply Chain,"Seattle, US","Austin, US",EMP0397,EMP0220,2026-03-27,employee_request,completed
+XFR0650,EMP0929,entity,JOB0641,JOB0842,Sales,Supply Chain,"Dallas, US","Austin, US",EMP0006,EMP0690,2026-04-30,org_redesign,approved
+XFR0651,EMP0797,entity,JOB0913,JOB0567,Customer Success,Engineering,"Chicago, US","New York, US",EMP0505,EMP0315,2021-07-09,career_growth,completed
+XFR0652,EMP0522,manager,JOB0976,JOB0339,HR,Engineering,"Toronto, CA","Chicago, US",EMP0415,EMP0859,2022-03-24,backfill,completed
+XFR0653,EMP0629,temporary,JOB0129,JOB0622,Security,Engineering,"Bengaluru, IN","Hyderabad, IN",EMP0873,EMP0419,2026-04-13,backfill,pending
+XFR0654,EMP0119,location,JOB0178,JOB0918,Finance,Engineering,"Austin, US","Chicago, US",EMP0609,EMP0595,2025-08-09,business_need,approved
+XFR0655,EMP0431,department,JOB0422,JOB0832,Data,Legal,"San Francisco, US","Toronto, CA",EMP0275,EMP0574,2026-06-04,career_growth,completed
+XFR0656,EMP0040,location,JOB0952,JOB0332,Product,IT,"San Francisco, US","Seattle, US",EMP0978,EMP0012,2019-07-02,org_redesign,approved
+XFR0657,EMP0550,location,JOB0784,JOB0635,Security,Facilities,"Chicago, US","Chicago, US",EMP0383,EMP0620,2022-11-23,career_growth,completed
+XFR0658,EMP0485,manager,JOB0767,JOB0527,Facilities,Data,"Chicago, US","Austin, US",EMP0346,EMP0721,2026-02-21,employee_request,approved
+XFR0659,EMP0332,location,JOB0381,JOB0961,IT,Sales,"Dallas, US","Dallas, US",EMP0215,EMP0202,2020-03-15,backfill,pending
+XFR0660,EMP0547,temporary,JOB0884,JOB0050,HR,IT,"London, UK","Atlanta, US",EMP0350,EMP0029,2025-10-12,business_need,approved
+XFR0661,EMP0199,manager,JOB0811,JOB0319,Product,Facilities,"London, UK","Hyderabad, IN",EMP0126,EMP0451,2018-05-16,business_need,approved
+XFR0662,EMP0146,department,JOB0235,JOB0793,Engineering,HR,"San Francisco, US","Seattle, US",EMP0283,EMP0864,2025-03-03,career_growth,approved
+XFR0663,EMP0443,manager,JOB0523,JOB0410,Finance,Legal,"Atlanta, US","Seattle, US",EMP0118,EMP0073,2025-09-16,backfill,approved
+XFR0664,EMP0071,entity,JOB0272,JOB0820,Product,Customer Success,"Denver, US","Toronto, CA",EMP0960,EMP0039,2024-03-15,business_need,approved
+XFR0665,EMP0112,manager,JOB0705,JOB0334,Sales,Data,"Dallas, US","Bengaluru, IN",EMP0667,EMP0527,2022-01-19,org_redesign,pending
+XFR0666,EMP0078,manager,JOB0657,JOB0329,Facilities,Operations,"Denver, US","Bengaluru, IN",EMP0521,EMP0048,2025-06-01,business_need,cancelled
+XFR0667,EMP0545,department,JOB0093,JOB0236,Security,Customer Success,"London, UK","San Francisco, US",EMP0474,EMP0955,2022-12-18,backfill,approved
+XFR0668,EMP0184,manager,JOB0572,JOB0404,Product,Data,"Atlanta, US","Denver, US",EMP0933,EMP0293,2023-01-25,backfill,cancelled
+XFR0669,EMP0422,manager,JOB0634,JOB0096,Engineering,Legal,"New York, US","San Francisco, US",EMP0437,EMP0142,2026-05-29,business_need,cancelled
+XFR0670,EMP0452,manager,JOB0230,JOB0922,HR,Data,"San Francisco, US","Denver, US",EMP0846,EMP0131,2026-06-19,backfill,pending
+XFR0671,EMP0095,temporary,JOB0671,JOB0473,Facilities,Finance,"Atlanta, US","Atlanta, US",EMP0544,EMP0715,2021-07-18,business_need,approved
+XFR0672,EMP0537,temporary,JOB0705,JOB0627,Sales,Security,"Dallas, US","San Francisco, US",EMP0358,EMP0112,2020-01-02,career_growth,completed
+XFR0673,EMP0201,entity,JOB0223,JOB0033,Sales,HR,"Denver, US","Seattle, US",EMP0700,EMP0208,2025-10-23,business_need,approved
+XFR0674,EMP0244,location,JOB0005,JOB0305,Data,Supply Chain,"Bengaluru, IN","Seattle, US",EMP0683,EMP0604,2025-08-19,employee_request,pending
+XFR0675,EMP0542,entity,JOB0683,JOB0875,Operations,Marketing,"Atlanta, US","Denver, US",EMP0311,EMP0559,2026-01-26,business_need,approved
+XFR0676,EMP0877,manager,JOB0193,JOB0867,Data,Finance,"Bengaluru, IN","London, UK",EMP0951,EMP0443,2022-04-19,backfill,completed
+XFR0677,EMP0749,manager,JOB0798,JOB0095,Customer Success,Sales,"Seattle, US","London, UK",EMP0250,EMP0373,2020-01-28,career_growth,approved
+XFR0678,EMP0708,temporary,JOB0558,JOB0921,Marketing,Operations,"San Francisco, US","Toronto, CA",EMP0861,EMP0041,2025-10-21,backfill,completed
+XFR0679,EMP0332,temporary,JOB0640,JOB0211,Engineering,Finance,"Dallas, US","Toronto, CA",EMP0642,EMP0676,2022-12-16,career_growth,completed
+XFR0680,EMP0502,department,JOB0330,JOB0735,Customer Success,Legal,"Seattle, US","Bengaluru, IN",EMP0332,EMP0982,2021-09-02,org_redesign,completed
+XFR0681,EMP0054,location,JOB0151,JOB0174,Product,Operations,"New York, US","Atlanta, US",EMP0953,EMP0716,2025-06-10,employee_request,cancelled
+XFR0682,EMP0259,location,JOB0229,JOB0432,Operations,Data,"Chicago, US","Bengaluru, IN",EMP0525,EMP0452,2025-12-06,employee_request,cancelled
+XFR0683,EMP0070,entity,JOB0120,JOB0029,Facilities,Finance,"Seattle, US","Chicago, US",EMP0369,EMP0954,2025-09-20,backfill,completed
+XFR0684,EMP0709,manager,JOB0196,JOB0258,HR,Operations,"London, UK","San Francisco, US",EMP0882,EMP0147,2025-12-03,backfill,cancelled
+XFR0685,EMP0964,temporary,JOB0201,JOB0699,Finance,Legal,"Hyderabad, IN","Bengaluru, IN",EMP0007,EMP0277,2024-11-29,backfill,cancelled
+XFR0686,EMP0876,entity,JOB0176,JOB0270,Operations,Product,"London, UK","Chicago, US",EMP0491,EMP0968,2023-07-04,employee_request,cancelled
+XFR0687,EMP0339,manager,JOB0904,JOB0033,Customer Success,HR,"San Francisco, US","Seattle, US",EMP0196,EMP0461,2015-08-08,backfill,approved
+XFR0688,EMP0535,manager,JOB0537,JOB0029,Data,Finance,"Hyderabad, IN","Chicago, US",EMP0470,EMP0145,2018-12-23,employee_request,approved
+XFR0689,EMP0098,entity,JOB0687,JOB0628,Product,IT,"Chicago, US","Atlanta, US",EMP0697,EMP0204,2024-09-28,career_growth,approved
+XFR0690,EMP0146,location,JOB0209,JOB0980,Engineering,Sales,"Chicago, US","Seattle, US",EMP0295,EMP0809,2025-04-11,business_need,cancelled
+XFR0691,EMP0143,department,JOB0879,JOB0147,Product,Marketing,"Toronto, CA","Denver, US",EMP0295,EMP0792,2025-03-30,business_need,pending
+XFR0692,EMP0933,manager,JOB0229,JOB0844,Operations,Supply Chain,"Chicago, US","Atlanta, US",EMP0481,EMP0061,2026-01-21,employee_request,approved
+XFR0693,EMP0447,entity,JOB0331,JOB0071,IT,Customer Success,"London, UK","Chicago, US",EMP0437,EMP0001,2025-07-01,backfill,cancelled
+XFR0694,EMP0621,manager,JOB0198,JOB0193,IT,Data,"Chicago, US","Bengaluru, IN",EMP0691,EMP0487,2026-02-18,business_need,completed
+XFR0695,EMP0322,manager,JOB0499,JOB0224,HR,Customer Success,"Toronto, CA","Atlanta, US",EMP0451,EMP0258,2025-08-22,employee_request,approved
+XFR0696,EMP0207,location,JOB0686,JOB0238,Security,Customer Success,"Hyderabad, IN","Bengaluru, IN",EMP0568,EMP0677,2015-07-19,org_redesign,approved
+XFR0697,EMP0492,manager,JOB0207,JOB0948,Operations,IT,"Atlanta, US","San Francisco, US",EMP0467,EMP0664,2021-08-02,career_growth,pending
+XFR0698,EMP0796,entity,JOB0498,JOB0044,HR,Operations,"San Francisco, US","Toronto, CA",EMP0014,EMP0807,2025-10-03,career_growth,approved
+XFR0699,EMP0849,entity,JOB0467,JOB0471,Customer Success,Security,"Bengaluru, IN","New York, US",EMP0957,EMP0701,2024-10-23,org_redesign,approved
+XFR0700,EMP0222,temporary,JOB0592,JOB0031,Marketing,Product,"Chicago, US","Toronto, CA",EMP0576,EMP0967,2023-12-17,business_need,approved
+XFR0701,EMP0415,manager,JOB0637,JOB0627,Engineering,Security,"Denver, US","San Francisco, US",EMP0961,EMP0994,2026-07-11,org_redesign,approved
+XFR0702,EMP0639,location,JOB0357,JOB0134,Sales,Product,"Hyderabad, IN","San Francisco, US",EMP0428,EMP0872,2022-10-31,employee_request,cancelled
+XFR0703,EMP0312,manager,JOB0270,JOB0196,Product,HR,"Chicago, US","London, UK",EMP0212,EMP0179,2025-06-01,career_growth,approved
+XFR0704,EMP0705,department,JOB0106,JOB0102,Finance,Security,"Bengaluru, IN","Seattle, US",EMP0568,EMP0450,2024-12-20,career_growth,pending
+XFR0705,EMP0992,department,JOB0639,JOB0929,Engineering,Customer Success,"New York, US","Hyderabad, IN",EMP0988,EMP0848,2024-01-30,career_growth,completed
+XFR0706,EMP0422,entity,JOB0577,JOB0779,Customer Success,Facilities,"Chicago, US","Chicago, US",EMP0643,EMP0705,2021-07-19,employee_request,approved
+XFR0707,EMP0754,temporary,JOB0593,JOB0171,Product,Sales,"Toronto, CA","New York, US",EMP0627,EMP0383,2026-07-14,business_need,cancelled
+XFR0708,EMP0637,department,JOB0978,JOB0205,Facilities,Engineering,"Seattle, US","Toronto, CA",EMP0815,EMP0680,2025-10-13,backfill,pending
+XFR0709,EMP0804,location,JOB0468,JOB0698,Marketing,Engineering,"Seattle, US","Dallas, US",EMP0721,EMP0898,2017-05-03,employee_request,completed
+XFR0710,EMP0596,temporary,JOB0435,JOB0424,Finance,HR,"Austin, US","Chicago, US",EMP0382,EMP0018,2020-11-28,employee_request,approved
+XFR0711,EMP0704,department,JOB0361,JOB0999,Legal,Legal,"Atlanta, US","Hyderabad, IN",EMP0595,EMP0070,2025-10-09,backfill,approved
+XFR0712,EMP0804,department,JOB0103,JOB0807,Security,Security,"Denver, US","Dallas, US",EMP0471,EMP0743,2018-06-04,employee_request,approved
+XFR0713,EMP0797,department,JOB0618,JOB0029,Legal,Finance,"Hyderabad, IN","Chicago, US",EMP0127,EMP0929,2020-10-20,career_growth,pending
+XFR0714,EMP0852,temporary,JOB0317,JOB0918,Legal,Engineering,"Toronto, CA","Chicago, US",EMP0497,EMP0766,2024-05-12,backfill,completed
+XFR0715,EMP0506,department,JOB0901,JOB0928,Finance,HR,"New York, US","San Francisco, US",EMP0190,EMP0767,2021-10-13,career_growth,completed
+XFR0716,EMP0482,department,JOB0229,JOB0905,Operations,Customer Success,"Chicago, US","San Francisco, US",EMP0343,EMP0086,2024-07-31,backfill,approved
+XFR0717,EMP0620,entity,JOB0161,JOB0879,Supply Chain,Product,"Denver, US","Toronto, CA",EMP0529,EMP0148,2022-08-03,org_redesign,completed
+XFR0718,EMP0129,department,JOB0167,JOB0425,Facilities,IT,"Hyderabad, IN","New York, US",EMP0071,EMP0300,2022-03-09,backfill,approved
+XFR0719,EMP0241,entity,JOB0371,JOB0111,Finance,Security,"Hyderabad, IN","London, UK",EMP0100,EMP0682,2022-06-09,business_need,approved
+XFR0720,EMP0848,location,JOB0936,JOB0151,Customer Success,Product,"San Francisco, US","New York, US",EMP0249,EMP0661,2022-06-18,career_growth,completed
+XFR0721,EMP0378,manager,JOB0962,JOB0356,Data,HR,"Seattle, US","Chicago, US",EMP0195,EMP0888,2017-09-29,employee_request,cancelled
+XFR0722,EMP0720,location,JOB0388,JOB0616,Data,Supply Chain,"Atlanta, US","New York, US",EMP0964,EMP0272,2025-09-13,business_need,approved
+XFR0723,EMP0787,location,JOB0818,JOB0334,IT,Data,"Toronto, CA","Bengaluru, IN",EMP0389,EMP0667,2021-03-16,backfill,approved
+XFR0724,EMP0284,location,JOB0485,JOB0177,Marketing,Data,"Dallas, US","Dallas, US",EMP0451,EMP0037,2024-06-15,employee_request,pending
+XFR0725,EMP0568,location,JOB0165,JOB0839,Customer Success,Supply Chain,"London, UK","Hyderabad, IN",EMP0803,EMP0860,2024-09-15,employee_request,pending
+XFR0726,EMP0760,manager,JOB0802,JOB0424,Engineering,HR,"London, UK","Chicago, US",EMP0751,EMP0839,2023-06-28,backfill,pending
+XFR0727,EMP0215,department,JOB0563,JOB0397,Marketing,Marketing,"San Francisco, US","Bengaluru, IN",EMP0276,EMP0033,2020-07-03,employee_request,pending
+XFR0728,EMP0580,department,JOB0915,JOB0522,Marketing,Marketing,"Denver, US","Toronto, CA",EMP0444,EMP0486,2018-06-02,org_redesign,completed
+XFR0729,EMP0182,manager,JOB0379,JOB0945,Finance,Operations,"Chicago, US","San Francisco, US",EMP0591,EMP0441,2025-02-02,backfill,approved
+XFR0730,EMP0466,department,JOB0167,JOB0825,Facilities,IT,"Hyderabad, IN","New York, US",EMP0738,EMP0880,2023-07-06,career_growth,approved
+XFR0731,EMP0916,temporary,JOB0963,JOB0814,IT,Customer Success,"Seattle, US","Denver, US",EMP0661,EMP0368,2023-04-10,backfill,approved
+XFR0732,EMP0834,manager,JOB0604,JOB0024,IT,Supply Chain,"Dallas, US","Austin, US",EMP0939,EMP0224,2025-11-23,backfill,pending
+XFR0733,EMP0386,manager,JOB0982,JOB0893,Sales,Supply Chain,"Dallas, US","Atlanta, US",EMP0130,EMP0620,2026-02-11,business_need,completed
+XFR0734,EMP0231,temporary,JOB0758,JOB0347,HR,Sales,"Seattle, US","Chicago, US",EMP0750,EMP0706,2025-06-08,employee_request,pending
+XFR0735,EMP0980,entity,JOB0806,JOB0944,Finance,Supply Chain,"Seattle, US","New York, US",EMP0098,EMP0809,2019-05-31,business_need,completed
+XFR0736,EMP0366,manager,JOB0123,JOB0824,Legal,HR,"New York, US","London, UK",EMP0570,EMP0113,2025-11-18,org_redesign,completed
+XFR0737,EMP0105,department,JOB0623,JOB1000,Engineering,IT,"Atlanta, US","Dallas, US",EMP0821,EMP0686,2024-11-22,career_growth,pending
+XFR0738,EMP0394,temporary,JOB0520,JOB0373,Security,Operations,"London, UK","Austin, US",EMP0553,EMP0547,2025-07-02,employee_request,completed
+XFR0739,EMP0531,manager,JOB0036,JOB0758,Data,HR,"Dallas, US","Seattle, US",EMP0145,EMP0289,2025-05-08,backfill,pending
+XFR0740,EMP0589,temporary,JOB0472,JOB0300,Legal,Security,"London, UK","Seattle, US",EMP0728,EMP0389,2023-11-26,business_need,pending
+XFR0741,EMP0432,department,JOB0322,JOB0508,IT,Data,"Seattle, US","San Francisco, US",EMP0879,EMP0638,2025-11-05,career_growth,cancelled
+XFR0742,EMP0694,temporary,JOB0290,JOB0521,HR,HR,"Dallas, US","Chicago, US",EMP0684,EMP0033,2022-11-17,employee_request,pending
+XFR0743,EMP0477,temporary,JOB0043,JOB0480,Operations,Operations,"Austin, US","London, UK",EMP0268,EMP0565,2022-07-11,business_need,pending
+XFR0744,EMP0849,temporary,JOB0325,JOB0145,HR,Marketing,"Bengaluru, IN","San Francisco, US",EMP0977,EMP0483,2021-04-05,employee_request,pending
+XFR0745,EMP0703,department,JOB0316,JOB0232,HR,IT,"Seattle, US","Austin, US",EMP0324,EMP0111,2019-03-02,org_redesign,cancelled
+XFR0746,EMP0869,manager,JOB0223,JOB0586,Sales,Finance,"Denver, US","Chicago, US",EMP0503,EMP0808,2019-04-25,employee_request,approved
+XFR0747,EMP0653,location,JOB0511,JOB0154,Legal,IT,"Bengaluru, IN","Toronto, CA",EMP0866,EMP0803,2024-08-22,backfill,approved
+XFR0748,EMP0872,temporary,JOB0385,JOB0707,Customer Success,Sales,"Toronto, CA","Dallas, US",EMP0651,EMP0116,2025-09-21,backfill,pending
+XFR0749,EMP0027,department,JOB0978,JOB0720,Facilities,Security,"Seattle, US","San Francisco, US",EMP0085,EMP0493,2016-12-19,org_redesign,pending
+XFR0750,EMP0366,temporary,JOB0227,JOB0514,Sales,Product,"Dallas, US","Denver, US",EMP0219,EMP0019,2026-02-09,business_need,cancelled
+XFR0751,EMP0919,location,JOB0474,JOB0530,Engineering,Marketing,"Chicago, US","Atlanta, US",EMP0060,EMP0666,2024-04-07,org_redesign,pending
+XFR0752,EMP0469,entity,JOB0278,JOB0228,Facilities,Legal,"New York, US","Austin, US",EMP0370,EMP0006,2018-08-23,business_need,approved
+XFR0753,EMP0163,temporary,JOB0002,JOB0222,Sales,Facilities,"Dallas, US","Hyderabad, IN",EMP0935,EMP0598,2024-10-25,employee_request,cancelled
+XFR0754,EMP0575,manager,JOB0528,JOB0360,Data,Sales,"Denver, US","New York, US",EMP0854,EMP0626,2019-10-31,career_growth,cancelled
+XFR0755,EMP0286,location,JOB0156,JOB0174,Security,Operations,"New York, US","Atlanta, US",EMP0185,EMP0971,2022-04-19,business_need,approved
+XFR0756,EMP0376,location,JOB0310,JOB0227,HR,Sales,"Chicago, US","Dallas, US",EMP0036,EMP0849,2026-07-29,business_need,approved
+XFR0757,EMP0632,temporary,JOB0399,JOB0266,Finance,Customer Success,"Denver, US","Hyderabad, IN",EMP0109,EMP0915,2026-08-01,business_need,approved
+XFR0758,EMP0229,department,JOB0562,JOB0848,Legal,Sales,"Hyderabad, IN","Denver, US",EMP0252,EMP0243,2022-02-14,career_growth,approved
+XFR0759,EMP0548,entity,JOB0771,JOB0208,Operations,Data,"Toronto, CA","Hyderabad, IN",EMP0091,EMP0357,2023-02-26,backfill,pending
+XFR0760,EMP0538,location,JOB0390,JOB0507,Sales,Sales,"Denver, US","Hyderabad, IN",EMP0463,EMP0055,2022-05-26,org_redesign,cancelled
+XFR0761,EMP0239,temporary,JOB0115,JOB0275,Sales,Legal,"Austin, US","Denver, US",EMP0437,EMP0824,2017-07-11,backfill,approved
+XFR0762,EMP0204,entity,JOB0192,JOB0633,Operations,Product,"San Francisco, US","Chicago, US",EMP0054,EMP0680,2025-05-29,business_need,cancelled
+XFR0763,EMP0013,manager,JOB0400,JOB0087,Facilities,Product,"Bengaluru, IN","Chicago, US",EMP0217,EMP0641,2017-02-15,career_growth,cancelled
+XFR0764,EMP0793,temporary,JOB0517,JOB0758,IT,HR,"San Francisco, US","Seattle, US",EMP0138,EMP0833,2024-08-30,backfill,pending
+XFR0765,EMP0643,entity,JOB0345,JOB0088,IT,Engineering,"Dallas, US","Austin, US",EMP0332,EMP0068,2026-02-27,backfill,approved
+XFR0766,EMP0421,department,JOB0443,JOB0906,Security,Customer Success,"Seattle, US","Hyderabad, IN",EMP0034,EMP0813,2020-07-19,org_redesign,approved
+XFR0767,EMP0650,entity,JOB0430,JOB0369,IT,Legal,"Denver, US","Chicago, US",EMP0157,EMP0878,2022-10-13,career_growth,completed
+XFR0768,EMP0650,department,JOB0274,JOB0604,HR,IT,"London, UK","Dallas, US",EMP0558,EMP0650,2026-07-17,org_redesign,completed
+XFR0769,EMP0916,department,JOB0750,JOB0284,Supply Chain,Product,"Seattle, US","Denver, US",EMP0925,EMP0428,2024-09-18,org_redesign,pending
+XFR0770,EMP0940,entity,JOB0733,JOB0549,Legal,Data,"Atlanta, US","Dallas, US",EMP0999,EMP0903,2026-05-17,employee_request,approved
+XFR0771,EMP0355,entity,JOB0662,JOB0819,Customer Success,HR,"Austin, US","Seattle, US",EMP0958,EMP0895,2021-03-26,backfill,cancelled
+XFR0772,EMP0977,manager,JOB0951,JOB0418,Legal,Finance,"San Francisco, US","Dallas, US",EMP0173,EMP0044,2023-11-19,business_need,pending
+XFR0773,EMP0090,department,JOB0597,JOB0304,HR,Customer Success,"Atlanta, US","San Francisco, US",EMP0768,EMP0188,2025-04-09,career_growth,approved
+XFR0774,EMP0362,manager,JOB0348,JOB0994,HR,Customer Success,"New York, US","Toronto, CA",EMP0605,EMP0297,2023-10-21,employee_request,cancelled
+XFR0775,EMP0474,location,JOB0615,JOB0238,Customer Success,Customer Success,"Toronto, CA","Bengaluru, IN",EMP0411,EMP0433,2026-06-18,business_need,pending
+XFR0776,EMP0854,department,JOB0457,JOB0585,Customer Success,Finance,"Dallas, US","Dallas, US",EMP0759,EMP0508,2016-06-05,career_growth,cancelled
+XFR0777,EMP0300,location,JOB0631,JOB0196,HR,HR,"Denver, US","London, UK",EMP0528,EMP0893,2016-01-25,backfill,approved
+XFR0778,EMP0882,department,JOB0735,JOB0002,Legal,Sales,"Bengaluru, IN","Dallas, US",EMP0463,EMP0306,2025-03-30,career_growth,approved
+XFR0779,EMP0487,manager,JOB0083,JOB0210,Data,Facilities,"Seattle, US","London, UK",EMP0587,EMP0739,2024-05-02,career_growth,approved
+XFR0780,EMP0985,department,JOB0776,JOB0219,Finance,Supply Chain,"London, UK","Toronto, CA",EMP0835,EMP0303,2015-04-25,employee_request,pending
+XFR0781,EMP0073,manager,JOB0771,JOB0785,Operations,IT,"Toronto, CA","London, UK",EMP0739,EMP0650,2023-04-06,org_redesign,approved
+XFR0782,EMP0616,entity,JOB0474,JOB0724,Engineering,Facilities,"Chicago, US","Toronto, CA",EMP0736,EMP0606,2016-01-24,employee_request,pending
+XFR0783,EMP0592,manager,JOB0982,JOB0084,Sales,HR,"Dallas, US","Toronto, CA",EMP0989,EMP0556,2026-05-25,org_redesign,approved
+XFR0784,EMP0508,manager,JOB0327,JOB0571,Operations,IT,"Dallas, US","Austin, US",EMP0656,EMP0389,2026-08-02,career_growth,approved
+XFR0785,EMP0264,manager,JOB0067,JOB0129,Sales,Security,"London, UK","Bengaluru, IN",EMP0251,EMP0026,2025-08-28,employee_request,cancelled
+XFR0786,EMP0222,entity,JOB0890,JOB0067,Product,Sales,"Hyderabad, IN","London, UK",EMP0104,EMP0460,2023-11-05,org_redesign,approved
+XFR0787,EMP0935,manager,JOB0004,JOB0374,Sales,Supply Chain,"Hyderabad, IN","Toronto, CA",EMP0114,EMP0633,2022-08-11,career_growth,completed
+XFR0788,EMP0070,department,JOB0489,JOB0449,Engineering,Engineering,"Seattle, US","Chicago, US",EMP0334,EMP0434,2023-06-12,career_growth,completed
+XFR0789,EMP0740,department,JOB0478,JOB0920,Finance,Data,"Denver, US","New York, US",EMP0928,EMP0864,2025-04-29,org_redesign,completed
+XFR0790,EMP0568,entity,JOB0181,JOB0287,Sales,Marketing,"Austin, US","Bengaluru, IN",EMP0022,EMP0564,2023-10-01,backfill,approved
+XFR0791,EMP0006,department,JOB0659,JOB0925,Product,IT,"Dallas, US","Seattle, US",EMP0498,EMP0123,2023-02-28,employee_request,pending
+XFR0792,EMP0233,entity,JOB0545,JOB0408,Product,Supply Chain,"London, UK","Bengaluru, IN",EMP0668,EMP0526,2023-07-06,backfill,pending
+XFR0793,EMP0351,entity,JOB0754,JOB0338,Marketing,Facilities,"New York, US","Dallas, US",EMP0396,EMP0719,2026-02-25,business_need,cancelled
+XFR0794,EMP0769,manager,JOB0974,JOB0418,Data,Finance,"Austin, US","Dallas, US",EMP0602,EMP0038,2023-12-26,employee_request,cancelled
+XFR0795,EMP0946,department,JOB0940,JOB0525,Engineering,HR,"Toronto, CA","San Francisco, US",EMP0987,EMP0483,2023-02-07,employee_request,approved
+XFR0796,EMP0127,department,JOB0746,JOB0947,Facilities,Legal,"Chicago, US","Dallas, US",EMP0294,EMP0599,2024-10-10,business_need,cancelled
+XFR0797,EMP0590,manager,JOB0050,JOB0505,IT,Security,"Atlanta, US","Chicago, US",EMP0026,EMP0658,2023-11-22,business_need,cancelled
+XFR0798,EMP0643,location,JOB0234,JOB0995,Operations,Supply Chain,"Seattle, US","Toronto, CA",EMP0805,EMP0757,2026-07-18,employee_request,cancelled
+XFR0799,EMP0060,manager,JOB0031,JOB0076,Product,Security,"Toronto, CA","Chicago, US",EMP0683,EMP0565,2023-03-20,business_need,completed
+XFR0800,EMP0479,entity,JOB0675,JOB0352,Operations,Sales,"Bengaluru, IN","Denver, US",EMP0392,EMP0306,2019-05-25,career_growth,approved
+XFR0801,EMP0796,manager,JOB0620,JOB0499,Supply Chain,HR,"Denver, US","Toronto, CA",EMP0982,EMP0795,2025-11-05,employee_request,approved
+XFR0802,EMP0149,department,JOB0947,JOB0793,Legal,HR,"Dallas, US","Seattle, US",EMP0534,EMP0743,2018-01-26,career_growth,cancelled
+XFR0803,EMP0037,department,JOB0538,JOB0624,Engineering,Facilities,"Atlanta, US","Atlanta, US",EMP0292,EMP0361,2022-11-13,business_need,approved
+XFR0804,EMP0788,location,JOB0413,JOB0348,Operations,HR,"Chicago, US","New York, US",EMP0140,EMP0628,2025-02-27,backfill,cancelled
+XFR0805,EMP0687,temporary,JOB0357,JOB0252,Sales,Security,"Hyderabad, IN","New York, US",EMP0251,EMP0804,2022-12-04,backfill,pending
+XFR0806,EMP0004,temporary,JOB0151,JOB0752,Product,Legal,"New York, US","Hyderabad, IN",EMP0880,EMP0840,2026-02-21,org_redesign,approved
+XFR0807,EMP0950,location,JOB0177,JOB0652,Data,Supply Chain,"Dallas, US","Austin, US",EMP0695,EMP0902,2021-07-18,business_need,approved
+XFR0808,EMP0344,temporary,JOB0006,JOB0611,Security,Marketing,"Bengaluru, IN","Hyderabad, IN",EMP0332,EMP0190,2017-10-24,org_redesign,cancelled
+XFR0809,EMP0506,location,JOB0995,JOB0041,Supply Chain,IT,"Toronto, CA","Chicago, US",EMP0363,EMP0119,2024-06-02,backfill,pending
+XFR0810,EMP0852,location,JOB0280,JOB0049,Operations,Product,"Denver, US","Dallas, US",EMP0805,EMP0740,2026-07-10,business_need,pending
+XFR0811,EMP1000,entity,JOB0080,JOB0939,Product,Marketing,"Dallas, US","Atlanta, US",EMP0750,EMP0280,2022-03-25,org_redesign,cancelled
+XFR0812,EMP0711,location,JOB0298,JOB0518,Marketing,Product,"London, UK","Hyderabad, IN",EMP0360,EMP0924,2021-09-19,employee_request,approved
+XFR0813,EMP0716,temporary,JOB0555,JOB0283,Facilities,IT,"Bengaluru, IN","Denver, US",EMP0946,EMP0503,2022-02-03,backfill,pending
+XFR0814,EMP0539,location,JOB0793,JOB0407,HR,Security,"Seattle, US","Dallas, US",EMP0085,EMP0720,2026-07-22,business_need,cancelled
+XFR0815,EMP0058,department,JOB0823,JOB0931,IT,Engineering,"Atlanta, US","Toronto, CA",EMP0256,EMP0809,2026-06-05,backfill,approved
+XFR0816,EMP0977,department,JOB0991,JOB0333,Finance,Supply Chain,"Toronto, CA","New York, US",EMP0545,EMP0225,2024-12-07,career_growth,pending
+XFR0817,EMP0324,location,JOB0816,JOB0087,Sales,Product,"Denver, US","Chicago, US",EMP0361,EMP0218,2025-09-11,business_need,cancelled
+XFR0818,EMP0067,department,JOB0805,JOB0145,Finance,Marketing,"London, UK","San Francisco, US",EMP0989,EMP0633,2019-02-16,business_need,approved
+XFR0819,EMP0254,location,JOB0652,JOB0052,Supply Chain,Supply Chain,"Austin, US","Hyderabad, IN",EMP0650,EMP0028,2025-08-01,business_need,approved
+XFR0820,EMP0401,entity,JOB0263,JOB0008,Data,Sales,"Dallas, US","Toronto, CA",EMP0719,EMP0235,2022-12-22,employee_request,pending
+XFR0821,EMP0742,location,JOB0581,JOB0647,Marketing,Operations,"Chicago, US","Austin, US",EMP0442,EMP0906,2022-11-06,org_redesign,approved
+XFR0822,EMP0786,temporary,JOB0708,JOB0137,HR,HR,"Toronto, CA","Toronto, CA",EMP0597,EMP0697,2021-08-28,business_need,pending
+XFR0823,EMP0009,temporary,JOB0689,JOB0781,Supply Chain,Data,"Bengaluru, IN","Austin, US",EMP0130,EMP0053,2022-05-19,career_growth,approved
+XFR0824,EMP0897,manager,JOB0642,JOB0025,Product,Facilities,"Toronto, CA","Austin, US",EMP0321,EMP0090,2020-10-23,org_redesign,approved
+XFR0825,EMP0385,entity,JOB0754,JOB0220,Marketing,Engineering,"New York, US","Atlanta, US",EMP0037,EMP0093,2026-02-13,backfill,approved
+XFR0826,EMP0017,entity,JOB0733,JOB0218,Legal,Legal,"Atlanta, US","Denver, US",EMP0619,EMP0091,2017-05-04,org_redesign,pending
+XFR0827,EMP0142,entity,JOB0833,JOB0899,Engineering,Supply Chain,"Bengaluru, IN","Atlanta, US",EMP0505,EMP0533,2025-06-24,career_growth,pending
+XFR0828,EMP0762,location,JOB0399,JOB0635,Finance,Facilities,"Denver, US","Chicago, US",EMP0434,EMP0164,2018-02-28,employee_request,cancelled
+XFR0829,EMP0964,temporary,JOB0659,JOB0753,Product,Product,"Dallas, US","Austin, US",EMP0137,EMP0378,2022-05-31,org_redesign,approved
+XFR0830,EMP0104,manager,JOB0307,JOB0963,Facilities,IT,"San Francisco, US","Seattle, US",EMP0646,EMP0929,2017-12-17,org_redesign,completed
+XFR0831,EMP0409,department,JOB0436,JOB0505,Supply Chain,Security,"Austin, US","Chicago, US",EMP0845,EMP0870,2023-09-12,employee_request,completed
+XFR0832,EMP0349,location,JOB0427,JOB0633,Sales,Product,"Bengaluru, IN","Chicago, US",EMP0672,EMP0061,2016-04-07,career_growth,cancelled
+XFR0833,EMP0602,location,JOB0804,JOB0386,Data,IT,"San Francisco, US","San Francisco, US",EMP0303,EMP0476,2026-04-11,backfill,pending
+XFR0834,EMP0334,department,JOB0874,JOB0178,Sales,Finance,"San Francisco, US","Austin, US",EMP0459,EMP0298,2022-04-17,org_redesign,pending
+XFR0835,EMP0563,entity,JOB0033,JOB0375,HR,Legal,"Seattle, US","Atlanta, US",EMP0877,EMP0729,2024-03-20,employee_request,pending
+XFR0836,EMP0295,department,JOB0612,JOB0297,Data,Product,"Dallas, US","San Francisco, US",EMP0686,EMP0432,2022-11-22,career_growth,completed
+XFR0837,EMP0830,temporary,JOB0554,JOB0203,HR,Product,"Hyderabad, IN","Chicago, US",EMP0186,EMP0446,2023-10-11,backfill,approved
+XFR0838,EMP0692,temporary,JOB0592,JOB0884,Marketing,HR,"Chicago, US","London, UK",EMP0820,EMP0829,2025-08-25,backfill,approved
+XFR0839,EMP0583,department,JOB0952,JOB0701,Product,Customer Success,"San Francisco, US","San Francisco, US",EMP0143,EMP0988,2026-03-01,business_need,cancelled
+XFR0840,EMP0693,department,JOB0484,JOB0525,IT,HR,"London, UK","San Francisco, US",EMP0119,EMP0132,2026-07-06,org_redesign,pending
+XFR0841,EMP0239,entity,JOB0663,JOB0858,Finance,Security,"New York, US","Hyderabad, IN",EMP0488,EMP0070,2016-11-23,business_need,cancelled
+XFR0842,EMP0117,location,JOB0624,JOB0658,Facilities,Finance,"Atlanta, US","London, UK",EMP0026,EMP0191,2023-02-01,org_redesign,cancelled
+XFR0843,EMP0626,department,JOB0428,JOB0615,Engineering,Customer Success,"Austin, US","Toronto, CA",EMP0959,EMP0706,2025-02-21,business_need,approved
+XFR0844,EMP0631,entity,JOB0135,JOB0550,Operations,Customer Success,"Atlanta, US","Chicago, US",EMP0067,EMP0549,2021-10-05,org_redesign,pending
+XFR0845,EMP0064,temporary,JOB0719,JOB0094,HR,Product,"San Francisco, US","Hyderabad, IN",EMP0046,EMP0200,2015-08-26,org_redesign,approved
+XFR0846,EMP0066,temporary,JOB0504,JOB0514,Legal,Product,"Seattle, US","Denver, US",EMP0962,EMP0417,2017-02-15,backfill,completed
+XFR0847,EMP0569,department,JOB0133,JOB0151,IT,Product,"New York, US","New York, US",EMP0787,EMP0014,2022-12-19,business_need,pending
+XFR0848,EMP0365,location,JOB0476,JOB0058,Engineering,Marketing,"Austin, US","Chicago, US",EMP0068,EMP0825,2026-03-29,career_growth,completed
+XFR0849,EMP0562,manager,JOB0686,JOB0142,Security,Operations,"Hyderabad, IN","Atlanta, US",EMP0123,EMP0548,2025-05-29,business_need,cancelled
+XFR0850,EMP0354,manager,JOB0957,JOB0871,Engineering,Facilities,"London, UK","Chicago, US",EMP0895,EMP0097,2022-08-31,employee_request,approved
+XFR0851,EMP0781,department,JOB0425,JOB0971,IT,Marketing,"New York, US","Seattle, US",EMP0081,EMP0162,2024-06-09,org_redesign,approved
+XFR0852,EMP0421,entity,JOB0965,JOB0829,Engineering,HR,"San Francisco, US","London, UK",EMP0787,EMP0964,2022-04-25,backfill,completed
+XFR0853,EMP0765,location,JOB0008,JOB0398,Sales,Sales,"Toronto, CA","Chicago, US",EMP0259,EMP0448,2026-04-26,career_growth,cancelled
+XFR0854,EMP0674,location,JOB0759,JOB0952,Data,Product,"Bengaluru, IN","San Francisco, US",EMP0123,EMP0378,2026-07-07,org_redesign,pending
+XFR0855,EMP0872,department,JOB0798,JOB0543,Customer Success,Security,"Seattle, US","Chicago, US",EMP0212,EMP0666,2020-12-16,org_redesign,cancelled
+XFR0856,EMP0759,manager,JOB0348,JOB0922,HR,Data,"New York, US","Denver, US",EMP0130,EMP0554,2025-05-28,employee_request,approved
+XFR0857,EMP0222,department,JOB0698,JOB0281,Engineering,Product,"Dallas, US","Hyderabad, IN",EMP0578,EMP0142,2024-01-07,career_growth,pending
+XFR0858,EMP0509,department,JOB0382,JOB0963,Product,IT,"Seattle, US","Seattle, US",EMP0527,EMP0795,2026-02-18,career_growth,cancelled
+XFR0859,EMP0393,location,JOB0790,JOB0652,Security,Supply Chain,"Atlanta, US","Austin, US",EMP0460,EMP0024,2017-12-20,employee_request,completed
+XFR0860,EMP0298,entity,JOB0052,JOB0996,Supply Chain,Supply Chain,"Hyderabad, IN","Toronto, CA",EMP0681,EMP0150,2026-04-12,business_need,approved
+XFR0861,EMP0863,temporary,JOB0264,JOB0506,Facilities,Marketing,"Hyderabad, IN","London, UK",EMP0116,EMP0593,2025-12-01,career_growth,cancelled
+XFR0862,EMP0348,manager,JOB0182,JOB0317,Product,Legal,"Hyderabad, IN","Toronto, CA",EMP0915,EMP0683,2026-04-16,backfill,pending
+XFR0863,EMP0343,entity,JOB0373,JOB0599,Operations,Facilities,"Austin, US","Hyderabad, IN",EMP0019,EMP0611,2024-08-19,org_redesign,cancelled
+XFR0864,EMP0979,location,JOB0043,JOB0053,Operations,Legal,"Austin, US","Hyderabad, IN",EMP0886,EMP0462,2025-11-12,backfill,approved
+XFR0865,EMP0020,temporary,JOB0414,JOB0886,Finance,Customer Success,"Dallas, US","Toronto, CA",EMP0320,EMP0729,2025-04-12,career_growth,completed
+XFR0866,EMP0914,temporary,JOB0475,JOB0254,Security,Customer Success,"Hyderabad, IN","Hyderabad, IN",EMP0477,EMP0833,2026-07-18,backfill,approved
+XFR0867,EMP0900,department,JOB0717,JOB0107,Facilities,Facilities,"Toronto, CA","Chicago, US",EMP0592,EMP0785,2026-07-23,career_growth,approved
+XFR0868,EMP0037,temporary,JOB0639,JOB0540,Engineering,Marketing,"New York, US","New York, US",EMP0407,EMP0392,2019-05-30,employee_request,completed
+XFR0869,EMP0363,temporary,JOB0073,JOB0127,Engineering,Security,"Dallas, US","San Francisco, US",EMP0931,EMP0778,2024-12-22,employee_request,pending
+XFR0870,EMP0919,manager,JOB0471,JOB0806,Security,Finance,"New York, US","Seattle, US",EMP0813,EMP0464,2021-12-28,career_growth,pending
+XFR0871,EMP0055,temporary,JOB0885,JOB0944,Customer Success,Supply Chain,"Austin, US","New York, US",EMP0856,EMP0290,2025-10-18,employee_request,approved
+XFR0872,EMP0401,entity,JOB0494,JOB0547,Product,Product,"Denver, US","San Francisco, US",EMP0679,EMP0173,2026-05-01,employee_request,cancelled
+XFR0873,EMP0944,department,JOB0105,JOB0707,Security,Sales,"Toronto, CA","Dallas, US",EMP0074,EMP0726,2025-12-26,career_growth,completed
+XFR0874,EMP0002,manager,JOB0645,JOB0174,IT,Operations,"San Francisco, US","Atlanta, US",EMP0052,EMP0227,2025-05-23,career_growth,completed
+XFR0875,EMP0905,location,JOB0349,JOB0588,Operations,Customer Success,"San Francisco, US","San Francisco, US",EMP0699,EMP0202,2023-12-12,employee_request,approved
+XFR0876,EMP0962,manager,JOB0916,JOB0759,Facilities,Data,"Dallas, US","Bengaluru, IN",EMP0158,EMP0231,2026-06-19,backfill,completed
+XFR0877,EMP0336,manager,JOB0327,JOB0641,Operations,Sales,"Dallas, US","Dallas, US",EMP0884,EMP0196,2023-06-12,backfill,cancelled
+XFR0878,EMP0142,temporary,JOB0390,JOB0236,Sales,Customer Success,"Denver, US","San Francisco, US",EMP0193,EMP0251,2024-07-21,backfill,completed
+XFR0879,EMP0776,location,JOB0767,JOB0820,Facilities,Customer Success,"Chicago, US","Toronto, CA",EMP0623,EMP0755,2021-03-20,org_redesign,completed
+XFR0880,EMP0637,location,JOB0619,JOB0359,Facilities,Product,"Atlanta, US","London, UK",EMP0912,EMP0253,2024-12-31,career_growth,cancelled
+XFR0881,EMP0108,manager,JOB0238,JOB0874,Customer Success,Sales,"Bengaluru, IN","San Francisco, US",EMP0828,EMP0503,2021-07-12,career_growth,approved
+XFR0882,EMP0999,manager,JOB0404,JOB0953,Data,Customer Success,"Denver, US","Atlanta, US",EMP0027,EMP0866,2026-07-07,employee_request,pending
+XFR0883,EMP0196,manager,JOB0904,JOB0167,Customer Success,Facilities,"San Francisco, US","Hyderabad, IN",EMP0095,EMP0863,2026-06-15,career_growth,approved
+XFR0884,EMP0829,location,JOB0190,JOB0692,HR,Security,"Atlanta, US","Atlanta, US",EMP0117,EMP0177,2020-01-24,org_redesign,approved
+XFR0885,EMP0024,location,JOB0657,JOB0607,Facilities,Facilities,"Denver, US","Chicago, US",EMP0043,EMP0804,2017-03-17,career_growth,completed
+XFR0886,EMP0061,location,JOB0777,JOB0594,HR,IT,"Austin, US","Chicago, US",EMP0206,EMP0168,2020-02-17,org_redesign,cancelled
+XFR0887,EMP0131,location,JOB0924,JOB0948,Security,IT,"New York, US","San Francisco, US",EMP0449,EMP0335,2022-09-20,career_growth,cancelled
+XFR0888,EMP0408,department,JOB0497,JOB0999,Data,Legal,"Hyderabad, IN","Hyderabad, IN",EMP0632,EMP0656,2020-08-10,org_redesign,cancelled
+XFR0889,EMP0851,entity,JOB0737,JOB0246,Product,Security,"New York, US","Atlanta, US",EMP0289,EMP0485,2017-02-06,org_redesign,approved
+XFR0890,EMP0644,department,JOB0700,JOB0291,IT,Engineering,"Seattle, US","Dallas, US",EMP0850,EMP0215,2023-03-15,backfill,approved
+XFR0891,EMP0793,location,JOB0678,JOB0900,HR,Finance,"Seattle, US","Toronto, CA",EMP0194,EMP0586,2025-08-04,career_growth,approved
+XFR0892,EMP0478,department,JOB0294,JOB0395,Facilities,IT,"Austin, US","San Francisco, US",EMP0480,EMP0743,2026-02-14,employee_request,cancelled
+XFR0893,EMP0640,manager,JOB0104,JOB0484,Marketing,IT,"Austin, US","London, UK",EMP0890,EMP0547,2021-09-06,business_need,pending
+XFR0894,EMP0141,temporary,JOB0643,JOB0728,Finance,Supply Chain,"Chicago, US","Seattle, US",EMP0628,EMP0015,2024-09-30,career_growth,pending
+XFR0895,EMP0010,temporary,JOB0707,JOB0106,Sales,Finance,"Dallas, US","Bengaluru, IN",EMP0106,EMP0073,2024-10-05,business_need,completed
+XFR0896,EMP0192,entity,JOB0494,JOB0064,Product,Marketing,"Denver, US","Toronto, CA",EMP0838,EMP0085,2026-01-02,backfill,cancelled
+XFR0897,EMP0434,entity,JOB0963,JOB0265,IT,Legal,"Seattle, US","Toronto, CA",EMP0373,EMP0984,2024-08-08,business_need,cancelled
+XFR0898,EMP0804,entity,JOB0510,JOB0753,Customer Success,Product,"Atlanta, US","Austin, US",EMP0140,EMP0636,2024-11-13,org_redesign,approved
+XFR0899,EMP0622,temporary,JOB0114,JOB0592,Sales,Marketing,"Austin, US","Chicago, US",EMP0017,EMP0714,2024-03-22,employee_request,approved
+XFR0900,EMP0486,location,JOB0257,JOB0091,Operations,Finance,"San Francisco, US","Bengaluru, IN",EMP0270,EMP0016,2026-06-26,backfill,completed
+XFR0901,EMP0410,location,JOB0752,JOB0571,Legal,IT,"Hyderabad, IN","Austin, US",EMP0191,EMP0950,2026-05-23,org_redesign,cancelled
+XFR0902,EMP0507,manager,JOB0040,JOB0658,IT,Finance,"London, UK","London, UK",EMP0856,EMP0056,2025-10-23,business_need,approved
+XFR0903,EMP0594,entity,JOB0842,JOB0457,Supply Chain,Customer Success,"Austin, US","Dallas, US",EMP0008,EMP0848,2020-01-09,career_growth,pending
+XFR0904,EMP0745,location,JOB0082,JOB0096,Data,Legal,"Seattle, US","San Francisco, US",EMP0166,EMP0278,2018-05-26,business_need,approved
+XFR0905,EMP0838,entity,JOB0971,JOB0193,Marketing,Data,"Seattle, US","Bengaluru, IN",EMP0294,EMP0388,2025-03-12,employee_request,approved
+XFR0906,EMP0327,entity,JOB0933,JOB0611,Marketing,Marketing,"London, UK","Hyderabad, IN",EMP0804,EMP0441,2026-07-17,employee_request,completed
+XFR0907,EMP0397,entity,JOB0631,JOB0638,HR,Product,"Denver, US","Seattle, US",EMP0932,EMP0622,2026-06-08,business_need,approved
+XFR0908,EMP0630,temporary,JOB0384,JOB0596,Marketing,Facilities,"Chicago, US","New York, US",EMP0957,EMP0864,2026-03-01,backfill,pending
+XFR0909,EMP0367,location,JOB0911,JOB0594,Customer Success,IT,"London, UK","Chicago, US",EMP0596,EMP0246,2021-04-14,employee_request,approved
+XFR0910,EMP0693,location,JOB0023,JOB0206,Engineering,Marketing,"Chicago, US","Toronto, CA",EMP0817,EMP0223,2026-04-26,backfill,pending
+XFR0911,EMP0690,entity,JOB0364,JOB0609,Marketing,Legal,"Toronto, CA","Seattle, US",EMP0549,EMP0523,2026-02-07,career_growth,pending
+XFR0912,EMP0168,department,JOB0723,JOB0421,Finance,Sales,"Denver, US","Atlanta, US",EMP0938,EMP0222,2024-04-18,career_growth,cancelled
+XFR0913,EMP0870,location,JOB0009,JOB0296,Security,Marketing,"Toronto, CA","London, UK",EMP0440,EMP0983,2019-10-19,career_growth,cancelled
+XFR0914,EMP0781,temporary,JOB0495,JOB0457,Security,Customer Success,"Austin, US","Dallas, US",EMP0917,EMP0122,2024-01-05,employee_request,approved
+XFR0915,EMP0784,entity,JOB0284,JOB0508,Product,Data,"Denver, US","San Francisco, US",EMP0152,EMP0363,2016-02-17,backfill,cancelled
+XFR0916,EMP0604,department,JOB0411,JOB0819,Operations,HR,"Atlanta, US","Seattle, US",EMP0481,EMP0340,2023-09-30,org_redesign,approved
+XFR0917,EMP0230,location,JOB0700,JOB0264,IT,Facilities,"Seattle, US","Hyderabad, IN",EMP0210,EMP0269,2025-05-22,employee_request,pending
+XFR0918,EMP0321,temporary,JOB0267,JOB0958,Product,Customer Success,"Bengaluru, IN","San Francisco, US",EMP0143,EMP0767,2026-05-09,employee_request,completed
+XFR0919,EMP0839,entity,JOB0229,JOB0095,Operations,Sales,"Chicago, US","London, UK",EMP0129,EMP0504,2025-03-29,backfill,pending
+XFR0920,EMP0627,temporary,JOB0774,JOB0882,Customer Success,Supply Chain,"Seattle, US","Atlanta, US",EMP0175,EMP0580,2025-07-29,career_growth,pending
+XFR0921,EMP0228,manager,JOB0597,JOB0588,HR,Customer Success,"Atlanta, US","San Francisco, US",EMP0238,EMP0758,2025-03-28,business_need,completed
+XFR0922,EMP0352,location,JOB0696,JOB0038,IT,Marketing,"Chicago, US","Dallas, US",EMP0785,EMP0906,2019-09-17,employee_request,approved
+XFR0923,EMP0160,department,JOB0699,JOB0748,Legal,Security,"Bengaluru, IN","London, UK",EMP0536,EMP0432,2025-03-21,career_growth,pending
+XFR0924,EMP0851,department,JOB0084,JOB0886,HR,Customer Success,"Toronto, CA","Toronto, CA",EMP0176,EMP0172,2025-11-30,org_redesign,completed
+XFR0925,EMP0344,location,JOB0287,JOB0270,Marketing,Product,"Bengaluru, IN","Chicago, US",EMP0130,EMP0226,2019-09-19,employee_request,pending
+XFR0926,EMP0319,temporary,JOB0429,JOB0240,Operations,Engineering,"Chicago, US","Denver, US",EMP0027,EMP0810,2025-06-07,org_redesign,approved
+XFR0927,EMP0617,entity,JOB0650,JOB0159,Supply Chain,Facilities,"Hyderabad, IN","Bengaluru, IN",EMP0858,EMP0683,2026-03-28,employee_request,completed
+XFR0928,EMP0036,temporary,JOB0465,JOB0373,Product,Operations,"London, UK","Austin, US",EMP0333,EMP0732,2024-02-28,business_need,pending
+XFR0929,EMP0710,manager,JOB0111,JOB0706,Security,Data,"London, UK","Bengaluru, IN",EMP0708,EMP0836,2025-12-30,employee_request,approved
+XFR0930,EMP0918,department,JOB0612,JOB0466,Data,Customer Success,"Dallas, US","Seattle, US",EMP0529,EMP0847,2016-12-30,career_growth,approved
+XFR0931,EMP0874,manager,JOB0980,JOB0742,Sales,IT,"Seattle, US","Seattle, US",EMP0720,EMP0986,2025-06-30,backfill,pending
+XFR0932,EMP0940,temporary,JOB0540,JOB0928,Marketing,HR,"New York, US","San Francisco, US",EMP0639,EMP0096,2021-10-09,backfill,cancelled
+XFR0933,EMP0024,temporary,JOB0089,JOB0963,Data,IT,"Chicago, US","Seattle, US",EMP0851,EMP0957,2019-05-09,career_growth,approved
+XFR0934,EMP0900,entity,JOB0321,JOB0425,Facilities,IT,"Chicago, US","New York, US",EMP0098,EMP0793,2025-10-08,business_need,approved
+XFR0935,EMP0024,temporary,JOB0369,JOB0741,Legal,Operations,"Chicago, US","San Francisco, US",EMP0790,EMP0576,2020-10-09,business_need,approved
+XFR0936,EMP0107,temporary,JOB0655,JOB0151,Engineering,Product,"London, UK","New York, US",EMP0529,EMP0399,2019-10-24,org_redesign,cancelled
+XFR0937,EMP0625,entity,JOB0784,JOB0643,Security,Finance,"Chicago, US","Chicago, US",EMP0226,EMP0205,2026-06-06,career_growth,completed
+XFR0938,EMP0964,entity,JOB0286,JOB0483,IT,Legal,"Austin, US","Chicago, US",EMP0216,EMP0104,2022-05-19,org_redesign,approved
+XFR0939,EMP0895,department,JOB0544,JOB0475,Product,Security,"Hyderabad, IN","Hyderabad, IN",EMP0486,EMP0645,2022-10-20,org_redesign,completed
+XFR0940,EMP0271,department,JOB0621,JOB0597,Security,HR,"Denver, US","Atlanta, US",EMP0608,EMP0629,2025-05-24,org_redesign,pending
+XFR0941,EMP0434,department,JOB0714,JOB0101,IT,Finance,"London, UK","San Francisco, US",EMP0363,EMP0123,2023-02-01,career_growth,approved
+XFR0942,EMP0496,temporary,JOB0457,JOB0380,Customer Success,Marketing,"Dallas, US","Hyderabad, IN",EMP0022,EMP0524,2025-08-10,career_growth,completed
+XFR0943,EMP0532,entity,JOB0107,JOB0816,Facilities,Sales,"Chicago, US","Denver, US",EMP0571,EMP0791,2025-04-01,org_redesign,completed
+XFR0944,EMP0986,entity,JOB0293,JOB0358,Finance,IT,"Chicago, US","Hyderabad, IN",EMP0127,EMP0870,2022-02-24,business_need,approved
+XFR0945,EMP0979,department,JOB0367,JOB0856,Finance,Finance,"Toronto, CA","Toronto, CA",EMP0733,EMP0178,2026-07-07,backfill,approved
+XFR0946,EMP0771,department,JOB0620,JOB0770,Supply Chain,Finance,"Denver, US","Toronto, CA",EMP0953,EMP0610,2025-09-13,backfill,cancelled
+XFR0947,EMP0419,entity,JOB0061,JOB0101,Sales,Finance,"Seattle, US","San Francisco, US",EMP0555,EMP0480,2021-08-06,career_growth,approved
+XFR0948,EMP0538,location,JOB0152,JOB0237,HR,Marketing,"San Francisco, US","San Francisco, US",EMP0661,EMP0435,2024-06-29,backfill,approved
+XFR0949,EMP0197,location,JOB0855,JOB0875,HR,Marketing,"New York, US","Denver, US",EMP0408,EMP0325,2023-06-18,employee_request,pending
+XFR0950,EMP0519,location,JOB0756,JOB0940,Sales,Engineering,"Austin, US","Toronto, CA",EMP0662,EMP0395,2019-10-26,employee_request,pending
+XFR0951,EMP0780,department,JOB0299,JOB0455,IT,IT,"London, UK","Seattle, US",EMP0401,EMP0548,2026-05-04,career_growth,pending
+XFR0952,EMP0090,manager,JOB0665,JOB0468,Finance,Marketing,"Bengaluru, IN","Seattle, US",EMP0277,EMP0435,2024-11-19,career_growth,approved
+XFR0953,EMP0940,manager,JOB0290,JOB0878,HR,Engineering,"Dallas, US","Atlanta, US",EMP0003,EMP0124,2024-09-04,org_redesign,approved
+XFR0954,EMP0838,temporary,JOB0258,JOB0895,Operations,Sales,"San Francisco, US","Atlanta, US",EMP0790,EMP0209,2025-12-04,business_need,cancelled
+XFR0955,EMP0954,manager,JOB0844,JOB0926,Supply Chain,Facilities,"Atlanta, US","New York, US",EMP0887,EMP0287,2026-02-16,org_redesign,completed
+XFR0956,EMP0868,entity,JOB0943,JOB0350,Legal,Product,"Austin, US","Dallas, US",EMP0200,EMP0237,2024-05-06,backfill,completed
+XFR0957,EMP0281,entity,JOB0736,JOB0947,Customer Success,Legal,"Dallas, US","Dallas, US",EMP0965,EMP0791,2026-02-17,employee_request,completed
+XFR0958,EMP0702,location,JOB0774,JOB0759,Customer Success,Data,"Seattle, US","Bengaluru, IN",EMP0529,EMP0791,2026-07-22,backfill,approved
+XFR0959,EMP0282,manager,JOB0884,JOB0872,HR,Supply Chain,"London, UK","Denver, US",EMP0968,EMP0881,2023-03-30,business_need,approved
+XFR0960,EMP0494,department,JOB0370,JOB0987,Finance,Facilities,"Toronto, CA","Denver, US",EMP0072,EMP0968,2019-06-16,employee_request,cancelled
+XFR0961,EMP0383,manager,JOB0392,JOB0449,Product,Engineering,"New York, US","Chicago, US",EMP0712,EMP0867,2023-11-21,business_need,approved
+XFR0962,EMP0097,location,JOB0333,JOB0725,Supply Chain,HR,"New York, US","Dallas, US",EMP0310,EMP0830,2026-07-17,backfill,approved
+XFR0963,EMP0923,entity,JOB0435,JOB0042,Finance,Marketing,"Austin, US","Atlanta, US",EMP0093,EMP0865,2024-06-15,employee_request,pending
+XFR0964,EMP0677,entity,JOB0447,JOB0924,Marketing,Security,"London, UK","New York, US",EMP0560,EMP0261,2022-02-21,career_growth,cancelled
+XFR0965,EMP0751,entity,JOB0477,JOB0914,Product,Security,"Chicago, US","Toronto, CA",EMP0003,EMP0072,2020-12-31,career_growth,completed
+XFR0966,EMP0802,location,JOB0705,JOB0608,Sales,Facilities,"Dallas, US","New York, US",EMP0386,EMP0472,2018-02-10,employee_request,cancelled
+XFR0967,EMP0921,temporary,JOB0145,JOB0992,Marketing,Security,"San Francisco, US","Dallas, US",EMP0657,EMP0373,2021-03-03,career_growth,approved
+XFR0968,EMP0789,location,JOB0762,JOB0444,Security,Finance,"Toronto, CA","Austin, US",EMP0718,EMP0231,2026-02-09,career_growth,pending
+XFR0969,EMP0753,department,JOB0486,JOB0237,Product,Marketing,"Denver, US","San Francisco, US",EMP0997,EMP0669,2024-12-13,backfill,approved
+XFR0970,EMP0027,manager,JOB0965,JOB0443,Engineering,Security,"San Francisco, US","Seattle, US",EMP0110,EMP0237,2025-01-05,career_growth,cancelled
+XFR0971,EMP0022,entity,JOB0351,JOB0407,Marketing,Security,"Atlanta, US","Dallas, US",EMP0975,EMP0399,2025-01-01,employee_request,cancelled
+XFR0972,EMP0065,entity,JOB0912,JOB0300,Product,Security,"Denver, US","Seattle, US",EMP0521,EMP0642,2025-01-23,employee_request,completed
+XFR0973,EMP0749,manager,JOB0624,JOB0107,Facilities,Facilities,"Atlanta, US","Chicago, US",EMP0908,EMP0013,2026-04-17,backfill,cancelled
+XFR0974,EMP0862,temporary,JOB0921,JOB0116,Operations,IT,"Toronto, CA","Hyderabad, IN",EMP0890,EMP0261,2024-04-18,org_redesign,pending
+XFR0975,EMP0894,temporary,JOB0367,JOB0876,Finance,Engineering,"Toronto, CA","New York, US",EMP0518,EMP0610,2026-01-28,org_redesign,cancelled
+XFR0976,EMP0454,entity,JOB0402,JOB0940,Operations,Engineering,"Dallas, US","Toronto, CA",EMP0790,EMP0610,2026-06-24,business_need,approved
+XFR0977,EMP0413,temporary,JOB0692,JOB0392,Security,Product,"Atlanta, US","New York, US",EMP0328,EMP0920,2026-04-10,employee_request,approved
+XFR0978,EMP0783,entity,JOB0828,JOB0403,Sales,Data,"Hyderabad, IN","Chicago, US",EMP0267,EMP0618,2025-06-04,career_growth,cancelled
+XFR0979,EMP0522,entity,JOB0889,JOB0770,Security,Finance,"Toronto, CA","Toronto, CA",EMP0050,EMP0125,2021-10-07,career_growth,pending
+XFR0980,EMP0059,department,JOB0806,JOB0285,Finance,Security,"Seattle, US","Hyderabad, IN",EMP0903,EMP0746,2021-07-19,backfill,pending
+XFR0981,EMP0900,manager,JOB0026,JOB0455,Operations,IT,"Dallas, US","Seattle, US",EMP0287,EMP0282,2025-07-14,employee_request,approved
+XFR0982,EMP0071,department,JOB0217,JOB0990,Security,Engineering,"San Francisco, US","Dallas, US",EMP0116,EMP0068,2024-05-20,backfill,pending
+XFR0983,EMP0052,manager,JOB0136,JOB0796,Sales,Customer Success,"New York, US","Chicago, US",EMP0711,EMP0657,2023-02-28,org_redesign,cancelled
+XFR0984,EMP0270,location,JOB0328,JOB0850,Legal,Finance,"Austin, US","Hyderabad, IN",EMP0691,EMP0714,2023-10-08,org_redesign,pending
+XFR0985,EMP0092,entity,JOB0768,JOB0920,Facilities,Data,"Toronto, CA","New York, US",EMP0484,EMP0398,2024-08-02,business_need,completed
+XFR0986,EMP0897,manager,JOB0047,JOB0850,Sales,Finance,"London, UK","Hyderabad, IN",EMP0671,EMP0454,2022-08-14,org_redesign,approved
+XFR0987,EMP0777,location,JOB0249,JOB0364,Data,Marketing,"Dallas, US","Toronto, CA",EMP0103,EMP0116,2020-06-14,employee_request,approved
+XFR0988,EMP0667,temporary,JOB0366,JOB0939,Sales,Marketing,"Atlanta, US","Atlanta, US",EMP0281,EMP0898,2025-11-20,backfill,cancelled
+XFR0989,EMP0690,manager,JOB0789,JOB0578,Finance,Legal,"Hyderabad, IN","Dallas, US",EMP0617,EMP0014,2026-03-08,org_redesign,pending
+XFR0990,EMP0135,location,JOB0048,JOB0494,HR,Product,"Austin, US","Denver, US",EMP0408,EMP0741,2024-06-19,backfill,cancelled
+XFR0991,EMP0935,manager,JOB0055,JOB0249,Operations,Data,"Seattle, US","Dallas, US",EMP0182,EMP0681,2024-01-30,org_redesign,approved
+XFR0992,EMP0238,temporary,JOB0441,JOB0444,Facilities,Finance,"San Francisco, US","Austin, US",EMP0187,EMP0529,2025-07-20,career_growth,approved
+XFR0993,EMP0084,temporary,JOB0306,JOB0787,IT,Operations,"London, UK","New York, US",EMP0689,EMP0682,2026-04-27,employee_request,cancelled
+XFR0994,EMP0010,department,JOB0152,JOB0494,HR,Product,"San Francisco, US","Denver, US",EMP0278,EMP0643,2026-03-24,org_redesign,pending
+XFR0995,EMP0030,temporary,JOB0433,JOB0271,Customer Success,Engineering,"Hyderabad, IN","Seattle, US",EMP0897,EMP0742,2019-04-24,career_growth,approved
+XFR0996,EMP0973,location,JOB0757,JOB0895,Finance,Sales,"Atlanta, US","Atlanta, US",EMP0431,EMP0526,2026-05-13,org_redesign,approved
+XFR0997,EMP0265,temporary,JOB0094,JOB0964,Product,Security,"Hyderabad, IN","Hyderabad, IN",EMP0328,EMP0624,2026-02-16,business_need,completed
+XFR0998,EMP0207,entity,JOB0086,JOB0605,Product,Facilities,"Bengaluru, IN","Dallas, US",EMP0022,EMP0046,2024-10-20,career_growth,completed
+XFR0999,EMP0341,department,JOB0178,JOB0094,Finance,Product,"Austin, US","Hyderabad, IN",EMP0552,EMP0431,2022-02-10,career_growth,cancelled
+XFR1000,EMP0572,manager,JOB0145,JOB0073,Marketing,Engineering,"San Francisco, US","Dallas, US",EMP0156,EMP0042,2024-07-15,org_redesign,approved

@@ -1,0 +1,1001 @@
+termination_id,employee_id,job_id,termination_date,last_working_day,notice_date,termination_type,termination_reason,rehire_eligible,exit_interview_completed,initiated_by,department
+TRM0001,EMP0001,JOB0001,2024-02-04,2024-02-04,2024-01-12,involuntary,relocation,true,false,system,Supply Chain
+TRM0002,EMP0002,JOB0002,2022-11-26,2022-11-26,2022-11-03,involuntary,relocation,true,false,employee,Sales
+TRM0003,EMP0003,JOB0003,2024-11-01,2024-11-01,2024-10-17,contract_end,voluntary_resignation,true,true,manager,Legal
+TRM0004,EMP0004,JOB0004,2023-07-01,2023-07-01,2023-06-04,involuntary,relocation,true,false,system,Sales
+TRM0005,EMP0005,JOB0005,2025-10-29,2025-10-29,2025-10-09,retirement,restructuring,true,false,hr,Data
+TRM0006,EMP0006,JOB0006,2024-02-20,2024-02-20,2024-01-23,voluntary,retirement,true,false,hr,Security
+TRM0007,EMP0007,JOB0007,2025-06-23,2025-06-23,2025-06-17,voluntary,mutual_agreement,true,true,employee,Operations
+TRM0008,EMP0008,JOB0008,2026-04-04,2026-04-04,2026-03-21,involuntary,mutual_agreement,false,false,employee,Sales
+TRM0009,EMP0009,JOB0009,2020-02-16,2020-02-16,2020-02-08,contract_end,relocation,false,false,employee,Security
+TRM0010,EMP0010,JOB0010,2025-07-12,2025-07-12,2025-06-20,involuntary,better_opportunity,true,true,employee,HR
+TRM0011,EMP0011,JOB0011,2024-06-19,2024-06-19,2024-05-22,retirement,better_opportunity,false,false,system,Data
+TRM0012,EMP0012,JOB0012,2025-05-04,2025-05-04,2025-04-10,voluntary,performance,true,false,hr,Supply Chain
+TRM0013,EMP0013,JOB0013,2026-06-26,2026-06-26,2026-06-23,voluntary,voluntary_resignation,true,true,system,Facilities
+TRM0014,EMP0014,JOB0014,2026-04-20,2026-04-20,2026-03-26,retirement,better_opportunity,false,false,hr,IT
+TRM0015,EMP0015,JOB0015,2022-11-19,2022-11-19,2022-11-02,retirement,end_of_contract,true,false,manager,Facilities
+TRM0016,EMP0016,JOB0016,2018-08-15,2018-08-15,2018-08-14,retirement,voluntary_resignation,true,true,system,Product
+TRM0017,EMP0017,JOB0017,2019-12-20,2019-12-20,2019-11-20,contract_end,mutual_agreement,true,true,manager,Marketing
+TRM0018,EMP0018,JOB0018,2017-03-14,2017-03-14,2017-02-26,retirement,better_opportunity,false,false,employee,Finance
+TRM0019,EMP0019,JOB0019,2025-08-03,2025-08-03,2025-07-06,contract_end,voluntary_resignation,false,true,employee,Operations
+TRM0020,EMP0020,JOB0020,2024-12-14,2024-12-14,2024-11-25,contract_end,performance,true,true,employee,Engineering
+TRM0021,EMP0021,JOB0021,2019-04-19,2019-04-19,2019-03-30,voluntary,restructuring,false,true,employee,Security
+TRM0022,EMP0022,JOB0022,2021-12-21,2021-12-21,2021-12-15,involuntary,better_opportunity,false,false,system,Data
+TRM0023,EMP0023,JOB0023,2026-05-08,2026-05-08,2026-04-26,contract_end,relocation,true,true,employee,Engineering
+TRM0024,EMP0024,JOB0024,2018-04-22,2018-04-22,2018-03-27,retirement,relocation,false,false,hr,Supply Chain
+TRM0025,EMP0025,JOB0025,2026-01-25,2026-01-25,2026-01-10,involuntary,restructuring,false,true,employee,Facilities
+TRM0026,EMP0026,JOB0026,2021-06-06,2021-06-06,2021-06-05,contract_end,attendance,false,true,system,Operations
+TRM0027,EMP0027,JOB0027,2019-08-12,2019-08-12,2019-07-24,contract_end,relocation,false,true,employee,Supply Chain
+TRM0028,EMP0028,JOB0028,2024-03-01,2024-03-01,2024-02-22,retirement,voluntary_resignation,false,false,hr,HR
+TRM0029,EMP0029,JOB0029,2020-05-01,2020-05-01,2020-04-18,voluntary,restructuring,true,true,manager,Finance
+TRM0030,EMP0030,JOB0030,2022-07-10,2022-07-10,2022-07-07,retirement,mutual_agreement,true,true,hr,IT
+TRM0031,EMP0031,JOB0031,2022-11-10,2022-11-10,2022-10-30,retirement,better_opportunity,false,true,hr,Product
+TRM0032,EMP0032,JOB0032,2023-11-22,2023-11-22,2023-10-25,contract_end,end_of_contract,true,false,system,Security
+TRM0033,EMP0033,JOB0033,2024-11-30,2024-11-30,2024-11-06,retirement,performance,true,true,employee,HR
+TRM0034,EMP0034,JOB0034,2025-01-29,2025-01-29,2025-01-16,voluntary,restructuring,true,false,hr,Facilities
+TRM0035,EMP0035,JOB0035,2019-02-13,2019-02-13,2019-02-01,contract_end,end_of_contract,true,true,manager,IT
+TRM0036,EMP0036,JOB0036,2022-10-24,2022-10-24,2022-10-05,voluntary,relocation,true,false,employee,Data
+TRM0037,EMP0037,JOB0037,2021-12-08,2021-12-08,2021-12-08,voluntary,attendance,true,false,employee,Facilities
+TRM0038,EMP0038,JOB0038,2025-12-04,2025-12-04,2025-12-02,voluntary,retirement,true,false,hr,Marketing
+TRM0039,EMP0039,JOB0039,2022-06-30,2022-06-30,2022-06-06,voluntary,performance,false,false,hr,Data
+TRM0040,EMP0040,JOB0040,2020-10-06,2020-10-06,2020-09-30,contract_end,voluntary_resignation,false,true,manager,IT
+TRM0041,EMP0041,JOB0041,2022-10-13,2022-10-13,2022-09-17,retirement,end_of_contract,true,true,manager,IT
+TRM0042,EMP0042,JOB0042,2025-04-10,2025-04-10,2025-04-01,contract_end,restructuring,true,true,employee,Marketing
+TRM0043,EMP0043,JOB0043,2023-11-25,2023-11-25,2023-11-15,retirement,performance,false,false,system,Operations
+TRM0044,EMP0044,JOB0044,2022-09-05,2022-09-05,2022-08-07,involuntary,end_of_contract,true,true,manager,Operations
+TRM0045,EMP0045,JOB0045,2023-05-25,2023-05-25,2023-05-05,involuntary,end_of_contract,true,true,hr,HR
+TRM0046,EMP0046,JOB0046,2025-05-15,2025-05-15,2025-04-20,retirement,voluntary_resignation,true,false,hr,Operations
+TRM0047,EMP0047,JOB0047,2026-07-27,2026-07-27,2026-07-09,contract_end,performance,false,true,system,Sales
+TRM0048,EMP0048,JOB0048,2026-07-30,2026-07-30,2026-07-12,voluntary,mutual_agreement,true,true,employee,HR
+TRM0049,EMP0049,JOB0049,2023-05-17,2023-05-17,2023-04-25,retirement,relocation,true,true,manager,Product
+TRM0050,EMP0050,JOB0050,2026-06-27,2026-06-27,2026-06-13,involuntary,restructuring,false,true,employee,IT
+TRM0051,EMP0051,JOB0051,2026-06-21,2026-06-21,2026-05-27,voluntary,mutual_agreement,false,true,hr,Security
+TRM0052,EMP0052,JOB0052,2023-06-18,2023-06-18,2023-06-05,retirement,retirement,true,false,system,Supply Chain
+TRM0053,EMP0053,JOB0053,2026-02-17,2026-02-17,2026-01-26,involuntary,mutual_agreement,false,true,hr,Legal
+TRM0054,EMP0054,JOB0054,2023-07-26,2023-07-26,2023-07-09,retirement,end_of_contract,false,false,manager,Data
+TRM0055,EMP0055,JOB0055,2024-08-13,2024-08-13,2024-07-24,voluntary,performance,false,true,employee,Operations
+TRM0056,EMP0056,JOB0056,2022-03-02,2022-03-02,2022-02-01,voluntary,retirement,true,false,manager,Engineering
+TRM0057,EMP0057,JOB0057,2020-07-31,2020-07-31,2020-07-01,contract_end,relocation,true,true,hr,Finance
+TRM0058,EMP0058,JOB0058,2026-08-22,2026-08-22,2026-08-22,contract_end,restructuring,false,true,manager,Marketing
+TRM0059,EMP0059,JOB0059,2026-05-22,2026-05-22,2026-04-28,involuntary,voluntary_resignation,true,true,system,HR
+TRM0060,EMP0060,JOB0060,2024-04-07,2024-04-07,2024-03-14,contract_end,mutual_agreement,false,false,manager,Supply Chain
+TRM0061,EMP0061,JOB0061,2023-11-08,2023-11-08,2023-10-29,contract_end,voluntary_resignation,false,false,hr,Sales
+TRM0062,EMP0062,JOB0062,2022-05-23,2022-05-23,2022-04-26,involuntary,restructuring,true,false,system,Legal
+TRM0063,EMP0063,JOB0063,2025-10-11,2025-10-11,2025-10-05,voluntary,retirement,false,true,manager,Legal
+TRM0064,EMP0064,JOB0064,2024-10-14,2024-10-14,2024-09-19,retirement,relocation,false,false,hr,Marketing
+TRM0065,EMP0065,JOB0065,2026-07-24,2026-07-24,2026-06-29,voluntary,end_of_contract,false,true,system,Product
+TRM0066,EMP0066,JOB0066,2016-11-07,2016-11-07,2016-11-05,involuntary,restructuring,true,false,system,Facilities
+TRM0067,EMP0067,JOB0067,2026-01-18,2026-01-18,2026-01-10,retirement,retirement,false,false,system,Sales
+TRM0068,EMP0068,JOB0068,2019-07-27,2019-07-27,2019-07-02,voluntary,relocation,false,false,hr,Marketing
+TRM0069,EMP0069,JOB0069,2025-09-12,2025-09-12,2025-08-17,retirement,relocation,true,false,manager,Security
+TRM0070,EMP0070,JOB0070,2021-10-05,2021-10-05,2021-09-15,retirement,retirement,false,true,system,IT
+TRM0071,EMP0071,JOB0071,2023-09-03,2023-09-03,2023-08-04,voluntary,end_of_contract,false,false,system,Customer Success
+TRM0072,EMP0072,JOB0072,2026-08-03,2026-08-03,2026-08-02,retirement,end_of_contract,false,false,system,Finance
+TRM0073,EMP0073,JOB0073,2023-01-28,2023-01-28,2023-01-20,retirement,end_of_contract,false,false,employee,Engineering
+TRM0074,EMP0074,JOB0074,2022-08-31,2022-08-31,2022-08-04,voluntary,voluntary_resignation,true,false,system,Operations
+TRM0075,EMP0075,JOB0075,2023-03-02,2023-03-02,2023-02-21,voluntary,voluntary_resignation,true,false,manager,Engineering
+TRM0076,EMP0076,JOB0076,2023-01-19,2023-01-19,2023-01-05,involuntary,restructuring,false,false,manager,Security
+TRM0077,EMP0077,JOB0077,2025-05-10,2025-05-10,2025-05-09,retirement,restructuring,true,false,manager,Operations
+TRM0078,EMP0078,JOB0078,2024-03-24,2024-03-24,2024-03-02,contract_end,better_opportunity,true,true,employee,Marketing
+TRM0079,EMP0079,JOB0079,2026-07-18,2026-07-18,2026-07-18,retirement,end_of_contract,true,false,manager,Sales
+TRM0080,EMP0080,JOB0080,2024-08-19,2024-08-19,2024-08-19,voluntary,better_opportunity,false,false,hr,Product
+TRM0081,EMP0081,JOB0081,2026-04-04,2026-04-04,2026-03-06,retirement,attendance,true,true,system,Finance
+TRM0082,EMP0082,JOB0082,2024-11-17,2024-11-17,2024-10-19,retirement,relocation,false,true,hr,Data
+TRM0083,EMP0083,JOB0083,2017-09-26,2017-09-26,2017-08-29,voluntary,performance,true,true,manager,Data
+TRM0084,EMP0084,JOB0084,2026-01-29,2026-01-29,2026-01-23,involuntary,voluntary_resignation,true,true,hr,HR
+TRM0085,EMP0085,JOB0085,2022-05-09,2022-05-09,2022-05-08,contract_end,retirement,false,false,system,Product
+TRM0086,EMP0086,JOB0086,2021-04-12,2021-04-12,2021-03-19,contract_end,better_opportunity,true,true,manager,Product
+TRM0087,EMP0087,JOB0087,2021-04-14,2021-04-14,2021-03-19,contract_end,relocation,true,true,hr,Product
+TRM0088,EMP0088,JOB0088,2023-06-11,2023-06-11,2023-05-14,retirement,restructuring,true,false,employee,Engineering
+TRM0089,EMP0089,JOB0089,2026-01-09,2026-01-09,2025-12-28,involuntary,attendance,true,true,hr,Data
+TRM0090,EMP0090,JOB0090,2026-02-08,2026-02-08,2026-01-30,contract_end,retirement,true,true,manager,Operations
+TRM0091,EMP0091,JOB0091,2025-03-30,2025-03-30,2025-03-04,contract_end,relocation,false,false,manager,Finance
+TRM0092,EMP0092,JOB0092,2025-01-23,2025-01-23,2025-01-08,involuntary,end_of_contract,true,true,system,IT
+TRM0093,EMP0093,JOB0093,2022-10-11,2022-10-11,2022-09-19,voluntary,end_of_contract,true,true,employee,Security
+TRM0094,EMP0094,JOB0094,2025-01-15,2025-01-15,2024-12-29,contract_end,restructuring,true,true,hr,Product
+TRM0095,EMP0095,JOB0095,2021-12-20,2021-12-20,2021-12-08,voluntary,mutual_agreement,false,true,manager,Sales
+TRM0096,EMP0096,JOB0096,2026-04-20,2026-04-20,2026-03-25,voluntary,relocation,true,true,system,Legal
+TRM0097,EMP0097,JOB0097,2026-09-01,2026-09-01,2026-08-22,contract_end,relocation,false,true,hr,Facilities
+TRM0098,EMP0098,JOB0098,2024-12-31,2024-12-31,2024-12-20,retirement,better_opportunity,true,true,manager,Product
+TRM0099,EMP0099,JOB0099,2024-11-08,2024-11-08,2024-10-29,contract_end,attendance,false,true,system,Product
+TRM0100,EMP0100,JOB0100,2023-02-09,2023-02-09,2023-01-10,involuntary,performance,false,true,system,Finance
+TRM0101,EMP0101,JOB0101,2026-04-11,2026-04-11,2026-04-01,retirement,end_of_contract,false,false,employee,Finance
+TRM0102,EMP0102,JOB0102,2021-08-05,2021-08-05,2021-07-25,involuntary,relocation,false,false,manager,Security
+TRM0103,EMP0103,JOB0103,2023-11-13,2023-11-13,2023-11-04,retirement,end_of_contract,true,false,manager,Security
+TRM0104,EMP0104,JOB0104,2020-05-15,2020-05-15,2020-04-22,retirement,better_opportunity,false,true,hr,Marketing
+TRM0105,EMP0105,JOB0105,2026-06-23,2026-06-23,2026-06-17,contract_end,restructuring,false,false,system,Security
+TRM0106,EMP0106,JOB0106,2026-07-15,2026-07-15,2026-06-15,retirement,better_opportunity,false,true,manager,Finance
+TRM0107,EMP0107,JOB0107,2025-05-19,2025-05-19,2025-04-30,involuntary,relocation,false,true,employee,Facilities
+TRM0108,EMP0108,JOB0108,2016-01-03,2016-01-03,2016-01-03,involuntary,relocation,true,false,hr,HR
+TRM0109,EMP0109,JOB0109,2025-09-20,2025-09-20,2025-09-11,retirement,restructuring,true,false,hr,Supply Chain
+TRM0110,EMP0110,JOB0110,2026-01-22,2026-01-22,2026-01-21,retirement,relocation,true,true,hr,IT
+TRM0111,EMP0111,JOB0111,2024-11-23,2024-11-23,2024-11-11,involuntary,retirement,false,false,hr,Security
+TRM0112,EMP0112,JOB0112,2024-09-05,2024-09-05,2024-08-08,retirement,mutual_agreement,false,false,system,Facilities
+TRM0113,EMP0113,JOB0113,2022-10-29,2022-10-29,2022-10-24,contract_end,end_of_contract,false,true,hr,Security
+TRM0114,EMP0114,JOB0114,2023-08-19,2023-08-19,2023-08-10,voluntary,retirement,true,true,hr,Sales
+TRM0115,EMP0115,JOB0115,2024-07-16,2024-07-16,2024-07-01,involuntary,end_of_contract,false,false,hr,Sales
+TRM0116,EMP0116,JOB0116,2024-12-25,2024-12-25,2024-12-18,contract_end,restructuring,false,true,employee,IT
+TRM0117,EMP0117,JOB0117,2023-01-05,2023-01-05,2022-12-21,retirement,better_opportunity,true,true,employee,Legal
+TRM0118,EMP0118,JOB0118,2020-11-07,2020-11-07,2020-10-12,involuntary,retirement,false,true,system,Sales
+TRM0119,EMP0119,JOB0119,2024-10-02,2024-10-02,2024-09-30,contract_end,mutual_agreement,true,false,manager,Legal
+TRM0120,EMP0120,JOB0120,2021-03-19,2021-03-19,2021-02-21,retirement,end_of_contract,false,true,hr,Facilities
+TRM0121,EMP0121,JOB0121,2022-11-16,2022-11-16,2022-10-26,voluntary,performance,false,false,system,HR
+TRM0122,EMP0122,JOB0122,2025-08-17,2025-08-17,2025-07-20,involuntary,performance,false,true,system,Finance
+TRM0123,EMP0123,JOB0123,2025-08-18,2025-08-18,2025-08-18,involuntary,better_opportunity,true,false,system,Legal
+TRM0124,EMP0124,JOB0124,2019-07-12,2019-07-12,2019-07-08,voluntary,relocation,true,false,employee,Sales
+TRM0125,EMP0125,JOB0125,2020-05-04,2020-05-04,2020-04-16,voluntary,restructuring,true,true,employee,Data
+TRM0126,EMP0126,JOB0126,2022-02-25,2022-02-25,2022-01-30,involuntary,performance,true,true,hr,Sales
+TRM0127,EMP0127,JOB0127,2025-10-05,2025-10-05,2025-09-16,contract_end,performance,true,true,system,Security
+TRM0128,EMP0128,JOB0128,2019-09-29,2019-09-29,2019-09-12,voluntary,better_opportunity,true,false,system,Sales
+TRM0129,EMP0129,JOB0129,2021-04-08,2021-04-08,2021-03-20,voluntary,voluntary_resignation,true,false,system,Security
+TRM0130,EMP0130,JOB0130,2024-05-13,2024-05-13,2024-04-14,retirement,attendance,false,false,manager,Operations
+TRM0131,EMP0131,JOB0131,2023-06-14,2023-06-14,2023-05-21,retirement,retirement,true,false,manager,Data
+TRM0132,EMP0132,JOB0132,2026-09-07,2026-09-07,2026-08-15,retirement,end_of_contract,false,true,manager,Facilities
+TRM0133,EMP0133,JOB0133,2020-02-14,2020-02-14,2020-02-08,involuntary,end_of_contract,true,false,hr,IT
+TRM0134,EMP0134,JOB0134,2026-05-22,2026-05-22,2026-04-26,contract_end,better_opportunity,true,true,hr,Product
+TRM0135,EMP0135,JOB0135,2023-02-23,2023-02-23,2023-02-08,voluntary,better_opportunity,true,true,manager,Operations
+TRM0136,EMP0136,JOB0136,2018-10-19,2018-10-19,2018-09-30,retirement,voluntary_resignation,true,true,manager,Sales
+TRM0137,EMP0137,JOB0137,2023-10-18,2023-10-18,2023-10-10,voluntary,retirement,false,true,manager,HR
+TRM0138,EMP0138,JOB0138,2026-03-12,2026-03-12,2026-02-12,voluntary,end_of_contract,true,true,system,Engineering
+TRM0139,EMP0139,JOB0139,2026-05-02,2026-05-02,2026-04-11,retirement,voluntary_resignation,true,true,manager,IT
+TRM0140,EMP0140,JOB0140,2024-12-30,2024-12-30,2024-12-12,contract_end,retirement,true,true,hr,IT
+TRM0141,EMP0141,JOB0141,2025-02-10,2025-02-10,2025-01-21,contract_end,performance,true,false,hr,Marketing
+TRM0142,EMP0142,JOB0142,2021-07-31,2021-07-31,2021-07-27,retirement,attendance,true,true,employee,Operations
+TRM0143,EMP0143,JOB0143,2025-07-04,2025-07-04,2025-06-10,voluntary,mutual_agreement,true,false,employee,Product
+TRM0144,EMP0144,JOB0144,2016-10-15,2016-10-15,2016-10-13,contract_end,restructuring,true,true,manager,Supply Chain
+TRM0145,EMP0145,JOB0145,2026-06-17,2026-06-17,2026-05-30,retirement,retirement,true,true,manager,Marketing
+TRM0146,EMP0146,JOB0146,2022-05-16,2022-05-16,2022-05-12,involuntary,better_opportunity,false,true,employee,Engineering
+TRM0147,EMP0147,JOB0147,2026-07-22,2026-07-22,2026-07-15,retirement,retirement,false,false,hr,Marketing
+TRM0148,EMP0148,JOB0148,2026-03-14,2026-03-14,2026-03-08,voluntary,restructuring,false,true,hr,Facilities
+TRM0149,EMP0149,JOB0149,2022-04-23,2022-04-23,2022-03-25,involuntary,restructuring,true,false,hr,Facilities
+TRM0150,EMP0150,JOB0150,2024-05-22,2024-05-22,2024-05-10,voluntary,restructuring,true,true,hr,Product
+TRM0151,EMP0151,JOB0151,2023-05-20,2023-05-20,2023-04-28,contract_end,better_opportunity,true,false,employee,Product
+TRM0152,EMP0152,JOB0152,2025-05-28,2025-05-28,2025-05-13,voluntary,voluntary_resignation,true,true,hr,HR
+TRM0153,EMP0153,JOB0153,2026-05-22,2026-05-22,2026-05-16,contract_end,restructuring,true,true,system,Security
+TRM0154,EMP0154,JOB0154,2022-04-28,2022-04-28,2022-04-18,retirement,restructuring,true,false,system,IT
+TRM0155,EMP0155,JOB0155,2025-08-18,2025-08-18,2025-08-16,involuntary,restructuring,true,false,hr,Engineering
+TRM0156,EMP0156,JOB0156,2026-07-20,2026-07-20,2026-06-20,voluntary,voluntary_resignation,false,true,employee,Security
+TRM0157,EMP0157,JOB0157,2024-01-12,2024-01-12,2023-12-15,involuntary,retirement,true,true,employee,Security
+TRM0158,EMP0158,JOB0158,2022-02-02,2022-02-02,2022-01-31,involuntary,relocation,true,false,hr,Data
+TRM0159,EMP0159,JOB0159,2026-09-27,2026-09-27,2026-08-29,voluntary,better_opportunity,true,false,system,Facilities
+TRM0160,EMP0160,JOB0160,2025-12-26,2025-12-26,2025-12-07,retirement,attendance,false,true,system,Data
+TRM0161,EMP0161,JOB0161,2018-03-02,2018-03-02,2018-03-01,voluntary,performance,true,true,manager,Supply Chain
+TRM0162,EMP0162,JOB0162,2025-11-27,2025-11-27,2025-11-27,contract_end,end_of_contract,true,true,employee,Product
+TRM0163,EMP0163,JOB0163,2025-06-19,2025-06-19,2025-05-22,involuntary,restructuring,false,false,manager,Supply Chain
+TRM0164,EMP0164,JOB0164,2021-05-05,2021-05-05,2021-05-05,involuntary,attendance,true,true,system,Marketing
+TRM0165,EMP0165,JOB0165,2025-10-29,2025-10-29,2025-09-29,involuntary,retirement,true,false,manager,Customer Success
+TRM0166,EMP0166,JOB0166,2020-04-10,2020-04-10,2020-03-15,retirement,better_opportunity,false,true,manager,Security
+TRM0167,EMP0167,JOB0167,2024-05-25,2024-05-25,2024-05-09,retirement,retirement,false,true,manager,Facilities
+TRM0168,EMP0168,JOB0168,2026-04-17,2026-04-17,2026-04-15,retirement,relocation,true,true,employee,Engineering
+TRM0169,EMP0169,JOB0169,2019-03-26,2019-03-26,2019-03-17,voluntary,mutual_agreement,false,true,hr,Security
+TRM0170,EMP0170,JOB0170,2024-04-11,2024-04-11,2024-04-02,voluntary,mutual_agreement,false,true,hr,Facilities
+TRM0171,EMP0171,JOB0171,2023-08-01,2023-08-01,2023-07-22,voluntary,relocation,true,true,manager,Sales
+TRM0172,EMP0172,JOB0172,2020-11-04,2020-11-04,2020-10-24,voluntary,voluntary_resignation,false,false,system,Legal
+TRM0173,EMP0173,JOB0173,2023-04-27,2023-04-27,2023-04-03,voluntary,relocation,false,true,employee,HR
+TRM0174,EMP0174,JOB0174,2025-04-17,2025-04-17,2025-03-29,voluntary,mutual_agreement,true,false,manager,Operations
+TRM0175,EMP0175,JOB0175,2020-04-12,2020-04-12,2020-03-23,retirement,attendance,true,false,hr,Data
+TRM0176,EMP0176,JOB0176,2023-05-18,2023-05-18,2023-04-26,voluntary,performance,false,true,manager,Operations
+TRM0177,EMP0177,JOB0177,2023-10-20,2023-10-20,2023-10-09,retirement,relocation,true,true,hr,Data
+TRM0178,EMP0178,JOB0178,2025-06-29,2025-06-29,2025-06-16,voluntary,retirement,false,true,hr,Finance
+TRM0179,EMP0179,JOB0179,2026-02-14,2026-02-14,2026-01-20,contract_end,restructuring,true,false,system,Legal
+TRM0180,EMP0180,JOB0180,2019-06-23,2019-06-23,2019-05-25,contract_end,end_of_contract,true,true,hr,Legal
+TRM0181,EMP0181,JOB0181,2024-02-03,2024-02-03,2024-01-30,retirement,better_opportunity,false,true,system,Sales
+TRM0182,EMP0182,JOB0182,2025-10-18,2025-10-18,2025-10-15,retirement,restructuring,true,false,hr,Product
+TRM0183,EMP0183,JOB0183,2025-11-29,2025-11-29,2025-11-12,voluntary,end_of_contract,true,false,system,HR
+TRM0184,EMP0184,JOB0184,2026-02-22,2026-02-22,2026-01-31,involuntary,retirement,true,false,hr,Finance
+TRM0185,EMP0185,JOB0185,2026-05-19,2026-05-19,2026-05-13,contract_end,end_of_contract,true,false,system,Marketing
+TRM0186,EMP0186,JOB0186,2022-12-01,2022-12-01,2022-11-19,retirement,relocation,true,false,hr,HR
+TRM0187,EMP0187,JOB0187,2023-08-12,2023-08-12,2023-07-15,involuntary,mutual_agreement,true,true,hr,HR
+TRM0188,EMP0188,JOB0188,2025-04-18,2025-04-18,2025-03-27,voluntary,restructuring,false,false,manager,Marketing
+TRM0189,EMP0189,JOB0189,2019-08-18,2019-08-18,2019-07-25,involuntary,relocation,true,true,hr,Supply Chain
+TRM0190,EMP0190,JOB0190,2025-03-15,2025-03-15,2025-02-15,retirement,performance,true,false,employee,HR
+TRM0191,EMP0191,JOB0191,2021-09-21,2021-09-21,2021-09-12,voluntary,attendance,true,true,system,Sales
+TRM0192,EMP0192,JOB0192,2026-05-04,2026-05-04,2026-04-17,voluntary,performance,true,true,manager,Operations
+TRM0193,EMP0193,JOB0193,2023-11-28,2023-11-28,2023-11-12,retirement,end_of_contract,false,true,employee,Data
+TRM0194,EMP0194,JOB0194,2017-11-02,2017-11-02,2017-10-11,voluntary,relocation,true,false,system,IT
+TRM0195,EMP0195,JOB0195,2024-06-05,2024-06-05,2024-05-15,voluntary,relocation,false,true,hr,Data
+TRM0196,EMP0196,JOB0196,2024-01-21,2024-01-21,2024-01-19,contract_end,restructuring,true,false,manager,HR
+TRM0197,EMP0197,JOB0197,2022-09-30,2022-09-30,2022-09-16,retirement,end_of_contract,false,false,system,Finance
+TRM0198,EMP0198,JOB0198,2023-10-18,2023-10-18,2023-10-01,involuntary,end_of_contract,false,true,hr,IT
+TRM0199,EMP0199,JOB0199,2019-04-07,2019-04-07,2019-03-16,involuntary,attendance,false,false,system,Engineering
+TRM0200,EMP0200,JOB0200,2025-07-02,2025-07-02,2025-06-10,contract_end,performance,true,false,employee,IT
+TRM0201,EMP0201,JOB0201,2026-06-03,2026-06-03,2026-05-17,retirement,restructuring,true,true,employee,Finance
+TRM0202,EMP0202,JOB0202,2024-10-26,2024-10-26,2024-09-28,contract_end,mutual_agreement,true,true,hr,Engineering
+TRM0203,EMP0203,JOB0203,2026-04-03,2026-04-03,2026-03-19,retirement,voluntary_resignation,false,false,hr,Product
+TRM0204,EMP0204,JOB0204,2025-11-04,2025-11-04,2025-11-03,contract_end,attendance,true,true,employee,Product
+TRM0205,EMP0205,JOB0205,2022-08-13,2022-08-13,2022-07-29,voluntary,better_opportunity,true,true,hr,Engineering
+TRM0206,EMP0206,JOB0206,2023-01-28,2023-01-28,2023-01-11,contract_end,voluntary_resignation,true,true,hr,Marketing
+TRM0207,EMP0207,JOB0207,2018-08-18,2018-08-18,2018-07-19,voluntary,voluntary_resignation,true,true,system,Operations
+TRM0208,EMP0208,JOB0208,2025-07-15,2025-07-15,2025-06-21,contract_end,better_opportunity,true,false,hr,Data
+TRM0209,EMP0209,JOB0209,2025-10-13,2025-10-13,2025-09-16,retirement,mutual_agreement,false,false,manager,Engineering
+TRM0210,EMP0210,JOB0210,2020-01-06,2020-01-06,2019-12-18,voluntary,relocation,false,false,system,Facilities
+TRM0211,EMP0211,JOB0211,2022-02-02,2022-02-02,2022-01-19,voluntary,restructuring,false,false,employee,Finance
+TRM0212,EMP0212,JOB0212,2020-06-19,2020-06-19,2020-06-05,voluntary,retirement,true,true,system,IT
+TRM0213,EMP0213,JOB0213,2026-07-07,2026-07-07,2026-06-26,involuntary,end_of_contract,true,true,system,Marketing
+TRM0214,EMP0214,JOB0214,2024-04-30,2024-04-30,2024-04-16,voluntary,end_of_contract,false,false,manager,Customer Success
+TRM0215,EMP0215,JOB0215,2025-10-12,2025-10-12,2025-09-27,retirement,restructuring,true,false,hr,IT
+TRM0216,EMP0216,JOB0216,2020-03-16,2020-03-16,2020-02-19,retirement,performance,false,true,manager,Supply Chain
+TRM0217,EMP0217,JOB0217,2025-11-25,2025-11-25,2025-11-17,contract_end,better_opportunity,true,false,employee,Security
+TRM0218,EMP0218,JOB0218,2017-08-23,2017-08-23,2017-08-04,contract_end,performance,false,false,hr,Legal
+TRM0219,EMP0219,JOB0219,2025-08-31,2025-08-31,2025-08-01,contract_end,end_of_contract,true,true,system,Supply Chain
+TRM0220,EMP0220,JOB0220,2024-12-11,2024-12-11,2024-11-23,retirement,performance,true,false,system,Engineering
+TRM0221,EMP0221,JOB0221,2022-02-15,2022-02-15,2022-02-14,retirement,voluntary_resignation,false,false,system,Finance
+TRM0222,EMP0222,JOB0222,2024-08-08,2024-08-08,2024-07-24,retirement,performance,true,false,system,Facilities
+TRM0223,EMP0223,JOB0223,2026-05-15,2026-05-15,2026-05-09,voluntary,attendance,false,false,employee,Sales
+TRM0224,EMP0224,JOB0224,2026-04-10,2026-04-10,2026-03-22,involuntary,performance,true,true,system,Customer Success
+TRM0225,EMP0225,JOB0225,2025-08-14,2025-08-14,2025-07-26,voluntary,retirement,false,false,hr,Supply Chain
+TRM0226,EMP0226,JOB0226,2023-05-04,2023-05-04,2023-04-16,voluntary,relocation,true,true,hr,Engineering
+TRM0227,EMP0227,JOB0227,2021-04-10,2021-04-10,2021-03-28,involuntary,restructuring,false,true,employee,Sales
+TRM0228,EMP0228,JOB0228,2022-08-13,2022-08-13,2022-07-31,voluntary,retirement,false,false,manager,Legal
+TRM0229,EMP0229,JOB0229,2020-05-11,2020-05-11,2020-04-21,involuntary,mutual_agreement,true,false,hr,Operations
+TRM0230,EMP0230,JOB0230,2022-12-31,2022-12-31,2022-12-05,retirement,better_opportunity,false,false,manager,HR
+TRM0231,EMP0231,JOB0231,2025-06-25,2025-06-25,2025-06-25,contract_end,end_of_contract,true,false,hr,Engineering
+TRM0232,EMP0232,JOB0232,2020-10-30,2020-10-30,2020-10-29,retirement,mutual_agreement,true,false,hr,IT
+TRM0233,EMP0233,JOB0233,2019-08-23,2019-08-23,2019-08-18,contract_end,better_opportunity,true,false,employee,Customer Success
+TRM0234,EMP0234,JOB0234,2024-11-30,2024-11-30,2024-11-11,voluntary,restructuring,true,true,hr,Operations
+TRM0235,EMP0235,JOB0235,2014-09-02,2014-09-02,2014-08-15,contract_end,attendance,true,false,employee,Engineering
+TRM0236,EMP0236,JOB0236,2023-05-06,2023-05-06,2023-04-21,voluntary,attendance,true,true,employee,Customer Success
+TRM0237,EMP0237,JOB0237,2025-02-15,2025-02-15,2025-02-15,involuntary,attendance,false,false,employee,Marketing
+TRM0238,EMP0238,JOB0238,2026-06-24,2026-06-24,2026-06-04,retirement,restructuring,true,false,hr,Customer Success
+TRM0239,EMP0239,JOB0239,2019-08-15,2019-08-15,2019-08-11,involuntary,end_of_contract,false,false,hr,Customer Success
+TRM0240,EMP0240,JOB0240,2021-01-18,2021-01-18,2021-01-08,contract_end,performance,true,true,system,Engineering
+TRM0241,EMP0241,JOB0241,2022-10-12,2022-10-12,2022-09-18,retirement,retirement,true,true,system,IT
+TRM0242,EMP0242,JOB0242,2025-03-19,2025-03-19,2025-02-20,retirement,attendance,true,false,manager,Facilities
+TRM0243,EMP0243,JOB0243,2025-11-05,2025-11-05,2025-10-08,involuntary,attendance,true,true,manager,IT
+TRM0244,EMP0244,JOB0244,2024-12-01,2024-12-01,2024-11-29,contract_end,mutual_agreement,true,true,employee,Data
+TRM0245,EMP0245,JOB0245,2026-05-14,2026-05-14,2026-05-13,involuntary,better_opportunity,true,false,system,Facilities
+TRM0246,EMP0246,JOB0246,2016-12-03,2016-12-03,2016-11-28,voluntary,relocation,true,true,employee,Security
+TRM0247,EMP0247,JOB0247,2025-10-05,2025-10-05,2025-09-19,contract_end,restructuring,false,false,manager,Security
+TRM0248,EMP0248,JOB0248,2025-08-20,2025-08-20,2025-07-31,contract_end,attendance,false,true,manager,Facilities
+TRM0249,EMP0249,JOB0249,2025-04-17,2025-04-17,2025-04-16,voluntary,mutual_agreement,true,false,employee,Data
+TRM0250,EMP0250,JOB0250,2026-02-28,2026-02-28,2026-02-06,involuntary,voluntary_resignation,true,false,manager,Operations
+TRM0251,EMP0251,JOB0251,2025-06-14,2025-06-14,2025-05-30,involuntary,attendance,true,false,hr,Data
+TRM0252,EMP0252,JOB0252,2026-02-14,2026-02-14,2026-02-01,voluntary,retirement,false,false,hr,Security
+TRM0253,EMP0253,JOB0253,2025-04-20,2025-04-20,2025-04-01,contract_end,mutual_agreement,true,true,system,Supply Chain
+TRM0254,EMP0254,JOB0254,2026-04-07,2026-04-07,2026-04-06,involuntary,attendance,false,false,manager,Customer Success
+TRM0255,EMP0255,JOB0255,2024-07-11,2024-07-11,2024-06-23,involuntary,voluntary_resignation,true,true,employee,Facilities
+TRM0256,EMP0256,JOB0256,2023-07-21,2023-07-21,2023-07-07,voluntary,better_opportunity,false,false,employee,Marketing
+TRM0257,EMP0257,JOB0257,2025-11-27,2025-11-27,2025-11-11,retirement,voluntary_resignation,true,false,hr,Operations
+TRM0258,EMP0258,JOB0258,2023-10-11,2023-10-11,2023-09-16,involuntary,restructuring,true,false,hr,Operations
+TRM0259,EMP0259,JOB0259,2025-10-29,2025-10-29,2025-10-19,involuntary,mutual_agreement,true,true,employee,Customer Success
+TRM0260,EMP0260,JOB0260,2025-10-08,2025-10-08,2025-09-25,contract_end,retirement,true,false,employee,Finance
+TRM0261,EMP0261,JOB0261,2022-01-13,2022-01-13,2022-01-07,involuntary,performance,false,false,hr,Supply Chain
+TRM0262,EMP0262,JOB0262,2023-09-07,2023-09-07,2023-08-11,contract_end,better_opportunity,false,false,hr,Marketing
+TRM0263,EMP0263,JOB0263,2023-07-28,2023-07-28,2023-07-19,involuntary,end_of_contract,false,true,manager,Data
+TRM0264,EMP0264,JOB0264,2026-04-10,2026-04-10,2026-04-07,retirement,better_opportunity,true,true,system,Facilities
+TRM0265,EMP0265,JOB0265,2026-03-13,2026-03-13,2026-03-11,retirement,restructuring,true,false,hr,Legal
+TRM0266,EMP0266,JOB0266,2023-02-19,2023-02-19,2023-02-18,contract_end,voluntary_resignation,true,false,system,Customer Success
+TRM0267,EMP0267,JOB0267,2025-09-17,2025-09-17,2025-09-17,retirement,better_opportunity,false,true,employee,Product
+TRM0268,EMP0268,JOB0268,2022-08-27,2022-08-27,2022-08-01,voluntary,relocation,true,true,manager,IT
+TRM0269,EMP0269,JOB0269,2026-04-20,2026-04-20,2026-04-15,involuntary,voluntary_resignation,true,true,manager,Customer Success
+TRM0270,EMP0270,JOB0270,2024-01-31,2024-01-31,2024-01-14,retirement,mutual_agreement,true,false,system,Product
+TRM0271,EMP0271,JOB0271,2020-05-31,2020-05-31,2020-05-27,contract_end,performance,false,false,system,Engineering
+TRM0272,EMP0272,JOB0272,2025-05-05,2025-05-05,2025-04-07,voluntary,relocation,false,false,hr,Product
+TRM0273,EMP0273,JOB0273,2025-11-10,2025-11-10,2025-10-28,voluntary,end_of_contract,false,false,employee,Sales
+TRM0274,EMP0274,JOB0274,2025-12-04,2025-12-04,2025-11-16,voluntary,attendance,true,true,system,HR
+TRM0275,EMP0275,JOB0275,2022-09-25,2022-09-25,2022-09-15,retirement,performance,true,true,system,Legal
+TRM0276,EMP0276,JOB0276,2023-03-12,2023-03-12,2023-03-03,contract_end,attendance,true,false,hr,Engineering
+TRM0277,EMP0277,JOB0277,2016-10-18,2016-10-18,2016-10-07,contract_end,attendance,true,false,employee,Finance
+TRM0278,EMP0278,JOB0278,2021-04-21,2021-04-21,2021-04-03,contract_end,attendance,true,false,employee,Facilities
+TRM0279,EMP0279,JOB0279,2020-01-29,2020-01-29,2020-01-08,contract_end,relocation,true,true,hr,Security
+TRM0280,EMP0280,JOB0280,2021-03-10,2021-03-10,2021-02-25,voluntary,better_opportunity,true,false,system,Operations
+TRM0281,EMP0281,JOB0281,2025-03-27,2025-03-27,2025-03-02,voluntary,better_opportunity,false,false,manager,Product
+TRM0282,EMP0282,JOB0282,2024-04-10,2024-04-10,2024-04-07,contract_end,better_opportunity,true,false,hr,Security
+TRM0283,EMP0283,JOB0283,2025-06-25,2025-06-25,2025-05-31,retirement,relocation,true,false,manager,IT
+TRM0284,EMP0284,JOB0284,2026-06-03,2026-06-03,2026-05-04,contract_end,attendance,false,false,employee,Product
+TRM0285,EMP0285,JOB0285,2025-05-22,2025-05-22,2025-04-30,voluntary,better_opportunity,true,false,system,Security
+TRM0286,EMP0286,JOB0286,2018-08-30,2018-08-30,2018-08-13,voluntary,retirement,true,true,manager,IT
+TRM0287,EMP0287,JOB0287,2025-06-10,2025-06-10,2025-05-21,retirement,better_opportunity,true,true,system,Marketing
+TRM0288,EMP0288,JOB0288,2026-05-06,2026-05-06,2026-04-29,retirement,attendance,false,false,system,Marketing
+TRM0289,EMP0289,JOB0289,2025-06-24,2025-06-24,2025-06-24,involuntary,better_opportunity,false,false,system,Legal
+TRM0290,EMP0290,JOB0290,2022-06-22,2022-06-22,2022-06-14,voluntary,voluntary_resignation,true,false,employee,HR
+TRM0291,EMP0291,JOB0291,2024-12-12,2024-12-12,2024-11-25,contract_end,relocation,true,false,manager,Engineering
+TRM0292,EMP0292,JOB0292,2018-12-14,2018-12-14,2018-11-28,voluntary,mutual_agreement,true,true,employee,Product
+TRM0293,EMP0293,JOB0293,2024-11-25,2024-11-25,2024-11-05,involuntary,retirement,true,true,system,Finance
+TRM0294,EMP0294,JOB0294,2023-08-16,2023-08-16,2023-07-31,voluntary,relocation,false,false,manager,Facilities
+TRM0295,EMP0295,JOB0295,2026-02-11,2026-02-11,2026-02-05,involuntary,mutual_agreement,false,false,system,Marketing
+TRM0296,EMP0296,JOB0296,2025-07-25,2025-07-25,2025-07-24,retirement,voluntary_resignation,true,false,employee,Marketing
+TRM0297,EMP0297,JOB0297,2020-06-08,2020-06-08,2020-05-26,contract_end,voluntary_resignation,false,true,system,Product
+TRM0298,EMP0298,JOB0298,2025-11-05,2025-11-05,2025-10-24,contract_end,end_of_contract,false,false,employee,Marketing
+TRM0299,EMP0299,JOB0299,2023-03-18,2023-03-18,2023-03-04,contract_end,retirement,true,false,system,IT
+TRM0300,EMP0300,JOB0300,2021-10-16,2021-10-16,2021-10-02,involuntary,performance,true,false,hr,Security
+TRM0301,EMP0301,JOB0301,2026-09-22,2026-09-22,2026-09-03,involuntary,better_opportunity,true,true,manager,Supply Chain
+TRM0302,EMP0302,JOB0302,2025-06-23,2025-06-23,2025-06-22,involuntary,better_opportunity,false,true,system,HR
+TRM0303,EMP0303,JOB0303,2021-05-28,2021-05-28,2021-05-03,retirement,retirement,false,true,system,Legal
+TRM0304,EMP0304,JOB0304,2025-07-07,2025-07-07,2025-07-06,retirement,attendance,true,true,hr,Customer Success
+TRM0305,EMP0305,JOB0305,2017-01-03,2017-01-03,2016-12-27,voluntary,performance,false,false,employee,Supply Chain
+TRM0306,EMP0306,JOB0306,2022-02-06,2022-02-06,2022-01-16,contract_end,mutual_agreement,true,false,employee,IT
+TRM0307,EMP0307,JOB0307,2026-05-09,2026-05-09,2026-04-20,voluntary,restructuring,true,true,system,Facilities
+TRM0308,EMP0308,JOB0308,2015-09-25,2015-09-25,2015-09-24,retirement,attendance,false,false,system,Marketing
+TRM0309,EMP0309,JOB0309,2026-03-19,2026-03-19,2026-02-22,involuntary,restructuring,false,true,manager,HR
+TRM0310,EMP0310,JOB0310,2025-12-04,2025-12-04,2025-11-04,retirement,mutual_agreement,true,false,manager,HR
+TRM0311,EMP0311,JOB0311,2026-03-30,2026-03-30,2026-03-09,voluntary,performance,false,false,employee,HR
+TRM0312,EMP0312,JOB0312,2025-07-12,2025-07-12,2025-06-16,involuntary,performance,true,false,hr,Facilities
+TRM0313,EMP0313,JOB0313,2022-09-23,2022-09-23,2022-09-14,retirement,performance,false,true,hr,Customer Success
+TRM0314,EMP0314,JOB0314,2024-09-03,2024-09-03,2024-08-12,voluntary,retirement,false,true,manager,Security
+TRM0315,EMP0315,JOB0315,2026-04-28,2026-04-28,2026-04-05,voluntary,attendance,true,true,system,Finance
+TRM0316,EMP0316,JOB0316,2021-12-26,2021-12-26,2021-12-26,contract_end,performance,false,true,system,HR
+TRM0317,EMP0317,JOB0317,2025-12-20,2025-12-20,2025-12-04,involuntary,relocation,true,true,manager,Legal
+TRM0318,EMP0318,JOB0318,2025-10-28,2025-10-28,2025-10-18,voluntary,mutual_agreement,true,true,employee,Operations
+TRM0319,EMP0319,JOB0319,2025-01-02,2025-01-02,2024-12-27,retirement,voluntary_resignation,true,true,hr,Facilities
+TRM0320,EMP0320,JOB0320,2024-08-15,2024-08-15,2024-07-22,retirement,mutual_agreement,true,true,manager,Engineering
+TRM0321,EMP0321,JOB0321,2025-11-17,2025-11-17,2025-10-30,contract_end,performance,false,false,hr,Facilities
+TRM0322,EMP0322,JOB0322,2025-12-08,2025-12-08,2025-11-29,retirement,better_opportunity,true,false,hr,IT
+TRM0323,EMP0323,JOB0323,2026-02-28,2026-02-28,2026-02-11,retirement,better_opportunity,true,false,hr,Legal
+TRM0324,EMP0324,JOB0324,2021-12-21,2021-12-21,2021-12-02,contract_end,better_opportunity,false,false,manager,Facilities
+TRM0325,EMP0325,JOB0325,2021-01-22,2021-01-22,2021-01-11,retirement,better_opportunity,true,true,hr,HR
+TRM0326,EMP0326,JOB0326,2024-07-16,2024-07-16,2024-06-26,voluntary,voluntary_resignation,false,false,employee,Operations
+TRM0327,EMP0327,JOB0327,2026-08-29,2026-08-29,2026-08-24,retirement,performance,true,true,system,Operations
+TRM0328,EMP0328,JOB0328,2018-02-25,2018-02-25,2018-02-01,involuntary,mutual_agreement,true,true,hr,Legal
+TRM0329,EMP0329,JOB0329,2026-04-04,2026-04-04,2026-03-13,retirement,voluntary_resignation,false,true,system,Operations
+TRM0330,EMP0330,JOB0330,2025-01-15,2025-01-15,2024-12-25,voluntary,mutual_agreement,true,true,manager,Customer Success
+TRM0331,EMP0331,JOB0331,2024-05-27,2024-05-27,2024-05-09,voluntary,restructuring,false,true,system,IT
+TRM0332,EMP0332,JOB0332,2023-09-18,2023-09-18,2023-09-15,retirement,attendance,false,true,employee,IT
+TRM0333,EMP0333,JOB0333,2025-03-01,2025-03-01,2025-02-01,voluntary,retirement,false,true,manager,Supply Chain
+TRM0334,EMP0334,JOB0334,2022-05-18,2022-05-18,2022-04-18,voluntary,retirement,true,false,hr,Data
+TRM0335,EMP0335,JOB0335,2024-12-09,2024-12-09,2024-11-15,contract_end,restructuring,true,true,system,Facilities
+TRM0336,EMP0336,JOB0336,2024-01-19,2024-01-19,2023-12-23,voluntary,attendance,true,false,employee,Facilities
+TRM0337,EMP0337,JOB0337,2024-11-26,2024-11-26,2024-11-03,voluntary,attendance,false,true,manager,Data
+TRM0338,EMP0338,JOB0338,2026-06-28,2026-06-28,2026-06-16,retirement,voluntary_resignation,true,false,hr,Facilities
+TRM0339,EMP0339,JOB0339,2025-11-18,2025-11-18,2025-10-19,voluntary,better_opportunity,true,false,hr,Engineering
+TRM0340,EMP0340,JOB0340,2023-04-15,2023-04-15,2023-04-14,retirement,better_opportunity,true,true,employee,Facilities
+TRM0341,EMP0341,JOB0341,2025-08-26,2025-08-26,2025-08-17,involuntary,retirement,true,false,system,Operations
+TRM0342,EMP0342,JOB0342,2024-01-12,2024-01-12,2023-12-31,involuntary,relocation,true,true,employee,Security
+TRM0343,EMP0343,JOB0343,2025-01-24,2025-01-24,2025-01-01,involuntary,performance,true,false,hr,Product
+TRM0344,EMP0344,JOB0344,2025-05-22,2025-05-22,2025-05-13,retirement,attendance,true,true,manager,Finance
+TRM0345,EMP0345,JOB0345,2024-03-30,2024-03-30,2024-03-01,involuntary,retirement,true,true,employee,IT
+TRM0346,EMP0346,JOB0346,2026-08-01,2026-08-01,2026-07-15,voluntary,performance,false,true,hr,Facilities
+TRM0347,EMP0347,JOB0347,2020-11-21,2020-11-21,2020-11-10,retirement,retirement,false,false,system,Sales
+TRM0348,EMP0348,JOB0348,2022-10-15,2022-10-15,2022-10-03,involuntary,voluntary_resignation,false,false,manager,HR
+TRM0349,EMP0349,JOB0349,2015-05-15,2015-05-15,2015-05-05,involuntary,voluntary_resignation,true,true,employee,Operations
+TRM0350,EMP0350,JOB0350,2021-02-13,2021-02-13,2021-02-11,retirement,mutual_agreement,true,false,manager,Product
+TRM0351,EMP0351,JOB0351,2026-05-12,2026-05-12,2026-05-09,voluntary,retirement,false,true,manager,Marketing
+TRM0352,EMP0352,JOB0352,2015-09-18,2015-09-18,2015-08-27,voluntary,relocation,true,true,employee,Sales
+TRM0353,EMP0353,JOB0353,2023-03-18,2023-03-18,2023-02-25,voluntary,retirement,false,true,employee,Security
+TRM0354,EMP0354,JOB0354,2023-01-28,2023-01-28,2023-01-24,contract_end,end_of_contract,false,true,manager,Operations
+TRM0355,EMP0355,JOB0355,2026-01-26,2026-01-26,2026-01-12,contract_end,restructuring,false,false,hr,IT
+TRM0356,EMP0356,JOB0356,2020-07-16,2020-07-16,2020-07-06,voluntary,performance,true,true,manager,HR
+TRM0357,EMP0357,JOB0357,2025-09-02,2025-09-02,2025-08-09,voluntary,relocation,false,false,hr,Sales
+TRM0358,EMP0358,JOB0358,2026-02-12,2026-02-12,2026-02-05,contract_end,performance,true,false,manager,IT
+TRM0359,EMP0359,JOB0359,2025-09-11,2025-09-11,2025-08-20,retirement,retirement,true,true,system,Product
+TRM0360,EMP0360,JOB0360,2020-03-13,2020-03-13,2020-02-28,contract_end,attendance,true,false,system,Sales
+TRM0361,EMP0361,JOB0361,2026-06-11,2026-06-11,2026-05-31,voluntary,end_of_contract,true,true,system,Legal
+TRM0362,EMP0362,JOB0362,2023-06-13,2023-06-13,2023-05-23,involuntary,restructuring,true,false,hr,Sales
+TRM0363,EMP0363,JOB0363,2026-07-26,2026-07-26,2026-07-22,involuntary,better_opportunity,true,true,employee,Engineering
+TRM0364,EMP0364,JOB0364,2026-04-16,2026-04-16,2026-03-23,voluntary,mutual_agreement,false,true,hr,Marketing
+TRM0365,EMP0365,JOB0365,2024-11-20,2024-11-20,2024-10-27,voluntary,performance,false,true,employee,Product
+TRM0366,EMP0366,JOB0366,2024-11-07,2024-11-07,2024-10-20,voluntary,relocation,false,true,employee,Sales
+TRM0367,EMP0367,JOB0367,2022-10-04,2022-10-04,2022-09-08,involuntary,restructuring,true,true,hr,Finance
+TRM0368,EMP0368,JOB0368,2023-12-11,2023-12-11,2023-11-11,voluntary,retirement,true,false,hr,IT
+TRM0369,EMP0369,JOB0369,2019-07-27,2019-07-27,2019-07-05,contract_end,mutual_agreement,true,true,employee,Legal
+TRM0370,EMP0370,JOB0370,2019-04-23,2019-04-23,2019-04-19,voluntary,attendance,true,true,employee,Finance
+TRM0371,EMP0371,JOB0371,2025-06-01,2025-06-01,2025-05-19,contract_end,mutual_agreement,true,true,hr,Finance
+TRM0372,EMP0372,JOB0372,2025-11-02,2025-11-02,2025-10-28,involuntary,mutual_agreement,true,true,employee,Legal
+TRM0373,EMP0373,JOB0373,2020-01-24,2020-01-24,2019-12-26,contract_end,retirement,false,false,employee,Operations
+TRM0374,EMP0374,JOB0374,2023-04-17,2023-04-17,2023-04-15,contract_end,restructuring,false,true,hr,Supply Chain
+TRM0375,EMP0375,JOB0375,2018-08-27,2018-08-27,2018-08-24,retirement,mutual_agreement,true,true,manager,Legal
+TRM0376,EMP0376,JOB0376,2020-11-23,2020-11-23,2020-11-03,voluntary,mutual_agreement,true,false,employee,Finance
+TRM0377,EMP0377,JOB0377,2026-01-22,2026-01-22,2026-01-02,voluntary,end_of_contract,true,false,system,Supply Chain
+TRM0378,EMP0378,JOB0378,2024-11-08,2024-11-08,2024-10-21,contract_end,attendance,true,false,manager,Operations
+TRM0379,EMP0379,JOB0379,2018-11-24,2018-11-24,2018-11-16,voluntary,end_of_contract,true,false,system,Finance
+TRM0380,EMP0380,JOB0380,2025-11-18,2025-11-18,2025-11-15,involuntary,better_opportunity,false,false,hr,Marketing
+TRM0381,EMP0381,JOB0381,2025-04-07,2025-04-07,2025-03-08,retirement,voluntary_resignation,true,true,system,IT
+TRM0382,EMP0382,JOB0382,2026-01-12,2026-01-12,2025-12-24,involuntary,attendance,true,true,manager,Product
+TRM0383,EMP0383,JOB0383,2024-05-09,2024-05-09,2024-04-20,voluntary,restructuring,true,false,system,Legal
+TRM0384,EMP0384,JOB0384,2026-05-06,2026-05-06,2026-04-27,voluntary,relocation,false,true,manager,Marketing
+TRM0385,EMP0385,JOB0385,2026-04-11,2026-04-11,2026-03-30,involuntary,retirement,true,false,hr,Customer Success
+TRM0386,EMP0386,JOB0386,2026-06-03,2026-06-03,2026-05-14,contract_end,attendance,false,false,system,IT
+TRM0387,EMP0387,JOB0387,2024-06-07,2024-06-07,2024-05-09,involuntary,retirement,true,false,hr,Security
+TRM0388,EMP0388,JOB0388,2024-12-04,2024-12-04,2024-11-16,voluntary,retirement,false,true,system,Data
+TRM0389,EMP0389,JOB0389,2026-05-30,2026-05-30,2026-05-16,retirement,attendance,true,true,employee,Marketing
+TRM0390,EMP0390,JOB0390,2023-12-05,2023-12-05,2023-11-09,retirement,attendance,false,false,employee,Sales
+TRM0391,EMP0391,JOB0391,2025-03-23,2025-03-23,2025-03-18,voluntary,attendance,true,false,manager,Customer Success
+TRM0392,EMP0392,JOB0392,2025-05-18,2025-05-18,2025-05-04,retirement,voluntary_resignation,true,false,hr,Product
+TRM0393,EMP0393,JOB0393,2020-02-27,2020-02-27,2020-02-08,voluntary,retirement,false,false,employee,Engineering
+TRM0394,EMP0394,JOB0394,2024-12-03,2024-12-03,2024-11-15,contract_end,restructuring,false,false,manager,Facilities
+TRM0395,EMP0395,JOB0395,2019-10-31,2019-10-31,2019-10-11,involuntary,end_of_contract,true,false,hr,IT
+TRM0396,EMP0396,JOB0396,2017-02-21,2017-02-21,2017-01-25,retirement,restructuring,true,false,manager,Engineering
+TRM0397,EMP0397,JOB0397,2024-02-11,2024-02-11,2024-02-06,voluntary,end_of_contract,false,true,system,Marketing
+TRM0398,EMP0398,JOB0398,2026-06-01,2026-06-01,2026-05-27,contract_end,retirement,true,true,system,Sales
+TRM0399,EMP0399,JOB0399,2015-05-23,2015-05-23,2015-05-07,contract_end,voluntary_resignation,false,true,manager,Finance
+TRM0400,EMP0400,JOB0400,2025-11-25,2025-11-25,2025-11-12,retirement,performance,true,false,manager,Facilities
+TRM0401,EMP0401,JOB0401,2025-09-18,2025-09-18,2025-08-28,contract_end,voluntary_resignation,true,false,manager,HR
+TRM0402,EMP0402,JOB0402,2024-08-22,2024-08-22,2024-08-18,contract_end,mutual_agreement,true,false,employee,Operations
+TRM0403,EMP0403,JOB0403,2026-07-09,2026-07-09,2026-07-06,contract_end,relocation,true,false,system,Data
+TRM0404,EMP0404,JOB0404,2018-10-26,2018-10-26,2018-09-27,contract_end,performance,false,false,system,Data
+TRM0405,EMP0405,JOB0405,2026-07-30,2026-07-30,2026-07-21,voluntary,mutual_agreement,true,true,system,Supply Chain
+TRM0406,EMP0406,JOB0406,2023-04-12,2023-04-12,2023-04-03,retirement,attendance,true,true,manager,Engineering
+TRM0407,EMP0407,JOB0407,2023-03-12,2023-03-12,2023-02-13,contract_end,better_opportunity,false,false,hr,Security
+TRM0408,EMP0408,JOB0408,2026-07-19,2026-07-19,2026-07-19,retirement,mutual_agreement,false,true,system,Supply Chain
+TRM0409,EMP0409,JOB0409,2023-04-16,2023-04-16,2023-04-08,retirement,performance,true,false,hr,Customer Success
+TRM0410,EMP0410,JOB0410,2024-12-28,2024-12-28,2024-12-08,involuntary,voluntary_resignation,true,false,manager,Legal
+TRM0411,EMP0411,JOB0411,2025-10-31,2025-10-31,2025-10-17,retirement,voluntary_resignation,true,true,system,Operations
+TRM0412,EMP0412,JOB0412,2025-03-30,2025-03-30,2025-03-13,retirement,retirement,true,false,manager,Data
+TRM0413,EMP0413,JOB0413,2021-06-07,2021-06-07,2021-05-08,contract_end,mutual_agreement,true,false,employee,Operations
+TRM0414,EMP0414,JOB0414,2021-11-05,2021-11-05,2021-10-25,retirement,performance,true,true,system,Finance
+TRM0415,EMP0415,JOB0415,2025-08-09,2025-08-09,2025-07-19,retirement,end_of_contract,false,true,manager,Supply Chain
+TRM0416,EMP0416,JOB0416,2025-04-30,2025-04-30,2025-04-28,voluntary,end_of_contract,true,true,system,Engineering
+TRM0417,EMP0417,JOB0417,2018-12-03,2018-12-03,2018-11-23,retirement,restructuring,true,false,hr,Sales
+TRM0418,EMP0418,JOB0418,2022-03-29,2022-03-29,2022-03-12,retirement,better_opportunity,true,true,hr,Finance
+TRM0419,EMP0419,JOB0419,2020-12-05,2020-12-05,2020-11-10,retirement,end_of_contract,true,true,manager,Product
+TRM0420,EMP0420,JOB0420,2026-02-04,2026-02-04,2026-01-15,contract_end,restructuring,true,false,manager,Marketing
+TRM0421,EMP0421,JOB0421,2020-09-14,2020-09-14,2020-08-20,retirement,mutual_agreement,true,false,manager,Sales
+TRM0422,EMP0422,JOB0422,2019-11-22,2019-11-22,2019-11-12,voluntary,performance,true,true,hr,Data
+TRM0423,EMP0423,JOB0423,2026-08-26,2026-08-26,2026-08-05,involuntary,better_opportunity,true,true,employee,Engineering
+TRM0424,EMP0424,JOB0424,2026-06-18,2026-06-18,2026-05-19,contract_end,attendance,false,false,hr,HR
+TRM0425,EMP0425,JOB0425,2026-07-29,2026-07-29,2026-07-29,retirement,attendance,true,true,system,IT
+TRM0426,EMP0426,JOB0426,2026-04-03,2026-04-03,2026-03-13,voluntary,restructuring,true,false,employee,Product
+TRM0427,EMP0427,JOB0427,2017-05-26,2017-05-26,2017-04-26,involuntary,better_opportunity,true,false,system,Sales
+TRM0428,EMP0428,JOB0428,2024-05-26,2024-05-26,2024-05-01,contract_end,attendance,false,true,hr,Engineering
+TRM0429,EMP0429,JOB0429,2023-12-05,2023-12-05,2023-11-22,retirement,attendance,false,false,system,Operations
+TRM0430,EMP0430,JOB0430,2021-06-30,2021-06-30,2021-06-10,voluntary,voluntary_resignation,false,false,manager,IT
+TRM0431,EMP0431,JOB0431,2024-08-28,2024-08-28,2024-08-24,voluntary,voluntary_resignation,true,false,hr,Marketing
+TRM0432,EMP0432,JOB0432,2026-01-27,2026-01-27,2026-01-14,voluntary,voluntary_resignation,true,false,hr,Data
+TRM0433,EMP0433,JOB0433,2023-10-08,2023-10-08,2023-10-04,involuntary,performance,true,false,hr,Customer Success
+TRM0434,EMP0434,JOB0434,2017-11-17,2017-11-17,2017-11-03,contract_end,end_of_contract,true,true,manager,Finance
+TRM0435,EMP0435,JOB0435,2026-02-19,2026-02-19,2026-01-20,involuntary,restructuring,false,true,manager,Finance
+TRM0436,EMP0436,JOB0436,2025-01-20,2025-01-20,2024-12-22,involuntary,better_opportunity,false,false,hr,Supply Chain
+TRM0437,EMP0437,JOB0437,2023-11-11,2023-11-11,2023-11-02,contract_end,mutual_agreement,true,false,employee,Data
+TRM0438,EMP0438,JOB0438,2024-07-09,2024-07-09,2024-07-05,voluntary,voluntary_resignation,false,true,manager,HR
+TRM0439,EMP0439,JOB0439,2022-12-26,2022-12-26,2022-12-17,voluntary,better_opportunity,false,true,system,Customer Success
+TRM0440,EMP0440,JOB0440,2024-12-01,2024-12-01,2024-11-10,retirement,attendance,true,false,employee,Facilities
+TRM0441,EMP0441,JOB0441,2026-05-21,2026-05-21,2026-04-28,involuntary,retirement,false,true,hr,Facilities
+TRM0442,EMP0442,JOB0442,2017-07-29,2017-07-29,2017-07-15,involuntary,better_opportunity,true,true,employee,Supply Chain
+TRM0443,EMP0443,JOB0443,2025-03-10,2025-03-10,2025-02-26,retirement,retirement,false,true,system,Security
+TRM0444,EMP0444,JOB0444,2020-12-21,2020-12-21,2020-11-25,involuntary,better_opportunity,false,true,employee,Finance
+TRM0445,EMP0445,JOB0445,2023-11-18,2023-11-18,2023-11-01,involuntary,voluntary_resignation,true,true,manager,Security
+TRM0446,EMP0446,JOB0446,2021-09-28,2021-09-28,2021-09-17,contract_end,voluntary_resignation,true,true,employee,Data
+TRM0447,EMP0447,JOB0447,2025-07-15,2025-07-15,2025-06-16,involuntary,voluntary_resignation,true,true,hr,Marketing
+TRM0448,EMP0448,JOB0448,2021-11-08,2021-11-08,2021-11-05,voluntary,voluntary_resignation,false,true,employee,Product
+TRM0449,EMP0449,JOB0449,2025-06-24,2025-06-24,2025-06-07,retirement,retirement,true,true,system,Engineering
+TRM0450,EMP0450,JOB0450,2024-07-08,2024-07-08,2024-06-24,retirement,performance,true,true,system,Facilities
+TRM0451,EMP0451,JOB0451,2019-08-26,2019-08-26,2019-08-01,contract_end,voluntary_resignation,true,true,employee,Marketing
+TRM0452,EMP0452,JOB0452,2019-05-21,2019-05-21,2019-05-15,contract_end,attendance,false,false,employee,Legal
+TRM0453,EMP0453,JOB0453,2024-10-09,2024-10-09,2024-09-28,voluntary,voluntary_resignation,true,true,hr,Operations
+TRM0454,EMP0454,JOB0454,2022-09-24,2022-09-24,2022-08-31,involuntary,end_of_contract,true,false,hr,Operations
+TRM0455,EMP0455,JOB0455,2026-07-29,2026-07-29,2026-07-05,retirement,retirement,false,false,manager,IT
+TRM0456,EMP0456,JOB0456,2022-01-07,2022-01-07,2022-01-07,voluntary,restructuring,true,false,employee,Customer Success
+TRM0457,EMP0457,JOB0457,2024-10-06,2024-10-06,2024-09-20,voluntary,relocation,false,true,employee,Customer Success
+TRM0458,EMP0458,JOB0458,2019-03-25,2019-03-25,2019-02-26,involuntary,relocation,true,false,hr,Sales
+TRM0459,EMP0459,JOB0459,2025-02-13,2025-02-13,2025-01-17,retirement,restructuring,false,false,manager,Engineering
+TRM0460,EMP0460,JOB0460,2024-08-10,2024-08-10,2024-07-21,involuntary,performance,true,true,employee,Security
+TRM0461,EMP0461,JOB0461,2021-07-07,2021-07-07,2021-06-14,involuntary,restructuring,false,true,employee,Legal
+TRM0462,EMP0462,JOB0462,2019-02-21,2019-02-21,2019-01-23,involuntary,end_of_contract,false,true,employee,Marketing
+TRM0463,EMP0463,JOB0463,2026-05-29,2026-05-29,2026-05-01,involuntary,restructuring,false,false,system,Legal
+TRM0464,EMP0464,JOB0464,2024-03-04,2024-03-04,2024-02-18,contract_end,restructuring,true,false,system,Supply Chain
+TRM0465,EMP0465,JOB0465,2025-05-10,2025-05-10,2025-04-20,contract_end,better_opportunity,false,true,manager,Product
+TRM0466,EMP0466,JOB0466,2023-11-24,2023-11-24,2023-10-28,voluntary,relocation,true,false,employee,Customer Success
+TRM0467,EMP0467,JOB0467,2020-04-04,2020-04-04,2020-03-09,involuntary,relocation,false,false,system,Customer Success
+TRM0468,EMP0468,JOB0468,2021-07-16,2021-07-16,2021-06-25,retirement,restructuring,true,true,hr,Marketing
+TRM0469,EMP0469,JOB0469,2016-03-04,2016-03-04,2016-02-22,retirement,end_of_contract,true,true,system,Security
+TRM0470,EMP0470,JOB0470,2025-04-11,2025-04-11,2025-03-30,voluntary,retirement,true,true,manager,Marketing
+TRM0471,EMP0471,JOB0471,2023-04-11,2023-04-11,2023-03-12,retirement,relocation,true,false,manager,Security
+TRM0472,EMP0472,JOB0472,2016-04-03,2016-04-03,2016-03-18,contract_end,mutual_agreement,false,true,employee,Legal
+TRM0473,EMP0473,JOB0473,2026-04-22,2026-04-22,2026-03-25,contract_end,voluntary_resignation,false,true,hr,Finance
+TRM0474,EMP0474,JOB0474,2026-03-23,2026-03-23,2026-03-22,contract_end,end_of_contract,true,true,hr,Engineering
+TRM0475,EMP0475,JOB0475,2024-03-05,2024-03-05,2024-02-12,voluntary,end_of_contract,false,true,system,Security
+TRM0476,EMP0476,JOB0476,2026-01-30,2026-01-30,2026-01-23,contract_end,mutual_agreement,false,true,hr,Engineering
+TRM0477,EMP0477,JOB0477,2025-01-03,2025-01-03,2024-12-13,involuntary,retirement,true,true,system,Product
+TRM0478,EMP0478,JOB0478,2026-01-31,2026-01-31,2026-01-09,contract_end,attendance,true,false,hr,Finance
+TRM0479,EMP0479,JOB0479,2021-09-18,2021-09-18,2021-08-27,retirement,end_of_contract,true,true,manager,Supply Chain
+TRM0480,EMP0480,JOB0480,2025-10-06,2025-10-06,2025-09-21,voluntary,voluntary_resignation,true,true,system,Operations
+TRM0481,EMP0481,JOB0481,2026-04-05,2026-04-05,2026-03-17,contract_end,retirement,false,true,system,Supply Chain
+TRM0482,EMP0482,JOB0482,2024-05-30,2024-05-30,2024-05-21,voluntary,relocation,true,true,manager,Operations
+TRM0483,EMP0483,JOB0483,2020-02-20,2020-02-20,2020-02-13,contract_end,attendance,true,true,manager,Legal
+TRM0484,EMP0484,JOB0484,2022-05-19,2022-05-19,2022-05-01,voluntary,attendance,false,false,manager,IT
+TRM0485,EMP0485,JOB0485,2026-06-24,2026-06-24,2026-06-18,retirement,mutual_agreement,false,false,hr,Marketing
+TRM0486,EMP0486,JOB0486,2026-08-04,2026-08-04,2026-08-03,involuntary,better_opportunity,false,false,hr,Product
+TRM0487,EMP0487,JOB0487,2019-04-07,2019-04-07,2019-03-16,contract_end,end_of_contract,false,true,system,HR
+TRM0488,EMP0488,JOB0488,2025-04-13,2025-04-13,2025-04-13,voluntary,retirement,true,false,hr,Sales
+TRM0489,EMP0489,JOB0489,2023-06-21,2023-06-21,2023-06-09,involuntary,mutual_agreement,false,false,manager,Engineering
+TRM0490,EMP0490,JOB0490,2023-11-29,2023-11-29,2023-11-19,retirement,attendance,true,true,system,Finance
+TRM0491,EMP0491,JOB0491,2019-07-23,2019-07-23,2019-06-30,involuntary,voluntary_resignation,false,true,employee,Security
+TRM0492,EMP0492,JOB0492,2025-10-28,2025-10-28,2025-10-04,retirement,restructuring,true,true,manager,Finance
+TRM0493,EMP0493,JOB0493,2022-09-24,2022-09-24,2022-09-03,retirement,relocation,false,false,hr,HR
+TRM0494,EMP0494,JOB0494,2025-12-21,2025-12-21,2025-11-26,retirement,retirement,false,true,system,Product
+TRM0495,EMP0495,JOB0495,2026-04-08,2026-04-08,2026-03-16,involuntary,mutual_agreement,false,true,manager,Security
+TRM0496,EMP0496,JOB0496,2025-01-28,2025-01-28,2025-01-22,involuntary,restructuring,true,true,manager,Data
+TRM0497,EMP0497,JOB0497,2022-09-18,2022-09-18,2022-08-25,involuntary,mutual_agreement,false,true,employee,Data
+TRM0498,EMP0498,JOB0498,2021-01-10,2021-01-10,2020-12-27,contract_end,better_opportunity,true,false,manager,HR
+TRM0499,EMP0499,JOB0499,2024-03-04,2024-03-04,2024-02-23,involuntary,better_opportunity,true,false,manager,HR
+TRM0500,EMP0500,JOB0500,2024-11-15,2024-11-15,2024-11-05,retirement,retirement,true,false,manager,Product
+TRM0501,EMP0501,JOB0501,2026-05-30,2026-05-30,2026-05-11,voluntary,end_of_contract,false,true,manager,Legal
+TRM0502,EMP0502,JOB0502,2021-12-10,2021-12-10,2021-11-25,contract_end,better_opportunity,true,false,manager,HR
+TRM0503,EMP0503,JOB0503,2024-12-27,2024-12-27,2024-12-10,involuntary,retirement,true,true,system,Marketing
+TRM0504,EMP0504,JOB0504,2026-05-18,2026-05-18,2026-04-18,contract_end,attendance,true,false,hr,Legal
+TRM0505,EMP0505,JOB0505,2025-04-28,2025-04-28,2025-04-02,voluntary,performance,true,true,hr,Security
+TRM0506,EMP0506,JOB0506,2023-02-12,2023-02-12,2023-01-20,retirement,performance,true,false,manager,Marketing
+TRM0507,EMP0507,JOB0507,2022-12-14,2022-12-14,2022-11-14,retirement,attendance,true,true,employee,Sales
+TRM0508,EMP0508,JOB0508,2026-09-24,2026-09-24,2026-08-28,involuntary,relocation,false,true,hr,Data
+TRM0509,EMP0509,JOB0509,2025-09-28,2025-09-28,2025-09-02,voluntary,better_opportunity,false,false,manager,Product
+TRM0510,EMP0510,JOB0510,2023-10-26,2023-10-26,2023-10-18,contract_end,mutual_agreement,false,true,employee,Customer Success
+TRM0511,EMP0511,JOB0511,2025-08-11,2025-08-11,2025-08-02,contract_end,restructuring,true,true,system,Legal
+TRM0512,EMP0512,JOB0512,2026-03-25,2026-03-25,2026-03-13,voluntary,retirement,false,true,system,Data
+TRM0513,EMP0513,JOB0513,2026-02-21,2026-02-21,2026-01-27,retirement,better_opportunity,true,true,system,Marketing
+TRM0514,EMP0514,JOB0514,2024-07-29,2024-07-29,2024-07-23,voluntary,voluntary_resignation,true,false,system,Product
+TRM0515,EMP0515,JOB0515,2025-08-21,2025-08-21,2025-08-04,contract_end,performance,true,true,hr,IT
+TRM0516,EMP0516,JOB0516,2023-12-24,2023-12-24,2023-11-24,involuntary,attendance,true,true,system,Data
+TRM0517,EMP0517,JOB0517,2024-04-12,2024-04-12,2024-04-04,contract_end,relocation,true,false,manager,IT
+TRM0518,EMP0518,JOB0518,2021-07-27,2021-07-27,2021-06-27,contract_end,better_opportunity,false,true,employee,Product
+TRM0519,EMP0519,JOB0519,2021-07-27,2021-07-27,2021-06-28,voluntary,better_opportunity,true,false,employee,Finance
+TRM0520,EMP0520,JOB0520,2019-10-06,2019-10-06,2019-10-02,involuntary,performance,true,true,system,Security
+TRM0521,EMP0521,JOB0521,2025-03-30,2025-03-30,2025-03-08,contract_end,restructuring,false,false,employee,HR
+TRM0522,EMP0522,JOB0522,2026-03-24,2026-03-24,2026-03-22,involuntary,mutual_agreement,true,true,employee,Marketing
+TRM0523,EMP0523,JOB0523,2026-07-10,2026-07-10,2026-06-14,retirement,mutual_agreement,true,false,employee,Finance
+TRM0524,EMP0524,JOB0524,2025-01-27,2025-01-27,2025-01-22,retirement,retirement,true,false,system,Product
+TRM0525,EMP0525,JOB0525,2023-11-03,2023-11-03,2023-10-26,involuntary,mutual_agreement,false,true,manager,HR
+TRM0526,EMP0526,JOB0526,2023-12-07,2023-12-07,2023-11-26,voluntary,end_of_contract,true,true,manager,Data
+TRM0527,EMP0527,JOB0527,2022-05-30,2022-05-30,2022-05-13,contract_end,voluntary_resignation,false,true,system,Data
+TRM0528,EMP0528,JOB0528,2021-12-07,2021-12-07,2021-11-24,retirement,relocation,false,false,employee,Data
+TRM0529,EMP0529,JOB0529,2026-02-24,2026-02-24,2026-02-21,involuntary,restructuring,true,true,manager,Engineering
+TRM0530,EMP0530,JOB0530,2025-11-21,2025-11-21,2025-11-13,voluntary,retirement,false,true,employee,Marketing
+TRM0531,EMP0531,JOB0531,2022-08-08,2022-08-08,2022-07-28,involuntary,relocation,false,false,employee,Marketing
+TRM0532,EMP0532,JOB0532,2026-03-21,2026-03-21,2026-03-07,retirement,better_opportunity,true,true,system,HR
+TRM0533,EMP0533,JOB0533,2025-04-25,2025-04-25,2025-04-08,involuntary,better_opportunity,true,false,manager,Product
+TRM0534,EMP0534,JOB0534,2025-07-09,2025-07-09,2025-06-17,voluntary,relocation,true,true,employee,Facilities
+TRM0535,EMP0535,JOB0535,2026-03-11,2026-03-11,2026-02-16,contract_end,retirement,true,true,employee,Marketing
+TRM0536,EMP0536,JOB0536,2026-07-20,2026-07-20,2026-07-19,retirement,attendance,true,true,employee,Security
+TRM0537,EMP0537,JOB0537,2022-07-10,2022-07-10,2022-06-17,involuntary,retirement,true,false,manager,Data
+TRM0538,EMP0538,JOB0538,2021-08-30,2021-08-30,2021-08-27,voluntary,relocation,false,true,system,Engineering
+TRM0539,EMP0539,JOB0539,2026-09-04,2026-09-04,2026-09-03,contract_end,retirement,false,false,manager,Finance
+TRM0540,EMP0540,JOB0540,2021-08-06,2021-08-06,2021-08-06,involuntary,end_of_contract,true,true,employee,Marketing
+TRM0541,EMP0541,JOB0541,2024-02-25,2024-02-25,2024-01-31,involuntary,relocation,true,true,employee,Operations
+TRM0542,EMP0542,JOB0542,2026-05-09,2026-05-09,2026-04-19,voluntary,better_opportunity,true,false,hr,Engineering
+TRM0543,EMP0543,JOB0543,2026-01-24,2026-01-24,2026-01-03,retirement,end_of_contract,true,false,employee,Security
+TRM0544,EMP0544,JOB0544,2025-08-08,2025-08-08,2025-07-12,retirement,voluntary_resignation,false,false,manager,Product
+TRM0545,EMP0545,JOB0545,2023-08-09,2023-08-09,2023-08-01,involuntary,mutual_agreement,true,false,employee,Product
+TRM0546,EMP0546,JOB0546,2023-09-17,2023-09-17,2023-08-21,voluntary,restructuring,false,false,manager,Product
+TRM0547,EMP0547,JOB0547,2023-07-03,2023-07-03,2023-06-17,voluntary,performance,false,false,manager,Product
+TRM0548,EMP0548,JOB0548,2023-07-21,2023-07-21,2023-07-20,voluntary,performance,true,true,manager,Security
+TRM0549,EMP0549,JOB0549,2026-08-01,2026-08-01,2026-08-01,involuntary,better_opportunity,true,true,system,Data
+TRM0550,EMP0550,JOB0550,2021-05-24,2021-05-24,2021-04-26,voluntary,better_opportunity,true,false,system,Customer Success
+TRM0551,EMP0551,JOB0551,2024-12-11,2024-12-11,2024-11-14,retirement,voluntary_resignation,false,true,manager,Engineering
+TRM0552,EMP0552,JOB0552,2019-12-06,2019-12-06,2019-12-03,retirement,restructuring,false,false,manager,Product
+TRM0553,EMP0553,JOB0553,2020-11-14,2020-11-14,2020-10-28,involuntary,relocation,true,false,employee,Engineering
+TRM0554,EMP0554,JOB0554,2025-10-03,2025-10-03,2025-09-21,contract_end,performance,true,true,manager,HR
+TRM0555,EMP0555,JOB0555,2026-03-15,2026-03-15,2026-03-12,involuntary,mutual_agreement,false,false,employee,Facilities
+TRM0556,EMP0556,JOB0556,2020-12-24,2020-12-24,2020-12-06,contract_end,attendance,false,false,system,Finance
+TRM0557,EMP0557,JOB0557,2025-04-28,2025-04-28,2025-04-23,contract_end,performance,false,false,employee,Customer Success
+TRM0558,EMP0558,JOB0558,2025-02-17,2025-02-17,2025-01-27,involuntary,mutual_agreement,false,true,employee,Marketing
+TRM0559,EMP0559,JOB0559,2020-12-12,2020-12-12,2020-12-12,voluntary,mutual_agreement,false,true,hr,IT
+TRM0560,EMP0560,JOB0560,2025-08-16,2025-08-16,2025-07-30,voluntary,better_opportunity,true,true,hr,Marketing
+TRM0561,EMP0561,JOB0561,2023-09-16,2023-09-16,2023-08-27,involuntary,mutual_agreement,false,true,manager,Legal
+TRM0562,EMP0562,JOB0562,2023-11-25,2023-11-25,2023-11-18,contract_end,performance,false,false,manager,Legal
+TRM0563,EMP0563,JOB0563,2022-10-13,2022-10-13,2022-09-21,contract_end,retirement,true,false,employee,Marketing
+TRM0564,EMP0564,JOB0564,2026-04-25,2026-04-25,2026-03-30,retirement,relocation,true,false,manager,Sales
+TRM0565,EMP0565,JOB0565,2023-01-10,2023-01-10,2022-12-11,contract_end,better_opportunity,true,true,system,Supply Chain
+TRM0566,EMP0566,JOB0566,2024-04-06,2024-04-06,2024-03-28,retirement,voluntary_resignation,false,false,manager,Legal
+TRM0567,EMP0567,JOB0567,2022-03-10,2022-03-10,2022-03-03,contract_end,relocation,true,false,hr,Engineering
+TRM0568,EMP0568,JOB0568,2025-10-23,2025-10-23,2025-10-08,voluntary,restructuring,true,true,manager,Facilities
+TRM0569,EMP0569,JOB0569,2019-11-20,2019-11-20,2019-11-03,involuntary,mutual_agreement,true,false,system,Data
+TRM0570,EMP0570,JOB0570,2017-07-13,2017-07-13,2017-06-28,retirement,retirement,false,true,manager,Legal
+TRM0571,EMP0571,JOB0571,2026-05-04,2026-05-04,2026-04-13,contract_end,restructuring,false,true,manager,IT
+TRM0572,EMP0572,JOB0572,2024-09-12,2024-09-12,2024-08-24,voluntary,performance,true,false,employee,Product
+TRM0573,EMP0573,JOB0573,2026-02-13,2026-02-13,2026-01-28,contract_end,attendance,true,true,manager,Marketing
+TRM0574,EMP0574,JOB0574,2026-04-09,2026-04-09,2026-03-13,retirement,better_opportunity,true,true,system,Sales
+TRM0575,EMP0575,JOB0575,2025-05-05,2025-05-05,2025-04-26,contract_end,better_opportunity,true,false,system,Engineering
+TRM0576,EMP0576,JOB0576,2024-11-19,2024-11-19,2024-11-04,retirement,end_of_contract,true,true,manager,Facilities
+TRM0577,EMP0577,JOB0577,2026-05-30,2026-05-30,2026-05-18,retirement,mutual_agreement,true,true,manager,Customer Success
+TRM0578,EMP0578,JOB0578,2024-07-26,2024-07-26,2024-07-09,contract_end,voluntary_resignation,true,true,system,Legal
+TRM0579,EMP0579,JOB0579,2021-03-22,2021-03-22,2021-03-05,retirement,end_of_contract,true,false,hr,HR
+TRM0580,EMP0580,JOB0580,2018-08-11,2018-08-11,2018-07-25,voluntary,mutual_agreement,true,false,employee,Marketing
+TRM0581,EMP0581,JOB0581,2015-03-16,2015-03-16,2015-03-13,retirement,relocation,true,true,manager,Marketing
+TRM0582,EMP0582,JOB0582,2019-02-24,2019-02-24,2019-02-14,contract_end,voluntary_resignation,false,false,hr,Marketing
+TRM0583,EMP0583,JOB0583,2021-02-13,2021-02-13,2021-02-08,voluntary,relocation,false,false,hr,IT
+TRM0584,EMP0584,JOB0584,2024-02-02,2024-02-02,2024-01-08,involuntary,restructuring,false,true,manager,Finance
+TRM0585,EMP0585,JOB0585,2024-10-16,2024-10-16,2024-10-04,voluntary,relocation,false,false,system,Finance
+TRM0586,EMP0586,JOB0586,2023-03-04,2023-03-04,2023-02-03,retirement,relocation,false,false,hr,Finance
+TRM0587,EMP0587,JOB0587,2025-06-14,2025-06-14,2025-05-29,contract_end,voluntary_resignation,true,false,hr,IT
+TRM0588,EMP0588,JOB0588,2023-07-20,2023-07-20,2023-06-22,retirement,retirement,true,true,manager,Customer Success
+TRM0589,EMP0589,JOB0589,2026-06-06,2026-06-06,2026-05-28,retirement,retirement,true,true,hr,Sales
+TRM0590,EMP0590,JOB0590,2024-12-24,2024-12-24,2024-11-28,retirement,end_of_contract,true,true,employee,Customer Success
+TRM0591,EMP0591,JOB0591,2025-10-16,2025-10-16,2025-10-08,involuntary,voluntary_resignation,true,true,employee,Customer Success
+TRM0592,EMP0592,JOB0592,2026-08-04,2026-08-04,2026-07-25,voluntary,performance,false,true,employee,Marketing
+TRM0593,EMP0593,JOB0593,2021-04-07,2021-04-07,2021-03-14,retirement,attendance,true,true,system,Product
+TRM0594,EMP0594,JOB0594,2022-12-24,2022-12-24,2022-12-06,involuntary,performance,false,true,hr,IT
+TRM0595,EMP0595,JOB0595,2018-07-11,2018-07-11,2018-06-23,voluntary,attendance,false,true,manager,Data
+TRM0596,EMP0596,JOB0596,2023-05-07,2023-05-07,2023-04-11,retirement,performance,false,false,employee,Facilities
+TRM0597,EMP0597,JOB0597,2022-01-07,2022-01-07,2021-12-29,retirement,mutual_agreement,true,true,manager,HR
+TRM0598,EMP0598,JOB0598,2020-07-18,2020-07-18,2020-06-22,involuntary,better_opportunity,true,true,system,Sales
+TRM0599,EMP0599,JOB0599,2025-07-02,2025-07-02,2025-06-27,contract_end,restructuring,false,false,employee,Facilities
+TRM0600,EMP0600,JOB0600,2025-09-02,2025-09-02,2025-08-03,involuntary,attendance,false,false,manager,Customer Success
+TRM0601,EMP0601,JOB0601,2023-08-23,2023-08-23,2023-08-04,contract_end,better_opportunity,false,false,hr,Operations
+TRM0602,EMP0602,JOB0602,2026-07-16,2026-07-16,2026-06-21,contract_end,performance,true,true,hr,Data
+TRM0603,EMP0603,JOB0603,2022-10-08,2022-10-08,2022-09-25,contract_end,performance,false,true,manager,Supply Chain
+TRM0604,EMP0604,JOB0604,2024-01-16,2024-01-16,2024-01-06,retirement,attendance,false,false,manager,IT
+TRM0605,EMP0605,JOB0605,2024-12-23,2024-12-23,2024-12-14,contract_end,restructuring,true,true,employee,Facilities
+TRM0606,EMP0606,JOB0606,2024-05-25,2024-05-25,2024-05-02,involuntary,end_of_contract,true,false,system,Supply Chain
+TRM0607,EMP0607,JOB0607,2026-08-04,2026-08-04,2026-07-08,contract_end,retirement,true,true,employee,Facilities
+TRM0608,EMP0608,JOB0608,2019-02-14,2019-02-14,2019-02-03,retirement,retirement,true,true,manager,Facilities
+TRM0609,EMP0609,JOB0609,2023-10-20,2023-10-20,2023-09-30,contract_end,relocation,true,true,system,Legal
+TRM0610,EMP0610,JOB0610,2023-07-24,2023-07-24,2023-07-12,voluntary,performance,false,false,manager,Product
+TRM0611,EMP0611,JOB0611,2026-04-18,2026-04-18,2026-04-11,retirement,mutual_agreement,false,true,manager,Marketing
+TRM0612,EMP0612,JOB0612,2026-05-02,2026-05-02,2026-04-05,involuntary,performance,true,true,system,Data
+TRM0613,EMP0613,JOB0613,2025-12-11,2025-12-11,2025-11-19,retirement,relocation,false,false,manager,Sales
+TRM0614,EMP0614,JOB0614,2024-10-25,2024-10-25,2024-09-28,retirement,voluntary_resignation,true,true,employee,Operations
+TRM0615,EMP0615,JOB0615,2022-04-25,2022-04-25,2022-04-20,involuntary,voluntary_resignation,true,false,manager,Customer Success
+TRM0616,EMP0616,JOB0616,2026-07-26,2026-07-26,2026-07-21,retirement,end_of_contract,true,true,manager,Supply Chain
+TRM0617,EMP0617,JOB0617,2026-03-20,2026-03-20,2026-03-09,contract_end,attendance,false,false,employee,Facilities
+TRM0618,EMP0618,JOB0618,2026-03-12,2026-03-12,2026-02-20,involuntary,relocation,true,true,employee,Legal
+TRM0619,EMP0619,JOB0619,2021-01-25,2021-01-25,2021-01-09,voluntary,performance,false,true,system,Facilities
+TRM0620,EMP0620,JOB0620,2025-04-14,2025-04-14,2025-03-30,contract_end,mutual_agreement,true,true,hr,Supply Chain
+TRM0621,EMP0621,JOB0621,2025-03-31,2025-03-31,2025-03-01,retirement,restructuring,true,false,system,Security
+TRM0622,EMP0622,JOB0622,2025-02-13,2025-02-13,2025-01-24,contract_end,relocation,true,false,employee,Engineering
+TRM0623,EMP0623,JOB0623,2022-04-13,2022-04-13,2022-04-09,voluntary,restructuring,true,false,hr,Engineering
+TRM0624,EMP0624,JOB0624,2025-08-31,2025-08-31,2025-08-09,voluntary,mutual_agreement,false,true,system,Facilities
+TRM0625,EMP0625,JOB0625,2026-03-26,2026-03-26,2026-03-08,contract_end,performance,true,true,hr,Sales
+TRM0626,EMP0626,JOB0626,2026-02-25,2026-02-25,2026-02-03,retirement,end_of_contract,false,false,hr,Sales
+TRM0627,EMP0627,JOB0627,2024-04-23,2024-04-23,2024-04-22,voluntary,end_of_contract,false,false,hr,Security
+TRM0628,EMP0628,JOB0628,2020-07-09,2020-07-09,2020-06-29,contract_end,end_of_contract,true,true,manager,IT
+TRM0629,EMP0629,JOB0629,2026-07-12,2026-07-12,2026-06-17,voluntary,attendance,false,true,employee,Supply Chain
+TRM0630,EMP0630,JOB0630,2025-06-11,2025-06-11,2025-05-23,involuntary,attendance,false,true,system,Sales
+TRM0631,EMP0631,JOB0631,2025-09-05,2025-09-05,2025-08-16,retirement,performance,true,false,hr,HR
+TRM0632,EMP0632,JOB0632,2026-07-28,2026-07-28,2026-07-04,retirement,relocation,true,true,hr,Operations
+TRM0633,EMP0633,JOB0633,2025-04-03,2025-04-03,2025-03-10,involuntary,relocation,true,false,manager,Product
+TRM0634,EMP0634,JOB0634,2024-03-02,2024-03-02,2024-02-04,contract_end,attendance,true,true,system,Engineering
+TRM0635,EMP0635,JOB0635,2023-03-06,2023-03-06,2023-02-04,involuntary,voluntary_resignation,true,true,manager,Facilities
+TRM0636,EMP0636,JOB0636,2025-07-10,2025-07-10,2025-06-21,voluntary,better_opportunity,true,false,employee,Marketing
+TRM0637,EMP0637,JOB0637,2026-02-12,2026-02-12,2026-01-15,retirement,retirement,true,true,manager,Engineering
+TRM0638,EMP0638,JOB0638,2026-05-08,2026-05-08,2026-04-14,voluntary,end_of_contract,true,false,system,Product
+TRM0639,EMP0639,JOB0639,2019-07-21,2019-07-21,2019-07-19,voluntary,mutual_agreement,true,true,manager,Engineering
+TRM0640,EMP0640,JOB0640,2024-01-09,2024-01-09,2023-12-13,involuntary,voluntary_resignation,true,false,system,Engineering
+TRM0641,EMP0641,JOB0641,2026-02-20,2026-02-20,2026-02-06,involuntary,voluntary_resignation,false,false,manager,Sales
+TRM0642,EMP0642,JOB0642,2023-08-10,2023-08-10,2023-08-01,contract_end,voluntary_resignation,false,true,system,Product
+TRM0643,EMP0643,JOB0643,2025-08-10,2025-08-10,2025-08-01,contract_end,voluntary_resignation,true,true,manager,Finance
+TRM0644,EMP0644,JOB0644,2022-12-21,2022-12-21,2022-11-25,involuntary,end_of_contract,false,true,hr,Supply Chain
+TRM0645,EMP0645,JOB0645,2026-04-20,2026-04-20,2026-04-14,retirement,voluntary_resignation,false,false,manager,IT
+TRM0646,EMP0646,JOB0646,2021-09-11,2021-09-11,2021-08-19,retirement,attendance,false,true,employee,Facilities
+TRM0647,EMP0647,JOB0647,2025-07-24,2025-07-24,2025-06-29,retirement,better_opportunity,false,true,employee,Operations
+TRM0648,EMP0648,JOB0648,2023-07-05,2023-07-05,2023-06-28,retirement,attendance,true,false,system,Marketing
+TRM0649,EMP0649,JOB0649,2025-03-24,2025-03-24,2025-03-17,retirement,relocation,false,true,employee,Security
+TRM0650,EMP0650,JOB0650,2023-10-09,2023-10-09,2023-09-30,voluntary,end_of_contract,true,true,manager,Supply Chain
+TRM0651,EMP0651,JOB0651,2018-11-24,2018-11-24,2018-10-31,involuntary,performance,false,true,manager,Marketing
+TRM0652,EMP0652,JOB0652,2024-11-03,2024-11-03,2024-10-22,voluntary,performance,false,false,hr,Supply Chain
+TRM0653,EMP0653,JOB0653,2019-05-03,2019-05-03,2019-04-03,retirement,end_of_contract,true,true,employee,IT
+TRM0654,EMP0654,JOB0654,2022-08-07,2022-08-07,2022-07-24,contract_end,end_of_contract,true,false,system,Facilities
+TRM0655,EMP0655,JOB0655,2020-05-22,2020-05-22,2020-05-02,contract_end,mutual_agreement,false,false,manager,Engineering
+TRM0656,EMP0656,JOB0656,2019-06-17,2019-06-17,2019-05-25,contract_end,end_of_contract,false,false,employee,Marketing
+TRM0657,EMP0657,JOB0657,2022-02-03,2022-02-03,2022-01-07,involuntary,end_of_contract,true,true,system,Facilities
+TRM0658,EMP0658,JOB0658,2020-03-13,2020-03-13,2020-02-29,voluntary,performance,false,true,hr,Finance
+TRM0659,EMP0659,JOB0659,2023-06-15,2023-06-15,2023-05-24,involuntary,voluntary_resignation,true,true,system,Product
+TRM0660,EMP0660,JOB0660,2026-03-08,2026-03-08,2026-03-07,involuntary,voluntary_resignation,true,false,employee,Supply Chain
+TRM0661,EMP0661,JOB0661,2025-11-18,2025-11-18,2025-10-23,contract_end,voluntary_resignation,true,false,manager,Operations
+TRM0662,EMP0662,JOB0662,2025-05-19,2025-05-19,2025-05-17,involuntary,voluntary_resignation,false,true,employee,Customer Success
+TRM0663,EMP0663,JOB0663,2025-10-08,2025-10-08,2025-09-30,voluntary,relocation,true,true,hr,Finance
+TRM0664,EMP0664,JOB0664,2020-12-08,2020-12-08,2020-11-10,involuntary,performance,false,false,system,IT
+TRM0665,EMP0665,JOB0665,2026-04-22,2026-04-22,2026-03-30,retirement,better_opportunity,true,false,employee,Finance
+TRM0666,EMP0666,JOB0666,2023-07-10,2023-07-10,2023-06-13,involuntary,restructuring,true,false,employee,HR
+TRM0667,EMP0667,JOB0667,2025-09-26,2025-09-26,2025-09-22,voluntary,better_opportunity,true,true,manager,Marketing
+TRM0668,EMP0668,JOB0668,2021-06-24,2021-06-24,2021-06-13,contract_end,restructuring,true,false,system,Finance
+TRM0669,EMP0669,JOB0669,2022-05-14,2022-05-14,2022-04-19,contract_end,performance,true,false,employee,Sales
+TRM0670,EMP0670,JOB0670,2021-12-01,2021-12-01,2021-11-30,contract_end,performance,true,true,system,Finance
+TRM0671,EMP0671,JOB0671,2025-02-08,2025-02-08,2025-01-27,involuntary,relocation,false,false,hr,Facilities
+TRM0672,EMP0672,JOB0672,2021-08-15,2021-08-15,2021-08-10,voluntary,retirement,false,false,hr,Finance
+TRM0673,EMP0673,JOB0673,2021-05-09,2021-05-09,2021-05-02,voluntary,end_of_contract,true,true,manager,Supply Chain
+TRM0674,EMP0674,JOB0674,2026-07-28,2026-07-28,2026-07-22,retirement,voluntary_resignation,true,false,system,HR
+TRM0675,EMP0675,JOB0675,2024-05-05,2024-05-05,2024-04-19,involuntary,performance,true,true,system,Operations
+TRM0676,EMP0676,JOB0676,2022-04-15,2022-04-15,2022-03-25,contract_end,retirement,false,false,system,IT
+TRM0677,EMP0677,JOB0677,2020-11-25,2020-11-25,2020-10-30,contract_end,better_opportunity,true,false,system,Security
+TRM0678,EMP0678,JOB0678,2026-06-03,2026-06-03,2026-06-01,involuntary,relocation,true,false,hr,HR
+TRM0679,EMP0679,JOB0679,2022-11-02,2022-11-02,2022-10-04,voluntary,retirement,false,false,manager,Marketing
+TRM0680,EMP0680,JOB0680,2024-11-09,2024-11-09,2024-10-21,involuntary,performance,false,true,manager,Supply Chain
+TRM0681,EMP0681,JOB0681,2021-03-17,2021-03-17,2021-03-15,retirement,end_of_contract,false,true,employee,Finance
+TRM0682,EMP0682,JOB0682,2024-09-28,2024-09-28,2024-08-29,retirement,attendance,true,false,manager,Engineering
+TRM0683,EMP0683,JOB0683,2019-06-17,2019-06-17,2019-05-29,voluntary,restructuring,false,false,manager,Operations
+TRM0684,EMP0684,JOB0684,2023-11-18,2023-11-18,2023-11-02,contract_end,attendance,true,true,system,Facilities
+TRM0685,EMP0685,JOB0685,2022-01-17,2022-01-17,2022-01-04,contract_end,relocation,true,true,hr,IT
+TRM0686,EMP0686,JOB0686,2022-12-11,2022-12-11,2022-12-08,retirement,retirement,false,false,manager,Security
+TRM0687,EMP0687,JOB0687,2024-08-31,2024-08-31,2024-08-08,contract_end,end_of_contract,true,false,manager,Product
+TRM0688,EMP0688,JOB0688,2025-12-21,2025-12-21,2025-12-20,contract_end,attendance,false,true,hr,Marketing
+TRM0689,EMP0689,JOB0689,2026-05-21,2026-05-21,2026-05-13,voluntary,attendance,true,false,system,Supply Chain
+TRM0690,EMP0690,JOB0690,2026-05-06,2026-05-06,2026-04-18,involuntary,performance,false,true,system,Engineering
+TRM0691,EMP0691,JOB0691,2026-05-18,2026-05-18,2026-05-18,retirement,voluntary_resignation,false,true,system,Security
+TRM0692,EMP0692,JOB0692,2025-10-15,2025-10-15,2025-10-14,contract_end,attendance,true,true,hr,Security
+TRM0693,EMP0693,JOB0693,2026-07-29,2026-07-29,2026-07-29,retirement,performance,true,true,employee,IT
+TRM0694,EMP0694,JOB0694,2023-02-13,2023-02-13,2023-01-19,involuntary,voluntary_resignation,false,false,hr,IT
+TRM0695,EMP0695,JOB0695,2025-02-05,2025-02-05,2025-02-01,involuntary,retirement,true,true,system,HR
+TRM0696,EMP0696,JOB0696,2025-01-07,2025-01-07,2024-12-19,voluntary,restructuring,false,true,hr,IT
+TRM0697,EMP0697,JOB0697,2026-05-20,2026-05-20,2026-04-29,retirement,performance,false,true,system,Supply Chain
+TRM0698,EMP0698,JOB0698,2023-07-31,2023-07-31,2023-07-17,involuntary,relocation,true,true,system,Engineering
+TRM0699,EMP0699,JOB0699,2025-11-15,2025-11-15,2025-10-26,contract_end,mutual_agreement,false,true,system,Legal
+TRM0700,EMP0700,JOB0700,2026-08-03,2026-08-03,2026-07-21,involuntary,restructuring,true,true,employee,IT
+TRM0701,EMP0701,JOB0701,2019-12-09,2019-12-09,2019-11-20,retirement,performance,true,false,system,Customer Success
+TRM0702,EMP0702,JOB0702,2025-04-26,2025-04-26,2025-03-27,voluntary,end_of_contract,true,false,system,Finance
+TRM0703,EMP0703,JOB0703,2020-05-21,2020-05-21,2020-05-11,voluntary,end_of_contract,false,false,employee,HR
+TRM0704,EMP0704,JOB0704,2025-10-21,2025-10-21,2025-09-22,involuntary,retirement,true,false,system,Product
+TRM0705,EMP0705,JOB0705,2021-11-27,2021-11-27,2021-10-31,voluntary,retirement,true,true,hr,Sales
+TRM0706,EMP0706,JOB0706,2024-06-26,2024-06-26,2024-06-16,contract_end,restructuring,false,true,system,Data
+TRM0707,EMP0707,JOB0707,2022-11-26,2022-11-26,2022-11-05,involuntary,attendance,true,true,hr,Sales
+TRM0708,EMP0708,JOB0708,2025-12-02,2025-12-02,2025-11-02,retirement,mutual_agreement,true,true,system,HR
+TRM0709,EMP0709,JOB0709,2022-12-04,2022-12-04,2022-11-05,retirement,restructuring,false,true,employee,Data
+TRM0710,EMP0710,JOB0710,2026-07-20,2026-07-20,2026-06-28,retirement,attendance,false,false,hr,Engineering
+TRM0711,EMP0711,JOB0711,2020-09-15,2020-09-15,2020-09-05,voluntary,attendance,true,true,employee,Sales
+TRM0712,EMP0712,JOB0712,2026-06-24,2026-06-24,2026-06-14,involuntary,restructuring,false,true,system,Finance
+TRM0713,EMP0713,JOB0713,2025-11-28,2025-11-28,2025-11-16,involuntary,retirement,true,false,manager,Finance
+TRM0714,EMP0714,JOB0714,2026-06-01,2026-06-01,2026-05-06,contract_end,end_of_contract,true,true,manager,IT
+TRM0715,EMP0715,JOB0715,2026-03-21,2026-03-21,2026-03-09,voluntary,end_of_contract,true,true,system,Facilities
+TRM0716,EMP0716,JOB0716,2025-12-26,2025-12-26,2025-12-26,involuntary,relocation,true,true,employee,Legal
+TRM0717,EMP0717,JOB0717,2024-10-09,2024-10-09,2024-09-14,retirement,mutual_agreement,false,false,employee,Facilities
+TRM0718,EMP0718,JOB0718,2025-12-16,2025-12-16,2025-11-24,voluntary,voluntary_resignation,false,false,hr,HR
+TRM0719,EMP0719,JOB0719,2023-04-04,2023-04-04,2023-03-27,voluntary,restructuring,true,false,system,HR
+TRM0720,EMP0720,JOB0720,2024-04-01,2024-04-01,2024-03-04,involuntary,relocation,true,false,system,Security
+TRM0721,EMP0721,JOB0721,2026-07-26,2026-07-26,2026-07-13,contract_end,restructuring,true,true,manager,Product
+TRM0722,EMP0722,JOB0722,2026-02-19,2026-02-19,2026-02-13,voluntary,voluntary_resignation,true,true,manager,Sales
+TRM0723,EMP0723,JOB0723,2026-08-02,2026-08-02,2026-07-04,contract_end,better_opportunity,false,false,manager,Finance
+TRM0724,EMP0724,JOB0724,2026-01-08,2026-01-08,2025-12-30,involuntary,performance,true,true,employee,Facilities
+TRM0725,EMP0725,JOB0725,2026-01-02,2026-01-02,2025-12-04,retirement,better_opportunity,true,true,manager,HR
+TRM0726,EMP0726,JOB0726,2026-04-06,2026-04-06,2026-03-23,involuntary,attendance,true,true,system,Security
+TRM0727,EMP0727,JOB0727,2022-04-23,2022-04-23,2022-04-22,retirement,restructuring,false,false,system,Data
+TRM0728,EMP0728,JOB0728,2022-08-30,2022-08-30,2022-08-25,involuntary,voluntary_resignation,true,true,manager,Supply Chain
+TRM0729,EMP0729,JOB0729,2022-08-20,2022-08-20,2022-08-15,voluntary,retirement,false,true,manager,Marketing
+TRM0730,EMP0730,JOB0730,2019-12-02,2019-12-02,2019-11-10,contract_end,performance,false,false,manager,HR
+TRM0731,EMP0731,JOB0731,2026-05-15,2026-05-15,2026-05-01,voluntary,relocation,false,false,manager,Facilities
+TRM0732,EMP0732,JOB0732,2025-04-20,2025-04-20,2025-03-24,voluntary,voluntary_resignation,false,false,manager,Engineering
+TRM0733,EMP0733,JOB0733,2025-09-03,2025-09-03,2025-08-31,voluntary,restructuring,false,false,manager,Legal
+TRM0734,EMP0734,JOB0734,2021-12-14,2021-12-14,2021-12-09,voluntary,voluntary_resignation,true,true,employee,Legal
+TRM0735,EMP0735,JOB0735,2021-02-08,2021-02-08,2021-01-10,voluntary,voluntary_resignation,false,false,manager,Legal
+TRM0736,EMP0736,JOB0736,2021-02-28,2021-02-28,2021-02-04,contract_end,relocation,false,true,employee,Customer Success
+TRM0737,EMP0737,JOB0737,2026-03-01,2026-03-01,2026-02-25,voluntary,mutual_agreement,true,false,hr,Product
+TRM0738,EMP0738,JOB0738,2026-05-02,2026-05-02,2026-04-14,contract_end,voluntary_resignation,true,false,manager,Marketing
+TRM0739,EMP0739,JOB0739,2019-03-06,2019-03-06,2019-03-01,voluntary,restructuring,true,true,manager,Security
+TRM0740,EMP0740,JOB0740,2023-07-20,2023-07-20,2023-07-16,involuntary,retirement,false,false,manager,Supply Chain
+TRM0741,EMP0741,JOB0741,2023-01-28,2023-01-28,2023-01-12,involuntary,mutual_agreement,false,true,manager,Operations
+TRM0742,EMP0742,JOB0742,2025-07-31,2025-07-31,2025-07-19,voluntary,performance,true,false,employee,IT
+TRM0743,EMP0743,JOB0743,2026-04-28,2026-04-28,2026-04-10,voluntary,relocation,true,true,system,Supply Chain
+TRM0744,EMP0744,JOB0744,2020-08-01,2020-08-01,2020-07-30,voluntary,better_opportunity,false,true,manager,Sales
+TRM0745,EMP0745,JOB0745,2017-10-23,2017-10-23,2017-09-29,voluntary,mutual_agreement,true,true,system,Engineering
+TRM0746,EMP0746,JOB0746,2026-05-04,2026-05-04,2026-04-16,involuntary,relocation,true,true,hr,Facilities
+TRM0747,EMP0747,JOB0747,2021-04-19,2021-04-19,2021-04-19,retirement,relocation,true,false,hr,Supply Chain
+TRM0748,EMP0748,JOB0748,2026-09-01,2026-09-01,2026-08-28,contract_end,voluntary_resignation,false,true,hr,Security
+TRM0749,EMP0749,JOB0749,2024-10-21,2024-10-21,2024-10-09,retirement,mutual_agreement,false,true,hr,IT
+TRM0750,EMP0750,JOB0750,2021-08-24,2021-08-24,2021-08-01,voluntary,relocation,true,false,hr,Supply Chain
+TRM0751,EMP0751,JOB0751,2025-10-10,2025-10-10,2025-10-02,retirement,end_of_contract,true,false,system,Sales
+TRM0752,EMP0752,JOB0752,2024-02-24,2024-02-24,2024-02-10,retirement,mutual_agreement,false,false,manager,Legal
+TRM0753,EMP0753,JOB0753,2022-07-26,2022-07-26,2022-07-05,involuntary,better_opportunity,false,true,employee,Product
+TRM0754,EMP0754,JOB0754,2026-03-10,2026-03-10,2026-02-12,involuntary,attendance,false,true,hr,Marketing
+TRM0755,EMP0755,JOB0755,2024-07-16,2024-07-16,2024-07-14,contract_end,relocation,false,true,system,Product
+TRM0756,EMP0756,JOB0756,2026-07-01,2026-07-01,2026-06-24,involuntary,relocation,false,false,manager,Sales
+TRM0757,EMP0757,JOB0757,2026-03-21,2026-03-21,2026-03-17,retirement,restructuring,true,true,system,Finance
+TRM0758,EMP0758,JOB0758,2022-10-14,2022-10-14,2022-10-13,contract_end,restructuring,true,true,manager,HR
+TRM0759,EMP0759,JOB0759,2026-02-05,2026-02-05,2026-01-15,involuntary,attendance,true,true,manager,Data
+TRM0760,EMP0760,JOB0760,2025-04-08,2025-04-08,2025-04-05,involuntary,performance,true,false,manager,Operations
+TRM0761,EMP0761,JOB0761,2021-05-16,2021-05-16,2021-05-07,voluntary,retirement,true,true,manager,Operations
+TRM0762,EMP0762,JOB0762,2020-01-16,2020-01-16,2019-12-30,involuntary,end_of_contract,true,false,employee,Security
+TRM0763,EMP0763,JOB0763,2022-05-13,2022-05-13,2022-05-12,contract_end,restructuring,false,false,system,Data
+TRM0764,EMP0764,JOB0764,2024-03-31,2024-03-31,2024-03-20,contract_end,restructuring,true,true,system,Security
+TRM0765,EMP0765,JOB0765,2026-08-02,2026-08-02,2026-07-06,voluntary,better_opportunity,true,true,hr,Security
+TRM0766,EMP0766,JOB0766,2022-10-23,2022-10-23,2022-10-08,contract_end,end_of_contract,false,true,system,Security
+TRM0767,EMP0767,JOB0767,2023-05-24,2023-05-24,2023-05-10,retirement,performance,true,false,hr,Facilities
+TRM0768,EMP0768,JOB0768,2019-05-08,2019-05-08,2019-04-20,voluntary,restructuring,true,true,employee,Facilities
+TRM0769,EMP0769,JOB0769,2025-07-14,2025-07-14,2025-06-23,voluntary,relocation,false,false,system,Finance
+TRM0770,EMP0770,JOB0770,2026-06-08,2026-06-08,2026-05-17,involuntary,attendance,true,true,system,Finance
+TRM0771,EMP0771,JOB0771,2024-07-10,2024-07-10,2024-06-12,retirement,relocation,true,true,employee,Operations
+TRM0772,EMP0772,JOB0772,2026-01-19,2026-01-19,2025-12-29,voluntary,performance,false,true,system,Security
+TRM0773,EMP0773,JOB0773,2026-05-14,2026-05-14,2026-04-30,voluntary,restructuring,true,false,employee,Security
+TRM0774,EMP0774,JOB0774,2014-11-18,2014-11-18,2014-11-09,retirement,mutual_agreement,true,false,manager,Customer Success
+TRM0775,EMP0775,JOB0775,2026-07-11,2026-07-11,2026-06-30,involuntary,restructuring,false,true,system,Product
+TRM0776,EMP0776,JOB0776,2025-09-07,2025-09-07,2025-08-10,retirement,voluntary_resignation,false,false,manager,Finance
+TRM0777,EMP0777,JOB0777,2023-01-17,2023-01-17,2022-12-25,retirement,better_opportunity,true,false,manager,HR
+TRM0778,EMP0778,JOB0778,2023-02-15,2023-02-15,2023-02-04,retirement,end_of_contract,false,true,employee,IT
+TRM0779,EMP0779,JOB0779,2023-08-13,2023-08-13,2023-07-15,involuntary,end_of_contract,true,true,hr,Facilities
+TRM0780,EMP0780,JOB0780,2026-06-07,2026-06-07,2026-05-24,retirement,voluntary_resignation,true,true,hr,Marketing
+TRM0781,EMP0781,JOB0781,2021-12-11,2021-12-11,2021-11-23,retirement,better_opportunity,true,false,system,Data
+TRM0782,EMP0782,JOB0782,2015-04-17,2015-04-17,2015-03-27,retirement,retirement,true,true,hr,Product
+TRM0783,EMP0783,JOB0783,2025-09-19,2025-09-19,2025-08-27,contract_end,relocation,true,true,manager,Customer Success
+TRM0784,EMP0784,JOB0784,2021-06-05,2021-06-05,2021-05-28,retirement,voluntary_resignation,false,false,manager,Security
+TRM0785,EMP0785,JOB0785,2022-06-24,2022-06-24,2022-06-11,contract_end,relocation,true,true,hr,IT
+TRM0786,EMP0786,JOB0786,2022-04-06,2022-04-06,2022-03-12,voluntary,mutual_agreement,true,false,hr,HR
+TRM0787,EMP0787,JOB0787,2020-09-02,2020-09-02,2020-08-16,involuntary,end_of_contract,true,true,employee,Operations
+TRM0788,EMP0788,JOB0788,2023-12-07,2023-12-07,2023-12-06,voluntary,attendance,true,true,manager,Finance
+TRM0789,EMP0789,JOB0789,2025-11-11,2025-11-11,2025-11-09,involuntary,mutual_agreement,false,true,hr,Finance
+TRM0790,EMP0790,JOB0790,2023-08-03,2023-08-03,2023-07-28,voluntary,voluntary_resignation,false,true,system,Security
+TRM0791,EMP0791,JOB0791,2021-08-07,2021-08-07,2021-07-24,voluntary,performance,false,true,manager,Data
+TRM0792,EMP0792,JOB0792,2026-06-29,2026-06-29,2026-06-12,retirement,retirement,false,false,system,Engineering
+TRM0793,EMP0793,JOB0793,2020-03-02,2020-03-02,2020-02-16,involuntary,end_of_contract,true,false,system,HR
+TRM0794,EMP0794,JOB0794,2025-12-04,2025-12-04,2025-11-12,retirement,attendance,false,false,employee,Finance
+TRM0795,EMP0795,JOB0795,2022-09-09,2022-09-09,2022-08-11,voluntary,relocation,true,true,manager,Supply Chain
+TRM0796,EMP0796,JOB0796,2026-04-24,2026-04-24,2026-04-24,contract_end,mutual_agreement,true,false,hr,Customer Success
+TRM0797,EMP0797,JOB0797,2018-11-22,2018-11-22,2018-11-20,contract_end,better_opportunity,true,true,system,Security
+TRM0798,EMP0798,JOB0798,2019-06-29,2019-06-29,2019-06-05,voluntary,voluntary_resignation,false,false,manager,Customer Success
+TRM0799,EMP0799,JOB0799,2021-02-23,2021-02-23,2021-02-14,retirement,mutual_agreement,true,true,hr,Operations
+TRM0800,EMP0800,JOB0800,2026-06-23,2026-06-23,2026-06-10,contract_end,retirement,false,true,hr,Product
+TRM0801,EMP0801,JOB0801,2025-02-16,2025-02-16,2025-01-19,voluntary,relocation,true,false,system,Finance
+TRM0802,EMP0802,JOB0802,2023-04-22,2023-04-22,2023-04-14,involuntary,voluntary_resignation,true,true,hr,Engineering
+TRM0803,EMP0803,JOB0803,2020-07-05,2020-07-05,2020-06-18,voluntary,mutual_agreement,false,true,manager,Legal
+TRM0804,EMP0804,JOB0804,2025-10-28,2025-10-28,2025-10-04,voluntary,relocation,true,false,hr,Data
+TRM0805,EMP0805,JOB0805,2020-12-13,2020-12-13,2020-12-05,involuntary,restructuring,true,false,hr,Finance
+TRM0806,EMP0806,JOB0806,2026-01-01,2026-01-01,2025-12-28,voluntary,voluntary_resignation,true,false,manager,Finance
+TRM0807,EMP0807,JOB0807,2025-06-02,2025-06-02,2025-05-25,retirement,relocation,true,false,manager,Security
+TRM0808,EMP0808,JOB0808,2026-02-03,2026-02-03,2026-01-26,retirement,better_opportunity,false,false,hr,Security
+TRM0809,EMP0809,JOB0809,2023-10-12,2023-10-12,2023-09-24,involuntary,relocation,false,false,employee,Engineering
+TRM0810,EMP0810,JOB0810,2025-09-19,2025-09-19,2025-09-05,retirement,end_of_contract,true,false,manager,Data
+TRM0811,EMP0811,JOB0811,2025-09-02,2025-09-02,2025-08-13,retirement,attendance,true,false,employee,Product
+TRM0812,EMP0812,JOB0812,2025-11-08,2025-11-08,2025-10-26,voluntary,end_of_contract,false,false,employee,Legal
+TRM0813,EMP0813,JOB0813,2025-10-14,2025-10-14,2025-09-17,contract_end,mutual_agreement,true,true,manager,Facilities
+TRM0814,EMP0814,JOB0814,2026-06-06,2026-06-06,2026-05-10,retirement,voluntary_resignation,false,false,manager,Customer Success
+TRM0815,EMP0815,JOB0815,2016-10-29,2016-10-29,2016-10-04,contract_end,performance,false,true,employee,HR
+TRM0816,EMP0816,JOB0816,2026-07-13,2026-07-13,2026-07-08,contract_end,restructuring,false,false,employee,Sales
+TRM0817,EMP0817,JOB0817,2026-06-28,2026-06-28,2026-06-07,involuntary,mutual_agreement,false,true,employee,Engineering
+TRM0818,EMP0818,JOB0818,2024-12-03,2024-12-03,2024-11-15,involuntary,better_opportunity,false,false,hr,IT
+TRM0819,EMP0819,JOB0819,2023-08-28,2023-08-28,2023-08-08,retirement,relocation,true,true,manager,HR
+TRM0820,EMP0820,JOB0820,2023-12-05,2023-12-05,2023-11-11,voluntary,performance,false,false,manager,Customer Success
+TRM0821,EMP0821,JOB0821,2019-05-12,2019-05-12,2019-04-21,contract_end,restructuring,false,false,manager,Finance
+TRM0822,EMP0822,JOB0822,2024-11-23,2024-11-23,2024-11-12,retirement,attendance,true,false,manager,Customer Success
+TRM0823,EMP0823,JOB0823,2024-11-11,2024-11-11,2024-11-09,voluntary,end_of_contract,true,true,employee,IT
+TRM0824,EMP0824,JOB0824,2026-02-19,2026-02-19,2026-01-27,involuntary,relocation,false,true,system,HR
+TRM0825,EMP0825,JOB0825,2026-06-09,2026-06-09,2026-05-22,retirement,retirement,false,false,hr,IT
+TRM0826,EMP0826,JOB0826,2025-12-07,2025-12-07,2025-11-18,voluntary,performance,true,true,manager,Engineering
+TRM0827,EMP0827,JOB0827,2023-09-29,2023-09-29,2023-09-04,voluntary,relocation,false,false,employee,Customer Success
+TRM0828,EMP0828,JOB0828,2020-01-01,2020-01-01,2019-12-11,contract_end,relocation,true,true,system,Sales
+TRM0829,EMP0829,JOB0829,2023-07-03,2023-07-03,2023-06-13,contract_end,retirement,true,true,system,HR
+TRM0830,EMP0830,JOB0830,2024-11-20,2024-11-20,2024-11-11,contract_end,end_of_contract,true,false,system,Engineering
+TRM0831,EMP0831,JOB0831,2019-12-31,2019-12-31,2019-12-13,involuntary,end_of_contract,true,true,system,Product
+TRM0832,EMP0832,JOB0832,2025-04-13,2025-04-13,2025-04-01,voluntary,attendance,false,false,manager,Legal
+TRM0833,EMP0833,JOB0833,2024-09-10,2024-09-10,2024-09-08,retirement,voluntary_resignation,true,false,hr,Engineering
+TRM0834,EMP0834,JOB0834,2026-07-17,2026-07-17,2026-06-28,involuntary,performance,false,false,system,Finance
+TRM0835,EMP0835,JOB0835,2020-03-20,2020-03-20,2020-03-01,retirement,mutual_agreement,true,false,system,Data
+TRM0836,EMP0836,JOB0836,2025-05-31,2025-05-31,2025-05-21,retirement,voluntary_resignation,false,false,hr,Legal
+TRM0837,EMP0837,JOB0837,2024-06-12,2024-06-12,2024-06-05,involuntary,mutual_agreement,true,true,hr,Supply Chain
+TRM0838,EMP0838,JOB0838,2026-07-22,2026-07-22,2026-07-08,voluntary,voluntary_resignation,false,false,employee,Engineering
+TRM0839,EMP0839,JOB0839,2018-01-18,2018-01-18,2018-01-17,contract_end,attendance,true,false,employee,Supply Chain
+TRM0840,EMP0840,JOB0840,2020-02-25,2020-02-25,2020-02-08,retirement,end_of_contract,false,true,hr,Sales
+TRM0841,EMP0841,JOB0841,2024-05-24,2024-05-24,2024-05-11,retirement,better_opportunity,false,true,hr,Supply Chain
+TRM0842,EMP0842,JOB0842,2025-04-07,2025-04-07,2025-03-29,contract_end,better_opportunity,true,false,system,Supply Chain
+TRM0843,EMP0843,JOB0843,2019-01-28,2019-01-28,2019-01-01,contract_end,mutual_agreement,true,false,manager,IT
+TRM0844,EMP0844,JOB0844,2023-08-02,2023-08-02,2023-07-13,voluntary,relocation,true,true,system,Supply Chain
+TRM0845,EMP0845,JOB0845,2021-04-15,2021-04-15,2021-03-24,contract_end,retirement,true,true,hr,Legal
+TRM0846,EMP0846,JOB0846,2023-02-27,2023-02-27,2023-02-27,contract_end,restructuring,true,false,manager,Operations
+TRM0847,EMP0847,JOB0847,2025-08-03,2025-08-03,2025-07-14,involuntary,voluntary_resignation,true,false,manager,Facilities
+TRM0848,EMP0848,JOB0848,2019-09-07,2019-09-07,2019-08-21,involuntary,mutual_agreement,true,false,manager,Sales
+TRM0849,EMP0849,JOB0849,2023-12-06,2023-12-06,2023-11-30,voluntary,attendance,true,false,manager,Operations
+TRM0850,EMP0850,JOB0850,2024-09-18,2024-09-18,2024-09-05,contract_end,retirement,false,false,employee,Finance
+TRM0851,EMP0851,JOB0851,2025-03-06,2025-03-06,2025-02-28,contract_end,voluntary_resignation,false,true,hr,Finance
+TRM0852,EMP0852,JOB0852,2024-08-05,2024-08-05,2024-08-02,contract_end,relocation,true,false,system,Data
+TRM0853,EMP0853,JOB0853,2022-03-30,2022-03-30,2022-03-27,retirement,relocation,false,true,system,Sales
+TRM0854,EMP0854,JOB0854,2023-10-25,2023-10-25,2023-09-28,involuntary,relocation,true,false,hr,Legal
+TRM0855,EMP0855,JOB0855,2022-08-31,2022-08-31,2022-08-11,contract_end,better_opportunity,true,false,hr,HR
+TRM0856,EMP0856,JOB0856,2023-05-10,2023-05-10,2023-04-10,involuntary,relocation,true,true,manager,Finance
+TRM0857,EMP0857,JOB0857,2026-07-02,2026-07-02,2026-06-11,retirement,retirement,true,false,system,HR
+TRM0858,EMP0858,JOB0858,2026-08-03,2026-08-03,2026-07-30,voluntary,performance,true,true,manager,Security
+TRM0859,EMP0859,JOB0859,2023-10-04,2023-10-04,2023-09-11,involuntary,better_opportunity,true,true,employee,Security
+TRM0860,EMP0860,JOB0860,2023-03-19,2023-03-19,2023-03-03,contract_end,retirement,false,true,manager,Legal
+TRM0861,EMP0861,JOB0861,2026-07-04,2026-07-04,2026-06-20,retirement,end_of_contract,true,true,manager,Marketing
+TRM0862,EMP0862,JOB0862,2020-10-05,2020-10-05,2020-09-17,contract_end,relocation,true,false,employee,Facilities
+TRM0863,EMP0863,JOB0863,2026-02-27,2026-02-27,2026-02-06,contract_end,retirement,false,true,hr,Finance
+TRM0864,EMP0864,JOB0864,2024-06-26,2024-06-26,2024-05-27,voluntary,better_opportunity,true,false,manager,Customer Success
+TRM0865,EMP0865,JOB0865,2026-01-05,2026-01-05,2025-12-29,contract_end,restructuring,false,false,manager,Finance
+TRM0866,EMP0866,JOB0866,2024-06-18,2024-06-18,2024-06-12,retirement,mutual_agreement,true,true,system,Data
+TRM0867,EMP0867,JOB0867,2025-03-26,2025-03-26,2025-03-10,involuntary,retirement,true,true,hr,Finance
+TRM0868,EMP0868,JOB0868,2025-10-09,2025-10-09,2025-09-18,contract_end,attendance,false,true,system,Security
+TRM0869,EMP0869,JOB0869,2023-09-23,2023-09-23,2023-08-29,retirement,relocation,true,false,hr,Finance
+TRM0870,EMP0870,JOB0870,2020-05-11,2020-05-11,2020-05-04,contract_end,retirement,true,true,manager,Data
+TRM0871,EMP0871,JOB0871,2025-01-01,2025-01-01,2024-12-04,retirement,voluntary_resignation,true,false,hr,Facilities
+TRM0872,EMP0872,JOB0872,2020-11-19,2020-11-19,2020-10-20,contract_end,performance,false,false,manager,Supply Chain
+TRM0873,EMP0873,JOB0873,2026-06-04,2026-06-04,2026-05-06,contract_end,restructuring,true,false,manager,HR
+TRM0874,EMP0874,JOB0874,2025-06-27,2025-06-27,2025-06-06,involuntary,attendance,false,true,hr,Sales
+TRM0875,EMP0875,JOB0875,2023-12-13,2023-12-13,2023-12-07,voluntary,mutual_agreement,true,false,manager,Marketing
+TRM0876,EMP0876,JOB0876,2016-07-29,2016-07-29,2016-06-29,involuntary,end_of_contract,true,false,manager,Engineering
+TRM0877,EMP0877,JOB0877,2018-01-07,2018-01-07,2018-01-04,retirement,better_opportunity,true,true,system,Security
+TRM0878,EMP0878,JOB0878,2022-04-07,2022-04-07,2022-03-31,involuntary,voluntary_resignation,true,false,employee,Engineering
+TRM0879,EMP0879,JOB0879,2023-03-19,2023-03-19,2023-02-24,involuntary,mutual_agreement,true,true,hr,Product
+TRM0880,EMP0880,JOB0880,2021-08-27,2021-08-27,2021-08-13,retirement,end_of_contract,true,true,system,Marketing
+TRM0881,EMP0881,JOB0881,2025-05-04,2025-05-04,2025-05-02,involuntary,mutual_agreement,false,false,employee,Legal
+TRM0882,EMP0882,JOB0882,2024-09-15,2024-09-15,2024-09-09,contract_end,attendance,true,true,system,Supply Chain
+TRM0883,EMP0883,JOB0883,2015-06-01,2015-06-01,2015-05-21,contract_end,attendance,false,false,hr,HR
+TRM0884,EMP0884,JOB0884,2023-02-26,2023-02-26,2023-02-03,voluntary,retirement,true,false,hr,HR
+TRM0885,EMP0885,JOB0885,2020-06-04,2020-06-04,2020-05-13,retirement,restructuring,false,true,employee,Customer Success
+TRM0886,EMP0886,JOB0886,2026-04-20,2026-04-20,2026-04-14,retirement,voluntary_resignation,true,true,employee,Customer Success
+TRM0887,EMP0887,JOB0887,2020-11-08,2020-11-08,2020-10-25,retirement,restructuring,false,false,hr,Operations
+TRM0888,EMP0888,JOB0888,2024-12-27,2024-12-27,2024-12-26,contract_end,retirement,false,true,manager,Product
+TRM0889,EMP0889,JOB0889,2024-06-22,2024-06-22,2024-05-26,involuntary,performance,true,true,employee,Security
+TRM0890,EMP0890,JOB0890,2022-03-04,2022-03-04,2022-02-06,retirement,end_of_contract,true,false,employee,Product
+TRM0891,EMP0891,JOB0891,2019-09-22,2019-09-22,2019-08-26,voluntary,attendance,true,true,hr,Engineering
+TRM0892,EMP0892,JOB0892,2025-10-03,2025-10-03,2025-09-07,retirement,restructuring,true,true,manager,Supply Chain
+TRM0893,EMP0893,JOB0893,2023-04-25,2023-04-25,2023-04-14,voluntary,end_of_contract,true,true,manager,Supply Chain
+TRM0894,EMP0894,JOB0894,2020-11-03,2020-11-03,2020-10-17,involuntary,restructuring,true,false,hr,HR
+TRM0895,EMP0895,JOB0895,2019-02-19,2019-02-19,2019-01-25,voluntary,attendance,true,true,hr,Sales
+TRM0896,EMP0896,JOB0896,2026-03-28,2026-03-28,2026-03-23,contract_end,end_of_contract,true,false,system,Operations
+TRM0897,EMP0897,JOB0897,2023-03-21,2023-03-21,2023-03-17,involuntary,end_of_contract,true,true,system,HR
+TRM0898,EMP0898,JOB0898,2026-07-03,2026-07-03,2026-06-26,voluntary,attendance,false,false,hr,Legal
+TRM0899,EMP0899,JOB0899,2025-04-26,2025-04-26,2025-04-06,contract_end,mutual_agreement,false,true,employee,Supply Chain
+TRM0900,EMP0900,JOB0900,2025-04-18,2025-04-18,2025-04-18,involuntary,mutual_agreement,false,true,manager,Finance
+TRM0901,EMP0901,JOB0901,2022-12-17,2022-12-17,2022-12-11,involuntary,end_of_contract,false,false,system,Finance
+TRM0902,EMP0902,JOB0902,2023-09-20,2023-09-20,2023-08-23,contract_end,retirement,true,false,system,Operations
+TRM0903,EMP0903,JOB0903,2021-12-05,2021-12-05,2021-11-15,contract_end,mutual_agreement,false,true,employee,Customer Success
+TRM0904,EMP0904,JOB0904,2020-07-26,2020-07-26,2020-07-06,involuntary,relocation,false,false,system,Customer Success
+TRM0905,EMP0905,JOB0905,2023-01-25,2023-01-25,2023-01-24,contract_end,end_of_contract,false,true,system,Customer Success
+TRM0906,EMP0906,JOB0906,2026-06-30,2026-06-30,2026-06-30,involuntary,voluntary_resignation,true,true,hr,Customer Success
+TRM0907,EMP0907,JOB0907,2021-10-30,2021-10-30,2021-10-27,voluntary,attendance,true,false,hr,Customer Success
+TRM0908,EMP0908,JOB0908,2023-02-08,2023-02-08,2023-01-10,voluntary,retirement,true,true,system,Facilities
+TRM0909,EMP0909,JOB0909,2026-04-22,2026-04-22,2026-04-11,contract_end,mutual_agreement,true,false,employee,Finance
+TRM0910,EMP0910,JOB0910,2026-01-04,2026-01-04,2025-12-19,retirement,voluntary_resignation,false,false,system,Legal
+TRM0911,EMP0911,JOB0911,2024-10-11,2024-10-11,2024-10-10,contract_end,attendance,true,true,manager,Customer Success
+TRM0912,EMP0912,JOB0912,2026-09-08,2026-09-08,2026-08-09,involuntary,attendance,false,true,hr,Product
+TRM0913,EMP0913,JOB0913,2025-09-04,2025-09-04,2025-08-31,contract_end,end_of_contract,false,true,manager,Customer Success
+TRM0914,EMP0914,JOB0914,2026-03-12,2026-03-12,2026-03-07,involuntary,attendance,false,false,system,Security
+TRM0915,EMP0915,JOB0915,2025-12-10,2025-12-10,2025-11-29,voluntary,end_of_contract,true,true,system,Marketing
+TRM0916,EMP0916,JOB0916,2024-09-02,2024-09-02,2024-08-21,retirement,end_of_contract,true,true,manager,Facilities
+TRM0917,EMP0917,JOB0917,2026-02-16,2026-02-16,2026-01-28,voluntary,restructuring,true,true,manager,Sales
+TRM0918,EMP0918,JOB0918,2023-06-11,2023-06-11,2023-06-07,contract_end,better_opportunity,true,false,manager,Engineering
+TRM0919,EMP0919,JOB0919,2022-02-26,2022-02-26,2022-01-29,retirement,voluntary_resignation,true,true,employee,Engineering
+TRM0920,EMP0920,JOB0920,2023-08-03,2023-08-03,2023-08-01,retirement,end_of_contract,false,false,system,Data
+TRM0921,EMP0921,JOB0921,2024-10-15,2024-10-15,2024-09-27,contract_end,end_of_contract,false,false,employee,Operations
+TRM0922,EMP0922,JOB0922,2026-07-24,2026-07-24,2026-07-06,involuntary,relocation,false,false,hr,Data
+TRM0923,EMP0923,JOB0923,2025-07-26,2025-07-26,2025-07-03,involuntary,retirement,false,false,hr,Sales
+TRM0924,EMP0924,JOB0924,2020-12-26,2020-12-26,2020-12-16,retirement,voluntary_resignation,false,false,system,Security
+TRM0925,EMP0925,JOB0925,2018-11-08,2018-11-08,2018-11-01,retirement,mutual_agreement,true,false,system,IT
+TRM0926,EMP0926,JOB0926,2023-08-10,2023-08-10,2023-07-20,retirement,restructuring,true,true,system,Facilities
+TRM0927,EMP0927,JOB0927,2026-04-04,2026-04-04,2026-03-21,involuntary,better_opportunity,true,true,system,Security
+TRM0928,EMP0928,JOB0928,2026-03-13,2026-03-13,2026-03-01,contract_end,mutual_agreement,true,true,manager,HR
+TRM0929,EMP0929,JOB0929,2026-05-24,2026-05-24,2026-05-04,voluntary,end_of_contract,true,false,system,Customer Success
+TRM0930,EMP0930,JOB0930,2025-09-15,2025-09-15,2025-09-15,contract_end,mutual_agreement,true,true,manager,IT
+TRM0931,EMP0931,JOB0931,2025-11-23,2025-11-23,2025-11-19,retirement,relocation,false,false,manager,Engineering
+TRM0932,EMP0932,JOB0932,2026-05-23,2026-05-23,2026-04-28,retirement,performance,true,true,system,Marketing
+TRM0933,EMP0933,JOB0933,2026-07-20,2026-07-20,2026-06-24,retirement,voluntary_resignation,false,true,system,Marketing
+TRM0934,EMP0934,JOB0934,2026-07-22,2026-07-22,2026-06-26,involuntary,restructuring,false,false,system,Legal
+TRM0935,EMP0935,JOB0935,2024-03-02,2024-03-02,2024-02-21,contract_end,end_of_contract,false,true,manager,Engineering
+TRM0936,EMP0936,JOB0936,2024-10-30,2024-10-30,2024-10-11,voluntary,retirement,true,false,hr,Customer Success
+TRM0937,EMP0937,JOB0937,2026-05-29,2026-05-29,2026-05-04,retirement,end_of_contract,true,false,manager,Supply Chain
+TRM0938,EMP0938,JOB0938,2026-08-04,2026-08-04,2026-07-27,contract_end,better_opportunity,true,true,system,IT
+TRM0939,EMP0939,JOB0939,2024-07-29,2024-07-29,2024-07-23,retirement,attendance,true,false,employee,Marketing
+TRM0940,EMP0940,JOB0940,2021-02-08,2021-02-08,2021-01-25,voluntary,relocation,false,true,system,Engineering
+TRM0941,EMP0941,JOB0941,2026-02-03,2026-02-03,2026-01-20,contract_end,end_of_contract,false,true,system,Engineering
+TRM0942,EMP0942,JOB0942,2022-04-05,2022-04-05,2022-04-04,contract_end,better_opportunity,false,false,system,IT
+TRM0943,EMP0943,JOB0943,2026-01-09,2026-01-09,2026-01-08,retirement,retirement,true,true,employee,Legal
+TRM0944,EMP0944,JOB0944,2024-03-02,2024-03-02,2024-02-24,contract_end,mutual_agreement,true,true,employee,Supply Chain
+TRM0945,EMP0945,JOB0945,2025-01-23,2025-01-23,2025-01-20,voluntary,performance,true,false,system,Operations
+TRM0946,EMP0946,JOB0946,2022-04-16,2022-04-16,2022-03-31,retirement,mutual_agreement,true,true,hr,Facilities
+TRM0947,EMP0947,JOB0947,2026-05-20,2026-05-20,2026-04-26,involuntary,restructuring,false,true,manager,Legal
+TRM0948,EMP0948,JOB0948,2024-07-31,2024-07-31,2024-07-02,retirement,mutual_agreement,false,false,hr,IT
+TRM0949,EMP0949,JOB0949,2025-03-03,2025-03-03,2025-02-12,involuntary,restructuring,true,true,manager,Security
+TRM0950,EMP0950,JOB0950,2023-02-14,2023-02-14,2023-01-15,involuntary,restructuring,true,true,manager,Supply Chain
+TRM0951,EMP0951,JOB0951,2020-08-06,2020-08-06,2020-08-02,contract_end,relocation,true,true,system,Legal
+TRM0952,EMP0952,JOB0952,2020-12-11,2020-12-11,2020-12-04,voluntary,mutual_agreement,false,false,employee,Product
+TRM0953,EMP0953,JOB0953,2019-03-27,2019-03-27,2019-03-11,voluntary,voluntary_resignation,false,true,manager,Customer Success
+TRM0954,EMP0954,JOB0954,2024-03-07,2024-03-07,2024-02-08,voluntary,end_of_contract,false,false,manager,Supply Chain
+TRM0955,EMP0955,JOB0955,2023-02-05,2023-02-05,2023-01-23,involuntary,restructuring,false,true,manager,HR
+TRM0956,EMP0956,JOB0956,2022-06-12,2022-06-12,2022-05-19,voluntary,mutual_agreement,false,true,hr,Security
+TRM0957,EMP0957,JOB0957,2024-12-21,2024-12-21,2024-12-01,contract_end,restructuring,false,false,system,Engineering
+TRM0958,EMP0958,JOB0958,2026-02-08,2026-02-08,2026-01-16,contract_end,better_opportunity,false,true,hr,Customer Success
+TRM0959,EMP0959,JOB0959,2025-08-26,2025-08-26,2025-08-23,voluntary,end_of_contract,false,false,employee,Operations
+TRM0960,EMP0960,JOB0960,2026-06-29,2026-06-29,2026-06-04,retirement,retirement,true,true,system,Marketing
+TRM0961,EMP0961,JOB0961,2025-04-16,2025-04-16,2025-04-08,contract_end,end_of_contract,false,true,system,Sales
+TRM0962,EMP0962,JOB0962,2026-06-26,2026-06-26,2026-06-03,voluntary,retirement,true,false,hr,Data
+TRM0963,EMP0963,JOB0963,2024-06-09,2024-06-09,2024-05-18,retirement,relocation,true,false,employee,IT
+TRM0964,EMP0964,JOB0964,2023-07-26,2023-07-26,2023-07-19,voluntary,relocation,false,true,system,Security
+TRM0965,EMP0965,JOB0965,2024-05-24,2024-05-24,2024-04-25,involuntary,attendance,false,true,hr,Engineering
+TRM0966,EMP0966,JOB0966,2026-08-03,2026-08-03,2026-07-12,involuntary,relocation,true,false,hr,Supply Chain
+TRM0967,EMP0967,JOB0967,2025-12-27,2025-12-27,2025-12-18,retirement,attendance,true,false,system,Sales
+TRM0968,EMP0968,JOB0968,2023-06-05,2023-06-05,2023-06-03,contract_end,mutual_agreement,false,true,system,Legal
+TRM0969,EMP0969,JOB0969,2023-03-08,2023-03-08,2023-02-16,involuntary,better_opportunity,true,true,system,Marketing
+TRM0970,EMP0970,JOB0970,2021-04-13,2021-04-13,2021-03-28,retirement,mutual_agreement,true,false,system,Facilities
+TRM0971,EMP0971,JOB0971,2026-07-21,2026-07-21,2026-07-08,contract_end,restructuring,false,false,manager,Marketing
+TRM0972,EMP0972,JOB0972,2026-04-22,2026-04-22,2026-04-09,voluntary,restructuring,true,true,system,Customer Success
+TRM0973,EMP0973,JOB0973,2025-10-24,2025-10-24,2025-10-12,retirement,mutual_agreement,false,true,hr,Operations
+TRM0974,EMP0974,JOB0974,2022-05-12,2022-05-12,2022-04-15,involuntary,mutual_agreement,false,false,system,Data
+TRM0975,EMP0975,JOB0975,2026-01-10,2026-01-10,2025-12-28,retirement,mutual_agreement,true,true,system,IT
+TRM0976,EMP0976,JOB0976,2014-07-16,2014-07-16,2014-07-06,contract_end,voluntary_resignation,true,true,manager,HR
+TRM0977,EMP0977,JOB0977,2023-11-28,2023-11-28,2023-11-02,involuntary,retirement,true,true,hr,Product
+TRM0978,EMP0978,JOB0978,2017-09-01,2017-09-01,2017-08-05,retirement,voluntary_resignation,true,true,manager,Facilities
+TRM0979,EMP0979,JOB0979,2023-05-23,2023-05-23,2023-05-13,retirement,end_of_contract,true,true,manager,HR
+TRM0980,EMP0980,JOB0980,2016-07-13,2016-07-13,2016-06-15,voluntary,restructuring,false,true,manager,Sales
+TRM0981,EMP0981,JOB0981,2025-05-21,2025-05-21,2025-04-24,voluntary,relocation,true,false,hr,IT
+TRM0982,EMP0982,JOB0982,2018-06-08,2018-06-08,2018-06-02,retirement,voluntary_resignation,true,true,manager,Sales
+TRM0983,EMP0983,JOB0983,2026-02-23,2026-02-23,2026-01-28,contract_end,end_of_contract,false,false,manager,HR
+TRM0984,EMP0984,JOB0984,2026-04-01,2026-04-01,2026-03-22,voluntary,relocation,false,true,system,Security
+TRM0985,EMP0985,JOB0985,2022-03-23,2022-03-23,2022-03-17,voluntary,better_opportunity,false,true,manager,Marketing
+TRM0986,EMP0986,JOB0986,2019-02-02,2019-02-02,2019-01-26,voluntary,voluntary_resignation,false,false,manager,Finance
+TRM0987,EMP0987,JOB0987,2026-06-12,2026-06-12,2026-06-12,retirement,mutual_agreement,false,false,manager,Facilities
+TRM0988,EMP0988,JOB0988,2023-01-23,2023-01-23,2023-01-01,contract_end,retirement,false,false,hr,Supply Chain
+TRM0989,EMP0989,JOB0989,2020-09-06,2020-09-06,2020-08-19,retirement,better_opportunity,false,true,employee,IT
+TRM0990,EMP0990,JOB0990,2018-08-02,2018-08-02,2018-07-22,voluntary,better_opportunity,false,true,manager,Engineering
+TRM0991,EMP0991,JOB0991,2026-05-19,2026-05-19,2026-04-20,retirement,performance,false,true,manager,Finance
+TRM0992,EMP0992,JOB0992,2023-11-22,2023-11-22,2023-10-24,involuntary,restructuring,true,false,system,Security
+TRM0993,EMP0993,JOB0993,2026-04-11,2026-04-11,2026-03-22,retirement,mutual_agreement,false,true,system,Security
+TRM0994,EMP0994,JOB0994,2026-07-27,2026-07-27,2026-07-16,retirement,attendance,false,true,system,Customer Success
+TRM0995,EMP0995,JOB0995,2016-03-03,2016-03-03,2016-02-21,retirement,voluntary_resignation,false,false,employee,Supply Chain
+TRM0996,EMP0996,JOB0996,2020-11-22,2020-11-22,2020-11-02,contract_end,relocation,false,false,hr,Supply Chain
+TRM0997,EMP0997,JOB0997,2026-08-04,2026-08-04,2026-07-22,contract_end,retirement,true,true,manager,HR
+TRM0998,EMP0998,JOB0998,2024-11-22,2024-11-22,2024-11-03,voluntary,voluntary_resignation,true,true,hr,Product
+TRM0999,EMP0999,JOB0999,2026-07-30,2026-07-30,2026-07-24,voluntary,mutual_agreement,true,false,employee,Legal
+TRM1000,EMP1000,JOB1000,2023-01-18,2023-01-18,2023-01-09,voluntary,performance,true,true,system,IT

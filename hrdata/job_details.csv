@@ -1,0 +1,1001 @@
+job_id,job_code,job_title,job_family,department,grade_id,grade_code,employment_type,flsa_status,location_city,location_region,location_country,is_people_manager,headcount_budgeted
+JOB0001,SAL-09-0001,Enterprise AE,Sales,Supply Chain,GRD0641,G09,intern,exempt,Denver,CO,US,true,4
+JOB0002,PRO-01-0002,Product Manager,Product Management,Sales,GRD0002,G01,intern,exempt,Dallas,TX,US,true,1
+JOB0003,DAT-01-0003,Analytics Manager,Data Science,Legal,GRD0003,G01,full_time,non_exempt,Chicago,IL,US,true,3
+JOB0004,LEG-08-0004,Privacy Counsel,Legal,Sales,GRD0564,G08,full_time,exempt,Hyderabad,TS,IN,false,3
+JOB0005,PEO-02-0005,HR Generalist,People Operations,Data,GRD0085,G02,part_time,non_exempt,Bengaluru,KA,IN,false,4
+JOB0006,LEG-02-0006,Privacy Counsel,Legal,Security,GRD0086,G02,full_time,non_exempt,Bengaluru,KA,IN,false,2
+JOB0007,PEO-12-0007,Recruiter,People Operations,Operations,GRD0887,G12,intern,exempt,Hyderabad,TS,IN,false,4
+JOB0008,LEG-02-0008,Privacy Counsel,Legal,Sales,GRD0088,G02,part_time,exempt,Toronto,ON,CA,false,4
+JOB0009,LEG-11-0009,Paralegal,Legal,Security,GRD0809,G11,full_time,exempt,Toronto,ON,CA,false,2
+JOB0010,SOF-08-0010,Software Engineer,Software Engineering,HR,GRD0570,G08,part_time,exempt,Austin,TX,US,true,1
+JOB0011,IT -05-0011,IT Manager,IT Operations,Data,GRD0331,G05,intern,exempt,Austin,TX,US,true,4
+JOB0012,DAT-03-0012,Data Analyst,Data Science,Supply Chain,GRD0172,G03,part_time,non_exempt,New York,NY,US,false,1
+JOB0013,IT -01-0013,IT Manager,IT Operations,Facilities,GRD0013,G01,full_time,exempt,Dallas,TX,US,true,5
+JOB0014,IT -12-0014,IT Support,IT Operations,IT,GRD0894,G12,contract,non_exempt,Austin,TX,US,false,1
+JOB0015,IT -01-0015,Systems Admin,IT Operations,Facilities,GRD0015,G01,intern,exempt,New York,NY,US,false,1
+JOB0016,SAL-02-0016,Sales Manager,Sales,Product,GRD0096,G02,contract,exempt,Bengaluru,KA,IN,true,1
+JOB0017,SAL-02-0017,SDR,Sales,Marketing,GRD0097,G02,contract,non_exempt,San Francisco,CA,US,false,3
+JOB0018,PRO-10-0018,Group PM,Product Management,Finance,GRD0738,G10,part_time,exempt,Bengaluru,KA,IN,false,1
+JOB0019,DAT-09-0019,Data Scientist,Data Science,Operations,GRD0659,G09,intern,exempt,Denver,CO,US,true,1
+JOB0020,SOF-12-0020,Software Engineer,Software Engineering,Engineering,GRD0900,G12,part_time,non_exempt,Toronto,ON,CA,true,1
+JOB0021,PRO-08-0021,Senior PM,Product Management,Security,GRD0581,G08,part_time,non_exempt,Seattle,WA,US,true,3
+JOB0022,SOF-07-0022,Staff Engineer,Software Engineering,Data,GRD0502,G07,intern,exempt,Dallas,TX,US,false,4
+JOB0023,LEG-05-0023,Compliance Analyst,Legal,Engineering,GRD0343,G05,intern,exempt,Chicago,IL,US,false,3
+JOB0024,SAL-06-0024,Enterprise AE,Sales,Supply Chain,GRD0424,G06,part_time,non_exempt,Austin,TX,US,false,1
+JOB0025,IT -02-0025,Systems Admin,IT Operations,Facilities,GRD0105,G02,contract,non_exempt,Austin,TX,US,false,3
+JOB0026,FIN-09-0026,Accountant,Finance & Accounting,Operations,GRD0666,G09,part_time,exempt,Dallas,TX,US,true,5
+JOB0027,SAL-09-0027,Sales Manager,Sales,Supply Chain,GRD0667,G09,full_time,exempt,Toronto,ON,CA,true,2
+JOB0028,MAR-12-0028,Marketing Specialist,Marketing,HR,GRD0908,G12,full_time,exempt,Seattle,WA,US,true,5
+JOB0029,PRO-07-0029,Senior PM,Product Management,Finance,GRD0509,G07,contract,exempt,Chicago,IL,US,false,1
+JOB0030,SAL-10-0030,Enterprise AE,Sales,IT,GRD0750,G10,part_time,exempt,Hyderabad,TS,IN,true,4
+JOB0031,MAR-02-0031,Marketing Specialist,Marketing,Product,GRD0111,G02,full_time,exempt,Toronto,ON,CA,false,3
+JOB0032,DAT-09-0032,Data Scientist,Data Science,Security,GRD0672,G09,intern,non_exempt,Dallas,TX,US,true,4
+JOB0033,PRO-05-0033,Associate PM,Product Management,HR,GRD0353,G05,intern,exempt,Seattle,WA,US,false,4
+JOB0034,DAT-06-0034,Analytics Manager,Data Science,Facilities,GRD0434,G06,part_time,exempt,San Francisco,CA,US,true,4
+JOB0035,SAL-04-0035,SDR,Sales,IT,GRD0275,G04,contract,non_exempt,San Francisco,CA,US,false,5
+JOB0036,SOF-02-0036,Senior Software Engineer,Software Engineering,Data,GRD0116,G02,contract,non_exempt,Dallas,TX,US,false,2
+JOB0037,SOF-08-0037,Senior Software Engineer,Software Engineering,Facilities,GRD0597,G08,full_time,non_exempt,Dallas,TX,US,false,1
+JOB0038,LEG-01-0038,Paralegal,Legal,Marketing,GRD0038,G01,full_time,non_exempt,Dallas,TX,US,false,2
+JOB0039,FIN-09-0039,Controller,Finance & Accounting,Data,GRD0679,G09,part_time,non_exempt,Toronto,ON,CA,true,3
+JOB0040,FIN-03-0040,Controller,Finance & Accounting,IT,GRD0200,G03,full_time,exempt,London,ENG,UK,false,2
+JOB0041,MAR-01-0041,Marketing Director,Marketing,IT,GRD0041,G01,part_time,exempt,Chicago,IL,US,true,4
+JOB0042,FIN-11-0042,Financial Analyst,Finance & Accounting,Marketing,GRD0842,G11,full_time,exempt,Atlanta,GA,US,false,4
+JOB0043,FIN-05-0043,Financial Analyst,Finance & Accounting,Operations,GRD0363,G05,intern,non_exempt,Austin,TX,US,false,1
+JOB0044,DAT-09-0044,Analytics Manager,Data Science,Operations,GRD0684,G09,full_time,non_exempt,Toronto,ON,CA,true,1
+JOB0045,CUS-03-0045,Support Specialist,Customer Support,HR,GRD0205,G03,intern,exempt,Chicago,IL,US,false,1
+JOB0046,SAL-05-0046,SDR,Sales,Operations,GRD0366,G05,intern,exempt,San Francisco,CA,US,false,3
+JOB0047,IT -02-0047,IT Support,IT Operations,Sales,GRD0127,G02,intern,exempt,London,ENG,UK,false,5
+JOB0048,LEG-02-0048,Privacy Counsel,Legal,HR,GRD0128,G02,full_time,exempt,Austin,TX,US,false,5
+JOB0049,PRO-04-0049,Senior PM,Product Management,Product,GRD0289,G04,intern,non_exempt,Dallas,TX,US,false,4
+JOB0050,CUS-02-0050,Support Lead,Customer Support,IT,GRD0130,G02,contract,exempt,Atlanta,GA,US,false,2
+JOB0051,MAR-02-0051,Demand Gen Manager,Marketing,Security,GRD0131,G02,intern,non_exempt,Dallas,TX,US,true,3
+JOB0052,PRO-11-0052,Associate PM,Product Management,Supply Chain,GRD0852,G11,full_time,non_exempt,Hyderabad,TS,IN,true,1
+JOB0053,IT -08-0053,Systems Admin,IT Operations,Legal,GRD0613,G08,part_time,non_exempt,Hyderabad,TS,IN,false,3
+JOB0054,SOF-11-0054,Staff Engineer,Software Engineering,Data,GRD0854,G11,part_time,exempt,Hyderabad,TS,IN,true,1
+JOB0055,CUS-01-0055,Support Lead,Customer Support,Operations,GRD0055,G01,part_time,exempt,Seattle,WA,US,false,3
+JOB0056,FIN-02-0056,Financial Analyst,Finance & Accounting,Engineering,GRD0136,G02,part_time,exempt,Denver,CO,US,false,3
+JOB0057,CUS-02-0057,Support Lead,Customer Support,Finance,GRD0137,G02,intern,exempt,Atlanta,GA,US,false,5
+JOB0058,SAL-08-0058,Account Executive,Sales,Marketing,GRD0618,G08,intern,non_exempt,Chicago,IL,US,false,3
+JOB0059,SOF-03-0059,Engineering Manager,Software Engineering,HR,GRD0219,G03,full_time,non_exempt,San Francisco,CA,US,true,2
+JOB0060,SAL-03-0060,SDR,Sales,Supply Chain,GRD0220,G03,contract,non_exempt,Bengaluru,KA,IN,false,4
+JOB0061,IT -03-0061,IT Manager,IT Operations,Sales,GRD0221,G03,full_time,non_exempt,Seattle,WA,US,true,4
+JOB0062,PRO-09-0062,Product Manager,Product Management,Legal,GRD0702,G09,contract,exempt,New York,NY,US,true,2
+JOB0063,SAL-03-0063,Sales Manager,Sales,Legal,GRD0223,G03,intern,non_exempt,Dallas,TX,US,true,3
+JOB0064,LEG-03-0064,Paralegal,Legal,Marketing,GRD0224,G03,intern,exempt,Toronto,ON,CA,false,1
+JOB0065,PEO-01-0065,HR Generalist,People Operations,Product,GRD0065,G01,contract,exempt,Seattle,WA,US,false,2
+JOB0066,PEO-09-0066,HR Generalist,People Operations,Facilities,GRD0706,G09,contract,exempt,Denver,CO,US,false,4
+JOB0067,IT -09-0067,Cloud Engineer,IT Operations,Sales,GRD0707,G09,intern,exempt,London,ENG,UK,true,3
+JOB0068,LEG-03-0068,Privacy Counsel,Legal,Marketing,GRD0228,G03,part_time,non_exempt,Toronto,ON,CA,false,3
+JOB0069,IT -11-0069,Cloud Engineer,IT Operations,Security,GRD0869,G11,full_time,non_exempt,Dallas,TX,US,false,3
+JOB0070,SOF-08-0070,Engineering Manager,Software Engineering,IT,GRD0630,G08,part_time,non_exempt,San Francisco,CA,US,true,3
+JOB0071,SAL-02-0071,Sales Manager,Sales,Customer Success,GRD0151,G02,intern,non_exempt,Chicago,IL,US,true,2
+JOB0072,SAL-12-0072,Enterprise AE,Sales,Finance,GRD0952,G12,intern,non_exempt,Toronto,ON,CA,true,2
+JOB0073,SAL-05-0073,Account Executive,Sales,Engineering,GRD0393,G05,part_time,non_exempt,Dallas,TX,US,false,5
+JOB0074,PEO-08-0074,HR Generalist,People Operations,Operations,GRD0634,G08,contract,non_exempt,Bengaluru,KA,IN,false,4
+JOB0075,FIN-08-0075,Financial Analyst,Finance & Accounting,Engineering,GRD0635,G08,part_time,non_exempt,Toronto,ON,CA,false,3
+JOB0076,IT -11-0076,Systems Admin,IT Operations,Security,GRD0876,G11,part_time,non_exempt,Chicago,IL,US,true,3
+JOB0077,MAR-02-0077,Content Manager,Marketing,Operations,GRD0157,G02,full_time,exempt,Bengaluru,KA,IN,true,1
+JOB0078,LEG-12-0078,Privacy Counsel,Legal,Marketing,GRD0958,G12,full_time,exempt,London,ENG,UK,true,2
+JOB0079,DAT-01-0079,Data Scientist,Data Science,Sales,GRD0079,G01,part_time,non_exempt,New York,NY,US,false,2
+JOB0080,SOF-02-0080,Software Engineer,Software Engineering,Product,GRD0160,G02,part_time,exempt,Dallas,TX,US,false,4
+JOB0081,FIN-09-0081,Accountant,Finance & Accounting,Finance,GRD0641,G09,contract,non_exempt,San Francisco,CA,US,true,3
+JOB0082,FIN-02-0082,Accountant,Finance & Accounting,Data,GRD0082,G02,contract,exempt,Seattle,WA,US,false,1
+JOB0083,LEG-12-0083,Legal Counsel,Legal,Data,GRD0883,G12,contract,non_exempt,Seattle,WA,US,true,2
+JOB0084,SAL-03-0084,SDR,Sales,HR,GRD0164,G03,intern,non_exempt,Toronto,ON,CA,false,1
+JOB0085,SAL-02-0085,Enterprise AE,Sales,Product,GRD0085,G02,full_time,exempt,Atlanta,GA,US,false,2
+JOB0086,CUS-04-0086,Support Specialist,Customer Support,Product,GRD0246,G04,intern,non_exempt,Bengaluru,KA,IN,false,2
+JOB0087,SOF-10-0087,Senior Software Engineer,Software Engineering,Product,GRD0727,G10,intern,exempt,Chicago,IL,US,true,5
+JOB0088,PEO-12-0088,HRBP,People Operations,Engineering,GRD0888,G12,part_time,exempt,Austin,TX,US,false,3
+JOB0089,SAL-10-0089,Sales Manager,Sales,Data,GRD0729,G10,part_time,non_exempt,Chicago,IL,US,true,3
+JOB0090,PRO-01-0090,Product Manager,Product Management,Operations,GRD0010,G01,contract,non_exempt,Chicago,IL,US,true,4
+JOB0091,FIN-01-0091,Controller,Finance & Accounting,Finance,GRD0011,G01,full_time,non_exempt,Bengaluru,KA,IN,false,1
+JOB0092,FIN-03-0092,Financial Analyst,Finance & Accounting,IT,GRD0172,G03,part_time,non_exempt,New York,NY,US,false,1
+JOB0093,SAL-02-0093,Enterprise AE,Sales,Security,GRD0093,G02,contract,non_exempt,London,ENG,UK,false,5
+JOB0094,MAR-02-0094,Marketing Specialist,Marketing,Product,GRD0094,G02,intern,non_exempt,Hyderabad,TS,IN,false,4
+JOB0095,DAT-11-0095,ML Engineer,Data Science,Sales,GRD0815,G11,intern,non_exempt,London,ENG,UK,true,4
+JOB0096,FIN-12-0096,Finance Manager,Finance & Accounting,Legal,GRD0896,G12,full_time,exempt,San Francisco,CA,US,true,4
+JOB0097,DAT-03-0097,ML Engineer,Data Science,Facilities,GRD0177,G03,part_time,exempt,Austin,TX,US,false,4
+JOB0098,LEG-05-0098,Legal Counsel,Legal,Product,GRD0338,G05,contract,non_exempt,Hyderabad,TS,IN,false,5
+JOB0099,DAT-07-0099,Data Scientist,Data Science,Product,GRD0499,G07,full_time,exempt,Toronto,ON,CA,false,3
+JOB0100,PRO-12-0100,Associate PM,Product Management,Finance,GRD0900,G12,part_time,non_exempt,Dallas,TX,US,false,2
+JOB0101,PEO-12-0101,People Manager,People Operations,Finance,GRD0901,G12,full_time,exempt,San Francisco,CA,US,true,4
+JOB0102,IT -02-0102,IT Support,IT Operations,Security,GRD0102,G02,intern,non_exempt,Seattle,WA,US,false,2
+JOB0103,PRO-08-0103,Senior PM,Product Management,Security,GRD0583,G08,part_time,exempt,Denver,CO,US,true,4
+JOB0104,DAT-04-0104,ML Engineer,Data Science,Marketing,GRD0264,G04,intern,exempt,Austin,TX,US,false,5
+JOB0105,FIN-03-0105,Controller,Finance & Accounting,Security,GRD0185,G03,contract,exempt,Toronto,ON,CA,false,4
+JOB0106,SOF-04-0106,Software Engineer,Software Engineering,Finance,GRD0266,G04,full_time,non_exempt,Bengaluru,KA,IN,false,5
+JOB0107,SOF-06-0107,Software Engineer,Software Engineering,Facilities,GRD0427,G06,contract,non_exempt,Chicago,IL,US,false,3
+JOB0108,MAR-10-0108,Demand Gen Manager,Marketing,HR,GRD0748,G10,intern,non_exempt,San Francisco,CA,US,true,1
+JOB0109,SAL-11-0109,SDR,Sales,Supply Chain,GRD0829,G11,part_time,exempt,Denver,CO,US,true,2
+JOB0110,PRO-05-0110,Senior PM,Product Management,IT,GRD0350,G05,contract,non_exempt,London,ENG,UK,false,4
+JOB0111,MAR-04-0111,Content Manager,Marketing,Security,GRD0271,G04,contract,exempt,London,ENG,UK,true,3
+JOB0112,PRO-03-0112,Senior PM,Product Management,Facilities,GRD0192,G03,full_time,non_exempt,Toronto,ON,CA,false,3
+JOB0113,CUS-12-0113,Support Specialist,Customer Support,Security,GRD0913,G12,contract,non_exempt,Chicago,IL,US,false,1
+JOB0114,DAT-01-0114,ML Engineer,Data Science,Sales,GRD0034,G01,contract,exempt,Austin,TX,US,false,5
+JOB0115,DAT-12-0115,Analytics Manager,Data Science,Sales,GRD0915,G12,intern,non_exempt,Austin,TX,US,true,3
+JOB0116,CUS-05-0116,Support Specialist,Customer Support,IT,GRD0356,G05,intern,non_exempt,Hyderabad,TS,IN,false,3
+JOB0117,MAR-10-0117,Demand Gen Manager,Marketing,Legal,GRD0757,G10,full_time,non_exempt,Dallas,TX,US,true,4
+JOB0118,PEO-11-0118,HR Generalist,People Operations,Sales,GRD0838,G11,part_time,non_exempt,Chicago,IL,US,true,1
+JOB0119,LEG-08-0119,Legal Counsel,Legal,Legal,GRD0599,G08,intern,exempt,Bengaluru,KA,IN,true,4
+JOB0120,DAT-09-0120,Data Scientist,Data Science,Facilities,GRD0680,G09,contract,exempt,Seattle,WA,US,false,5
+JOB0121,SOF-06-0121,Senior Software Engineer,Software Engineering,HR,GRD0441,G06,part_time,non_exempt,Toronto,ON,CA,false,1
+JOB0122,PEO-06-0122,Recruiter,People Operations,Finance,GRD0442,G06,part_time,non_exempt,Seattle,WA,US,false,5
+JOB0123,IT -11-0123,IT Support,IT Operations,Legal,GRD0843,G11,intern,exempt,New York,NY,US,false,5
+JOB0124,DAT-01-0124,ML Engineer,Data Science,Sales,GRD0044,G01,full_time,exempt,Austin,TX,US,false,5
+JOB0125,CUS-09-0125,Support Lead,Customer Support,Data,GRD0685,G09,part_time,non_exempt,Chicago,IL,US,true,4
+JOB0126,PRO-10-0126,Senior PM,Product Management,Sales,GRD0766,G10,intern,exempt,Seattle,WA,US,true,4
+JOB0127,SOF-01-0127,Software Engineer,Software Engineering,Security,GRD0047,G01,part_time,exempt,San Francisco,CA,US,false,5
+JOB0128,MAR-09-0128,Content Manager,Marketing,Sales,GRD0688,G09,part_time,exempt,New York,NY,US,true,5
+JOB0129,DAT-12-0129,Analytics Manager,Data Science,Security,GRD0929,G12,part_time,non_exempt,Bengaluru,KA,IN,true,4
+JOB0130,IT -08-0130,IT Support,IT Operations,Operations,GRD0610,G08,full_time,exempt,Austin,TX,US,true,5
+JOB0131,PEO-06-0131,Recruiter,People Operations,Data,GRD0451,G06,part_time,non_exempt,Atlanta,GA,US,false,4
+JOB0132,SAL-04-0132,Account Executive,Sales,Facilities,GRD0292,G04,intern,non_exempt,New York,NY,US,false,5
+JOB0133,PEO-05-0133,HRBP,People Operations,IT,GRD0373,G05,part_time,non_exempt,New York,NY,US,false,1
+JOB0134,PRO-10-0134,Product Manager,Product Management,Product,GRD0774,G10,contract,exempt,San Francisco,CA,US,true,4
+JOB0135,CUS-10-0135,Support Specialist,Customer Support,Operations,GRD0775,G10,contract,non_exempt,Atlanta,GA,US,true,4
+JOB0136,LEG-09-0136,Paralegal,Legal,Sales,GRD0696,G09,full_time,non_exempt,New York,NY,US,true,1
+JOB0137,PEO-06-0137,HR Generalist,People Operations,HR,GRD0457,G06,contract,non_exempt,Toronto,ON,CA,false,4
+JOB0138,PRO-10-0138,Group PM,Product Management,Engineering,GRD0778,G10,full_time,non_exempt,London,ENG,UK,false,4
+JOB0139,PEO-03-0139,HRBP,People Operations,IT,GRD0219,G03,full_time,exempt,London,ENG,UK,false,3
+JOB0140,PEO-10-0140,HRBP,People Operations,IT,GRD0780,G10,part_time,non_exempt,Bengaluru,KA,IN,true,2
+JOB0141,IT -11-0141,IT Manager,IT Operations,Marketing,GRD0861,G11,full_time,exempt,New York,NY,US,true,1
+JOB0142,LEG-08-0142,Compliance Analyst,Legal,Operations,GRD0622,G08,contract,non_exempt,Atlanta,GA,US,true,1
+JOB0143,FIN-11-0143,Controller,Finance & Accounting,Product,GRD0863,G11,contract,non_exempt,Atlanta,GA,US,false,5
+JOB0144,LEG-01-0144,Compliance Analyst,Legal,Supply Chain,GRD0064,G01,intern,exempt,San Francisco,CA,US,false,3
+JOB0145,IT -05-0145,IT Support,IT Operations,Marketing,GRD0385,G05,intern,exempt,San Francisco,CA,US,false,4
+JOB0146,SOF-04-0146,Software Engineer,Software Engineering,Engineering,GRD0306,G04,part_time,exempt,Chicago,IL,US,false,3
+JOB0147,SAL-01-0147,Account Executive,Sales,Marketing,GRD0067,G01,full_time,exempt,Denver,CO,US,false,2
+JOB0148,IT -03-0148,IT Support,IT Operations,Facilities,GRD0228,G03,part_time,exempt,Denver,CO,US,false,4
+JOB0149,PEO-02-0149,People Manager,People Operations,Facilities,GRD0149,G02,part_time,exempt,Hyderabad,TS,IN,true,3
+JOB0150,SOF-01-0150,Software Engineer,Software Engineering,Product,GRD0070,G01,full_time,exempt,New York,NY,US,false,3
+JOB0151,PRO-08-0151,Associate PM,Product Management,Product,GRD0631,G08,part_time,exempt,New York,NY,US,true,2
+JOB0152,FIN-07-0152,Accountant,Finance & Accounting,HR,GRD0552,G07,intern,non_exempt,San Francisco,CA,US,false,4
+JOB0153,SAL-01-0153,Sales Manager,Sales,Security,GRD0073,G01,part_time,exempt,Hyderabad,TS,IN,true,2
+JOB0154,PRO-11-0154,Senior PM,Product Management,IT,GRD0874,G11,full_time,non_exempt,Toronto,ON,CA,true,1
+JOB0155,CUS-08-0155,Support Agent,Customer Support,Engineering,GRD0635,G08,contract,non_exempt,Atlanta,GA,US,true,2
+JOB0156,SOF-08-0156,Senior Software Engineer,Software Engineering,Security,GRD0636,G08,intern,exempt,New York,NY,US,true,1
+JOB0157,IT -06-0157,IT Support,IT Operations,Security,GRD0477,G06,part_time,non_exempt,Denver,CO,US,false,4
+JOB0158,FIN-10-0158,Finance Manager,Finance & Accounting,Data,GRD0798,G10,contract,non_exempt,Bengaluru,KA,IN,true,2
+JOB0159,MAR-11-0159,Content Manager,Marketing,Facilities,GRD0879,G11,full_time,non_exempt,Bengaluru,KA,IN,true,3
+JOB0160,IT -10-0160,Cloud Engineer,IT Operations,Data,GRD0800,G10,intern,non_exempt,San Francisco,CA,US,true,1
+JOB0161,CUS-03-0161,Support Agent,Customer Support,Supply Chain,GRD0161,G03,full_time,non_exempt,Denver,CO,US,false,3
+JOB0162,LEG-12-0162,Privacy Counsel,Legal,Product,GRD0882,G12,part_time,exempt,Austin,TX,US,false,1
+JOB0163,LEG-08-0163,Privacy Counsel,Legal,Supply Chain,GRD0563,G08,contract,exempt,Toronto,ON,CA,true,3
+JOB0164,DAT-08-0164,Data Analyst,Data Science,Marketing,GRD0564,G08,part_time,exempt,Toronto,ON,CA,true,3
+JOB0165,FIN-09-0165,Financial Analyst,Finance & Accounting,Customer Success,GRD0645,G09,intern,non_exempt,London,ENG,UK,false,3
+JOB0166,PEO-02-0166,People Manager,People Operations,Security,GRD0086,G02,part_time,non_exempt,Austin,TX,US,true,1
+JOB0167,LEG-06-0167,Paralegal,Legal,Facilities,GRD0407,G06,intern,exempt,Hyderabad,TS,IN,false,3
+JOB0168,IT -08-0168,IT Support,IT Operations,Engineering,GRD0568,G08,full_time,exempt,Atlanta,GA,US,true,1
+JOB0169,SAL-10-0169,Sales Manager,Sales,Security,GRD0729,G10,full_time,non_exempt,Atlanta,GA,US,true,3
+JOB0170,LEG-03-0170,Paralegal,Legal,Facilities,GRD0170,G03,full_time,exempt,Hyderabad,TS,IN,false,5
+JOB0171,MAR-03-0171,Demand Gen Manager,Marketing,Sales,GRD0171,G03,intern,exempt,New York,NY,US,true,3
+JOB0172,MAR-04-0172,Marketing Specialist,Marketing,Legal,GRD0252,G04,contract,exempt,New York,NY,US,false,4
+JOB0173,IT -04-0173,IT Manager,IT Operations,HR,GRD0253,G04,intern,non_exempt,Dallas,TX,US,true,1
+JOB0174,PEO-11-0174,Recruiter,People Operations,Operations,GRD0814,G11,part_time,non_exempt,Atlanta,GA,US,false,1
+JOB0175,IT -07-0175,Cloud Engineer,IT Operations,Data,GRD0495,G07,intern,non_exempt,New York,NY,US,false,4
+JOB0176,MAR-02-0176,Demand Gen Manager,Marketing,Operations,GRD0096,G02,contract,exempt,London,ENG,UK,true,3
+JOB0177,DAT-07-0177,ML Engineer,Data Science,Data,GRD0497,G07,intern,non_exempt,Dallas,TX,US,false,3
+JOB0178,PEO-06-0178,Recruiter,People Operations,Finance,GRD0418,G06,part_time,non_exempt,Austin,TX,US,false,1
+JOB0179,MAR-11-0179,Marketing Director,Marketing,Legal,GRD0819,G11,contract,non_exempt,San Francisco,CA,US,true,2
+JOB0180,IT -06-0180,Systems Admin,IT Operations,Legal,GRD0420,G06,part_time,non_exempt,Chicago,IL,US,false,3
+JOB0181,SAL-07-0181,SDR,Sales,Sales,GRD0501,G07,full_time,exempt,Austin,TX,US,false,5
+JOB0182,IT -04-0182,IT Support,IT Operations,Product,GRD0262,G04,contract,exempt,Hyderabad,TS,IN,false,2
+JOB0183,LEG-05-0183,Legal Counsel,Legal,HR,GRD0343,G05,full_time,non_exempt,Austin,TX,US,false,3
+JOB0184,LEG-09-0184,Legal Counsel,Legal,Finance,GRD0664,G09,part_time,exempt,Denver,CO,US,true,2
+JOB0185,SAL-04-0185,SDR,Sales,Marketing,GRD0265,G04,contract,non_exempt,Dallas,TX,US,false,4
+JOB0186,SOF-10-0186,Software Engineer,Software Engineering,HR,GRD0746,G10,full_time,non_exempt,Toronto,ON,CA,true,4
+JOB0187,FIN-01-0187,Accountant,Finance & Accounting,HR,GRD0027,G01,intern,exempt,Austin,TX,US,false,3
+JOB0188,FIN-06-0188,Financial Analyst,Finance & Accounting,Marketing,GRD0428,G06,part_time,exempt,San Francisco,CA,US,false,2
+JOB0189,PRO-02-0189,Product Manager,Product Management,Supply Chain,GRD0109,G02,full_time,exempt,Bengaluru,KA,IN,true,3
+JOB0190,IT -09-0190,IT Support,IT Operations,HR,GRD0670,G09,intern,exempt,Atlanta,GA,US,true,2
+JOB0191,PEO-04-0191,Recruiter,People Operations,Sales,GRD0271,G04,contract,exempt,Austin,TX,US,false,1
+JOB0192,CUS-07-0192,Support Specialist,Customer Support,Operations,GRD0512,G07,full_time,exempt,San Francisco,CA,US,false,1
+JOB0193,CUS-01-0193,Support Lead,Customer Support,Data,GRD0033,G01,part_time,exempt,Bengaluru,KA,IN,false,3
+JOB0194,DAT-02-0194,ML Engineer,Data Science,IT,GRD0114,G02,full_time,non_exempt,San Francisco,CA,US,false,3
+JOB0195,DAT-04-0195,Analytics Manager,Data Science,Data,GRD0275,G04,part_time,non_exempt,Hyderabad,TS,IN,true,4
+JOB0196,FIN-12-0196,Accountant,Finance & Accounting,HR,GRD0916,G12,part_time,exempt,London,ENG,UK,false,2
+JOB0197,SOF-09-0197,Staff Engineer,Software Engineering,Finance,GRD0677,G09,full_time,exempt,Austin,TX,US,true,2
+JOB0198,IT -03-0198,IT Manager,IT Operations,IT,GRD0198,G03,part_time,non_exempt,Chicago,IL,US,true,3
+JOB0199,CUS-04-0199,Support Agent,Customer Support,Engineering,GRD0279,G04,part_time,non_exempt,Atlanta,GA,US,false,1
+JOB0200,SAL-02-0200,Sales Manager,Sales,IT,GRD0120,G02,contract,non_exempt,London,ENG,UK,true,3
+JOB0201,SAL-11-0201,Enterprise AE,Sales,Finance,GRD0841,G11,part_time,exempt,Hyderabad,TS,IN,false,4
+JOB0202,DAT-02-0202,Data Scientist,Data Science,Engineering,GRD0122,G02,part_time,non_exempt,Dallas,TX,US,false,1
+JOB0203,PEO-05-0203,People Manager,People Operations,Product,GRD0363,G05,intern,non_exempt,Chicago,IL,US,true,3
+JOB0204,DAT-03-0204,Analytics Manager,Data Science,Product,GRD0204,G03,intern,non_exempt,New York,NY,US,true,2
+JOB0205,SOF-10-0205,Senior Software Engineer,Software Engineering,Engineering,GRD0765,G10,full_time,exempt,Toronto,ON,CA,true,2
+JOB0206,SOF-10-0206,Senior Software Engineer,Software Engineering,Marketing,GRD0766,G10,contract,exempt,Toronto,ON,CA,true,3
+JOB0207,PEO-03-0207,HRBP,People Operations,Operations,GRD0207,G03,part_time,exempt,Atlanta,GA,US,false,2
+JOB0208,DAT-04-0208,Analytics Manager,Data Science,Data,GRD0288,G04,contract,exempt,Hyderabad,TS,IN,true,1
+JOB0209,PEO-11-0209,HR Generalist,People Operations,Engineering,GRD0849,G11,part_time,exempt,Chicago,IL,US,true,1
+JOB0210,MAR-12-0210,Demand Gen Manager,Marketing,Facilities,GRD0930,G12,intern,exempt,London,ENG,UK,true,3
+JOB0211,IT -08-0211,Systems Admin,IT Operations,Finance,GRD0611,G08,part_time,non_exempt,Toronto,ON,CA,false,5
+JOB0212,LEG-10-0212,Paralegal,Legal,IT,GRD0772,G10,part_time,exempt,Seattle,WA,US,false,5
+JOB0213,PRO-09-0213,Associate PM,Product Management,Marketing,GRD0693,G09,full_time,non_exempt,Seattle,WA,US,true,5
+JOB0214,CUS-12-0214,Support Lead,Customer Support,Customer Success,GRD0934,G12,intern,non_exempt,London,ENG,UK,false,1
+JOB0215,MAR-06-0215,Marketing Director,Marketing,IT,GRD0455,G06,part_time,non_exempt,Toronto,ON,CA,true,3
+JOB0216,MAR-06-0216,Marketing Director,Marketing,Supply Chain,GRD0456,G06,contract,exempt,Dallas,TX,US,true,2
+JOB0217,PEO-11-0217,HRBP,People Operations,Security,GRD0857,G11,full_time,non_exempt,San Francisco,CA,US,true,3
+JOB0218,FIN-01-0218,Finance Manager,Finance & Accounting,Legal,GRD0058,G01,contract,exempt,Denver,CO,US,true,3
+JOB0219,FIN-02-0219,Finance Manager,Finance & Accounting,Supply Chain,GRD0139,G02,part_time,non_exempt,Toronto,ON,CA,true,1
+JOB0220,FIN-05-0220,Financial Analyst,Finance & Accounting,Engineering,GRD0380,G05,part_time,non_exempt,Atlanta,GA,US,false,4
+JOB0221,CUS-07-0221,CS Manager,Customer Support,Finance,GRD0541,G07,part_time,exempt,New York,NY,US,true,2
+JOB0222,FIN-01-0222,Controller,Finance & Accounting,Facilities,GRD0062,G01,part_time,non_exempt,Hyderabad,TS,IN,false,1
+JOB0223,PRO-07-0223,Associate PM,Product Management,Sales,GRD0543,G07,part_time,non_exempt,Denver,CO,US,false,5
+JOB0224,DAT-05-0224,Data Analyst,Data Science,Customer Success,GRD0384,G05,intern,non_exempt,Atlanta,GA,US,false,1
+JOB0225,PEO-03-0225,People Manager,People Operations,Supply Chain,GRD0225,G03,full_time,non_exempt,Denver,CO,US,true,1
+JOB0226,FIN-03-0226,Controller,Finance & Accounting,Engineering,GRD0226,G03,part_time,exempt,Hyderabad,TS,IN,false,1
+JOB0227,LEG-05-0227,Paralegal,Legal,Sales,GRD0387,G05,part_time,exempt,Dallas,TX,US,false,4
+JOB0228,LEG-02-0228,Compliance Analyst,Legal,Legal,GRD0148,G02,contract,exempt,Austin,TX,US,false,5
+JOB0229,CUS-04-0229,Support Agent,Customer Support,Operations,GRD0309,G04,contract,non_exempt,Chicago,IL,US,false,3
+JOB0230,SOF-02-0230,Senior Software Engineer,Software Engineering,HR,GRD0150,G02,part_time,non_exempt,San Francisco,CA,US,false,2
+JOB0231,FIN-07-0231,Financial Analyst,Finance & Accounting,Engineering,GRD0551,G07,contract,non_exempt,Hyderabad,TS,IN,false,4
+JOB0232,CUS-01-0232,Support Specialist,Customer Support,IT,GRD0072,G01,intern,non_exempt,Austin,TX,US,false,2
+JOB0233,LEG-10-0233,Paralegal,Legal,Customer Success,GRD0793,G10,intern,exempt,Atlanta,GA,US,true,1
+JOB0234,MAR-02-0234,Marketing Director,Marketing,Operations,GRD0154,G02,part_time,exempt,Seattle,WA,US,true,1
+JOB0235,DAT-03-0235,Data Analyst,Data Science,Engineering,GRD0235,G03,intern,non_exempt,San Francisco,CA,US,false,5
+JOB0236,CUS-12-0236,CS Manager,Customer Support,Customer Success,GRD0956,G12,contract,exempt,San Francisco,CA,US,true,1
+JOB0237,IT -02-0237,IT Manager,IT Operations,Marketing,GRD0157,G02,part_time,exempt,San Francisco,CA,US,true,4
+JOB0238,FIN-10-0238,Controller,Finance & Accounting,Customer Success,GRD0798,G10,contract,non_exempt,Bengaluru,KA,IN,true,5
+JOB0239,FIN-06-0239,Accountant,Finance & Accounting,Customer Success,GRD0479,G06,contract,exempt,Hyderabad,TS,IN,false,3
+JOB0240,DAT-03-0240,ML Engineer,Data Science,Engineering,GRD0240,G03,contract,exempt,Denver,CO,US,false,4
+JOB0241,SOF-11-0241,Senior Software Engineer,Software Engineering,IT,GRD0801,G11,intern,non_exempt,Chicago,IL,US,false,2
+JOB0242,PRO-03-0242,Group PM,Product Management,Facilities,GRD0162,G03,full_time,exempt,San Francisco,CA,US,false,4
+JOB0243,SAL-11-0243,Enterprise AE,Sales,IT,GRD0803,G11,full_time,non_exempt,Denver,CO,US,true,2
+JOB0244,IT -02-0244,Systems Admin,IT Operations,Data,GRD0084,G02,part_time,non_exempt,Hyderabad,TS,IN,false,5
+JOB0245,PRO-11-0245,Product Manager,Product Management,Facilities,GRD0805,G11,contract,non_exempt,London,ENG,UK,true,5
+JOB0246,IT -12-0246,Systems Admin,IT Operations,Security,GRD0886,G12,full_time,exempt,Atlanta,GA,US,false,3
+JOB0247,SAL-11-0247,Account Executive,Sales,Security,GRD0807,G11,contract,exempt,Atlanta,GA,US,true,3
+JOB0248,CUS-09-0248,Support Specialist,Customer Support,Facilities,GRD0648,G09,full_time,exempt,New York,NY,US,false,5
+JOB0249,SOF-05-0249,Senior Software Engineer,Software Engineering,Data,GRD0329,G05,full_time,exempt,Dallas,TX,US,false,5
+JOB0250,SAL-02-0250,Sales Manager,Sales,Operations,GRD0090,G02,part_time,exempt,Toronto,ON,CA,true,2
+JOB0251,FIN-10-0251,Controller,Finance & Accounting,Data,GRD0731,G10,contract,non_exempt,Austin,TX,US,false,1
+JOB0252,SOF-01-0252,Software Engineer,Software Engineering,Security,GRD0012,G01,contract,non_exempt,New York,NY,US,false,3
+JOB0253,DAT-08-0253,Data Scientist,Data Science,Supply Chain,GRD0573,G08,contract,exempt,Bengaluru,KA,IN,true,3
+JOB0254,SAL-02-0254,Enterprise AE,Sales,Customer Success,GRD0094,G02,intern,exempt,Hyderabad,TS,IN,false,4
+JOB0255,IT -07-0255,IT Manager,IT Operations,Facilities,GRD0495,G07,part_time,exempt,Atlanta,GA,US,true,3
+JOB0256,MAR-03-0256,Content Manager,Marketing,Marketing,GRD0176,G03,intern,exempt,Toronto,ON,CA,true,2
+JOB0257,DAT-08-0257,Data Scientist,Data Science,Operations,GRD0577,G08,contract,non_exempt,San Francisco,CA,US,false,3
+JOB0258,PEO-03-0258,Recruiter,People Operations,Operations,GRD0178,G03,intern,exempt,San Francisco,CA,US,false,5
+JOB0259,PRO-03-0259,Group PM,Product Management,Customer Success,GRD0179,G03,part_time,exempt,Atlanta,GA,US,false,2
+JOB0260,FIN-05-0260,Accountant,Finance & Accounting,Finance,GRD0340,G05,full_time,non_exempt,Seattle,WA,US,false,3
+JOB0261,PEO-06-0261,Recruiter,People Operations,Supply Chain,GRD0421,G06,full_time,non_exempt,Denver,CO,US,false,3
+JOB0262,PRO-12-0262,Product Manager,Product Management,Marketing,GRD0902,G12,full_time,non_exempt,New York,NY,US,true,4
+JOB0263,PEO-04-0263,People Manager,People Operations,Data,GRD0263,G04,intern,exempt,Dallas,TX,US,true,5
+JOB0264,PRO-04-0264,Senior PM,Product Management,Facilities,GRD0264,G04,intern,non_exempt,Hyderabad,TS,IN,false,3
+JOB0265,PRO-03-0265,Associate PM,Product Management,Legal,GRD0185,G03,part_time,exempt,Toronto,ON,CA,false,4
+JOB0266,LEG-08-0266,Paralegal,Legal,Customer Success,GRD0586,G08,intern,exempt,Hyderabad,TS,IN,false,2
+JOB0267,CUS-11-0267,Support Agent,Customer Support,Product,GRD0827,G11,intern,exempt,Bengaluru,KA,IN,true,3
+JOB0268,LEG-10-0268,Paralegal,Legal,IT,GRD0748,G10,contract,non_exempt,New York,NY,US,false,1
+JOB0269,PRO-03-0269,Senior PM,Product Management,Customer Success,GRD0189,G03,full_time,exempt,Seattle,WA,US,false,5
+JOB0270,SOF-04-0270,Senior Software Engineer,Software Engineering,Product,GRD0270,G04,contract,non_exempt,Chicago,IL,US,false,1
+JOB0271,MAR-03-0271,Marketing Director,Marketing,Engineering,GRD0191,G03,contract,non_exempt,Seattle,WA,US,true,2
+JOB0272,FIN-12-0272,Financial Analyst,Finance & Accounting,Product,GRD0912,G12,part_time,exempt,Denver,CO,US,false,1
+JOB0273,CUS-01-0273,Support Specialist,Customer Support,Sales,GRD0033,G01,contract,exempt,Chicago,IL,US,false,3
+JOB0274,PEO-11-0274,People Manager,People Operations,HR,GRD0834,G11,part_time,non_exempt,London,ENG,UK,true,4
+JOB0275,DAT-11-0275,Analytics Manager,Data Science,Legal,GRD0835,G11,intern,non_exempt,Denver,CO,US,true,2
+JOB0276,PEO-04-0276,People Manager,People Operations,Engineering,GRD0276,G04,part_time,non_exempt,Hyderabad,TS,IN,true,5
+JOB0277,SAL-02-0277,SDR,Sales,Finance,GRD0117,G02,intern,exempt,Hyderabad,TS,IN,false,1
+JOB0278,MAR-11-0278,Marketing Director,Marketing,Facilities,GRD0838,G11,part_time,non_exempt,New York,NY,US,true,2
+JOB0279,MAR-12-0279,Marketing Director,Marketing,Security,GRD0919,G12,part_time,exempt,Hyderabad,TS,IN,true,4
+JOB0280,SOF-01-0280,Staff Engineer,Software Engineering,Operations,GRD0040,G01,contract,exempt,Denver,CO,US,false,3
+JOB0281,DAT-01-0281,Data Scientist,Data Science,Product,GRD0041,G01,contract,exempt,Hyderabad,TS,IN,false,3
+JOB0282,MAR-02-0282,Content Manager,Marketing,Security,GRD0122,G02,full_time,non_exempt,Dallas,TX,US,true,1
+JOB0283,FIN-10-0283,Financial Analyst,Finance & Accounting,IT,GRD0763,G10,intern,exempt,Denver,CO,US,false,4
+JOB0284,MAR-08-0284,Marketing Director,Marketing,Product,GRD0604,G08,intern,exempt,Denver,CO,US,true,4
+JOB0285,SAL-08-0285,Enterprise AE,Sales,Security,GRD0605,G08,intern,non_exempt,Hyderabad,TS,IN,true,5
+JOB0286,MAR-10-0286,Marketing Specialist,Marketing,IT,GRD0766,G10,intern,non_exempt,Austin,TX,US,true,2
+JOB0287,PRO-07-0287,Group PM,Product Management,Marketing,GRD0527,G07,contract,exempt,Bengaluru,KA,IN,false,5
+JOB0288,IT -07-0288,Systems Admin,IT Operations,Marketing,GRD0528,G07,part_time,exempt,New York,NY,US,false,5
+JOB0289,SOF-02-0289,Engineering Manager,Software Engineering,Legal,GRD0129,G02,intern,non_exempt,Austin,TX,US,true,5
+JOB0290,CUS-02-0290,Support Agent,Customer Support,HR,GRD0130,G02,contract,exempt,Dallas,TX,US,false,4
+JOB0291,FIN-08-0291,Financial Analyst,Finance & Accounting,Engineering,GRD0611,G08,full_time,exempt,Dallas,TX,US,true,1
+JOB0292,DAT-10-0292,Data Scientist,Data Science,Product,GRD0772,G10,part_time,non_exempt,London,ENG,UK,true,4
+JOB0293,CUS-10-0293,CS Manager,Customer Support,Finance,GRD0773,G10,full_time,exempt,Chicago,IL,US,true,5
+JOB0294,PEO-10-0294,HRBP,People Operations,Facilities,GRD0774,G10,full_time,exempt,Austin,TX,US,false,5
+JOB0295,SAL-11-0295,Enterprise AE,Sales,Marketing,GRD0855,G11,part_time,non_exempt,Atlanta,GA,US,false,4
+JOB0296,LEG-05-0296,Compliance Analyst,Legal,Marketing,GRD0376,G05,full_time,exempt,London,ENG,UK,false,5
+JOB0297,CUS-04-0297,CS Manager,Customer Support,Product,GRD0297,G04,contract,non_exempt,San Francisco,CA,US,true,3
+JOB0298,FIN-07-0298,Financial Analyst,Finance & Accounting,Marketing,GRD0538,G07,part_time,non_exempt,London,ENG,UK,false,4
+JOB0299,MAR-03-0299,Content Manager,Marketing,IT,GRD0219,G03,part_time,exempt,London,ENG,UK,true,1
+JOB0300,MAR-06-0300,Content Manager,Marketing,Security,GRD0460,G06,part_time,non_exempt,Seattle,WA,US,true,4
+JOB0301,PRO-05-0301,Associate PM,Product Management,Supply Chain,GRD0381,G05,full_time,exempt,Hyderabad,TS,IN,false,4
+JOB0302,IT -01-0302,IT Manager,IT Operations,HR,GRD0062,G01,intern,non_exempt,Chicago,IL,US,true,2
+JOB0303,FIN-07-0303,Controller,Finance & Accounting,Legal,GRD0543,G07,intern,non_exempt,Hyderabad,TS,IN,false,2
+JOB0304,PEO-09-0304,Recruiter,People Operations,Customer Success,GRD0704,G09,intern,exempt,San Francisco,CA,US,true,2
+JOB0305,DAT-06-0305,Data Scientist,Data Science,Supply Chain,GRD0465,G06,intern,non_exempt,Seattle,WA,US,false,3
+JOB0306,MAR-03-0306,Demand Gen Manager,Marketing,IT,GRD0226,G03,part_time,exempt,London,ENG,UK,true,1
+JOB0307,PRO-08-0307,Product Manager,Product Management,Facilities,GRD0627,G08,full_time,exempt,San Francisco,CA,US,true,2
+JOB0308,IT -06-0308,Systems Admin,IT Operations,Marketing,GRD0468,G06,full_time,non_exempt,Seattle,WA,US,false,2
+JOB0309,PEO-07-0309,HR Generalist,People Operations,HR,GRD0549,G07,intern,exempt,Chicago,IL,US,false,4
+JOB0310,PEO-02-0310,HR Generalist,People Operations,HR,GRD0150,G02,contract,exempt,Chicago,IL,US,false,1
+JOB0311,LEG-08-0311,Legal Counsel,Legal,HR,GRD0631,G08,full_time,exempt,Toronto,ON,CA,false,2
+JOB0312,SOF-10-0312,Staff Engineer,Software Engineering,Facilities,GRD0792,G10,full_time,exempt,Austin,TX,US,true,5
+JOB0313,CUS-07-0313,Support Lead,Customer Support,Customer Success,GRD0553,G07,intern,non_exempt,New York,NY,US,false,3
+JOB0314,PEO-04-0314,Recruiter,People Operations,Security,GRD0314,G04,contract,non_exempt,Dallas,TX,US,false,2
+JOB0315,MAR-01-0315,Demand Gen Manager,Marketing,Finance,GRD0075,G01,full_time,exempt,London,ENG,UK,true,3
+JOB0316,MAR-11-0316,Demand Gen Manager,Marketing,HR,GRD0876,G11,intern,non_exempt,Seattle,WA,US,true,4
+JOB0317,CUS-02-0317,CS Manager,Customer Support,Legal,GRD0157,G02,part_time,exempt,Toronto,ON,CA,true,2
+JOB0318,PRO-03-0318,Product Manager,Product Management,Operations,GRD0238,G03,contract,exempt,Chicago,IL,US,true,3
+JOB0319,CUS-01-0319,Support Specialist,Customer Support,Facilities,GRD0079,G01,part_time,exempt,Hyderabad,TS,IN,false,2
+JOB0320,CUS-02-0320,Support Agent,Customer Support,Engineering,GRD0160,G02,full_time,non_exempt,Atlanta,GA,US,false,4
+JOB0321,IT -07-0321,IT Support,IT Operations,Facilities,GRD0481,G07,part_time,exempt,Chicago,IL,US,false,5
+JOB0322,PEO-06-0322,Recruiter,People Operations,IT,GRD0402,G06,intern,non_exempt,Seattle,WA,US,false,4
+JOB0323,SOF-06-0323,Software Engineer,Software Engineering,Legal,GRD0403,G06,intern,exempt,Austin,TX,US,false,2
+JOB0324,FIN-01-0324,Accountant,Finance & Accounting,Facilities,GRD0004,G01,full_time,non_exempt,Dallas,TX,US,false,4
+JOB0325,CUS-02-0325,CS Manager,Customer Support,HR,GRD0085,G02,contract,exempt,Bengaluru,KA,IN,true,4
+JOB0326,MAR-10-0326,Marketing Director,Marketing,Operations,GRD0726,G10,intern,exempt,Dallas,TX,US,true,4
+JOB0327,DAT-11-0327,Analytics Manager,Data Science,Operations,GRD0807,G11,intern,exempt,Dallas,TX,US,true,1
+JOB0328,LEG-05-0328,Privacy Counsel,Legal,Legal,GRD0328,G05,intern,non_exempt,Austin,TX,US,false,1
+JOB0329,CUS-06-0329,Support Lead,Customer Support,Operations,GRD0409,G06,intern,exempt,Bengaluru,KA,IN,false,3
+JOB0330,LEG-06-0330,Legal Counsel,Legal,Customer Success,GRD0410,G06,part_time,non_exempt,Seattle,WA,US,false,5
+JOB0331,SOF-08-0331,Engineering Manager,Software Engineering,IT,GRD0571,G08,part_time,non_exempt,London,ENG,UK,true,3
+JOB0332,IT -12-0332,IT Support,IT Operations,IT,GRD0892,G12,full_time,exempt,Seattle,WA,US,false,1
+JOB0333,SAL-11-0333,SDR,Sales,Supply Chain,GRD0813,G11,contract,exempt,New York,NY,US,true,2
+JOB0334,IT -10-0334,Cloud Engineer,IT Operations,Data,GRD0734,G10,full_time,exempt,Bengaluru,KA,IN,false,4
+JOB0335,FIN-08-0335,Financial Analyst,Finance & Accounting,Facilities,GRD0575,G08,contract,non_exempt,New York,NY,US,false,3
+JOB0336,CUS-02-0336,Support Agent,Customer Support,Facilities,GRD0096,G02,full_time,non_exempt,New York,NY,US,false,5
+JOB0337,DAT-06-0337,ML Engineer,Data Science,Data,GRD0417,G06,intern,exempt,Dallas,TX,US,false,3
+JOB0338,IT -10-0338,IT Support,IT Operations,Facilities,GRD0738,G10,intern,exempt,Dallas,TX,US,false,1
+JOB0339,SAL-05-0339,Account Executive,Sales,Engineering,GRD0339,G05,full_time,non_exempt,Chicago,IL,US,false,1
+JOB0340,PRO-11-0340,Group PM,Product Management,Facilities,GRD0820,G11,contract,exempt,London,ENG,UK,true,3
+JOB0341,PEO-11-0341,Recruiter,People Operations,Operations,GRD0821,G11,contract,non_exempt,Bengaluru,KA,IN,true,2
+JOB0342,PRO-03-0342,Senior PM,Product Management,Security,GRD0182,G03,full_time,exempt,Chicago,IL,US,false,2
+JOB0343,MAR-05-0343,Marketing Specialist,Marketing,Product,GRD0343,G05,contract,non_exempt,San Francisco,CA,US,false,5
+JOB0344,PRO-02-0344,Group PM,Product Management,Finance,GRD0104,G02,intern,exempt,Dallas,TX,US,false,2
+JOB0345,SAL-01-0345,SDR,Sales,IT,GRD0025,G01,intern,exempt,Dallas,TX,US,false,2
+JOB0346,SAL-11-0346,Sales Manager,Sales,Facilities,GRD0826,G11,intern,non_exempt,Austin,TX,US,true,1
+JOB0347,SOF-06-0347,Engineering Manager,Software Engineering,Sales,GRD0427,G06,intern,non_exempt,Chicago,IL,US,true,4
+JOB0348,IT -12-0348,Cloud Engineer,IT Operations,HR,GRD0908,G12,full_time,non_exempt,New York,NY,US,false,3
+JOB0349,DAT-07-0349,Data Scientist,Data Science,Operations,GRD0509,G07,contract,exempt,San Francisco,CA,US,false,4
+JOB0350,MAR-10-0350,Marketing Director,Marketing,Product,GRD0750,G10,intern,exempt,Dallas,TX,US,true,5
+JOB0351,CUS-05-0351,Support Specialist,Customer Support,Marketing,GRD0351,G05,intern,exempt,Atlanta,GA,US,false,2
+JOB0352,IT -09-0352,Systems Admin,IT Operations,Sales,GRD0672,G09,full_time,non_exempt,Denver,CO,US,true,3
+JOB0353,PEO-09-0353,HR Generalist,People Operations,Security,GRD0673,G09,full_time,non_exempt,Hyderabad,TS,IN,true,3
+JOB0354,PEO-05-0354,Recruiter,People Operations,Operations,GRD0354,G05,intern,non_exempt,San Francisco,CA,US,false,5
+JOB0355,CUS-03-0355,Support Lead,Customer Support,IT,GRD0195,G03,full_time,non_exempt,Seattle,WA,US,false,1
+JOB0356,MAR-06-0356,Marketing Director,Marketing,HR,GRD0436,G06,full_time,non_exempt,Chicago,IL,US,true,4
+JOB0357,SAL-02-0357,SDR,Sales,Sales,GRD0117,G02,contract,non_exempt,Hyderabad,TS,IN,false,2
+JOB0358,PEO-10-0358,HRBP,People Operations,IT,GRD0758,G10,intern,non_exempt,Hyderabad,TS,IN,false,1
+JOB0359,SAL-05-0359,SDR,Sales,Product,GRD0359,G05,intern,non_exempt,London,ENG,UK,false,3
+JOB0360,LEG-11-0360,Privacy Counsel,Legal,Sales,GRD0840,G11,intern,non_exempt,New York,NY,US,false,3
+JOB0361,CUS-01-0361,Support Specialist,Customer Support,Legal,GRD0041,G01,part_time,exempt,Atlanta,GA,US,false,2
+JOB0362,SOF-05-0362,Staff Engineer,Software Engineering,Sales,GRD0362,G05,part_time,non_exempt,Dallas,TX,US,false,3
+JOB0363,CUS-09-0363,Support Specialist,Customer Support,Engineering,GRD0683,G09,full_time,exempt,Dallas,TX,US,true,1
+JOB0364,PEO-09-0364,Recruiter,People Operations,Marketing,GRD0684,G09,contract,exempt,Toronto,ON,CA,false,3
+JOB0365,PEO-02-0365,Recruiter,People Operations,Product,GRD0125,G02,intern,non_exempt,Austin,TX,US,false,1
+JOB0366,PEO-06-0366,HRBP,People Operations,Sales,GRD0446,G06,contract,exempt,Atlanta,GA,US,false,4
+JOB0367,PRO-08-0367,Product Manager,Product Management,Finance,GRD0607,G08,part_time,non_exempt,Toronto,ON,CA,true,5
+JOB0368,DAT-05-0368,Data Scientist,Data Science,IT,GRD0368,G05,contract,exempt,San Francisco,CA,US,false,1
+JOB0369,IT -07-0369,Cloud Engineer,IT Operations,Legal,GRD0529,G07,contract,exempt,Chicago,IL,US,false,1
+JOB0370,CUS-11-0370,Support Specialist,Customer Support,Finance,GRD0850,G11,contract,non_exempt,Toronto,ON,CA,false,2
+JOB0371,MAR-12-0371,Content Manager,Marketing,Finance,GRD0931,G12,intern,non_exempt,Hyderabad,TS,IN,true,4
+JOB0372,DAT-10-0372,Data Analyst,Data Science,Legal,GRD0772,G10,intern,non_exempt,Austin,TX,US,false,4
+JOB0373,IT -08-0373,Systems Admin,IT Operations,Operations,GRD0613,G08,part_time,non_exempt,Austin,TX,US,false,1
+JOB0374,MAR-11-0374,Demand Gen Manager,Marketing,Supply Chain,GRD0854,G11,part_time,non_exempt,Toronto,ON,CA,true,5
+JOB0375,SAL-09-0375,Enterprise AE,Sales,Legal,GRD0695,G09,part_time,exempt,Atlanta,GA,US,true,4
+JOB0376,FIN-02-0376,Accountant,Finance & Accounting,Finance,GRD0136,G02,part_time,exempt,Seattle,WA,US,false,2
+JOB0377,PEO-02-0377,HRBP,People Operations,Supply Chain,GRD0137,G02,part_time,exempt,San Francisco,CA,US,false,3
+JOB0378,MAR-05-0378,Marketing Director,Marketing,Operations,GRD0378,G05,contract,non_exempt,Hyderabad,TS,IN,true,3
+JOB0379,SOF-06-0379,Senior Software Engineer,Software Engineering,Finance,GRD0459,G06,part_time,non_exempt,Chicago,IL,US,false,3
+JOB0380,FIN-12-0380,Accountant,Finance & Accounting,Marketing,GRD0940,G12,contract,exempt,Hyderabad,TS,IN,true,3
+JOB0381,PRO-06-0381,Product Manager,Product Management,IT,GRD0461,G06,contract,non_exempt,Dallas,TX,US,true,1
+JOB0382,IT -07-0382,Systems Admin,IT Operations,Product,GRD0542,G07,intern,non_exempt,Seattle,WA,US,false,3
+JOB0383,FIN-06-0383,Accountant,Finance & Accounting,Legal,GRD0463,G06,contract,exempt,Denver,CO,US,false,4
+JOB0384,CUS-03-0384,CS Manager,Customer Support,Marketing,GRD0224,G03,full_time,exempt,Chicago,IL,US,true,2
+JOB0385,SAL-04-0385,SDR,Sales,Customer Success,GRD0305,G04,part_time,exempt,Toronto,ON,CA,false,5
+JOB0386,CUS-08-0386,CS Manager,Customer Support,IT,GRD0626,G08,full_time,exempt,San Francisco,CA,US,true,2
+JOB0387,PEO-04-0387,People Manager,People Operations,Security,GRD0307,G04,contract,exempt,Austin,TX,US,true,1
+JOB0388,MAR-02-0388,Demand Gen Manager,Marketing,Data,GRD0148,G02,part_time,exempt,Atlanta,GA,US,true,5
+JOB0389,LEG-07-0389,Paralegal,Legal,Marketing,GRD0549,G07,part_time,non_exempt,New York,NY,US,false,4
+JOB0390,DAT-06-0390,Analytics Manager,Data Science,Sales,GRD0470,G06,contract,exempt,Denver,CO,US,true,4
+JOB0391,CUS-04-0391,Support Lead,Customer Support,Customer Success,GRD0311,G04,full_time,non_exempt,London,ENG,UK,false,2
+JOB0392,LEG-06-0392,Legal Counsel,Legal,Product,GRD0472,G06,part_time,non_exempt,New York,NY,US,false,3
+JOB0393,DAT-02-0393,Analytics Manager,Data Science,Engineering,GRD0153,G02,contract,non_exempt,London,ENG,UK,true,4
+JOB0394,CUS-06-0394,CS Manager,Customer Support,Facilities,GRD0474,G06,full_time,exempt,Seattle,WA,US,true,4
+JOB0395,PRO-04-0395,Associate PM,Product Management,IT,GRD0315,G04,intern,exempt,San Francisco,CA,US,false,1
+JOB0396,DAT-10-0396,Data Analyst,Data Science,Engineering,GRD0796,G10,intern,non_exempt,New York,NY,US,true,3
+JOB0397,MAR-07-0397,Marketing Specialist,Marketing,Marketing,GRD0557,G07,full_time,non_exempt,Bengaluru,KA,IN,false,2
+JOB0398,CUS-12-0398,Support Lead,Customer Support,Sales,GRD0958,G12,part_time,exempt,Chicago,IL,US,true,5
+JOB0399,MAR-08-0399,Content Manager,Marketing,Finance,GRD0639,G08,full_time,non_exempt,Denver,CO,US,true,4
+JOB0400,SOF-08-0400,Software Engineer,Software Engineering,Facilities,GRD0640,G08,full_time,non_exempt,Bengaluru,KA,IN,true,4
+JOB0401,CUS-03-0401,Support Lead,Customer Support,HR,GRD0161,G03,part_time,non_exempt,London,ENG,UK,false,3
+JOB0402,MAR-04-0402,Marketing Specialist,Marketing,Operations,GRD0242,G04,contract,exempt,Dallas,TX,US,false,5
+JOB0403,IT -09-0403,Systems Admin,IT Operations,Data,GRD0643,G09,full_time,exempt,Chicago,IL,US,false,3
+JOB0404,SAL-01-0404,SDR,Sales,Data,GRD0004,G01,full_time,exempt,Denver,CO,US,false,4
+JOB0405,CUS-07-0405,Support Lead,Customer Support,Supply Chain,GRD0485,G07,part_time,exempt,Seattle,WA,US,false,5
+JOB0406,LEG-08-0406,Privacy Counsel,Legal,Engineering,GRD0566,G08,contract,exempt,New York,NY,US,true,1
+JOB0407,SAL-02-0407,Sales Manager,Sales,Security,GRD0087,G02,contract,exempt,Dallas,TX,US,true,1
+JOB0408,MAR-08-0408,Marketing Specialist,Marketing,Supply Chain,GRD0568,G08,intern,exempt,Bengaluru,KA,IN,false,4
+JOB0409,PEO-07-0409,HR Generalist,People Operations,Customer Success,GRD0489,G07,contract,non_exempt,Chicago,IL,US,false,2
+JOB0410,PEO-06-0410,HRBP,People Operations,Legal,GRD0410,G06,full_time,non_exempt,Seattle,WA,US,false,1
+JOB0411,FIN-07-0411,Accountant,Finance & Accounting,Operations,GRD0491,G07,part_time,exempt,Atlanta,GA,US,false,3
+JOB0412,SOF-10-0412,Senior Software Engineer,Software Engineering,Data,GRD0732,G10,full_time,non_exempt,Austin,TX,US,true,3
+JOB0413,SOF-11-0413,Senior Software Engineer,Software Engineering,Operations,GRD0813,G11,contract,non_exempt,Chicago,IL,US,false,1
+JOB0414,SAL-06-0414,Account Executive,Sales,Finance,GRD0414,G06,intern,exempt,Dallas,TX,US,false,1
+JOB0415,PEO-02-0415,Recruiter,People Operations,Supply Chain,GRD0095,G02,intern,non_exempt,Toronto,ON,CA,false,5
+JOB0416,PRO-12-0416,Associate PM,Product Management,Engineering,GRD0896,G12,intern,non_exempt,Bengaluru,KA,IN,false,1
+JOB0417,LEG-08-0417,Paralegal,Legal,Sales,GRD0577,G08,contract,exempt,San Francisco,CA,US,false,2
+JOB0418,IT -12-0418,Cloud Engineer,IT Operations,Finance,GRD0898,G12,full_time,exempt,Dallas,TX,US,false,5
+JOB0419,PRO-01-0419,Senior PM,Product Management,Product,GRD0019,G01,contract,exempt,Atlanta,GA,US,false,2
+JOB0420,MAR-09-0420,Content Manager,Marketing,Marketing,GRD0660,G09,contract,non_exempt,Seattle,WA,US,true,2
+JOB0421,MAR-12-0421,Demand Gen Manager,Marketing,Sales,GRD0901,G12,part_time,exempt,Atlanta,GA,US,true,4
+JOB0422,PRO-12-0422,Product Manager,Product Management,Data,GRD0902,G12,intern,non_exempt,San Francisco,CA,US,true,4
+JOB0423,CUS-03-0423,Support Specialist,Customer Support,Engineering,GRD0183,G03,intern,non_exempt,San Francisco,CA,US,false,2
+JOB0424,IT -11-0424,Cloud Engineer,IT Operations,HR,GRD0824,G11,contract,exempt,Chicago,IL,US,false,3
+JOB0425,CUS-03-0425,Support Lead,Customer Support,IT,GRD0185,G03,contract,non_exempt,New York,NY,US,false,1
+JOB0426,PEO-02-0426,Recruiter,People Operations,Product,GRD0106,G02,part_time,exempt,Seattle,WA,US,false,3
+JOB0427,IT -06-0427,IT Manager,IT Operations,Sales,GRD0427,G06,contract,non_exempt,Bengaluru,KA,IN,true,3
+JOB0428,SOF-10-0428,Software Engineer,Software Engineering,Engineering,GRD0748,G10,part_time,non_exempt,Austin,TX,US,true,1
+JOB0429,LEG-04-0429,Privacy Counsel,Legal,Operations,GRD0269,G04,contract,non_exempt,Chicago,IL,US,false,1
+JOB0430,MAR-02-0430,Demand Gen Manager,Marketing,IT,GRD0110,G02,contract,non_exempt,Denver,CO,US,true,1
+JOB0431,SAL-05-0431,Enterprise AE,Sales,Marketing,GRD0351,G05,full_time,exempt,Seattle,WA,US,false,1
+JOB0432,DAT-06-0432,Analytics Manager,Data Science,Data,GRD0432,G06,intern,non_exempt,Bengaluru,KA,IN,true,3
+JOB0433,SAL-11-0433,Account Executive,Sales,Customer Success,GRD0833,G11,contract,exempt,Hyderabad,TS,IN,true,1
+JOB0434,IT -01-0434,Systems Admin,IT Operations,Finance,GRD0034,G01,intern,exempt,Chicago,IL,US,false,5
+JOB0435,PEO-03-0435,People Manager,People Operations,Finance,GRD0195,G03,full_time,exempt,Austin,TX,US,true,3
+JOB0436,PRO-10-0436,Associate PM,Product Management,Supply Chain,GRD0756,G10,part_time,exempt,Austin,TX,US,false,1
+JOB0437,IT -07-0437,Systems Admin,IT Operations,Data,GRD0517,G07,contract,non_exempt,Hyderabad,TS,IN,false,2
+JOB0438,PRO-03-0438,Group PM,Product Management,HR,GRD0198,G03,part_time,exempt,Atlanta,GA,US,false,3
+JOB0439,PEO-09-0439,Recruiter,People Operations,Customer Success,GRD0679,G09,part_time,non_exempt,San Francisco,CA,US,false,1
+JOB0440,IT -10-0440,Cloud Engineer,IT Operations,Facilities,GRD0760,G10,full_time,exempt,Atlanta,GA,US,true,5
+JOB0441,DAT-06-0441,Data Scientist,Data Science,Facilities,GRD0441,G06,intern,exempt,San Francisco,CA,US,false,5
+JOB0442,DAT-03-0442,Data Analyst,Data Science,Supply Chain,GRD0202,G03,intern,non_exempt,Toronto,ON,CA,false,3
+JOB0443,SOF-12-0443,Senior Software Engineer,Software Engineering,Security,GRD0923,G12,full_time,non_exempt,Seattle,WA,US,false,2
+JOB0444,CUS-11-0444,Support Specialist,Customer Support,Finance,GRD0844,G11,contract,non_exempt,Austin,TX,US,true,1
+JOB0445,FIN-06-0445,Accountant,Finance & Accounting,Security,GRD0445,G06,intern,non_exempt,Toronto,ON,CA,false,5
+JOB0446,IT -08-0446,Cloud Engineer,IT Operations,Data,GRD0606,G08,full_time,non_exempt,Seattle,WA,US,true,2
+JOB0447,PEO-01-0447,HR Generalist,People Operations,Marketing,GRD0047,G01,part_time,non_exempt,London,ENG,UK,false,5
+JOB0448,IT -03-0448,IT Support,IT Operations,Product,GRD0208,G03,part_time,non_exempt,Chicago,IL,US,false,5
+JOB0449,SOF-01-0449,Senior Software Engineer,Software Engineering,Engineering,GRD0049,G01,part_time,exempt,Chicago,IL,US,false,4
+JOB0450,IT -03-0450,Systems Admin,IT Operations,Facilities,GRD0210,G03,intern,non_exempt,London,ENG,UK,false,3
+JOB0451,SOF-11-0451,Senior Software Engineer,Software Engineering,Marketing,GRD0851,G11,intern,exempt,San Francisco,CA,US,false,2
+JOB0452,LEG-03-0452,Privacy Counsel,Legal,Legal,GRD0212,G03,contract,exempt,Bengaluru,KA,IN,false,4
+JOB0453,IT -01-0453,Systems Admin,IT Operations,Operations,GRD0053,G01,intern,non_exempt,San Francisco,CA,US,false,5
+JOB0454,SOF-01-0454,Engineering Manager,Software Engineering,Operations,GRD0054,G01,full_time,exempt,Dallas,TX,US,true,5
+JOB0455,PEO-04-0455,HRBP,People Operations,IT,GRD0295,G04,intern,exempt,Seattle,WA,US,false,4
+JOB0456,IT -10-0456,IT Manager,IT Operations,Customer Success,GRD0776,G10,contract,non_exempt,Seattle,WA,US,true,2
+JOB0457,PEO-07-0457,HR Generalist,People Operations,Customer Success,GRD0537,G07,contract,exempt,Dallas,TX,US,false,5
+JOB0458,PEO-04-0458,Recruiter,People Operations,Sales,GRD0298,G04,part_time,non_exempt,Chicago,IL,US,false,1
+JOB0459,PEO-05-0459,HRBP,People Operations,Engineering,GRD0379,G05,intern,non_exempt,Austin,TX,US,false,5
+JOB0460,PEO-12-0460,HRBP,People Operations,Security,GRD0940,G12,part_time,non_exempt,Bengaluru,KA,IN,false,3
+JOB0461,PEO-02-0461,HR Generalist,People Operations,Legal,GRD0141,G02,contract,exempt,Atlanta,GA,US,false,5
+JOB0462,SOF-03-0462,Engineering Manager,Software Engineering,Marketing,GRD0222,G03,contract,exempt,Chicago,IL,US,true,3
+JOB0463,SOF-06-0463,Staff Engineer,Software Engineering,Legal,GRD0463,G06,full_time,non_exempt,Denver,CO,US,false,3
+JOB0464,FIN-03-0464,Controller,Finance & Accounting,Supply Chain,GRD0224,G03,full_time,exempt,New York,NY,US,false,4
+JOB0465,IT -04-0465,Cloud Engineer,IT Operations,Product,GRD0305,G04,full_time,non_exempt,London,ENG,UK,false,2
+JOB0466,PEO-06-0466,HRBP,People Operations,Customer Success,GRD0466,G06,full_time,exempt,Seattle,WA,US,false,5
+JOB0467,MAR-02-0467,Demand Gen Manager,Marketing,Customer Success,GRD0147,G02,intern,non_exempt,Bengaluru,KA,IN,true,1
+JOB0468,FIN-01-0468,Finance Manager,Finance & Accounting,Marketing,GRD0068,G01,full_time,non_exempt,Seattle,WA,US,true,1
+JOB0469,LEG-04-0469,Legal Counsel,Legal,Security,GRD0309,G04,intern,exempt,London,ENG,UK,false,5
+JOB0470,FIN-09-0470,Accountant,Finance & Accounting,Marketing,GRD0710,G09,contract,exempt,Toronto,ON,CA,false,1
+JOB0471,CUS-04-0471,Support Specialist,Customer Support,Security,GRD0311,G04,contract,non_exempt,New York,NY,US,false,4
+JOB0472,MAR-10-0472,Marketing Director,Marketing,Legal,GRD0792,G10,part_time,exempt,London,ENG,UK,true,1
+JOB0473,IT -03-0473,IT Support,IT Operations,Finance,GRD0233,G03,part_time,non_exempt,Atlanta,GA,US,false,4
+JOB0474,LEG-07-0474,Compliance Analyst,Legal,Engineering,GRD0554,G07,full_time,exempt,Chicago,IL,US,false,2
+JOB0475,MAR-10-0475,Marketing Director,Marketing,Security,GRD0795,G10,part_time,exempt,Hyderabad,TS,IN,true,1
+JOB0476,LEG-06-0476,Compliance Analyst,Legal,Engineering,GRD0476,G06,intern,non_exempt,Austin,TX,US,false,2
+JOB0477,SAL-08-0477,SDR,Sales,Product,GRD0637,G08,part_time,exempt,Chicago,IL,US,false,1
+JOB0478,CUS-06-0478,Support Agent,Customer Support,Finance,GRD0478,G06,intern,exempt,Denver,CO,US,false,4
+JOB0479,CUS-06-0479,Support Lead,Customer Support,Supply Chain,GRD0479,G06,intern,exempt,Denver,CO,US,false,5
+JOB0480,DAT-08-0480,Data Analyst,Data Science,Operations,GRD0640,G08,full_time,exempt,London,ENG,UK,true,3
+JOB0481,PRO-10-0481,Associate PM,Product Management,Supply Chain,GRD0721,G10,intern,non_exempt,Hyderabad,TS,IN,true,4
+JOB0482,PRO-08-0482,Group PM,Product Management,Operations,GRD0562,G08,contract,exempt,New York,NY,US,true,5
+JOB0483,PRO-06-0483,Senior PM,Product Management,Legal,GRD0403,G06,part_time,exempt,Chicago,IL,US,false,4
+JOB0484,PEO-07-0484,People Manager,People Operations,IT,GRD0484,G07,part_time,exempt,London,ENG,UK,true,2
+JOB0485,FIN-02-0485,Controller,Finance & Accounting,Marketing,GRD0085,G02,full_time,non_exempt,Dallas,TX,US,false,2
+JOB0486,CUS-01-0486,Support Specialist,Customer Support,Product,GRD0006,G01,full_time,non_exempt,Denver,CO,US,false,2
+JOB0487,SOF-04-0487,Senior Software Engineer,Software Engineering,HR,GRD0247,G04,contract,exempt,San Francisco,CA,US,false,3
+JOB0488,LEG-09-0488,Paralegal,Legal,Sales,GRD0648,G09,full_time,exempt,Seattle,WA,US,true,5
+JOB0489,SOF-11-0489,Software Engineer,Software Engineering,Engineering,GRD0809,G11,full_time,exempt,Seattle,WA,US,true,4
+JOB0490,IT -12-0490,IT Manager,IT Operations,Finance,GRD0890,G12,full_time,non_exempt,Atlanta,GA,US,true,2
+JOB0491,LEG-03-0491,Legal Counsel,Legal,Security,GRD0171,G03,intern,non_exempt,Hyderabad,TS,IN,false,5
+JOB0492,MAR-01-0492,Marketing Director,Marketing,Finance,GRD0012,G01,contract,exempt,Seattle,WA,US,true,1
+JOB0493,DAT-01-0493,Analytics Manager,Data Science,HR,GRD0013,G01,full_time,non_exempt,London,ENG,UK,true,1
+JOB0494,DAT-01-0494,ML Engineer,Data Science,Product,GRD0014,G01,part_time,non_exempt,Denver,CO,US,false,2
+JOB0495,DAT-10-0495,ML Engineer,Data Science,Security,GRD0735,G10,intern,exempt,Austin,TX,US,true,1
+JOB0496,DAT-04-0496,Data Scientist,Data Science,Data,GRD0256,G04,contract,non_exempt,Chicago,IL,US,false,4
+JOB0497,SOF-07-0497,Staff Engineer,Software Engineering,Data,GRD0497,G07,intern,exempt,Hyderabad,TS,IN,false,3
+JOB0498,IT -04-0498,IT Support,IT Operations,HR,GRD0258,G04,part_time,non_exempt,San Francisco,CA,US,false,2
+JOB0499,MAR-06-0499,Marketing Specialist,Marketing,HR,GRD0419,G06,part_time,non_exempt,Toronto,ON,CA,false,5
+JOB0500,PEO-02-0500,HR Generalist,People Operations,Product,GRD0100,G02,contract,exempt,Dallas,TX,US,false,4
+JOB0501,SOF-12-0501,Software Engineer,Software Engineering,Legal,GRD0901,G12,full_time,exempt,Toronto,ON,CA,false,2
+JOB0502,LEG-10-0502,Paralegal,Legal,HR,GRD0742,G10,intern,exempt,Bengaluru,KA,IN,false,2
+JOB0503,FIN-03-0503,Finance Manager,Finance & Accounting,Marketing,GRD0183,G03,intern,exempt,Atlanta,GA,US,true,3
+JOB0504,SAL-08-0504,Account Executive,Sales,Legal,GRD0584,G08,contract,exempt,Seattle,WA,US,true,5
+JOB0505,PRO-02-0505,Associate PM,Product Management,Security,GRD0105,G02,part_time,exempt,Chicago,IL,US,false,2
+JOB0506,CUS-01-0506,Support Lead,Customer Support,Marketing,GRD0026,G01,contract,non_exempt,London,ENG,UK,false,2
+JOB0507,CUS-05-0507,Support Agent,Customer Support,Sales,GRD0347,G05,contract,exempt,Hyderabad,TS,IN,false,4
+JOB0508,MAR-06-0508,Demand Gen Manager,Marketing,Data,GRD0428,G06,full_time,non_exempt,San Francisco,CA,US,true,5
+JOB0509,CUS-11-0509,Support Agent,Customer Support,Product,GRD0829,G11,intern,non_exempt,Chicago,IL,US,true,4
+JOB0510,PRO-09-0510,Associate PM,Product Management,Customer Success,GRD0670,G09,full_time,exempt,Atlanta,GA,US,false,5
+JOB0511,IT -11-0511,Systems Admin,IT Operations,Legal,GRD0831,G11,intern,exempt,Bengaluru,KA,IN,true,2
+JOB0512,LEG-02-0512,Compliance Analyst,Legal,Data,GRD0112,G02,intern,non_exempt,Dallas,TX,US,false,1
+JOB0513,SAL-05-0513,Sales Manager,Sales,Marketing,GRD0353,G05,intern,exempt,Chicago,IL,US,true,4
+JOB0514,SAL-07-0514,Enterprise AE,Sales,Product,GRD0514,G07,intern,exempt,Denver,CO,US,false,2
+JOB0515,PRO-03-0515,Senior PM,Product Management,IT,GRD0195,G03,part_time,exempt,Hyderabad,TS,IN,false,4
+JOB0516,IT -04-0516,Systems Admin,IT Operations,Data,GRD0276,G04,part_time,non_exempt,Chicago,IL,US,false,1
+JOB0517,CUS-12-0517,CS Manager,Customer Support,IT,GRD0917,G12,full_time,exempt,San Francisco,CA,US,true,1
+JOB0518,LEG-01-0518,Legal Counsel,Legal,Product,GRD0038,G01,full_time,exempt,Hyderabad,TS,IN,false,3
+JOB0519,SAL-09-0519,Sales Manager,Sales,Finance,GRD0679,G09,intern,non_exempt,San Francisco,CA,US,true,5
+JOB0520,IT -11-0520,Systems Admin,IT Operations,Security,GRD0840,G11,full_time,non_exempt,London,ENG,UK,true,2
+JOB0521,PRO-08-0521,Group PM,Product Management,HR,GRD0601,G08,intern,exempt,Chicago,IL,US,true,1
+JOB0522,CUS-07-0522,Support Specialist,Customer Support,Marketing,GRD0522,G07,contract,non_exempt,Toronto,ON,CA,false,3
+JOB0523,CUS-08-0523,Support Agent,Customer Support,Finance,GRD0603,G08,full_time,non_exempt,Atlanta,GA,US,false,3
+JOB0524,MAR-08-0524,Marketing Specialist,Marketing,Product,GRD0604,G08,full_time,exempt,Atlanta,GA,US,false,3
+JOB0525,CUS-09-0525,CS Manager,Customer Support,HR,GRD0685,G09,part_time,non_exempt,San Francisco,CA,US,true,1
+JOB0526,IT -06-0526,IT Support,IT Operations,Data,GRD0446,G06,contract,non_exempt,Seattle,WA,US,false,3
+JOB0527,PEO-10-0527,People Manager,People Operations,Data,GRD0767,G10,part_time,exempt,Austin,TX,US,true,3
+JOB0528,SAL-06-0528,Sales Manager,Sales,Data,GRD0448,G06,intern,exempt,Denver,CO,US,true,5
+JOB0529,LEG-06-0529,Paralegal,Legal,Engineering,GRD0449,G06,part_time,exempt,Toronto,ON,CA,false,3
+JOB0530,FIN-11-0530,Finance Manager,Finance & Accounting,Marketing,GRD0850,G11,intern,non_exempt,Atlanta,GA,US,true,2
+JOB0531,MAR-04-0531,Content Manager,Marketing,Marketing,GRD0291,G04,part_time,non_exempt,Atlanta,GA,US,true,5
+JOB0532,DAT-08-0532,Data Scientist,Data Science,HR,GRD0612,G08,contract,exempt,Dallas,TX,US,false,1
+JOB0533,FIN-04-0533,Finance Manager,Finance & Accounting,Product,GRD0293,G04,intern,non_exempt,Atlanta,GA,US,true,3
+JOB0534,PRO-03-0534,Group PM,Product Management,Facilities,GRD0214,G03,part_time,exempt,Austin,TX,US,false,5
+JOB0535,CUS-04-0535,Support Lead,Customer Support,Marketing,GRD0295,G04,intern,exempt,Atlanta,GA,US,false,1
+JOB0536,PEO-12-0536,HRBP,People Operations,Security,GRD0936,G12,part_time,non_exempt,Toronto,ON,CA,true,3
+JOB0537,LEG-05-0537,Legal Counsel,Legal,Data,GRD0377,G05,part_time,exempt,Hyderabad,TS,IN,false,5
+JOB0538,IT -03-0538,IT Manager,IT Operations,Engineering,GRD0218,G03,part_time,exempt,Atlanta,GA,US,true,5
+JOB0539,FIN-05-0539,Controller,Finance & Accounting,Finance,GRD0379,G05,intern,exempt,Austin,TX,US,false,2
+JOB0540,PEO-08-0540,HRBP,People Operations,Marketing,GRD0620,G08,full_time,exempt,New York,NY,US,false,2
+JOB0541,CUS-02-0541,Support Lead,Customer Support,Operations,GRD0141,G02,contract,non_exempt,San Francisco,CA,US,false,2
+JOB0542,PRO-05-0542,Product Manager,Product Management,Engineering,GRD0382,G05,intern,exempt,Denver,CO,US,true,1
+JOB0543,DAT-03-0543,Analytics Manager,Data Science,Security,GRD0223,G03,full_time,exempt,Chicago,IL,US,true,2
+JOB0544,SOF-02-0544,Staff Engineer,Software Engineering,Product,GRD0144,G02,intern,non_exempt,Hyderabad,TS,IN,false,1
+JOB0545,SOF-09-0545,Senior Software Engineer,Software Engineering,Product,GRD0705,G09,intern,non_exempt,London,ENG,UK,true,1
+JOB0546,FIN-02-0546,Accountant,Finance & Accounting,Product,GRD0146,G02,contract,exempt,Denver,CO,US,false,2
+JOB0547,MAR-06-0547,Marketing Specialist,Marketing,Product,GRD0467,G06,intern,exempt,San Francisco,CA,US,false,5
+JOB0548,CUS-04-0548,Support Agent,Customer Support,Security,GRD0308,G04,part_time,exempt,Chicago,IL,US,false,5
+JOB0549,PRO-01-0549,Associate PM,Product Management,Data,GRD0069,G01,contract,non_exempt,Dallas,TX,US,false,2
+JOB0550,DAT-06-0550,Data Analyst,Data Science,Customer Success,GRD0470,G06,full_time,exempt,Chicago,IL,US,false,5
+JOB0551,SAL-09-0551,Sales Manager,Sales,Engineering,GRD0711,G09,full_time,exempt,London,ENG,UK,true,2
+JOB0552,PRO-02-0552,Associate PM,Product Management,Product,GRD0152,G02,contract,non_exempt,Toronto,ON,CA,false,4
+JOB0553,IT -06-0553,IT Manager,IT Operations,Engineering,GRD0473,G06,part_time,exempt,Atlanta,GA,US,true,5
+JOB0554,CUS-06-0554,Support Agent,Customer Support,HR,GRD0474,G06,intern,non_exempt,Hyderabad,TS,IN,false,5
+JOB0555,PEO-01-0555,Recruiter,People Operations,Facilities,GRD0075,G01,contract,non_exempt,Bengaluru,KA,IN,false,1
+JOB0556,PRO-09-0556,Associate PM,Product Management,Finance,GRD0716,G09,intern,non_exempt,Seattle,WA,US,true,1
+JOB0557,MAR-05-0557,Marketing Specialist,Marketing,Customer Success,GRD0397,G05,full_time,exempt,New York,NY,US,false,4
+JOB0558,CUS-06-0558,Support Lead,Customer Support,Marketing,GRD0478,G06,part_time,non_exempt,San Francisco,CA,US,false,3
+JOB0559,SAL-02-0559,Enterprise AE,Sales,IT,GRD0159,G02,full_time,exempt,Bengaluru,KA,IN,false,3
+JOB0560,FIN-05-0560,Finance Manager,Finance & Accounting,Marketing,GRD0400,G05,part_time,non_exempt,Hyderabad,TS,IN,true,3
+JOB0561,SAL-11-0561,SDR,Sales,Legal,GRD0801,G11,full_time,exempt,Atlanta,GA,US,false,3
+JOB0562,SOF-11-0562,Staff Engineer,Software Engineering,Legal,GRD0802,G11,intern,non_exempt,Hyderabad,TS,IN,true,4
+JOB0563,CUS-09-0563,Support Agent,Customer Support,Marketing,GRD0643,G09,full_time,non_exempt,San Francisco,CA,US,false,4
+JOB0564,PEO-06-0564,HR Generalist,People Operations,Sales,GRD0404,G06,full_time,exempt,San Francisco,CA,US,false,5
+JOB0565,IT -06-0565,IT Manager,IT Operations,Supply Chain,GRD0405,G06,part_time,exempt,Chicago,IL,US,true,4
+JOB0566,SOF-12-0566,Staff Engineer,Software Engineering,Legal,GRD0886,G12,full_time,exempt,Denver,CO,US,false,4
+JOB0567,IT -10-0567,IT Support,IT Operations,Engineering,GRD0727,G10,contract,exempt,New York,NY,US,true,1
+JOB0568,IT -04-0568,Systems Admin,IT Operations,Facilities,GRD0248,G04,full_time,non_exempt,Toronto,ON,CA,false,4
+JOB0569,PEO-11-0569,HRBP,People Operations,Data,GRD0809,G11,contract,exempt,New York,NY,US,false,5
+JOB0570,LEG-02-0570,Privacy Counsel,Legal,Legal,GRD0090,G02,contract,exempt,Bengaluru,KA,IN,false,3
+JOB0571,PRO-12-0571,Group PM,Product Management,IT,GRD0891,G12,part_time,exempt,Austin,TX,US,true,1
+JOB0572,LEG-06-0572,Privacy Counsel,Legal,Product,GRD0412,G06,contract,exempt,Atlanta,GA,US,false,5
+JOB0573,PRO-09-0573,Group PM,Product Management,Marketing,GRD0653,G09,contract,exempt,San Francisco,CA,US,false,3
+JOB0574,PEO-12-0574,HRBP,People Operations,Sales,GRD0894,G12,part_time,exempt,London,ENG,UK,false,3
+JOB0575,PEO-05-0575,HR Generalist,People Operations,Engineering,GRD0335,G05,contract,non_exempt,Atlanta,GA,US,false,1
+JOB0576,DAT-08-0576,Data Analyst,Data Science,Facilities,GRD0576,G08,contract,exempt,New York,NY,US,true,5
+JOB0577,PEO-11-0577,People Manager,People Operations,Customer Success,GRD0817,G11,part_time,exempt,Chicago,IL,US,true,4
+JOB0578,PRO-05-0578,Senior PM,Product Management,Legal,GRD0338,G05,intern,non_exempt,Dallas,TX,US,false,2
+JOB0579,PEO-11-0579,HR Generalist,People Operations,HR,GRD0819,G11,full_time,non_exempt,San Francisco,CA,US,true,1
+JOB0580,FIN-08-0580,Financial Analyst,Finance & Accounting,Marketing,GRD0580,G08,intern,exempt,Chicago,IL,US,true,5
+JOB0581,MAR-09-0581,Demand Gen Manager,Marketing,Marketing,GRD0661,G09,full_time,non_exempt,Chicago,IL,US,true,3
+JOB0582,FIN-10-0582,Accountant,Finance & Accounting,Marketing,GRD0742,G10,intern,non_exempt,Hyderabad,TS,IN,true,4
+JOB0583,DAT-06-0583,Data Analyst,Data Science,IT,GRD0423,G06,part_time,exempt,Dallas,TX,US,false,4
+JOB0584,MAR-11-0584,Content Manager,Marketing,Finance,GRD0824,G11,full_time,non_exempt,Austin,TX,US,true,3
+JOB0585,LEG-02-0585,Paralegal,Legal,Finance,GRD0105,G02,contract,exempt,Dallas,TX,US,false,5
+JOB0586,IT -08-0586,IT Support,IT Operations,Finance,GRD0586,G08,contract,exempt,Chicago,IL,US,true,5
+JOB0587,SAL-11-0587,SDR,Sales,IT,GRD0827,G11,part_time,non_exempt,Toronto,ON,CA,true,3
+JOB0588,LEG-09-0588,Compliance Analyst,Legal,Customer Success,GRD0668,G09,contract,exempt,San Francisco,CA,US,false,5
+JOB0589,LEG-08-0589,Legal Counsel,Legal,Sales,GRD0589,G08,contract,non_exempt,Dallas,TX,US,true,1
+JOB0590,SAL-01-0590,Account Executive,Sales,Customer Success,GRD0030,G01,part_time,exempt,San Francisco,CA,US,false,3
+JOB0591,PRO-12-0591,Senior PM,Product Management,Customer Success,GRD0911,G12,intern,exempt,Chicago,IL,US,true,1
+JOB0592,FIN-12-0592,Finance Manager,Finance & Accounting,Marketing,GRD0912,G12,intern,exempt,Chicago,IL,US,true,1
+JOB0593,SOF-06-0593,Engineering Manager,Software Engineering,Product,GRD0433,G06,part_time,non_exempt,Toronto,ON,CA,true,4
+JOB0594,FIN-09-0594,Accountant,Finance & Accounting,IT,GRD0674,G09,intern,non_exempt,Chicago,IL,US,true,5
+JOB0595,MAR-03-0595,Marketing Director,Marketing,Data,GRD0195,G03,full_time,non_exempt,Chicago,IL,US,true,4
+JOB0596,SOF-07-0596,Software Engineer,Software Engineering,Facilities,GRD0516,G07,full_time,exempt,New York,NY,US,false,3
+JOB0597,IT -02-0597,IT Manager,IT Operations,HR,GRD0117,G02,intern,non_exempt,Atlanta,GA,US,true,4
+JOB0598,IT -01-0598,Cloud Engineer,IT Operations,Sales,GRD0038,G01,part_time,non_exempt,London,ENG,UK,false,2
+JOB0599,FIN-06-0599,Accountant,Finance & Accounting,Facilities,GRD0439,G06,contract,exempt,Hyderabad,TS,IN,false,3
+JOB0600,PEO-06-0600,Recruiter,People Operations,Customer Success,GRD0440,G06,full_time,non_exempt,London,ENG,UK,false,4
+JOB0601,PEO-05-0601,HRBP,People Operations,Operations,GRD0361,G05,contract,non_exempt,Chicago,IL,US,false,4
+JOB0602,DAT-02-0602,ML Engineer,Data Science,Data,GRD0122,G02,contract,exempt,Atlanta,GA,US,false,5
+JOB0603,PRO-04-0603,Senior PM,Product Management,Supply Chain,GRD0283,G04,part_time,exempt,Chicago,IL,US,false,4
+JOB0604,PRO-02-0604,Senior PM,Product Management,IT,GRD0124,G02,intern,non_exempt,Dallas,TX,US,false,5
+JOB0605,IT -12-0605,IT Manager,IT Operations,Facilities,GRD0925,G12,contract,non_exempt,Dallas,TX,US,true,3
+JOB0606,DAT-02-0606,Data Analyst,Data Science,Supply Chain,GRD0126,G02,full_time,non_exempt,Denver,CO,US,false,3
+JOB0607,FIN-01-0607,Controller,Finance & Accounting,Facilities,GRD0047,G01,part_time,exempt,Chicago,IL,US,false,5
+JOB0608,SAL-08-0608,Enterprise AE,Sales,Facilities,GRD0608,G08,intern,exempt,New York,NY,US,true,2
+JOB0609,FIN-10-0609,Controller,Finance & Accounting,Legal,GRD0769,G10,contract,non_exempt,Seattle,WA,US,false,5
+JOB0610,PRO-05-0610,Group PM,Product Management,Product,GRD0370,G05,contract,non_exempt,Chicago,IL,US,false,5
+JOB0611,LEG-10-0611,Compliance Analyst,Legal,Marketing,GRD0771,G10,full_time,exempt,Hyderabad,TS,IN,false,2
+JOB0612,IT -01-0612,Cloud Engineer,IT Operations,Data,GRD0052,G01,intern,exempt,Dallas,TX,US,false,4
+JOB0613,PRO-04-0613,Senior PM,Product Management,Sales,GRD0293,G04,part_time,exempt,Austin,TX,US,false,1
+JOB0614,IT -12-0614,IT Support,IT Operations,Operations,GRD0934,G12,contract,exempt,London,ENG,UK,true,3
+JOB0615,PEO-07-0615,HR Generalist,People Operations,Customer Success,GRD0535,G07,full_time,non_exempt,Toronto,ON,CA,false,5
+JOB0616,FIN-05-0616,Accountant,Finance & Accounting,Supply Chain,GRD0376,G05,intern,exempt,New York,NY,US,false,5
+JOB0617,SAL-03-0617,SDR,Sales,Facilities,GRD0217,G03,part_time,exempt,Toronto,ON,CA,false,4
+JOB0618,SOF-04-0618,Senior Software Engineer,Software Engineering,Legal,GRD0298,G04,full_time,non_exempt,Hyderabad,TS,IN,false,5
+JOB0619,PRO-07-0619,Associate PM,Product Management,Facilities,GRD0539,G07,full_time,exempt,Atlanta,GA,US,false,4
+JOB0620,DAT-02-0620,Data Scientist,Data Science,Supply Chain,GRD0140,G02,full_time,non_exempt,Denver,CO,US,false,2
+JOB0621,SOF-03-0621,Engineering Manager,Software Engineering,Security,GRD0221,G03,intern,exempt,Denver,CO,US,true,4
+JOB0622,LEG-08-0622,Compliance Analyst,Legal,Engineering,GRD0622,G08,intern,non_exempt,Hyderabad,TS,IN,true,5
+JOB0623,IT -05-0623,Systems Admin,IT Operations,Engineering,GRD0383,G05,full_time,exempt,Atlanta,GA,US,false,3
+JOB0624,IT -11-0624,IT Support,IT Operations,Facilities,GRD0864,G11,intern,non_exempt,Atlanta,GA,US,false,4
+JOB0625,IT -01-0625,Systems Admin,IT Operations,Sales,GRD0065,G01,intern,exempt,Austin,TX,US,false,5
+JOB0626,PRO-01-0626,Associate PM,Product Management,Sales,GRD0066,G01,full_time,exempt,Bengaluru,KA,IN,false,3
+JOB0627,PEO-09-0627,HR Generalist,People Operations,Security,GRD0707,G09,full_time,non_exempt,San Francisco,CA,US,false,4
+JOB0628,PRO-12-0628,Associate PM,Product Management,IT,GRD0948,G12,full_time,non_exempt,Atlanta,GA,US,false,1
+JOB0629,LEG-09-0629,Legal Counsel,Legal,Supply Chain,GRD0709,G09,part_time,non_exempt,London,ENG,UK,true,2
+JOB0630,CUS-08-0630,Support Lead,Customer Support,Sales,GRD0630,G08,contract,exempt,New York,NY,US,false,3
+JOB0631,CUS-01-0631,Support Specialist,Customer Support,HR,GRD0071,G01,part_time,non_exempt,Denver,CO,US,false,4
+JOB0632,CUS-11-0632,CS Manager,Customer Support,Operations,GRD0872,G11,full_time,exempt,Toronto,ON,CA,true,3
+JOB0633,MAR-03-0633,Demand Gen Manager,Marketing,Product,GRD0233,G03,full_time,exempt,Chicago,IL,US,true,3
+JOB0634,PRO-09-0634,Associate PM,Product Management,Engineering,GRD0714,G09,contract,non_exempt,New York,NY,US,false,3
+JOB0635,SAL-09-0635,Sales Manager,Sales,Facilities,GRD0715,G09,full_time,exempt,Chicago,IL,US,true,5
+JOB0636,SOF-09-0636,Software Engineer,Software Engineering,Marketing,GRD0716,G09,part_time,exempt,Atlanta,GA,US,false,1
+JOB0637,PRO-09-0637,Associate PM,Product Management,Engineering,GRD0717,G09,contract,non_exempt,Denver,CO,US,true,5
+JOB0638,IT -09-0638,IT Support,IT Operations,Product,GRD0718,G09,intern,non_exempt,Seattle,WA,US,false,5
+JOB0639,PRO-08-0639,Product Manager,Product Management,Engineering,GRD0639,G08,contract,non_exempt,New York,NY,US,true,5
+JOB0640,SOF-04-0640,Senior Software Engineer,Software Engineering,Engineering,GRD0320,G04,full_time,exempt,Dallas,TX,US,false,2
+JOB0641,MAR-12-0641,Marketing Specialist,Marketing,Sales,GRD0881,G12,contract,non_exempt,Dallas,TX,US,false,4
+JOB0642,PRO-08-0642,Senior PM,Product Management,Product,GRD0562,G08,intern,exempt,Toronto,ON,CA,false,1
+JOB0643,SAL-03-0643,Account Executive,Sales,Finance,GRD0163,G03,full_time,exempt,Chicago,IL,US,false,2
+JOB0644,FIN-06-0644,Accountant,Finance & Accounting,Supply Chain,GRD0404,G06,contract,non_exempt,Dallas,TX,US,false,1
+JOB0645,FIN-09-0645,Controller,Finance & Accounting,IT,GRD0645,G09,part_time,non_exempt,San Francisco,CA,US,true,5
+JOB0646,MAR-04-0646,Content Manager,Marketing,Facilities,GRD0246,G04,full_time,exempt,Seattle,WA,US,true,5
+JOB0647,MAR-06-0647,Marketing Specialist,Marketing,Operations,GRD0407,G06,intern,exempt,Austin,TX,US,false,5
+JOB0648,PRO-10-0648,Senior PM,Product Management,Marketing,GRD0728,G10,intern,exempt,Toronto,ON,CA,false,4
+JOB0649,LEG-12-0649,Compliance Analyst,Legal,Security,GRD0889,G12,contract,non_exempt,Austin,TX,US,true,1
+JOB0650,DAT-08-0650,Analytics Manager,Data Science,Supply Chain,GRD0570,G08,contract,non_exempt,Hyderabad,TS,IN,true,1
+JOB0651,PRO-03-0651,Group PM,Product Management,Marketing,GRD0171,G03,full_time,non_exempt,Seattle,WA,US,false,1
+JOB0652,DAT-04-0652,ML Engineer,Data Science,Supply Chain,GRD0252,G04,part_time,non_exempt,Austin,TX,US,false,4
+JOB0653,FIN-12-0653,Financial Analyst,Finance & Accounting,IT,GRD0893,G12,intern,non_exempt,London,ENG,UK,true,5
+JOB0654,SAL-08-0654,Enterprise AE,Sales,Facilities,GRD0574,G08,contract,non_exempt,New York,NY,US,true,5
+JOB0655,LEG-11-0655,Paralegal,Legal,Engineering,GRD0815,G11,intern,non_exempt,London,ENG,UK,true,2
+JOB0656,FIN-01-0656,Finance Manager,Finance & Accounting,Marketing,GRD0016,G01,contract,non_exempt,Dallas,TX,US,true,2
+JOB0657,SOF-10-0657,Staff Engineer,Software Engineering,Facilities,GRD0737,G10,part_time,non_exempt,Denver,CO,US,true,4
+JOB0658,FIN-11-0658,Finance Manager,Finance & Accounting,Finance,GRD0818,G11,full_time,exempt,London,ENG,UK,true,1
+JOB0659,SOF-07-0659,Staff Engineer,Software Engineering,Product,GRD0499,G07,part_time,exempt,Dallas,TX,US,false,3
+JOB0660,IT -12-0660,IT Support,IT Operations,Supply Chain,GRD0900,G12,full_time,exempt,Austin,TX,US,true,3
+JOB0661,SAL-06-0661,Account Executive,Sales,Operations,GRD0421,G06,part_time,exempt,Toronto,ON,CA,false,1
+JOB0662,SAL-02-0662,Sales Manager,Sales,Customer Success,GRD0102,G02,full_time,exempt,Austin,TX,US,true,4
+JOB0663,PRO-12-0663,Senior PM,Product Management,Finance,GRD0903,G12,contract,exempt,New York,NY,US,true,4
+JOB0664,IT -05-0664,Cloud Engineer,IT Operations,IT,GRD0344,G05,intern,non_exempt,Seattle,WA,US,false,1
+JOB0665,PRO-05-0665,Associate PM,Product Management,Finance,GRD0345,G05,contract,exempt,Bengaluru,KA,IN,false,1
+JOB0666,CUS-10-0666,CS Manager,Customer Support,HR,GRD0746,G10,contract,non_exempt,Bengaluru,KA,IN,true,2
+JOB0667,IT -05-0667,IT Manager,IT Operations,Marketing,GRD0347,G05,part_time,exempt,Seattle,WA,US,true,5
+JOB0668,SOF-03-0668,Senior Software Engineer,Software Engineering,Finance,GRD0188,G03,full_time,non_exempt,Toronto,ON,CA,false,3
+JOB0669,MAR-02-0669,Marketing Director,Marketing,Sales,GRD0109,G02,full_time,non_exempt,Chicago,IL,US,true,4
+JOB0670,LEG-02-0670,Paralegal,Legal,Finance,GRD0110,G02,full_time,exempt,London,ENG,UK,false,1
+JOB0671,DAT-10-0671,Data Analyst,Data Science,Facilities,GRD0751,G10,part_time,non_exempt,Atlanta,GA,US,false,4
+JOB0672,DAT-01-0672,Analytics Manager,Data Science,Finance,GRD0032,G01,part_time,exempt,Dallas,TX,US,true,1
+JOB0673,LEG-07-0673,Legal Counsel,Legal,Supply Chain,GRD0513,G07,part_time,non_exempt,Hyderabad,TS,IN,false,4
+JOB0674,SAL-08-0674,Sales Manager,Sales,HR,GRD0594,G08,part_time,exempt,Chicago,IL,US,true,3
+JOB0675,LEG-10-0675,Paralegal,Legal,Operations,GRD0755,G10,contract,non_exempt,Bengaluru,KA,IN,false,2
+JOB0676,CUS-07-0676,Support Agent,Customer Support,IT,GRD0516,G07,part_time,exempt,London,ENG,UK,false,5
+JOB0677,IT -08-0677,IT Support,IT Operations,Security,GRD0597,G08,intern,exempt,London,ENG,UK,true,1
+JOB0678,PEO-12-0678,HR Generalist,People Operations,HR,GRD0918,G12,contract,non_exempt,Seattle,WA,US,false,4
+JOB0679,MAR-04-0679,Marketing Director,Marketing,Marketing,GRD0279,G04,contract,non_exempt,Toronto,ON,CA,true,2
+JOB0680,MAR-09-0680,Marketing Director,Marketing,Supply Chain,GRD0680,G09,contract,exempt,Dallas,TX,US,true,4
+JOB0681,LEG-08-0681,Privacy Counsel,Legal,Finance,GRD0601,G08,intern,non_exempt,San Francisco,CA,US,true,5
+JOB0682,FIN-06-0682,Financial Analyst,Finance & Accounting,Engineering,GRD0442,G06,full_time,exempt,New York,NY,US,false,3
+JOB0683,FIN-11-0683,Financial Analyst,Finance & Accounting,Operations,GRD0843,G11,part_time,non_exempt,Atlanta,GA,US,false,3
+JOB0684,SOF-05-0684,Staff Engineer,Software Engineering,Facilities,GRD0364,G05,part_time,non_exempt,Austin,TX,US,false,3
+JOB0685,SAL-03-0685,Sales Manager,Sales,IT,GRD0205,G03,full_time,exempt,Austin,TX,US,true,1
+JOB0686,DAT-07-0686,ML Engineer,Data Science,Security,GRD0526,G07,part_time,exempt,Hyderabad,TS,IN,false,2
+JOB0687,PRO-04-0687,Product Manager,Product Management,Product,GRD0287,G04,full_time,exempt,Chicago,IL,US,true,2
+JOB0688,SAL-01-0688,Account Executive,Sales,Marketing,GRD0048,G01,part_time,exempt,Dallas,TX,US,false,2
+JOB0689,PRO-07-0689,Associate PM,Product Management,Supply Chain,GRD0529,G07,contract,exempt,Bengaluru,KA,IN,false,1
+JOB0690,IT -06-0690,Cloud Engineer,IT Operations,Engineering,GRD0450,G06,full_time,exempt,Toronto,ON,CA,false,5
+JOB0691,PRO-07-0691,Product Manager,Product Management,Security,GRD0531,G07,part_time,exempt,Seattle,WA,US,true,2
+JOB0692,PRO-10-0692,Associate PM,Product Management,Security,GRD0772,G10,contract,exempt,Atlanta,GA,US,true,1
+JOB0693,SAL-01-0693,Enterprise AE,Sales,IT,GRD0053,G01,contract,non_exempt,Atlanta,GA,US,false,1
+JOB0694,PRO-09-0694,Senior PM,Product Management,IT,GRD0694,G09,intern,non_exempt,New York,NY,US,true,4
+JOB0695,SOF-09-0695,Senior Software Engineer,Software Engineering,HR,GRD0695,G09,part_time,non_exempt,Atlanta,GA,US,true,1
+JOB0696,SAL-12-0696,Enterprise AE,Sales,IT,GRD0936,G12,intern,exempt,Chicago,IL,US,true,2
+JOB0697,DAT-12-0697,Data Scientist,Data Science,Supply Chain,GRD0937,G12,intern,non_exempt,Dallas,TX,US,false,5
+JOB0698,CUS-06-0698,Support Agent,Customer Support,Engineering,GRD0458,G06,part_time,non_exempt,Dallas,TX,US,false,3
+JOB0699,PRO-03-0699,Product Manager,Product Management,Legal,GRD0219,G03,part_time,exempt,Bengaluru,KA,IN,true,1
+JOB0700,MAR-08-0700,Demand Gen Manager,Marketing,IT,GRD0620,G08,intern,exempt,Seattle,WA,US,true,3
+JOB0701,SOF-11-0701,Software Engineer,Software Engineering,Customer Success,GRD0861,G11,full_time,non_exempt,San Francisco,CA,US,false,1
+JOB0702,DAT-11-0702,Data Analyst,Data Science,Finance,GRD0862,G11,part_time,exempt,London,ENG,UK,false,4
+JOB0703,PRO-09-0703,Senior PM,Product Management,HR,GRD0703,G09,intern,exempt,New York,NY,US,false,1
+JOB0704,SOF-03-0704,Software Engineer,Software Engineering,Product,GRD0224,G03,contract,non_exempt,New York,NY,US,false,5
+JOB0705,SAL-09-0705,SDR,Sales,Sales,GRD0705,G09,part_time,non_exempt,Dallas,TX,US,false,5
+JOB0706,CUS-01-0706,CS Manager,Customer Support,Data,GRD0066,G01,full_time,exempt,Bengaluru,KA,IN,true,5
+JOB0707,IT -07-0707,IT Support,IT Operations,Sales,GRD0547,G07,contract,non_exempt,Dallas,TX,US,false,1
+JOB0708,LEG-05-0708,Privacy Counsel,Legal,HR,GRD0388,G05,contract,non_exempt,Toronto,ON,CA,false,1
+JOB0709,LEG-02-0709,Privacy Counsel,Legal,Data,GRD0149,G02,full_time,non_exempt,Denver,CO,US,false,5
+JOB0710,LEG-07-0710,Compliance Analyst,Legal,Engineering,GRD0550,G07,intern,exempt,Toronto,ON,CA,false,2
+JOB0711,SAL-01-0711,Account Executive,Sales,Sales,GRD0071,G01,part_time,non_exempt,Bengaluru,KA,IN,false,3
+JOB0712,DAT-02-0712,Data Analyst,Data Science,Finance,GRD0152,G02,full_time,non_exempt,Dallas,TX,US,false,1
+JOB0713,SOF-11-0713,Senior Software Engineer,Software Engineering,Finance,GRD0873,G11,contract,exempt,Hyderabad,TS,IN,false,1
+JOB0714,IT -10-0714,IT Manager,IT Operations,IT,GRD0794,G10,intern,exempt,London,ENG,UK,true,5
+JOB0715,FIN-05-0715,Financial Analyst,Finance & Accounting,Facilities,GRD0395,G05,contract,non_exempt,New York,NY,US,false,4
+JOB0716,CUS-04-0716,Support Agent,Customer Support,Legal,GRD0316,G04,contract,exempt,Dallas,TX,US,false,4
+JOB0717,FIN-10-0717,Finance Manager,Finance & Accounting,Facilities,GRD0797,G10,intern,non_exempt,Toronto,ON,CA,true,2
+JOB0718,SOF-04-0718,Staff Engineer,Software Engineering,HR,GRD0318,G04,contract,non_exempt,Austin,TX,US,false,4
+JOB0719,IT -09-0719,Systems Admin,IT Operations,HR,GRD0719,G09,part_time,non_exempt,San Francisco,CA,US,false,4
+JOB0720,FIN-10-0720,Finance Manager,Finance & Accounting,Security,GRD0800,G10,full_time,exempt,San Francisco,CA,US,true,2
+JOB0721,LEG-11-0721,Privacy Counsel,Legal,Product,GRD0801,G11,part_time,non_exempt,Austin,TX,US,true,4
+JOB0722,FIN-10-0722,Accountant,Finance & Accounting,Sales,GRD0722,G10,part_time,exempt,Seattle,WA,US,true,1
+JOB0723,IT -08-0723,IT Support,IT Operations,Finance,GRD0563,G08,full_time,non_exempt,Denver,CO,US,false,4
+JOB0724,FIN-06-0724,Financial Analyst,Finance & Accounting,Facilities,GRD0404,G06,part_time,exempt,Toronto,ON,CA,false,3
+JOB0725,CUS-08-0725,CS Manager,Customer Support,HR,GRD0565,G08,part_time,exempt,Dallas,TX,US,true,4
+JOB0726,DAT-11-0726,Analytics Manager,Data Science,Security,GRD0806,G11,intern,non_exempt,Bengaluru,KA,IN,true,1
+JOB0727,DAT-09-0727,ML Engineer,Data Science,Data,GRD0647,G09,full_time,non_exempt,Bengaluru,KA,IN,false,4
+JOB0728,FIN-03-0728,Financial Analyst,Finance & Accounting,Supply Chain,GRD0168,G03,contract,non_exempt,Seattle,WA,US,false,5
+JOB0729,FIN-04-0729,Accountant,Finance & Accounting,Marketing,GRD0249,G04,contract,exempt,Dallas,TX,US,false,2
+JOB0730,LEG-01-0730,Paralegal,Legal,HR,GRD0010,G01,part_time,exempt,Atlanta,GA,US,false,1
+JOB0731,CUS-07-0731,Support Lead,Customer Support,Facilities,GRD0491,G07,part_time,exempt,Toronto,ON,CA,false,3
+JOB0732,PRO-12-0732,Associate PM,Product Management,Engineering,GRD0892,G12,part_time,non_exempt,Atlanta,GA,US,false,3
+JOB0733,SAL-11-0733,Enterprise AE,Sales,Legal,GRD0813,G11,part_time,exempt,Atlanta,GA,US,false,1
+JOB0734,SOF-02-0734,Engineering Manager,Software Engineering,Legal,GRD0094,G02,part_time,non_exempt,New York,NY,US,true,1
+JOB0735,SOF-04-0735,Staff Engineer,Software Engineering,Legal,GRD0255,G04,intern,non_exempt,Bengaluru,KA,IN,false,3
+JOB0736,DAT-06-0736,ML Engineer,Data Science,Customer Success,GRD0416,G06,full_time,exempt,Dallas,TX,US,false,1
+JOB0737,LEG-04-0737,Compliance Analyst,Legal,Product,GRD0257,G04,contract,non_exempt,New York,NY,US,false,4
+JOB0738,DAT-09-0738,Data Analyst,Data Science,Marketing,GRD0658,G09,intern,non_exempt,Dallas,TX,US,false,3
+JOB0739,LEG-05-0739,Privacy Counsel,Legal,Security,GRD0339,G05,intern,exempt,Atlanta,GA,US,false,3
+JOB0740,FIN-07-0740,Accountant,Finance & Accounting,Supply Chain,GRD0500,G07,part_time,exempt,Seattle,WA,US,false,1
+JOB0741,PRO-03-0741,Senior PM,Product Management,Operations,GRD0181,G03,full_time,non_exempt,San Francisco,CA,US,false,2
+JOB0742,CUS-07-0742,Support Lead,Customer Support,IT,GRD0502,G07,intern,exempt,Seattle,WA,US,false,5
+JOB0743,IT -02-0743,Cloud Engineer,IT Operations,Supply Chain,GRD0103,G02,full_time,non_exempt,Austin,TX,US,false,4
+JOB0744,SOF-03-0744,Senior Software Engineer,Software Engineering,Sales,GRD0184,G03,contract,exempt,Austin,TX,US,false,2
+JOB0745,IT -01-0745,IT Manager,IT Operations,Engineering,GRD0025,G01,intern,exempt,Atlanta,GA,US,true,4
+JOB0746,IT -09-0746,Cloud Engineer,IT Operations,Facilities,GRD0666,G09,part_time,non_exempt,Chicago,IL,US,false,1
+JOB0747,FIN-07-0747,Controller,Finance & Accounting,Supply Chain,GRD0507,G07,intern,exempt,Toronto,ON,CA,false,5
+JOB0748,SAL-06-0748,SDR,Sales,Security,GRD0428,G06,full_time,non_exempt,London,ENG,UK,false,5
+JOB0749,LEG-07-0749,Compliance Analyst,Legal,IT,GRD0509,G07,full_time,non_exempt,Seattle,WA,US,false,2
+JOB0750,IT -07-0750,IT Manager,IT Operations,Supply Chain,GRD0510,G07,contract,non_exempt,Seattle,WA,US,true,4
+JOB0751,LEG-03-0751,Privacy Counsel,Legal,Sales,GRD0191,G03,full_time,exempt,San Francisco,CA,US,false,4
+JOB0752,SOF-07-0752,Staff Engineer,Software Engineering,Legal,GRD0512,G07,full_time,non_exempt,Hyderabad,TS,IN,false,2
+JOB0753,LEG-06-0753,Privacy Counsel,Legal,Product,GRD0433,G06,part_time,non_exempt,Austin,TX,US,false,2
+JOB0754,PRO-08-0754,Product Manager,Product Management,Marketing,GRD0594,G08,contract,non_exempt,New York,NY,US,true,5
+JOB0755,PRO-10-0755,Senior PM,Product Management,Product,GRD0755,G10,intern,non_exempt,Hyderabad,TS,IN,true,3
+JOB0756,PEO-11-0756,HRBP,People Operations,Sales,GRD0836,G11,intern,exempt,Austin,TX,US,false,2
+JOB0757,CUS-12-0757,Support Specialist,Customer Support,Finance,GRD0917,G12,full_time,exempt,Atlanta,GA,US,false,2
+JOB0758,FIN-05-0758,Accountant,Finance & Accounting,HR,GRD0358,G05,contract,non_exempt,Seattle,WA,US,false,3
+JOB0759,DAT-06-0759,Data Analyst,Data Science,Data,GRD0439,G06,intern,exempt,Bengaluru,KA,IN,false,3
+JOB0760,SAL-03-0760,Sales Manager,Sales,Operations,GRD0200,G03,contract,exempt,London,ENG,UK,true,1
+JOB0761,SOF-07-0761,Software Engineer,Software Engineering,Operations,GRD0521,G07,part_time,exempt,Seattle,WA,US,false,4
+JOB0762,SAL-08-0762,Enterprise AE,Sales,Security,GRD0602,G08,full_time,non_exempt,Toronto,ON,CA,true,2
+JOB0763,CUS-01-0763,Support Lead,Customer Support,Data,GRD0043,G01,part_time,exempt,Seattle,WA,US,false,1
+JOB0764,DAT-01-0764,ML Engineer,Data Science,Security,GRD0044,G01,contract,non_exempt,Dallas,TX,US,false,3
+JOB0765,SOF-12-0765,Staff Engineer,Software Engineering,Security,GRD0925,G12,contract,non_exempt,Dallas,TX,US,true,2
+JOB0766,PEO-04-0766,HRBP,People Operations,Security,GRD0286,G04,intern,non_exempt,Chicago,IL,US,false,4
+JOB0767,MAR-08-0767,Content Manager,Marketing,Facilities,GRD0607,G08,full_time,non_exempt,Chicago,IL,US,true,3
+JOB0768,PEO-06-0768,HRBP,People Operations,Facilities,GRD0448,G06,part_time,non_exempt,Toronto,ON,CA,false,2
+JOB0769,SOF-09-0769,Staff Engineer,Software Engineering,Finance,GRD0689,G09,full_time,exempt,Seattle,WA,US,true,3
+JOB0770,CUS-01-0770,CS Manager,Customer Support,Finance,GRD0050,G01,full_time,non_exempt,Toronto,ON,CA,true,4
+JOB0771,DAT-10-0771,Data Scientist,Data Science,Operations,GRD0771,G10,part_time,non_exempt,Toronto,ON,CA,false,4
+JOB0772,LEG-11-0772,Privacy Counsel,Legal,Security,GRD0852,G11,intern,non_exempt,Toronto,ON,CA,true,2
+JOB0773,PEO-01-0773,People Manager,People Operations,Security,GRD0053,G01,full_time,non_exempt,Toronto,ON,CA,true,3
+JOB0774,PEO-09-0774,HR Generalist,People Operations,Customer Success,GRD0694,G09,full_time,exempt,Seattle,WA,US,true,4
+JOB0775,SOF-07-0775,Engineering Manager,Software Engineering,Product,GRD0535,G07,part_time,exempt,Bengaluru,KA,IN,true,2
+JOB0776,LEG-08-0776,Privacy Counsel,Legal,Finance,GRD0616,G08,intern,non_exempt,London,ENG,UK,false,4
+JOB0777,SAL-04-0777,Account Executive,Sales,HR,GRD0297,G04,contract,non_exempt,Austin,TX,US,false,5
+JOB0778,SAL-08-0778,Enterprise AE,Sales,IT,GRD0618,G08,full_time,non_exempt,Bengaluru,KA,IN,false,3
+JOB0779,SOF-11-0779,Software Engineer,Software Engineering,Facilities,GRD0859,G11,intern,non_exempt,Chicago,IL,US,true,4
+JOB0780,CUS-06-0780,Support Lead,Customer Support,Marketing,GRD0460,G06,contract,non_exempt,Denver,CO,US,false,2
+JOB0781,PEO-11-0781,Recruiter,People Operations,Data,GRD0861,G11,full_time,non_exempt,Austin,TX,US,true,2
+JOB0782,PEO-04-0782,People Manager,People Operations,Product,GRD0302,G04,intern,exempt,Seattle,WA,US,true,1
+JOB0783,FIN-03-0783,Controller,Finance & Accounting,Customer Success,GRD0223,G03,full_time,non_exempt,Austin,TX,US,false,3
+JOB0784,LEG-12-0784,Compliance Analyst,Legal,Security,GRD0944,G12,intern,exempt,Chicago,IL,US,false,1
+JOB0785,IT -11-0785,IT Manager,IT Operations,IT,GRD0865,G11,intern,exempt,London,ENG,UK,true,5
+JOB0786,PEO-06-0786,People Manager,People Operations,HR,GRD0466,G06,part_time,exempt,Chicago,IL,US,true,5
+JOB0787,PRO-10-0787,Group PM,Product Management,Operations,GRD0787,G10,part_time,non_exempt,New York,NY,US,false,1
+JOB0788,SOF-05-0788,Software Engineer,Software Engineering,Finance,GRD0388,G05,part_time,non_exempt,Seattle,WA,US,false,3
+JOB0789,DAT-02-0789,ML Engineer,Data Science,Finance,GRD0149,G02,contract,exempt,Hyderabad,TS,IN,false,3
+JOB0790,SOF-10-0790,Engineering Manager,Software Engineering,Security,GRD0790,G10,full_time,exempt,Atlanta,GA,US,true,1
+JOB0791,FIN-02-0791,Controller,Finance & Accounting,Data,GRD0151,G02,full_time,exempt,Seattle,WA,US,false,4
+JOB0792,PEO-02-0792,HR Generalist,People Operations,Engineering,GRD0152,G02,intern,non_exempt,San Francisco,CA,US,false,5
+JOB0793,IT -07-0793,IT Manager,IT Operations,HR,GRD0553,G07,contract,non_exempt,Seattle,WA,US,true,3
+JOB0794,PEO-04-0794,People Manager,People Operations,Finance,GRD0314,G04,part_time,non_exempt,Dallas,TX,US,true,2
+JOB0795,MAR-10-0795,Marketing Specialist,Marketing,Supply Chain,GRD0795,G10,part_time,exempt,Bengaluru,KA,IN,true,2
+JOB0796,SAL-08-0796,Account Executive,Sales,Customer Success,GRD0636,G08,contract,non_exempt,Chicago,IL,US,true,3
+JOB0797,PEO-12-0797,People Manager,People Operations,Security,GRD0957,G12,intern,non_exempt,Chicago,IL,US,true,1
+JOB0798,PEO-12-0798,Recruiter,People Operations,Customer Success,GRD0958,G12,intern,exempt,Seattle,WA,US,false,5
+JOB0799,PEO-12-0799,People Manager,People Operations,Operations,GRD0959,G12,contract,non_exempt,Seattle,WA,US,true,5
+JOB0800,SOF-08-0800,Senior Software Engineer,Software Engineering,Product,GRD0640,G08,full_time,exempt,San Francisco,CA,US,true,4
+JOB0801,CUS-02-0801,Support Specialist,Customer Support,Finance,GRD0081,G02,part_time,exempt,Bengaluru,KA,IN,false,4
+JOB0802,DAT-08-0802,ML Engineer,Data Science,Engineering,GRD0562,G08,full_time,exempt,London,ENG,UK,true,4
+JOB0803,PRO-02-0803,Associate PM,Product Management,Legal,GRD0083,G02,full_time,exempt,London,ENG,UK,false,5
+JOB0804,LEG-02-0804,Legal Counsel,Legal,Data,GRD0084,G02,intern,exempt,San Francisco,CA,US,false,1
+JOB0805,DAT-03-0805,Data Scientist,Data Science,Finance,GRD0165,G03,intern,non_exempt,London,ENG,UK,false,4
+JOB0806,IT -09-0806,IT Support,IT Operations,Finance,GRD0646,G09,full_time,exempt,Seattle,WA,US,false,4
+JOB0807,PRO-03-0807,Group PM,Product Management,Security,GRD0167,G03,contract,exempt,Dallas,TX,US,false,1
+JOB0808,PRO-03-0808,Group PM,Product Management,Security,GRD0168,G03,full_time,non_exempt,Bengaluru,KA,IN,false,4
+JOB0809,SOF-03-0809,Engineering Manager,Software Engineering,Engineering,GRD0169,G03,contract,exempt,Denver,CO,US,true,1
+JOB0810,MAR-09-0810,Content Manager,Marketing,Data,GRD0650,G09,contract,exempt,New York,NY,US,true,3
+JOB0811,SAL-07-0811,SDR,Sales,Product,GRD0491,G07,contract,non_exempt,London,ENG,UK,false,3
+JOB0812,PRO-09-0812,Group PM,Product Management,Legal,GRD0652,G09,full_time,non_exempt,Seattle,WA,US,false,2
+JOB0813,LEG-05-0813,Legal Counsel,Legal,Facilities,GRD0333,G05,intern,exempt,San Francisco,CA,US,false,3
+JOB0814,IT -02-0814,Cloud Engineer,IT Operations,Customer Success,GRD0094,G02,full_time,non_exempt,Denver,CO,US,false,1
+JOB0815,PEO-04-0815,Recruiter,People Operations,HR,GRD0255,G04,full_time,non_exempt,Dallas,TX,US,false,5
+JOB0816,DAT-07-0816,ML Engineer,Data Science,Sales,GRD0496,G07,intern,exempt,Denver,CO,US,false,2
+JOB0817,PEO-10-0817,HRBP,People Operations,Engineering,GRD0737,G10,full_time,non_exempt,San Francisco,CA,US,true,2
+JOB0818,MAR-09-0818,Content Manager,Marketing,IT,GRD0658,G09,full_time,non_exempt,Toronto,ON,CA,true,2
+JOB0819,DAT-10-0819,ML Engineer,Data Science,HR,GRD0739,G10,intern,non_exempt,Seattle,WA,US,true,3
+JOB0820,CUS-04-0820,CS Manager,Customer Support,Customer Success,GRD0260,G04,full_time,exempt,Toronto,ON,CA,true,1
+JOB0821,PEO-03-0821,HR Generalist,People Operations,Finance,GRD0181,G03,part_time,non_exempt,Hyderabad,TS,IN,false,1
+JOB0822,PEO-08-0822,HR Generalist,People Operations,Customer Success,GRD0582,G08,full_time,exempt,London,ENG,UK,true,1
+JOB0823,DAT-04-0823,ML Engineer,Data Science,IT,GRD0263,G04,full_time,exempt,Atlanta,GA,US,false,2
+JOB0824,MAR-11-0824,Marketing Director,Marketing,HR,GRD0824,G11,full_time,non_exempt,London,ENG,UK,true,4
+JOB0825,PRO-02-0825,Senior PM,Product Management,IT,GRD0105,G02,intern,exempt,New York,NY,US,false,5
+JOB0826,CUS-06-0826,Support Agent,Customer Support,Engineering,GRD0426,G06,part_time,non_exempt,Toronto,ON,CA,false,1
+JOB0827,PRO-04-0827,Product Manager,Product Management,Customer Success,GRD0267,G04,intern,exempt,Hyderabad,TS,IN,true,5
+JOB0828,CUS-10-0828,Support Specialist,Customer Support,Sales,GRD0748,G10,contract,non_exempt,Hyderabad,TS,IN,true,1
+JOB0829,LEG-09-0829,Privacy Counsel,Legal,HR,GRD0669,G09,full_time,exempt,London,ENG,UK,true,4
+JOB0830,MAR-08-0830,Marketing Director,Marketing,Engineering,GRD0590,G08,intern,exempt,Atlanta,GA,US,true,4
+JOB0831,FIN-06-0831,Financial Analyst,Finance & Accounting,Product,GRD0431,G06,contract,non_exempt,New York,NY,US,false,3
+JOB0832,IT -06-0832,Systems Admin,IT Operations,Legal,GRD0432,G06,full_time,exempt,Toronto,ON,CA,false,4
+JOB0833,PRO-01-0833,Group PM,Product Management,Engineering,GRD0033,G01,contract,non_exempt,Bengaluru,KA,IN,false,2
+JOB0834,IT -02-0834,Cloud Engineer,IT Operations,Finance,GRD0114,G02,full_time,non_exempt,Austin,TX,US,false,4
+JOB0835,FIN-12-0835,Controller,Finance & Accounting,Data,GRD0915,G12,intern,non_exempt,Dallas,TX,US,false,3
+JOB0836,LEG-06-0836,Legal Counsel,Legal,Legal,GRD0436,G06,intern,exempt,Toronto,ON,CA,false,5
+JOB0837,DAT-06-0837,Analytics Manager,Data Science,Supply Chain,GRD0437,G06,intern,non_exempt,Denver,CO,US,true,2
+JOB0838,LEG-12-0838,Paralegal,Legal,Engineering,GRD0918,G12,part_time,exempt,Bengaluru,KA,IN,true,3
+JOB0839,FIN-12-0839,Accountant,Finance & Accounting,Supply Chain,GRD0919,G12,contract,non_exempt,Hyderabad,TS,IN,false,5
+JOB0840,MAR-03-0840,Marketing Director,Marketing,Sales,GRD0200,G03,intern,exempt,New York,NY,US,true,2
+JOB0841,PRO-01-0841,Senior PM,Product Management,Supply Chain,GRD0041,G01,intern,non_exempt,Austin,TX,US,false,5
+JOB0842,DAT-06-0842,Analytics Manager,Data Science,Supply Chain,GRD0442,G06,part_time,non_exempt,Austin,TX,US,true,2
+JOB0843,DAT-07-0843,Data Scientist,Data Science,IT,GRD0523,G07,intern,exempt,San Francisco,CA,US,false,5
+JOB0844,SAL-06-0844,Sales Manager,Sales,Supply Chain,GRD0444,G06,intern,non_exempt,Atlanta,GA,US,true,3
+JOB0845,IT -02-0845,Cloud Engineer,IT Operations,Legal,GRD0125,G02,full_time,exempt,Seattle,WA,US,false,4
+JOB0846,PEO-12-0846,People Manager,People Operations,Operations,GRD0926,G12,full_time,exempt,Atlanta,GA,US,true,1
+JOB0847,FIN-04-0847,Controller,Finance & Accounting,Facilities,GRD0287,G04,full_time,non_exempt,New York,NY,US,false,1
+JOB0848,SAL-04-0848,SDR,Sales,Sales,GRD0288,G04,full_time,exempt,Denver,CO,US,false,1
+JOB0849,LEG-04-0849,Compliance Analyst,Legal,Operations,GRD0289,G04,intern,exempt,Seattle,WA,US,false,4
+JOB0850,LEG-05-0850,Paralegal,Legal,Finance,GRD0370,G05,intern,exempt,Hyderabad,TS,IN,false,4
+JOB0851,MAR-01-0851,Content Manager,Marketing,Finance,GRD0051,G01,full_time,exempt,New York,NY,US,true,4
+JOB0852,CUS-06-0852,Support Agent,Customer Support,Data,GRD0452,G06,part_time,exempt,Dallas,TX,US,false,3
+JOB0853,SAL-09-0853,SDR,Sales,Sales,GRD0693,G09,intern,exempt,London,ENG,UK,true,3
+JOB0854,SOF-04-0854,Staff Engineer,Software Engineering,Legal,GRD0294,G04,contract,non_exempt,Dallas,TX,US,false,4
+JOB0855,FIN-05-0855,Financial Analyst,Finance & Accounting,HR,GRD0375,G05,contract,non_exempt,New York,NY,US,false,5
+JOB0856,CUS-11-0856,Support Agent,Customer Support,Finance,GRD0856,G11,intern,exempt,Toronto,ON,CA,false,2
+JOB0857,PEO-09-0857,HRBP,People Operations,HR,GRD0697,G09,intern,non_exempt,Toronto,ON,CA,false,1
+JOB0858,FIN-05-0858,Financial Analyst,Finance & Accounting,Security,GRD0378,G05,intern,non_exempt,Hyderabad,TS,IN,false,4
+JOB0859,CUS-04-0859,Support Agent,Customer Support,Security,GRD0299,G04,intern,non_exempt,Austin,TX,US,false,3
+JOB0860,IT -05-0860,IT Support,IT Operations,Legal,GRD0380,G05,intern,exempt,Denver,CO,US,false,1
+JOB0861,PRO-02-0861,Product Manager,Product Management,Marketing,GRD0141,G02,intern,non_exempt,Bengaluru,KA,IN,true,3
+JOB0862,CUS-08-0862,Support Lead,Customer Support,Facilities,GRD0622,G08,full_time,exempt,Hyderabad,TS,IN,true,1
+JOB0863,SAL-05-0863,SDR,Sales,Finance,GRD0383,G05,intern,non_exempt,Austin,TX,US,false,1
+JOB0864,DAT-10-0864,Data Analyst,Data Science,Customer Success,GRD0784,G10,contract,exempt,Seattle,WA,US,false,1
+JOB0865,CUS-02-0865,CS Manager,Customer Support,Finance,GRD0145,G02,part_time,non_exempt,Chicago,IL,US,true,4
+JOB0866,PEO-01-0866,HR Generalist,People Operations,Data,GRD0066,G01,full_time,exempt,Hyderabad,TS,IN,false,4
+JOB0867,FIN-01-0867,Controller,Finance & Accounting,Finance,GRD0067,G01,contract,non_exempt,London,ENG,UK,false,4
+JOB0868,FIN-04-0868,Controller,Finance & Accounting,Security,GRD0308,G04,intern,non_exempt,Bengaluru,KA,IN,false,2
+JOB0869,CUS-09-0869,CS Manager,Customer Support,Finance,GRD0709,G09,part_time,non_exempt,Toronto,ON,CA,true,5
+JOB0870,CUS-06-0870,CS Manager,Customer Support,Data,GRD0470,G06,intern,non_exempt,London,ENG,UK,true,2
+JOB0871,IT -12-0871,IT Support,IT Operations,Facilities,GRD0951,G12,part_time,non_exempt,Chicago,IL,US,true,2
+JOB0872,DAT-05-0872,Data Analyst,Data Science,Supply Chain,GRD0392,G05,part_time,non_exempt,Denver,CO,US,false,3
+JOB0873,IT -12-0873,IT Support,IT Operations,HR,GRD0953,G12,contract,exempt,Austin,TX,US,true,4
+JOB0874,LEG-01-0874,Compliance Analyst,Legal,Sales,GRD0074,G01,contract,non_exempt,San Francisco,CA,US,false,4
+JOB0875,PRO-08-0875,Associate PM,Product Management,Marketing,GRD0635,G08,intern,non_exempt,Denver,CO,US,false,4
+JOB0876,PEO-02-0876,HR Generalist,People Operations,Engineering,GRD0156,G02,intern,non_exempt,New York,NY,US,false,4
+JOB0877,CUS-01-0877,CS Manager,Customer Support,Security,GRD0077,G01,full_time,non_exempt,Dallas,TX,US,true,1
+JOB0878,CUS-12-0878,CS Manager,Customer Support,Engineering,GRD0958,G12,part_time,non_exempt,Atlanta,GA,US,true,2
+JOB0879,PEO-05-0879,HR Generalist,People Operations,Product,GRD0399,G05,intern,non_exempt,Toronto,ON,CA,false,2
+JOB0880,SAL-11-0880,SDR,Sales,Marketing,GRD0880,G11,intern,exempt,Seattle,WA,US,true,1
+JOB0881,LEG-08-0881,Legal Counsel,Legal,Legal,GRD0561,G08,intern,exempt,Hyderabad,TS,IN,true,5
+JOB0882,DAT-06-0882,ML Engineer,Data Science,Supply Chain,GRD0402,G06,intern,exempt,Atlanta,GA,US,false,1
+JOB0883,CUS-01-0883,Support Agent,Customer Support,HR,GRD0003,G01,intern,non_exempt,New York,NY,US,false,2
+JOB0884,IT -11-0884,IT Manager,IT Operations,HR,GRD0804,G11,contract,exempt,London,ENG,UK,true,1
+JOB0885,PRO-10-0885,Product Manager,Product Management,Customer Success,GRD0725,G10,contract,exempt,Austin,TX,US,true,5
+JOB0886,SOF-03-0886,Staff Engineer,Software Engineering,Customer Success,GRD0166,G03,intern,exempt,Toronto,ON,CA,false,1
+JOB0887,SAL-08-0887,Sales Manager,Sales,Operations,GRD0567,G08,full_time,exempt,Dallas,TX,US,true,3
+JOB0888,FIN-03-0888,Financial Analyst,Finance & Accounting,Product,GRD0168,G03,intern,exempt,Seattle,WA,US,false,2
+JOB0889,CUS-04-0889,Support Agent,Customer Support,Security,GRD0249,G04,full_time,exempt,Toronto,ON,CA,false,2
+JOB0890,SOF-10-0890,Software Engineer,Software Engineering,Product,GRD0730,G10,part_time,non_exempt,Hyderabad,TS,IN,true,1
+JOB0891,PEO-05-0891,Recruiter,People Operations,Engineering,GRD0331,G05,intern,exempt,Bengaluru,KA,IN,false,4
+JOB0892,FIN-01-0892,Finance Manager,Finance & Accounting,Supply Chain,GRD0012,G01,contract,non_exempt,New York,NY,US,true,5
+JOB0893,PRO-03-0893,Group PM,Product Management,Supply Chain,GRD0173,G03,intern,non_exempt,Atlanta,GA,US,false,3
+JOB0894,PEO-04-0894,Recruiter,People Operations,HR,GRD0254,G04,part_time,non_exempt,Seattle,WA,US,false,3
+JOB0895,IT -06-0895,IT Manager,IT Operations,Sales,GRD0415,G06,contract,non_exempt,Atlanta,GA,US,true,3
+JOB0896,PRO-01-0896,Group PM,Product Management,Operations,GRD0016,G01,part_time,non_exempt,Hyderabad,TS,IN,false,5
+JOB0897,PEO-02-0897,Recruiter,People Operations,HR,GRD0097,G02,contract,non_exempt,Denver,CO,US,false,2
+JOB0898,IT -11-0898,IT Manager,IT Operations,Legal,GRD0818,G11,intern,non_exempt,Dallas,TX,US,true,2
+JOB0899,PRO-09-0899,Group PM,Product Management,Supply Chain,GRD0659,G09,part_time,non_exempt,Atlanta,GA,US,true,1
+JOB0900,MAR-11-0900,Marketing Specialist,Marketing,Finance,GRD0820,G11,part_time,non_exempt,Toronto,ON,CA,false,5
+JOB0901,PEO-04-0901,People Manager,People Operations,Finance,GRD0261,G04,contract,non_exempt,New York,NY,US,true,3
+JOB0902,SOF-08-0902,Engineering Manager,Software Engineering,Operations,GRD0582,G08,part_time,exempt,London,ENG,UK,true,1
+JOB0903,IT -10-0903,Systems Admin,IT Operations,Customer Success,GRD0743,G10,full_time,non_exempt,Toronto,ON,CA,true,3
+JOB0904,SAL-07-0904,Sales Manager,Sales,Customer Success,GRD0504,G07,intern,non_exempt,San Francisco,CA,US,true,2
+JOB0905,CUS-12-0905,Support Agent,Customer Support,Customer Success,GRD0905,G12,contract,non_exempt,San Francisco,CA,US,true,2
+JOB0906,PEO-10-0906,People Manager,People Operations,Customer Success,GRD0746,G10,full_time,exempt,Hyderabad,TS,IN,true,2
+JOB0907,MAR-05-0907,Demand Gen Manager,Marketing,Customer Success,GRD0347,G05,full_time,exempt,Bengaluru,KA,IN,true,2
+JOB0908,IT -05-0908,Systems Admin,IT Operations,Facilities,GRD0348,G05,part_time,exempt,Seattle,WA,US,false,4
+JOB0909,DAT-04-0909,Data Scientist,Data Science,Finance,GRD0269,G04,intern,exempt,Hyderabad,TS,IN,false,3
+JOB0910,FIN-03-0910,Financial Analyst,Finance & Accounting,Legal,GRD0190,G03,part_time,non_exempt,Denver,CO,US,false,2
+JOB0911,SAL-01-0911,Account Executive,Sales,Customer Success,GRD0031,G01,part_time,non_exempt,London,ENG,UK,false,2
+JOB0912,SAL-10-0912,Account Executive,Sales,Product,GRD0752,G10,part_time,non_exempt,Denver,CO,US,false,2
+JOB0913,IT -08-0913,Cloud Engineer,IT Operations,Customer Success,GRD0593,G08,part_time,exempt,Chicago,IL,US,false,2
+JOB0914,MAR-01-0914,Content Manager,Marketing,Security,GRD0034,G01,full_time,non_exempt,Toronto,ON,CA,true,5
+JOB0915,SAL-12-0915,Sales Manager,Sales,Marketing,GRD0915,G12,intern,non_exempt,Denver,CO,US,true,4
+JOB0916,SAL-01-0916,Account Executive,Sales,Facilities,GRD0036,G01,contract,non_exempt,Dallas,TX,US,false,3
+JOB0917,PEO-07-0917,HRBP,People Operations,Sales,GRD0517,G07,part_time,exempt,London,ENG,UK,false,4
+JOB0918,MAR-04-0918,Marketing Director,Marketing,Engineering,GRD0278,G04,part_time,exempt,Chicago,IL,US,true,4
+JOB0919,IT -04-0919,Cloud Engineer,IT Operations,Engineering,GRD0279,G04,part_time,non_exempt,Toronto,ON,CA,false,4
+JOB0920,SOF-11-0920,Senior Software Engineer,Software Engineering,Data,GRD0840,G11,part_time,non_exempt,New York,NY,US,true,1
+JOB0921,SAL-06-0921,Account Executive,Sales,Operations,GRD0441,G06,contract,exempt,Toronto,ON,CA,false,5
+JOB0922,SOF-05-0922,Staff Engineer,Software Engineering,Data,GRD0362,G05,full_time,non_exempt,Denver,CO,US,false,4
+JOB0923,PRO-03-0923,Associate PM,Product Management,Sales,GRD0203,G03,part_time,exempt,San Francisco,CA,US,false,5
+JOB0924,CUS-01-0924,Support Lead,Customer Support,Security,GRD0044,G01,intern,non_exempt,New York,NY,US,false,4
+JOB0925,FIN-03-0925,Accountant,Finance & Accounting,IT,GRD0205,G03,part_time,non_exempt,Seattle,WA,US,false,3
+JOB0926,SOF-07-0926,Senior Software Engineer,Software Engineering,Facilities,GRD0526,G07,contract,non_exempt,New York,NY,US,false,2
+JOB0927,IT -09-0927,IT Support,IT Operations,Security,GRD0687,G09,full_time,exempt,London,ENG,UK,false,3
+JOB0928,PRO-08-0928,Associate PM,Product Management,HR,GRD0608,G08,part_time,non_exempt,San Francisco,CA,US,true,3
+JOB0929,DAT-12-0929,Data Analyst,Data Science,Customer Success,GRD0929,G12,intern,non_exempt,Hyderabad,TS,IN,false,4
+JOB0930,DAT-10-0930,ML Engineer,Data Science,IT,GRD0770,G10,part_time,non_exempt,Bengaluru,KA,IN,true,1
+JOB0931,MAR-09-0931,Marketing Specialist,Marketing,Engineering,GRD0691,G09,full_time,non_exempt,Toronto,ON,CA,false,2
+JOB0932,IT -10-0932,IT Manager,IT Operations,Marketing,GRD0772,G10,contract,non_exempt,Hyderabad,TS,IN,true,1
+JOB0933,DAT-05-0933,Analytics Manager,Data Science,Marketing,GRD0373,G05,intern,exempt,London,ENG,UK,true,5
+JOB0934,CUS-12-0934,Support Agent,Customer Support,Legal,GRD0934,G12,contract,non_exempt,Denver,CO,US,true,5
+JOB0935,PEO-04-0935,People Manager,People Operations,Engineering,GRD0295,G04,intern,exempt,London,ENG,UK,true,2
+JOB0936,LEG-03-0936,Compliance Analyst,Legal,Customer Success,GRD0216,G03,part_time,non_exempt,San Francisco,CA,US,false,1
+JOB0937,PEO-04-0937,Recruiter,People Operations,Supply Chain,GRD0297,G04,intern,exempt,Bengaluru,KA,IN,false,2
+JOB0938,SOF-09-0938,Staff Engineer,Software Engineering,IT,GRD0698,G09,intern,non_exempt,San Francisco,CA,US,true,3
+JOB0939,MAR-05-0939,Demand Gen Manager,Marketing,Marketing,GRD0379,G05,intern,non_exempt,Atlanta,GA,US,true,1
+JOB0940,SAL-12-0940,Sales Manager,Sales,Engineering,GRD0940,G12,contract,exempt,Toronto,ON,CA,true,1
+JOB0941,LEG-12-0941,Compliance Analyst,Legal,Engineering,GRD0941,G12,full_time,exempt,London,ENG,UK,false,3
+JOB0942,IT -12-0942,IT Support,IT Operations,IT,GRD0942,G12,intern,non_exempt,Chicago,IL,US,true,3
+JOB0943,CUS-01-0943,Support Agent,Customer Support,Legal,GRD0063,G01,intern,non_exempt,Austin,TX,US,false,3
+JOB0944,SAL-05-0944,SDR,Sales,Supply Chain,GRD0384,G05,part_time,non_exempt,New York,NY,US,false,4
+JOB0945,LEG-07-0945,Compliance Analyst,Legal,Operations,GRD0545,G07,contract,exempt,San Francisco,CA,US,false,3
+JOB0946,MAR-05-0946,Demand Gen Manager,Marketing,Facilities,GRD0386,G05,full_time,non_exempt,New York,NY,US,true,3
+JOB0947,FIN-09-0947,Accountant,Finance & Accounting,Legal,GRD0707,G09,intern,non_exempt,Dallas,TX,US,true,3
+JOB0948,LEG-09-0948,Privacy Counsel,Legal,IT,GRD0708,G09,contract,non_exempt,San Francisco,CA,US,false,1
+JOB0949,FIN-02-0949,Financial Analyst,Finance & Accounting,Security,GRD0149,G02,part_time,non_exempt,Seattle,WA,US,false,3
+JOB0950,SAL-09-0950,Enterprise AE,Sales,Supply Chain,GRD0710,G09,full_time,exempt,Austin,TX,US,false,4
+JOB0951,SOF-08-0951,Senior Software Engineer,Software Engineering,Legal,GRD0631,G08,full_time,non_exempt,San Francisco,CA,US,false,4
+JOB0952,PRO-08-0952,Associate PM,Product Management,Product,GRD0632,G08,part_time,non_exempt,San Francisco,CA,US,true,1
+JOB0953,PRO-06-0953,Product Manager,Product Management,Customer Success,GRD0473,G06,part_time,non_exempt,Atlanta,GA,US,true,3
+JOB0954,SOF-12-0954,Engineering Manager,Software Engineering,Supply Chain,GRD0954,G12,part_time,non_exempt,Dallas,TX,US,true,3
+JOB0955,IT -03-0955,IT Manager,IT Operations,HR,GRD0235,G03,contract,non_exempt,Bengaluru,KA,IN,true,3
+JOB0956,PEO-07-0956,Recruiter,People Operations,Security,GRD0556,G07,intern,non_exempt,Dallas,TX,US,false,3
+JOB0957,SAL-02-0957,SDR,Sales,Engineering,GRD0157,G02,part_time,non_exempt,London,ENG,UK,false,3
+JOB0958,MAR-02-0958,Demand Gen Manager,Marketing,Customer Success,GRD0158,G02,intern,non_exempt,San Francisco,CA,US,true,5
+JOB0959,IT -01-0959,IT Manager,IT Operations,Operations,GRD0079,G01,contract,exempt,London,ENG,UK,true,2
+JOB0960,SAL-02-0960,Account Executive,Sales,Marketing,GRD0160,G02,full_time,exempt,Dallas,TX,US,false,5
+JOB0961,PEO-10-0961,HR Generalist,People Operations,Sales,GRD0721,G10,intern,non_exempt,Dallas,TX,US,true,4
+JOB0962,MAR-09-0962,Marketing Specialist,Marketing,Data,GRD0642,G09,intern,non_exempt,Seattle,WA,US,true,3
+JOB0963,SOF-02-0963,Engineering Manager,Software Engineering,IT,GRD0083,G02,intern,exempt,Seattle,WA,US,true,4
+JOB0964,MAR-06-0964,Marketing Director,Marketing,Security,GRD0404,G06,part_time,non_exempt,Hyderabad,TS,IN,true,3
+JOB0965,DAT-04-0965,Data Scientist,Data Science,Engineering,GRD0245,G04,contract,exempt,San Francisco,CA,US,false,2
+JOB0966,DAT-05-0966,Data Scientist,Data Science,Supply Chain,GRD0326,G05,intern,non_exempt,San Francisco,CA,US,false,5
+JOB0967,DAT-01-0967,Data Scientist,Data Science,Sales,GRD0007,G01,full_time,exempt,Toronto,ON,CA,false,3
+JOB0968,MAR-07-0968,Marketing Specialist,Marketing,Legal,GRD0488,G07,contract,non_exempt,Bengaluru,KA,IN,false,4
+JOB0969,SAL-02-0969,Enterprise AE,Sales,Marketing,GRD0089,G02,intern,exempt,Hyderabad,TS,IN,false,5
+JOB0970,CUS-08-0970,CS Manager,Customer Support,Facilities,GRD0570,G08,part_time,non_exempt,Atlanta,GA,US,true,3
+JOB0971,CUS-09-0971,Support Lead,Customer Support,Marketing,GRD0651,G09,part_time,non_exempt,Seattle,WA,US,true,2
+JOB0972,PEO-05-0972,Recruiter,People Operations,Customer Success,GRD0332,G05,full_time,exempt,Atlanta,GA,US,false,2
+JOB0973,SAL-01-0973,SDR,Sales,Operations,GRD0013,G01,full_time,non_exempt,New York,NY,US,false,1
+JOB0974,LEG-10-0974,Legal Counsel,Legal,Data,GRD0734,G10,full_time,non_exempt,Austin,TX,US,true,4
+JOB0975,MAR-03-0975,Demand Gen Manager,Marketing,IT,GRD0175,G03,intern,non_exempt,London,ENG,UK,true,1
+JOB0976,FIN-04-0976,Controller,Finance & Accounting,HR,GRD0256,G04,full_time,non_exempt,Toronto,ON,CA,false,2
+JOB0977,MAR-03-0977,Marketing Director,Marketing,Product,GRD0177,G03,part_time,non_exempt,Austin,TX,US,true,5
+JOB0978,SAL-07-0978,SDR,Sales,Facilities,GRD0498,G07,intern,non_exempt,Seattle,WA,US,false,3
+JOB0979,SOF-03-0979,Software Engineer,Software Engineering,HR,GRD0179,G03,contract,exempt,London,ENG,UK,false,1
+JOB0980,SAL-03-0980,SDR,Sales,Sales,GRD0180,G03,intern,exempt,Seattle,WA,US,false,3
+JOB0981,DAT-06-0981,Data Scientist,Data Science,IT,GRD0421,G06,contract,non_exempt,Hyderabad,TS,IN,false,4
+JOB0982,PRO-11-0982,Associate PM,Product Management,Sales,GRD0822,G11,full_time,non_exempt,Dallas,TX,US,false,5
+JOB0983,SAL-07-0983,Enterprise AE,Sales,HR,GRD0503,G07,intern,non_exempt,San Francisco,CA,US,false,1
+JOB0984,MAR-09-0984,Demand Gen Manager,Marketing,Security,GRD0664,G09,part_time,exempt,San Francisco,CA,US,true,3
+JOB0985,SAL-02-0985,SDR,Sales,Marketing,GRD0105,G02,contract,exempt,Hyderabad,TS,IN,false,4
+JOB0986,CUS-06-0986,Support Lead,Customer Support,Finance,GRD0426,G06,part_time,non_exempt,Chicago,IL,US,false,3
+JOB0987,SAL-04-0987,Account Executive,Sales,Facilities,GRD0267,G04,full_time,exempt,Denver,CO,US,false,5
+JOB0988,SAL-08-0988,Account Executive,Sales,Supply Chain,GRD0588,G08,full_time,exempt,Dallas,TX,US,true,5
+JOB0989,SOF-07-0989,Senior Software Engineer,Software Engineering,IT,GRD0509,G07,intern,non_exempt,Toronto,ON,CA,false,5
+JOB0990,PRO-04-0990,Senior PM,Product Management,Engineering,GRD0270,G04,intern,non_exempt,Dallas,TX,US,false,4
+JOB0991,IT -08-0991,Systems Admin,IT Operations,Finance,GRD0591,G08,part_time,exempt,Toronto,ON,CA,false,4
+JOB0992,LEG-10-0992,Legal Counsel,Legal,Security,GRD0752,G10,contract,non_exempt,Dallas,TX,US,false,4
+JOB0993,MAR-05-0993,Demand Gen Manager,Marketing,Security,GRD0353,G05,part_time,exempt,Denver,CO,US,true,3
+JOB0994,LEG-08-0994,Compliance Analyst,Legal,Customer Success,GRD0594,G08,intern,non_exempt,Toronto,ON,CA,true,5
+JOB0995,MAR-05-0995,Content Manager,Marketing,Supply Chain,GRD0355,G05,full_time,non_exempt,Toronto,ON,CA,true,5
+JOB0996,IT -07-0996,IT Manager,IT Operations,Supply Chain,GRD0516,G07,part_time,exempt,Toronto,ON,CA,true,3
+JOB0997,PEO-01-0997,HRBP,People Operations,HR,GRD0037,G01,full_time,non_exempt,San Francisco,CA,US,false,2
+JOB0998,SOF-01-0998,Engineering Manager,Software Engineering,Product,GRD0038,G01,contract,non_exempt,Seattle,WA,US,true,5
+JOB0999,PRO-03-0999,Product Manager,Product Management,Legal,GRD0199,G03,intern,non_exempt,Hyderabad,TS,IN,true,2
+JOB1000,DAT-06-1000,Data Analyst,Data Science,IT,GRD0440,G06,intern,exempt,Dallas,TX,US,false,1

@@ -1,0 +1,1001 @@
+employee_id,employee_number,first_name,last_name,email,phone,gender,date_of_birth,job_id,department,grade_code,manager_id,location_city,location_country,employment_status,employment_type,hire_date,termination_date,current_salary,currency
+EMP0001,E100001,Amelia,Walker,amelia.walker1@corp.example.com,+1-442-981-7843,prefer_not_to_say,1994-04-05,JOB0001,Supply Chain,G09,,Denver,US,retired,intern,2018-10-26,,163673.04,USD
+EMP0002,E100002,Scarlett,Costa,scarlett.costa2@corp.example.com,+1-907-383-6115,male,1969-09-09,JOB0002,Sales,G01,,Dallas,US,on_leave,intern,2018-09-27,,56077.35,USD
+EMP0003,E100003,Nora,Sanchez,nora.sanchez3@corp.example.com,+1-594-819-7607,prefer_not_to_say,1997-05-07,JOB0003,Legal,G01,,Chicago,US,active,full_time,2024-02-27,,61442.93,USD
+EMP0004,E100004,Alexander,Walker,alexander.walker4@corp.example.com,+1-356-673-8739,male,1993-09-23,JOB0004,Sales,G08,,Hyderabad,IN,active,full_time,2022-12-05,,45273.09,INR
+EMP0005,E100005,Lily,Miller,lily.miller5@corp.example.com,+1-816-715-6645,non_binary,1994-11-14,JOB0005,Data,G02,,Bengaluru,IN,active,part_time,2024-09-07,,21013.79,INR
+EMP0006,E100006,Oliver,Murphy,oliver.murphy6@corp.example.com,+1-280-659-4469,non_binary,2001-03-12,JOB0006,Security,G02,,Bengaluru,IN,active,full_time,2023-01-27,,21453.50,INR
+EMP0007,E100007,Priya,Rodriguez,priya.rodriguez7@corp.example.com,+1-752-878-9903,non_binary,1995-01-08,JOB0007,Operations,G12,,Hyderabad,IN,on_leave,intern,2023-02-23,,61667.97,INR
+EMP0008,E100008,Michael,Walker,michael.walker8@corp.example.com,+1-657-319-1204,prefer_not_to_say,1982-10-07,JOB0008,Sales,G02,,Toronto,CA,terminated,part_time,2024-11-13,2026-04-04,61427.04,USD
+EMP0009,E100009,Abigail,Ali,abigail.ali9@corp.example.com,+1-919-726-9616,prefer_not_to_say,1986-05-26,JOB0009,Security,G11,,Toronto,CA,active,full_time,2017-10-02,,165646.51,USD
+EMP0010,E100010,Sofia,Murphy,sofia.murphy10@corp.example.com,+1-936-782-9831,prefer_not_to_say,1981-03-09,JOB0010,HR,G08,,Austin,US,active,part_time,2023-06-16,,148761.22,USD
+EMP0011,E100011,Daniel,Walker,daniel.walker11@corp.example.com,+1-549-241-5572,prefer_not_to_say,1990-04-29,JOB0011,Data,G05,EMP0447,Austin,US,active,intern,2021-09-09,,109202.08,USD
+EMP0012,E100012,Logan,Smith,logan.smith12@corp.example.com,+1-488-528-7186,non_binary,1980-06-04,JOB0012,Supply Chain,G03,EMP0113,New York,US,terminated,part_time,2016-12-13,2025-05-04,85394.79,USD
+EMP0013,E100013,Emily,Garcia,emily.garcia13@corp.example.com,+1-602-922-5871,female,1987-09-25,JOB0013,Facilities,G01,EMP0090,Dallas,US,retired,full_time,2016-06-05,,58441.01,USD
+EMP0014,E100014,Sophia,Lee,sophia.lee14@corp.example.com,+1-814-431-3270,female,1982-04-17,JOB0014,IT,G12,EMP0092,Austin,US,active,contract,2025-07-24,,203208.49,USD
+EMP0015,E100015,Logan,Singh,logan.singh15@corp.example.com,+1-558-479-4094,non_binary,2004-03-13,JOB0015,Facilities,G01,EMP0302,New York,US,active,intern,2021-01-07,,57167.36,USD
+EMP0016,E100016,Scarlett,Nguyen,scarlett.nguyen16@corp.example.com,+1-733-835-8273,non_binary,1992-06-28,JOB0016,Product,G02,EMP0851,Bengaluru,IN,retired,contract,2015-01-08,,21932.97,INR
+EMP0017,E100017,Lucas,Johnson,lucas.johnson17@corp.example.com,+1-347-757-1990,female,1980-09-30,JOB0017,Marketing,G02,EMP0352,San Francisco,US,on_leave,contract,2014-02-23,,72258.08,USD
+EMP0018,E100018,Alexander,Costa,alexander.costa18@corp.example.com,+1-711-651-2176,prefer_not_to_say,2000-04-30,JOB0018,Finance,G10,EMP0442,Bengaluru,IN,active,part_time,2014-01-21,,53034.52,INR
+EMP0019,E100019,Harper,Brown,harper.brown19@corp.example.com,+1-937-514-4827,non_binary,1971-03-17,JOB0019,Operations,G09,EMP0297,Denver,US,terminated,intern,2019-07-02,2025-08-03,163228.04,USD
+EMP0020,E100020,Abigail,Robinson,abigail.robinson20@corp.example.com,+1-748-228-2062,non_binary,1997-09-03,JOB0020,Engineering,G12,EMP0650,Toronto,CA,on_leave,part_time,2024-02-04,,175821.77,USD
+EMP0021,E100021,Grace,Rodriguez,grace.rodriguez21@corp.example.com,+1-373-287-5015,female,2003-09-07,JOB0021,Security,G08,EMP0293,Seattle,US,terminated,part_time,2014-12-18,2019-04-19,149167.24,USD
+EMP0022,E100022,Riley,Costa,riley.costa22@corp.example.com,+1-727-531-6447,male,1991-01-05,JOB0022,Data,G07,EMP0435,Dallas,US,retired,intern,2020-02-03,,135979.66,USD
+EMP0023,E100023,Sophia,Murphy,sophia.murphy23@corp.example.com,+1-467-393-9475,prefer_not_to_say,1965-03-26,JOB0023,Engineering,G05,EMP0271,Chicago,US,active,intern,2014-01-03,,110179.48,USD
+EMP0024,E100024,Arjun,Thomas,arjun.thomas24@corp.example.com,+1-762-642-6757,non_binary,2004-08-25,JOB0024,Supply Chain,G06,EMP0521,Austin,US,terminated,part_time,2016-10-08,2018-04-22,123891.60,USD
+EMP0025,E100025,Grace,Brown,grace.brown25@corp.example.com,+1-328-812-8326,non_binary,1996-12-17,JOB0025,Facilities,G02,EMP0737,Austin,US,retired,contract,2025-08-01,,70522.33,USD
+EMP0026,E100026,Oliver,Kim,oliver.kim26@corp.example.com,+1-204-300-2411,male,1968-09-11,JOB0026,Operations,G09,EMP0900,Dallas,US,active,part_time,2020-12-15,,163516.03,USD
+EMP0027,E100027,Daniel,Brown,daniel.brown27@corp.example.com,+1-644-821-7980,male,1968-12-28,JOB0027,Supply Chain,G09,EMP0924,Toronto,CA,terminated,full_time,2014-10-25,2019-08-12,141544.05,USD
+EMP0028,E100028,Lily,Perez,lily.perez28@corp.example.com,+1-721-241-1920,female,1969-08-01,JOB0028,HR,G12,EMP0935,Seattle,US,active,full_time,2016-11-14,,202923.49,USD
+EMP0029,E100029,Riley,Miller,riley.miller29@corp.example.com,+1-327-835-5482,prefer_not_to_say,1967-11-03,JOB0029,Finance,G07,EMP0969,Chicago,US,active,contract,2019-12-28,,135099.42,USD
+EMP0030,E100030,Scarlett,Miller,scarlett.miller30@corp.example.com,+1-603-895-4820,non_binary,1972-04-16,JOB0030,IT,G10,EMP0940,Hyderabad,IN,on_leave,part_time,2018-11-29,,54102.60,INR
+EMP0031,E100031,Riley,Lewis,riley.lewis31@corp.example.com,+1-352-679-4703,male,1976-05-26,JOB0031,Product,G02,EMP0826,Toronto,CA,active,full_time,2022-05-18,,63403.93,USD
+EMP0032,E100032,Alexander,Jones,alexander.jones32@corp.example.com,+1-224-350-3618,non_binary,1994-05-18,JOB0032,Security,G09,EMP0839,Dallas,US,active,intern,2015-12-10,,166371.37,USD
+EMP0033,E100033,Henry,Martin,henry.martin33@corp.example.com,+1-452-435-7796,male,1971-05-15,JOB0033,HR,G05,EMP0438,Seattle,US,on_leave,intern,2016-11-24,,111526.91,USD
+EMP0034,E100034,Owen,Murphy,owen.murphy34@corp.example.com,+1-899-583-7082,male,1976-07-21,JOB0034,Facilities,G06,EMP0542,San Francisco,US,active,part_time,2019-06-20,,123696.51,USD
+EMP0035,E100035,Sebastian,Thomas,sebastian.thomas35@corp.example.com,+1-389-940-1137,female,1993-10-17,JOB0035,IT,G04,EMP0043,San Francisco,US,terminated,contract,2016-02-18,2019-02-13,96333.36,USD
+EMP0036,E100036,Isabella,Anderson,isabella.anderson36@corp.example.com,+1-388-211-7016,non_binary,2004-06-26,JOB0036,Data,G02,EMP0706,Dallas,US,terminated,contract,2017-01-16,2022-10-24,71820.29,USD
+EMP0037,E100037,Arjun,Jones,arjun.jones37@corp.example.com,+1-335-725-9442,male,1978-02-15,JOB0037,Facilities,G08,EMP0501,Dallas,US,active,full_time,2015-10-16,,152634.48,USD
+EMP0038,E100038,Aria,Nguyen,aria.nguyen38@corp.example.com,+1-336-404-8626,female,1980-01-27,JOB0038,Marketing,G01,EMP0761,Dallas,US,terminated,full_time,2024-11-27,2025-12-04,60864.01,USD
+EMP0039,E100039,Logan,Walker,logan.walker39@corp.example.com,+1-864-442-9020,female,1967-10-22,JOB0039,Data,G09,EMP0783,Toronto,CA,active,part_time,2019-09-26,,142745.89,USD
+EMP0040,E100040,Grace,Kim,grace.kim40@corp.example.com,+1-340-216-5037,prefer_not_to_say,1995-03-29,JOB0040,IT,G03,EMP0908,London,UK,on_leave,full_time,2019-05-02,,76456.74,GBP
+EMP0041,E100041,Mia,Lewis,mia.lewis41@corp.example.com,+1-834-352-6946,male,1984-08-22,JOB0041,IT,G01,EMP0282,Chicago,US,active,part_time,2019-09-10,,61512.47,USD
+EMP0042,E100042,Ananya,Murphy,ananya.murphy42@corp.example.com,+1-422-640-8500,male,1987-08-30,JOB0042,Marketing,G11,EMP0104,Atlanta,US,active,full_time,2024-09-23,,189153.81,USD
+EMP0043,E100043,Priya,Singh,priya.singh43@corp.example.com,+1-514-310-6498,non_binary,1990-11-14,JOB0043,Operations,G05,EMP0518,Austin,US,active,intern,2017-10-04,,110735.46,USD
+EMP0044,E100044,Ethan,Garcia,ethan.garcia44@corp.example.com,+1-804-906-3116,prefer_not_to_say,1968-09-18,JOB0044,Operations,G09,EMP0086,Toronto,CA,terminated,full_time,2014-02-01,2022-09-05,144543.89,USD
+EMP0045,E100045,Lucas,Smith,lucas.smith45@corp.example.com,+1-485-849-2974,male,1971-07-07,JOB0045,HR,G03,EMP0223,Chicago,US,terminated,intern,2020-12-04,2023-05-25,82300.40,USD
+EMP0046,E100046,Mateo,Hernandez,mateo.hernandez46@corp.example.com,+1-541-308-6682,female,1968-12-09,JOB0046,Operations,G05,EMP0721,San Francisco,US,active,intern,2024-01-30,,111544.82,USD
+EMP0047,E100047,Sofia,Martinez,sofia.martinez47@corp.example.com,+1-695-734-6331,female,1967-06-15,JOB0047,Sales,G02,EMP0061,London,UK,active,intern,2024-10-15,,63105.76,GBP
+EMP0048,E100048,Chloe,Jackson,chloe.jackson48@corp.example.com,+1-853-393-2824,prefer_not_to_say,2001-03-16,JOB0048,HR,G02,EMP0750,Austin,US,terminated,full_time,2026-05-19,2026-07-30,73133.05,USD
+EMP0049,E100049,Lucas,Wilson,lucas.wilson49@corp.example.com,+1-794-719-6429,male,1965-01-10,JOB0049,Product,G04,EMP0674,Dallas,US,retired,intern,2019-12-09,,99205.46,USD
+EMP0050,E100050,Sebastian,Davis,sebastian.davis50@corp.example.com,+1-979-610-3062,male,1967-09-19,JOB0050,IT,G02,EMP0634,Atlanta,US,on_leave,contract,2026-02-11,,71343.83,USD
+EMP0051,E100051,Liam,Johnson,liam.johnson51@corp.example.com,+1-235-964-2799,female,1966-01-28,JOB0051,Security,G02,EMP0093,Dallas,US,terminated,intern,2020-12-31,2026-06-21,72310.63,USD
+EMP0052,E100052,Wei,Nguyen,wei.nguyen52@corp.example.com,+1-651-437-7104,non_binary,1970-11-09,JOB0052,Supply Chain,G11,EMP0085,Hyderabad,IN,active,full_time,2022-09-02,,57317.29,INR
+EMP0053,E100053,Amelia,Anderson,amelia.anderson53@corp.example.com,+1-323-621-6842,male,1991-05-04,JOB0053,Legal,G08,EMP0426,Hyderabad,IN,retired,part_time,2023-12-06,,45746.38,INR
+EMP0054,E100054,Jacob,Rodriguez,jacob.rodriguez54@corp.example.com,+1-318-587-8379,female,1974-12-15,JOB0054,Data,G11,EMP0592,Hyderabad,IN,terminated,part_time,2023-04-10,2023-07-26,58043.02,INR
+EMP0055,E100055,Yuki,Jackson,yuki.jackson55@corp.example.com,+1-427-731-3481,female,1991-12-26,JOB0055,Operations,G01,EMP0903,Seattle,US,active,part_time,2023-06-09,,60649.49,USD
+EMP0056,E100056,Nora,Lopez,nora.lopez56@corp.example.com,+1-979-493-8915,prefer_not_to_say,1987-07-19,JOB0056,Engineering,G02,EMP0591,Denver,US,on_leave,part_time,2018-08-04,,69187.03,USD
+EMP0057,E100057,Alexander,Taylor,alexander.taylor57@corp.example.com,+1-346-507-3951,non_binary,2004-08-27,JOB0057,Finance,G02,EMP0108,Atlanta,US,on_leave,intern,2017-08-13,,72385.61,USD
+EMP0058,E100058,Ananya,Brown,ananya.brown58@corp.example.com,+1-536-465-6784,female,1981-06-16,JOB0058,Marketing,G08,EMP0311,Chicago,US,active,intern,2026-05-24,,152455.21,USD
+EMP0059,E100059,Noah,Taylor,noah.taylor59@corp.example.com,+1-400-914-6569,non_binary,1970-08-16,JOB0059,HR,G03,EMP0767,San Francisco,US,on_leave,full_time,2018-01-30,,86357.92,USD
+EMP0060,E100060,Aiden,Jackson,aiden.jackson60@corp.example.com,+1-893-463-6389,female,1975-07-11,JOB0060,Supply Chain,G03,EMP0963,Bengaluru,IN,on_leave,contract,2019-04-03,,24815.82,INR
+EMP0061,E100061,Riley,Jackson,riley.jackson61@corp.example.com,+1-911-405-1455,female,1980-08-30,JOB0061,Sales,G03,EMP0190,Seattle,US,terminated,full_time,2015-05-09,2023-11-08,84137.08,USD
+EMP0062,E100062,Emma,Ramirez,emma.ramirez62@corp.example.com,+1-376-337-5382,male,1976-04-21,JOB0062,Legal,G09,EMP0286,New York,US,active,contract,2015-05-03,,162382.05,USD
+EMP0063,E100063,Ella,Hernandez,ella.hernandez63@corp.example.com,+1-745-782-9701,male,1976-05-20,JOB0063,Legal,G03,EMP0089,Dallas,US,terminated,intern,2025-02-07,2025-10-11,82040.25,USD
+EMP0064,E100064,Harper,Moore,harper.moore64@corp.example.com,+1-737-235-6585,non_binary,1985-11-01,JOB0064,Marketing,G03,EMP0031,Toronto,CA,active,intern,2014-11-20,,73858.34,USD
+EMP0065,E100065,Grace,Clark,grace.clark65@corp.example.com,+1-302-856-1520,female,1996-04-28,JOB0065,Product,G01,EMP0563,Seattle,US,active,contract,2023-09-01,,58020.03,USD
+EMP0066,E100066,Mason,Thompson,mason.thompson66@corp.example.com,+1-618-705-1225,male,1994-05-19,JOB0066,Facilities,G09,EMP0072,Denver,US,active,contract,2014-11-24,,165355.50,USD
+EMP0067,E100067,Isabella,Costa,isabella.costa67@corp.example.com,+1-257-767-3617,male,1981-05-07,JOB0067,Sales,G09,EMP0493,London,UK,terminated,intern,2017-02-02,2026-01-18,151458.63,GBP
+EMP0068,E100068,Lucas,Thompson,lucas.thompson68@corp.example.com,+1-382-462-1348,male,1977-09-18,JOB0068,Marketing,G03,EMP0802,Toronto,CA,active,part_time,2015-08-12,,74998.05,USD
+EMP0069,E100069,Jacob,Silva,jacob.silva69@corp.example.com,+1-417-790-2508,male,1987-04-12,JOB0069,Security,G11,EMP0762,Dallas,US,active,full_time,2016-05-09,,191741.73,USD
+EMP0070,E100070,Ava,White,ava.white70@corp.example.com,+1-417-650-8242,non_binary,1995-09-07,JOB0070,IT,G08,EMP0005,San Francisco,US,retired,part_time,2019-11-04,,152685.05,USD
+EMP0071,E100071,Harper,Murphy,harper.murphy71@corp.example.com,+1-344-867-2925,female,1995-06-30,JOB0071,Customer Success,G02,EMP0775,Chicago,US,active,intern,2022-12-24,,73251.14,USD
+EMP0072,E100072,Emma,Martin,emma.martin72@corp.example.com,+1-817-287-2820,prefer_not_to_say,1990-07-01,JOB0072,Finance,G12,EMP0300,Toronto,CA,active,intern,2025-12-02,,175946.33,USD
+EMP0073,E100073,Riley,Lewis,riley.lewis73@corp.example.com,+1-849-486-4147,female,1973-11-10,JOB0073,Engineering,G05,EMP0480,Dallas,US,active,part_time,2020-11-20,,113165.70,USD
+EMP0074,E100074,Emma,Jackson,emma.jackson74@corp.example.com,+1-708-226-6860,female,1967-09-22,JOB0074,Operations,G08,EMP0025,Bengaluru,IN,active,contract,2018-12-10,,46168.17,INR
+EMP0075,E100075,Olivia,Anderson,olivia.anderson75@corp.example.com,+1-419-743-2480,non_binary,1966-10-01,JOB0075,Engineering,G08,EMP0154,Toronto,CA,active,part_time,2022-05-28,,128473.10,USD
+EMP0076,E100076,Henry,Davis,henry.davis76@corp.example.com,+1-832-737-6380,non_binary,1967-03-06,JOB0076,Security,G11,EMP0501,Chicago,US,active,part_time,2019-07-09,,188106.54,USD
+EMP0077,E100077,Emily,Chen,emily.chen77@corp.example.com,+1-911-629-3965,male,1989-07-20,JOB0077,Operations,G02,EMP0551,Bengaluru,IN,active,full_time,2024-02-15,,22031.69,INR
+EMP0078,E100078,Aria,Ali,aria.ali78@corp.example.com,+1-719-460-5911,prefer_not_to_say,1988-02-13,JOB0078,Marketing,G12,EMP0462,London,UK,active,full_time,2021-10-12,,188548.24,GBP
+EMP0079,E100079,Sebastian,Perez,sebastian.perez79@corp.example.com,+1-561-668-3150,prefer_not_to_say,1972-11-27,JOB0079,Sales,G01,EMP0962,New York,US,terminated,part_time,2026-05-05,2026-07-18,60771.91,USD
+EMP0080,E100080,James,Miller,james.miller80@corp.example.com,+1-665-733-3839,male,1994-10-18,JOB0080,Product,G02,EMP0913,Dallas,US,terminated,part_time,2022-10-08,2024-08-19,73355.18,USD
+EMP0081,E100081,Elijah,Ramirez,elijah.ramirez81@corp.example.com,+1-999-229-8884,prefer_not_to_say,1990-10-26,JOB0081,Finance,G09,EMP0846,San Francisco,US,on_leave,contract,2025-09-18,,161446.94,USD
+EMP0082,E100082,Sebastian,Lewis,sebastian.lewis82@corp.example.com,+1-513-463-4269,non_binary,1975-02-28,JOB0082,Data,G02,EMP0641,Seattle,US,active,contract,2018-07-17,,71147.74,USD
+EMP0083,E100083,Yuki,Lee,yuki.lee83@corp.example.com,+1-373-993-2519,female,1992-05-11,JOB0083,Data,G12,EMP0849,Seattle,US,active,contract,2016-10-03,,206698.38,USD
+EMP0084,E100084,Mason,Taylor,mason.taylor84@corp.example.com,+1-805-926-3794,prefer_not_to_say,1967-06-24,JOB0084,HR,G03,EMP0157,Toronto,CA,active,intern,2025-03-31,,75498.40,USD
+EMP0085,E100085,Liam,Moore,liam.moore85@corp.example.com,+1-917-948-5129,male,1966-01-07,JOB0085,Product,G02,EMP0279,Atlanta,US,active,full_time,2019-09-08,,70608.18,USD
+EMP0086,E100086,Emily,Taylor,emily.taylor86@corp.example.com,+1-305-214-3233,prefer_not_to_say,1973-03-11,JOB0086,Product,G04,EMP0059,Bengaluru,IN,on_leave,intern,2016-09-28,,29392.86,INR
+EMP0087,E100087,Michael,Martin,michael.martin87@corp.example.com,+1-409-933-5433,non_binary,1971-02-25,JOB0087,Product,G10,EMP0334,Chicago,US,active,intern,2019-06-30,,178960.83,USD
+EMP0088,E100088,Aria,Moore,aria.moore88@corp.example.com,+1-431-679-3156,male,1988-02-13,JOB0088,Engineering,G12,EMP0933,Austin,US,terminated,part_time,2020-05-17,2023-06-11,205033.84,USD
+EMP0089,E100089,Daniel,Robinson,daniel.robinson89@corp.example.com,+1-944-230-9409,female,1973-10-26,JOB0089,Data,G10,EMP0128,Chicago,US,active,part_time,2022-04-06,,177426.35,USD
+EMP0090,E100090,Aria,Walker,aria.walker90@corp.example.com,+1-771-615-8257,female,1970-07-31,JOB0090,Operations,G01,EMP0730,Chicago,US,active,contract,2023-09-03,,55773.09,USD
+EMP0091,E100091,Nora,Smith,nora.smith91@corp.example.com,+1-510-231-7494,prefer_not_to_say,1983-04-12,JOB0091,Finance,G01,EMP0096,Bengaluru,IN,active,full_time,2020-02-05,,17116.62,INR
+EMP0092,E100092,Lucas,Smith,lucas.smith92@corp.example.com,+1-337-948-9561,female,1996-11-14,JOB0092,IT,G03,EMP0409,New York,US,terminated,part_time,2023-10-17,2025-01-23,85990.33,USD
+EMP0093,E100093,James,Williams,james.williams93@corp.example.com,+1-530-286-8135,male,1983-07-22,JOB0093,Security,G02,EMP0779,London,UK,active,contract,2021-11-02,,64933.16,GBP
+EMP0094,E100094,Amelia,Martinez,amelia.martinez94@corp.example.com,+1-509-623-7842,prefer_not_to_say,2001-06-17,JOB0094,Product,G02,EMP0472,Hyderabad,IN,active,intern,2017-09-24,,21011.00,INR
+EMP0095,E100095,Olivia,Thompson,olivia.thompson95@corp.example.com,+1-693-894-8185,prefer_not_to_say,1987-02-27,JOB0095,Sales,G11,EMP0613,London,UK,terminated,intern,2021-02-20,2021-12-20,170966.04,GBP
+EMP0096,E100096,Liam,Brown,liam.brown96@corp.example.com,+1-663-977-9831,non_binary,1985-12-29,JOB0096,Legal,G12,EMP0802,San Francisco,US,active,full_time,2022-03-02,,202046.44,USD
+EMP0097,E100097,Isabella,Silva,isabella.silva97@corp.example.com,+1-927-257-9418,female,1986-11-23,JOB0097,Facilities,G03,EMP0851,Austin,US,active,part_time,2026-06-03,,85033.55,USD
+EMP0098,E100098,Elena,Perez,elena.perez98@corp.example.com,+1-478-651-8436,female,1999-08-28,JOB0098,Product,G05,EMP0486,Hyderabad,IN,active,contract,2023-04-28,,34588.16,INR
+EMP0099,E100099,Oliver,Martinez,oliver.martinez99@corp.example.com,+1-779-589-2563,prefer_not_to_say,2003-11-11,JOB0099,Product,G07,EMP0001,Toronto,CA,active,full_time,2017-02-28,,119672.74,USD
+EMP0100,E100100,Isabella,Khan,isabella.khan100@corp.example.com,+1-549-907-7345,female,1970-03-27,JOB0100,Finance,G12,EMP0152,Dallas,US,retired,part_time,2021-03-12,,203842.44,USD
+EMP0101,E100101,Sebastian,Lee,sebastian.lee101@corp.example.com,+1-569-997-5069,male,2004-10-29,JOB0101,Finance,G12,EMP0547,San Francisco,US,active,full_time,2018-07-29,,202824.76,USD
+EMP0102,E100102,Ethan,Anderson,ethan.anderson102@corp.example.com,+1-408-443-9922,male,1993-06-10,JOB0102,Security,G02,EMP0214,Seattle,US,retired,intern,2018-02-03,,72760.04,USD
+EMP0103,E100103,James,Thomas,james.thomas103@corp.example.com,+1-878-358-4929,prefer_not_to_say,1976-12-12,JOB0103,Security,G08,EMP0442,Denver,US,active,part_time,2023-05-14,,148840.71,USD
+EMP0104,E100104,Grace,Anderson,grace.anderson104@corp.example.com,+1-292-686-1079,male,1995-03-28,JOB0104,Marketing,G04,EMP0264,Austin,US,active,intern,2017-10-18,,94652.93,USD
+EMP0105,E100105,Noah,Lee,noah.lee105@corp.example.com,+1-829-959-6016,prefer_not_to_say,1989-05-13,JOB0105,Security,G03,EMP0438,Toronto,CA,active,contract,2024-10-03,,75834.58,USD
+EMP0106,E100106,Aiden,Perez,aiden.perez106@corp.example.com,+1-385-346-9557,male,1983-07-14,JOB0106,Finance,G04,EMP0339,Bengaluru,IN,active,full_time,2025-10-05,,29428.16,INR
+EMP0107,E100107,Scarlett,Miller,scarlett.miller107@corp.example.com,+1-692-909-9145,non_binary,1985-01-30,JOB0107,Facilities,G06,EMP0329,Chicago,US,active,contract,2017-09-19,,121382.55,USD
+EMP0108,E100108,Ethan,Jackson,ethan.jackson108@corp.example.com,+1-576-926-5765,non_binary,1968-10-02,JOB0108,HR,G10,EMP0204,San Francisco,US,active,intern,2014-12-15,,178430.68,USD
+EMP0109,E100109,Mason,Silva,mason.silva109@corp.example.com,+1-243-651-5065,male,1975-02-21,JOB0109,Supply Chain,G11,EMP0175,Denver,US,on_leave,part_time,2019-08-16,,188487.11,USD
+EMP0110,E100110,James,Williams,james.williams110@corp.example.com,+1-630-870-5594,male,1995-12-20,JOB0110,IT,G05,EMP0050,London,UK,active,contract,2024-06-12,,100850.77,GBP
+EMP0111,E100111,Scarlett,Johnson,scarlett.johnson111@corp.example.com,+1-342-443-7647,non_binary,2000-09-28,JOB0111,Security,G04,EMP0184,London,UK,terminated,contract,2018-08-24,2024-11-23,89960.67,GBP
+EMP0112,E100112,Nora,Jackson,nora.jackson112@corp.example.com,+1-560-693-8211,male,2001-01-25,JOB0112,Facilities,G03,EMP0496,Toronto,CA,retired,full_time,2019-07-02,,76138.11,USD
+EMP0113,E100113,Aria,Harris,aria.harris113@corp.example.com,+1-381-827-8524,male,1997-08-07,JOB0113,Security,G12,EMP0520,Chicago,US,retired,contract,2019-03-18,,203638.59,USD
+EMP0114,E100114,Ethan,Thomas,ethan.thomas114@corp.example.com,+1-653-935-7257,prefer_not_to_say,1984-09-18,JOB0114,Sales,G01,EMP0517,Austin,US,active,contract,2022-01-08,,60197.60,USD
+EMP0115,E100115,Sebastian,Murphy,sebastian.murphy115@corp.example.com,+1-892-764-4938,prefer_not_to_say,1985-12-11,JOB0115,Sales,G12,EMP0386,Austin,US,active,intern,2022-06-25,,202635.16,USD
+EMP0116,E100116,Evelyn,Anderson,evelyn.anderson116@corp.example.com,+1-466-311-3320,non_binary,1999-10-11,JOB0116,IT,G05,EMP0934,Hyderabad,IN,retired,intern,2020-02-28,,33863.60,INR
+EMP0117,E100117,Ella,Thomas,ella.thomas117@corp.example.com,+1-829-274-8050,prefer_not_to_say,1977-02-23,JOB0117,Legal,G10,EMP0911,Dallas,US,on_leave,full_time,2015-10-13,,177689.81,USD
+EMP0118,E100118,Ella,Lee,ella.lee118@corp.example.com,+1-590-609-9996,male,1978-04-04,JOB0118,Sales,G11,EMP0287,Chicago,US,retired,part_time,2019-03-19,,192483.37,USD
+EMP0119,E100119,Sofia,Smith,sofia.smith119@corp.example.com,+1-499-301-3377,male,1965-08-30,JOB0119,Legal,G08,EMP0396,Bengaluru,IN,terminated,intern,2024-02-28,2024-10-02,46390.23,INR
+EMP0120,E100120,Wei,Kim,wei.kim120@corp.example.com,+1-486-237-9219,male,1994-12-18,JOB0120,Facilities,G09,EMP0283,Seattle,US,on_leave,contract,2017-04-07,,166220.53,USD
+EMP0121,E100121,Mateo,Silva,mateo.silva121@corp.example.com,+1-304-979-6481,female,1976-07-12,JOB0121,HR,G06,EMP0670,Toronto,CA,active,part_time,2022-06-28,,110667.42,USD
+EMP0122,E100122,Abigail,Thomas,abigail.thomas122@corp.example.com,+1-225-389-7914,non_binary,1977-11-30,JOB0122,Finance,G06,EMP0919,Seattle,US,retired,part_time,2015-01-30,,120983.18,USD
+EMP0123,E100123,Mateo,Clark,mateo.clark123@corp.example.com,+1-902-753-9711,male,2000-01-23,JOB0123,Legal,G11,EMP0640,New York,US,retired,intern,2024-07-03,,189609.53,USD
+EMP0124,E100124,Evelyn,Taylor,evelyn.taylor124@corp.example.com,+1-755-549-4534,non_binary,1978-03-19,JOB0124,Sales,G01,EMP0025,Austin,US,active,full_time,2016-08-21,,61236.39,USD
+EMP0125,E100125,Henry,Lopez,henry.lopez125@corp.example.com,+1-267-735-1165,non_binary,1967-11-02,JOB0125,Data,G09,EMP0783,Chicago,US,terminated,part_time,2016-03-22,2020-05-04,161792.27,USD
+EMP0126,E100126,Alexander,Thompson,alexander.thompson126@corp.example.com,+1-796-699-7098,male,1980-03-23,JOB0126,Sales,G10,EMP0294,Seattle,US,on_leave,intern,2019-05-31,,179834.35,USD
+EMP0127,E100127,Noah,Garcia,noah.garcia127@corp.example.com,+1-815-769-2602,prefer_not_to_say,1973-09-25,JOB0127,Security,G01,EMP0854,San Francisco,US,active,part_time,2024-03-13,,61187.72,USD
+EMP0128,E100128,Lucas,Lopez,lucas.lopez128@corp.example.com,+1-768-957-5070,female,1978-07-05,JOB0128,Sales,G09,EMP0720,New York,US,active,part_time,2015-06-19,,166886.66,USD
+EMP0129,E100129,Amelia,Lopez,amelia.lopez129@corp.example.com,+1-350-689-2131,male,1992-02-05,JOB0129,Security,G12,EMP0675,Bengaluru,IN,active,part_time,2018-06-06,,62676.92,INR
+EMP0130,E100130,Zoey,Hernandez,zoey.hernandez130@corp.example.com,+1-370-696-7251,non_binary,2002-12-31,JOB0130,Operations,G08,EMP0596,Austin,US,terminated,full_time,2023-10-13,2024-05-13,149525.84,USD
+EMP0131,E100131,Ava,Lee,ava.lee131@corp.example.com,+1-335-369-6424,prefer_not_to_say,1994-02-18,JOB0131,Data,G06,EMP0867,Atlanta,US,active,part_time,2021-12-16,,123919.32,USD
+EMP0132,E100132,Sofia,Silva,sofia.silva132@corp.example.com,+1-539-291-2595,non_binary,1996-09-03,JOB0132,Facilities,G04,EMP0207,New York,US,active,intern,2026-06-09,,99555.30,USD
+EMP0133,E100133,Olivia,White,olivia.white133@corp.example.com,+1-409-526-9303,female,1993-12-03,JOB0133,IT,G05,EMP0027,New York,US,terminated,part_time,2017-09-30,2020-02-14,108268.37,USD
+EMP0134,E100134,Riley,Lewis,riley.lewis134@corp.example.com,+1-302-802-8696,non_binary,1990-01-20,JOB0134,Product,G10,EMP0202,San Francisco,US,active,contract,2018-07-15,,175796.38,USD
+EMP0135,E100135,Ananya,Thompson,ananya.thompson135@corp.example.com,+1-819-947-3403,female,1970-04-22,JOB0135,Operations,G10,EMP0828,Atlanta,US,active,contract,2018-04-25,,177106.94,USD
+EMP0136,E100136,Isabella,Davis,isabella.davis136@corp.example.com,+1-625-689-4184,prefer_not_to_say,1971-07-14,JOB0136,Sales,G09,EMP0593,New York,US,active,full_time,2016-09-19,,162922.54,USD
+EMP0137,E100137,Evelyn,Ramirez,evelyn.ramirez137@corp.example.com,+1-596-461-5738,female,1984-10-13,JOB0137,HR,G06,EMP0002,Toronto,CA,active,contract,2022-08-03,,106484.64,USD
+EMP0138,E100138,Grace,Wilson,grace.wilson138@corp.example.com,+1-590-747-4047,prefer_not_to_say,1983-04-12,JOB0138,Engineering,G10,EMP0301,London,UK,terminated,full_time,2019-06-11,2026-03-12,162812.95,GBP
+EMP0139,E100139,Grace,Williams,grace.williams139@corp.example.com,+1-614-495-8463,non_binary,1974-12-18,JOB0139,IT,G03,EMP0621,London,UK,terminated,full_time,2023-08-27,2026-05-02,80273.45,GBP
+EMP0140,E100140,Isabella,Kim,isabella.kim140@corp.example.com,+1-849-670-1234,male,1971-10-22,JOB0140,IT,G10,EMP0165,Bengaluru,IN,terminated,part_time,2024-10-19,2024-12-30,53977.10,INR
+EMP0141,E100141,Jackson,Patel,jackson.patel141@corp.example.com,+1-531-293-6697,female,1970-10-04,JOB0141,Marketing,G11,EMP0614,New York,US,active,full_time,2020-10-21,,187248.23,USD
+EMP0142,E100142,Isabella,Thomas,isabella.thomas142@corp.example.com,+1-214-709-7033,prefer_not_to_say,1995-12-20,JOB0142,Operations,G08,EMP0840,Atlanta,US,terminated,contract,2018-05-11,2021-07-31,152097.57,USD
+EMP0143,E100143,James,Thomas,james.thomas143@corp.example.com,+1-249-417-6855,male,2004-07-09,JOB0143,Product,G11,EMP0508,Atlanta,US,active,contract,2024-06-16,,190234.11,USD
+EMP0144,E100144,Noah,Smith,noah.smith144@corp.example.com,+1-424-661-7992,female,2004-11-02,JOB0144,Supply Chain,G01,EMP0955,San Francisco,US,active,intern,2014-10-25,,61221.65,USD
+EMP0145,E100145,Lily,Martin,lily.martin145@corp.example.com,+1-452-803-7375,non_binary,1988-03-04,JOB0145,Marketing,G05,EMP0976,San Francisco,US,on_leave,intern,2020-02-08,,110721.34,USD
+EMP0146,E100146,Fatima,Johnson,fatima.johnson146@corp.example.com,+1-247-452-6281,prefer_not_to_say,2000-11-14,JOB0146,Engineering,G04,EMP0585,Chicago,US,active,part_time,2017-09-26,,98905.02,USD
+EMP0147,E100147,James,Harris,james.harris147@corp.example.com,+1-619-523-6732,prefer_not_to_say,1972-02-01,JOB0147,Marketing,G01,EMP0807,Denver,US,active,full_time,2025-02-26,,60070.04,USD
+EMP0148,E100148,Priya,Lee,priya.lee148@corp.example.com,+1-964-864-1280,non_binary,1985-08-18,JOB0148,Facilities,G03,EMP0368,Denver,US,terminated,part_time,2022-09-09,2026-03-14,81872.14,USD
+EMP0149,E100149,Elijah,Johnson,elijah.johnson149@corp.example.com,+1-756-328-5254,prefer_not_to_say,1992-09-23,JOB0149,Facilities,G02,EMP0003,Hyderabad,IN,on_leave,part_time,2016-03-27,,21984.61,INR
+EMP0150,E100150,Evelyn,Chen,evelyn.chen150@corp.example.com,+1-235-291-4297,male,1987-04-02,JOB0150,Product,G01,EMP0707,New York,US,on_leave,full_time,2017-06-13,,56873.04,USD
+EMP0151,E100151,Scarlett,Thompson,scarlett.thompson151@corp.example.com,+1-735-889-6151,non_binary,1974-04-10,JOB0151,Product,G08,EMP0339,New York,US,active,part_time,2017-03-07,,148623.24,USD
+EMP0152,E100152,Isabella,Thompson,isabella.thompson152@corp.example.com,+1-670-445-6579,non_binary,1974-04-16,JOB0152,HR,G07,EMP0485,San Francisco,US,on_leave,intern,2022-02-26,,136707.00,USD
+EMP0153,E100153,Olivia,Clark,olivia.clark153@corp.example.com,+1-809-415-8625,prefer_not_to_say,1975-03-02,JOB0153,Security,G01,EMP0861,Hyderabad,IN,active,part_time,2021-02-01,,16698.66,INR
+EMP0154,E100154,Harper,Lopez,harper.lopez154@corp.example.com,+1-619-981-5803,female,1976-09-19,JOB0154,IT,G11,EMP0526,Toronto,CA,active,full_time,2017-11-15,,168416.99,USD
+EMP0155,E100155,Emma,Smith,emma.smith155@corp.example.com,+1-472-364-4474,prefer_not_to_say,1987-11-06,JOB0155,Engineering,G08,EMP0272,Atlanta,US,active,contract,2024-03-31,,151181.98,USD
+EMP0156,E100156,Omar,Hernandez,omar.hernandez156@corp.example.com,+1-946-585-4050,female,1982-03-14,JOB0156,Security,G08,EMP0118,New York,US,on_leave,intern,2017-06-02,,147694.83,USD
+EMP0157,E100157,Aria,Wilson,aria.wilson157@corp.example.com,+1-405-396-8907,non_binary,1966-07-18,JOB0157,Security,G06,EMP0531,Denver,US,active,part_time,2017-01-19,,125775.49,USD
+EMP0158,E100158,Ananya,White,ananya.white158@corp.example.com,+1-830-559-2027,female,1988-07-29,JOB0158,Data,G10,EMP0458,Bengaluru,IN,active,contract,2016-07-19,,53344.89,INR
+EMP0159,E100159,Nora,Thompson,nora.thompson159@corp.example.com,+1-552-376-7502,prefer_not_to_say,1988-09-23,JOB0159,Facilities,G11,EMP0424,Bengaluru,IN,on_leave,full_time,2026-06-29,,57356.43,INR
+EMP0160,E100160,Harper,Singh,harper.singh160@corp.example.com,+1-972-259-4419,non_binary,1985-12-09,JOB0160,Data,G10,EMP0534,San Francisco,US,on_leave,intern,2025-02-07,,175417.38,USD
+EMP0161,E100161,Benjamin,Davis,benjamin.davis161@corp.example.com,+1-592-319-3488,non_binary,1999-07-06,JOB0161,Supply Chain,G03,EMP0403,Denver,US,on_leave,full_time,2015-08-18,,84162.26,USD
+EMP0162,E100162,Lucas,Davis,lucas.davis162@corp.example.com,+1-640-255-5283,non_binary,1990-03-24,JOB0162,Product,G12,EMP0416,Austin,US,terminated,part_time,2018-08-06,2025-11-27,202278.75,USD
+EMP0163,E100163,Elena,Smith,elena.smith163@corp.example.com,+1-815-425-9928,male,1992-01-13,JOB0163,Supply Chain,G08,EMP0667,Toronto,CA,on_leave,contract,2021-09-26,,131897.06,USD
+EMP0164,E100164,Ananya,Lee,ananya.lee164@corp.example.com,+1-426-648-6462,non_binary,1973-08-08,JOB0164,Marketing,G08,EMP0690,Toronto,CA,terminated,part_time,2016-05-29,2021-05-05,129334.59,USD
+EMP0165,E100165,Riley,Harris,riley.harris165@corp.example.com,+1-832-303-1934,non_binary,1969-09-27,JOB0165,Customer Success,G09,EMP0115,London,UK,active,intern,2021-03-25,,152735.38,GBP
+EMP0166,E100166,Sebastian,Kim,sebastian.kim166@corp.example.com,+1-888-655-2139,non_binary,1976-09-05,JOB0166,Security,G02,EMP0850,Austin,US,terminated,part_time,2016-12-05,2020-04-10,70029.59,USD
+EMP0167,E100167,Liam,Khan,liam.khan167@corp.example.com,+1-318-748-5052,female,1975-06-09,JOB0167,Facilities,G06,EMP0922,Hyderabad,IN,active,intern,2019-04-12,,36809.54,INR
+EMP0168,E100168,Jacob,Johnson,jacob.johnson168@corp.example.com,+1-720-593-7063,prefer_not_to_say,1997-08-26,JOB0168,Engineering,G08,EMP0288,Atlanta,US,retired,full_time,2022-06-14,,151480.32,USD
+EMP0169,E100169,Logan,Hernandez,logan.hernandez169@corp.example.com,+1-737-455-4073,prefer_not_to_say,1988-10-17,JOB0169,Security,G10,EMP0167,Atlanta,US,on_leave,full_time,2015-09-17,,177385.67,USD
+EMP0170,E100170,Oliver,Lee,oliver.lee170@corp.example.com,+1-845-735-9213,male,1968-09-01,JOB0170,Facilities,G03,EMP0904,Hyderabad,IN,retired,full_time,2021-01-22,,24720.42,INR
+EMP0171,E100171,Olivia,Anderson,olivia.anderson171@corp.example.com,+1-897-561-2145,female,1966-08-29,JOB0171,Sales,G03,EMP0015,New York,US,active,intern,2016-11-19,,83022.84,USD
+EMP0172,E100172,Isabella,Clark,isabella.clark172@corp.example.com,+1-682-659-6342,female,2001-04-25,JOB0172,Legal,G04,EMP0167,New York,US,retired,contract,2016-05-14,,96699.76,USD
+EMP0173,E100173,Ava,Khan,ava.khan173@corp.example.com,+1-873-857-7850,male,1977-05-13,JOB0173,HR,G04,EMP0488,Dallas,US,terminated,intern,2022-09-25,2023-04-27,94606.99,USD
+EMP0174,E100174,Fatima,Thomas,fatima.thomas174@corp.example.com,+1-211-917-4582,non_binary,1973-05-10,JOB0174,Operations,G11,EMP0540,Atlanta,US,retired,part_time,2024-04-23,,189346.05,USD
+EMP0175,E100175,Oliver,Brown,oliver.brown175@corp.example.com,+1-723-414-3269,prefer_not_to_say,1990-02-18,JOB0175,Data,G07,EMP0876,New York,US,active,intern,2014-05-07,,138789.16,USD
+EMP0176,E100176,Aria,Taylor,aria.taylor176@corp.example.com,+1-212-944-7847,non_binary,1969-02-24,JOB0176,Operations,G02,EMP0481,London,UK,terminated,contract,2020-09-15,2023-05-18,65251.65,GBP
+EMP0177,E100177,Aiden,Costa,aiden.costa177@corp.example.com,+1-656-229-4157,non_binary,1975-12-20,JOB0177,Data,G07,EMP0495,Dallas,US,terminated,intern,2023-07-13,2023-10-20,137272.11,USD
+EMP0178,E100178,Aiden,Smith,aiden.smith178@corp.example.com,+1-473-811-5105,female,1974-12-27,JOB0178,Finance,G06,EMP0602,Austin,US,active,part_time,2023-11-10,,121550.13,USD
+EMP0179,E100179,Jackson,Brown,jackson.brown179@corp.example.com,+1-357-635-5752,female,2002-06-19,JOB0179,Legal,G11,EMP0628,San Francisco,US,active,contract,2021-06-07,,192100.88,USD
+EMP0180,E100180,Jacob,Murphy,jacob.murphy180@corp.example.com,+1-634-278-9531,prefer_not_to_say,1998-08-19,JOB0180,Legal,G06,EMP0801,Chicago,US,on_leave,part_time,2018-04-03,,124662.38,USD
+EMP0181,E100181,Logan,Davis,logan.davis181@corp.example.com,+1-951-922-7295,non_binary,1970-11-04,JOB0181,Sales,G07,EMP0672,Austin,US,active,full_time,2022-05-12,,137805.45,USD
+EMP0182,E100182,Noah,Robinson,noah.robinson182@corp.example.com,+1-840-422-4193,female,1994-02-22,JOB0182,Product,G04,EMP0377,Hyderabad,IN,on_leave,contract,2023-11-22,,29286.94,INR
+EMP0183,E100183,Aria,Harris,aria.harris183@corp.example.com,+1-876-572-9538,female,1993-03-29,JOB0183,HR,G05,EMP0205,Austin,US,on_leave,full_time,2025-08-18,,112225.80,USD
+EMP0184,E100184,Sofia,Thomas,sofia.thomas184@corp.example.com,+1-332-714-5223,prefer_not_to_say,1965-05-31,JOB0184,Finance,G09,EMP0465,Denver,US,active,part_time,2021-11-11,,165906.18,USD
+EMP0185,E100185,Jackson,Moore,jackson.moore185@corp.example.com,+1-622-809-6558,male,1975-06-01,JOB0185,Marketing,G04,EMP0233,Dallas,US,terminated,contract,2026-03-05,2026-05-19,99495.11,USD
+EMP0186,E100186,Jackson,Singh,jackson.singh186@corp.example.com,+1-430-575-5130,male,1984-06-23,JOB0186,HR,G10,EMP1000,Toronto,CA,active,full_time,2017-06-25,,153940.92,USD
+EMP0187,E100187,Mia,Harris,mia.harris187@corp.example.com,+1-213-491-2555,non_binary,2003-12-28,JOB0187,HR,G01,EMP0732,Austin,US,active,intern,2018-05-23,,58142.85,USD
+EMP0188,E100188,Jack,Lopez,jack.lopez188@corp.example.com,+1-674-208-4910,male,1975-09-09,JOB0188,Marketing,G06,EMP0905,San Francisco,US,on_leave,part_time,2020-01-08,,125926.00,USD
+EMP0189,E100189,Alexander,Rodriguez,alexander.rodriguez189@corp.example.com,+1-884-440-2690,female,1978-06-02,JOB0189,Supply Chain,G02,EMP0047,Bengaluru,IN,active,full_time,2017-07-01,,21320.24,INR
+EMP0190,E100190,Emily,Smith,emily.smith190@corp.example.com,+1-533-910-4397,prefer_not_to_say,1998-05-03,JOB0190,HR,G09,EMP0058,Atlanta,US,terminated,intern,2019-05-07,2025-03-15,165926.24,USD
+EMP0191,E100191,Mia,Wilson,mia.wilson191@corp.example.com,+1-353-409-3163,non_binary,1989-07-29,JOB0191,Sales,G04,EMP0994,Austin,US,retired,contract,2020-12-31,,94951.23,USD
+EMP0192,E100192,Michael,Clark,michael.clark192@corp.example.com,+1-289-319-6359,prefer_not_to_say,1972-11-01,JOB0192,Operations,G07,EMP0525,San Francisco,US,active,full_time,2025-11-06,,134485.09,USD
+EMP0193,E100193,Mason,Robinson,mason.robinson193@corp.example.com,+1-672-846-4339,non_binary,1978-12-04,JOB0193,Data,G01,EMP0348,Bengaluru,IN,on_leave,part_time,2022-12-11,,18119.46,INR
+EMP0194,E100194,Evelyn,Smith,evelyn.smith194@corp.example.com,+1-952-300-1542,male,1974-02-12,JOB0194,IT,G02,EMP0329,San Francisco,US,active,full_time,2016-01-15,,70515.92,USD
+EMP0195,E100195,Mason,Hernandez,mason.hernandez195@corp.example.com,+1-404-278-3340,female,1975-11-03,JOB0195,Data,G04,EMP0861,Hyderabad,IN,on_leave,part_time,2014-05-03,,30416.15,INR
+EMP0196,E100196,Mateo,Martin,mateo.martin196@corp.example.com,+1-967-238-6335,female,1981-12-16,JOB0196,HR,G12,EMP0094,London,UK,active,part_time,2017-04-01,,185932.00,GBP
+EMP0197,E100197,Mia,Garcia,mia.garcia197@corp.example.com,+1-570-943-6518,non_binary,1989-01-02,JOB0197,Finance,G09,EMP0481,Austin,US,terminated,full_time,2019-03-24,2022-09-30,161485.51,USD
+EMP0198,E100198,Emma,Nguyen,emma.nguyen198@corp.example.com,+1-955-953-5999,prefer_not_to_say,1968-05-03,JOB0198,IT,G03,EMP0376,Chicago,US,on_leave,part_time,2023-06-12,,82835.03,USD
+EMP0199,E100199,Harper,Kim,harper.kim199@corp.example.com,+1-997-586-5894,female,1987-03-19,JOB0199,Engineering,G04,EMP0494,Atlanta,US,retired,part_time,2015-12-17,,98158.46,USD
+EMP0200,E100200,Elijah,Thompson,elijah.thompson200@corp.example.com,+1-739-784-1543,female,1971-09-05,JOB0200,IT,G02,EMP0867,London,UK,terminated,contract,2023-07-23,2025-07-02,64734.72,GBP
+EMP0201,E100201,Elena,Nguyen,elena.nguyen201@corp.example.com,+1-795-944-3879,female,1971-11-13,JOB0201,Finance,G11,EMP0229,Hyderabad,IN,active,part_time,2021-03-18,,57141.52,INR
+EMP0202,E100202,Amelia,Nguyen,amelia.nguyen202@corp.example.com,+1-365-322-5381,female,2002-09-07,JOB0202,Engineering,G02,EMP0910,Dallas,US,on_leave,part_time,2021-02-22,,68108.24,USD
+EMP0203,E100203,Evelyn,Kim,evelyn.kim203@corp.example.com,+1-707-795-6519,prefer_not_to_say,1967-11-21,JOB0203,Product,G05,EMP0018,Chicago,US,active,intern,2025-03-13,,112793.38,USD
+EMP0204,E100204,Sofia,Williams,sofia.williams204@corp.example.com,+1-942-849-3532,male,1976-01-08,JOB0204,Product,G03,EMP0473,New York,US,active,intern,2025-04-30,,87498.58,USD
+EMP0205,E100205,Noah,Lewis,noah.lewis205@corp.example.com,+1-762-924-6223,non_binary,1989-04-22,JOB0205,Engineering,G10,EMP0869,Toronto,CA,terminated,full_time,2018-01-04,2022-08-13,153091.50,USD
+EMP0206,E100206,Daniel,Chen,daniel.chen206@corp.example.com,+1-907-887-2702,prefer_not_to_say,1973-12-03,JOB0206,Marketing,G10,EMP0126,Toronto,CA,active,contract,2017-12-10,,155816.92,USD
+EMP0207,E100207,Ananya,White,ananya.white207@corp.example.com,+1-266-642-4144,prefer_not_to_say,1971-11-01,JOB0207,Operations,G03,EMP0869,Atlanta,US,active,part_time,2014-05-02,,87080.86,USD
+EMP0208,E100208,Wei,Brown,wei.brown208@corp.example.com,+1-718-219-3885,female,1989-05-01,JOB0208,Data,G04,EMP0081,Hyderabad,IN,active,contract,2023-08-25,,29550.99,INR
+EMP0209,E100209,Isabella,Patel,isabella.patel209@corp.example.com,+1-883-310-5811,male,1967-06-01,JOB0209,Engineering,G11,EMP0491,Chicago,US,active,part_time,2023-06-17,,191225.77,USD
+EMP0210,E100210,Mia,Rodriguez,mia.rodriguez210@corp.example.com,+1-350-213-9121,female,1981-06-28,JOB0210,Facilities,G12,EMP0676,London,UK,on_leave,intern,2017-07-10,,188486.12,GBP
+EMP0211,E100211,Aria,Silva,aria.silva211@corp.example.com,+1-783-474-8575,non_binary,1967-06-12,JOB0211,Finance,G08,EMP0413,Toronto,CA,on_leave,part_time,2019-02-01,,133960.29,USD
+EMP0212,E100212,Yuki,Patel,yuki.patel212@corp.example.com,+1-773-543-6164,male,1998-08-03,JOB0212,IT,G10,EMP0121,Seattle,US,active,part_time,2018-11-16,,179713.18,USD
+EMP0213,E100213,Yuki,Hernandez,yuki.hernandez213@corp.example.com,+1-300-753-2134,female,1969-07-21,JOB0213,Marketing,G09,EMP0367,Seattle,US,active,full_time,2016-04-18,,165356.85,USD
+EMP0214,E100214,Harper,Thompson,harper.thompson214@corp.example.com,+1-454-355-8934,male,1972-12-18,JOB0214,Customer Success,G12,EMP0452,London,UK,retired,intern,2021-11-22,,185068.37,GBP
+EMP0215,E100215,Elena,Moore,elena.moore215@corp.example.com,+1-931-794-6815,non_binary,1983-08-03,JOB0215,IT,G06,EMP0563,Toronto,CA,terminated,part_time,2017-04-12,2025-10-12,108308.90,USD
+EMP0216,E100216,Sebastian,Hernandez,sebastian.hernandez216@corp.example.com,+1-996-293-4830,prefer_not_to_say,2001-03-23,JOB0216,Supply Chain,G06,EMP0994,Dallas,US,active,contract,2017-06-04,,126356.24,USD
+EMP0217,E100217,Owen,Chen,owen.chen217@corp.example.com,+1-580-685-3473,non_binary,1986-12-27,JOB0217,Security,G11,EMP0390,San Francisco,US,on_leave,full_time,2014-05-08,,191839.35,USD
+EMP0218,E100218,Ethan,Perez,ethan.perez218@corp.example.com,+1-577-222-9363,non_binary,2003-11-24,JOB0218,Legal,G01,EMP0310,Denver,US,retired,contract,2017-04-13,,57202.60,USD
+EMP0219,E100219,Arjun,Khan,arjun.khan219@corp.example.com,+1-239-768-7967,male,1985-12-20,JOB0219,Supply Chain,G02,EMP0775,Toronto,CA,retired,part_time,2024-05-09,,59691.33,USD
+EMP0220,E100220,Abigail,Kim,abigail.kim220@corp.example.com,+1-829-434-6392,non_binary,1984-06-21,JOB0220,Engineering,G05,EMP0662,Atlanta,US,retired,part_time,2020-01-22,,110273.04,USD
+EMP0221,E100221,Liam,Anderson,liam.anderson221@corp.example.com,+1-414-765-3922,male,1989-01-02,JOB0221,Finance,G07,EMP0322,New York,US,active,part_time,2016-06-18,,136320.59,USD
+EMP0222,E100222,Zoey,White,zoey.white222@corp.example.com,+1-750-796-7933,male,1967-02-22,JOB0222,Facilities,G01,EMP0635,Hyderabad,IN,active,part_time,2023-10-11,,17048.49,INR
+EMP0223,E100223,Oliver,Lopez,oliver.lopez223@corp.example.com,+1-749-462-5435,prefer_not_to_say,1973-09-19,JOB0223,Sales,G07,EMP0162,Denver,US,active,part_time,2025-12-26,,134862.74,USD
+EMP0224,E100224,Daniel,Silva,daniel.silva224@corp.example.com,+1-892-698-7569,female,1982-10-29,JOB0224,Customer Success,G05,EMP0595,Atlanta,US,active,intern,2024-12-14,,107885.66,USD
+EMP0225,E100225,Scarlett,Murphy,scarlett.murphy225@corp.example.com,+1-865-514-9492,non_binary,1984-05-01,JOB0225,Supply Chain,G03,EMP0022,Denver,US,retired,full_time,2020-03-02,,82044.18,USD
+EMP0226,E100226,Omar,Chen,omar.chen226@corp.example.com,+1-327-772-8430,non_binary,1981-01-15,JOB0226,Engineering,G03,EMP0484,Hyderabad,IN,active,part_time,2020-10-12,,26672.54,INR
+EMP0227,E100227,Elena,Sanchez,elena.sanchez227@corp.example.com,+1-414-695-2255,female,1991-06-19,JOB0227,Sales,G05,EMP0458,Dallas,US,terminated,part_time,2019-09-15,2021-04-10,111292.58,USD
+EMP0228,E100228,James,Miller,james.miller228@corp.example.com,+1-801-762-1591,female,1998-08-03,JOB0228,Legal,G02,EMP0114,Austin,US,active,contract,2020-08-24,,70806.18,USD
+EMP0229,E100229,Emma,Wilson,emma.wilson229@corp.example.com,+1-655-878-3716,male,2000-11-18,JOB0229,Operations,G04,EMP0641,Chicago,US,terminated,contract,2019-03-20,2020-05-11,96801.73,USD
+EMP0230,E100230,Aiden,Kim,aiden.kim230@corp.example.com,+1-995-987-9518,female,1996-11-16,JOB0230,HR,G02,EMP0965,San Francisco,US,retired,part_time,2015-11-15,,72864.75,USD
+EMP0231,E100231,Nora,Martin,nora.martin231@corp.example.com,+1-783-258-2076,male,2003-04-15,JOB0231,Engineering,G07,EMP0892,Hyderabad,IN,terminated,contract,2024-06-01,2025-06-25,41941.17,INR
+EMP0232,E100232,Sebastian,Nguyen,sebastian.nguyen232@corp.example.com,+1-642-555-9293,non_binary,1972-04-01,JOB0232,IT,G01,EMP0745,Austin,US,terminated,intern,2016-03-17,2020-10-30,55931.26,USD
+EMP0233,E100233,Abigail,Williams,abigail.williams233@corp.example.com,+1-395-453-2215,male,1994-07-12,JOB0233,Customer Success,G10,EMP0882,Atlanta,US,active,intern,2018-12-03,,178503.98,USD
+EMP0234,E100234,Elijah,Brown,elijah.brown234@corp.example.com,+1-270-945-2766,male,1993-12-13,JOB0234,Operations,G02,EMP0061,Seattle,US,terminated,part_time,2017-02-23,2024-11-30,72544.08,USD
+EMP0235,E100235,Priya,Johnson,priya.johnson235@corp.example.com,+1-353-280-1774,prefer_not_to_say,1967-05-05,JOB0235,Engineering,G03,EMP0330,San Francisco,US,terminated,intern,2014-06-15,2014-09-02,81164.48,USD
+EMP0236,E100236,Amelia,Lopez,amelia.lopez236@corp.example.com,+1-347-927-1909,male,1999-03-11,JOB0236,Customer Success,G12,EMP0202,San Francisco,US,active,contract,2016-05-06,,204463.02,USD
+EMP0237,E100237,Wei,Khan,wei.khan237@corp.example.com,+1-220-980-9997,female,2000-01-24,JOB0237,Marketing,G02,EMP0685,San Francisco,US,on_leave,part_time,2019-12-24,,68835.04,USD
+EMP0238,E100238,Fatima,Lewis,fatima.lewis238@corp.example.com,+1-264-504-9951,non_binary,1998-01-14,JOB0238,Customer Success,G10,EMP0799,Bengaluru,IN,on_leave,contract,2022-08-20,,54571.98,INR
+EMP0239,E100239,Wei,Taylor,wei.taylor239@corp.example.com,+1-705-589-3744,female,1996-05-07,JOB0239,Customer Success,G06,EMP0469,Hyderabad,IN,on_leave,contract,2014-06-26,,37970.31,INR
+EMP0240,E100240,Logan,Patel,logan.patel240@corp.example.com,+1-899-260-3290,male,1990-04-12,JOB0240,Engineering,G03,EMP0072,Denver,US,active,contract,2017-02-21,,85951.22,USD
+EMP0241,E100241,Abigail,Costa,abigail.costa241@corp.example.com,+1-988-411-9400,male,1973-05-19,JOB0241,IT,G11,EMP0422,Chicago,US,active,intern,2020-05-20,,191524.28,USD
+EMP0242,E100242,Lily,Silva,lily.silva242@corp.example.com,+1-942-445-3462,female,1984-02-04,JOB0242,Facilities,G03,EMP0010,San Francisco,US,terminated,full_time,2018-06-03,2025-03-19,87391.72,USD
+EMP0243,E100243,Sophia,Ali,sophia.ali243@corp.example.com,+1-392-415-1412,prefer_not_to_say,2004-02-14,JOB0243,IT,G11,EMP0512,Denver,US,terminated,full_time,2023-01-29,2025-11-05,193510.75,USD
+EMP0244,E100244,Riley,Chen,riley.chen244@corp.example.com,+1-262-420-9037,female,1974-01-10,JOB0244,Data,G02,EMP0204,Hyderabad,IN,active,part_time,2024-06-25,,22212.32,INR
+EMP0245,E100245,Jackson,Wilson,jackson.wilson245@corp.example.com,+1-390-507-5985,female,1981-07-23,JOB0245,Facilities,G11,EMP0652,London,UK,on_leave,contract,2022-08-13,,171626.81,GBP
+EMP0246,E100246,Emily,Khan,emily.khan246@corp.example.com,+1-859-637-1712,prefer_not_to_say,1994-10-08,JOB0246,Security,G12,EMP0143,Atlanta,US,on_leave,full_time,2016-05-15,,204358.86,USD
+EMP0247,E100247,Aiden,Thomas,aiden.thomas247@corp.example.com,+1-384-421-8629,non_binary,1994-04-07,JOB0247,Security,G11,EMP0928,Atlanta,US,retired,contract,2023-05-14,,187274.01,USD
+EMP0248,E100248,Grace,Brown,grace.brown248@corp.example.com,+1-540-590-8087,non_binary,1985-12-22,JOB0248,Facilities,G09,EMP0639,New York,US,active,full_time,2017-08-28,,165488.17,USD
+EMP0249,E100249,James,Walker,james.walker249@corp.example.com,+1-471-378-4704,male,1978-05-28,JOB0249,Data,G05,EMP0740,Dallas,US,on_leave,full_time,2024-09-25,,112474.34,USD
+EMP0250,E100250,Ella,Harris,ella.harris250@corp.example.com,+1-992-332-3157,prefer_not_to_say,1975-07-28,JOB0250,Operations,G02,EMP0035,Toronto,CA,on_leave,part_time,2025-10-07,,61917.65,USD
+EMP0251,E100251,Logan,Robinson,logan.robinson251@corp.example.com,+1-595-407-6013,female,1971-03-03,JOB0251,Data,G10,EMP0855,Austin,US,active,contract,2024-11-24,,176857.11,USD
+EMP0252,E100252,Riley,Lewis,riley.lewis252@corp.example.com,+1-221-884-2774,prefer_not_to_say,1994-02-04,JOB0252,Security,G01,EMP0958,New York,US,active,contract,2025-10-27,,59658.37,USD
+EMP0253,E100253,Noah,Patel,noah.patel253@corp.example.com,+1-748-395-4690,prefer_not_to_say,1970-02-06,JOB0253,Supply Chain,G08,EMP0808,Bengaluru,IN,on_leave,contract,2024-07-11,,45364.59,INR
+EMP0254,E100254,Sofia,Taylor,sofia.taylor254@corp.example.com,+1-365-701-5998,prefer_not_to_say,1970-12-15,JOB0254,Customer Success,G02,EMP0219,Hyderabad,IN,retired,intern,2025-04-16,,20728.98,INR
+EMP0255,E100255,Michael,Martin,michael.martin255@corp.example.com,+1-705-395-5758,male,1991-10-17,JOB0255,Facilities,G07,EMP0348,Atlanta,US,active,part_time,2018-05-14,,140845.67,USD
+EMP0256,E100256,Scarlett,Lee,scarlett.lee256@corp.example.com,+1-241-898-5156,non_binary,1990-10-16,JOB0256,Marketing,G03,EMP0738,Toronto,CA,retired,intern,2019-05-04,,76127.02,USD
+EMP0257,E100257,Yuki,Smith,yuki.smith257@corp.example.com,+1-225-460-8441,female,1985-06-10,JOB0257,Operations,G08,EMP0374,San Francisco,US,terminated,contract,2025-06-17,2025-11-27,152602.17,USD
+EMP0258,E100258,Amelia,Clark,amelia.clark258@corp.example.com,+1-253-359-8950,female,1967-01-21,JOB0258,Operations,G03,EMP0489,San Francisco,US,terminated,intern,2018-07-09,2023-10-11,83147.61,USD
+EMP0259,E100259,Henry,Hernandez,henry.hernandez259@corp.example.com,+1-369-794-6787,prefer_not_to_say,1991-11-21,JOB0259,Customer Success,G03,EMP0146,Atlanta,US,active,part_time,2025-05-28,,82440.84,USD
+EMP0260,E100260,Elijah,Ramirez,elijah.ramirez260@corp.example.com,+1-478-362-4736,female,1987-03-01,JOB0260,Finance,G05,EMP0525,Seattle,US,active,full_time,2017-07-12,,111246.62,USD
+EMP0261,E100261,Mason,Johnson,mason.johnson261@corp.example.com,+1-227-886-4967,non_binary,1972-10-04,JOB0261,Supply Chain,G06,EMP0878,Denver,US,active,full_time,2018-05-03,,121248.26,USD
+EMP0262,E100262,Jackson,Wilson,jackson.wilson262@corp.example.com,+1-903-388-6124,prefer_not_to_say,1974-12-27,JOB0262,Marketing,G12,EMP0308,New York,US,active,full_time,2022-03-06,,205583.11,USD
+EMP0263,E100263,Ananya,Brown,ananya.brown263@corp.example.com,+1-287-955-7914,prefer_not_to_say,1997-04-07,JOB0263,Data,G04,EMP0740,Dallas,US,retired,intern,2019-10-03,,99249.23,USD
+EMP0264,E100264,Jack,Smith,jack.smith264@corp.example.com,+1-815-663-1418,female,2000-11-10,JOB0264,Facilities,G04,EMP0231,Hyderabad,IN,retired,intern,2020-01-30,,28987.59,INR
+EMP0265,E100265,Arjun,Moore,arjun.moore265@corp.example.com,+1-843-976-1818,male,1965-08-09,JOB0265,Legal,G03,EMP0262,Toronto,CA,retired,part_time,2024-11-01,,72866.27,USD
+EMP0266,E100266,Noah,Costa,noah.costa266@corp.example.com,+1-583-542-6158,male,1983-02-27,JOB0266,Customer Success,G08,EMP0424,Hyderabad,IN,terminated,intern,2018-04-09,2023-02-19,45407.57,INR
+EMP0267,E100267,Aiden,Khan,aiden.khan267@corp.example.com,+1-208-652-6682,male,1977-11-09,JOB0267,Product,G11,EMP0057,Bengaluru,IN,active,intern,2016-06-18,,58828.15,INR
+EMP0268,E100268,Liam,Lewis,liam.lewis268@corp.example.com,+1-632-882-8228,prefer_not_to_say,1995-07-24,JOB0268,IT,G10,EMP0496,New York,US,on_leave,contract,2021-06-27,,180508.06,USD
+EMP0269,E100269,Alexander,Wilson,alexander.wilson269@corp.example.com,+1-671-248-3652,male,1984-04-27,JOB0269,Customer Success,G03,EMP0737,Seattle,US,retired,full_time,2025-12-25,,87070.44,USD
+EMP0270,E100270,Oliver,Singh,oliver.singh270@corp.example.com,+1-968-985-2097,male,2001-08-26,JOB0270,Product,G04,EMP0621,Chicago,US,active,contract,2022-11-13,,96339.36,USD
+EMP0271,E100271,Mia,Thomas,mia.thomas271@corp.example.com,+1-438-363-7380,non_binary,1975-07-22,JOB0271,Engineering,G03,EMP0514,Seattle,US,active,contract,2018-12-15,,85022.36,USD
+EMP0272,E100272,Daniel,Williams,daniel.williams272@corp.example.com,+1-472-872-1112,male,1976-05-23,JOB0272,Product,G12,EMP0488,Denver,US,active,part_time,2021-03-21,,204502.86,USD
+EMP0273,E100273,Henry,Harris,henry.harris273@corp.example.com,+1-278-683-1918,prefer_not_to_say,1975-07-16,JOB0273,Sales,G01,EMP0968,Chicago,US,on_leave,contract,2018-04-08,,60942.68,USD
+EMP0274,E100274,Isabella,Brown,isabella.brown274@corp.example.com,+1-526-251-5837,prefer_not_to_say,1975-11-05,JOB0274,HR,G11,EMP0648,London,UK,on_leave,part_time,2016-08-07,,171473.31,GBP
+EMP0275,E100275,Lily,Johnson,lily.johnson275@corp.example.com,+1-345-318-2661,male,1994-01-07,JOB0275,Legal,G11,EMP0591,Denver,US,terminated,intern,2014-05-08,2022-09-25,187083.58,USD
+EMP0276,E100276,Logan,Anderson,logan.anderson276@corp.example.com,+1-930-858-3970,female,1985-11-13,JOB0276,Engineering,G04,EMP0589,Hyderabad,IN,active,part_time,2020-07-18,,29367.30,INR
+EMP0277,E100277,Wei,Lee,wei.lee277@corp.example.com,+1-610-779-2932,female,1972-06-06,JOB0277,Finance,G02,EMP0488,Hyderabad,IN,active,intern,2015-04-26,,21141.17,INR
+EMP0278,E100278,Fatima,Hernandez,fatima.hernandez278@corp.example.com,+1-507-640-9375,female,1995-12-31,JOB0278,Facilities,G11,EMP0032,New York,US,active,part_time,2015-04-03,,188952.05,USD
+EMP0279,E100279,Noah,Clark,noah.clark279@corp.example.com,+1-224-630-6386,prefer_not_to_say,1996-05-22,JOB0279,Security,G12,EMP0172,Hyderabad,IN,active,part_time,2019-08-29,,62128.89,INR
+EMP0280,E100280,Omar,Garcia,omar.garcia280@corp.example.com,+1-760-746-4531,male,1965-09-21,JOB0280,Operations,G01,EMP0842,Denver,US,active,contract,2015-10-29,,57511.75,USD
+EMP0281,E100281,Elijah,Silva,elijah.silva281@corp.example.com,+1-886-379-5874,prefer_not_to_say,1977-04-03,JOB0281,Product,G01,EMP0330,Hyderabad,IN,on_leave,contract,2024-12-05,,18060.25,INR
+EMP0282,E100282,Michael,Garcia,michael.garcia282@corp.example.com,+1-316-691-7611,male,1993-09-28,JOB0282,Security,G02,EMP0378,Dallas,US,terminated,full_time,2020-03-30,2024-04-10,69146.45,USD
+EMP0283,E100283,Grace,Singh,grace.singh283@corp.example.com,+1-903-859-8757,female,2004-07-26,JOB0283,IT,G10,EMP0130,Denver,US,active,intern,2025-03-22,,178547.70,USD
+EMP0284,E100284,Liam,Walker,liam.walker284@corp.example.com,+1-525-561-9457,female,1982-10-23,JOB0284,Product,G08,EMP0872,Denver,US,terminated,intern,2023-12-05,2026-06-03,150889.02,USD
+EMP0285,E100285,Ava,Garcia,ava.garcia285@corp.example.com,+1-958-396-9650,non_binary,1990-01-10,JOB0285,Security,G08,EMP0503,Hyderabad,IN,active,intern,2024-03-26,,45183.88,INR
+EMP0286,E100286,Ananya,Miller,ananya.miller286@corp.example.com,+1-670-213-8008,non_binary,1981-12-02,JOB0286,IT,G10,EMP0315,Austin,US,active,intern,2015-10-20,,179503.59,USD
+EMP0287,E100287,Abigail,Anderson,abigail.anderson287@corp.example.com,+1-524-307-8546,male,1988-08-29,JOB0287,Marketing,G07,EMP0328,Bengaluru,IN,terminated,contract,2025-01-25,2025-06-10,41355.59,INR
+EMP0288,E100288,Emily,Smith,emily.smith288@corp.example.com,+1-395-622-5800,male,1967-08-06,JOB0288,Marketing,G07,EMP0722,New York,US,terminated,part_time,2016-05-28,2026-05-06,139053.19,USD
+EMP0289,E100289,Abigail,Robinson,abigail.robinson289@corp.example.com,+1-442-588-6243,female,1993-06-22,JOB0289,Legal,G02,EMP0108,Austin,US,retired,intern,2024-11-18,,69013.69,USD
+EMP0290,E100290,Chloe,Perez,chloe.perez290@corp.example.com,+1-814-445-8935,prefer_not_to_say,1981-10-10,JOB0290,HR,G02,EMP0619,Dallas,US,active,contract,2018-10-05,,73270.98,USD
+EMP0291,E100291,Zoey,Johnson,zoey.johnson291@corp.example.com,+1-886-407-6222,female,2000-12-25,JOB0291,Engineering,G08,EMP0920,Dallas,US,active,full_time,2015-10-18,,150892.77,USD
+EMP0292,E100292,Henry,Thomas,henry.thomas292@corp.example.com,+1-804-519-9580,prefer_not_to_say,1986-12-23,JOB0292,Product,G10,EMP0418,London,UK,on_leave,part_time,2018-05-13,,161796.99,GBP
+EMP0293,E100293,Wei,Brown,wei.brown293@corp.example.com,+1-506-356-3539,male,1972-02-25,JOB0293,Finance,G10,EMP0605,Chicago,US,active,full_time,2024-08-21,,177627.43,USD
+EMP0294,E100294,Sofia,Johnson,sofia.johnson294@corp.example.com,+1-723-730-6631,prefer_not_to_say,1968-03-13,JOB0294,Facilities,G10,EMP0841,Austin,US,active,full_time,2018-03-16,,177674.36,USD
+EMP0295,E100295,Mason,Lopez,mason.lopez295@corp.example.com,+1-792-901-5361,male,1980-02-19,JOB0295,Marketing,G11,EMP0770,Atlanta,US,on_leave,part_time,2022-05-11,,187951.72,USD
+EMP0296,E100296,Nora,Perez,nora.perez296@corp.example.com,+1-649-359-6210,female,1993-03-17,JOB0296,Marketing,G05,EMP0676,London,UK,retired,full_time,2023-07-04,,100969.36,GBP
+EMP0297,E100297,Michael,Davis,michael.davis297@corp.example.com,+1-761-281-4744,prefer_not_to_say,1968-11-03,JOB0297,Product,G04,EMP0103,San Francisco,US,active,contract,2018-02-08,,98407.21,USD
+EMP0298,E100298,Mason,Costa,mason.costa298@corp.example.com,+1-424-660-1446,non_binary,1971-07-25,JOB0298,Marketing,G07,EMP0883,London,UK,active,part_time,2025-01-16,,124577.00,GBP
+EMP0299,E100299,Jackson,Jackson,jackson.jackson299@corp.example.com,+1-594-578-3055,female,1997-12-14,JOB0299,IT,G03,EMP0315,London,UK,terminated,part_time,2018-03-31,2023-03-18,80087.52,GBP
+EMP0300,E100300,Michael,Smith,michael.smith300@corp.example.com,+1-291-205-3559,prefer_not_to_say,2000-09-07,JOB0300,Security,G06,EMP0094,Seattle,US,active,part_time,2014-09-30,,122888.90,USD
+EMP0301,E100301,Henry,Murphy,henry.murphy301@corp.example.com,+1-474-492-5259,female,2004-08-27,JOB0301,Supply Chain,G05,EMP0684,Hyderabad,IN,on_leave,full_time,2026-06-24,,34020.04,INR
+EMP0302,E100302,Evelyn,Anderson,evelyn.anderson302@corp.example.com,+1-948-913-8135,female,1984-10-10,JOB0302,HR,G01,EMP0402,Chicago,US,retired,intern,2024-05-23,,58048.35,USD
+EMP0303,E100303,Nora,Rodriguez,nora.rodriguez303@corp.example.com,+1-693-815-9762,male,1966-06-26,JOB0303,Legal,G07,EMP0991,Hyderabad,IN,active,intern,2020-09-08,,42042.99,INR
+EMP0304,E100304,Riley,Kim,riley.kim304@corp.example.com,+1-234-576-4366,male,1977-12-30,JOB0304,Customer Success,G09,EMP0847,San Francisco,US,active,intern,2018-12-30,,162966.28,USD
+EMP0305,E100305,Benjamin,Ali,benjamin.ali305@corp.example.com,+1-205-808-7984,female,2002-02-23,JOB0305,Supply Chain,G06,EMP0532,Seattle,US,active,intern,2015-02-24,,125899.49,USD
+EMP0306,E100306,Alexander,Rodriguez,alexander.rodriguez306@corp.example.com,+1-354-896-4303,prefer_not_to_say,1992-05-20,JOB0306,IT,G03,EMP0406,London,UK,on_leave,part_time,2021-08-08,,76953.77,GBP
+EMP0307,E100307,Mason,Martinez,mason.martinez307@corp.example.com,+1-990-211-2824,female,1990-09-15,JOB0307,Facilities,G08,EMP0187,San Francisco,US,active,full_time,2025-03-23,,151305.13,USD
+EMP0308,E100308,Grace,Harris,grace.harris308@corp.example.com,+1-890-219-2069,prefer_not_to_say,1977-10-23,JOB0308,Marketing,G06,EMP0315,Seattle,US,active,full_time,2014-09-10,,121988.18,USD
+EMP0309,E100309,Ella,Rodriguez,ella.rodriguez309@corp.example.com,+1-526-343-9310,non_binary,1983-08-13,JOB0309,HR,G07,EMP0952,Chicago,US,on_leave,intern,2016-12-06,,136527.18,USD
+EMP0310,E100310,Olivia,Rodriguez,olivia.rodriguez310@corp.example.com,+1-642-311-1997,male,1967-06-24,JOB0310,HR,G02,EMP0233,Chicago,US,active,contract,2022-05-14,,73733.79,USD
+EMP0311,E100311,Isabella,White,isabella.white311@corp.example.com,+1-510-936-1751,female,1968-05-27,JOB0311,HR,G08,EMP0150,Toronto,CA,active,full_time,2025-10-31,,128942.78,USD
+EMP0312,E100312,Benjamin,Thomas,benjamin.thomas312@corp.example.com,+1-277-863-6728,male,2001-05-11,JOB0312,Facilities,G10,EMP0860,Austin,US,retired,full_time,2017-12-23,,178430.88,USD
+EMP0313,E100313,Emily,Walker,emily.walker313@corp.example.com,+1-603-904-4235,non_binary,1980-04-28,JOB0313,Customer Success,G07,EMP0700,New York,US,retired,intern,2015-01-24,,135570.22,USD
+EMP0314,E100314,Ella,Martinez,ella.martinez314@corp.example.com,+1-883-880-7982,prefer_not_to_say,1974-04-24,JOB0314,Security,G04,EMP0348,Dallas,US,terminated,contract,2024-04-09,2024-09-03,94872.46,USD
+EMP0315,E100315,Aiden,Martin,aiden.martin315@corp.example.com,+1-389-762-7132,non_binary,1982-08-02,JOB0315,Finance,G01,EMP0933,London,UK,terminated,full_time,2025-01-25,2026-04-28,52963.68,GBP
+EMP0316,E100316,Mason,Martin,mason.martin316@corp.example.com,+1-285-526-2473,female,1976-05-28,JOB0316,HR,G11,EMP0476,Seattle,US,active,intern,2017-12-28,,187949.55,USD
+EMP0317,E100317,Ella,Harris,ella.harris317@corp.example.com,+1-676-571-5861,male,1983-02-07,JOB0317,Legal,G02,EMP0197,Toronto,CA,active,part_time,2015-07-02,,59772.50,USD
+EMP0318,E100318,Fatima,Khan,fatima.khan318@corp.example.com,+1-856-427-8705,prefer_not_to_say,1971-07-23,JOB0318,Operations,G03,EMP0070,Chicago,US,active,contract,2020-11-06,,86914.78,USD
+EMP0319,E100319,Jack,Clark,jack.clark319@corp.example.com,+1-880-315-6702,female,1965-06-20,JOB0319,Facilities,G01,EMP0178,Hyderabad,IN,retired,part_time,2024-02-02,,17428.20,INR
+EMP0320,E100320,Jackson,Kim,jackson.kim320@corp.example.com,+1-467-229-7435,prefer_not_to_say,2001-01-04,JOB0320,Engineering,G02,EMP0795,Atlanta,US,terminated,full_time,2023-01-31,2024-08-15,71946.72,USD
+EMP0321,E100321,Henry,Clark,henry.clark321@corp.example.com,+1-990-344-4760,female,1966-12-05,JOB0321,Facilities,G07,EMP0833,Chicago,US,active,part_time,2025-07-21,,138038.45,USD
+EMP0322,E100322,Noah,Lee,noah.lee322@corp.example.com,+1-535-855-4690,prefer_not_to_say,1989-12-10,JOB0322,IT,G06,EMP0620,Seattle,US,active,intern,2022-04-05,,121183.46,USD
+EMP0323,E100323,Sofia,Brown,sofia.brown323@corp.example.com,+1-769-883-4763,prefer_not_to_say,1976-05-07,JOB0323,Legal,G06,EMP0074,Austin,US,active,intern,2021-05-02,,123738.33,USD
+EMP0324,E100324,Sophia,Jones,sophia.jones324@corp.example.com,+1-644-807-7341,male,1998-04-27,JOB0324,Facilities,G01,EMP0337,Dallas,US,active,full_time,2020-12-08,,60300.43,USD
+EMP0325,E100325,Grace,Taylor,grace.taylor325@corp.example.com,+1-756-885-5617,non_binary,1970-05-27,JOB0325,HR,G02,EMP0751,Bengaluru,IN,terminated,contract,2014-06-10,2021-01-22,21233.57,INR
+EMP0326,E100326,Ananya,Moore,ananya.moore326@corp.example.com,+1-614-948-5296,prefer_not_to_say,1997-03-19,JOB0326,Operations,G10,EMP0914,Dallas,US,on_leave,intern,2019-11-14,,180195.49,USD
+EMP0327,E100327,Grace,Harris,grace.harris327@corp.example.com,+1-294-507-2625,female,1988-05-08,JOB0327,Operations,G11,EMP0004,Dallas,US,retired,intern,2026-05-31,,189837.02,USD
+EMP0328,E100328,Yuki,Khan,yuki.khan328@corp.example.com,+1-623-281-7695,non_binary,1966-06-18,JOB0328,Legal,G05,EMP0194,Austin,US,terminated,intern,2015-03-29,2018-02-25,109500.72,USD
+EMP0329,E100329,Ananya,Khan,ananya.khan329@corp.example.com,+1-809-465-8786,male,1974-10-08,JOB0329,Operations,G06,EMP0409,Bengaluru,IN,active,intern,2023-11-22,,38033.21,INR
+EMP0330,E100330,Mateo,Lee,mateo.lee330@corp.example.com,+1-617-412-9325,non_binary,1968-11-18,JOB0330,Customer Success,G06,EMP0205,Seattle,US,on_leave,part_time,2023-02-09,,124760.74,USD
+EMP0331,E100331,Abigail,Lewis,abigail.lewis331@corp.example.com,+1-501-535-7949,prefer_not_to_say,1970-03-26,JOB0331,IT,G08,EMP0384,London,UK,active,part_time,2021-06-04,,139734.29,GBP
+EMP0332,E100332,Riley,Jackson,riley.jackson332@corp.example.com,+1-232-681-8726,prefer_not_to_say,1995-01-19,JOB0332,IT,G12,EMP0263,Seattle,US,active,full_time,2019-10-20,,200716.81,USD
+EMP0333,E100333,Henry,Rodriguez,henry.rodriguez333@corp.example.com,+1-809-425-9639,prefer_not_to_say,1980-03-23,JOB0333,Supply Chain,G11,EMP0994,New York,US,terminated,contract,2024-06-19,2025-03-01,187402.39,USD
+EMP0334,E100334,Noah,Robinson,noah.robinson334@corp.example.com,+1-358-560-7590,prefer_not_to_say,1972-04-17,JOB0334,Data,G10,EMP0940,Bengaluru,IN,active,full_time,2021-02-25,,52874.10,INR
+EMP0335,E100335,Scarlett,Silva,scarlett.silva335@corp.example.com,+1-928-530-1539,non_binary,1974-12-20,JOB0335,Facilities,G08,EMP0404,New York,US,active,contract,2014-04-27,,147554.58,USD
+EMP0336,E100336,Jacob,Hernandez,jacob.hernandez336@corp.example.com,+1-918-576-2759,male,1977-09-01,JOB0336,Facilities,G02,EMP0951,New York,US,retired,full_time,2019-04-18,,67880.49,USD
+EMP0337,E100337,Scarlett,Khan,scarlett.khan337@corp.example.com,+1-559-859-6808,non_binary,1997-06-07,JOB0337,Data,G06,EMP0321,Dallas,US,retired,intern,2020-10-19,,127522.28,USD
+EMP0338,E100338,Henry,Garcia,henry.garcia338@corp.example.com,+1-991-725-2988,female,1971-04-16,JOB0338,Facilities,G10,EMP0559,Dallas,US,terminated,intern,2025-10-16,2026-06-28,175019.22,USD
+EMP0339,E100339,Benjamin,Hernandez,benjamin.hernandez339@corp.example.com,+1-736-706-5296,female,1978-08-02,JOB0339,Engineering,G05,EMP0636,Chicago,US,active,full_time,2014-10-20,,109724.71,USD
+EMP0340,E100340,Harper,Moore,harper.moore340@corp.example.com,+1-328-393-8455,female,1971-11-01,JOB0340,Facilities,G11,EMP0148,London,UK,active,contract,2022-05-04,,172689.09,GBP
+EMP0341,E100341,Sebastian,Ali,sebastian.ali341@corp.example.com,+1-500-734-8295,prefer_not_to_say,1983-06-04,JOB0341,Operations,G11,EMP0687,Bengaluru,IN,active,contract,2016-09-19,,57116.93,INR
+EMP0342,E100342,Wei,Martinez,wei.martinez342@corp.example.com,+1-919-374-3513,non_binary,1982-01-20,JOB0342,Security,G03,EMP0316,Chicago,US,active,full_time,2022-10-20,,85023.69,USD
+EMP0343,E100343,Isabella,Ramirez,isabella.ramirez343@corp.example.com,+1-242-430-9744,prefer_not_to_say,1996-12-04,JOB0343,Product,G05,EMP0894,San Francisco,US,retired,contract,2024-05-06,,112529.91,USD
+EMP0344,E100344,Arjun,Davis,arjun.davis344@corp.example.com,+1-291-285-7548,prefer_not_to_say,1971-07-11,JOB0344,Finance,G02,EMP0908,Dallas,US,retired,intern,2017-06-19,,73942.44,USD
+EMP0345,E100345,Owen,Chen,owen.chen345@corp.example.com,+1-336-676-9816,non_binary,1983-03-20,JOB0345,IT,G01,EMP0797,Dallas,US,active,intern,2020-04-27,,57678.80,USD
+EMP0346,E100346,Zoey,Clark,zoey.clark346@corp.example.com,+1-412-625-3815,prefer_not_to_say,1966-10-29,JOB0346,Facilities,G11,EMP0460,Austin,US,retired,intern,2026-04-28,,192202.09,USD
+EMP0347,E100347,Ethan,Lewis,ethan.lewis347@corp.example.com,+1-836-695-2635,male,1995-10-20,JOB0347,Sales,G06,EMP0355,Chicago,US,active,intern,2018-04-10,,124850.57,USD
+EMP0348,E100348,Emma,Martinez,emma.martinez348@corp.example.com,+1-327-407-1625,female,1974-02-04,JOB0348,HR,G12,EMP0411,New York,US,active,full_time,2020-01-23,,202755.04,USD
+EMP0349,E100349,Oliver,Miller,oliver.miller349@corp.example.com,+1-242-982-7868,female,1976-08-07,JOB0349,Operations,G07,EMP0373,San Francisco,US,active,contract,2014-01-01,,136660.29,USD
+EMP0350,E100350,Chloe,Sanchez,chloe.sanchez350@corp.example.com,+1-321-595-9778,non_binary,1965-02-07,JOB0350,Product,G10,EMP0027,Dallas,US,retired,intern,2019-08-18,,175789.31,USD
+EMP0351,E100351,Michael,Jackson,michael.jackson351@corp.example.com,+1-796-589-1584,female,1968-03-10,JOB0351,Marketing,G05,EMP0935,Atlanta,US,on_leave,intern,2025-10-17,,113660.33,USD
+EMP0352,E100352,Ananya,Thomas,ananya.thomas352@corp.example.com,+1-349-275-1814,prefer_not_to_say,2000-12-01,JOB0352,Sales,G09,EMP0234,Denver,US,active,full_time,2014-09-13,,162000.19,USD
+EMP0353,E100353,Omar,Wilson,omar.wilson353@corp.example.com,+1-402-657-1195,prefer_not_to_say,1977-12-05,JOB0353,Security,G09,EMP0587,Hyderabad,IN,on_leave,full_time,2022-08-09,,49772.84,INR
+EMP0354,E100354,Harper,White,harper.white354@corp.example.com,+1-870-267-3083,female,1981-01-04,JOB0354,Operations,G05,EMP0201,San Francisco,US,on_leave,intern,2020-05-11,,110252.97,USD
+EMP0355,E100355,Scarlett,Silva,scarlett.silva355@corp.example.com,+1-915-493-8550,prefer_not_to_say,1968-07-19,JOB0355,IT,G03,EMP0795,Seattle,US,on_leave,full_time,2018-10-20,,83763.08,USD
+EMP0356,E100356,Daniel,Ali,daniel.ali356@corp.example.com,+1-894-856-1993,non_binary,2003-05-15,JOB0356,HR,G06,EMP0181,Chicago,US,active,full_time,2020-01-27,,124106.80,USD
+EMP0357,E100357,Oliver,Jackson,oliver.jackson357@corp.example.com,+1-390-804-8357,female,2002-06-10,JOB0357,Sales,G02,EMP0359,Hyderabad,IN,on_leave,contract,2023-03-16,,20673.45,INR
+EMP0358,E100358,Logan,Walker,logan.walker358@corp.example.com,+1-592-733-7373,female,2004-02-22,JOB0358,IT,G10,EMP0952,Hyderabad,IN,active,intern,2025-09-22,,54304.51,INR
+EMP0359,E100359,Henry,Lopez,henry.lopez359@corp.example.com,+1-493-903-5019,female,1983-11-04,JOB0359,Product,G05,EMP0534,London,UK,active,intern,2025-02-21,,99491.98,GBP
+EMP0360,E100360,Harper,Rodriguez,harper.rodriguez360@corp.example.com,+1-518-528-6857,male,1966-05-29,JOB0360,Sales,G11,EMP0926,New York,US,active,intern,2017-07-25,,187309.47,USD
+EMP0361,E100361,Ananya,Silva,ananya.silva361@corp.example.com,+1-442-909-4624,male,1980-06-04,JOB0361,Legal,G01,EMP0628,Atlanta,US,terminated,part_time,2025-09-13,2026-06-11,55699.32,USD
+EMP0362,E100362,Owen,Lee,owen.lee362@corp.example.com,+1-396-313-3699,non_binary,1983-03-15,JOB0362,Sales,G05,EMP0746,Dallas,US,active,part_time,2022-08-21,,112338.82,USD
+EMP0363,E100363,Zoey,Smith,zoey.smith363@corp.example.com,+1-260-216-5486,female,1978-03-26,JOB0363,Engineering,G09,EMP0231,Dallas,US,retired,full_time,2019-03-22,,165525.26,USD
+EMP0364,E100364,Ava,Davis,ava.davis364@corp.example.com,+1-375-907-1210,male,1990-07-15,JOB0364,Marketing,G09,EMP0836,Toronto,CA,terminated,contract,2026-02-04,2026-04-16,143317.06,USD
+EMP0365,E100365,Chloe,Chen,chloe.chen365@corp.example.com,+1-236-912-6927,non_binary,1969-07-06,JOB0365,Product,G02,EMP0513,Austin,US,terminated,intern,2022-12-08,2024-11-20,71549.14,USD
+EMP0366,E100366,Amelia,Miller,amelia.miller366@corp.example.com,+1-290-519-8555,non_binary,1985-11-23,JOB0366,Sales,G06,EMP0335,Atlanta,US,on_leave,contract,2021-09-17,,123637.71,USD
+EMP0367,E100367,Elena,Chen,elena.chen367@corp.example.com,+1-502-849-3206,prefer_not_to_say,1968-12-10,JOB0367,Finance,G08,EMP0440,Toronto,CA,active,part_time,2019-06-16,,133097.43,USD
+EMP0368,E100368,Omar,Murphy,omar.murphy368@corp.example.com,+1-293-609-4440,female,1968-10-27,JOB0368,IT,G05,EMP0662,San Francisco,US,active,contract,2022-12-31,,108706.56,USD
+EMP0369,E100369,Chloe,Harris,chloe.harris369@corp.example.com,+1-766-749-3510,non_binary,1974-11-06,JOB0369,Legal,G07,EMP0238,Chicago,US,active,contract,2015-10-29,,135453.26,USD
+EMP0370,E100370,Grace,Brown,grace.brown370@corp.example.com,+1-201-247-2888,female,1989-01-26,JOB0370,Finance,G11,EMP0332,Toronto,CA,active,contract,2018-03-19,,162709.55,USD
+EMP0371,E100371,Logan,Kim,logan.kim371@corp.example.com,+1-349-917-6073,male,1986-09-24,JOB0371,Finance,G12,EMP0354,Hyderabad,IN,active,intern,2024-11-22,,61082.52,INR
+EMP0372,E100372,Elena,Lewis,elena.lewis372@corp.example.com,+1-358-227-7936,male,1982-01-19,JOB0372,Legal,G10,EMP0098,Austin,US,active,intern,2023-09-21,,175599.43,USD
+EMP0373,E100373,Mateo,Murphy,mateo.murphy373@corp.example.com,+1-299-541-3994,male,1975-06-28,JOB0373,Operations,G08,EMP0672,Austin,US,terminated,part_time,2018-08-21,2020-01-24,150863.80,USD
+EMP0374,E100374,Zoey,Khan,zoey.khan374@corp.example.com,+1-744-658-5978,male,1970-10-08,JOB0374,Supply Chain,G11,EMP0800,Toronto,CA,active,part_time,2018-05-20,,165185.98,USD
+EMP0375,E100375,Yuki,Robinson,yuki.robinson375@corp.example.com,+1-483-672-3477,prefer_not_to_say,1983-07-22,JOB0375,Legal,G09,EMP0388,Atlanta,US,retired,part_time,2018-03-27,,166278.40,USD
+EMP0376,E100376,Owen,Silva,owen.silva376@corp.example.com,+1-870-554-2596,non_binary,1983-01-07,JOB0376,Finance,G02,EMP0218,Seattle,US,terminated,part_time,2019-08-09,2020-11-23,72116.92,USD
+EMP0377,E100377,Nora,Taylor,nora.taylor377@corp.example.com,+1-502-481-5537,female,1986-05-10,JOB0377,Supply Chain,G02,EMP0509,San Francisco,US,active,part_time,2021-08-06,,71219.30,USD
+EMP0378,E100378,Abigail,Moore,abigail.moore378@corp.example.com,+1-658-823-6094,female,1975-04-05,JOB0378,Operations,G05,EMP0132,Hyderabad,IN,active,contract,2016-01-16,,33527.59,INR
+EMP0379,E100379,Jackson,Johnson,jackson.johnson379@corp.example.com,+1-372-630-5116,male,1976-02-25,JOB0379,Finance,G06,EMP0073,Chicago,US,on_leave,part_time,2015-09-14,,126776.04,USD
+EMP0380,E100380,Mateo,Kim,mateo.kim380@corp.example.com,+1-981-672-7582,female,1981-05-23,JOB0380,Marketing,G12,EMP0616,Hyderabad,IN,terminated,contract,2025-06-11,2025-11-18,62335.01,INR
+EMP0381,E100381,Liam,Jones,liam.jones381@corp.example.com,+1-745-330-5107,non_binary,1974-09-13,JOB0381,IT,G06,EMP0329,Dallas,US,active,contract,2022-01-15,,123930.51,USD
+EMP0382,E100382,Isabella,Brown,isabella.brown382@corp.example.com,+1-351-564-5723,non_binary,1966-04-14,JOB0382,Product,G07,EMP0462,Seattle,US,on_leave,intern,2015-02-12,,134322.77,USD
+EMP0383,E100383,Jackson,Chen,jackson.chen383@corp.example.com,+1-472-924-9467,prefer_not_to_say,1992-05-23,JOB0383,Legal,G06,EMP0128,Denver,US,active,contract,2020-10-29,,122943.24,USD
+EMP0384,E100384,Alexander,Kim,alexander.kim384@corp.example.com,+1-708-912-2516,male,1968-02-28,JOB0384,Marketing,G03,EMP0608,Chicago,US,retired,full_time,2025-11-18,,84430.80,USD
+EMP0385,E100385,Lily,Ramirez,lily.ramirez385@corp.example.com,+1-382-858-5059,female,1985-01-15,JOB0385,Customer Success,G04,EMP0555,Toronto,CA,active,part_time,2020-09-06,,84983.96,USD
+EMP0386,E100386,Noah,Lee,noah.lee386@corp.example.com,+1-552-218-5897,male,1979-09-30,JOB0386,IT,G08,EMP0376,San Francisco,US,active,full_time,2026-02-10,,147869.11,USD
+EMP0387,E100387,Lucas,Thompson,lucas.thompson387@corp.example.com,+1-512-689-1736,non_binary,1969-01-21,JOB0387,Security,G04,EMP0606,Austin,US,active,contract,2021-07-07,,98861.48,USD
+EMP0388,E100388,Sebastian,Thomas,sebastian.thomas388@corp.example.com,+1-989-424-1581,male,1999-10-19,JOB0388,Data,G02,EMP0427,Atlanta,US,active,part_time,2019-12-10,,74425.35,USD
+EMP0389,E100389,Michael,Robinson,michael.robinson389@corp.example.com,+1-898-349-8711,non_binary,1971-05-07,JOB0389,Marketing,G07,EMP0605,New York,US,terminated,part_time,2026-03-22,2026-05-30,137778.02,USD
+EMP0390,E100390,Benjamin,Smith,benjamin.smith390@corp.example.com,+1-617-505-6965,male,1993-05-17,JOB0390,Sales,G06,EMP0340,Denver,US,on_leave,contract,2022-07-04,,126822.19,USD
+EMP0391,E100391,Mateo,Jackson,mateo.jackson391@corp.example.com,+1-803-224-5277,prefer_not_to_say,1983-07-26,JOB0391,Customer Success,G04,EMP0948,London,UK,on_leave,full_time,2023-04-29,,86672.46,GBP
+EMP0392,E100392,Zoey,Ramirez,zoey.ramirez392@corp.example.com,+1-507-944-2522,female,1994-01-31,JOB0392,Product,G06,EMP0054,New York,US,retired,part_time,2021-10-01,,125977.22,USD
+EMP0393,E100393,Ananya,Martin,ananya.martin393@corp.example.com,+1-665-722-5153,non_binary,1969-10-23,JOB0393,Engineering,G02,EMP0421,London,UK,retired,contract,2017-01-09,,64007.28,GBP
+EMP0394,E100394,Lucas,Harris,lucas.harris394@corp.example.com,+1-656-627-8332,non_binary,1978-06-15,JOB0394,Facilities,G06,EMP0258,Seattle,US,active,full_time,2024-04-04,,120841.58,USD
+EMP0395,E100395,Emily,Silva,emily.silva395@corp.example.com,+1-338-932-7484,prefer_not_to_say,2001-05-24,JOB0395,IT,G04,EMP0747,San Francisco,US,retired,intern,2016-07-10,,98019.35,USD
+EMP0396,E100396,Scarlett,Clark,scarlett.clark396@corp.example.com,+1-318-748-1025,male,1992-06-12,JOB0396,Engineering,G10,EMP0946,New York,US,on_leave,intern,2014-07-18,,176073.72,USD
+EMP0397,E100397,Riley,Thompson,riley.thompson397@corp.example.com,+1-389-694-6956,prefer_not_to_say,2003-06-10,JOB0397,Marketing,G07,EMP0649,Bengaluru,IN,active,full_time,2014-06-06,,42522.97,INR
+EMP0398,E100398,Arjun,Singh,arjun.singh398@corp.example.com,+1-241-835-8137,prefer_not_to_say,1970-07-03,JOB0398,Sales,G12,EMP0509,Chicago,US,retired,part_time,2025-07-22,,206297.74,USD
+EMP0399,E100399,Jack,White,jack.white399@corp.example.com,+1-912-769-9023,prefer_not_to_say,2000-02-09,JOB0399,Finance,G08,EMP0714,Denver,US,terminated,full_time,2014-09-15,2015-05-23,152006.00,USD
+EMP0400,E100400,Jacob,Patel,jacob.patel400@corp.example.com,+1-485-240-3608,non_binary,1984-03-22,JOB0400,Facilities,G08,EMP0125,Bengaluru,IN,active,full_time,2024-12-09,,46523.79,INR
+EMP0401,E100401,Abigail,Khan,abigail.khan401@corp.example.com,+1-216-934-9354,female,1971-02-19,JOB0401,HR,G03,EMP0801,London,UK,active,part_time,2019-09-03,,78573.69,GBP
+EMP0402,E100402,Aria,Ali,aria.ali402@corp.example.com,+1-706-901-2490,non_binary,1978-10-12,JOB0402,Operations,G04,EMP0437,Dallas,US,on_leave,contract,2021-04-16,,100664.30,USD
+EMP0403,E100403,Omar,Hernandez,omar.hernandez403@corp.example.com,+1-731-916-1682,male,2003-01-18,JOB0403,Data,G09,EMP0310,Chicago,US,retired,full_time,2025-10-06,,161081.80,USD
+EMP0404,E100404,Mason,Kim,mason.kim404@corp.example.com,+1-764-343-6494,non_binary,1970-02-01,JOB0404,Data,G01,EMP0023,Denver,US,active,full_time,2016-05-08,,58392.81,USD
+EMP0405,E100405,Liam,Wilson,liam.wilson405@corp.example.com,+1-540-514-9499,non_binary,1988-08-25,JOB0405,Supply Chain,G07,EMP0987,Seattle,US,on_leave,part_time,2026-03-25,,136771.18,USD
+EMP0406,E100406,Daniel,Nguyen,daniel.nguyen406@corp.example.com,+1-698-719-3830,non_binary,1989-10-17,JOB0406,Engineering,G08,EMP0867,New York,US,on_leave,contract,2021-12-18,,151161.91,USD
+EMP0407,E100407,Noah,Smith,noah.smith407@corp.example.com,+1-613-239-3570,prefer_not_to_say,1986-04-22,JOB0407,Security,G02,EMP0645,Dallas,US,terminated,contract,2018-07-20,2023-03-12,71349.62,USD
+EMP0408,E100408,Amelia,Garcia,amelia.garcia408@corp.example.com,+1-857-755-4048,non_binary,1975-09-24,JOB0408,Supply Chain,G08,EMP0060,Bengaluru,IN,active,intern,2019-07-30,,45632.79,INR
+EMP0409,E100409,Elena,Rodriguez,elena.rodriguez409@corp.example.com,+1-446-998-5239,male,1972-06-13,JOB0409,Customer Success,G07,EMP0274,Chicago,US,terminated,contract,2021-08-27,2023-04-16,138636.92,USD
+EMP0410,E100410,Yuki,Jackson,yuki.jackson410@corp.example.com,+1-560-279-4807,non_binary,1982-03-21,JOB0410,Legal,G06,EMP0212,Seattle,US,active,full_time,2020-07-07,,122634.22,USD
+EMP0411,E100411,Mateo,Ali,mateo.ali411@corp.example.com,+1-205-733-6442,male,2003-08-07,JOB0411,Operations,G07,EMP0888,Atlanta,US,active,part_time,2023-01-24,,136317.04,USD
+EMP0412,E100412,Ethan,Walker,ethan.walker412@corp.example.com,+1-449-600-6795,prefer_not_to_say,1965-04-18,JOB0412,Data,G10,EMP0517,Austin,US,retired,full_time,2014-10-20,,179001.69,USD
+EMP0413,E100413,Jackson,Davis,jackson.davis413@corp.example.com,+1-214-332-5775,prefer_not_to_say,1968-12-15,JOB0413,Operations,G11,EMP0173,Chicago,US,terminated,contract,2020-05-01,2021-06-07,191696.36,USD
+EMP0414,E100414,Amelia,Robinson,amelia.robinson414@corp.example.com,+1-304-414-8268,female,1992-02-05,JOB0414,Finance,G06,EMP0545,Dallas,US,active,intern,2018-09-26,,122587.16,USD
+EMP0415,E100415,Mateo,Rodriguez,mateo.rodriguez415@corp.example.com,+1-284-849-8046,female,1981-03-14,JOB0415,Supply Chain,G02,EMP0713,Toronto,CA,retired,intern,2022-06-02,,61230.90,USD
+EMP0416,E100416,Yuki,Silva,yuki.silva416@corp.example.com,+1-263-629-7636,prefer_not_to_say,1973-05-01,JOB0416,Engineering,G12,EMP0099,Bengaluru,IN,on_leave,intern,2020-12-25,,62613.36,INR
+EMP0417,E100417,Aiden,Sanchez,aiden.sanchez417@corp.example.com,+1-628-501-1067,prefer_not_to_say,1967-08-20,JOB0417,Sales,G08,EMP0989,San Francisco,US,active,contract,2016-09-03,,148354.98,USD
+EMP0418,E100418,Mateo,Martinez,mateo.martinez418@corp.example.com,+1-386-908-1017,female,1970-07-14,JOB0418,Finance,G12,EMP0034,Dallas,US,on_leave,full_time,2017-04-26,,203721.71,USD
+EMP0419,E100419,James,Sanchez,james.sanchez419@corp.example.com,+1-643-529-3237,prefer_not_to_say,1976-02-07,JOB0419,Product,G01,EMP0229,Atlanta,US,active,contract,2015-08-20,,59842.44,USD
+EMP0420,E100420,Scarlett,Nguyen,scarlett.nguyen420@corp.example.com,+1-209-562-9411,male,1980-02-22,JOB0420,Marketing,G09,EMP0346,Seattle,US,on_leave,contract,2025-04-13,,165970.66,USD
+EMP0421,E100421,Ella,Davis,ella.davis421@corp.example.com,+1-814-348-3520,male,1975-07-09,JOB0421,Sales,G12,EMP0658,Atlanta,US,active,part_time,2019-11-11,,204019.59,USD
+EMP0422,E100422,Michael,Garcia,michael.garcia422@corp.example.com,+1-746-580-3279,female,1969-01-19,JOB0422,Data,G12,EMP0752,San Francisco,US,terminated,intern,2017-04-21,2019-11-22,206737.26,USD
+EMP0423,E100423,Logan,Taylor,logan.taylor423@corp.example.com,+1-272-374-2163,female,1971-08-13,JOB0423,Engineering,G03,EMP0373,San Francisco,US,active,intern,2026-05-28,,86828.08,USD
+EMP0424,E100424,Fatima,Costa,fatima.costa424@corp.example.com,+1-486-385-4685,male,1979-06-05,JOB0424,HR,G11,EMP0795,Chicago,US,active,contract,2025-06-23,,193506.03,USD
+EMP0425,E100425,James,Martin,james.martin425@corp.example.com,+1-653-805-6726,non_binary,1981-01-02,JOB0425,IT,G03,EMP0028,New York,US,active,contract,2020-11-02,,86383.12,USD
+EMP0426,E100426,Riley,Perez,riley.perez426@corp.example.com,+1-942-813-1719,non_binary,1996-05-25,JOB0426,Product,G02,EMP0316,Seattle,US,active,part_time,2025-10-19,,70180.43,USD
+EMP0427,E100427,Jacob,Brown,jacob.brown427@corp.example.com,+1-682-607-7216,female,1967-09-16,JOB0427,Sales,G06,EMP0663,Bengaluru,IN,active,contract,2014-05-14,,38367.19,INR
+EMP0428,E100428,Sofia,Davis,sofia.davis428@corp.example.com,+1-707-508-1858,prefer_not_to_say,1969-02-15,JOB0428,Engineering,G10,EMP0331,Austin,US,on_leave,part_time,2014-02-17,,174730.66,USD
+EMP0429,E100429,James,Silva,james.silva429@corp.example.com,+1-515-851-6698,male,1999-02-22,JOB0429,Operations,G04,EMP0191,Chicago,US,active,contract,2015-04-30,,94926.42,USD
+EMP0430,E100430,Zoey,Moore,zoey.moore430@corp.example.com,+1-288-432-8401,female,1965-06-10,JOB0430,IT,G02,EMP0883,Denver,US,active,contract,2021-03-22,,74240.02,USD
+EMP0431,E100431,Harper,Sanchez,harper.sanchez431@corp.example.com,+1-522-788-3690,female,1971-07-04,JOB0431,Marketing,G05,EMP0726,Seattle,US,active,full_time,2020-04-06,,112585.60,USD
+EMP0432,E100432,Aria,Chen,aria.chen432@corp.example.com,+1-760-640-5883,non_binary,1973-06-29,JOB0432,Data,G06,EMP0792,Bengaluru,IN,retired,intern,2025-09-14,,37244.88,INR
+EMP0433,E100433,Yuki,Anderson,yuki.anderson433@corp.example.com,+1-457-224-9185,female,2000-08-17,JOB0433,Customer Success,G11,EMP0637,Hyderabad,IN,on_leave,contract,2018-05-01,,58393.82,INR
+EMP0434,E100434,Isabella,Robinson,isabella.robinson434@corp.example.com,+1-428-417-3326,prefer_not_to_say,1991-03-29,JOB0434,Finance,G01,EMP0530,Chicago,US,active,intern,2014-06-13,,59386.85,USD
+EMP0435,E100435,Alexander,Johnson,alexander.johnson435@corp.example.com,+1-237-872-5583,prefer_not_to_say,1981-06-23,JOB0435,Finance,G03,EMP0747,Austin,US,active,full_time,2020-05-11,,83110.11,USD
+EMP0436,E100436,Nora,Anderson,nora.anderson436@corp.example.com,+1-996-963-4336,male,1967-05-09,JOB0436,Supply Chain,G10,EMP0460,Austin,US,active,part_time,2015-06-30,,179892.64,USD
+EMP0437,E100437,Mateo,Perez,mateo.perez437@corp.example.com,+1-404-363-7242,prefer_not_to_say,2002-03-31,JOB0437,Data,G07,EMP0735,Hyderabad,IN,active,contract,2020-02-29,,41454.16,INR
+EMP0438,E100438,Evelyn,Davis,evelyn.davis438@corp.example.com,+1-474-817-2389,prefer_not_to_say,1979-09-08,JOB0438,HR,G03,EMP0205,Atlanta,US,retired,part_time,2022-09-06,,82652.97,USD
+EMP0439,E100439,Omar,Perez,omar.perez439@corp.example.com,+1-807-358-8920,male,1996-05-09,JOB0439,Customer Success,G09,EMP0370,San Francisco,US,retired,part_time,2021-02-27,,161286.38,USD
+EMP0440,E100440,James,Anderson,james.anderson440@corp.example.com,+1-403-844-6808,prefer_not_to_say,1994-01-25,JOB0440,Facilities,G10,EMP0078,Atlanta,US,active,full_time,2022-11-20,,175928.08,USD
+EMP0441,E100441,Michael,Walker,michael.walker441@corp.example.com,+1-309-940-8697,female,1999-07-27,JOB0441,Facilities,G06,EMP0261,San Francisco,US,active,intern,2024-07-06,,121512.19,USD
+EMP0442,E100442,Owen,Wilson,owen.wilson442@corp.example.com,+1-386-275-5872,prefer_not_to_say,2004-07-10,JOB0442,Supply Chain,G03,EMP0201,Toronto,CA,terminated,intern,2017-03-04,2017-07-29,75210.89,USD
+EMP0443,E100443,Emily,Chen,emily.chen443@corp.example.com,+1-945-785-6200,male,1990-10-21,JOB0443,Security,G12,EMP0957,Seattle,US,terminated,full_time,2022-05-16,2025-03-10,205592.12,USD
+EMP0444,E100444,Isabella,Taylor,isabella.taylor444@corp.example.com,+1-424-815-2875,prefer_not_to_say,2000-12-23,JOB0444,Finance,G11,EMP0192,Austin,US,active,contract,2015-06-13,,191110.73,USD
+EMP0445,E100445,Isabella,Davis,isabella.davis445@corp.example.com,+1-955-600-8874,prefer_not_to_say,1985-09-01,JOB0445,Security,G06,EMP0665,Toronto,CA,on_leave,intern,2020-03-16,,106974.92,USD
+EMP0446,E100446,Mia,Williams,mia.williams446@corp.example.com,+1-476-492-4066,male,1966-04-17,JOB0446,Data,G08,EMP0808,Seattle,US,on_leave,full_time,2018-04-07,,150929.51,USD
+EMP0447,E100447,Yuki,Johnson,yuki.johnson447@corp.example.com,+1-381-618-6024,non_binary,1988-03-20,JOB0447,Marketing,G01,EMP0906,London,UK,on_leave,part_time,2023-09-14,,50975.58,GBP
+EMP0448,E100448,Wei,Singh,wei.singh448@corp.example.com,+1-915-381-7071,male,1984-09-30,JOB0448,Product,G03,EMP0654,Chicago,US,on_leave,part_time,2019-09-02,,83864.92,USD
+EMP0449,E100449,Emma,Brown,emma.brown449@corp.example.com,+1-817-643-5359,female,1980-04-30,JOB0449,Engineering,G01,EMP0585,Chicago,US,retired,part_time,2020-11-11,,58570.03,USD
+EMP0450,E100450,Isabella,Martinez,isabella.martinez450@corp.example.com,+1-578-948-2214,non_binary,1970-02-19,JOB0450,Facilities,G03,EMP0789,London,UK,active,intern,2023-08-22,,76066.86,GBP
+EMP0451,E100451,Elena,Johnson,elena.johnson451@corp.example.com,+1-893-583-2219,prefer_not_to_say,1966-01-24,JOB0451,Marketing,G11,EMP0587,San Francisco,US,active,intern,2018-12-02,,191831.98,USD
+EMP0452,E100452,Aria,Lopez,aria.lopez452@corp.example.com,+1-320-694-4825,male,1965-11-02,JOB0452,Legal,G03,EMP0859,Bengaluru,IN,terminated,contract,2018-12-22,2019-05-21,26086.14,INR
+EMP0453,E100453,Yuki,Thomas,yuki.thomas453@corp.example.com,+1-242-357-9946,male,1973-09-29,JOB0453,Operations,G01,EMP0647,San Francisco,US,terminated,intern,2023-05-07,2024-10-09,58614.48,USD
+EMP0454,E100454,Ethan,Singh,ethan.singh454@corp.example.com,+1-203-883-8164,non_binary,1998-01-16,JOB0454,Operations,G01,EMP0504,Dallas,US,active,full_time,2021-11-08,,58066.99,USD
+EMP0455,E100455,Fatima,Robinson,fatima.robinson455@corp.example.com,+1-377-982-5856,prefer_not_to_say,1990-03-20,JOB0455,IT,G04,EMP0905,Seattle,US,active,intern,2023-09-25,,95308.70,USD
+EMP0456,E100456,Noah,Lee,noah.lee456@corp.example.com,+1-405-630-2033,non_binary,1990-01-25,JOB0456,Customer Success,G10,EMP0765,Seattle,US,active,contract,2019-07-19,,180506.64,USD
+EMP0457,E100457,Ethan,Jones,ethan.jones457@corp.example.com,+1-802-776-6410,non_binary,1973-08-26,JOB0457,Customer Success,G07,EMP0050,Dallas,US,on_leave,contract,2022-10-14,,140480.71,USD
+EMP0458,E100458,Ananya,Brown,ananya.brown458@corp.example.com,+1-240-830-4839,prefer_not_to_say,1996-10-17,JOB0458,Sales,G04,EMP0058,Chicago,US,active,part_time,2014-05-09,,97213.70,USD
+EMP0459,E100459,Ella,Martinez,ella.martinez459@corp.example.com,+1-873-832-1049,non_binary,1980-05-09,JOB0459,Engineering,G05,EMP0563,Austin,US,on_leave,intern,2016-02-11,,113610.97,USD
+EMP0460,E100460,Nora,Taylor,nora.taylor460@corp.example.com,+1-532-316-3052,prefer_not_to_say,1974-12-17,JOB0460,Security,G12,EMP0395,Bengaluru,IN,retired,part_time,2016-12-23,,62999.38,INR
+EMP0461,E100461,Harper,Perez,harper.perez461@corp.example.com,+1-824-383-2810,male,1982-06-05,JOB0461,Legal,G02,EMP0486,Atlanta,US,retired,contract,2014-09-15,,74261.59,USD
+EMP0462,E100462,Jackson,Jackson,jackson.jackson462@corp.example.com,+1-244-243-8012,male,1966-04-15,JOB0462,Marketing,G03,EMP0133,Chicago,US,active,contract,2018-11-08,,86247.03,USD
+EMP0463,E100463,Sophia,Martinez,sophia.martinez463@corp.example.com,+1-573-628-1925,female,1994-04-11,JOB0463,Legal,G06,EMP0153,Denver,US,terminated,full_time,2021-09-24,2026-05-29,127034.43,USD
+EMP0464,E100464,Wei,Patel,wei.patel464@corp.example.com,+1-562-861-7823,female,1987-06-07,JOB0464,Supply Chain,G03,EMP0278,New York,US,active,full_time,2022-06-07,,84213.19,USD
+EMP0465,E100465,Riley,Moore,riley.moore465@corp.example.com,+1-441-468-7798,prefer_not_to_say,1976-02-04,JOB0465,Product,G04,EMP0333,London,UK,active,full_time,2021-03-10,,89373.70,GBP
+EMP0466,E100466,Aria,Lopez,aria.lopez466@corp.example.com,+1-628-549-9507,prefer_not_to_say,1999-01-29,JOB0466,Customer Success,G06,EMP0133,Seattle,US,terminated,full_time,2018-02-03,2023-11-24,123575.04,USD
+EMP0467,E100467,Mia,Davis,mia.davis467@corp.example.com,+1-453-645-3099,male,1982-03-27,JOB0467,Customer Success,G02,EMP0375,Bengaluru,IN,on_leave,intern,2018-02-13,,20989.66,INR
+EMP0468,E100468,Ella,Moore,ella.moore468@corp.example.com,+1-468-202-6862,prefer_not_to_say,1978-12-12,JOB0468,Marketing,G01,EMP0720,Seattle,US,retired,full_time,2020-04-13,,60519.06,USD
+EMP0469,E100469,Abigail,Lee,abigail.lee469@corp.example.com,+1-854-589-1675,prefer_not_to_say,1968-12-21,JOB0469,Security,G04,EMP0840,London,UK,active,intern,2014-05-05,,89888.79,GBP
+EMP0470,E100470,Jacob,Khan,jacob.khan470@corp.example.com,+1-303-664-7164,prefer_not_to_say,1973-07-20,JOB0470,Marketing,G09,EMP0027,Toronto,CA,terminated,contract,2018-12-26,2025-04-11,142664.07,USD
+EMP0471,E100471,Elena,Johnson,elena.johnson471@corp.example.com,+1-740-591-7166,non_binary,2001-11-04,JOB0471,Security,G04,EMP0544,New York,US,retired,contract,2017-01-18,,98297.28,USD
+EMP0472,E100472,Liam,Ramirez,liam.ramirez472@corp.example.com,+1-308-670-6919,non_binary,1991-12-16,JOB0472,Legal,G10,EMP0271,London,UK,active,part_time,2014-02-26,,164849.49,GBP
+EMP0473,E100473,Daniel,Jones,daniel.jones473@corp.example.com,+1-387-890-2376,female,1982-08-15,JOB0473,Finance,G03,EMP0157,Atlanta,US,active,part_time,2018-09-10,,87801.94,USD
+EMP0474,E100474,Logan,Robinson,logan.robinson474@corp.example.com,+1-975-305-4568,female,1976-09-28,JOB0474,Engineering,G07,EMP0368,Chicago,US,active,full_time,2023-01-23,,135965.18,USD
+EMP0475,E100475,Mia,Thomas,mia.thomas475@corp.example.com,+1-531-941-4065,male,1986-08-04,JOB0475,Security,G10,EMP0644,Hyderabad,IN,on_leave,part_time,2022-08-07,,53898.45,INR
+EMP0476,E100476,Elena,Hernandez,elena.hernandez476@corp.example.com,+1-901-991-1691,non_binary,1971-10-16,JOB0476,Engineering,G06,EMP0523,Austin,US,active,intern,2021-10-19,,127302.44,USD
+EMP0477,E100477,Chloe,Thomas,chloe.thomas477@corp.example.com,+1-960-391-7877,prefer_not_to_say,1973-03-26,JOB0477,Product,G08,EMP0346,Chicago,US,active,part_time,2021-05-27,,150819.33,USD
+EMP0478,E100478,Michael,Thompson,michael.thompson478@corp.example.com,+1-200-944-6433,non_binary,2001-10-15,JOB0478,Finance,G06,EMP0522,Denver,US,terminated,intern,2020-11-15,2026-01-31,122350.17,USD
+EMP0479,E100479,Evelyn,Perez,evelyn.perez479@corp.example.com,+1-845-760-8837,non_binary,1991-06-09,JOB0479,Supply Chain,G06,EMP0068,Denver,US,retired,intern,2016-01-21,,122020.97,USD
+EMP0480,E100480,Lucas,Patel,lucas.patel480@corp.example.com,+1-237-427-6074,non_binary,1978-10-16,JOB0480,Operations,G08,EMP0205,London,UK,active,full_time,2023-08-11,,138518.95,GBP
+EMP0481,E100481,Daniel,Kim,daniel.kim481@corp.example.com,+1-548-388-3344,male,1979-08-07,JOB0481,Supply Chain,G10,EMP0053,Hyderabad,IN,terminated,intern,2024-09-23,2026-04-05,54797.01,INR
+EMP0482,E100482,Daniel,Clark,daniel.clark482@corp.example.com,+1-207-633-7420,non_binary,1979-10-17,JOB0482,Operations,G08,EMP0536,New York,US,retired,contract,2022-03-18,,149066.80,USD
+EMP0483,E100483,Priya,Lopez,priya.lopez483@corp.example.com,+1-766-926-7772,prefer_not_to_say,1997-05-27,JOB0483,Legal,G06,EMP0256,Chicago,US,on_leave,part_time,2018-12-15,,126023.92,USD
+EMP0484,E100484,Michael,Anderson,michael.anderson484@corp.example.com,+1-439-782-2324,prefer_not_to_say,1999-05-05,JOB0484,IT,G07,EMP0541,London,UK,terminated,part_time,2021-01-07,2022-05-19,126754.45,GBP
+EMP0485,E100485,Owen,Singh,owen.singh485@corp.example.com,+1-517-874-6443,prefer_not_to_say,1997-12-19,JOB0485,Marketing,G02,EMP0561,Dallas,US,on_leave,full_time,2026-02-14,,71730.84,USD
+EMP0486,E100486,Lily,Costa,lily.costa486@corp.example.com,+1-795-270-8387,prefer_not_to_say,2001-12-23,JOB0486,Product,G01,EMP0242,Denver,US,active,full_time,2026-04-19,,58136.45,USD
+EMP0487,E100487,Riley,Chen,riley.chen487@corp.example.com,+1-593-514-1748,non_binary,1986-05-27,JOB0487,HR,G04,EMP0593,San Francisco,US,on_leave,contract,2015-09-06,,97632.97,USD
+EMP0488,E100488,Sebastian,Ramirez,sebastian.ramirez488@corp.example.com,+1-798-744-5150,female,2000-01-25,JOB0488,Sales,G09,EMP0027,Seattle,US,retired,full_time,2021-03-16,,164883.17,USD
+EMP0489,E100489,Arjun,Smith,arjun.smith489@corp.example.com,+1-959-303-6323,female,1995-03-01,JOB0489,Engineering,G11,EMP0163,Seattle,US,terminated,full_time,2016-06-22,2023-06-21,188801.91,USD
+EMP0490,E100490,Evelyn,Thompson,evelyn.thompson490@corp.example.com,+1-671-295-5228,female,1996-03-16,JOB0490,Finance,G12,EMP0682,Atlanta,US,retired,full_time,2021-10-08,,202591.79,USD
+EMP0491,E100491,Owen,White,owen.white491@corp.example.com,+1-479-449-7974,female,1981-07-01,JOB0491,Security,G03,EMP0155,Hyderabad,IN,terminated,intern,2017-06-08,2019-07-23,25842.84,INR
+EMP0492,E100492,Lily,Perez,lily.perez492@corp.example.com,+1-993-870-6085,prefer_not_to_say,2002-04-30,JOB0492,Finance,G01,EMP0645,Seattle,US,active,contract,2020-10-13,,57127.82,USD
+EMP0493,E100493,Jack,Khan,jack.khan493@corp.example.com,+1-858-616-5463,female,1972-10-11,JOB0493,HR,G01,EMP0189,London,UK,active,full_time,2021-04-07,,55010.32,GBP
+EMP0494,E100494,James,Harris,james.harris494@corp.example.com,+1-378-914-6703,non_binary,2002-06-24,JOB0494,Product,G01,EMP0955,Denver,US,active,part_time,2017-06-27,,55551.86,USD
+EMP0495,E100495,Jackson,Martinez,jackson.martinez495@corp.example.com,+1-642-982-9709,prefer_not_to_say,1989-02-10,JOB0495,Security,G10,EMP0237,Austin,US,on_leave,intern,2022-10-29,,175750.50,USD
+EMP0496,E100496,Abigail,Jackson,abigail.jackson496@corp.example.com,+1-417-667-9049,prefer_not_to_say,1991-12-06,JOB0496,Data,G04,EMP0600,Chicago,US,active,contract,2024-06-06,,96343.15,USD
+EMP0497,E100497,Ava,Sanchez,ava.sanchez497@corp.example.com,+1-907-322-6027,female,1976-11-22,JOB0497,Data,G07,EMP0707,Hyderabad,IN,active,intern,2020-04-21,,41728.28,INR
+EMP0498,E100498,Owen,Rodriguez,owen.rodriguez498@corp.example.com,+1-399-505-9295,non_binary,2004-12-08,JOB0498,HR,G04,EMP0190,San Francisco,US,retired,part_time,2016-08-12,,94432.75,USD
+EMP0499,E100499,Elena,Robinson,elena.robinson499@corp.example.com,+1-558-298-8341,prefer_not_to_say,1983-08-03,JOB0499,HR,G06,EMP0373,Toronto,CA,active,part_time,2019-10-27,,106722.45,USD
+EMP0500,E100500,Michael,Jones,michael.jones500@corp.example.com,+1-538-623-7430,female,1974-04-30,JOB0500,Product,G02,EMP0537,Dallas,US,active,contract,2023-05-06,,72057.63,USD
+EMP0501,E100501,Aria,Perez,aria.perez501@corp.example.com,+1-296-256-1443,male,2002-01-31,JOB0501,Legal,G12,EMP0808,Toronto,CA,retired,full_time,2026-01-27,,174764.49,USD
+EMP0502,E100502,Sofia,Williams,sofia.williams502@corp.example.com,+1-427-438-5247,non_binary,1987-02-21,JOB0502,HR,G10,EMP0218,Bengaluru,IN,on_leave,intern,2019-08-03,,53722.81,INR
+EMP0503,E100503,Daniel,Williams,daniel.williams503@corp.example.com,+1-948-729-7194,prefer_not_to_say,2001-10-01,JOB0503,Marketing,G03,EMP0109,Atlanta,US,active,intern,2020-11-02,,85035.65,USD
+EMP0504,E100504,Amelia,Singh,amelia.singh504@corp.example.com,+1-565-633-8306,prefer_not_to_say,1992-05-18,JOB0504,Legal,G08,EMP0874,Seattle,US,on_leave,contract,2020-02-21,,151330.92,USD
+EMP0505,E100505,Emma,Smith,emma.smith505@corp.example.com,+1-287-713-8915,non_binary,2000-08-03,JOB0505,Security,G02,EMP0092,Chicago,US,retired,part_time,2016-09-18,,69735.84,USD
+EMP0506,E100506,Jackson,Davis,jackson.davis506@corp.example.com,+1-201-248-1362,female,1987-08-25,JOB0506,Marketing,G01,EMP0455,London,UK,terminated,contract,2021-07-27,2023-02-12,54420.27,GBP
+EMP0507,E100507,Liam,Moore,liam.moore507@corp.example.com,+1-983-533-1709,male,2001-02-18,JOB0507,Sales,G05,EMP0281,Hyderabad,IN,active,contract,2015-05-23,,34150.36,INR
+EMP0508,E100508,Omar,Thomas,omar.thomas508@corp.example.com,+1-550-215-8915,male,1989-11-17,JOB0508,Data,G06,EMP0640,San Francisco,US,on_leave,full_time,2026-06-26,,122635.40,USD
+EMP0509,E100509,Isabella,Robinson,isabella.robinson509@corp.example.com,+1-392-487-1992,male,1989-09-24,JOB0509,Product,G11,EMP0655,Chicago,US,active,intern,2024-06-22,,187348.95,USD
+EMP0510,E100510,Grace,Ramirez,grace.ramirez510@corp.example.com,+1-310-906-4940,male,1984-02-19,JOB0510,Customer Success,G09,EMP0180,Atlanta,US,active,full_time,2015-01-06,,164115.88,USD
+EMP0511,E100511,Noah,Hernandez,noah.hernandez511@corp.example.com,+1-673-372-5459,non_binary,1980-06-26,JOB0511,Legal,G11,EMP0831,Bengaluru,IN,active,intern,2024-12-06,,57495.16,INR
+EMP0512,E100512,Alexander,Rodriguez,alexander.rodriguez512@corp.example.com,+1-758-481-3201,non_binary,1994-04-26,JOB0512,Data,G02,EMP0388,Dallas,US,terminated,intern,2020-10-25,2026-03-25,74192.72,USD
+EMP0513,E100513,Arjun,Smith,arjun.smith513@corp.example.com,+1-838-807-6112,non_binary,1974-02-07,JOB0513,Marketing,G05,EMP0231,Chicago,US,on_leave,intern,2020-11-09,,108247.18,USD
+EMP0514,E100514,Daniel,Martinez,daniel.martinez514@corp.example.com,+1-873-547-5435,male,1987-08-15,JOB0514,Product,G07,EMP0094,Denver,US,terminated,intern,2021-07-18,2024-07-29,140004.34,USD
+EMP0515,E100515,Priya,Clark,priya.clark515@corp.example.com,+1-756-842-2563,female,1969-02-24,JOB0515,IT,G03,EMP0955,Hyderabad,IN,active,part_time,2019-07-05,,26259.17,INR
+EMP0516,E100516,Priya,Taylor,priya.taylor516@corp.example.com,+1-839-927-3217,prefer_not_to_say,2002-10-14,JOB0516,Data,G04,EMP0692,Chicago,US,on_leave,part_time,2022-08-09,,97291.14,USD
+EMP0517,E100517,Mateo,White,mateo.white517@corp.example.com,+1-659-429-6620,male,2003-08-07,JOB0517,IT,G12,EMP0130,San Francisco,US,active,full_time,2023-11-13,,201340.23,USD
+EMP0518,E100518,Noah,Patel,noah.patel518@corp.example.com,+1-385-463-3995,prefer_not_to_say,1968-10-07,JOB0518,Product,G01,EMP0564,Hyderabad,IN,active,full_time,2020-11-29,,18656.28,INR
+EMP0519,E100519,Elijah,Nguyen,elijah.nguyen519@corp.example.com,+1-565-472-3934,male,1968-07-28,JOB0519,Finance,G09,EMP0028,San Francisco,US,active,intern,2019-01-11,,165059.01,USD
+EMP0520,E100520,Sebastian,Sanchez,sebastian.sanchez520@corp.example.com,+1-657-650-7135,prefer_not_to_say,1992-12-02,JOB0520,Security,G11,EMP0316,London,UK,active,full_time,2014-10-09,,175354.52,GBP
+EMP0521,E100521,Henry,Taylor,henry.taylor521@corp.example.com,+1-710-924-8531,prefer_not_to_say,2000-09-06,JOB0521,HR,G08,EMP0442,Chicago,US,active,intern,2019-11-06,,151640.09,USD
+EMP0522,E100522,Fatima,Miller,fatima.miller522@corp.example.com,+1-619-234-1909,female,1983-10-25,JOB0522,Marketing,G07,EMP0114,Toronto,CA,retired,contract,2020-04-23,,118374.85,USD
+EMP0523,E100523,Elijah,Rodriguez,elijah.rodriguez523@corp.example.com,+1-423-848-5104,male,1983-09-17,JOB0523,Finance,G08,EMP0908,Atlanta,US,active,full_time,2021-06-18,,149448.93,USD
+EMP0524,E100524,Elena,Walker,elena.walker524@corp.example.com,+1-681-812-9270,male,1989-08-08,JOB0524,Product,G08,EMP0697,Atlanta,US,terminated,full_time,2022-07-12,2025-01-27,149401.70,USD
+EMP0525,E100525,Emily,Smith,emily.smith525@corp.example.com,+1-639-519-3906,non_binary,2000-03-29,JOB0525,HR,G09,EMP0547,San Francisco,US,retired,part_time,2014-09-13,,162646.09,USD
+EMP0526,E100526,Aiden,Lopez,aiden.lopez526@corp.example.com,+1-354-277-1929,female,1987-07-21,JOB0526,Data,G06,EMP0336,Seattle,US,retired,contract,2018-06-03,,122013.52,USD
+EMP0527,E100527,Priya,Miller,priya.miller527@corp.example.com,+1-935-712-4933,prefer_not_to_say,1972-01-10,JOB0527,Data,G10,EMP0902,Austin,US,on_leave,part_time,2017-05-19,,175724.50,USD
+EMP0528,E100528,Ella,Williams,ella.williams528@corp.example.com,+1-233-956-6102,male,1994-08-02,JOB0528,Data,G06,EMP0361,Denver,US,terminated,intern,2020-06-16,2021-12-07,123716.47,USD
+EMP0529,E100529,Lily,Chen,lily.chen529@corp.example.com,+1-745-773-6230,non_binary,1981-06-16,JOB0529,Engineering,G06,EMP0416,Toronto,CA,on_leave,part_time,2018-12-08,,108250.66,USD
+EMP0530,E100530,Mia,Khan,mia.khan530@corp.example.com,+1-733-385-1431,female,1990-08-23,JOB0530,Marketing,G11,EMP0038,Atlanta,US,terminated,intern,2019-02-15,2025-11-21,190048.30,USD
+EMP0531,E100531,James,Rodriguez,james.rodriguez531@corp.example.com,+1-402-594-2830,prefer_not_to_say,2000-06-12,JOB0531,Marketing,G04,EMP0229,Atlanta,US,active,part_time,2020-04-27,,97819.50,USD
+EMP0532,E100532,Mateo,Silva,mateo.silva532@corp.example.com,+1-628-838-9268,prefer_not_to_say,1966-08-22,JOB0532,HR,G08,EMP0134,Dallas,US,active,contract,2023-11-28,,147629.60,USD
+EMP0533,E100533,Henry,Walker,henry.walker533@corp.example.com,+1-883-651-2820,male,2002-10-23,JOB0533,Product,G04,EMP0540,Atlanta,US,active,intern,2023-08-16,,96827.79,USD
+EMP0534,E100534,Henry,Clark,henry.clark534@corp.example.com,+1-562-484-8147,prefer_not_to_say,1988-02-29,JOB0534,Facilities,G03,EMP0131,Austin,US,active,part_time,2025-02-01,,85901.97,USD
+EMP0535,E100535,Olivia,Khan,olivia.khan535@corp.example.com,+1-387-731-6703,prefer_not_to_say,2001-07-23,JOB0535,Marketing,G04,EMP0526,Atlanta,US,terminated,intern,2017-09-07,2026-03-11,98070.07,USD
+EMP0536,E100536,Nora,Sanchez,nora.sanchez536@corp.example.com,+1-212-364-7182,female,2000-08-11,JOB0536,Security,G12,EMP0083,Toronto,CA,active,part_time,2025-08-21,,175829.91,USD
+EMP0537,E100537,Ananya,Thompson,ananya.thompson537@corp.example.com,+1-902-407-8584,non_binary,1974-12-30,JOB0537,Data,G05,EMP0401,Hyderabad,IN,active,part_time,2018-07-27,,33550.13,INR
+EMP0538,E100538,Lucas,Kim,lucas.kim538@corp.example.com,+1-744-984-1893,female,1983-02-25,JOB0538,Engineering,G03,EMP0065,Atlanta,US,active,part_time,2018-04-11,,82254.63,USD
+EMP0539,E100539,Ethan,White,ethan.white539@corp.example.com,+1-218-245-2874,male,1965-05-13,JOB0539,Finance,G05,EMP0644,Austin,US,on_leave,intern,2026-06-06,,114270.60,USD
+EMP0540,E100540,Riley,Sanchez,riley.sanchez540@corp.example.com,+1-643-859-5275,female,1984-05-20,JOB0540,Marketing,G08,EMP0441,New York,US,retired,full_time,2017-04-17,,154062.26,USD
+EMP0541,E100541,Sophia,Patel,sophia.patel541@corp.example.com,+1-515-522-4473,prefer_not_to_say,1966-10-28,JOB0541,Operations,G02,EMP0296,San Francisco,US,retired,contract,2019-06-22,,70626.37,USD
+EMP0542,E100542,Jackson,Ali,jackson.ali542@corp.example.com,+1-770-623-7688,prefer_not_to_say,1965-03-31,JOB0542,Engineering,G05,EMP0498,Denver,US,on_leave,intern,2025-09-29,,109350.77,USD
+EMP0543,E100543,Sofia,Wilson,sofia.wilson543@corp.example.com,+1-509-853-3668,female,1979-02-10,JOB0543,Security,G03,EMP0897,Chicago,US,terminated,full_time,2025-04-25,2026-01-24,86307.60,USD
+EMP0544,E100544,Isabella,Khan,isabella.khan544@corp.example.com,+1-927-989-2135,male,1972-10-01,JOB0544,Product,G02,EMP0004,Hyderabad,IN,active,intern,2024-02-18,,22204.90,INR
+EMP0545,E100545,Omar,Ali,omar.ali545@corp.example.com,+1-363-728-6680,prefer_not_to_say,1989-02-04,JOB0545,Product,G09,EMP0108,London,UK,active,intern,2019-01-09,,152418.16,GBP
+EMP0546,E100546,Priya,Martinez,priya.martinez546@corp.example.com,+1-876-980-8789,female,1995-10-27,JOB0546,Product,G02,EMP0897,Denver,US,active,contract,2021-03-26,,69099.79,USD
+EMP0547,E100547,Daniel,Wilson,daniel.wilson547@corp.example.com,+1-969-480-2969,male,1966-02-22,JOB0547,Product,G06,EMP0316,San Francisco,US,on_leave,intern,2016-06-22,,124799.34,USD
+EMP0548,E100548,Henry,Moore,henry.moore548@corp.example.com,+1-875-291-7684,non_binary,2004-11-02,JOB0548,Security,G04,EMP0947,Chicago,US,terminated,part_time,2015-03-03,2023-07-21,95170.39,USD
+EMP0549,E100549,Elijah,Rodriguez,elijah.rodriguez549@corp.example.com,+1-714-651-1435,male,1976-01-06,JOB0549,Data,G01,EMP0143,Dallas,US,active,contract,2015-11-02,,58075.12,USD
+EMP0550,E100550,Jacob,Costa,jacob.costa550@corp.example.com,+1-991-985-6137,female,1989-10-06,JOB0550,Customer Success,G06,EMP0370,Chicago,US,active,full_time,2015-07-09,,126835.54,USD
+EMP0551,E100551,Scarlett,Johnson,scarlett.johnson551@corp.example.com,+1-508-709-6559,prefer_not_to_say,1968-09-25,JOB0551,Engineering,G09,EMP0691,London,UK,retired,full_time,2024-03-22,,147933.38,GBP
+EMP0552,E100552,Oliver,Kim,oliver.kim552@corp.example.com,+1-905-944-5402,male,1965-06-21,JOB0552,Product,G02,EMP0562,Toronto,CA,on_leave,contract,2016-12-13,,60804.55,USD
+EMP0553,E100553,Mason,Lopez,mason.lopez553@corp.example.com,+1-572-419-1378,male,1972-10-26,JOB0553,Engineering,G06,EMP0340,Atlanta,US,active,part_time,2019-01-15,,126029.12,USD
+EMP0554,E100554,Henry,Costa,henry.costa554@corp.example.com,+1-523-692-3521,prefer_not_to_say,1989-12-22,JOB0554,HR,G06,EMP0026,Hyderabad,IN,terminated,intern,2022-09-09,2025-10-03,37196.43,INR
+EMP0555,E100555,Omar,Martin,omar.martin555@corp.example.com,+1-648-461-2459,female,1993-01-21,JOB0555,Facilities,G01,EMP0742,Bengaluru,IN,active,contract,2016-05-07,,18597.61,INR
+EMP0556,E100556,Fatima,Hernandez,fatima.hernandez556@corp.example.com,+1-435-696-9898,prefer_not_to_say,1987-11-22,JOB0556,Finance,G09,EMP0213,Seattle,US,on_leave,intern,2017-09-20,,161228.78,USD
+EMP0557,E100557,Michael,Singh,michael.singh557@corp.example.com,+1-283-666-1969,female,1969-09-05,JOB0557,Customer Success,G05,EMP0408,New York,US,active,full_time,2024-11-08,,110983.81,USD
+EMP0558,E100558,Alexander,Davis,alexander.davis558@corp.example.com,+1-365-252-9436,prefer_not_to_say,1976-12-20,JOB0558,Marketing,G06,EMP0398,San Francisco,US,terminated,part_time,2023-09-19,2025-02-17,126263.57,USD
+EMP0559,E100559,Grace,Hernandez,grace.hernandez559@corp.example.com,+1-537-726-8712,non_binary,1980-05-26,JOB0559,IT,G02,EMP0204,Bengaluru,IN,active,full_time,2019-04-19,,22717.28,INR
+EMP0560,E100560,Noah,Jones,noah.jones560@corp.example.com,+1-828-343-3186,male,1972-04-26,JOB0560,Marketing,G05,EMP0328,Hyderabad,IN,terminated,part_time,2014-11-17,2025-08-16,34782.38,INR
+EMP0561,E100561,James,Williams,james.williams561@corp.example.com,+1-534-916-2243,non_binary,1988-07-18,JOB0561,Legal,G11,EMP0072,Atlanta,US,active,full_time,2021-09-02,,188822.27,USD
+EMP0562,E100562,Ananya,Harris,ananya.harris562@corp.example.com,+1-813-909-7270,prefer_not_to_say,1984-04-10,JOB0562,Legal,G11,EMP0805,Hyderabad,IN,active,intern,2022-08-12,,58503.36,INR
+EMP0563,E100563,Zoey,Ramirez,zoey.ramirez563@corp.example.com,+1-298-599-3807,male,1965-04-16,JOB0563,Marketing,G09,EMP0285,San Francisco,US,active,full_time,2022-05-03,,165084.71,USD
+EMP0564,E100564,Sebastian,Brown,sebastian.brown564@corp.example.com,+1-895-506-8999,non_binary,1993-12-25,JOB0564,Sales,G06,EMP0529,San Francisco,US,terminated,full_time,2017-10-17,2026-04-25,125472.30,USD
+EMP0565,E100565,Michael,Smith,michael.smith565@corp.example.com,+1-918-951-7502,female,1974-06-08,JOB0565,Supply Chain,G06,EMP0544,Chicago,US,active,part_time,2021-12-20,,126361.02,USD
+EMP0566,E100566,Benjamin,Williams,benjamin.williams566@corp.example.com,+1-770-570-2480,prefer_not_to_say,1985-02-04,JOB0566,Legal,G12,EMP0764,Denver,US,terminated,full_time,2017-11-28,2024-04-06,201151.42,USD
+EMP0567,E100567,Henry,Silva,henry.silva567@corp.example.com,+1-717-968-5329,female,1976-04-09,JOB0567,Engineering,G10,EMP0470,New York,US,terminated,contract,2017-05-23,2022-03-10,176186.71,USD
+EMP0568,E100568,Ava,Khan,ava.khan568@corp.example.com,+1-619-517-6019,non_binary,1987-12-07,JOB0568,Facilities,G04,EMP0430,Toronto,CA,on_leave,full_time,2023-09-17,,83166.04,USD
+EMP0569,E100569,Sebastian,Moore,sebastian.moore569@corp.example.com,+1-879-827-5805,non_binary,1987-03-28,JOB0569,Data,G11,EMP0779,New York,US,active,contract,2016-06-27,,192346.92,USD
+EMP0570,E100570,Aria,Garcia,aria.garcia570@corp.example.com,+1-978-460-4926,male,1974-07-14,JOB0570,Legal,G02,EMP0962,Bengaluru,IN,terminated,contract,2014-02-14,2017-07-13,21890.83,INR
+EMP0571,E100571,Arjun,Chen,arjun.chen571@corp.example.com,+1-572-437-5289,female,1995-04-08,JOB0571,IT,G12,EMP0245,Austin,US,active,part_time,2025-05-24,,202305.04,USD
+EMP0572,E100572,Yuki,Silva,yuki.silva572@corp.example.com,+1-699-401-4467,female,1992-07-21,JOB0572,Product,G06,EMP0829,Atlanta,US,active,contract,2017-05-25,,124170.84,USD
+EMP0573,E100573,Aria,Walker,aria.walker573@corp.example.com,+1-346-627-4204,prefer_not_to_say,1996-09-03,JOB0573,Marketing,G09,EMP0055,San Francisco,US,on_leave,contract,2023-06-23,,165223.34,USD
+EMP0574,E100574,Sophia,Anderson,sophia.anderson574@corp.example.com,+1-482-217-4757,non_binary,1972-07-01,JOB0574,Sales,G12,EMP0871,London,UK,on_leave,part_time,2024-10-31,,187567.27,GBP
+EMP0575,E100575,Lucas,Wilson,lucas.wilson575@corp.example.com,+1-226-963-8702,female,1990-08-05,JOB0575,Engineering,G05,EMP0382,Atlanta,US,retired,contract,2017-12-06,,111324.61,USD
+EMP0576,E100576,Ella,Kim,ella.kim576@corp.example.com,+1-595-566-5794,prefer_not_to_say,1998-06-10,JOB0576,Facilities,G08,EMP0626,New York,US,active,contract,2024-08-14,,153557.13,USD
+EMP0577,E100577,Lucas,Costa,lucas.costa577@corp.example.com,+1-961-950-3527,non_binary,2001-07-03,JOB0577,Customer Success,G11,EMP0312,Chicago,US,on_leave,part_time,2026-01-19,,187232.33,USD
+EMP0578,E100578,Jack,Hernandez,jack.hernandez578@corp.example.com,+1-392-387-8013,prefer_not_to_say,1975-05-20,JOB0578,Legal,G05,EMP0386,Dallas,US,terminated,intern,2024-01-28,2024-07-26,109048.99,USD
+EMP0579,E100579,Priya,Moore,priya.moore579@corp.example.com,+1-831-673-8798,non_binary,1966-07-01,JOB0579,HR,G11,EMP0547,San Francisco,US,retired,full_time,2014-06-30,,193567.56,USD
+EMP0580,E100580,Ava,Silva,ava.silva580@corp.example.com,+1-492-290-7907,non_binary,1982-05-22,JOB0580,Marketing,G08,EMP0197,Chicago,US,on_leave,intern,2014-01-23,,149318.51,USD
+EMP0581,E100581,Harper,Thomas,harper.thomas581@corp.example.com,+1-421-253-1565,female,1973-09-10,JOB0581,Marketing,G09,EMP0025,Chicago,US,on_leave,full_time,2014-10-29,,163417.50,USD
+EMP0582,E100582,Priya,Harris,priya.harris582@corp.example.com,+1-482-861-8337,male,1978-03-27,JOB0582,Marketing,G10,EMP0107,Hyderabad,IN,active,intern,2017-11-30,,53137.42,INR
+EMP0583,E100583,Priya,Johnson,priya.johnson583@corp.example.com,+1-886-547-3493,prefer_not_to_say,1989-03-19,JOB0583,IT,G06,EMP0746,Dallas,US,active,part_time,2018-06-25,,124784.15,USD
+EMP0584,E100584,Aiden,Thomas,aiden.thomas584@corp.example.com,+1-787-311-7991,female,1986-11-07,JOB0584,Finance,G11,EMP0832,Austin,US,on_leave,full_time,2016-05-19,,193621.72,USD
+EMP0585,E100585,Abigail,Sanchez,abigail.sanchez585@corp.example.com,+1-724-241-6358,prefer_not_to_say,1978-06-17,JOB0585,Finance,G02,EMP0389,Dallas,US,active,contract,2018-05-11,,72212.35,USD
+EMP0586,E100586,Jacob,Lee,jacob.lee586@corp.example.com,+1-359-457-1233,non_binary,2000-09-03,JOB0586,Finance,G08,EMP0897,Chicago,US,active,contract,2021-09-26,,153969.65,USD
+EMP0587,E100587,Ava,Anderson,ava.anderson587@corp.example.com,+1-514-314-1938,prefer_not_to_say,1979-06-05,JOB0587,IT,G11,EMP0962,Toronto,CA,active,part_time,2023-05-08,,167387.08,USD
+EMP0588,E100588,Arjun,Martinez,arjun.martinez588@corp.example.com,+1-845-862-5760,prefer_not_to_say,1970-04-29,JOB0588,Customer Success,G09,EMP0542,San Francisco,US,active,contract,2014-12-11,,160587.57,USD
+EMP0589,E100589,Logan,Jones,logan.jones589@corp.example.com,+1-604-883-5850,prefer_not_to_say,1988-10-11,JOB0589,Sales,G08,EMP0800,Dallas,US,active,contract,2023-03-10,,151155.04,USD
+EMP0590,E100590,Lucas,Patel,lucas.patel590@corp.example.com,+1-531-208-6703,non_binary,1986-10-24,JOB0590,Customer Success,G01,EMP0729,San Francisco,US,active,part_time,2022-12-06,,60704.20,USD
+EMP0591,E100591,Scarlett,Taylor,scarlett.taylor591@corp.example.com,+1-306-728-1722,non_binary,1977-10-18,JOB0591,Customer Success,G12,EMP0242,Chicago,US,terminated,intern,2024-02-27,2025-10-16,200748.30,USD
+EMP0592,E100592,Grace,Garcia,grace.garcia592@corp.example.com,+1-999-579-4559,male,1975-03-13,JOB0592,Marketing,G12,EMP0606,Chicago,US,retired,intern,2026-05-06,,202868.52,USD
+EMP0593,E100593,Benjamin,Clark,benjamin.clark593@corp.example.com,+1-818-819-8057,female,1968-02-06,JOB0593,Product,G06,EMP0947,Toronto,CA,terminated,part_time,2020-08-26,2021-04-07,109405.37,USD
+EMP0594,E100594,Fatima,Anderson,fatima.anderson594@corp.example.com,+1-505-434-6485,male,1990-08-04,JOB0594,IT,G09,EMP0993,Chicago,US,on_leave,intern,2016-05-21,,163280.39,USD
+EMP0595,E100595,Ethan,Johnson,ethan.johnson595@corp.example.com,+1-724-247-6201,male,1990-10-13,JOB0595,Data,G03,EMP0723,Chicago,US,terminated,full_time,2016-12-31,2018-07-11,84098.27,USD
+EMP0596,E100596,Sofia,Williams,sofia.williams596@corp.example.com,+1-935-557-4405,prefer_not_to_say,1993-12-11,JOB0596,Facilities,G07,EMP0909,New York,US,active,full_time,2018-05-19,,136531.39,USD
+EMP0597,E100597,Priya,Davis,priya.davis597@corp.example.com,+1-550-812-5112,female,1995-05-18,JOB0597,HR,G02,EMP0667,Atlanta,US,active,intern,2018-04-10,,74370.90,USD
+EMP0598,E100598,Noah,Jones,noah.jones598@corp.example.com,+1-753-400-3585,non_binary,1970-06-27,JOB0598,Sales,G01,EMP0360,London,UK,terminated,part_time,2019-10-12,2020-07-18,50109.36,GBP
+EMP0599,E100599,Sophia,Thompson,sophia.thompson599@corp.example.com,+1-378-857-4004,prefer_not_to_say,1969-10-19,JOB0599,Facilities,G06,EMP0627,Hyderabad,IN,active,contract,2023-10-31,,36822.80,INR
+EMP0600,E100600,Olivia,Perez,olivia.perez600@corp.example.com,+1-768-592-2015,male,1984-07-22,JOB0600,Customer Success,G06,EMP0822,London,UK,active,full_time,2023-10-06,,115127.82,GBP
+EMP0601,E100601,Grace,Jackson,grace.jackson601@corp.example.com,+1-285-848-9430,female,1965-07-25,JOB0601,Operations,G05,EMP0217,Chicago,US,retired,contract,2015-04-11,,110948.00,USD
+EMP0602,E100602,Omar,Martinez,omar.martinez602@corp.example.com,+1-617-983-4694,prefer_not_to_say,1986-11-24,JOB0602,Data,G02,EMP0053,Atlanta,US,active,contract,2026-03-10,,70648.65,USD
+EMP0603,E100603,Aria,Jones,aria.jones603@corp.example.com,+1-444-966-4255,prefer_not_to_say,1980-11-30,JOB0603,Supply Chain,G04,EMP0607,Chicago,US,retired,part_time,2019-04-16,,94483.28,USD
+EMP0604,E100604,Ethan,Sanchez,ethan.sanchez604@corp.example.com,+1-846-889-1137,non_binary,1972-07-22,JOB0604,IT,G02,EMP0134,Dallas,US,terminated,intern,2023-03-11,2024-01-16,73104.52,USD
+EMP0605,E100605,Lucas,Thomas,lucas.thomas605@corp.example.com,+1-358-438-5548,non_binary,1971-04-09,JOB0605,Facilities,G12,EMP0224,Dallas,US,active,contract,2022-02-28,,203093.82,USD
+EMP0606,E100606,Michael,Perez,michael.perez606@corp.example.com,+1-641-581-1188,female,1981-03-14,JOB0606,Supply Chain,G02,EMP0889,Denver,US,active,full_time,2015-02-11,,73150.00,USD
+EMP0607,E100607,Aria,White,aria.white607@corp.example.com,+1-205-440-4293,prefer_not_to_say,2000-07-23,JOB0607,Facilities,G01,EMP0247,Chicago,US,active,part_time,2026-04-05,,59913.33,USD
+EMP0608,E100608,Ananya,Thompson,ananya.thompson608@corp.example.com,+1-277-886-6728,prefer_not_to_say,1987-06-09,JOB0608,Facilities,G08,EMP0610,New York,US,active,intern,2016-09-07,,149043.35,USD
+EMP0609,E100609,Evelyn,Khan,evelyn.khan609@corp.example.com,+1-798-368-3283,prefer_not_to_say,1994-10-18,JOB0609,Legal,G10,EMP0608,Seattle,US,active,contract,2017-05-19,,179903.55,USD
+EMP0610,E100610,Mateo,Lee,mateo.lee610@corp.example.com,+1-279-719-1884,prefer_not_to_say,1972-12-10,JOB0610,Product,G05,EMP0039,Chicago,US,terminated,contract,2021-05-19,2023-07-24,113910.31,USD
+EMP0611,E100611,Jackson,Khan,jackson.khan611@corp.example.com,+1-401-369-3711,male,1971-02-02,JOB0611,Marketing,G10,EMP0798,Hyderabad,IN,active,full_time,2021-10-08,,53814.42,INR
+EMP0612,E100612,Grace,Perez,grace.perez612@corp.example.com,+1-704-388-1629,non_binary,1991-08-08,JOB0612,Data,G01,EMP0982,Dallas,US,on_leave,intern,2021-05-13,,55447.37,USD
+EMP0613,E100613,Emily,Murphy,emily.murphy613@corp.example.com,+1-912-581-5843,male,1978-06-22,JOB0613,Sales,G04,EMP0975,Austin,US,active,part_time,2024-06-08,,98584.30,USD
+EMP0614,E100614,Harper,Walker,harper.walker614@corp.example.com,+1-709-205-8469,prefer_not_to_say,1985-11-27,JOB0614,Operations,G12,EMP0917,London,UK,retired,contract,2024-04-26,,187664.04,GBP
+EMP0615,E100615,Mia,Martin,mia.martin615@corp.example.com,+1-981-853-6388,prefer_not_to_say,1972-09-28,JOB0615,Customer Success,G07,EMP0208,Toronto,CA,active,full_time,2019-11-12,,119824.52,USD
+EMP0616,E100616,Chloe,Jones,chloe.jones616@corp.example.com,+1-423-493-8744,male,1991-05-13,JOB0616,Supply Chain,G05,EMP0929,New York,US,active,intern,2014-08-06,,109620.62,USD
+EMP0617,E100617,Harper,Garcia,harper.garcia617@corp.example.com,+1-540-219-5156,prefer_not_to_say,1992-05-25,JOB0617,Facilities,G03,EMP0963,Toronto,CA,active,part_time,2025-12-11,,74993.61,USD
+EMP0618,E100618,Alexander,Lopez,alexander.lopez618@corp.example.com,+1-420-632-2508,prefer_not_to_say,1965-06-08,JOB0618,Legal,G04,EMP0482,Hyderabad,IN,terminated,full_time,2026-01-07,2026-03-12,29951.87,INR
+EMP0619,E100619,Jacob,Anderson,jacob.anderson619@corp.example.com,+1-685-634-5977,male,1984-09-12,JOB0619,Facilities,G07,EMP0490,Atlanta,US,terminated,full_time,2016-04-19,2021-01-25,140542.01,USD
+EMP0620,E100620,Mateo,Anderson,mateo.anderson620@corp.example.com,+1-205-211-2085,non_binary,1984-10-28,JOB0620,Supply Chain,G02,EMP0587,Denver,US,active,full_time,2014-12-24,,72139.37,USD
+EMP0621,E100621,Ava,Singh,ava.singh621@corp.example.com,+1-895-287-8568,prefer_not_to_say,1999-08-30,JOB0621,Security,G03,EMP0169,Denver,US,on_leave,intern,2020-10-22,,86251.47,USD
+EMP0622,E100622,Ananya,Rodriguez,ananya.rodriguez622@corp.example.com,+1-350-535-6638,female,1966-06-03,JOB0622,Engineering,G08,EMP0479,Hyderabad,IN,active,intern,2020-12-25,,45638.70,INR
+EMP0623,E100623,Zoey,Martinez,zoey.martinez623@corp.example.com,+1-911-472-7287,non_binary,1997-08-22,JOB0623,Engineering,G05,EMP0598,Atlanta,US,active,full_time,2014-08-11,,113318.05,USD
+EMP0624,E100624,Wei,Costa,wei.costa624@corp.example.com,+1-914-317-4585,male,1987-10-27,JOB0624,Facilities,G11,EMP0888,Atlanta,US,retired,intern,2024-09-17,,191448.00,USD
+EMP0625,E100625,Sofia,Kim,sofia.kim625@corp.example.com,+1-988-418-2674,female,2003-04-26,JOB0625,Sales,G01,EMP0913,Austin,US,retired,intern,2025-08-10,,59218.07,USD
+EMP0626,E100626,Mason,Garcia,mason.garcia626@corp.example.com,+1-877-784-1476,non_binary,1985-05-05,JOB0626,Sales,G01,EMP0161,Bengaluru,IN,terminated,full_time,2024-04-07,2026-02-25,17939.21,INR
+EMP0627,E100627,Emma,Kim,emma.kim627@corp.example.com,+1-693-984-4529,non_binary,1975-05-05,JOB0627,Security,G09,EMP0428,San Francisco,US,active,full_time,2019-11-15,,166416.89,USD
+EMP0628,E100628,Ananya,Jackson,ananya.jackson628@corp.example.com,+1-506-718-3214,non_binary,1989-01-17,JOB0628,IT,G12,EMP0902,Atlanta,US,on_leave,full_time,2015-09-07,,205218.35,USD
+EMP0629,E100629,Yuki,Moore,yuki.moore629@corp.example.com,+1-829-564-7894,prefer_not_to_say,1967-01-03,JOB0629,Supply Chain,G09,EMP0778,London,UK,on_leave,part_time,2025-12-28,,152291.91,GBP
+EMP0630,E100630,Yuki,Sanchez,yuki.sanchez630@corp.example.com,+1-982-744-5709,non_binary,1982-04-24,JOB0630,Sales,G08,EMP0742,New York,US,active,contract,2023-03-18,,147920.83,USD
+EMP0631,E100631,Emma,Rodriguez,emma.rodriguez631@corp.example.com,+1-802-524-6865,non_binary,1979-03-20,JOB0631,HR,G01,EMP0187,Denver,US,on_leave,part_time,2014-09-28,,55083.03,USD
+EMP0632,E100632,Lily,Rodriguez,lily.rodriguez632@corp.example.com,+1-399-740-6255,male,1966-04-06,JOB0632,Operations,G11,EMP0284,Toronto,CA,active,full_time,2025-12-12,,165697.47,USD
+EMP0633,E100633,Ella,Clark,ella.clark633@corp.example.com,+1-898-534-1368,prefer_not_to_say,1989-12-24,JOB0633,Product,G03,EMP0173,Chicago,US,active,full_time,2023-04-25,,81162.64,USD
+EMP0634,E100634,Emily,Clark,emily.clark634@corp.example.com,+1-273-982-8230,non_binary,2004-01-06,JOB0634,Engineering,G09,EMP0265,New York,US,on_leave,contract,2022-11-24,,162947.13,USD
+EMP0635,E100635,Jack,Jones,jack.jones635@corp.example.com,+1-893-644-4526,non_binary,2000-07-28,JOB0635,Facilities,G09,EMP0623,Chicago,US,active,full_time,2019-05-07,,162204.77,USD
+EMP0636,E100636,Priya,Patel,priya.patel636@corp.example.com,+1-881-834-1438,non_binary,2000-08-27,JOB0636,Marketing,G09,EMP0124,Atlanta,US,active,part_time,2019-11-20,,166237.10,USD
+EMP0637,E100637,Isabella,Brown,isabella.brown637@corp.example.com,+1-747-522-4165,prefer_not_to_say,1987-03-10,JOB0637,Engineering,G09,EMP0234,Denver,US,on_leave,contract,2020-02-28,,162230.01,USD
+EMP0638,E100638,Noah,Garcia,noah.garcia638@corp.example.com,+1-892-354-2193,female,1975-04-01,JOB0638,Product,G09,EMP0306,Seattle,US,on_leave,intern,2025-05-13,,162964.77,USD
+EMP0639,E100639,Emily,Lewis,emily.lewis639@corp.example.com,+1-666-471-2388,non_binary,1989-08-04,JOB0639,Engineering,G08,EMP0206,New York,US,on_leave,contract,2017-03-13,,151585.10,USD
+EMP0640,E100640,Harper,Nguyen,harper.nguyen640@corp.example.com,+1-545-730-9407,male,1976-01-20,JOB0640,Engineering,G04,EMP0462,Dallas,US,active,full_time,2015-05-28,,97986.83,USD
+EMP0641,E100641,Priya,White,priya.white641@corp.example.com,+1-298-246-7152,non_binary,1976-10-30,JOB0641,Sales,G12,EMP0766,Dallas,US,on_leave,contract,2025-10-24,,201715.39,USD
+EMP0642,E100642,Ethan,Sanchez,ethan.sanchez642@corp.example.com,+1-892-782-9735,non_binary,1969-11-08,JOB0642,Product,G08,EMP0849,Toronto,CA,active,intern,2022-07-15,,130092.58,USD
+EMP0643,E100643,Henry,Anderson,henry.anderson643@corp.example.com,+1-590-955-9739,male,1988-08-16,JOB0643,Finance,G03,EMP0357,Chicago,US,active,full_time,2024-03-10,,85580.92,USD
+EMP0644,E100644,Sophia,Costa,sophia.costa644@corp.example.com,+1-397-876-2080,prefer_not_to_say,1971-06-27,JOB0644,Supply Chain,G06,EMP0544,Dallas,US,active,contract,2021-03-11,,124738.33,USD
+EMP0645,E100645,Elena,Lee,elena.lee645@corp.example.com,+1-234-599-4547,non_binary,1999-09-20,JOB0645,IT,G09,EMP0997,San Francisco,US,active,part_time,2019-03-04,,167255.04,USD
+EMP0646,E100646,Alexander,Martinez,alexander.martinez646@corp.example.com,+1-527-522-3677,female,1994-01-13,JOB0646,Facilities,G04,EMP0372,Seattle,US,active,full_time,2020-03-25,,96356.35,USD
+EMP0647,E100647,Wei,White,wei.white647@corp.example.com,+1-705-917-4554,male,1986-05-24,JOB0647,Operations,G06,EMP0751,Austin,US,terminated,intern,2022-12-23,2025-07-24,126284.15,USD
+EMP0648,E100648,Daniel,Lopez,daniel.lopez648@corp.example.com,+1-583-865-8986,prefer_not_to_say,1986-12-24,JOB0648,Marketing,G10,EMP0943,Toronto,CA,active,intern,2018-10-05,,153006.76,USD
+EMP0649,E100649,Jack,Martinez,jack.martinez649@corp.example.com,+1-811-290-1564,non_binary,1987-09-19,JOB0649,Security,G12,EMP0931,Austin,US,active,contract,2022-12-20,,205406.09,USD
+EMP0650,E100650,Ella,Costa,ella.costa650@corp.example.com,+1-226-407-8648,male,1970-03-28,JOB0650,Supply Chain,G08,EMP0067,Hyderabad,IN,active,contract,2021-07-15,,46440.83,INR
+EMP0651,E100651,Henry,Kim,henry.kim651@corp.example.com,+1-772-464-6501,prefer_not_to_say,1985-02-22,JOB0651,Marketing,G03,EMP0594,Seattle,US,terminated,full_time,2016-08-30,2018-11-24,86703.76,USD
+EMP0652,E100652,Riley,Perez,riley.perez652@corp.example.com,+1-986-473-7324,female,2002-10-05,JOB0652,Supply Chain,G04,EMP0265,Austin,US,active,part_time,2018-11-25,,100785.08,USD
+EMP0653,E100653,Mia,Jackson,mia.jackson653@corp.example.com,+1-702-619-5321,male,1983-08-02,JOB0653,IT,G12,EMP0319,London,UK,terminated,intern,2015-05-31,2019-05-03,187044.60,GBP
+EMP0654,E100654,Noah,Robinson,noah.robinson654@corp.example.com,+1-545-860-9131,non_binary,1996-09-23,JOB0654,Facilities,G08,EMP0695,New York,US,active,contract,2020-04-23,,147637.41,USD
+EMP0655,E100655,Alexander,Miller,alexander.miller655@corp.example.com,+1-902-572-5421,male,1967-08-29,JOB0655,Engineering,G11,EMP0040,London,UK,active,intern,2016-12-07,,172666.66,GBP
+EMP0656,E100656,Yuki,Thomas,yuki.thomas656@corp.example.com,+1-214-921-8026,male,1993-08-22,JOB0656,Marketing,G01,EMP0824,Dallas,US,retired,contract,2014-12-16,,56367.16,USD
+EMP0657,E100657,Mateo,Hernandez,mateo.hernandez657@corp.example.com,+1-544-266-8740,prefer_not_to_say,1994-10-09,JOB0657,Facilities,G10,EMP0249,Denver,US,active,part_time,2014-12-17,,178225.11,USD
+EMP0658,E100658,Isabella,Khan,isabella.khan658@corp.example.com,+1-304-856-6628,prefer_not_to_say,1976-06-01,JOB0658,Finance,G11,EMP0825,London,UK,active,full_time,2016-10-13,,174593.30,GBP
+EMP0659,E100659,Owen,Martin,owen.martin659@corp.example.com,+1-516-275-3956,female,1987-11-04,JOB0659,Product,G07,EMP0350,Dallas,US,terminated,part_time,2019-01-21,2023-06-15,134848.67,USD
+EMP0660,E100660,Elena,Walker,elena.walker660@corp.example.com,+1-763-569-7039,male,1966-08-08,JOB0660,Supply Chain,G12,EMP0203,Austin,US,active,full_time,2024-04-11,,200399.73,USD
+EMP0661,E100661,Lily,Thomas,lily.thomas661@corp.example.com,+1-323-824-9948,non_binary,1984-11-26,JOB0661,Operations,G06,EMP0512,Toronto,CA,active,part_time,2025-05-25,,107331.34,USD
+EMP0662,E100662,Daniel,Taylor,daniel.taylor662@corp.example.com,+1-591-403-7705,female,1974-08-17,JOB0662,Customer Success,G02,EMP0322,Austin,US,active,full_time,2023-07-05,,71675.37,USD
+EMP0663,E100663,Amelia,Lopez,amelia.lopez663@corp.example.com,+1-776-944-9276,female,1997-12-07,JOB0663,Finance,G12,EMP0060,New York,US,active,contract,2024-11-26,,201247.03,USD
+EMP0664,E100664,Sebastian,Robinson,sebastian.robinson664@corp.example.com,+1-367-543-9920,female,1969-04-14,JOB0664,IT,G05,EMP0706,Seattle,US,active,intern,2020-06-19,,110862.09,USD
+EMP0665,E100665,Olivia,Martin,olivia.martin665@corp.example.com,+1-519-858-5750,non_binary,1997-08-05,JOB0665,Finance,G05,EMP0833,Bengaluru,IN,terminated,contract,2025-02-19,2026-04-22,33490.21,INR
+EMP0666,E100666,Mason,Khan,mason.khan666@corp.example.com,+1-209-278-7173,non_binary,1999-04-13,JOB0666,HR,G10,EMP0847,Bengaluru,IN,retired,contract,2023-02-28,,53643.59,INR
+EMP0667,E100667,Elena,White,elena.white667@corp.example.com,+1-255-249-9548,prefer_not_to_say,2002-12-26,JOB0667,Marketing,G05,EMP0410,Seattle,US,on_leave,part_time,2023-08-25,,111184.47,USD
+EMP0668,E100668,Isabella,Khan,isabella.khan668@corp.example.com,+1-587-934-7825,female,1994-04-30,JOB0668,Finance,G03,EMP0177,Toronto,CA,terminated,full_time,2015-10-01,2021-06-24,73806.27,USD
+EMP0669,E100669,Fatima,Perez,fatima.perez669@corp.example.com,+1-769-858-2426,prefer_not_to_say,1975-04-08,JOB0669,Sales,G02,EMP0226,Chicago,US,retired,full_time,2019-12-08,,72104.01,USD
+EMP0670,E100670,Abigail,Chen,abigail.chen670@corp.example.com,+1-441-204-3777,female,2004-01-24,JOB0670,Finance,G02,EMP0277,London,UK,active,full_time,2014-04-06,,67261.37,GBP
+EMP0671,E100671,Mateo,Chen,mateo.chen671@corp.example.com,+1-202-550-4109,non_binary,1982-05-26,JOB0671,Facilities,G10,EMP0925,Atlanta,US,active,part_time,2023-12-16,,175322.46,USD
+EMP0672,E100672,Grace,Miller,grace.miller672@corp.example.com,+1-236-630-8389,prefer_not_to_say,1968-07-22,JOB0672,Finance,G01,EMP0747,Dallas,US,on_leave,part_time,2019-10-17,,56190.60,USD
+EMP0673,E100673,Noah,White,noah.white673@corp.example.com,+1-974-519-7288,non_binary,1992-10-07,JOB0673,Supply Chain,G07,EMP0269,Hyderabad,IN,active,part_time,2020-10-14,,42462.88,INR
+EMP0674,E100674,Amelia,Lewis,amelia.lewis674@corp.example.com,+1-893-871-9874,non_binary,1966-02-13,JOB0674,HR,G08,EMP0777,Chicago,US,active,part_time,2024-09-18,,151853.65,USD
+EMP0675,E100675,Sofia,Patel,sofia.patel675@corp.example.com,+1-798-210-8601,female,2003-03-14,JOB0675,Operations,G10,EMP0924,Bengaluru,IN,active,contract,2019-06-03,,54644.67,INR
+EMP0676,E100676,Sebastian,Moore,sebastian.moore676@corp.example.com,+1-220-970-4957,non_binary,1990-10-04,JOB0676,IT,G07,EMP0881,London,UK,retired,part_time,2015-03-19,,123949.24,GBP
+EMP0677,E100677,Oliver,Brown,oliver.brown677@corp.example.com,+1-766-413-3711,non_binary,1966-04-08,JOB0677,Security,G08,EMP0466,London,UK,active,intern,2018-02-02,,136487.28,GBP
+EMP0678,E100678,Oliver,Ali,oliver.ali678@corp.example.com,+1-793-547-1498,female,1970-02-09,JOB0678,HR,G12,EMP0022,Seattle,US,retired,contract,2025-07-26,,203345.15,USD
+EMP0679,E100679,Yuki,Ramirez,yuki.ramirez679@corp.example.com,+1-897-692-9483,prefer_not_to_say,1983-03-05,JOB0679,Marketing,G04,EMP0930,Toronto,CA,retired,contract,2021-05-18,,86733.49,USD
+EMP0680,E100680,Omar,Clark,omar.clark680@corp.example.com,+1-652-224-1474,female,1989-05-13,JOB0680,Supply Chain,G09,EMP0647,Dallas,US,active,contract,2014-02-21,,166934.53,USD
+EMP0681,E100681,Logan,Perez,logan.perez681@corp.example.com,+1-405-761-3260,prefer_not_to_say,1974-04-10,JOB0681,Finance,G08,EMP0583,San Francisco,US,active,intern,2018-02-07,,148271.68,USD
+EMP0682,E100682,Fatima,Lewis,fatima.lewis682@corp.example.com,+1-503-837-1819,female,1970-12-16,JOB0682,Engineering,G06,EMP0062,New York,US,on_leave,full_time,2024-04-30,,121589.92,USD
+EMP0683,E100683,Mason,Thomas,mason.thomas683@corp.example.com,+1-602-448-6187,male,1987-05-16,JOB0683,Operations,G11,EMP0392,Atlanta,US,active,part_time,2017-10-28,,188220.78,USD
+EMP0684,E100684,Fatima,Rodriguez,fatima.rodriguez684@corp.example.com,+1-964-386-7495,male,1969-01-04,JOB0684,Facilities,G05,EMP0131,Austin,US,retired,part_time,2018-04-18,,109152.55,USD
+EMP0685,E100685,Benjamin,Thomas,benjamin.thomas685@corp.example.com,+1-996-853-9258,non_binary,1992-10-07,JOB0685,IT,G03,EMP0728,Austin,US,active,full_time,2016-01-14,,81556.76,USD
+EMP0686,E100686,Mason,Perez,mason.perez686@corp.example.com,+1-403-425-5779,male,1996-01-23,JOB0686,Security,G07,EMP0952,Hyderabad,IN,retired,part_time,2022-09-08,,41260.45,INR
+EMP0687,E100687,Fatima,Williams,fatima.williams687@corp.example.com,+1-717-432-4671,male,1988-08-07,JOB0687,Product,G04,EMP0524,Chicago,US,retired,full_time,2021-12-07,,98943.79,USD
+EMP0688,E100688,Fatima,Walker,fatima.walker688@corp.example.com,+1-729-386-4442,female,1974-07-05,JOB0688,Marketing,G01,EMP0361,Dallas,US,on_leave,part_time,2023-06-15,,60847.30,USD
+EMP0689,E100689,Daniel,Jones,daniel.jones689@corp.example.com,+1-880-692-5220,prefer_not_to_say,2004-08-23,JOB0689,Supply Chain,G07,EMP0816,Bengaluru,IN,active,contract,2024-01-22,,42007.84,INR
+EMP0690,E100690,Ella,Harris,ella.harris690@corp.example.com,+1-262-455-2434,non_binary,1991-01-28,JOB0690,Engineering,G06,EMP0243,Toronto,CA,active,full_time,2026-01-12,,105508.68,USD
+EMP0691,E100691,Ella,Anderson,ella.anderson691@corp.example.com,+1-771-343-4936,non_binary,1975-10-01,JOB0691,Security,G07,EMP0429,Seattle,US,active,part_time,2020-08-26,,136140.07,USD
+EMP0692,E100692,Jack,Ali,jack.ali692@corp.example.com,+1-942-735-9181,female,1968-05-26,JOB0692,Security,G10,EMP0078,Atlanta,US,active,contract,2025-06-09,,180171.53,USD
+EMP0693,E100693,Mia,Ramirez,mia.ramirez693@corp.example.com,+1-977-997-7841,female,1975-05-20,JOB0693,IT,G01,EMP0591,Atlanta,US,retired,contract,2026-04-22,,56796.40,USD
+EMP0694,E100694,Noah,Khan,noah.khan694@corp.example.com,+1-908-561-3970,prefer_not_to_say,1985-08-08,JOB0694,IT,G09,EMP0322,New York,US,terminated,intern,2021-06-13,2023-02-13,167107.52,USD
+EMP0695,E100695,Isabella,Jackson,isabella.jackson695@corp.example.com,+1-670-889-5850,non_binary,2004-11-13,JOB0695,HR,G09,EMP0849,Atlanta,US,active,part_time,2020-08-29,,165613.66,USD
+EMP0696,E100696,Ethan,Anderson,ethan.anderson696@corp.example.com,+1-485-204-7436,prefer_not_to_say,1999-05-20,JOB0696,IT,G12,EMP0127,Chicago,US,active,intern,2015-02-03,,206603.04,USD
+EMP0697,E100697,Abigail,Garcia,abigail.garcia697@corp.example.com,+1-619-227-6855,non_binary,1975-10-20,JOB0697,Supply Chain,G12,EMP0834,Dallas,US,active,intern,2024-10-15,,206152.66,USD
+EMP0698,E100698,Elena,Davis,elena.davis698@corp.example.com,+1-900-430-7885,male,1974-12-24,JOB0698,Engineering,G06,EMP0173,Dallas,US,retired,part_time,2020-09-21,,126227.96,USD
+EMP0699,E100699,Ella,Martinez,ella.martinez699@corp.example.com,+1-908-220-9656,prefer_not_to_say,1967-04-28,JOB0699,Legal,G03,EMP0224,Bengaluru,IN,active,part_time,2025-01-14,,26046.75,INR
+EMP0700,E100700,Olivia,Clark,olivia.clark700@corp.example.com,+1-531-437-6696,non_binary,1970-07-13,JOB0700,IT,G08,EMP0670,Seattle,US,on_leave,intern,2026-03-14,,150168.91,USD
+EMP0701,E100701,Lily,Johnson,lily.johnson701@corp.example.com,+1-775-956-4117,male,1982-06-04,JOB0701,Customer Success,G11,EMP0739,San Francisco,US,on_leave,full_time,2016-03-30,,191754.61,USD
+EMP0702,E100702,Elena,Robinson,elena.robinson702@corp.example.com,+1-636-822-8028,male,1989-04-16,JOB0702,Finance,G11,EMP0356,London,UK,active,part_time,2024-11-21,,171859.04,GBP
+EMP0703,E100703,Aria,Harris,aria.harris703@corp.example.com,+1-577-744-9482,female,1966-06-02,JOB0703,HR,G09,EMP0239,New York,US,active,intern,2017-11-12,,163282.26,USD
+EMP0704,E100704,Daniel,Garcia,daniel.garcia704@corp.example.com,+1-230-943-5307,male,1997-07-31,JOB0704,Product,G03,EMP0254,New York,US,retired,contract,2025-01-18,,85541.96,USD
+EMP0705,E100705,Liam,Anderson,liam.anderson705@corp.example.com,+1-860-737-7394,non_binary,1985-04-05,JOB0705,Sales,G09,EMP0833,Dallas,US,active,part_time,2018-05-13,,164773.98,USD
+EMP0706,E100706,Emily,Walker,emily.walker706@corp.example.com,+1-310-472-3763,male,1991-01-02,JOB0706,Data,G01,EMP0418,Bengaluru,IN,active,full_time,2021-01-12,,17525.77,INR
+EMP0707,E100707,Yuki,Jackson,yuki.jackson707@corp.example.com,+1-798-213-4702,non_binary,1970-04-22,JOB0707,Sales,G07,EMP0695,Dallas,US,active,contract,2017-09-22,,135912.16,USD
+EMP0708,E100708,Amelia,Anderson,amelia.anderson708@corp.example.com,+1-941-758-1173,non_binary,1993-12-09,JOB0708,HR,G05,EMP0183,Toronto,CA,on_leave,contract,2025-01-13,,96656.55,USD
+EMP0709,E100709,Chloe,Davis,chloe.davis709@corp.example.com,+1-664-886-8042,non_binary,2000-07-21,JOB0709,Data,G02,EMP0139,Denver,US,retired,full_time,2020-03-30,,73913.46,USD
+EMP0710,E100710,Jackson,Taylor,jackson.taylor710@corp.example.com,+1-554-221-2127,prefer_not_to_say,1985-01-15,JOB0710,Engineering,G07,EMP0431,Toronto,CA,on_leave,intern,2024-06-11,,117075.95,USD
+EMP0711,E100711,Olivia,Kim,olivia.kim711@corp.example.com,+1-989-418-7957,male,1989-06-22,JOB0711,Sales,G01,EMP0887,Bengaluru,IN,terminated,part_time,2020-06-19,2020-09-15,18081.57,INR
+EMP0712,E100712,Emma,Jackson,emma.jackson712@corp.example.com,+1-848-900-2261,male,2001-12-10,JOB0712,Finance,G02,EMP0620,Dallas,US,retired,full_time,2015-01-30,,72435.24,USD
+EMP0713,E100713,Scarlett,Lee,scarlett.lee713@corp.example.com,+1-927-758-8079,non_binary,1983-01-16,JOB0713,Finance,G11,EMP0707,Hyderabad,IN,on_leave,contract,2014-03-15,,57144.75,INR
+EMP0714,E100714,Elijah,Walker,elijah.walker714@corp.example.com,+1-390-213-7416,prefer_not_to_say,1990-03-02,JOB0714,IT,G10,EMP0351,London,UK,terminated,intern,2019-12-04,2026-06-01,160109.23,GBP
+EMP0715,E100715,Ella,Clark,ella.clark715@corp.example.com,+1-557-608-8651,male,1982-12-22,JOB0715,Facilities,G05,EMP0848,New York,US,retired,contract,2015-10-06,,108745.37,USD
+EMP0716,E100716,Harper,Ramirez,harper.ramirez716@corp.example.com,+1-913-818-4990,male,1974-07-22,JOB0716,Legal,G04,EMP0446,Dallas,US,active,contract,2015-09-14,,98397.28,USD
+EMP0717,E100717,Priya,Jackson,priya.jackson717@corp.example.com,+1-946-878-9904,non_binary,1965-06-16,JOB0717,Facilities,G10,EMP0797,Toronto,CA,active,intern,2023-08-20,,151600.43,USD
+EMP0718,E100718,Michael,Kim,michael.kim718@corp.example.com,+1-296-222-8061,non_binary,1976-10-11,JOB0718,HR,G04,EMP0641,Austin,US,on_leave,contract,2024-12-31,,100611.24,USD
+EMP0719,E100719,Logan,Robinson,logan.robinson719@corp.example.com,+1-756-353-1667,non_binary,2002-10-10,JOB0719,HR,G09,EMP0259,San Francisco,US,active,part_time,2021-02-23,,163763.23,USD
+EMP0720,E100720,Henry,Jackson,henry.jackson720@corp.example.com,+1-575-486-2748,male,1981-12-08,JOB0720,Security,G10,EMP0976,San Francisco,US,active,full_time,2022-01-03,,175552.92,USD
+EMP0721,E100721,Michael,Jones,michael.jones721@corp.example.com,+1-869-512-9228,non_binary,2004-11-11,JOB0721,Product,G11,EMP0732,Austin,US,active,part_time,2020-08-09,,191885.93,USD
+EMP0722,E100722,Sophia,Sanchez,sophia.sanchez722@corp.example.com,+1-391-438-2786,female,1980-03-28,JOB0722,Sales,G10,EMP0330,Seattle,US,active,part_time,2019-01-31,,178435.70,USD
+EMP0723,E100723,Abigail,Johnson,abigail.johnson723@corp.example.com,+1-736-245-5146,prefer_not_to_say,1974-05-02,JOB0723,Finance,G08,EMP0783,Denver,US,on_leave,full_time,2026-02-25,,149683.28,USD
+EMP0724,E100724,Nora,Davis,nora.davis724@corp.example.com,+1-879-906-3584,non_binary,1977-04-12,JOB0724,Facilities,G06,EMP0077,Toronto,CA,active,part_time,2025-08-08,,105554.12,USD
+EMP0725,E100725,Mason,Singh,mason.singh725@corp.example.com,+1-776-729-6735,non_binary,1970-09-25,JOB0725,HR,G08,EMP0142,Dallas,US,on_leave,part_time,2025-06-21,,148696.57,USD
+EMP0726,E100726,Arjun,Lopez,arjun.lopez726@corp.example.com,+1-528-908-4614,male,1982-06-25,JOB0726,Security,G11,EMP0796,Bengaluru,IN,retired,intern,2019-01-13,,58530.59,INR
+EMP0727,E100727,Abigail,Moore,abigail.moore727@corp.example.com,+1-659-939-7970,female,1990-03-07,JOB0727,Data,G09,EMP0409,Bengaluru,IN,retired,full_time,2021-03-08,,49289.46,INR
+EMP0728,E100728,Chloe,Harris,chloe.harris728@corp.example.com,+1-877-387-6691,female,1982-02-03,JOB0728,Supply Chain,G03,EMP0562,Seattle,US,active,contract,2015-03-07,,83168.27,USD
+EMP0729,E100729,Noah,Silva,noah.silva729@corp.example.com,+1-831-965-9553,female,1971-07-03,JOB0729,Marketing,G04,EMP0203,Dallas,US,active,contract,2021-08-01,,95187.00,USD
+EMP0730,E100730,Amelia,Martinez,amelia.martinez730@corp.example.com,+1-842-374-8031,non_binary,1977-10-22,JOB0730,HR,G01,EMP0200,Atlanta,US,active,part_time,2015-06-01,,55449.19,USD
+EMP0731,E100731,Benjamin,Patel,benjamin.patel731@corp.example.com,+1-466-397-3139,prefer_not_to_say,1991-05-31,JOB0731,Facilities,G07,EMP0448,Toronto,CA,active,part_time,2025-04-01,,118934.55,USD
+EMP0732,E100732,Daniel,Wilson,daniel.wilson732@corp.example.com,+1-830-985-8255,male,1999-09-29,JOB0732,Engineering,G12,EMP0271,Atlanta,US,active,part_time,2024-10-24,,203275.58,USD
+EMP0733,E100733,Henry,Robinson,henry.robinson733@corp.example.com,+1-512-823-2902,prefer_not_to_say,1990-09-20,JOB0733,Legal,G11,EMP0419,Atlanta,US,active,part_time,2023-04-08,,192268.30,USD
+EMP0734,E100734,Henry,Smith,henry.smith734@corp.example.com,+1-877-960-3725,female,1971-03-21,JOB0734,Legal,G02,EMP0046,New York,US,terminated,part_time,2018-01-24,2021-12-14,72087.67,USD
+EMP0735,E100735,Aria,Wilson,aria.wilson735@corp.example.com,+1-710-585-3751,male,1968-04-17,JOB0735,Legal,G04,EMP0529,Bengaluru,IN,on_leave,intern,2014-11-03,,29128.41,INR
+EMP0736,E100736,Amelia,Lewis,amelia.lewis736@corp.example.com,+1-374-457-1399,prefer_not_to_say,1996-04-09,JOB0736,Customer Success,G06,EMP0743,Dallas,US,terminated,full_time,2018-05-22,2021-02-28,127183.22,USD
+EMP0737,E100737,Ella,Martin,ella.martin737@corp.example.com,+1-766-229-5773,female,1998-02-11,JOB0737,Product,G04,EMP0402,New York,US,active,contract,2020-08-31,,99861.47,USD
+EMP0738,E100738,Ava,Wilson,ava.wilson738@corp.example.com,+1-348-743-2248,male,1977-08-29,JOB0738,Marketing,G09,EMP0186,Dallas,US,terminated,intern,2024-10-21,2026-05-02,162759.41,USD
+EMP0739,E100739,Mia,Garcia,mia.garcia739@corp.example.com,+1-276-819-6098,non_binary,1993-04-21,JOB0739,Security,G05,EMP0847,Atlanta,US,active,intern,2018-04-18,,112066.70,USD
+EMP0740,E100740,Evelyn,Robinson,evelyn.robinson740@corp.example.com,+1-815-666-1544,non_binary,1966-10-06,JOB0740,Supply Chain,G07,EMP0409,Seattle,US,on_leave,part_time,2022-10-29,,136094.64,USD
+EMP0741,E100741,Noah,Martin,noah.martin741@corp.example.com,+1-517-464-2517,non_binary,2004-01-07,JOB0741,Operations,G03,EMP0989,San Francisco,US,on_leave,full_time,2021-11-13,,87828.89,USD
+EMP0742,E100742,Daniel,Ramirez,daniel.ramirez742@corp.example.com,+1-420-424-5177,male,1989-03-17,JOB0742,IT,G07,EMP0435,Seattle,US,active,intern,2022-02-02,,138093.17,USD
+EMP0743,E100743,Sofia,Jackson,sofia.jackson743@corp.example.com,+1-398-743-4014,prefer_not_to_say,1977-08-28,JOB0743,Supply Chain,G02,EMP0862,Austin,US,terminated,full_time,2022-09-18,2026-04-28,72543.12,USD
+EMP0744,E100744,Sebastian,Thomas,sebastian.thomas744@corp.example.com,+1-424-859-1375,female,1996-04-04,JOB0744,Sales,G03,EMP0270,Austin,US,active,contract,2016-06-06,,82015.97,USD
+EMP0745,E100745,Olivia,Singh,olivia.singh745@corp.example.com,+1-904-473-8415,non_binary,1969-12-31,JOB0745,Engineering,G01,EMP0699,Atlanta,US,active,intern,2016-05-04,,56382.25,USD
+EMP0746,E100746,Riley,Ramirez,riley.ramirez746@corp.example.com,+1-245-450-8898,female,1979-12-14,JOB0746,Facilities,G09,EMP0778,Chicago,US,retired,part_time,2025-07-29,,163010.03,USD
+EMP0747,E100747,Nora,Murphy,nora.murphy747@corp.example.com,+1-444-800-9980,female,1982-03-24,JOB0747,Supply Chain,G07,EMP0253,Toronto,CA,terminated,intern,2014-10-28,2021-04-19,121610.45,USD
+EMP0748,E100748,Logan,Jones,logan.jones748@corp.example.com,+1-289-457-4233,male,1980-11-16,JOB0748,Security,G06,EMP0291,London,UK,retired,full_time,2026-06-03,,114110.78,GBP
+EMP0749,E100749,Ava,Lewis,ava.lewis749@corp.example.com,+1-550-885-6041,female,1988-10-18,JOB0749,IT,G07,EMP0889,Seattle,US,retired,full_time,2018-09-13,,138795.78,USD
+EMP0750,E100750,Zoey,Clark,zoey.clark750@corp.example.com,+1-362-655-6727,female,1973-01-02,JOB0750,Supply Chain,G07,EMP0814,Seattle,US,active,contract,2020-04-07,,137266.23,USD
+EMP0751,E100751,Michael,Miller,michael.miller751@corp.example.com,+1-511-703-1196,male,1971-11-21,JOB0751,Sales,G03,EMP0529,San Francisco,US,active,full_time,2018-06-01,,82895.11,USD
+EMP0752,E100752,Ethan,Perez,ethan.perez752@corp.example.com,+1-829-804-9642,male,1992-10-29,JOB0752,Legal,G07,EMP0056,Hyderabad,IN,active,full_time,2023-10-06,,42542.90,INR
+EMP0753,E100753,Sebastian,Taylor,sebastian.taylor753@corp.example.com,+1-439-788-7014,non_binary,1967-02-05,JOB0753,Product,G06,EMP0369,Austin,US,active,part_time,2021-12-29,,121784.88,USD
+EMP0754,E100754,Evelyn,Johnson,evelyn.johnson754@corp.example.com,+1-522-552-8310,prefer_not_to_say,1976-11-04,JOB0754,Marketing,G08,EMP0586,New York,US,on_leave,contract,2025-11-21,,152501.59,USD
+EMP0755,E100755,Ananya,Wilson,ananya.wilson755@corp.example.com,+1-515-347-3863,male,1996-03-28,JOB0755,Product,G10,EMP0715,Hyderabad,IN,terminated,intern,2020-10-27,2024-07-16,53441.88,INR
+EMP0756,E100756,Ella,Johnson,ella.johnson756@corp.example.com,+1-363-742-4694,prefer_not_to_say,1975-07-14,JOB0756,Sales,G11,EMP0402,Austin,US,retired,intern,2024-03-28,,192787.21,USD
+EMP0757,E100757,Chloe,Davis,chloe.davis757@corp.example.com,+1-870-895-1795,non_binary,1993-06-04,JOB0757,Finance,G12,EMP0308,Atlanta,US,active,full_time,2018-11-24,,204482.98,USD
+EMP0758,E100758,Jackson,Lee,jackson.lee758@corp.example.com,+1-620-614-6659,female,1973-04-13,JOB0758,HR,G05,EMP0233,Seattle,US,active,contract,2020-10-17,,112399.50,USD
+EMP0759,E100759,Sebastian,Perez,sebastian.perez759@corp.example.com,+1-284-621-8853,non_binary,1995-09-06,JOB0759,Data,G06,EMP0610,Bengaluru,IN,active,intern,2021-02-17,,37452.53,INR
+EMP0760,E100760,Oliver,Johnson,oliver.johnson760@corp.example.com,+1-447-599-5237,male,1996-09-14,JOB0760,Operations,G03,EMP0511,London,UK,retired,contract,2023-03-27,,77096.89,GBP
+EMP0761,E100761,Emily,Chen,emily.chen761@corp.example.com,+1-246-770-1374,female,1983-02-26,JOB0761,Operations,G07,EMP0023,Seattle,US,active,part_time,2015-09-16,,135168.14,USD
+EMP0762,E100762,Fatima,Taylor,fatima.taylor762@corp.example.com,+1-342-395-6534,male,2004-09-21,JOB0762,Security,G08,EMP0730,Toronto,CA,on_leave,full_time,2018-01-06,,132597.91,USD
+EMP0763,E100763,Noah,Lee,noah.lee763@corp.example.com,+1-897-271-9189,non_binary,1982-05-02,JOB0763,Data,G01,EMP0720,Seattle,US,active,part_time,2017-11-08,,60106.25,USD
+EMP0764,E100764,Lucas,Wilson,lucas.wilson764@corp.example.com,+1-236-434-9582,non_binary,1979-10-20,JOB0764,Security,G01,EMP0824,Dallas,US,active,contract,2023-06-24,,61332.38,USD
+EMP0765,E100765,Fatima,Costa,fatima.costa765@corp.example.com,+1-757-694-7032,non_binary,1987-05-20,JOB0765,Security,G12,EMP0441,Dallas,US,on_leave,contract,2026-04-21,,203167.51,USD
+EMP0766,E100766,Isabella,Robinson,isabella.robinson766@corp.example.com,+1-240-537-3988,prefer_not_to_say,1980-11-08,JOB0766,Security,G04,EMP0714,Chicago,US,on_leave,intern,2017-12-09,,100430.85,USD
+EMP0767,E100767,Yuki,Silva,yuki.silva767@corp.example.com,+1-552-306-4931,prefer_not_to_say,1976-09-17,JOB0767,Facilities,G08,EMP0462,Chicago,US,terminated,full_time,2022-04-03,2023-05-24,150942.01,USD
+EMP0768,E100768,Sophia,Walker,sophia.walker768@corp.example.com,+1-926-944-5330,female,2002-06-17,JOB0768,Facilities,G06,EMP0910,Toronto,CA,terminated,part_time,2016-08-15,2019-05-08,107220.80,USD
+EMP0769,E100769,Aria,Sanchez,aria.sanchez769@corp.example.com,+1-305-205-5971,prefer_not_to_say,1973-01-19,JOB0769,Finance,G09,EMP0878,Seattle,US,active,full_time,2021-04-22,,165848.47,USD
+EMP0770,E100770,Riley,Costa,riley.costa770@corp.example.com,+1-680-583-7776,male,1973-01-14,JOB0770,Finance,G01,EMP0552,Toronto,CA,on_leave,full_time,2024-03-23,,52321.73,USD
+EMP0771,E100771,Logan,Rodriguez,logan.rodriguez771@corp.example.com,+1-446-660-7691,male,1994-07-11,JOB0771,Operations,G10,EMP0002,Toronto,CA,active,part_time,2020-11-22,,154712.09,USD
+EMP0772,E100772,Jackson,Nguyen,jackson.nguyen772@corp.example.com,+1-725-636-3585,prefer_not_to_say,1975-05-17,JOB0772,Security,G11,EMP0840,Toronto,CA,active,intern,2024-09-22,,168311.62,USD
+EMP0773,E100773,Jackson,Lopez,jackson.lopez773@corp.example.com,+1-391-797-1891,prefer_not_to_say,1965-01-18,JOB0773,Security,G01,EMP0418,Toronto,CA,active,full_time,2025-10-29,,53264.58,USD
+EMP0774,E100774,Aiden,Nguyen,aiden.nguyen774@corp.example.com,+1-749-544-7381,female,1976-08-30,JOB0774,Customer Success,G09,EMP0905,Seattle,US,terminated,full_time,2014-01-23,2014-11-18,162355.94,USD
+EMP0775,E100775,Owen,Martinez,owen.martinez775@corp.example.com,+1-893-324-8287,female,1973-11-25,JOB0775,Product,G07,EMP0744,Bengaluru,IN,retired,part_time,2026-01-31,,41879.03,INR
+EMP0776,E100776,Priya,Costa,priya.costa776@corp.example.com,+1-250-916-2825,non_binary,1997-05-31,JOB0776,Finance,G08,EMP0819,London,UK,active,intern,2019-04-20,,136456.47,GBP
+EMP0777,E100777,Elijah,Miller,elijah.miller777@corp.example.com,+1-927-459-3686,female,1979-09-10,JOB0777,HR,G04,EMP0041,Austin,US,on_leave,contract,2020-04-21,,100759.13,USD
+EMP0778,E100778,Yuki,Patel,yuki.patel778@corp.example.com,+1-278-748-4538,female,1968-08-05,JOB0778,IT,G08,EMP0446,Bengaluru,IN,terminated,full_time,2022-09-29,2023-02-15,45357.48,INR
+EMP0779,E100779,Ananya,Davis,ananya.davis779@corp.example.com,+1-498-220-5112,female,1993-01-24,JOB0779,Facilities,G11,EMP0507,Chicago,US,on_leave,intern,2017-12-30,,189479.66,USD
+EMP0780,E100780,Ava,Nguyen,ava.nguyen780@corp.example.com,+1-459-509-5040,non_binary,1983-01-03,JOB0780,Marketing,G06,EMP0173,Denver,US,terminated,contract,2026-03-03,2026-06-07,122018.19,USD
+EMP0781,E100781,Yuki,Anderson,yuki.anderson781@corp.example.com,+1-233-728-7428,non_binary,1989-12-20,JOB0781,Data,G11,EMP0227,Austin,US,active,full_time,2019-09-15,,187763.29,USD
+EMP0782,E100782,Sofia,Khan,sofia.khan782@corp.example.com,+1-424-681-8465,prefer_not_to_say,1970-06-13,JOB0782,Product,G04,EMP0743,Seattle,US,active,intern,2014-04-29,,99829.07,USD
+EMP0783,E100783,Aria,Ramirez,aria.ramirez783@corp.example.com,+1-266-985-2229,non_binary,1995-02-28,JOB0783,Customer Success,G03,EMP0111,Austin,US,on_leave,full_time,2025-05-09,,87051.78,USD
+EMP0784,E100784,Isabella,Johnson,isabella.johnson784@corp.example.com,+1-754-345-7177,male,1984-09-25,JOB0784,Security,G12,EMP0948,Chicago,US,terminated,intern,2015-11-12,2021-06-05,201732.28,USD
+EMP0785,E100785,Arjun,Garcia,arjun.garcia785@corp.example.com,+1-991-877-4180,female,2001-05-23,JOB0785,IT,G11,EMP0405,London,UK,on_leave,intern,2020-06-09,,174035.87,GBP
+EMP0786,E100786,Elijah,Harris,elijah.harris786@corp.example.com,+1-720-820-9196,male,1977-10-07,JOB0786,HR,G06,EMP0625,Chicago,US,active,part_time,2014-09-17,,124560.77,USD
+EMP0787,E100787,Ethan,Thompson,ethan.thompson787@corp.example.com,+1-751-417-3492,prefer_not_to_say,1971-03-02,JOB0787,Operations,G10,EMP0909,New York,US,on_leave,part_time,2018-01-02,,177907.29,USD
+EMP0788,E100788,Elena,Costa,elena.costa788@corp.example.com,+1-913-587-2492,male,1977-02-28,JOB0788,Finance,G05,EMP0391,Seattle,US,active,part_time,2015-08-26,,109403.26,USD
+EMP0789,E100789,Chloe,Walker,chloe.walker789@corp.example.com,+1-840-294-9851,male,1982-12-23,JOB0789,Finance,G02,EMP0516,Hyderabad,IN,active,contract,2023-03-04,,21394.29,INR
+EMP0790,E100790,Mateo,Perez,mateo.perez790@corp.example.com,+1-527-768-2161,non_binary,1966-12-17,JOB0790,Security,G10,EMP0525,Atlanta,US,retired,full_time,2015-04-07,,178457.49,USD
+EMP0791,E100791,Lily,Garcia,lily.garcia791@corp.example.com,+1-771-534-8114,male,1967-01-27,JOB0791,Data,G02,EMP0809,Seattle,US,active,full_time,2017-02-18,,68290.74,USD
+EMP0792,E100792,Aria,Moore,aria.moore792@corp.example.com,+1-311-913-1097,prefer_not_to_say,1992-12-22,JOB0792,Engineering,G02,EMP0631,San Francisco,US,retired,intern,2025-05-23,,71853.64,USD
+EMP0793,E100793,Ava,Chen,ava.chen793@corp.example.com,+1-741-350-4267,male,1975-11-27,JOB0793,HR,G07,EMP0841,Seattle,US,on_leave,contract,2016-03-26,,139869.65,USD
+EMP0794,E100794,Emily,Thomas,emily.thomas794@corp.example.com,+1-351-575-7756,female,1981-03-03,JOB0794,Finance,G04,EMP0644,Dallas,US,active,part_time,2023-08-25,,94586.62,USD
+EMP0795,E100795,Alexander,Smith,alexander.smith795@corp.example.com,+1-923-979-7235,non_binary,1982-12-02,JOB0795,Supply Chain,G10,EMP0247,Bengaluru,IN,on_leave,part_time,2022-01-19,,54633.61,INR
+EMP0796,E100796,Ava,Costa,ava.costa796@corp.example.com,+1-524-515-4243,non_binary,1993-11-21,JOB0796,Customer Success,G08,EMP0396,Chicago,US,retired,contract,2025-06-26,,152078.76,USD
+EMP0797,E100797,Jack,Ramirez,jack.ramirez797@corp.example.com,+1-747-366-1938,prefer_not_to_say,1983-04-29,JOB0797,Security,G12,EMP0875,Chicago,US,terminated,intern,2017-03-18,2018-11-22,203527.12,USD
+EMP0798,E100798,Ethan,Miller,ethan.miller798@corp.example.com,+1-964-710-2159,male,1984-05-06,JOB0798,Customer Success,G12,EMP0002,Seattle,US,on_leave,intern,2018-08-16,,201120.94,USD
+EMP0799,E100799,Jacob,Thompson,jacob.thompson799@corp.example.com,+1-656-539-8971,non_binary,2004-11-06,JOB0799,Operations,G12,EMP0805,Seattle,US,retired,contract,2016-07-11,,206522.19,USD
+EMP0800,E100800,Daniel,Nguyen,daniel.nguyen800@corp.example.com,+1-598-698-7965,female,1991-05-13,JOB0800,Product,G08,EMP0698,San Francisco,US,retired,full_time,2025-11-06,,151442.16,USD
+EMP0801,E100801,Ella,Harris,ella.harris801@corp.example.com,+1-697-377-4295,prefer_not_to_say,2002-11-18,JOB0801,Finance,G02,EMP0618,Bengaluru,IN,retired,part_time,2015-09-02,,21372.42,INR
+EMP0802,E100802,Omar,Johnson,omar.johnson802@corp.example.com,+1-837-360-9771,non_binary,1978-07-26,JOB0802,Engineering,G08,EMP0861,London,UK,retired,full_time,2016-04-22,,135612.63,GBP
+EMP0803,E100803,Ananya,Lewis,ananya.lewis803@corp.example.com,+1-696-812-6911,male,1999-07-19,JOB0803,Legal,G02,EMP0355,London,UK,active,full_time,2017-04-29,,65958.36,GBP
+EMP0804,E100804,Elijah,Ali,elijah.ali804@corp.example.com,+1-956-287-5685,prefer_not_to_say,1988-02-02,JOB0804,Data,G02,EMP0124,San Francisco,US,active,intern,2014-07-23,,73713.48,USD
+EMP0805,E100805,Oliver,Lee,oliver.lee805@corp.example.com,+1-315-946-4553,prefer_not_to_say,1995-10-17,JOB0805,Finance,G03,EMP0830,London,UK,retired,intern,2019-10-29,,74195.13,GBP
+EMP0806,E100806,Arjun,Robinson,arjun.robinson806@corp.example.com,+1-958-853-6109,non_binary,1970-02-04,JOB0806,Finance,G09,EMP0055,Seattle,US,active,full_time,2025-08-17,,166606.14,USD
+EMP0807,E100807,Arjun,Moore,arjun.moore807@corp.example.com,+1-674-612-8493,female,1988-05-01,JOB0807,Security,G03,EMP0152,Dallas,US,on_leave,contract,2016-03-28,,87564.54,USD
+EMP0808,E100808,Priya,White,priya.white808@corp.example.com,+1-630-289-5344,non_binary,1999-08-27,JOB0808,Security,G03,EMP0855,Bengaluru,IN,terminated,full_time,2014-01-16,2026-02-03,24817.18,INR
+EMP0809,E100809,Ananya,Nguyen,ananya.nguyen809@corp.example.com,+1-765-682-7307,female,1967-06-13,JOB0809,Engineering,G03,EMP0581,Denver,US,active,contract,2019-07-03,,83643.16,USD
+EMP0810,E100810,Noah,Hernandez,noah.hernandez810@corp.example.com,+1-360-965-2590,non_binary,2000-05-21,JOB0810,Data,G09,EMP0097,New York,US,active,contract,2025-03-15,,163323.20,USD
+EMP0811,E100811,Logan,Costa,logan.costa811@corp.example.com,+1-828-546-2904,male,1968-01-26,JOB0811,Product,G07,EMP0420,London,UK,terminated,contract,2023-09-02,2025-09-02,125286.75,GBP
+EMP0812,E100812,Lily,Thomas,lily.thomas812@corp.example.com,+1-729-893-8437,non_binary,2001-06-17,JOB0812,Legal,G09,EMP0055,Seattle,US,terminated,full_time,2025-05-05,2025-11-08,162142.80,USD
+EMP0813,E100813,Wei,Thompson,wei.thompson813@corp.example.com,+1-323-768-3386,prefer_not_to_say,1978-11-22,JOB0813,Facilities,G05,EMP0161,San Francisco,US,active,intern,2022-12-23,,114259.75,USD
+EMP0814,E100814,Daniel,Ali,daniel.ali814@corp.example.com,+1-369-610-6833,female,1990-09-03,JOB0814,Customer Success,G02,EMP0923,Denver,US,active,full_time,2019-10-28,,68154.12,USD
+EMP0815,E100815,Ananya,Kim,ananya.kim815@corp.example.com,+1-671-915-7729,non_binary,1971-12-07,JOB0815,HR,G04,EMP0182,Dallas,US,active,full_time,2014-11-17,,100105.97,USD
+EMP0816,E100816,Liam,Johnson,liam.johnson816@corp.example.com,+1-326-880-2193,female,1979-02-10,JOB0816,Sales,G07,EMP0628,Denver,US,active,intern,2017-11-06,,135322.64,USD
+EMP0817,E100817,Aria,Harris,aria.harris817@corp.example.com,+1-456-579-8285,prefer_not_to_say,1991-05-06,JOB0817,Engineering,G10,EMP0087,San Francisco,US,retired,full_time,2022-01-29,,178132.87,USD
+EMP0818,E100818,Noah,Khan,noah.khan818@corp.example.com,+1-730-518-7147,prefer_not_to_say,2002-04-02,JOB0818,IT,G09,EMP0577,Toronto,CA,retired,full_time,2019-03-16,,141195.15,USD
+EMP0819,E100819,Ella,Miller,ella.miller819@corp.example.com,+1-840-265-7910,female,1969-01-15,JOB0819,HR,G10,EMP0364,Seattle,US,on_leave,intern,2021-10-05,,177600.04,USD
+EMP0820,E100820,Oliver,Taylor,oliver.taylor820@corp.example.com,+1-574-637-6462,male,1985-08-30,JOB0820,Customer Success,G04,EMP0314,Toronto,CA,active,full_time,2020-01-13,,85448.55,USD
+EMP0821,E100821,Lily,Williams,lily.williams821@corp.example.com,+1-439-243-9409,prefer_not_to_say,2000-12-14,JOB0821,Finance,G03,EMP0752,Hyderabad,IN,active,part_time,2015-07-11,,25412.68,INR
+EMP0822,E100822,Henry,Patel,henry.patel822@corp.example.com,+1-665-817-4011,female,2003-03-18,JOB0822,Customer Success,G08,EMP0312,London,UK,retired,full_time,2022-10-06,,136896.50,GBP
+EMP0823,E100823,Riley,Miller,riley.miller823@corp.example.com,+1-728-442-1946,prefer_not_to_say,1979-08-18,JOB0823,IT,G04,EMP0514,Atlanta,US,active,full_time,2016-07-16,,94509.11,USD
+EMP0824,E100824,Riley,Silva,riley.silva824@corp.example.com,+1-667-641-4316,male,1969-08-04,JOB0824,HR,G11,EMP0617,London,UK,on_leave,full_time,2024-06-04,,171917.38,GBP
+EMP0825,E100825,Riley,Brown,riley.brown825@corp.example.com,+1-515-811-2665,prefer_not_to_say,1987-02-23,JOB0825,IT,G02,EMP0086,New York,US,active,intern,2026-02-15,,69097.87,USD
+EMP0826,E100826,Fatima,Martin,fatima.martin826@corp.example.com,+1-703-681-8920,non_binary,1997-10-25,JOB0826,Engineering,G06,EMP0194,Toronto,CA,terminated,part_time,2025-07-03,2025-12-07,105986.03,USD
+EMP0827,E100827,Chloe,Walker,chloe.walker827@corp.example.com,+1-677-602-4491,male,1998-09-21,JOB0827,Customer Success,G04,EMP0543,Hyderabad,IN,active,intern,2017-08-15,,30552.63,INR
+EMP0828,E100828,Scarlett,Jackson,scarlett.jackson828@corp.example.com,+1-972-772-3935,female,1995-06-07,JOB0828,Sales,G10,EMP0994,Hyderabad,IN,active,contract,2016-09-24,,54782.53,INR
+EMP0829,E100829,Omar,Robinson,omar.robinson829@corp.example.com,+1-762-286-8808,prefer_not_to_say,1978-11-15,JOB0829,HR,G09,EMP0310,London,UK,active,full_time,2019-10-30,,147540.92,GBP
+EMP0830,E100830,Abigail,Rodriguez,abigail.rodriguez830@corp.example.com,+1-320-331-3544,male,1982-11-22,JOB0830,Engineering,G08,EMP0303,Atlanta,US,on_leave,intern,2018-10-03,,152404.04,USD
+EMP0831,E100831,Abigail,Taylor,abigail.taylor831@corp.example.com,+1-954-218-3171,non_binary,1997-04-21,JOB0831,Product,G06,EMP0134,New York,US,terminated,contract,2019-09-14,2019-12-31,121862.29,USD
+EMP0832,E100832,Ava,Silva,ava.silva832@corp.example.com,+1-387-648-6988,prefer_not_to_say,1992-05-26,JOB0832,Legal,G06,EMP0513,Toronto,CA,on_leave,full_time,2022-03-12,,110809.87,USD
+EMP0833,E100833,Ava,Moore,ava.moore833@corp.example.com,+1-659-587-2433,prefer_not_to_say,1975-09-19,JOB0833,Engineering,G01,EMP0895,Bengaluru,IN,retired,contract,2021-01-24,,17578.47,INR
+EMP0834,E100834,Zoey,Lopez,zoey.lopez834@corp.example.com,+1-315-340-7729,male,1984-06-02,JOB0834,Finance,G02,EMP0333,Austin,US,on_leave,full_time,2025-08-19,,69288.81,USD
+EMP0835,E100835,Riley,Lewis,riley.lewis835@corp.example.com,+1-488-799-7493,non_binary,1971-06-11,JOB0835,Data,G12,EMP0243,Dallas,US,active,intern,2017-12-26,,205139.93,USD
+EMP0836,E100836,Arjun,Martin,arjun.martin836@corp.example.com,+1-617-506-3994,prefer_not_to_say,1985-02-16,JOB0836,Legal,G06,EMP0520,Toronto,CA,retired,intern,2022-12-14,,110076.10,USD
+EMP0837,E100837,Abigail,Thomas,abigail.thomas837@corp.example.com,+1-730-273-7104,male,1972-04-30,JOB0837,Supply Chain,G06,EMP0093,Denver,US,active,intern,2014-04-02,,126365.52,USD
+EMP0838,E100838,Benjamin,Robinson,benjamin.robinson838@corp.example.com,+1-813-553-4423,non_binary,1990-11-24,JOB0838,Engineering,G12,EMP0065,Bengaluru,IN,retired,part_time,2023-04-12,,61481.16,INR
+EMP0839,E100839,Nora,Harris,nora.harris839@corp.example.com,+1-812-459-4062,prefer_not_to_say,1981-11-01,JOB0839,Supply Chain,G12,EMP0857,Hyderabad,IN,on_leave,contract,2015-02-03,,61998.13,INR
+EMP0840,E100840,Jack,Perez,jack.perez840@corp.example.com,+1-690-590-3732,prefer_not_to_say,1971-04-18,JOB0840,Sales,G03,EMP0263,New York,US,on_leave,intern,2019-09-28,,83240.67,USD
+EMP0841,E100841,Daniel,Ramirez,daniel.ramirez841@corp.example.com,+1-895-348-5801,male,1977-03-07,JOB0841,Supply Chain,G01,EMP0001,Austin,US,active,intern,2023-10-18,,55765.38,USD
+EMP0842,E100842,Logan,Walker,logan.walker842@corp.example.com,+1-979-852-2065,non_binary,1970-12-11,JOB0842,Supply Chain,G06,EMP0101,Austin,US,active,part_time,2022-06-06,,121234.40,USD
+EMP0843,E100843,Jacob,Jones,jacob.jones843@corp.example.com,+1-408-313-5000,male,1972-03-29,JOB0843,IT,G07,EMP0585,San Francisco,US,retired,intern,2016-01-10,,135174.22,USD
+EMP0844,E100844,Michael,Jackson,michael.jackson844@corp.example.com,+1-497-408-3416,male,1981-11-09,JOB0844,Supply Chain,G06,EMP0085,Atlanta,US,retired,intern,2016-10-17,,124951.88,USD
+EMP0845,E100845,Oliver,White,oliver.white845@corp.example.com,+1-636-710-5992,non_binary,1968-07-12,JOB0845,Legal,G02,EMP0591,Seattle,US,terminated,full_time,2020-05-01,2021-04-15,73621.58,USD
+EMP0846,E100846,Daniel,Hernandez,daniel.hernandez846@corp.example.com,+1-992-509-9043,male,1998-12-06,JOB0846,Operations,G12,EMP0789,Atlanta,US,retired,full_time,2022-09-15,,201559.32,USD
+EMP0847,E100847,Oliver,Rodriguez,oliver.rodriguez847@corp.example.com,+1-234-251-5955,non_binary,1987-06-16,JOB0847,Facilities,G04,EMP0733,New York,US,active,full_time,2024-05-13,,97276.99,USD
+EMP0848,E100848,Priya,Costa,priya.costa848@corp.example.com,+1-486-347-2829,non_binary,1991-06-05,JOB0848,Sales,G04,EMP0513,Denver,US,active,full_time,2019-01-22,,100272.78,USD
+EMP0849,E100849,Riley,Sanchez,riley.sanchez849@corp.example.com,+1-688-756-3411,female,2004-12-17,JOB0849,Operations,G04,EMP0337,Seattle,US,on_leave,intern,2020-07-17,,99327.84,USD
+EMP0850,E100850,Riley,Chen,riley.chen850@corp.example.com,+1-663-341-3691,prefer_not_to_say,1998-07-29,JOB0850,Finance,G05,EMP0977,Hyderabad,IN,active,intern,2017-04-18,,34268.35,INR
+EMP0851,E100851,Alexander,Rodriguez,alexander.rodriguez851@corp.example.com,+1-267-824-4186,male,1999-03-02,JOB0851,Finance,G01,EMP0537,New York,US,retired,full_time,2016-12-07,,59149.05,USD
+EMP0852,E100852,Riley,Robinson,riley.robinson852@corp.example.com,+1-766-580-2875,female,1983-03-21,JOB0852,Data,G06,EMP0359,Dallas,US,terminated,part_time,2022-03-29,2024-08-05,124024.61,USD
+EMP0853,E100853,Ananya,Davis,ananya.davis853@corp.example.com,+1-413-923-1094,male,1974-06-29,JOB0853,Sales,G09,EMP0687,London,UK,active,intern,2020-12-24,,147902.66,GBP
+EMP0854,E100854,Scarlett,Anderson,scarlett.anderson854@corp.example.com,+1-740-406-9737,non_binary,1976-08-25,JOB0854,Legal,G04,EMP0722,Dallas,US,active,contract,2014-11-28,,94464.50,USD
+EMP0855,E100855,Elena,Williams,elena.williams855@corp.example.com,+1-228-339-8860,female,1972-03-17,JOB0855,HR,G05,EMP0683,New York,US,retired,contract,2018-01-27,,109909.57,USD
+EMP0856,E100856,Noah,Murphy,noah.murphy856@corp.example.com,+1-322-659-2736,female,1982-03-21,JOB0856,Finance,G11,EMP0302,Toronto,CA,terminated,intern,2018-08-11,2023-05-10,168082.13,USD
+EMP0857,E100857,Omar,Costa,omar.costa857@corp.example.com,+1-938-391-4483,male,1974-02-20,JOB0857,HR,G09,EMP0760,Toronto,CA,active,intern,2025-07-23,,144662.92,USD
+EMP0858,E100858,Priya,Sanchez,priya.sanchez858@corp.example.com,+1-711-569-2212,prefer_not_to_say,1999-12-17,JOB0858,Security,G05,EMP0277,Hyderabad,IN,active,intern,2026-05-05,,32979.46,INR
+EMP0859,E100859,Emma,Clark,emma.clark859@corp.example.com,+1-701-916-8451,male,1982-08-17,JOB0859,Security,G04,EMP0298,Austin,US,on_leave,intern,2018-12-19,,99273.53,USD
+EMP0860,E100860,Michael,Williams,michael.williams860@corp.example.com,+1-357-663-3774,female,1986-12-24,JOB0860,Legal,G05,EMP0707,Denver,US,on_leave,intern,2021-12-13,,110705.47,USD
+EMP0861,E100861,Sebastian,White,sebastian.white861@corp.example.com,+1-694-506-3916,non_binary,2001-01-30,JOB0861,Marketing,G02,EMP0434,Bengaluru,IN,active,intern,2024-10-11,,21241.94,INR
+EMP0862,E100862,Noah,Thompson,noah.thompson862@corp.example.com,+1-551-990-9956,female,1977-11-05,JOB0862,Facilities,G08,EMP0331,Hyderabad,IN,on_leave,full_time,2020-07-06,,46779.47,INR
+EMP0863,E100863,Sophia,Taylor,sophia.taylor863@corp.example.com,+1-200-712-3207,non_binary,1997-06-15,JOB0863,Finance,G05,EMP0653,Austin,US,retired,intern,2024-05-04,,110003.34,USD
+EMP0864,E100864,Evelyn,Nguyen,evelyn.nguyen864@corp.example.com,+1-876-605-4467,prefer_not_to_say,1988-06-16,JOB0864,Customer Success,G10,EMP0169,Seattle,US,active,contract,2016-06-13,,177994.94,USD
+EMP0865,E100865,Elena,Moore,elena.moore865@corp.example.com,+1-518-856-7779,female,2002-01-05,JOB0865,Finance,G02,EMP0155,Chicago,US,on_leave,part_time,2025-04-25,,71493.20,USD
+EMP0866,E100866,Lucas,Thompson,lucas.thompson866@corp.example.com,+1-349-930-2489,male,1974-10-10,JOB0866,Data,G01,EMP0236,Hyderabad,IN,retired,full_time,2020-06-12,,18494.48,INR
+EMP0867,E100867,Sofia,Rodriguez,sofia.rodriguez867@corp.example.com,+1-450-671-7351,male,1991-03-06,JOB0867,Finance,G01,EMP0394,London,UK,active,contract,2024-03-23,,52530.45,GBP
+EMP0868,E100868,Chloe,Thompson,chloe.thompson868@corp.example.com,+1-565-981-7826,female,1980-01-27,JOB0868,Security,G04,EMP0832,Bengaluru,IN,active,intern,2023-12-17,,30206.49,INR
+EMP0869,E100869,Yuki,Chen,yuki.chen869@corp.example.com,+1-347-941-1259,non_binary,1996-06-17,JOB0869,Finance,G09,EMP0197,Toronto,CA,active,part_time,2017-11-13,,144882.88,USD
+EMP0870,E100870,Ananya,Thomas,ananya.thomas870@corp.example.com,+1-238-861-6673,female,1999-04-14,JOB0870,Data,G06,EMP0003,London,UK,terminated,intern,2015-04-29,2020-05-11,110691.67,GBP
+EMP0871,E100871,Scarlett,Walker,scarlett.walker871@corp.example.com,+1-969-845-4993,non_binary,1992-07-20,JOB0871,Facilities,G12,EMP0996,Chicago,US,terminated,part_time,2017-02-09,2025-01-01,200878.45,USD
+EMP0872,E100872,Priya,Moore,priya.moore872@corp.example.com,+1-282-683-5743,female,1980-10-21,JOB0872,Supply Chain,G05,EMP0991,Denver,US,retired,part_time,2017-10-22,,113585.38,USD
+EMP0873,E100873,Lucas,Singh,lucas.singh873@corp.example.com,+1-229-864-1335,female,1969-10-17,JOB0873,HR,G12,EMP0733,Austin,US,active,contract,2025-12-30,,203816.96,USD
+EMP0874,E100874,Emma,Hernandez,emma.hernandez874@corp.example.com,+1-546-440-1698,prefer_not_to_say,1994-01-12,JOB0874,Sales,G01,EMP0933,San Francisco,US,terminated,contract,2025-02-25,2025-06-27,61184.03,USD
+EMP0875,E100875,Noah,Garcia,noah.garcia875@corp.example.com,+1-891-227-7539,prefer_not_to_say,1976-11-09,JOB0875,Marketing,G08,EMP0634,Denver,US,active,intern,2016-10-25,,148871.71,USD
+EMP0876,E100876,Elijah,Hernandez,elijah.hernandez876@corp.example.com,+1-999-555-1447,prefer_not_to_say,1980-09-14,JOB0876,Engineering,G02,EMP0924,New York,US,retired,intern,2015-09-03,,72769.97,USD
+EMP0877,E100877,Alexander,Nguyen,alexander.nguyen877@corp.example.com,+1-400-642-9970,male,1970-09-06,JOB0877,Security,G01,EMP0826,Dallas,US,active,full_time,2016-09-09,,58934.99,USD
+EMP0878,E100878,Wei,Martin,wei.martin878@corp.example.com,+1-763-925-9515,female,1984-02-10,JOB0878,Engineering,G12,EMP0488,Atlanta,US,active,part_time,2016-08-13,,201378.58,USD
+EMP0879,E100879,Nora,Williams,nora.williams879@corp.example.com,+1-684-747-3903,non_binary,1968-05-11,JOB0879,Product,G05,EMP0911,Toronto,CA,retired,intern,2022-11-12,,95566.66,USD
+EMP0880,E100880,Emma,Lewis,emma.lewis880@corp.example.com,+1-316-513-6982,male,1982-10-16,JOB0880,Marketing,G11,EMP0767,Seattle,US,active,intern,2020-01-04,,192215.46,USD
+EMP0881,E100881,Isabella,Williams,isabella.williams881@corp.example.com,+1-764-891-1863,prefer_not_to_say,2001-10-24,JOB0881,Legal,G08,EMP0680,Hyderabad,IN,retired,intern,2024-04-23,,46251.96,INR
+EMP0882,E100882,Arjun,Nguyen,arjun.nguyen882@corp.example.com,+1-964-900-2188,non_binary,2001-09-05,JOB0882,Supply Chain,G06,EMP0688,Atlanta,US,active,intern,2022-01-10,,123027.77,USD
+EMP0883,E100883,Lucas,Sanchez,lucas.sanchez883@corp.example.com,+1-455-275-1144,prefer_not_to_say,1981-08-24,JOB0883,HR,G01,EMP0782,New York,US,terminated,intern,2014-01-16,2015-06-01,56203.85,USD
+EMP0884,E100884,Nora,Lopez,nora.lopez884@corp.example.com,+1-213-551-7433,prefer_not_to_say,1998-05-22,JOB0884,HR,G11,EMP0088,London,UK,active,contract,2022-07-14,,171182.75,GBP
+EMP0885,E100885,Ananya,Thomas,ananya.thomas885@corp.example.com,+1-952-308-8588,female,1999-04-01,JOB0885,Customer Success,G10,EMP0881,Austin,US,retired,contract,2015-03-17,,178073.03,USD
+EMP0886,E100886,Mateo,Rodriguez,mateo.rodriguez886@corp.example.com,+1-346-202-3542,non_binary,1978-06-07,JOB0886,Customer Success,G03,EMP0190,Toronto,CA,active,intern,2024-07-20,,76054.05,USD
+EMP0887,E100887,Owen,Davis,owen.davis887@corp.example.com,+1-831-524-9475,female,1995-04-01,JOB0887,Operations,G08,EMP0835,Dallas,US,retired,full_time,2014-04-30,,151651.06,USD
+EMP0888,E100888,Ananya,Lopez,ananya.lopez888@corp.example.com,+1-952-351-1517,non_binary,1977-06-22,JOB0888,Product,G03,EMP0074,Seattle,US,active,intern,2024-02-01,,81564.07,USD
+EMP0889,E100889,Yuki,Williams,yuki.williams889@corp.example.com,+1-410-596-1379,non_binary,2002-07-12,JOB0889,Security,G04,EMP0270,Toronto,CA,active,full_time,2019-07-15,,86197.21,USD
+EMP0890,E100890,Yuki,Walker,yuki.walker890@corp.example.com,+1-485-986-9881,female,1966-07-31,JOB0890,Product,G10,EMP0221,Hyderabad,IN,on_leave,part_time,2021-06-04,,54628.92,INR
+EMP0891,E100891,Sebastian,Thomas,sebastian.thomas891@corp.example.com,+1-996-525-7613,non_binary,1990-11-18,JOB0891,Engineering,G05,EMP0161,Bengaluru,IN,retired,intern,2017-01-04,,33123.60,INR
+EMP0892,E100892,Owen,Chen,owen.chen892@corp.example.com,+1-331-488-5839,non_binary,1980-08-05,JOB0892,Supply Chain,G01,EMP0384,New York,US,active,contract,2025-04-17,,56455.69,USD
+EMP0893,E100893,Nora,Lopez,nora.lopez893@corp.example.com,+1-345-670-4291,prefer_not_to_say,1987-02-13,JOB0893,Supply Chain,G03,EMP0937,Atlanta,US,on_leave,intern,2022-11-21,,87087.59,USD
+EMP0894,E100894,Mateo,Martin,mateo.martin894@corp.example.com,+1-441-297-7509,non_binary,2000-04-27,JOB0894,HR,G04,EMP0394,Seattle,US,on_leave,part_time,2017-12-05,,99290.35,USD
+EMP0895,E100895,Lily,Moore,lily.moore895@corp.example.com,+1-589-217-2129,prefer_not_to_say,1991-07-28,JOB0895,Sales,G06,EMP0852,Atlanta,US,retired,contract,2016-08-17,,125123.36,USD
+EMP0896,E100896,Emma,Silva,emma.silva896@corp.example.com,+1-634-844-9573,female,1968-08-27,JOB0896,Operations,G01,EMP0176,Hyderabad,IN,retired,part_time,2020-03-16,,17543.94,INR
+EMP0897,E100897,Ethan,Perez,ethan.perez897@corp.example.com,+1-230-800-7987,non_binary,1973-11-12,JOB0897,HR,G02,EMP0856,Denver,US,active,contract,2017-12-02,,73839.82,USD
+EMP0898,E100898,Priya,Ali,priya.ali898@corp.example.com,+1-859-228-1062,female,2001-10-12,JOB0898,Legal,G11,EMP0267,Dallas,US,active,intern,2026-02-16,,187319.88,USD
+EMP0899,E100899,Lucas,Singh,lucas.singh899@corp.example.com,+1-239-801-9078,non_binary,1992-06-02,JOB0899,Supply Chain,G09,EMP0006,Atlanta,US,active,part_time,2024-09-26,,163853.66,USD
+EMP0900,E100900,Omar,Perez,omar.perez900@corp.example.com,+1-350-823-2403,prefer_not_to_say,1990-06-11,JOB0900,Finance,G11,EMP0976,Toronto,CA,retired,part_time,2024-08-15,,167036.55,USD
+EMP0901,E100901,Jackson,Johnson,jackson.johnson901@corp.example.com,+1-300-770-8363,prefer_not_to_say,2000-12-07,JOB0901,Finance,G04,EMP0294,New York,US,terminated,contract,2021-01-09,2022-12-17,100976.92,USD
+EMP0902,E100902,Harper,Khan,harper.khan902@corp.example.com,+1-713-875-1588,male,1983-06-28,JOB0902,Operations,G08,EMP0238,London,UK,terminated,part_time,2023-05-17,2023-09-20,138640.52,GBP
+EMP0903,E100903,Sebastian,Kim,sebastian.kim903@corp.example.com,+1-298-479-4122,female,1969-01-13,JOB0903,Customer Success,G10,EMP0021,Toronto,CA,retired,full_time,2020-12-17,,156739.55,USD
+EMP0904,E100904,Omar,Johnson,omar.johnson904@corp.example.com,+1-536-473-3033,non_binary,2001-11-20,JOB0904,Customer Success,G07,EMP0112,San Francisco,US,active,intern,2018-03-02,,140008.87,USD
+EMP0905,E100905,Nora,Rodriguez,nora.rodriguez905@corp.example.com,+1-926-950-4820,male,1988-05-13,JOB0905,Customer Success,G12,EMP0993,San Francisco,US,active,contract,2020-12-10,,203800.38,USD
+EMP0906,E100906,Elena,Khan,elena.khan906@corp.example.com,+1-217-334-7173,male,1978-03-04,JOB0906,Customer Success,G10,EMP0571,Hyderabad,IN,retired,full_time,2019-12-13,,53371.08,INR
+EMP0907,E100907,Sofia,Thompson,sofia.thompson907@corp.example.com,+1-490-319-6162,female,1977-12-31,JOB0907,Customer Success,G05,EMP0623,Bengaluru,IN,terminated,full_time,2021-03-13,2021-10-30,33867.59,INR
+EMP0908,E100908,Henry,Lee,henry.lee908@corp.example.com,+1-961-264-6218,female,1982-11-23,JOB0908,Facilities,G05,EMP0954,Seattle,US,terminated,part_time,2021-05-13,2023-02-08,111850.66,USD
+EMP0909,E100909,Abigail,Kim,abigail.kim909@corp.example.com,+1-318-618-3903,female,1977-04-12,JOB0909,Finance,G04,EMP0456,Hyderabad,IN,active,intern,2022-03-21,,29383.99,INR
+EMP0910,E100910,Jackson,Thompson,jackson.thompson910@corp.example.com,+1-903-689-7732,male,1989-04-22,JOB0910,Legal,G03,EMP0438,Denver,US,retired,part_time,2020-09-11,,82073.44,USD
+EMP0911,E100911,Scarlett,Johnson,scarlett.johnson911@corp.example.com,+1-333-839-2529,female,2004-11-10,JOB0911,Customer Success,G01,EMP0005,London,UK,on_leave,part_time,2022-07-17,,50771.36,GBP
+EMP0912,E100912,Noah,Thompson,noah.thompson912@corp.example.com,+1-526-792-3325,prefer_not_to_say,1974-04-17,JOB0912,Product,G10,EMP0938,Denver,US,retired,part_time,2026-06-10,,178387.51,USD
+EMP0913,E100913,Alexander,Jones,alexander.jones913@corp.example.com,+1-255-816-7363,prefer_not_to_say,1998-08-09,JOB0913,Customer Success,G08,EMP0715,Chicago,US,active,part_time,2022-02-15,,150316.18,USD
+EMP0914,E100914,Lucas,Williams,lucas.williams914@corp.example.com,+1-569-411-8243,male,1997-10-12,JOB0914,Security,G01,EMP0670,Toronto,CA,retired,full_time,2025-03-23,,51051.78,USD
+EMP0915,E100915,Chloe,Johnson,chloe.johnson915@corp.example.com,+1-685-278-4596,prefer_not_to_say,1992-03-11,JOB0915,Marketing,G12,EMP0571,Denver,US,active,intern,2016-11-19,,204645.14,USD
+EMP0916,E100916,Yuki,Johnson,yuki.johnson916@corp.example.com,+1-361-548-7670,non_binary,1991-05-21,JOB0916,Facilities,G01,EMP0782,Dallas,US,active,contract,2015-09-04,,56657.54,USD
+EMP0917,E100917,Priya,Brown,priya.brown917@corp.example.com,+1-809-433-7338,non_binary,2002-08-08,JOB0917,Sales,G07,EMP0793,London,UK,active,part_time,2023-01-25,,125154.46,GBP
+EMP0918,E100918,Liam,Patel,liam.patel918@corp.example.com,+1-319-600-1324,male,1972-08-02,JOB0918,Engineering,G04,EMP0039,Chicago,US,on_leave,part_time,2016-03-24,,94861.94,USD
+EMP0919,E100919,Wei,Johnson,wei.johnson919@corp.example.com,+1-374-591-8486,female,1989-09-07,JOB0919,Engineering,G04,EMP0333,Toronto,CA,active,part_time,2020-03-08,,82521.13,USD
+EMP0920,E100920,Sofia,Wilson,sofia.wilson920@corp.example.com,+1-563-685-8899,male,1977-12-08,JOB0920,Data,G11,EMP0453,New York,US,terminated,part_time,2022-05-09,2023-08-03,188833.94,USD
+EMP0921,E100921,Zoey,Lopez,zoey.lopez921@corp.example.com,+1-865-669-1067,prefer_not_to_say,1973-11-09,JOB0921,Operations,G06,EMP0411,Toronto,CA,active,contract,2016-08-04,,108428.47,USD
+EMP0922,E100922,Olivia,Jackson,olivia.jackson922@corp.example.com,+1-374-616-5113,female,1995-05-30,JOB0922,Data,G05,EMP0700,Denver,US,active,full_time,2025-12-11,,108570.58,USD
+EMP0923,E100923,Ava,Johnson,ava.johnson923@corp.example.com,+1-573-868-7243,prefer_not_to_say,1966-05-20,JOB0923,Sales,G03,EMP0687,San Francisco,US,active,part_time,2024-03-21,,87594.75,USD
+EMP0924,E100924,Yuki,Miller,yuki.miller924@corp.example.com,+1-690-817-7422,male,1973-02-09,JOB0924,Security,G01,EMP0979,New York,US,active,intern,2020-05-11,,58970.40,USD
+EMP0925,E100925,Elijah,Ali,elijah.ali925@corp.example.com,+1-410-665-8990,male,1981-02-05,JOB0925,IT,G03,EMP0939,Seattle,US,retired,part_time,2015-03-01,,85203.28,USD
+EMP0926,E100926,Yuki,Silva,yuki.silva926@corp.example.com,+1-286-264-9350,prefer_not_to_say,1967-06-28,JOB0926,Facilities,G07,EMP0977,New York,US,on_leave,contract,2018-11-08,,136101.95,USD
+EMP0927,E100927,Zoey,Patel,zoey.patel927@corp.example.com,+1-565-970-2649,non_binary,1993-07-15,JOB0927,Security,G09,EMP0076,London,UK,on_leave,full_time,2025-08-26,,147308.33,GBP
+EMP0928,E100928,Sebastian,Garcia,sebastian.garcia928@corp.example.com,+1-854-956-5016,male,1996-06-19,JOB0928,HR,G08,EMP0069,San Francisco,US,terminated,part_time,2024-07-06,2026-03-13,152055.03,USD
+EMP0929,E100929,Grace,Thomas,grace.thomas929@corp.example.com,+1-334-351-8837,male,2000-12-03,JOB0929,Customer Success,G12,EMP0038,Hyderabad,IN,on_leave,intern,2025-12-10,,61168.72,INR
+EMP0930,E100930,Sebastian,Thomas,sebastian.thomas930@corp.example.com,+1-800-807-8573,prefer_not_to_say,1977-05-16,JOB0930,IT,G10,EMP0889,Bengaluru,IN,on_leave,part_time,2014-03-17,,53457.78,INR
+EMP0931,E100931,Oliver,Martin,oliver.martin931@corp.example.com,+1-443-576-3056,prefer_not_to_say,1966-02-12,JOB0931,Engineering,G09,EMP0986,Toronto,CA,active,full_time,2018-04-23,,143558.98,USD
+EMP0932,E100932,Grace,Martin,grace.martin932@corp.example.com,+1-991-798-3025,female,2001-12-25,JOB0932,Marketing,G10,EMP0607,Hyderabad,IN,retired,contract,2024-08-12,,53228.90,INR
+EMP0933,E100933,Riley,Silva,riley.silva933@corp.example.com,+1-892-503-4820,male,2002-12-08,JOB0933,Marketing,G05,EMP0265,London,UK,active,intern,2026-01-20,,99592.30,GBP
+EMP0934,E100934,Yuki,Wilson,yuki.wilson934@corp.example.com,+1-901-628-9021,female,1992-05-22,JOB0934,Legal,G12,EMP0125,Denver,US,active,contract,2026-01-02,,201299.69,USD
+EMP0935,E100935,Alexander,Costa,alexander.costa935@corp.example.com,+1-766-877-2198,female,1991-09-02,JOB0935,Engineering,G04,EMP0264,London,UK,active,intern,2021-12-23,,86795.31,GBP
+EMP0936,E100936,Sophia,Perez,sophia.perez936@corp.example.com,+1-767-407-2274,non_binary,1967-09-03,JOB0936,Customer Success,G03,EMP0555,San Francisco,US,on_leave,part_time,2024-07-22,,86439.90,USD
+EMP0937,E100937,Sebastian,Miller,sebastian.miller937@corp.example.com,+1-884-581-8250,prefer_not_to_say,1974-06-08,JOB0937,Supply Chain,G04,EMP0447,Bengaluru,IN,retired,intern,2026-02-14,,30102.02,INR
+EMP0938,E100938,Elijah,Murphy,elijah.murphy938@corp.example.com,+1-532-619-7775,prefer_not_to_say,1978-04-29,JOB0938,IT,G09,EMP0509,San Francisco,US,retired,intern,2025-02-02,,162579.06,USD
+EMP0939,E100939,Mateo,Hernandez,mateo.hernandez939@corp.example.com,+1-977-823-6944,male,1998-05-06,JOB0939,Marketing,G05,EMP0567,Atlanta,US,active,intern,2021-06-17,,111082.50,USD
+EMP0940,E100940,Liam,Lopez,liam.lopez940@corp.example.com,+1-405-684-3323,non_binary,1997-01-28,JOB0940,Engineering,G12,EMP0603,Toronto,CA,active,contract,2020-05-14,,175016.70,USD
+EMP0941,E100941,Mason,Miller,mason.miller941@corp.example.com,+1-313-548-1838,male,1991-02-15,JOB0941,Engineering,G12,EMP0406,London,UK,active,full_time,2014-10-22,,183297.46,GBP
+EMP0942,E100942,Mia,Thompson,mia.thompson942@corp.example.com,+1-287-384-6075,non_binary,1974-12-27,JOB0942,IT,G12,EMP0647,Chicago,US,active,intern,2017-01-22,,204913.20,USD
+EMP0943,E100943,Emily,Robinson,emily.robinson943@corp.example.com,+1-885-262-7733,female,1968-10-02,JOB0943,Legal,G01,EMP0555,Austin,US,retired,intern,2021-02-19,,55016.32,USD
+EMP0944,E100944,Alexander,Garcia,alexander.garcia944@corp.example.com,+1-964-433-1385,non_binary,1979-06-13,JOB0944,Supply Chain,G05,EMP0542,New York,US,active,part_time,2020-03-02,,112089.65,USD
+EMP0945,E100945,Alexander,Rodriguez,alexander.rodriguez945@corp.example.com,+1-479-445-5823,non_binary,1969-06-19,JOB0945,Operations,G07,EMP0090,San Francisco,US,active,contract,2018-03-03,,135819.80,USD
+EMP0946,E100946,Emily,Nguyen,emily.nguyen946@corp.example.com,+1-911-603-2776,male,1991-04-11,JOB0946,Facilities,G05,EMP0668,New York,US,terminated,full_time,2017-03-12,2022-04-16,109314.44,USD
+EMP0947,E100947,Scarlett,Robinson,scarlett.robinson947@corp.example.com,+1-881-675-1620,female,1973-04-04,JOB0947,Legal,G09,EMP0580,Dallas,US,active,intern,2021-02-06,,166943.55,USD
+EMP0948,E100948,Mason,Davis,mason.davis948@corp.example.com,+1-758-479-9542,non_binary,1977-03-07,JOB0948,IT,G09,EMP0215,San Francisco,US,active,contract,2022-08-29,,165554.50,USD
+EMP0949,E100949,Elijah,Silva,elijah.silva949@corp.example.com,+1-346-561-9945,non_binary,1978-08-30,JOB0949,Security,G02,EMP0029,Seattle,US,active,part_time,2019-09-21,,70571.33,USD
+EMP0950,E100950,Elena,Patel,elena.patel950@corp.example.com,+1-925-785-8529,male,1967-01-28,JOB0950,Supply Chain,G09,EMP0181,Austin,US,terminated,full_time,2018-11-14,2023-02-14,161373.90,USD
+EMP0951,E100951,Sophia,Costa,sophia.costa951@corp.example.com,+1-715-940-4047,prefer_not_to_say,1995-07-12,JOB0951,Legal,G08,EMP0767,San Francisco,US,active,full_time,2019-06-19,,147973.56,USD
+EMP0952,E100952,Lily,Smith,lily.smith952@corp.example.com,+1-462-920-4643,non_binary,1983-09-08,JOB0952,Product,G08,EMP0525,San Francisco,US,active,part_time,2018-12-29,,150960.80,USD
+EMP0953,E100953,Fatima,Martin,fatima.martin953@corp.example.com,+1-978-806-3643,prefer_not_to_say,1965-08-01,JOB0953,Customer Success,G06,EMP0335,Atlanta,US,active,part_time,2016-09-27,,121640.68,USD
+EMP0954,E100954,Henry,Harris,henry.harris954@corp.example.com,+1-273-689-6241,non_binary,1992-08-29,JOB0954,Supply Chain,G12,EMP0510,Dallas,US,active,part_time,2023-07-04,,203131.06,USD
+EMP0955,E100955,Lucas,Sanchez,lucas.sanchez955@corp.example.com,+1-424-500-1817,female,2004-10-28,JOB0955,HR,G03,EMP0993,Bengaluru,IN,active,contract,2022-08-21,,26627.53,INR
+EMP0956,E100956,Lily,Wilson,lily.wilson956@corp.example.com,+1-504-373-8716,female,1999-06-20,JOB0956,Security,G07,EMP0457,Dallas,US,terminated,intern,2020-04-04,2022-06-12,137816.98,USD
+EMP0957,E100957,Mateo,Nguyen,mateo.nguyen957@corp.example.com,+1-885-853-4844,prefer_not_to_say,2004-04-05,JOB0957,Engineering,G02,EMP0730,London,UK,active,part_time,2022-08-22,,66474.19,GBP
+EMP0958,E100958,Aiden,Nguyen,aiden.nguyen958@corp.example.com,+1-700-692-9905,prefer_not_to_say,1965-05-24,JOB0958,Customer Success,G02,EMP0146,San Francisco,US,active,intern,2025-09-25,,68572.28,USD
+EMP0959,E100959,Benjamin,Martin,benjamin.martin959@corp.example.com,+1-783-912-5041,female,1965-06-08,JOB0959,Operations,G01,EMP0138,London,UK,on_leave,contract,2023-04-19,,54923.51,GBP
+EMP0960,E100960,Ava,Martinez,ava.martinez960@corp.example.com,+1-852-399-7114,non_binary,1984-08-12,JOB0960,Marketing,G02,EMP0118,Dallas,US,terminated,full_time,2015-04-11,2026-06-29,74406.56,USD
+EMP0961,E100961,Wei,Lee,wei.lee961@corp.example.com,+1-561-755-8622,non_binary,1983-09-26,JOB0961,Sales,G10,EMP0663,Dallas,US,retired,intern,2020-06-07,,175803.12,USD
+EMP0962,E100962,Jacob,Costa,jacob.costa962@corp.example.com,+1-656-313-8096,female,1971-01-27,JOB0962,Data,G09,EMP0429,Seattle,US,active,intern,2026-01-13,,162030.55,USD
+EMP0963,E100963,Zoey,Taylor,zoey.taylor963@corp.example.com,+1-494-260-9026,prefer_not_to_say,1993-08-05,JOB0963,IT,G02,EMP0509,Seattle,US,active,intern,2018-03-12,,70824.75,USD
+EMP0964,E100964,Sophia,Sanchez,sophia.sanchez964@corp.example.com,+1-491-889-6114,prefer_not_to_say,1998-12-05,JOB0964,Security,G06,EMP0120,Hyderabad,IN,active,part_time,2021-10-08,,37688.49,INR
+EMP0965,E100965,Logan,Hernandez,logan.hernandez965@corp.example.com,+1-486-947-7304,female,1967-06-22,JOB0965,Engineering,G04,EMP0041,San Francisco,US,terminated,contract,2014-11-06,2024-05-24,98740.25,USD
+EMP0966,E100966,Scarlett,Nguyen,scarlett.nguyen966@corp.example.com,+1-480-881-4868,male,1990-08-07,JOB0966,Supply Chain,G05,EMP0594,San Francisco,US,active,intern,2014-08-17,,111580.70,USD
+EMP0967,E100967,Liam,Perez,liam.perez967@corp.example.com,+1-454-481-8146,non_binary,1974-04-23,JOB0967,Sales,G01,EMP0559,Toronto,CA,on_leave,full_time,2025-07-28,,49777.47,USD
+EMP0968,E100968,Nora,Jones,nora.jones968@corp.example.com,+1-825-867-3621,non_binary,1970-01-03,JOB0968,Legal,G07,EMP0597,Bengaluru,IN,terminated,contract,2019-12-16,2023-06-05,42010.50,INR
+EMP0969,E100969,Aiden,Miller,aiden.miller969@corp.example.com,+1-826-531-4695,non_binary,1991-05-03,JOB0969,Marketing,G02,EMP0747,Hyderabad,IN,active,intern,2021-06-06,,20798.20,INR
+EMP0970,E100970,James,Singh,james.singh970@corp.example.com,+1-964-725-9945,male,1989-07-02,JOB0970,Facilities,G08,EMP0563,Atlanta,US,active,part_time,2018-03-17,,153580.91,USD
+EMP0971,E100971,Priya,Anderson,priya.anderson971@corp.example.com,+1-909-857-1844,non_binary,1995-08-10,JOB0971,Marketing,G09,EMP0125,Seattle,US,active,part_time,2025-12-14,,165346.89,USD
+EMP0972,E100972,Jackson,Lopez,jackson.lopez972@corp.example.com,+1-340-976-2178,male,1977-08-01,JOB0972,Customer Success,G05,EMP0331,Atlanta,US,active,full_time,2018-02-25,,112189.68,USD
+EMP0973,E100973,Liam,Lewis,liam.lewis973@corp.example.com,+1-904-260-6500,male,1998-08-17,JOB0973,Operations,G01,EMP0307,New York,US,active,full_time,2025-02-11,,58304.61,USD
+EMP0974,E100974,Ava,Taylor,ava.taylor974@corp.example.com,+1-596-641-7117,prefer_not_to_say,2004-04-12,JOB0974,Data,G10,EMP0304,Austin,US,active,full_time,2020-02-18,,174332.19,USD
+EMP0975,E100975,Jacob,White,jacob.white975@corp.example.com,+1-778-649-9609,male,1999-11-24,JOB0975,IT,G03,EMP0346,London,UK,active,intern,2025-08-31,,75322.91,GBP
+EMP0976,E100976,Logan,Hernandez,logan.hernandez976@corp.example.com,+1-959-297-7835,non_binary,1971-02-16,JOB0976,HR,G04,EMP0017,Toronto,CA,active,full_time,2014-01-18,,85966.14,USD
+EMP0977,E100977,Daniel,Harris,daniel.harris977@corp.example.com,+1-736-481-1884,non_binary,1987-07-15,JOB0977,Product,G03,EMP0788,Austin,US,terminated,part_time,2016-09-27,2023-11-28,87506.09,USD
+EMP0978,E100978,Ava,Nguyen,ava.nguyen978@corp.example.com,+1-329-289-7400,female,1967-11-27,JOB0978,Facilities,G07,EMP0103,Seattle,US,active,intern,2016-09-28,,138028.15,USD
+EMP0979,E100979,James,Singh,james.singh979@corp.example.com,+1-251-896-4755,female,1968-09-27,JOB0979,HR,G03,EMP0393,London,UK,active,contract,2022-12-24,,76046.02,GBP
+EMP0980,E100980,Ananya,Perez,ananya.perez980@corp.example.com,+1-740-711-1537,prefer_not_to_say,1976-12-12,JOB0980,Sales,G03,EMP0484,Seattle,US,retired,intern,2014-03-10,,84067.63,USD
+EMP0981,E100981,Mia,Lopez,mia.lopez981@corp.example.com,+1-555-640-9699,prefer_not_to_say,1986-07-12,JOB0981,IT,G06,EMP0952,Hyderabad,IN,on_leave,contract,2024-07-07,,37208.85,INR
+EMP0982,E100982,Harper,Brown,harper.brown982@corp.example.com,+1-407-699-3942,male,1966-09-08,JOB0982,Sales,G11,EMP0994,Dallas,US,active,full_time,2017-01-16,,192970.85,USD
+EMP0983,E100983,Lily,Khan,lily.khan983@corp.example.com,+1-393-359-2069,female,1988-04-02,JOB0983,HR,G07,EMP0967,San Francisco,US,active,intern,2024-12-31,,139411.91,USD
+EMP0984,E100984,Grace,Harris,grace.harris984@corp.example.com,+1-922-813-1217,female,1980-05-07,JOB0984,Security,G09,EMP0436,San Francisco,US,active,part_time,2024-10-28,,162743.08,USD
+EMP0985,E100985,Harper,Lee,harper.lee985@corp.example.com,+1-925-999-4631,female,1996-11-02,JOB0985,Marketing,G02,EMP0236,Hyderabad,IN,retired,contract,2014-09-09,,22450.37,INR
+EMP0986,E100986,Logan,Lewis,logan.lewis986@corp.example.com,+1-358-459-5845,male,1974-11-27,JOB0986,Finance,G06,EMP0862,Chicago,US,active,part_time,2016-09-24,,124160.86,USD
+EMP0987,E100987,Amelia,Costa,amelia.costa987@corp.example.com,+1-929-586-8914,non_binary,1965-10-02,JOB0987,Facilities,G04,EMP0197,Denver,US,terminated,full_time,2023-09-21,2026-06-12,99495.65,USD
+EMP0988,E100988,Daniel,Perez,daniel.perez988@corp.example.com,+1-807-390-1647,non_binary,1969-04-30,JOB0988,Supply Chain,G08,EMP0389,Dallas,US,on_leave,full_time,2017-09-30,,151294.63,USD
+EMP0989,E100989,Jackson,Garcia,jackson.garcia989@corp.example.com,+1-781-928-8415,prefer_not_to_say,1991-11-02,JOB0989,IT,G07,EMP0428,Toronto,CA,active,intern,2019-07-04,,121172.27,USD
+EMP0990,E100990,Aria,Brown,aria.brown990@corp.example.com,+1-866-635-7342,female,1969-06-15,JOB0990,Engineering,G04,EMP0572,Dallas,US,active,intern,2017-05-30,,94841.35,USD
+EMP0991,E100991,Isabella,Clark,isabella.clark991@corp.example.com,+1-736-596-7403,prefer_not_to_say,1996-07-21,JOB0991,Finance,G08,EMP0187,Toronto,CA,active,part_time,2022-12-05,,128892.92,USD
+EMP0992,E100992,Priya,Williams,priya.williams992@corp.example.com,+1-894-419-6079,prefer_not_to_say,1977-09-08,JOB0992,Security,G10,EMP0482,Dallas,US,terminated,contract,2015-05-20,2023-11-22,176469.71,USD
+EMP0993,E100993,Priya,Miller,priya.miller993@corp.example.com,+1-225-493-9348,prefer_not_to_say,2004-02-25,JOB0993,Security,G05,EMP0075,Denver,US,active,part_time,2024-02-08,,112836.99,USD
+EMP0994,E100994,Liam,Taylor,liam.taylor994@corp.example.com,+1-853-607-3647,non_binary,2002-02-16,JOB0994,Customer Success,G08,EMP0135,Toronto,CA,active,intern,2023-10-16,,128513.80,USD
+EMP0995,E100995,Zoey,Singh,zoey.singh995@corp.example.com,+1-711-275-7101,female,1985-05-01,JOB0995,Supply Chain,G05,EMP0139,Toronto,CA,retired,full_time,2015-05-11,,93645.73,USD
+EMP0996,E100996,Jacob,Patel,jacob.patel996@corp.example.com,+1-514-896-3474,female,1995-03-20,JOB0996,Supply Chain,G07,EMP0964,Toronto,CA,active,part_time,2020-05-29,,122032.79,USD
+EMP0997,E100997,Elijah,Davis,elijah.davis997@corp.example.com,+1-395-588-8509,male,1981-12-03,JOB0997,HR,G01,EMP0718,San Francisco,US,active,full_time,2026-05-06,,54884.41,USD
+EMP0998,E100998,Ananya,Patel,ananya.patel998@corp.example.com,+1-913-674-8088,non_binary,1971-05-27,JOB0998,Product,G01,EMP0073,Seattle,US,retired,contract,2018-08-11,,55325.86,USD
+EMP0999,E100999,Evelyn,Walker,evelyn.walker999@corp.example.com,+1-952-232-3838,non_binary,1965-07-07,JOB0999,Legal,G03,EMP0182,Hyderabad,IN,active,intern,2026-02-01,,24978.93,INR
+EMP1000,E101000,Elijah,Williams,elijah.williams1000@corp.example.com,+1-200-541-2067,male,1994-04-19,JOB1000,IT,G06,EMP0229,Dallas,US,terminated,intern,2018-03-19,2023-01-18,121378.42,USD
