@@ -871,8 +871,23 @@ def snowflake_list_stage_files(
         )
     except LookupError as exc:
         raise HTTPException(status_code=404, detail=str(exc)) from exc
+    except snowflake_catalog.StageAccessError as exc:
+        return {
+            "ok": True,
+            "connector_id": connector_id,
+            "stage_fqn": stage_fqn.lstrip("@"),
+            "items": [],
+            "count": 0,
+            "exists": None,
+            "visible": False,
+            "reason": exc.reason,
+            "note": str(exc),
+            "grant_sql": (
+                "GRANT READ ON STAGE SALES_DB.RAW.RAW_STAGE TO ROLE DATA_ENGINEER;\n"
+                "GRANT WRITE ON STAGE SALES_DB.RAW.RAW_STAGE TO ROLE DATA_ENGINEER;"
+            ),
+        }
     except Exception as exc:  # noqa: BLE001
-        # Stage may not exist yet — return empty with guidance instead of hard-failing the UI.
         detail = str(exc)
         if "does not exist" in detail.lower() or "not authorized" in detail.lower():
             return {
@@ -881,8 +896,17 @@ def snowflake_list_stage_files(
                 "stage_fqn": stage_fqn.lstrip("@"),
                 "items": [],
                 "count": 0,
-                "exists": False,
-                "note": detail,
+                "exists": None,
+                "visible": False,
+                "note": (
+                    "Stage is not visible to this connector role (Snowflake returns "
+                    "'does not exist or not authorized'). If you can see RAW_STAGE in the UI, "
+                    "grant READ on it to DATA_ENGINEER — do not recreate it."
+                ),
+                "grant_sql": (
+                    "GRANT READ ON STAGE SALES_DB.RAW.RAW_STAGE TO ROLE DATA_ENGINEER;\n"
+                    "GRANT WRITE ON STAGE SALES_DB.RAW.RAW_STAGE TO ROLE DATA_ENGINEER;"
+                ),
             }
         raise HTTPException(status_code=503, detail=f"Snowflake stage file list failed: {exc}") from exc
     return {
@@ -892,6 +916,7 @@ def snowflake_list_stage_files(
         "items": files,
         "count": len(files),
         "exists": True,
+        "visible": True,
     }
 
 

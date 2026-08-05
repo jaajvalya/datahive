@@ -990,13 +990,14 @@
                 </div>
                 <div class="field hidden" id="etl_stage_wrap">
                   <label for="etl_source_stage">Stage</label>
-                  <div style="display:flex;gap:8px;align-items:center">
-                    <select id="etl_source_stage" style="flex:1" disabled>
+                  <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+                    <select id="etl_source_stage" style="flex:1;min-width:180px" disabled>
                       <option value="">Select Snowflake connection first…</option>
                     </select>
-                    <button type="button" class="btn btn-ghost" id="etlEnsureStageBtn" title="Create RAW_STAGE if missing">Ensure</button>
+                    <button type="button" class="btn btn-ghost" id="etlRefreshStageBtn" title="Reload stages and files">Refresh</button>
+                    <button type="button" class="btn btn-ghost" id="etlEnsureStageBtn" title="Only if the stage truly does not exist">Create if missing</button>
                   </div>
-                  <div class="help" id="etl_stage_help">Example: SALES_DB.RAW.RAW_STAGE</div>
+                  <div class="help" id="etl_stage_help">Uses SALES_DB.RAW.RAW_STAGE when visible to the connector role.</div>
                 </div>
                 <div class="field hidden" id="etl_stage_file_wrap">
                   <label for="etl_source_file">Stage file</label>
@@ -4614,30 +4615,21 @@ async function loadEtlSnowflakeStageFiles() {
     const data = await DataHiveAssets.snowflakeStageFiles(connectorId, stageFqn);
     const items = data.items || [];
     if (!items.length) {
-      // Keep the flow usable: offer example filenames the user can rename after PUT.
-      const examples = [
-        { path: "customers.csv", extension: "csv" },
-        { path: "orders.json", extension: "json" },
-        { path: "events.parquet", extension: "parquet" },
-      ];
-      sel.innerHTML =
-        '<option value="">No files in stage — pick an example pattern…</option>' +
-        examples
-          .map(
-            (f) =>
-              '<option value="' +
-              escapeHtml(f.path) +
-              '" data-ext="' +
-              escapeHtml(f.extension) +
-              '">' +
-              escapeHtml(f.path + " (example)") +
-              "</option>"
-          )
-          .join("");
-      sel.disabled = false;
-      if (data.note) {
-        const help = $("#etl_stage_help");
-        if (help) help.textContent = data.note + " Use Ensure to create RAW_STAGE, then PUT files.";
+      sel.innerHTML = '<option value="">No files visible for this role</option>';
+      sel.disabled = true;
+      const help = $("#etl_stage_help");
+      if (help) {
+        if (data.visible === false || data.exists === null) {
+          help.textContent =
+            (data.note ||
+              "RAW_STAGE is not visible to connector role DATA_ENGINEER.") +
+            " If it already exists in Snowflake UI, grant READ (do not recreate): " +
+            "GRANT READ ON STAGE SALES_DB.RAW.RAW_STAGE TO ROLE DATA_ENGINEER;";
+        } else if (data.note) {
+          help.textContent = data.note;
+        } else {
+          help.textContent = "Stage is visible but empty for this role.";
+        }
       }
       return;
     }
@@ -4996,6 +4988,12 @@ function bindEtlEvents() {
   const fileSel = $("#etl_source_file");
   if (fileSel) {
     fileSel.addEventListener("change", () => applyEtlStageFileSelection());
+  }
+  const refreshBtn = $("#etlRefreshStageBtn");
+  if (refreshBtn) {
+    refreshBtn.addEventListener("click", () => {
+      loadEtlSnowflakeStages();
+    });
   }
   const ensureBtn = $("#etlEnsureStageBtn");
   if (ensureBtn) {

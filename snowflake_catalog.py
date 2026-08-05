@@ -473,7 +473,8 @@ def list_stages_for_doc(doc: dict[str, Any]) -> list[dict[str, Any]]:
                 "exists": False,
                 "note": (
                     "Recommended landing stage for files → RAW tables. "
-                    "Requires CREATE STAGE on the schema (DATA_ENGINEER currently has USAGE only)."
+                    "If SHOW/LIST returns empty, the connector role likely lacks READ on the stage "
+                    "(not that the stage is missing)."
                 ),
             },
         )
@@ -504,6 +505,15 @@ def list_stages_for_doc(doc: dict[str, Any]) -> list[dict[str, Any]]:
     return stages
 
 
+class StageAccessError(Exception):
+    """Stage exists elsewhere / lacks grants for the connector role."""
+
+    def __init__(self, message: str, *, stage_fqn: str = "", reason: str = "unauthorized"):
+        super().__init__(message)
+        self.stage_fqn = stage_fqn
+        self.reason = reason
+
+
 def list_stage_files_for_doc(
     doc: dict[str, Any],
     stage_fqn: str,
@@ -512,6 +522,9 @@ def list_stage_files_for_doc(
 ) -> list[dict[str, Any]]:
     """LIST files for a Snowflake stage."""
     stage = stage_fqn.lstrip("@")
+    scope_opts = parse_scope_options(_norm(doc.get("dataset_scope")))
+    database = scope_opts.get("database") or "SALES_DB"
+    schema = scope_opts.get("schema") or "RAW"
     conn = None
     try:
         conn = open_connection(doc)
@@ -520,49 +533,83 @@ def list_stage_files_for_doc(
                 cur.execute('USE WAREHOUSE "DEV_WH"')
             except Exception:  # noqa: BLE001
                 pass
-            loc = f"@{stage}"
-            if pattern:
-                loc = f"{loc}/{pattern.lstrip('/')}"
-            cur.execute(f"LIST {loc}")
-            cols = [d[0].lower() for d in (cur.description or [])]
-            files = []
-            for row in _fetch_all(cur):
-                data = dict(zip(cols, row)) if cols else {}
-                name = str(data.get("name") or (row[0] if row else "") or "")
-                if not name:
+            # Prefer schema context so unqualified @RAW_STAGE works when granted.
+            try:
+                cur.execute(f"USE DATABASE {_ident(database)}")
+                cur.execute(f"USE SCHEMA {_ident(schema)}")
+            except Exception:  # noqa: BLE001
+                pass
+
+            candidates = []
+            if stage:
+                candidates.append(stage)
+            short = stage.split(".")[-1] if stage else "RAW_STAGE"
+            if short and short != stage:
+                candidates.append(short)
+            if short.upper() == "RAW_STAGE":
+                candidates.append(f"{database}.{schema}.RAW_STAGE")
+
+            last_err: Exception | None = None
+            for cand in candidates:
+                loc = f"@{cand}"
+                if pattern:
+                    loc = f"{loc}/{pattern.lstrip('/')}"
+                try:
+                    cur.execute(f"LIST {loc}")
+                    cols = [d[0].lower() for d in (cur.description or [])]
+                    files = []
+                    for row in _fetch_all(cur):
+                        data = dict(zip(cols, row)) if cols else {}
+                        name = str(data.get("name") or (row[0] if row else "") or "")
+                        if not name:
+                            continue
+                        rel = name
+                        marker = cand.split(".")[-1].lower() + "/"
+                        lower = name.lower()
+                        if marker in lower:
+                            rel = name[lower.index(marker) + len(marker) :]
+                        elif "/" in name:
+                            rel = name.split("/", 1)[-1]
+                        size = data.get("size") if "size" in data else (row[1] if len(row) > 1 else None)
+                        md5 = data.get("md5") if "md5" in data else None
+                        last_modified = (
+                            data.get("last_modified")
+                            if "last_modified" in data
+                            else (row[3] if len(row) > 3 else None)
+                        )
+                        ext = ""
+                        base = rel.rsplit("/", 1)[-1]
+                        if "." in base:
+                            ext = base.rsplit(".", 1)[-1].lower()
+                        files.append(
+                            {
+                                "name": name,
+                                "path": rel,
+                                "size": size,
+                                "md5": md5,
+                                "last_modified": str(last_modified) if last_modified is not None else None,
+                                "extension": ext,
+                                "stage_fqn": cand,
+                                "stage_location": f"@{cand}/{rel}",
+                            }
+                        )
+                    return files
+                except Exception as exc:  # noqa: BLE001
+                    last_err = exc
                     continue
-                # LIST returns stage/path; keep relative path after stage root when possible.
-                rel = name
-                marker = stage.split(".")[-1].lower() + "/"
-                lower = name.lower()
-                if marker in lower:
-                    rel = name[lower.index(marker) + len(marker) :]
-                elif "/" in name:
-                    rel = name.split("/", 1)[-1]
-                size = data.get("size") if "size" in data else (row[1] if len(row) > 1 else None)
-                md5 = data.get("md5") if "md5" in data else None
-                last_modified = (
-                    data.get("last_modified")
-                    if "last_modified" in data
-                    else (row[3] if len(row) > 3 else None)
-                )
-                ext = ""
-                base = rel.rsplit("/", 1)[-1]
-                if "." in base:
-                    ext = base.rsplit(".", 1)[-1].lower()
-                files.append(
-                    {
-                        "name": name,
-                        "path": rel,
-                        "size": size,
-                        "md5": md5,
-                        "last_modified": str(last_modified) if last_modified is not None else None,
-                        "extension": ext,
-                        "stage_fqn": stage,
-                        "stage_location": f"@{stage}/{rel}",
-                    }
-                )
-            return files
+
+            detail = str(last_err or "Stage not accessible")
+            # Snowflake collapses missing + unauthorized into the same SQL compilation error.
+            raise StageAccessError(
+                (
+                    f"Stage '{stage or short}' is not visible to this connector role. "
+                    "In Snowflake UI it may exist under another role, but the saved connector "
+                    f"user cannot LIST it. Grant READ on the stage to the connector role, e.g.\n"
+                    f"GRANT READ ON STAGE {database}.{schema}.{short} TO ROLE DATA_ENGINEER;"
+                ),
+                stage_fqn=stage or f"{database}.{schema}.{short}",
+                reason="unauthorized_or_missing",
+            ) from last_err
     finally:
         if conn is not None:
             try:
