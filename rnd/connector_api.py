@@ -349,17 +349,20 @@ def _public_connector_item(doc: dict[str, Any]) -> dict[str, Any]:
     return item
 
 
-def _fetch_recent_connectors(limit: int) -> list[dict[str, Any]]:
-    capped = min(max(limit, 1), 50)
+def _fetch_connectors(*, limit: int | None = None) -> list[dict[str, Any]]:
+    """Return saved connectors (newest first). limit=None returns all."""
     projection = {field: 1 for field in _RECENT_CONNECTOR_FIELDS}
     projection["_id"] = 1
-    cursor = (
-        get_collection()
-        .find({}, projection)
-        .sort([("updated_at", -1), ("saved_at", -1), ("_id", -1)])
-        .limit(capped)
+    cursor = get_collection().find({}, projection).sort(
+        [("updated_at", -1), ("saved_at", -1), ("_id", -1)]
     )
+    if limit is not None:
+        cursor = cursor.limit(min(max(int(limit), 1), 500))
     return [_public_connector_item(doc) for doc in cursor]
+
+
+def _fetch_recent_connectors(limit: int) -> list[dict[str, Any]]:
+    return _fetch_connectors(limit=limit)
 
 
 @app.get("/health")
@@ -1245,6 +1248,22 @@ def test_connector(request: Request, payload: dict[str, Any] = Body(...)) -> dic
     }
 
 
+@app.get("/api/connectors")
+def list_connectors(limit: int | None = None) -> dict[str, Any]:
+    """Return all saved connectors from MongoDB (newest first)."""
+    try:
+        items = _fetch_connectors(limit=limit)
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(status_code=503, detail=f"MongoDB read failed: {exc}") from exc
+    return {
+        "ok": True,
+        "items": items,
+        "count": len(items),
+        "db": DB_NAME,
+        "collection": COLLECTION,
+    }
+
+
 @app.post("/api/connectors")
 def save_connector(payload: dict[str, Any] = Body(...)) -> dict[str, Any]:
     if not payload:
@@ -1253,13 +1272,19 @@ def save_connector(payload: dict[str, Any] = Body(...)) -> dict[str, Any]:
 
 
 @app.get("/api/connectors/recent")
-def list_recent_connectors(limit: int = 20) -> dict[str, Any]:
-    """Return the newest saved connectors from MongoDB (db/collection from repo `.env` MONGO_URI)."""
+def list_recent_connectors(limit: int = 500) -> dict[str, Any]:
+    """Compatibility alias for GET /api/connectors (returns all by default)."""
     try:
-        items = _fetch_recent_connectors(limit)
+        items = _fetch_connectors(limit=limit)
     except Exception as exc:  # noqa: BLE001
         raise HTTPException(status_code=503, detail=f"MongoDB read failed: {exc}") from exc
-    return {"ok": True, "items": items, "db": DB_NAME, "collection": COLLECTION}
+    return {
+        "ok": True,
+        "items": items,
+        "count": len(items),
+        "db": DB_NAME,
+        "collection": COLLECTION,
+    }
 
 
 @app.get("/api/connectors/{connector_id}")

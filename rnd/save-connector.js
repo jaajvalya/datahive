@@ -25,7 +25,7 @@
   var UPLOAD_API_URL = connectorApiBase() + "/api/connectors/upload";
   var CONNECTION_LOGS_URL = connectorApiBase() + "/api/connection-logs";
   var HEALTH_URL = connectorApiBase() + "/health";
-  var RECENT_CONNECTIONS_DEFAULT = 5;
+  var RECENT_CONNECTIONS_DEFAULT = 500;
 
   var SENSITIVE_KEYS = {
     api_key: true,
@@ -385,7 +385,39 @@
   }
 
   /**
-   * Fetch recent connectors from MongoDB (connector_dtls via connector API / MONGO_URI).
+   * Fetch all saved connectors from MongoDB (connector_dtls).
+   * @param {number} [limit]
+   * @returns {Promise<{ok:boolean,items:object[]}>}
+   */
+  async function fetchAllConnectors(limit) {
+    var url = connectorApiBase() + "/api/connectors";
+    if (limit != null) {
+      url += "?limit=" + encodeURIComponent(limit);
+    }
+    var res = await fetch(url, { headers: requestHeaders() });
+    if (res.status === 404) {
+      // Older API: fall back to /recent then /health
+      return fetchRecentConnectors(limit == null ? RECENT_CONNECTIONS_DEFAULT : limit);
+    }
+    var bodyText = await res.text();
+    var data = null;
+    try {
+      data = bodyText ? JSON.parse(bodyText) : null;
+    } catch {
+      data = { raw: bodyText };
+    }
+    if (!res.ok) {
+      var msg =
+        (data && (data.detail || data.error || data.message)) ||
+        bodyText ||
+        "HTTP " + res.status;
+      throw new Error(typeof msg === "string" ? msg : JSON.stringify(msg));
+    }
+    return data;
+  }
+
+  /**
+   * Fetch connectors from MongoDB (compatibility helper; returns all by default).
    * @param {number} limit
    * @returns {Promise<{ok:boolean,items:object[]}>}
    */
@@ -416,7 +448,7 @@
         };
       }
       throw new Error(
-        "Recent connections API not found. Restart the connector API: python connector_api.py"
+        "Connections API not found. Restart the connector API: python connector_api.py"
       );
     }
     var bodyText = await res.text();
@@ -442,6 +474,7 @@
   global.updateConnectorInMongo = updateConnectorInMongo;
   global.deleteConnectorFromMongo = deleteConnectorFromMongo;
   global.fetchConnectorById = fetchConnectorById;
+  global.fetchAllConnectors = fetchAllConnectors;
   global.fetchRecentConnectors = fetchRecentConnectors;
   global.logConnectionFailure = logConnectionFailure;
   global.logConnectionSuccess = logConnectionSuccess;

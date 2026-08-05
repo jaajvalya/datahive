@@ -946,9 +946,9 @@
       <div class="cloud-grid" id="cloudGrid" role="group" aria-label="Cloud providers"></div>
 
       <section class="recent-conn" id="recentConnections" aria-labelledby="recentConnTitle">
-        <div class="recent-conn-hd"><h2 id="recentConnTitle">Recent Connections</h2></div>
+        <div class="recent-conn-hd"><h2 id="recentConnTitle">All Connections</h2></div>
         <div class="recent-conn-bd" id="recentConnectionsBody">
-          <div class="recent-empty">Loading recent connections from MongoDB…</div>
+          <div class="recent-empty">Loading connections from MongoDB…</div>
         </div>
       </section>
 
@@ -2297,7 +2297,7 @@ function cellText(val){
   return escapeHtml(String(val));
 }
 
-const RECENT_CONNECTIONS_LIMIT = 20;
+const RECENT_CONNECTIONS_LIMIT = 500;
 let editingConnectorId = null;
 let editingConnectorMeta = null;
 
@@ -2360,7 +2360,7 @@ function paintRecentConnectionsTable(body, items) {
       );
     }).join("");
   body.innerHTML =
-    '<table class="recent-table" aria-label="Recent Connections">' +
+    '<table class="recent-table" aria-label="All Connections">' +
     "<thead><tr>" +
     "<th>Cloud</th><th>Connector type</th><th>Display name</th><th>Mode</th>" +
     "<th>Region / account</th><th>Upload notes</th><th>User</th><th>Updated</th>" +
@@ -2373,16 +2373,22 @@ function paintRecentConnectionsTable(body, items) {
 async function renderRecentConnections(){
   const body = $("#recentConnectionsBody");
   if (!body) return;
-  if (typeof fetchRecentConnectors !== "function") {
-    body.innerHTML = '<div class="recent-empty">Recent connections unavailable.</div>';
+  const loader =
+    typeof fetchAllConnectors === "function"
+      ? fetchAllConnectors
+      : typeof fetchRecentConnectors === "function"
+        ? fetchRecentConnectors
+        : null;
+  if (!loader) {
+    body.innerHTML = '<div class="recent-empty">Connections list unavailable.</div>';
     return;
   }
   try {
-    const data = await fetchRecentConnectors(RECENT_CONNECTIONS_LIMIT);
+    const data = await loader(RECENT_CONNECTIONS_LIMIT);
     paintRecentConnectionsTable(body, (data && data.items) || []);
   } catch (err) {
     body.innerHTML =
-      '<div class="recent-empty">Could not load recent connections. ' +
+      '<div class="recent-empty">Could not load connections. ' +
       escapeHtml(err && err.message ? err.message : String(err)) +
       "</div>";
   }
