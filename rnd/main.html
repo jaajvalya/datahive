@@ -3104,10 +3104,15 @@ async function populateTableSelect(schema) {
     if (typeof DataHiveAssets === "undefined") throw new Error("Assets API not loaded");
     const data = await DataHiveAssets.tables(schema, currentAssetConnectorId());
     tables = data.items || [];
-    if (meta && data.count != null) {
-      meta.textContent =
-        data.count + " object" + (data.count === 1 ? "" : "s") + " in " + schema;
-      meta.classList.remove("hidden");
+    if (meta) {
+      if (data.note && !tables.length) {
+        meta.textContent = data.note;
+        meta.classList.remove("hidden");
+      } else if (data.count != null) {
+        meta.textContent =
+          data.count + " object" + (data.count === 1 ? "" : "s") + " in " + schema;
+        meta.classList.remove("hidden");
+      }
     }
     assetState.offline = false;
   } catch (err) {
@@ -3123,6 +3128,12 @@ async function populateTableSelect(schema) {
   if (!tables.length) {
     select.innerHTML = '<option value="">No tables found in this schema</option>';
     select.disabled = true;
+    if (wrap) {
+      wrap.innerHTML =
+        '<div class="state">Schema <strong>' +
+        escapeHtml(schema) +
+        "</strong> is reachable, but it has no tables or views for this Snowflake role.</div>";
+    }
     return;
   }
   select.innerHTML =

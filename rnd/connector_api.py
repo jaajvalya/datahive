@@ -617,6 +617,29 @@ def assets_counts(
         raise HTTPException(status_code=503, detail=f"Asset counts failed: {exc}") from exc
 
 
+def _asset_matches_schema(asset: dict[str, Any], schema: str) -> bool:
+    """Match UI schema selection against catalog rows (incl. Snowflake DB.SCHEMA)."""
+    wanted = (schema or "").strip().lower()
+    if not wanted:
+        return False
+    candidates = {
+        str(asset.get("schema") or "").lower(),
+        str(asset.get("snowflake_schema") or "").lower(),
+        str(asset.get("database") or "").lower(),
+    }
+    db = str(asset.get("database") or "").strip()
+    sf_schema = str(asset.get("snowflake_schema") or "").strip()
+    if db and sf_schema:
+        candidates.add(f"{db}.{sf_schema}".lower())
+    crumb = str(asset.get("crumb") or "")
+    if crumb.count(".") >= 1:
+        # DATABASE.SCHEMA.TABLE → DATABASE.SCHEMA
+        parts = crumb.split(".")
+        if len(parts) >= 2:
+            candidates.add(f"{parts[0]}.{parts[1]}".lower())
+    return wanted in candidates
+
+
 @app.get("/api/assets/tables")
 def assets_tables(
     request: Request,
@@ -649,7 +672,7 @@ def assets_tables(
                     "crumb": a.get("crumb"),
                 }
                 for a in catalog["items"]
-                if str(a.get("schema") or "").lower() == schema.lower()
+                if _asset_matches_schema(a, schema)
             ]
             return {
                 "schema": schema,
@@ -674,14 +697,29 @@ def assets_tables(
                 "columns": a.get("columns"),
             }
             for a in catalog["items"]
-            if str(a.get("schema") or "").lower() == schema.lower()
+            if _asset_matches_schema(a, schema)
+            and a.get("name") != "snowflake_catalog_error"
+            and str(a.get("type") or "") not in {"Schema", "API", "Scope", "File"}
         ]
+        note = None
+        if not items:
+            platform = None
+            for c in catalog.get("connectors") or []:
+                if c.get("id") == connector_id:
+                    platform = c.get("platform") or c.get("cloud")
+                    break
+            if str(platform or "").lower() == "snowflake":
+                note = (
+                    f"No tables or views found in Snowflake schema '{schema}'. "
+                    "The schema exists, but it is empty for this role."
+                )
         return {
             "schema": schema,
             "count": len(items),
             "items": items,
             "connector_id": connector_id,
             "structure_supported": any(i.get("structure_supported") for i in items),
+            "note": note,
         }
     except ValueError as exc:
         raise HTTPException(status_code=422, detail=str(exc)) from exc

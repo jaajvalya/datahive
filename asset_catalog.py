@@ -17,6 +17,7 @@ from typing import Any
 
 import mongo_store
 import postgres_store
+import snowflake_catalog
 
 _log = logging.getLogger("datahive.asset_catalog")
 
@@ -114,7 +115,7 @@ def list_accessible_connectors(user: str, role: str | None = None) -> list[dict[
                 "connection_status": doc.get("connection_status"),
                 "privileged": admin or owner in {user_l, "", "unknown", "system"},
                 "browsable": True,
-                "structure_supported": platform == "postgres",
+                "structure_supported": platform in {"postgres", "snowflake"},
             }
         )
 
@@ -154,7 +155,7 @@ def list_accessible_connectors(user: str, role: str | None = None) -> list[dict[
                     "dataset_scope": "",
                     "privileged": True,
                     "browsable": True,
-                    "structure_supported": platform == "postgres",
+                    "structure_supported": platform in {"postgres", "snowflake"},
                 }
             )
             seen_names.add(name.lower())
@@ -162,6 +163,16 @@ def list_accessible_connectors(user: str, role: str | None = None) -> list[dict[
         _log.warning("glossary connector synthesis failed: %s", exc)
 
     return items
+
+
+def _snowflake_live_assets(connector: dict[str, Any]) -> tuple[list[dict[str, Any]], list[str], str | None]:
+    """Fetch live Snowflake assets. Returns (assets, schemas, error_note)."""
+    try:
+        assets, schemas = snowflake_catalog.catalog_assets_for_connector(connector["id"])
+        return assets, schemas, None
+    except Exception as exc:  # noqa: BLE001
+        _log.warning("snowflake catalog failed for %s: %s", connector.get("id"), exc)
+        return [], [], str(exc)
 
 
 def _connector_by_id(connectors: list[dict[str, Any]], connector_id: str | None) -> dict[str, Any] | None:
@@ -379,7 +390,7 @@ def build_catalog(
     targets = [selected] if selected else connectors
     all_assets: list[dict[str, Any]] = []
     schema_set: set[str] = set()
-    counts = {"Table": 0, "View": 0, "API": 0, "File": 0, "Scope": 0, "All": 0}
+    counts = {"Table": 0, "View": 0, "API": 0, "File": 0, "Scope": 0, "Schema": 0, "All": 0}
 
     for conn in targets:
         if conn["id"] == LOCAL_POSTGRES_ID:
@@ -391,15 +402,51 @@ def build_catalog(
                 counts[key] = counts.get(key, 0) + int(pg_counts.get(key) or 0)
             continue
 
-        # Glossary-backed tables first (richest metadata), then scope/apis/upload.
+        platform = str(conn.get("platform") or conn.get("cloud") or "").lower()
         gloss = _glossary_assets_for_connection(str(conn.get("display_name") or ""))
-        scoped = _parse_scope_assets(conn)
-        # Prefer glossary rows when same crumb exists.
+        live_assets: list[dict[str, Any]] = []
+        live_schemas: list[str] = []
+        live_error: str | None = None
+
+        if platform == "snowflake" and not str(conn.get("id", "")).startswith("glossary:"):
+            live_assets, live_schemas, live_error = _snowflake_live_assets(conn)
+            schema_set.update(live_schemas)
+
+        # Prefer live Snowflake metadata. Only fall back to scope/API stubs if live fetch failed.
+        live_ok = platform == "snowflake" and not live_error
+        scoped = [] if live_ok else _parse_scope_assets(conn)
         by_crumb = {a["crumb"].lower(): a for a in scoped if a.get("crumb")}
+        for a in live_assets:
+            if a.get("crumb"):
+                by_crumb[a["crumb"].lower()] = a
         for g in gloss:
+            # Glossary enriches / overrides when present.
             by_crumb[g["crumb"].lower()] = g
         combined = list(by_crumb.values())
         annotated = _annotate(combined, conn)
+        for a in annotated:
+            # Empty Snowflake schemas are browseable but have no column structure.
+            if a.get("type") == "Schema" or a.get("empty"):
+                a["structure_supported"] = False
+        if live_error and platform == "snowflake" and not live_assets:
+            # Surface a single diagnostic asset so the UI is not silently empty.
+            annotated.append(
+                {
+                    "name": "snowflake_catalog_error",
+                    "type": "Scope",
+                    "schema": str(conn.get("dataset_scope") or "snowflake"),
+                    "database": "",
+                    "crumb": "snowflake / catalog_error",
+                    "source": "snowflake_error",
+                    "connector_id": conn["id"],
+                    "connector_name": conn.get("display_name"),
+                    "platform": "snowflake",
+                    "cloud": conn.get("cloud"),
+                    "structure_supported": False,
+                    "error": live_error,
+                }
+            )
+            schema_set.add(str(conn.get("dataset_scope") or "snowflake"))
         all_assets.extend(annotated)
         for a in annotated:
             if a.get("schema"):
@@ -462,6 +509,25 @@ def connector_structure(
         structure["connector_name"] = conn["display_name"]
         structure["platform"] = "postgres"
         return structure
+
+    platform = str(conn.get("platform") or conn.get("cloud") or "").lower()
+    if platform == "snowflake" and not str(conn.get("id", "")).startswith("glossary:"):
+        try:
+            structure = snowflake_catalog.table_structure_for_connector(
+                conn["id"], schema, table
+            )
+            structure["connector_id"] = conn["id"]
+            structure["connector_name"] = conn["display_name"]
+            return structure
+        except Exception as exc:  # noqa: BLE001
+            _log.warning(
+                "snowflake structure failed for %s.%s on %s: %s",
+                schema,
+                table,
+                conn.get("id"),
+                exc,
+            )
+            raise ValueError(f"Snowflake structure fetch failed: {exc}") from exc
 
     gloss = _glossary_assets_for_connection(str(conn.get("display_name") or ""))
     match = None
