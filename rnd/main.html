@@ -809,8 +809,19 @@
     border-radius:999px; padding:2px 8px;
   }
   .gov-model-actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:12px; }
+  .gov-model-script-block {
+    border:1px solid var(--gray-200); border-radius:12px; padding:12px 14px; background:#fafbfd;
+  }
+  .gov-model-script-hd {
+    display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    margin-bottom:8px;
+  }
+  .gov-model-script-hd h4 {
+    margin:0; font-size:13px; font-weight:800; color:var(--navy-700);
+    letter-spacing:.04em; text-transform:uppercase;
+  }
   .gov-model-ddl {
-    width:100%; min-height:320px; resize:vertical;
+    width:100%; min-height:240px; resize:vertical;
     font-family:"Consolas","SFMono-Regular",Menlo,monospace; font-size:12.5px; line-height:1.45;
     padding:12px 14px; border:1px solid var(--gray-200); border-radius:10px;
     background:#0f1724; color:#e8eef8; tab-size:2;
@@ -1529,19 +1540,37 @@
           <div id="govModelProposalList" class="gov-model-list"></div>
           <div class="gov-model-actions">
             <button type="button" class="btn btn-ghost" id="govModelBackToScopeBtn">← Scope</button>
-            <button type="button" class="btn btn-primary" id="govModelConfirmBtn">Confirm &amp; generate DDL</button>
+            <button type="button" class="btn btn-primary" id="govModelConfirmBtn">Confirm &amp; generate DDL + ingestion</button>
           </div>
         </div>
 
         <div class="gov-model-panel hidden" id="govModelStep3">
-          <h3>DDL &amp; load scripts</h3>
-          <p class="lead">Includes CREATE TABLE with PK/FK/UNIQUE/CHECK, indexes, typed columns, and casted load SQL. Edit before copying or downloading.</p>
+          <h3>DDL &amp; ingestion scripts</h3>
+          <p class="lead">Model DDL plus a separate ingestion script that loads source tables into the proposed dimensions and facts (with casts and key lookups).</p>
           <div class="gov-model-actions" style="margin-top:0;margin-bottom:10px">
             <button type="button" class="btn btn-ghost" id="govModelBackToProposalBtn">← Proposal</button>
-            <button type="button" class="btn btn-ghost" id="govModelCopyDdlBtn">Copy DDL</button>
-            <button type="button" class="btn btn-ghost" id="govModelDownloadDdlBtn">Download .sql</button>
           </div>
-          <textarea id="govModelDdlEditor" class="gov-model-ddl" spellcheck="false" aria-label="Generated DDL"></textarea>
+          <div class="gov-model-script-block">
+            <div class="gov-model-script-hd">
+              <h4>1 · Model DDL</h4>
+              <div class="gov-model-actions" style="margin:0">
+                <button type="button" class="btn btn-ghost" id="govModelCopyDdlBtn">Copy DDL</button>
+                <button type="button" class="btn btn-ghost" id="govModelDownloadDdlBtn">Download DDL</button>
+              </div>
+            </div>
+            <textarea id="govModelDdlEditor" class="gov-model-ddl" spellcheck="false" aria-label="Generated DDL"></textarea>
+          </div>
+          <div class="gov-model-script-block" style="margin-top:14px">
+            <div class="gov-model-script-hd">
+              <h4>2 · Data ingestion</h4>
+              <div class="gov-model-actions" style="margin:0">
+                <button type="button" class="btn btn-ghost" id="govModelCopyIngestBtn">Copy ingestion</button>
+                <button type="button" class="btn btn-ghost" id="govModelDownloadIngestBtn">Download ingestion</button>
+              </div>
+            </div>
+            <p class="lead" style="margin:0 0 8px">Loads resolved source tables into selected model objects. Run after DDL. Order: date → dimensions → facts.</p>
+            <textarea id="govModelIngestEditor" class="gov-model-ddl" spellcheck="false" aria-label="Generated ingestion script"></textarea>
+          </div>
         </div>
       </div>
     </div>
@@ -6451,6 +6480,7 @@ const modelState = {
   catalogItems: [],
   proposal: [],
   ddl: "",
+  ingest: "",
 };
 
 function showModelError(msg) {
@@ -6867,14 +6897,30 @@ function buildStandardModelObjects(scope, types, tables) {
         },
         [
           modelCol("geo_key", types.sk, { pk: true, notNull: true }),
-          modelCol("city", types.varchar(128), { notNull: true }),
-          modelCol("state", types.varchar(64), { notNull: true }),
-          modelCol("zip", types.varchar(32), {}),
-          modelCol("country", types.varchar(64), { notNull: true, default: "'US'" }),
-          modelCol("region", types.varchar(64), {}),
+          modelCol("city", types.varchar(128), {
+            notNull: true,
+            castFrom: "CAST(src.city AS " + types.varchar(128) + ")",
+          }),
+          modelCol("state", types.varchar(64), {
+            notNull: true,
+            castFrom: "CAST(src.state AS " + types.varchar(64) + ")",
+          }),
+          modelCol("zip", types.varchar(32), { castFrom: "CAST(src.zip AS " + types.varchar(32) + ")" }),
+          modelCol("country", types.varchar(64), {
+            notNull: true,
+            default: "'US'",
+            castFrom: "CAST(COALESCE(src.country, 'US') AS " + types.varchar(64) + ")",
+          }),
+          modelCol("region", types.varchar(64), {
+            castFrom: "CAST(src.region AS " + types.varchar(64) + ")",
+          }),
           modelCol("_dh_loaded_at", types.ts, { notNull: true, default: "CURRENT_TIMESTAMP" }),
         ],
-        { uniqueKeys: [["city", "state", "zip", "country"]], indexes: [["state", "city"]] }
+        {
+          uniqueKeys: [["city", "state", "zip", "country"]],
+          indexes: [["state", "city"]],
+          load: { sourceHint: "store%|geo%|address%|region%", naturalKey: null },
+        }
       )
     );
   }
@@ -6893,13 +6939,28 @@ function buildStandardModelObjects(scope, types, tables) {
         },
         [
           modelCol("product_key", types.sk, { pk: true, notNull: true }),
-          modelCol("product_id", types.varchar(64), { unique: true, notNull: true }),
-          modelCol("product_name", types.varchar(256), { notNull: true }),
-          modelCol("product_type", types.varchar(64), {}),
-          modelCol("monthly_fee_usd", types.num(12, 2), { check: "monthly_fee_usd IS NULL OR monthly_fee_usd >= 0" }),
+          modelCol("product_id", types.varchar(64), {
+            unique: true,
+            notNull: true,
+            castFrom: "CAST(src.product_id AS " + types.varchar(64) + ")",
+          }),
+          modelCol("product_name", types.varchar(256), {
+            notNull: true,
+            castFrom: "CAST(src.product_name AS " + types.varchar(256) + ")",
+          }),
+          modelCol("product_type", types.varchar(64), {
+            castFrom: "CAST(src.product_type AS " + types.varchar(64) + ")",
+          }),
+          modelCol("monthly_fee_usd", types.num(12, 2), {
+            check: "monthly_fee_usd IS NULL OR monthly_fee_usd >= 0",
+            castFrom: "CAST(src.unit_price AS " + types.num(12, 2) + ")",
+          }),
           modelCol("_dh_loaded_at", types.ts, { notNull: true, default: "CURRENT_TIMESTAMP" }),
         ],
-        { indexes: [["product_type"]] }
+        {
+          indexes: [["product_type"]],
+          load: { sourceHint: "product%", naturalKey: "product_id" },
+        }
       )
     );
   }
@@ -6918,11 +6979,21 @@ function buildStandardModelObjects(scope, types, tables) {
         },
         [
           modelCol("channel_key", types.sk, { pk: true, notNull: true }),
-          modelCol("channel_code", types.varchar(64), { unique: true, notNull: true }),
-          modelCol("channel_name", types.varchar(128), { notNull: true }),
-          modelCol("channel_group", types.varchar(64), {}),
+          modelCol("channel_code", types.varchar(64), {
+            unique: true,
+            notNull: true,
+            castFrom: "CAST(src.preferred_channel AS " + types.varchar(64) + ")",
+          }),
+          modelCol("channel_name", types.varchar(128), {
+            notNull: true,
+            castFrom: "CAST(src.preferred_channel AS " + types.varchar(128) + ")",
+          }),
+          modelCol("channel_group", types.varchar(64), {
+            castFrom: "CAST('fulfillment' AS " + types.varchar(64) + ")",
+          }),
           modelCol("_dh_loaded_at", types.ts, { notNull: true, default: "CURRENT_TIMESTAMP" }),
-        ]
+        ],
+        { load: { sourceHint: "customer%|channel%", naturalKey: "channel_code", distinctOn: "preferred_channel" } }
       )
     );
   }
@@ -6941,7 +7012,11 @@ function buildStandardModelObjects(scope, types, tables) {
         },
         [
           modelCol("invoice_key", types.sk, { pk: true, notNull: true }),
-          modelCol("invoice_id", types.varchar(64), { unique: true, notNull: true }),
+          modelCol("invoice_id", types.varchar(64), {
+            unique: true,
+            notNull: true,
+            castFrom: "CAST(COALESCE(src.account_txn_id, src.order_id, src.sale_id, src.invoice_id) AS " + types.varchar(64) + ")",
+          }),
           modelCol("customer_key", types.bigint, {
             notNull: true,
             fk: { table: "dim_customer", column: "customer_key" },
@@ -6954,17 +7029,19 @@ function buildStandardModelObjects(scope, types, tables) {
             notNull: true,
             default: "0",
             check: "amount_due >= 0",
-            castFrom: "CAST(src.amount_due AS " + types.num(14, 2) + ")",
+            castFrom: "CAST(COALESCE(src.amount, src.gross_amount, src.amount_due, 0) AS " + types.num(14, 2) + ")",
           }),
           modelCol("tax_amount", types.num(14, 2), {
             notNull: true,
             default: "0",
             check: "tax_amount >= 0",
+            castFrom: "CAST(COALESCE(src.tax_amount, 0) AS " + types.num(14, 2) + ")",
           }),
           modelCol("total_amount", types.num(14, 2), {
             notNull: true,
             default: "0",
             check: "total_amount >= 0",
+            castFrom: "CAST(COALESCE(src.amount, src.net_amount, src.total_amount, src.gross_amount, 0) AS " + types.num(14, 2) + ")",
           }),
           modelCol("_dh_loaded_at", types.ts, { notNull: true, default: "CURRENT_TIMESTAMP" }),
           modelCol("_dh_source_system", types.varchar(64), { notNull: true }),
@@ -6973,6 +7050,12 @@ function buildStandardModelObjects(scope, types, tables) {
           indexes: [["customer_key", "date_key"], ["date_key"]],
           clusterBy: ["date_key", "customer_key"],
           checks: [{ expr: "total_amount >= amount_due" }],
+          load: {
+            sourceHint: "account%|order%|sales%|invoice%|billing%",
+            naturalKey: "invoice_id",
+            customerIdCol: "customer_id",
+            dateCol: "txn_ts|sale_ts|ordered_at|invoice_date|business_date",
+          },
         }
       )
     );
@@ -7159,19 +7242,58 @@ async function enrichProposalFromSourceStructures(scope, proposal) {
     })
   );
 
-  const customerTbl = Object.keys(structures).find((n) => /customer/i.test(n));
-  if (customerTbl && structures[customerTbl] && structures[customerTbl].columns) {
+  function bindSource(dimId, tableRe) {
+    const tbl = Object.keys(structures).find((n) => tableRe.test(n));
+    const dim = proposal.find((p) => p.id === dimId);
+    if (!tbl || !dim || !structures[tbl] || !structures[tbl].columns) return;
+    const srcCols = structures[tbl].columns || [];
+    dim.source = scope.schema + "." + tbl;
+    dim.source_table = tbl;
+    dim.source_columns = srcCols.map((c) => ({
+      name: c.name,
+      type: c.type,
+      primary_key: !!c.primary_key,
+      nullable: c.nullable !== false,
+    }));
+    if (!dim.load) dim.load = {};
+    dim.load.sourceHint = tbl;
+    const byLower = {};
+    srcCols.forEach((c) => {
+      byLower[String(c.name).toLowerCase()] = c.name;
+    });
+    (dim.columns || []).forEach((col) => {
+      const srcName = byLower[col.name.toLowerCase()];
+      if (srcName) {
+        col.castFrom = "CAST(src." + srcName + " AS " + col.type + ")";
+      }
+    });
+  }
+
+  bindSource("dim_customer", /customer|cutomer/i);
+  bindSource("dim_product", /product|plan|package/i);
+  bindSource("dim_geography", /store|geo|address|region/i);
+  bindSource("dim_channel", /customer|cutomer|channel/i);
+
+  const factInvoice = proposal.find((p) => p.id === "fact_invoice");
+  if (factInvoice) {
+    const factTbl = Object.keys(structures).find((n) =>
+      /account|order|sales|invoice|billing/i.test(n)
+    );
+    if (factTbl) {
+      factInvoice.source = scope.schema + "." + factTbl;
+      factInvoice.source_table = factTbl;
+      if (!factInvoice.load) factInvoice.load = {};
+      factInvoice.load.sourceHint = factTbl;
+    }
+  }
+
+  const customerTbl = Object.keys(structures).find((n) => /customer|cutomer/i.test(n));
+  if (customerTbl) {
     const dim = proposal.find((p) => p.id === "dim_customer");
     if (dim) {
-      const srcCols = structures[customerTbl].columns || [];
-      const srcPk = srcCols.filter((c) => c.primary_key).map((c) => c.name);
-      dim.source = scope.schema + "." + customerTbl;
-      dim.source_columns = srcCols.map((c) => ({
-        name: c.name,
-        type: c.type,
-        primary_key: !!c.primary_key,
-        nullable: c.nullable !== false,
-      }));
+      const srcPk = (structures[customerTbl].columns || [])
+        .filter((c) => c.primary_key)
+        .map((c) => c.name);
       if (srcPk.length) {
         dim.note =
           (dim.note || "") +
@@ -7179,22 +7301,6 @@ async function enrichProposalFromSourceStructures(scope, proposal) {
           srcPk.join(", ") +
           " mapped to natural key / SCD2";
       }
-      // Align casts to real source column names when present.
-      const byLower = {};
-      srcCols.forEach((c) => {
-        byLower[String(c.name).toLowerCase()] = c.name;
-      });
-      (dim.columns || []).forEach((col) => {
-        const srcName = byLower[col.name.toLowerCase()];
-        if (srcName && col.castFrom) {
-          col.castFrom = col.castFrom.replace(
-            new RegExp("src\\." + col.name, "ig"),
-            "src." + quoteModelIdent(srcName).replace(/"/g, "")
-          );
-          // simpler: rebuild cast using actual source ident
-          col.castFrom = "CAST(src." + srcName + " AS " + col.type + ")";
-        }
-      });
     }
   }
   return proposal;
@@ -7577,68 +7683,474 @@ function generateModelDdl(proposal, scope) {
       }
     });
 
-  // Load / cast skeletons
-  lines.push("-- ============================================================");
-  lines.push("-- Load skeletons with explicit type casting (edit source tables)");
-  lines.push("-- Order: dimensions (date → hubs) → facts → views refresh automatically");
-  lines.push("-- ============================================================");
-  selected
-    .filter((p) => p.kind === "dimension" || p.kind === "fact")
-    .forEach((p) => {
-      if (p.id === "dim_date") {
-        lines.push(
-          "-- Seed dim_date (example 2-year window) — platform: " + platform,
-          "-- INSERT INTO " + modelFqName(target, "dim_date"),
-          "-- (date_key, day_of_week, week_of_year, month_num, quarter_num, year_num, is_weekend)",
-          "-- SELECT ... calendar generator ...;",
-          ""
-        );
-        return;
-      }
-      const castCols = (p.columns || []).filter(
-        (c) => !c.pk && c.name !== "_dh_loaded_at" && !/IDENTITY|BIGSERIAL/i.test(c.type)
-      );
-      if (!castCols.length) return;
-      lines.push("-- Load " + p.name + " from " + (p.source || source + ".<table>"));
-      lines.push(
-        "-- INSERT INTO " +
-          modelFqName(target, p.name) +
-          " (" +
-          castCols.map((c) => quoteModelIdent(c.name)).join(", ") +
-          ")"
-      );
-      lines.push("-- SELECT");
-      castCols.forEach((c, idx) => {
-        const expr =
-          c.castFrom ||
-          "CAST(src." + c.name + " AS " + c.type + ")";
-        const alias = quoteModelIdent(c.name);
-        lines.push(
-          "--   " +
-            expr +
-            " AS " +
-            alias +
-            (idx < castCols.length - 1 ? "," : "")
-        );
-      });
-      lines.push(
-        "-- FROM " +
-          quoteModelIdent(source) +
-          ".<source_table> src",
-        "-- WHERE 1 = 1;",
-        ""
-      );
-    });
-
   lines.push(
+    "-- ============================================================",
+    "-- Ingestion SQL is generated separately in the Data ingestion panel.",
+    "-- Run that script after this DDL to load source → model tables.",
+    "-- ============================================================",
+    "",
     "-- Validation checklist",
     "-- 1) Every table has a PRIMARY KEY",
     "-- 2) Fact FK columns reference dimension PKs",
     "-- 3) Natural keys have UNIQUE constraints",
     "-- 4) Measures/status columns have CHECK constraints where applicable",
-    "-- 5) Load SQL uses explicit CAST / TRY_CAST for type safety",
+    "-- 5) Ingestion script uses explicit CAST / TRY_CAST for type safety",
     "-- 6) Prefer TRY_CAST on Snowflake dirty RAW sources"
   );
+  return lines.join("\n");
+}
+
+function modelSourceTableNames(scope) {
+  const schema = String((scope && scope.schema) || "").toLowerCase();
+  return (modelState.catalogItems || [])
+    .filter((a) => {
+      if (!a || !a.name) return false;
+      if (String(a.type || "") === "Schema") return false;
+      const sch = String(a.schema || "").toLowerCase();
+      if (sch === schema) return true;
+      const short = schema.indexOf(".") >= 0 ? schema.split(".").pop() : schema;
+      return sch === short || sch.endsWith("." + short);
+    })
+    .map((a) => String(a.name));
+}
+
+function modelMatchSourceTable(tables, hint) {
+  if (!tables || !tables.length) return null;
+  const parts = String(hint || "")
+    .split("|")
+    .map((s) => s.trim())
+    .filter(Boolean);
+  for (let i = 0; i < parts.length; i++) {
+    // LIKE-style wildcards: % → .* (substring-friendly for DH_POC_* names)
+    const pat = parts[i]
+      .replace(/[.+?^${}()|[\]\\]/g, "\\$&")
+      .replace(/%/g, ".*");
+    const re = new RegExp(pat, "i");
+    const hit = tables.find((t) => re.test(t));
+    if (hit) return hit;
+  }
+  return null;
+}
+
+function modelSourceFqName(scope, tableName) {
+  const platform = modelPlatformOf(scope);
+  const schema = String(scope.schema || "");
+  if (!tableName) return quoteModelIdent(schema) + ".<source_table>";
+  if (platform === "snowflake") {
+    if (schema.indexOf(".") >= 0) {
+      return schema
+        .split(".")
+        .map(quoteModelIdent)
+        .concat([quoteModelIdent(tableName)])
+        .join(".");
+    }
+    if (scope.database) {
+      return (
+        quoteModelIdent(scope.database) +
+        "." +
+        quoteModelIdent(schema) +
+        "." +
+        quoteModelIdent(tableName)
+      );
+    }
+  }
+  return quoteModelIdent(schema) + "." + quoteModelIdent(tableName);
+}
+
+function modelResolveSourceTable(obj, scope) {
+  if (obj && obj.source && /\./.test(obj.source) && !/\s/.test(obj.source)) {
+    const parts = obj.source.split(".");
+    return parts[parts.length - 1];
+  }
+  const tables = modelSourceTableNames(scope);
+  const hint =
+    (obj && obj.load && obj.load.sourceHint) ||
+    (obj && obj.id === "dim_customer"
+      ? "customer%|cutomer%"
+      : obj && obj.id === "dim_product"
+        ? "product%|plan%|package%"
+        : obj && obj.id === "dim_geography"
+          ? "store%|geo%|address%|region%"
+          : obj && obj.id === "dim_channel"
+            ? "customer%|channel%"
+            : obj && obj.kind === "fact"
+              ? "account%|order%|sales%|invoice%|usage%|ticket%|cdr%"
+              : "");
+  return modelMatchSourceTable(tables, hint) || (tables[0] || null);
+}
+
+function modelCastExpr(col, platform) {
+  if (col.castFrom) {
+    if (platform === "snowflake") {
+      return String(col.castFrom).replace(/\bCAST\s*\(/gi, "TRY_CAST(");
+    }
+    return col.castFrom;
+  }
+  const castFn = platform === "snowflake" ? "TRY_CAST" : "CAST";
+  return castFn + "(src." + col.name + " AS " + col.type + ")";
+}
+
+function modelIngestSelectCols(obj, platform, sourceSystemLit) {
+  const cols = (obj.columns || []).filter(
+    (c) => !c.pk && !/IDENTITY|BIGSERIAL/i.test(c.type)
+  );
+  return cols.map((c) => {
+    if (c.name === "_dh_loaded_at") {
+      return "CURRENT_TIMESTAMP AS " + quoteModelIdent(c.name);
+    }
+    if (c.name === "_dh_source_system") {
+      return sourceSystemLit + " AS " + quoteModelIdent(c.name);
+    }
+    if (c.name === "effective_from") {
+      return "CURRENT_TIMESTAMP AS " + quoteModelIdent(c.name);
+    }
+    if (c.name === "effective_to") {
+      return "CAST(NULL AS " + c.type + ") AS " + quoteModelIdent(c.name);
+    }
+    if (c.name === "is_current") {
+      return "TRUE AS " + quoteModelIdent(c.name);
+    }
+    // FK surrogate keys filled later for facts
+    if (c.fk) {
+      return null;
+    }
+    return modelCastExpr(c, platform) + " AS " + quoteModelIdent(c.name);
+  }).filter(Boolean);
+}
+
+function generateModelIngestionScript(proposal, scope) {
+  const target = scope.targetSchema || "gold";
+  const source = scope.schema;
+  const platform = modelPlatformOf(scope);
+  const types = modelTypes(platform);
+  const selected = proposal.filter((p) => p.selected);
+  const sourceSystemLit =
+    "'" + String(scope.connectorName || scope.connectorId || "datahive").replace(/'/g, "''") + "'";
+  const lines = [
+    "-- DataHive dimensional model — data ingestion script",
+    "-- Connector : " + scope.connectorName,
+    "-- Platform  : " + platform,
+    "-- Source    : " + source,
+    "-- Target    : " + target,
+    "-- Order     : dim_date → dimensions → facts",
+    "-- Generated : " + new Date().toISOString(),
+    "",
+    "-- Prerequisites: run Model DDL first.",
+    platform === "snowflake"
+      ? "-- USE DATABASE " + quoteModelIdent(scope.database || "SALES_DB") + ";"
+      : "-- SET search_path TO " + quoteModelIdent(target) + ";",
+    "",
+  ];
+
+  // 1) dim_date seed
+  if (selected.some((p) => p.id === "dim_date")) {
+    lines.push("-- ------------------------------------------------------------");
+    lines.push("-- Seed dim_date (730-day window ending today)");
+    lines.push("-- ------------------------------------------------------------");
+    if (platform === "snowflake") {
+      lines.push(
+        "INSERT INTO " + modelFqName(target, "dim_date"),
+        "  (date_key, day_of_week, week_of_year, month_num, quarter_num, year_num, is_weekend, _dh_loaded_at)",
+        "SELECT",
+        "  d.date_key,",
+        "  DAYOFWEEKISO(d.date_key) AS day_of_week,",
+        "  WEEKISO(d.date_key) AS week_of_year,",
+        "  MONTH(d.date_key) AS month_num,",
+        "  QUARTER(d.date_key) AS quarter_num,",
+        "  YEAR(d.date_key) AS year_num,",
+        "  IFF(DAYOFWEEKISO(d.date_key) IN (6, 7), TRUE, FALSE) AS is_weekend,",
+        "  CURRENT_TIMESTAMP AS _dh_loaded_at",
+        "FROM (",
+        "  SELECT DATEADD('day', -SEQ4(), CURRENT_DATE()) AS date_key",
+        "  FROM TABLE(GENERATOR(ROWCOUNT => 730))",
+        ") d",
+        "WHERE NOT EXISTS (",
+        "  SELECT 1 FROM " + modelFqName(target, "dim_date") + " x WHERE x.date_key = d.date_key",
+        ");",
+        ""
+      );
+    } else {
+      lines.push(
+        "INSERT INTO " + modelFqName(target, "dim_date"),
+        "  (date_key, day_of_week, week_of_year, month_num, quarter_num, year_num, is_weekend, _dh_loaded_at)",
+        "SELECT",
+        "  d::date AS date_key,",
+        "  EXTRACT(ISODOW FROM d)::smallint AS day_of_week,",
+        "  EXTRACT(WEEK FROM d)::smallint AS week_of_year,",
+        "  EXTRACT(MONTH FROM d)::smallint AS month_num,",
+        "  EXTRACT(QUARTER FROM d)::smallint AS quarter_num,",
+        "  EXTRACT(YEAR FROM d)::integer AS year_num,",
+        "  (EXTRACT(ISODOW FROM d) IN (6, 7)) AS is_weekend,",
+        "  CURRENT_TIMESTAMP AS _dh_loaded_at",
+        "FROM generate_series(CURRENT_DATE - 729, CURRENT_DATE, '1 day'::interval) AS g(d)",
+        "WHERE NOT EXISTS (",
+        "  SELECT 1 FROM " + modelFqName(target, "dim_date") + " x WHERE x.date_key = d::date",
+        ");",
+        ""
+      );
+    }
+  }
+
+  // 2) Dimensions (except date)
+  selected
+    .filter((p) => p.kind === "dimension" && p.id !== "dim_date")
+    .forEach((p) => {
+      const srcTable = modelResolveSourceTable(p, scope);
+      const srcFq = modelSourceFqName(scope, srcTable);
+      const naturalKey = (p.load && p.load.naturalKey) || null;
+      const selectCols = modelIngestSelectCols(p, platform, sourceSystemLit);
+      const insertCols = (p.columns || [])
+        .filter((c) => !c.pk && !/IDENTITY|BIGSERIAL/i.test(c.type) && !c.fk)
+        .map((c) => c.name);
+
+      lines.push("-- ------------------------------------------------------------");
+      lines.push("-- Ingest " + p.name + (srcTable ? " ← " + srcFq : " ← (set source table)"));
+      lines.push("-- ------------------------------------------------------------");
+      if (!srcTable) {
+        lines.push("-- WARNING: no source table matched for " + p.name + ". Edit FROM clause.");
+      }
+
+      if (p.id === "dim_channel") {
+        const channelExpr =
+          platform === "snowflake"
+            ? "TRY_CAST(src.PREFERRED_CHANNEL AS " + types.varchar(64) + ")"
+            : "CAST(src.preferred_channel AS " + types.varchar(64) + ")";
+        lines.push(
+          "INSERT INTO " + modelFqName(target, p.name),
+          "  (" + ["channel_code", "channel_name", "channel_group", "_dh_loaded_at"].map(quoteModelIdent).join(", ") + ")",
+          "SELECT DISTINCT",
+          "  " + channelExpr + " AS channel_code,",
+          "  " + channelExpr + " AS channel_name,",
+          "  CAST('fulfillment' AS " + types.varchar(64) + ") AS channel_group,",
+          "  CURRENT_TIMESTAMP AS _dh_loaded_at",
+          "FROM " + srcFq + " src",
+          "WHERE " + (platform === "snowflake" ? "src.PREFERRED_CHANNEL" : "src.preferred_channel") + " IS NOT NULL",
+          "  AND NOT EXISTS (",
+          "    SELECT 1 FROM " + modelFqName(target, p.name) + " d",
+          "    WHERE d.channel_code = " + channelExpr,
+          "  );",
+          ""
+        );
+        return;
+      }
+
+      if (platform === "snowflake" && naturalKey) {
+        const updateCols = insertCols.filter(
+          (n) => !["effective_from", "effective_to", "is_current", naturalKey].includes(n)
+        );
+        lines.push("MERGE INTO " + modelFqName(target, p.name) + " AS tgt");
+        lines.push("USING (");
+        lines.push("  SELECT");
+        selectCols.forEach((expr, idx) => {
+          lines.push("    " + expr + (idx < selectCols.length - 1 ? "," : ""));
+        });
+        lines.push("  FROM " + srcFq + " src");
+        lines.push(") AS src");
+        lines.push(
+          "ON tgt." +
+            quoteModelIdent(naturalKey) +
+            " = src." +
+            quoteModelIdent(naturalKey) +
+            (insertCols.indexOf("is_current") >= 0 ? " AND tgt.is_current = TRUE" : "")
+        );
+        if (updateCols.length) {
+          lines.push("WHEN MATCHED THEN UPDATE SET");
+          updateCols.forEach((n, idx) => {
+            lines.push(
+              "  tgt." +
+                quoteModelIdent(n) +
+                " = src." +
+                quoteModelIdent(n) +
+                (idx < updateCols.length - 1 ? "," : "")
+            );
+          });
+        }
+        lines.push("WHEN NOT MATCHED THEN INSERT (");
+        lines.push("  " + insertCols.map(quoteModelIdent).join(", "));
+        lines.push(") VALUES (");
+        lines.push("  " + insertCols.map((n) => "src." + quoteModelIdent(n)).join(", "));
+        lines.push(");");
+        lines.push("");
+      } else {
+        const nkCol = (p.columns || []).find((c) => c.name === naturalKey);
+        const nkExpr = naturalKey
+          ? modelCastExpr(nkCol || { name: naturalKey, type: types.varchar(64), castFrom: null }, platform)
+          : null;
+        lines.push(
+          "INSERT INTO " + modelFqName(target, p.name),
+          "  (" + insertCols.map(quoteModelIdent).join(", ") + ")",
+          "SELECT"
+        );
+        selectCols.forEach((expr, idx) => {
+          lines.push("  " + expr + (idx < selectCols.length - 1 ? "," : ""));
+        });
+        lines.push("FROM " + srcFq + " src");
+        if (naturalKey && nkExpr) {
+          lines.push(
+            "WHERE NOT EXISTS (",
+            "  SELECT 1 FROM " + modelFqName(target, p.name) + " d",
+            "  WHERE d." + quoteModelIdent(naturalKey) + " = (" + nkExpr + ")",
+            ");"
+          );
+        } else {
+          lines.push(";");
+        }
+        lines.push("");
+      }
+    });
+
+  // 3) Facts with dimension key lookups
+  selected
+    .filter((p) => p.kind === "fact")
+    .forEach((p) => {
+      const srcTable = modelResolveSourceTable(p, scope);
+      const srcFq = modelSourceFqName(scope, srcTable);
+      const load = p.load || {};
+      const naturalKey = load.naturalKey || null;
+      const custCol = load.customerIdCol || "customer_id";
+      const dateCols = String(load.dateCol || "txn_ts|sale_ts|ordered_at|created_at|business_date").split("|");
+
+      lines.push("-- ------------------------------------------------------------");
+      lines.push("-- Ingest " + p.name + (srcTable ? " ← " + srcFq : " ← (set source table)"));
+      lines.push("-- ------------------------------------------------------------");
+      if (!srcTable) {
+        lines.push("-- WARNING: no source table matched for " + p.name + ". Edit FROM clause.");
+      }
+
+      const dateExprParts = dateCols.map((c) =>
+        platform === "snowflake"
+          ? "TRY_TO_TIMESTAMP(TO_VARCHAR(src." + c.toUpperCase() + "))"
+          : "src." + c + "::timestamp"
+      );
+      const dateTs =
+        platform === "snowflake"
+          ? "COALESCE(" + dateExprParts.join(", ") + ", CURRENT_TIMESTAMP())"
+          : "COALESCE(" + dateExprParts.join(", ") + ", CURRENT_TIMESTAMP)";
+      const dateKeyExpr =
+        platform === "snowflake"
+          ? "CAST(" + dateTs + " AS DATE)"
+          : "(" + dateTs + ")::date";
+
+      const insertCols = [];
+      const selectExprs = [];
+      (p.columns || []).forEach((c) => {
+        if (c.pk || /IDENTITY|BIGSERIAL/i.test(c.type)) return;
+        insertCols.push(c.name);
+        if (c.name === "_dh_loaded_at") {
+          selectExprs.push("CURRENT_TIMESTAMP");
+        } else if (c.name === "_dh_source_system") {
+          selectExprs.push(sourceSystemLit);
+        } else if (c.name === "customer_key") {
+          selectExprs.push("c.customer_key");
+        } else if (c.name === "date_key") {
+          selectExprs.push(dateKeyExpr);
+        } else if (c.name === "geo_key") {
+          selectExprs.push("g.geo_key");
+        } else if (c.name === "channel_key") {
+          selectExprs.push("ch.channel_key");
+        } else if (c.name === "product_key") {
+          selectExprs.push("pr.product_key");
+        } else {
+          selectExprs.push(modelCastExpr(c, platform));
+        }
+      });
+
+      lines.push(
+        "INSERT INTO " + modelFqName(target, p.name),
+        "  (" + insertCols.map(quoteModelIdent).join(", ") + ")",
+        "SELECT"
+      );
+      selectExprs.forEach((expr, idx) => {
+        lines.push(
+          "  " + expr + " AS " + quoteModelIdent(insertCols[idx]) + (idx < selectExprs.length - 1 ? "," : "")
+        );
+      });
+      lines.push("FROM " + srcFq + " src");
+      if (insertCols.indexOf("customer_key") >= 0) {
+        const custSrc =
+          platform === "snowflake" ? "src." + custCol.toUpperCase() : "src." + custCol;
+        lines.push(
+          "LEFT JOIN " +
+            modelFqName(target, "dim_customer") +
+            " c",
+          "  ON c.customer_id = CAST(" +
+            custSrc +
+            " AS " +
+            types.varchar(64) +
+            ")" +
+            (selected.some((x) => x.id === "dim_customer")
+              ? " AND c.is_current = TRUE"
+              : "")
+        );
+      }
+      if (insertCols.indexOf("geo_key") >= 0 && selected.some((x) => x.id === "dim_geography")) {
+        lines.push(
+          "LEFT JOIN " + modelFqName(target, "dim_geography") + " g",
+          "  ON g.city = CAST(src." +
+            (platform === "snowflake" ? "CITY" : "city") +
+            " AS " +
+            types.varchar(128) +
+            ")",
+          " AND g.state = CAST(src." +
+            (platform === "snowflake" ? "STATE" : "state") +
+            " AS " +
+            types.varchar(64) +
+            ")"
+        );
+      }
+      if (insertCols.indexOf("channel_key") >= 0 && selected.some((x) => x.id === "dim_channel")) {
+        lines.push(
+          "LEFT JOIN " + modelFqName(target, "dim_channel") + " ch",
+          "  ON ch.channel_code = CAST(src." +
+            (platform === "snowflake" ? "PREFERRED_CHANNEL" : "preferred_channel") +
+            " AS " +
+            types.varchar(64) +
+            ")"
+        );
+      }
+      if (naturalKey) {
+        const nkCol = (p.columns || []).find((c) => c.name === naturalKey);
+        const nkExpr = nkCol ? modelCastExpr(nkCol, platform) : "src." + naturalKey;
+        lines.push(
+          "WHERE NOT EXISTS (",
+          "  SELECT 1 FROM " + modelFqName(target, p.name) + " f",
+          "  WHERE f." + quoteModelIdent(naturalKey) + " = (" + nkExpr + ")",
+          ");"
+        );
+      } else {
+        lines.push(";");
+      }
+      lines.push("");
+    });
+
+  lines.push(
+    "-- ------------------------------------------------------------",
+    "-- Post-load validation",
+    "-- ------------------------------------------------------------"
+  );
+  selected
+    .filter((p) => p.kind === "dimension" || p.kind === "fact")
+    .forEach((p) => {
+      lines.push(
+        "SELECT '" +
+          p.name +
+          "' AS model_object, COUNT(*) AS row_count FROM " +
+          modelFqName(target, p.name) +
+          ";"
+      );
+    });
+  lines.push("");
+  const firstFact = selected.find((p) => p.kind === "fact");
+  if (firstFact && selected.some((p) => p.id === "dim_customer")) {
+    lines.push(
+      "-- Orphan fact checks (customer_key)",
+      "SELECT 'fact_orphans_customer' AS check_name, COUNT(*) AS n",
+      "FROM " + modelFqName(target, firstFact.name) + " f",
+      "LEFT JOIN " + modelFqName(target, "dim_customer") + " c ON c.customer_key = f.customer_key",
+      "WHERE f.customer_key IS NOT NULL AND c.customer_key IS NULL;"
+    );
+  }
+
   return lines.join("\n");
 }
 
@@ -7996,46 +8508,65 @@ function bindGovernanceEvents() {
       }
       const scope = collectModelScope();
       modelState.ddl = generateModelDdl(modelState.proposal, scope);
+      modelState.ingest = generateModelIngestionScript(modelState.proposal, scope);
       const editor = $("#govModelDdlEditor");
       if (editor) editor.value = modelState.ddl;
+      const ingestEditor = $("#govModelIngestEditor");
+      if (ingestEditor) ingestEditor.value = modelState.ingest;
       setModelStep(3);
     });
   }
 
-  const copyDdl = $("#govModelCopyDdlBtn");
-  if (copyDdl) {
-    copyDdl.addEventListener("click", async () => {
-      const text = ($("#govModelDdlEditor") && $("#govModelDdlEditor").value) || "";
-      if (!text.trim()) return;
-      try {
-        await navigator.clipboard.writeText(text);
-      } catch (_err) {
-        $("#govModelDdlEditor").select();
+  async function copyModelScript(sel) {
+    const el = $(sel);
+    const text = (el && el.value) || "";
+    if (!text.trim()) return;
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch (_err) {
+      if (el) {
+        el.select();
         document.execCommand("copy");
       }
-    });
+    }
   }
 
+  function downloadModelScript(sel, suffix) {
+    const text = (($(sel) && $(sel).value) || "").trim();
+    if (!text) return;
+    const scope = collectModelScope();
+    const name =
+      "data_model_" +
+      String(scope.targetSchema || "gold").replace(/[^\w\-]+/g, "_") +
+      "_" +
+      suffix +
+      ".sql";
+    const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = name;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  }
+
+  const copyDdl = $("#govModelCopyDdlBtn");
+  if (copyDdl) copyDdl.addEventListener("click", () => copyModelScript("#govModelDdlEditor"));
   const downloadDdl = $("#govModelDownloadDdlBtn");
   if (downloadDdl) {
-    downloadDdl.addEventListener("click", () => {
-      const text = ($("#govModelDdlEditor") && $("#govModelDdlEditor").value) || "";
-      if (!text.trim()) return;
-      const scope = collectModelScope();
-      const name =
-        "data_model_" +
-        String(scope.targetSchema || "gold").replace(/[^\w\-]+/g, "_") +
-        ".sql";
-      const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = name;
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      URL.revokeObjectURL(url);
-    });
+    downloadDdl.addEventListener("click", () => downloadModelScript("#govModelDdlEditor", "ddl"));
+  }
+  const copyIngest = $("#govModelCopyIngestBtn");
+  if (copyIngest) {
+    copyIngest.addEventListener("click", () => copyModelScript("#govModelIngestEditor"));
+  }
+  const downloadIngest = $("#govModelDownloadIngestBtn");
+  if (downloadIngest) {
+    downloadIngest.addEventListener("click", () =>
+      downloadModelScript("#govModelIngestEditor", "ingestion")
+    );
   }
 }
 
