@@ -4064,15 +4064,18 @@ function etlFileFormatSpec(ext) {
   }
   if (e === "tsv") {
     return {
-      name: "DH_TSV_FF",
-      ddl: "TYPE = CSV FIELD_DELIMITER = '\\t' SKIP_HEADER = 1 FIELD_OPTIONALLY_ENCLOSED_BY = '\"' NULL_IF = ('', 'NULL')",
-      copyOptions: "",
+      name: "DH_TSV_HDR_FF",
+      // PARSE_HEADER (not SKIP_HEADER) is required for INFER_SCHEMA to use header names.
+      ddl: "TYPE = CSV FIELD_DELIMITER = '\\t' PARSE_HEADER = TRUE FIELD_OPTIONALLY_ENCLOSED_BY = '\"' NULL_IF = ('', 'NULL') ERROR_ON_COLUMN_COUNT_MISMATCH = FALSE",
+      copyOptions: "MATCH_BY_COLUMN_NAME = CASE_INSENSITIVE",
     };
   }
   return {
-    name: "DH_CSV_FF",
-    ddl: "TYPE = CSV FIELD_DELIMITER = ',' SKIP_HEADER = 1 FIELD_OPTIONALLY_ENCLOSED_BY = '\"' NULL_IF = ('', 'NULL') ERROR_ON_COLUMN_COUNT_MISMATCH = FALSE",
-    copyOptions: "",
+    name: "DH_CSV_HDR_FF",
+    // PARSE_HEADER (not SKIP_HEADER) is required for INFER_SCHEMA to use header names.
+    // SKIP_HEADER alone yields generic C1/C2/C3 columns.
+    ddl: "TYPE = CSV FIELD_DELIMITER = ',' PARSE_HEADER = TRUE FIELD_OPTIONALLY_ENCLOSED_BY = '\"' NULL_IF = ('', 'NULL') ERROR_ON_COLUMN_COUNT_MISMATCH = FALSE",
+    copyOptions: "MATCH_BY_COLUMN_NAME = CASE_INSENSITIVE",
   };
 }
 
@@ -4102,7 +4105,8 @@ function generateSnowflakeStageIngestSql(ctx) {
     "USE SCHEMA " + schema + ";",
     "",
     "-- 1) File format for this landing file",
-    "CREATE FILE FORMAT IF NOT EXISTS " + database + "." + schema + "." + ff.name,
+    "-- PARSE_HEADER=TRUE so INFER_SCHEMA uses CSV header names (not C1/C2/C3).",
+    "CREATE OR REPLACE FILE FORMAT " + database + "." + schema + "." + ff.name,
     "  " + ff.ddl + ";",
     "",
     "-- 2) DDL — infer columns from the stage file (Snowflake INFER_SCHEMA)",
@@ -4118,6 +4122,10 @@ function generateSnowflakeStageIngestSql(ctx) {
     "    )",
     "  );",
     "",
+    "-- If the table already exists with C1/C2/C3 columns, drop/rename it first:",
+    "-- DROP TABLE IF EXISTS " + fqTable + ";",
+    "-- then re-run the CREATE TABLE USING TEMPLATE above.",
+    "",
     "-- Fallback DDL if INFER_SCHEMA is unavailable / file empty:",
     "-- CREATE TABLE IF NOT EXISTS " + fqTable + " (",
     "--   col1 VARCHAR,",
@@ -4126,7 +4134,7 @@ function generateSnowflakeStageIngestSql(ctx) {
     "--   _dh_source_file VARCHAR",
     "-- );",
     "",
-    "-- 3) Data ingestion from stage",
+    "-- 3) Data ingestion from stage (MATCH_BY_COLUMN_NAME required with PARSE_HEADER)",
     "COPY INTO " + fqTable,
     "  FROM '" + location + "'",
     "  FILE_FORMAT = (FORMAT_NAME = '" + database + "." + schema + "." + ff.name + "')",

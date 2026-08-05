@@ -792,13 +792,22 @@ def file_format_for_extension(ext: str) -> dict[str, str]:
         }
     if e in {"tsv"}:
         return {
-            "name": "DH_TSV_FF",
-            "ddl": "TYPE = CSV FIELD_DELIMITER = '\\t' SKIP_HEADER = 1 FIELD_OPTIONALLY_ENCLOSED_BY = '\"' NULL_IF = ('', 'NULL')",
-            "copy_options": "",
+            "name": "DH_TSV_HDR_FF",
+            # PARSE_HEADER (not SKIP_HEADER) is required for INFER_SCHEMA header names.
+            "ddl": (
+                "TYPE = CSV FIELD_DELIMITER = '\\t' PARSE_HEADER = TRUE "
+                "FIELD_OPTIONALLY_ENCLOSED_BY = '\"' NULL_IF = ('', 'NULL') "
+                "ERROR_ON_COLUMN_COUNT_MISMATCH = FALSE"
+            ),
+            "copy_options": "MATCH_BY_COLUMN_NAME = CASE_INSENSITIVE",
         }
-    # default CSV
+    # default CSV — PARSE_HEADER so INFER_SCHEMA uses header names (not C1/C2/C3)
     return {
-        "name": "DH_CSV_FF",
-        "ddl": "TYPE = CSV FIELD_DELIMITER = ',' SKIP_HEADER = 1 FIELD_OPTIONALLY_ENCLOSED_BY = '\"' NULL_IF = ('', 'NULL') ERROR_ON_COLUMN_COUNT_MISMATCH = FALSE",
-        "copy_options": "",
+        "name": "DH_CSV_HDR_FF",
+        "ddl": (
+            "TYPE = CSV FIELD_DELIMITER = ',' PARSE_HEADER = TRUE "
+            "FIELD_OPTIONALLY_ENCLOSED_BY = '\"' NULL_IF = ('', 'NULL') "
+            "ERROR_ON_COLUMN_COUNT_MISMATCH = FALSE"
+        ),
+        "copy_options": "MATCH_BY_COLUMN_NAME = CASE_INSENSITIVE",
     }
