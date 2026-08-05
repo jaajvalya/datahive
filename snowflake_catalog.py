@@ -811,3 +811,63 @@ def file_format_for_extension(ext: str) -> dict[str, str]:
         ),
         "copy_options": "MATCH_BY_COLUMN_NAME = CASE_INSENSITIVE",
     }
+
+
+def _json_cell(value: Any) -> Any:
+    from datetime import date, datetime, time
+    from decimal import Decimal
+
+    if value is None:
+        return None
+    if isinstance(value, (bool, int, float, str)):
+        return value
+    if isinstance(value, Decimal):
+        return float(value)
+    if isinstance(value, (datetime, date, time)):
+        return value.isoformat()
+    if isinstance(value, (bytes, bytearray, memoryview)):
+        return bytes(value).hex()
+    return str(value)
+
+
+def execute_sql_query_for_doc(doc: dict[str, Any], sql: str, *, max_rows: int = 1000) -> dict[str, Any]:
+    """Run one read-only SQL statement against Snowflake; returns columns + rows."""
+    import postgres_store
+
+    statement = postgres_store._assert_readonly_sql(sql)
+    capped = min(max(int(max_rows), 1), 10_000)
+    conn = None
+    try:
+        conn = open_connection(doc)
+        with conn.cursor() as cur:
+            prepare_session(cur, doc)
+            cur.execute(statement)
+            if cur.description is None:
+                return {
+                    "columns": [],
+                    "rows": [],
+                    "row_count": 0,
+                    "truncated": False,
+                    "max_rows": capped,
+                    "platform": "snowflake",
+                }
+            columns = [d[0] for d in cur.description]
+            fetched = cur.fetchmany(capped + 1)
+            truncated = len(fetched) > capped
+            if truncated:
+                fetched = fetched[:capped]
+            rows = [[_json_cell(cell) for cell in row] for row in fetched]
+            return {
+                "columns": columns,
+                "rows": rows,
+                "row_count": len(rows),
+                "truncated": truncated,
+                "max_rows": capped,
+                "platform": "snowflake",
+            }
+    finally:
+        if conn is not None:
+            try:
+                conn.close()
+            except Exception:  # noqa: BLE001
+                pass

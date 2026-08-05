@@ -74,6 +74,7 @@ class SqlQueryIn(BaseModel):
     max_rows: int = Field(default=1000, ge=1, le=10_000)
     schema: str | None = None
     table: str | None = None
+    connector_id: str | None = None
 
 
 class ConnectionLogIn(BaseModel):
@@ -641,6 +642,80 @@ def _asset_matches_schema(asset: dict[str, Any], schema: str) -> bool:
     return wanted in candidates
 
 
+def _catalog_table_items(
+    catalog: dict[str, Any],
+    schema: str,
+    *,
+    include_columns: bool = False,
+) -> list[dict[str, Any]]:
+    items: list[dict[str, Any]] = []
+    for a in catalog.get("items") or []:
+        if not _asset_matches_schema(a, schema):
+            continue
+        if a.get("name") == "snowflake_catalog_error":
+            continue
+        if str(a.get("type") or "") in {"Schema", "API", "Scope", "File"}:
+            continue
+        row = {
+            "name": a["name"],
+            "type": a.get("type") or "Table",
+            "connector_id": a.get("connector_id"),
+            "connector_name": a.get("connector_name"),
+            "platform": a.get("platform"),
+            "structure_supported": a.get("structure_supported"),
+            "crumb": a.get("crumb"),
+            "database": a.get("database"),
+            "schema": a.get("schema"),
+        }
+        if include_columns and a.get("columns") is not None:
+            row["columns"] = a.get("columns")
+        items.append(row)
+    return items
+
+
+def _resolve_structure_connector(
+    user: str,
+    role: str | None,
+    schema: str,
+    table: str,
+    connector_id: str | None,
+) -> str:
+    """Pick the connector that owns schema[.table] when Insights omits connector_id."""
+    if connector_id and connector_id not in ("all",):
+        return connector_id
+    catalog = asset_catalog.build_catalog(user, role=role, connector_id="all")
+    schema_assets = [
+        a
+        for a in catalog.get("items") or []
+        if _asset_matches_schema(a, schema) and a.get("connector_id")
+    ]
+    matches = schema_assets
+    if (table or "").strip():
+        table_l = (table or "").strip().lower()
+        exact = [
+            a for a in schema_assets if str(a.get("name") or "").lower() == table_l
+        ]
+        if exact:
+            matches = exact
+    if matches:
+        # Prefer Snowflake/live structure when multiple connectors share a name.
+        matches.sort(
+            key=lambda a: (
+                0 if str(a.get("platform") or "").lower() == "snowflake" else 1,
+                0 if a.get("structure_supported") else 1,
+            )
+        )
+        return str(matches[0]["connector_id"])
+    # Postgres medallion / local schemas
+    if "." not in (schema or ""):
+        return asset_catalog.LOCAL_POSTGRES_ID
+    raise ValueError(
+        f"Could not resolve connector for {schema}"
+        + (f".{table}" if table else "")
+        + ". Select a connector in Insights or Assets first."
+    )
+
+
 @app.get("/api/assets/tables")
 def assets_tables(
     request: Request,
@@ -650,58 +725,62 @@ def assets_tables(
     user = _resolve_user(request)
     role = _resolve_role(request)
     try:
-        if not connector_id or connector_id in ("all", asset_catalog.LOCAL_POSTGRES_ID):
-            # For "all", still list Postgres tables for the selected schema when it exists there.
-            if not connector_id or connector_id == asset_catalog.LOCAL_POSTGRES_ID:
-                items = postgres_store.list_tables(schema)
-                return {
-                    "schema": schema,
-                    "count": len(items),
-                    "items": items,
-                    "connector_id": asset_catalog.LOCAL_POSTGRES_ID,
-                    "structure_supported": True,
-                }
-            catalog = asset_catalog.build_catalog(user, role=role, connector_id="all")
-            items = [
-                {
-                    "name": a["name"],
-                    "type": a.get("type") or "Table",
-                    "connector_id": a.get("connector_id"),
-                    "connector_name": a.get("connector_name"),
-                    "platform": a.get("platform"),
-                    "structure_supported": a.get("structure_supported"),
-                    "crumb": a.get("crumb"),
-                }
-                for a in catalog["items"]
-                if _asset_matches_schema(a, schema)
-            ]
+        # Explicit Local Postgres only.
+        if connector_id == asset_catalog.LOCAL_POSTGRES_ID:
+            items = postgres_store.list_tables(schema)
             return {
                 "schema": schema,
                 "count": len(items),
                 "items": items,
+                "connector_id": asset_catalog.LOCAL_POSTGRES_ID,
+                "platform": "postgres",
+                "structure_supported": True,
+            }
+
+        # Default / all: unified catalog (Postgres + Snowflake + …).
+        # Do NOT force Snowflake DB.SCHEMA labels through postgres_store.
+        if not connector_id or connector_id == "all":
+            catalog = asset_catalog.build_catalog(user, role=role, connector_id="all")
+            items = _catalog_table_items(catalog, schema)
+            if items:
+                platforms = sorted(
+                    {str(i.get("platform") or "") for i in items if i.get("platform")}
+                )
+                return {
+                    "schema": schema,
+                    "count": len(items),
+                    "items": items,
+                    "connector_id": "all",
+                    "platforms": platforms,
+                    "structure_supported": any(i.get("structure_supported") for i in items),
+                }
+            # Fallback: pure Postgres schema not yet in annotated catalog.
+            if "." not in (schema or ""):
+                try:
+                    items = postgres_store.list_tables(schema)
+                    return {
+                        "schema": schema,
+                        "count": len(items),
+                        "items": items,
+                        "connector_id": asset_catalog.LOCAL_POSTGRES_ID,
+                        "platform": "postgres",
+                        "structure_supported": True,
+                    }
+                except ValueError:
+                    pass
+            return {
+                "schema": schema,
+                "count": 0,
+                "items": [],
                 "connector_id": "all",
-                "structure_supported": any(i.get("structure_supported") for i in items),
+                "structure_supported": False,
+                "note": f"No tables found for schema '{schema}' across connectors.",
             }
 
         catalog = asset_catalog.build_catalog(
             user, role=role, connector_id=connector_id
         )
-        items = [
-            {
-                "name": a["name"],
-                "type": a.get("type") or "Table",
-                "connector_id": a.get("connector_id"),
-                "connector_name": a.get("connector_name"),
-                "platform": a.get("platform"),
-                "structure_supported": a.get("structure_supported"),
-                "crumb": a.get("crumb"),
-                "columns": a.get("columns"),
-            }
-            for a in catalog["items"]
-            if _asset_matches_schema(a, schema)
-            and a.get("name") != "snowflake_catalog_error"
-            and str(a.get("type") or "") not in {"Schema", "API", "Scope", "File"}
-        ]
+        items = _catalog_table_items(catalog, schema, include_columns=True)
         note = None
         if not items:
             platform = None
@@ -738,7 +817,10 @@ def assets_structure(
     user = _resolve_user(request)
     role = _resolve_role(request)
     try:
-        if not connector_id or connector_id in ("all", asset_catalog.LOCAL_POSTGRES_ID):
+        resolved_id = _resolve_structure_connector(
+            user, role, schema, table, connector_id
+        )
+        if resolved_id == asset_catalog.LOCAL_POSTGRES_ID:
             structure = postgres_store.table_structure(schema, table)
             structure["connector_id"] = asset_catalog.LOCAL_POSTGRES_ID
             structure["connector_name"] = "Local Postgres"
@@ -747,7 +829,7 @@ def assets_structure(
         return asset_catalog.connector_structure(
             user,
             role=role,
-            connector_id=connector_id,
+            connector_id=resolved_id,
             schema=schema,
             table=table,
         )
@@ -757,16 +839,124 @@ def assets_structure(
         raise HTTPException(status_code=503, detail=f"Asset structure failed: {exc}") from exc
 
 
+def _looks_like_snowflake_sql(sql: str, schema: str | None) -> bool:
+    """True for Snowflake 3-part refs or catalog schemas like SALES_DB.RAW."""
+    if schema and "." in schema:
+        return True
+    text = sql or ""
+    # "DB"."SCHEMA"."TABLE" or DB.SCHEMA.TABLE
+    if re.search(
+        r'(?:"[^"]+"|[A-Za-z_][\w$]*)\s*\.\s*(?:"[^"]+"|[A-Za-z_][\w$]*)\s*\.\s*(?:"[^"]+"|[A-Za-z_][\w$]*)',
+        text,
+    ):
+        return True
+    return False
+
+
+def _resolve_snowflake_connector_id(
+    user: str,
+    role: str | None,
+    schema: str | None,
+    table: str | None,
+    connector_id: str | None,
+) -> str | None:
+    """Resolve a real Snowflake connector_dtls id (skip glossary: stubs)."""
+    candidates: list[str] = []
+    if connector_id and connector_id not in ("all", asset_catalog.LOCAL_POSTGRES_ID):
+        candidates.append(connector_id)
+    if schema:
+        try:
+            resolved = _resolve_structure_connector(
+                user, role, schema, table or "", None
+            )
+            if resolved and resolved not in candidates:
+                candidates.append(resolved)
+        except ValueError:
+            pass
+    try:
+        by_platform = mongo_store.find_connector_by_platform("snowflake")
+    except RuntimeError:
+        by_platform = None
+    if by_platform and by_platform.get("id"):
+        candidates.append(str(by_platform["id"]))
+
+    for cid in candidates:
+        if not cid or str(cid).startswith("glossary:"):
+            continue
+        try:
+            doc = mongo_store.get_connector_document(str(cid), with_secrets=False)
+        except Exception:  # noqa: BLE001
+            doc = None
+        if not doc:
+            continue
+        cloud = str(doc.get("cloud") or doc.get("connector_type") or "").lower()
+        if cloud == "snowflake":
+            return str(cid)
+    return None
+
+
 @app.post("/api/sql/query")
 def sql_query(body: SqlQueryIn, request: Request) -> dict[str, Any]:
     user = _resolve_user(request, None)
-    database = postgres_store.postgres_database_name()
+    role = _resolve_role(request)
     schema = (body.schema or "").strip() or None
     table = (body.table or "").strip() or None
-    if not schema or not table:
-        inferred_schema, inferred_table = postgres_store.infer_query_schema_table(body.sql)
+    connector_id = (body.connector_id or "").strip() or None
+
+    # Always prefer SQL-inferred 3-part names (DATABASE.SCHEMA / TABLE) when present.
+    inferred_schema, inferred_table = postgres_store.infer_query_schema_table(body.sql)
+    if inferred_schema and "." in inferred_schema:
+        schema = inferred_schema
+        table = inferred_table or table
+    elif not schema or not table:
         schema = schema or inferred_schema
         table = table or inferred_table
+
+    platform = "postgres"
+    database = postgres_store.postgres_database_name()
+
+    # Explicit non-snowflake connector → Postgres (or that connector's platform).
+    explicit_platform = ""
+    if connector_id and connector_id not in ("all", asset_catalog.LOCAL_POSTGRES_ID):
+        if not str(connector_id).startswith("glossary:"):
+            try:
+                conn_doc = mongo_store.get_connector_document(
+                    connector_id, with_secrets=False
+                )
+            except Exception:  # noqa: BLE001
+                conn_doc = None
+            if conn_doc:
+                explicit_platform = str(
+                    conn_doc.get("cloud") or conn_doc.get("connector_type") or ""
+                ).lower()
+                if explicit_platform == "snowflake":
+                    platform = "snowflake"
+                    database = (
+                        (schema.split(".", 1)[0] if schema and "." in schema else None)
+                        or str(conn_doc.get("dataset_scope") or "SALES_DB")
+                    )
+                elif explicit_platform and explicit_platform not in {
+                    "postgres",
+                    "postgresql",
+                    "pg",
+                    "local",
+                }:
+                    # Unknown cloud connectors currently have no SQL runner — keep Postgres
+                    # only when the SQL is not clearly Snowflake-shaped.
+                    pass
+
+    if platform != "snowflake" and _looks_like_snowflake_sql(body.sql, schema):
+        sf_id = _resolve_snowflake_connector_id(
+            user, role, schema, table, connector_id
+        )
+        if sf_id:
+            connector_id = sf_id
+            platform = "snowflake"
+            database = (
+                schema.split(".", 1)[0]
+                if schema and "." in schema
+                else "SALES_DB"
+            )
 
     query_start_time = datetime.now(timezone.utc)
     status = "success"
@@ -774,8 +964,25 @@ def sql_query(body: SqlQueryIn, request: Request) -> dict[str, Any]:
     row_count: int | None = None
     result: dict[str, Any] | None = None
     try:
-        result = postgres_store.execute_sql_query(body.sql, max_rows=body.max_rows)
+        if _looks_like_snowflake_sql(body.sql, schema) and platform != "snowflake":
+            raise ValueError(
+                "This SQL looks like a Snowflake query "
+                f"({schema + '.' + table if schema and table else '3-part table name'}), "
+                "but no Snowflake connector is available. "
+                "Save/select the SFSALESDB connector in Insights."
+            )
+        if platform == "snowflake":
+            if not connector_id:
+                raise ValueError("Snowflake connector_id is required for this query.")
+            doc = snowflake_catalog.load_connector_doc(connector_id)
+            result = snowflake_catalog.execute_sql_query_for_doc(
+                doc, body.sql, max_rows=body.max_rows
+            )
+        else:
+            result = postgres_store.execute_sql_query(body.sql, max_rows=body.max_rows)
+            result["platform"] = "postgres"
         row_count = result.get("row_count")
+        result["connector_id"] = connector_id or asset_catalog.LOCAL_POSTGRES_ID
         return result
     except ValueError as exc:
         status = "failure"
@@ -784,13 +991,16 @@ def sql_query(body: SqlQueryIn, request: Request) -> dict[str, Any]:
     except Exception as exc:  # noqa: BLE001
         status = "failure"
         error_message = str(exc)
-        raise HTTPException(status_code=503, detail=f"PostgreSQL query failed: {exc}") from exc
+        label = "Snowflake" if platform == "snowflake" else "PostgreSQL"
+        raise HTTPException(status_code=503, detail=f"{label} query failed: {exc}") from exc
     finally:
         query_end_time = datetime.now(timezone.utc)
         mongo_store.append_query_log(
             {
                 "user": user,
                 "source": "insights",
+                "platform": platform,
+                "connector_id": connector_id,
                 "database": database,
                 "schema": schema,
                 "table": table,

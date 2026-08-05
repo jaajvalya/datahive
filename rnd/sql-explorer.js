@@ -1,5 +1,6 @@
 /**
- * SQL workbench — schema tree, query editor, results (PostgreSQL via connector API).
+ * SQL workbench — schema tree, query editor, results.
+ * Supports Local Postgres and Snowflake (and other catalog connectors) via connector API.
  */
 (function (global) {
   "use strict";
@@ -73,18 +74,70 @@
     return '"' + String(part).replace(/"/g, '""') + '"';
   }
 
-  function qualifiedTable(schema, table) {
-    return quoteIdent(schema) + "." + quoteIdent(table);
+  function qualifiedTable(schema, table, platform) {
+    var parts = [];
+    var sch = String(schema || "");
+    // Snowflake schemas are labeled DATABASE.SCHEMA in the catalog.
+    if (
+      String(platform || "").toLowerCase() === "snowflake" ||
+      (sch.indexOf(".") >= 0 && String(platform || "").toLowerCase() !== "postgres")
+    ) {
+      sch.split(".").forEach(function (p) {
+        if (p) parts.push(p);
+      });
+    } else if (sch) {
+      parts.push(sch);
+    }
+    if (table) parts.push(table);
+    return parts.map(quoteIdent).join(".");
+  }
+
+  /** Parse first FROM/JOIN target; supports Snowflake DB.SCHEMA.TABLE. */
+  function parseSqlTarget(sql) {
+    var text = String(sql || "");
+    var three = text.match(
+      /\b(?:FROM|JOIN)\s+(?:"([^"]+)"|([A-Za-z_][\w$]*))\s*\.\s*(?:"([^"]+)"|([A-Za-z_][\w$]*))\s*\.\s*(?:"([^"]+)"|([A-Za-z_][\w$]*))/i
+    );
+    if (three) {
+      var db = three[1] || three[2];
+      var sch = three[3] || three[4];
+      var tbl = three[5] || three[6];
+      return {
+        schema: db + "." + sch,
+        table: tbl,
+        platform: "snowflake",
+      };
+    }
+    var two = text.match(
+      /\b(?:FROM|JOIN)\s+(?:"([^"]+)"|([A-Za-z_][\w$]*))\s*\.\s*(?:"([^"]+)"|([A-Za-z_][\w$]*))/i
+    );
+    if (two) {
+      return {
+        schema: two[1] || two[2],
+        table: two[3] || two[4],
+        platform: "",
+      };
+    }
+    return { schema: null, table: null, platform: "" };
   }
 
   var state = {
     initialized: false,
     lastResult: null,
     treeLoaded: false,
+    connectorId: "all",
+    activePlatform: "",
+    activeConnectorId: "",
   };
 
   function $(sel) {
     return document.querySelector(sel);
+  }
+
+  function selectedConnectorId() {
+    var sel = $("#sqlConnectorSelect");
+    if (sel && sel.value) return sel.value;
+    return state.connectorId || "all";
   }
 
   function setStatus(msg, isErr) {
@@ -133,13 +186,16 @@
       note =
         '<p class="sql-results-note">Showing first ' +
         result.max_rows +
-        " rows (result truncated).</p>";
+        " rows (result truncated)" +
+        (result.platform ? " · " + escapeHtml(result.platform) : "") +
+        ".</p>";
     } else {
       note =
         '<p class="sql-results-note">' +
         result.row_count +
         " row" +
         (result.row_count === 1 ? "" : "s") +
+        (result.platform ? " · " + escapeHtml(result.platform) : "") +
         "</p>";
     }
     wrap.innerHTML =
@@ -206,14 +262,40 @@
           );
         }
       }
+      var parsed = parseSqlTarget(sql);
+      var schema = parsed.schema || state.activeSchema || null;
+      var table = parsed.table || state.activeTable || null;
+      var connectorId =
+        state.activeConnectorId ||
+        (selectedConnectorId() !== "all" ? selectedConnectorId() : "");
+      // Prefer Snowflake connector when SQL is clearly 3-part / catalog DB.SCHEMA.
+      if ((!connectorId || connectorId === "all") && parsed.platform === "snowflake") {
+        var sel = $("#sqlConnectorSelect");
+        if (sel) {
+          for (var i = 0; i < sel.options.length; i++) {
+            var opt = sel.options[i];
+            var label = (opt.textContent || "").toLowerCase();
+            if (label.indexOf("snowflake") >= 0 || label.indexOf("sfsales") >= 0) {
+              connectorId = opt.value;
+              break;
+            }
+          }
+        }
+      }
       var result = await fetchJson("/api/sql/query", {
         method: "POST",
         headers: headers(),
-        body: JSON.stringify({ sql: sql, max_rows: 1000 }),
+        body: JSON.stringify({
+          sql: sql,
+          max_rows: 1000,
+          connector_id: connectorId && connectorId !== "all" ? connectorId : null,
+          schema: schema,
+          table: table,
+        }),
       });
       state.lastResult = result;
       renderResultsTable(result);
-      setStatus("Done.");
+      setStatus("Done" + (result.platform ? " (" + result.platform + ")" : "") + ".");
       var dl = $("#sqlDownloadBtn");
       if (dl) dl.disabled = !(result.rows && result.rows.length);
     } catch (err) {
@@ -262,17 +344,54 @@
     if (root) root.innerHTML = '<li class="sql-tree-empty">' + escapeHtml(msg) + "</li>";
   }
 
+  async function loadConnectorOptions() {
+    var sel = $("#sqlConnectorSelect");
+    if (!sel || typeof global.DataHiveAssets === "undefined") return;
+    try {
+      var data = await global.DataHiveAssets.connectors();
+      var items = (data && data.items) || [];
+      var current = sel.value || "all";
+      sel.innerHTML =
+        '<option value="all">All connectors</option>' +
+        items
+          .map(function (c) {
+            var label =
+              (c.display_name || c.id) +
+              (c.platform || c.cloud ? " · " + (c.platform || c.cloud) : "");
+            return (
+              '<option value="' +
+              escapeHtml(c.id) +
+              '">' +
+              escapeHtml(label) +
+              "</option>"
+            );
+          })
+          .join("");
+      if ([].some.call(sel.options, function (o) { return o.value === current; })) {
+        sel.value = current;
+      }
+      state.connectorId = sel.value || "all";
+    } catch (_e) {
+      /* keep default All */
+    }
+  }
+
   async function loadSchemasTree() {
-    if (state.treeLoaded) return;
     renderTreePlaceholder("Loading schemas…");
     try {
       if (typeof global.DataHiveAssets === "undefined") {
         throw new Error("assets.js is not loaded.");
       }
-      var data = await global.DataHiveAssets.schemas();
+      var connectorId = selectedConnectorId();
+      var data = await global.DataHiveAssets.schemas(connectorId);
       var schemas = (data && data.items) || [];
       if (!schemas.length) {
-        renderTreePlaceholder("No schemas found. Check POSTGRES_ASSET_SCHEMAS in .env.");
+        renderTreePlaceholder(
+          connectorId === "all"
+            ? "No schemas found across connectors."
+            : "No schemas for this connector."
+        );
+        state.treeLoaded = true;
         return;
       }
       var root = $("#sqlCatalogTree");
@@ -299,7 +418,10 @@
     }
   }
 
+  var treeBound = false;
   function bindTreeEvents(root) {
+    if (treeBound) return;
+    treeBound = true;
     root.addEventListener("click", async function (e) {
       var schemaBtn = e.target.closest(".sql-tree-toggle[data-schema]");
       if (schemaBtn && !schemaBtn.dataset.table) {
@@ -326,11 +448,17 @@
       e.preventDefault();
       var schema = tableBtn.dataset.schema;
       var table = tableBtn.dataset.table;
+      var platform = tableBtn.dataset.platform || "";
+      var connectorId = tableBtn.dataset.connectorId || "";
+      state.activeSchema = schema;
+      state.activeTable = table;
+      state.activePlatform = platform;
+      state.activeConnectorId = connectorId;
       var ta = $("#sqlEditor");
       if (ta) {
         ta.value =
           "SELECT *\nFROM " +
-          qualifiedTable(schema, table) +
+          qualifiedTable(schema, table, platform) +
           "\nLIMIT 100;";
       }
     });
@@ -356,21 +484,30 @@
     }
     childUl.innerHTML = '<li class="sql-tree-empty">Loading tables…</li>';
     try {
-      var data = await global.DataHiveAssets.tables(schema);
+      var data = await global.DataHiveAssets.tables(schema, selectedConnectorId());
       var items = (data && data.items) || [];
       if (!items.length) {
-        childUl.innerHTML = '<li class="sql-tree-empty">No tables in this schema.</li>';
+        childUl.innerHTML =
+          '<li class="sql-tree-empty">' +
+          escapeHtml((data && data.note) || "No tables in this schema.") +
+          "</li>";
         return;
       }
       childUl.innerHTML = items
         .map(function (t) {
           var name = t.name;
           var kind = t.type || "Table";
+          var platform = t.platform || "";
+          var connectorId = t.connector_id || "";
           return treeNode(
             '<button type="button" class="sql-tree-toggle" data-schema="' +
               escapeHtml(schema) +
               '" data-table="' +
               escapeHtml(name) +
+              '" data-platform="' +
+              escapeHtml(platform) +
+              '" data-connector-id="' +
+              escapeHtml(connectorId) +
               '" aria-expanded="false">' +
               '<span class="chev">▸</span> <span class="ic">' +
               (kind === "View" ? "👁" : "▦") +
@@ -378,6 +515,7 @@
               escapeHtml(name) +
               ' <span class="sql-tree-meta">' +
               escapeHtml(kind) +
+              (platform ? " · " + escapeHtml(platform) : "") +
               "</span></button>",
             "table",
             "",
@@ -394,6 +532,12 @@
   async function toggleTable(btn) {
     var schema = btn.dataset.schema;
     var table = btn.dataset.table;
+    var platform = btn.dataset.platform || "";
+    var connectorId = btn.dataset.connectorId || selectedConnectorId();
+    state.activeSchema = schema;
+    state.activeTable = table;
+    state.activePlatform = platform;
+    state.activeConnectorId = connectorId === "all" ? "" : connectorId;
     var expanded = btn.getAttribute("aria-expanded") === "true";
     var li = btn.closest(".sql-tree-node");
     var childUl = li && li.querySelector(":scope > .sql-tree-children");
@@ -412,8 +556,14 @@
     }
     childUl.innerHTML = '<li class="sql-tree-empty">Loading columns…</li>';
     try {
-      var data = await global.DataHiveAssets.structure(schema, table);
+      var data = await global.DataHiveAssets.structure(
+        schema,
+        table,
+        connectorId && connectorId !== "all" ? connectorId : undefined
+      );
       var cols = (data && data.columns) || [];
+      if (data && data.platform) state.activePlatform = data.platform;
+      if (data && data.connector_id) state.activeConnectorId = data.connector_id;
       if (!cols.length) {
         childUl.innerHTML = '<li class="sql-tree-empty">No columns.</li>';
         return;
@@ -456,6 +606,16 @@
         }
       });
     }
+    var sel = $("#sqlConnectorSelect");
+    if (sel) {
+      sel.addEventListener("change", function () {
+        state.connectorId = sel.value || "all";
+        state.activeConnectorId = state.connectorId === "all" ? "" : state.connectorId;
+        state.treeLoaded = false;
+        treeBound = false;
+        loadSchemasTree();
+      });
+    }
   }
 
   async function probeSqlApi() {
@@ -484,15 +644,18 @@
     }
   }
 
-  function initSqlView() {
+  async function initSqlView() {
     if (!state.initialized) {
       bindWorkbench();
       state.initialized = true;
     }
-    loadSchemasTree();
+    await loadConnectorOptions();
+    state.treeLoaded = false;
+    treeBound = false;
+    await loadSchemasTree();
     probeSqlApi();
     setResultsMessage(
-      '<div class="sql-results-empty">Run a query to see results here. Double-click a table in the tree for a starter SELECT.</div>'
+      '<div class="sql-results-empty">Run a query to see results here. Pick a connector (or All), expand a schema, then double-click a table for a starter SELECT.</div>'
     );
   }
 

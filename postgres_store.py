@@ -964,6 +964,13 @@ def _strip_sql_comments(sql: str) -> str:
     return _SQL_COMMENT_LINE.sub(" ", without_block)
 
 
+_THREE_PART_TABLE_REF = re.compile(
+    r"\b(?:FROM|JOIN)\s+"
+    r'(?:"([^"]+)"|([a-zA-Z_][\w$]*))\s*\.\s*'
+    r'(?:"([^"]+)"|([a-zA-Z_][\w$]*))\s*\.\s*'
+    r'(?:"([^"]+)"|([a-zA-Z_][\w$]*))',
+    re.IGNORECASE,
+)
 _QUALIFIED_TABLE_REF = re.compile(
     r"\b(?:FROM|JOIN)\s+"
     r'(?:"([^"]+)"|([a-zA-Z_][\w$]*))\s*\.\s*'
@@ -977,8 +984,17 @@ _UNQUALIFIED_FROM_REF = re.compile(
 
 
 def infer_query_schema_table(sql: str) -> tuple[str | None, str | None]:
-    """Best-effort schema/table from the first FROM/JOIN reference in SQL."""
+    """Best-effort schema/table from the first FROM/JOIN reference in SQL.
+
+    Snowflake 3-part names (DATABASE.SCHEMA.TABLE) return schema as DATABASE.SCHEMA.
+    """
     normalized = _strip_sql_comments(sql.strip().rstrip(";"))
+    match = _THREE_PART_TABLE_REF.search(normalized)
+    if match:
+        database = match.group(1) or match.group(2)
+        schema = match.group(3) or match.group(4)
+        table = match.group(5) or match.group(6)
+        return f"{database}.{schema}", table
     match = _QUALIFIED_TABLE_REF.search(normalized)
     if match:
         schema = match.group(1) or match.group(2)
