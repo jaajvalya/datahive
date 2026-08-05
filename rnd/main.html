@@ -26,7 +26,7 @@
   html,body { margin:0; padding:0; }
   body {
     font-family:"Manrope",-apple-system,"Segoe UI",Roboto,sans-serif;
-    color:var(--ink-700); background:var(--gray-150);
+    color:var(--ink-700); background:var(--gray-100);
     -webkit-font-smoothing:antialiased;
   }
   a { color:var(--blue-600); text-decoration:none; }
@@ -38,6 +38,12 @@
     display:flex; align-items:center; gap:16px;
     padding:0 20px; background:var(--white);
     border-bottom:1px solid var(--gray-200);
+    box-shadow:0 1px 0 rgba(24,41,120,.04);
+  }
+  header.topbar::after {
+    content:""; position:absolute; left:0; right:0; bottom:0; height:2px;
+    background:linear-gradient(90deg, var(--navy-900), var(--navy-700) 45%, var(--orange-500));
+    opacity:.9;
   }
   .brand-logo { display:flex; align-items:center; gap:24px; }
   .brand-logo-img { height:40px; width:auto; display:block; }
@@ -82,17 +88,58 @@
     background:var(--orange-500); border-radius:0 3px 3px 0; }
 
   /* ---------- Body ---------- */
-  main.body { flex:1 1 auto; width:99%; max-width:none; margin:0; padding:20px 1% 40px; background:var(--white); }
+  main.body { flex:1 1 auto; width:99%; max-width:none; margin:0; padding:20px 1% 40px; background:var(--gray-100); }
 
-  .stage { width:99%; margin:0 auto; text-align:center; }
+  /* Shared ACL Digital page hero (Insights look applied app-wide) */
+  .acl-hero, .rpt-hero {
+    position:relative; overflow:hidden; border-radius:16px;
+    background:linear-gradient(118deg, #182978 0%, #0056A7 48%, #046BD2 100%);
+    color:#fff; padding:28px 28px 26px; box-shadow:var(--shadow);
+    text-align:left; width:100%;
+  }
+  .acl-hero::after, .rpt-hero::after {
+    content:""; position:absolute; right:-40px; top:-40px; width:220px; height:220px;
+    border-radius:40% 60% 55% 45%; background:rgba(255,103,31,.22); filter:blur(2px);
+  }
+  .acl-hero-copy, .rpt-hero-copy { position:relative; z-index:1; max-width:640px; }
+  .acl-hero-mark, .rpt-hero-mark {
+    position:absolute; right:28px; bottom:18px; z-index:1;
+    width:72px; height:72px; border-radius:18px;
+    background:linear-gradient(145deg, rgba(255,103,31,.95), rgba(255,255,255,.12));
+    box-shadow:0 10px 28px rgba(1,8,24,.25);
+    border:1px solid rgba(255,255,255,.28);
+  }
+  .acl-hero-mark::after, .rpt-hero-mark::after {
+    content:""; position:absolute; inset:14px;
+    border:2px solid rgba(255,255,255,.85); border-radius:10px;
+    border-left-color:transparent; border-bottom-color:transparent;
+    transform:rotate(45deg);
+  }
+  .acl-hero h1, .rpt-hero h1 {
+    margin:0 0 8px; font-size:28px; font-weight:800; letter-spacing:-.02em; color:#fff;
+  }
+  .acl-hero p, .rpt-hero p { margin:0; font-size:14px; line-height:1.5; color:rgba(255,255,255,.88); }
+  .acl-hero.with-search { padding-bottom:22px; }
+  .acl-hero .searchwrap { margin-top:16px; position:relative; z-index:2; max-width:720px; }
+  .acl-hero .discover {
+    display:inline-block; margin-top:12px; position:relative; z-index:2;
+    color:#fff; font-weight:600; font-size:13.5px; opacity:.95;
+  }
+  .acl-hero .discover:hover { color:#ffd9c6; }
+  @media (max-width:720px) {
+    .acl-hero-mark, .rpt-hero-mark { display:none; }
+  }
+
+  .page-stack { width:99%; margin:0 auto; text-align:left; display:flex; flex-direction:column; gap:14px; }
+  .stage { width:99%; margin:0 auto; text-align:center; display:flex; flex-direction:column; gap:14px; }
   .eyebrow { margin:0 0 10px; font-size:12px; font-weight:700; letter-spacing:.08em;
     text-transform:uppercase; color:var(--navy-700); }
   .stage > h1 { margin:0 0 8px; font-size:clamp(26px,3.5vw,32px); font-weight:700; color:var(--ink-900); letter-spacing:-.02em; }
   .sub { margin:0 auto 28px; max-width:720px; color:var(--ink-700); font-size:15px; line-height:1.5; }
 
   .instr-card {
-    margin:0 auto 24px; width:99%; max-width:none; text-align:left;
-    background:var(--white); border:1px solid var(--gray-200); border-radius:var(--radius);
+    margin:0; width:100%; max-width:none; text-align:left;
+    background:var(--white); border:1px solid var(--gray-200); border-radius:14px;
     box-shadow:var(--shadow);
   }
   .instr-card .instr-hd { padding:16px 22px 0; }
@@ -103,12 +150,12 @@
 
   .cloud-grid {
     display:grid; grid-template-columns:repeat(auto-fill,minmax(170px,1fr)); gap:14px;
-    margin:6px auto 0; width:99%; max-width:none;
+    margin:0; width:100%; max-width:none;
   }
 
   .cloud-btn {
     appearance:none; border:1px solid var(--gray-200); background:var(--white);
-    border-radius:var(--radius); padding:24px 12px; cursor:pointer; box-shadow:var(--shadow);
+    border-radius:14px; padding:24px 12px; cursor:pointer; box-shadow:var(--shadow);
     transition:border-color .15s, box-shadow .15s, transform .15s;
     display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; width:100%;
     text-align:center;
@@ -122,8 +169,8 @@
   .cloud-btn .hint { font-size:11.5px; color:#8a93a3; font-weight:500; }
 
   .recent-conn {
-    margin: 22px auto 0; width: 99%; max-width: none; text-align: left;
-    background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius);
+    margin: 0; width: 100%; max-width: none; text-align: left;
+    background: var(--white); border: 1px solid var(--gray-200); border-radius: 14px;
     box-shadow: var(--shadow); overflow: hidden;
   }
   .recent-conn-hd {
@@ -291,23 +338,17 @@
   }
 
   /* ---------- Assets (from index-v2) ---------- */
-  .assets-pane { width: 100%; text-align: left; }
-  .hero { border-radius:16px; padding:26px 28px 30px;
-    background:linear-gradient(120deg,var(--navy-900),var(--navy-700));
-    color:#fff; position:relative; overflow:hidden; }
-  .hero::after { content:""; position:absolute; inset:0; opacity:.18; pointer-events:none;
-    background-image:linear-gradient(90deg,rgba(255,255,255,.25) 1px,transparent 1px),
-                     linear-gradient(rgba(255,255,255,.18) 1px,transparent 1px);
-    background-size:34px 34px; mask-image:linear-gradient(90deg,transparent,#000 60%); }
-  .hero h1 { margin:0 0 16px; font-size:28px; font-weight:600; display:flex; align-items:center; gap:10px; }
+  .assets-pane { width: 99%; margin:0 auto; text-align: left; display:flex; flex-direction:column; gap:14px; }
   .searchwrap { position:relative; z-index:2; }
   .searchbar { display:flex; align-items:center; gap:10px; background:#fff; border-radius:10px;
     padding:12px 14px; box-shadow:var(--shadow); }
-  .searchbar .mk { font-weight:800; color:var(--navy-900); font-size:14px; }
+  .searchbar .mk {
+    font-weight:800; font-size:14px; letter-spacing:-.02em;
+    background:linear-gradient(120deg, var(--acl-blue-deep) 0%, var(--acl-blue) 42%, var(--acl-blue-bright) 100%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
   .searchbar input { flex:1; border:none; outline:none; font-family:inherit; font-size:15px; color:var(--ink-900); }
   .searchbar input::placeholder { color:#9aa3b2; }
-  .hero .discover { display:block; text-align:right; margin-top:10px; color:#fff; font-weight:500; opacity:.95; }
-  .hero .discover:hover { color:#ffd9c6; }
   .searchresults { position:absolute; left:0; right:0; top:calc(100% + 6px); z-index:5; background:#fff;
     border:1px solid var(--gray-200); border-radius:10px; box-shadow:0 8px 24px rgba(1,8,24,.14);
     max-height:340px; overflow:auto; }
@@ -316,13 +357,21 @@
   .searchresults .r:last-child { border-bottom:none; }
   .searchresults .r:hover { background:var(--gray-100); }
   .searchresults .empty { padding:16px; color:var(--ink-700); font-size:14px; }
-  .assets-grid { display:grid; grid-template-columns:1fr; gap:20px; margin-top:20px; }
+  .assets-grid { display:grid; grid-template-columns:1fr; gap:14px; margin-top:0; }
   .asset-summary { display:flex; flex-wrap:wrap; gap:12px; margin-bottom:4px; }
-  .asset-summary-item { flex:1; min-width:160px; padding:12px 16px; border:1px solid var(--gray-200);
-    border-radius:10px; background:#fff; box-shadow:var(--shadow); }
-  .asset-summary-item .lbl { display:block; font-size:12.5px; font-weight:600; color:var(--ink-700); margin-bottom:6px; }
+  .asset-summary-item {
+    flex:1; min-width:160px; padding:12px 16px; border:1px solid var(--gray-200);
+    border-radius:14px; background:#fff; box-shadow:var(--shadow); position:relative; overflow:hidden;
+  }
+  .asset-summary-item::before {
+    content:""; position:absolute; left:0; top:0; bottom:0; width:4px; background:var(--orange-500);
+  }
+  .asset-summary-item .lbl {
+    display:block; font-size:11px; font-weight:800; letter-spacing:.06em; text-transform:uppercase;
+    color:#8a93a3; margin-bottom:6px;
+  }
   .asset-summary-item .val { font-size:24px; font-weight:800; color:var(--navy-700); line-height:1.1; }
-  .card { background:#fff; border:1px solid var(--gray-200); border-radius:var(--radius); box-shadow:var(--shadow); }
+  .card { background:#fff; border:1px solid var(--gray-200); border-radius:14px; box-shadow:var(--shadow); }
   .card .hd { padding:16px 18px 0; }
   .card h2 { margin:0; font-size:18px; font-weight:700; color:var(--ink-900); }
   .card .bd { padding:14px 18px 18px; }
@@ -418,13 +467,10 @@
   .structure-table tr.meta-row:last-child td { border-bottom:none; }
 
   /* ---------- SQL workbench ---------- */
-  .sql-pane { text-align:left; width:99%; margin:0 auto; }
-  .sql-pane-hd { margin-bottom:14px; }
-  .sql-pane-hd h1 { margin:0 0 6px; font-size:22px; font-weight:800; color:var(--ink-900); }
-  .sql-pane-hd p { margin:0; font-size:13.5px; color:#8a93a3; }
+  .sql-pane { text-align:left; width:99%; margin:0 auto; display:flex; flex-direction:column; gap:14px; }
   .sql-workbench {
-    display:flex; gap:0; min-height:calc(100vh - var(--header) - 120px);
-    border:1px solid var(--gray-200); border-radius:var(--radius); overflow:hidden;
+    display:flex; gap:0; min-height:calc(100vh - var(--header) - 180px);
+    border:1px solid var(--gray-200); border-radius:14px; overflow:hidden;
     box-shadow:var(--shadow); background:#fff;
   }
   .sql-tree-panel {
@@ -489,13 +535,11 @@
   }
 
   /* ---------- Admin ---------- */
-  .admin-pane { text-align:left; width:99%; margin:0 auto; }
-  .admin-pane-hd { margin-bottom:16px; }
-  .admin-pane-hd h1 { margin:0 0 6px; font-size:22px; font-weight:800; color:var(--ink-900); }
-  .admin-pane-hd p { margin:0; font-size:13.5px; color:#8a93a3; }
+  .admin-pane { text-align:left; width:99%; margin:0 auto; display:flex; flex-direction:column; gap:14px; }
   .admin-tabs {
-    display:flex; gap:4px; flex-wrap:wrap; margin-bottom:16px;
-    border-bottom:1px solid var(--gray-200); padding-bottom:0;
+    display:flex; gap:4px; flex-wrap:wrap; margin:0;
+    background:#fff; border:1px solid var(--gray-200); border-radius:14px;
+    box-shadow:var(--shadow); padding:4px 8px 0;
   }
   .admin-tab {
     appearance:none; border:none; background:transparent; cursor:pointer;
@@ -505,7 +549,7 @@
   .admin-tab:hover { color:var(--ink-900); }
   .admin-tab.active { color:var(--orange-500); border-bottom-color:var(--orange-500); }
   .admin-panel {
-    background:#fff; border:1px solid var(--gray-200); border-radius:var(--radius);
+    background:#fff; border:1px solid var(--gray-200); border-radius:14px;
     box-shadow:var(--shadow); overflow:hidden;
   }
   .admin-toolbar {
@@ -559,13 +603,10 @@
   .admin-modal.panel { margin:0; width:100%; max-width:560px; max-height:min(92vh,720px); overflow:auto; }
 
   /* ---------- ETL / ELT ---------- */
-  .etl-pane { text-align:left; width:99%; margin:0 auto; }
-  .etl-pane-hd { margin-bottom:16px; }
-  .etl-pane-hd h1 { margin:0 0 6px; font-size:22px; font-weight:800; color:var(--ink-900); }
-  .etl-pane-hd p { margin:0; font-size:13.5px; color:#8a93a3; }
+  .etl-pane { text-align:left; width:99%; margin:0 auto; display:flex; flex-direction:column; gap:14px; }
   .etl-card {
-    background:#fff; border:1px solid var(--gray-200); border-radius:var(--radius);
-    box-shadow:var(--shadow); margin-bottom:18px; overflow:hidden;
+    background:#fff; border:1px solid var(--gray-200); border-radius:14px;
+    box-shadow:var(--shadow); margin-bottom:0; overflow:hidden;
   }
   .etl-card .etl-hd {
     display:flex; align-items:center; gap:12px; padding:14px 18px;
@@ -609,16 +650,17 @@
   .etl-script-meta { margin:8px 0 0; font-size:12px; color:#8a93a3; }
 
   /* ---------- Glossary ---------- */
-  .glossary-pane { text-align:left; width:99%; margin:0 auto; }
-  .glossary-pane-hd { margin-bottom:16px; }
-  .glossary-pane-hd h1 { margin:0 0 6px; font-size:22px; font-weight:800; color:var(--ink-900); }
-  .glossary-pane-hd p { margin:0; font-size:13.5px; color:#8a93a3; }
+  .glossary-pane { text-align:left; width:99%; margin:0 auto; display:flex; flex-direction:column; gap:14px; }
   .glossary-steps {
-    display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:0 0 18px;
+    display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:0;
   }
   @media (max-width:800px) { .glossary-steps { grid-template-columns:1fr; } }
   .glossary-step {
-    border:1px solid var(--gray-200); border-radius:10px; padding:14px 16px; background:#fafbfd;
+    border:1px solid var(--gray-200); border-radius:14px; padding:14px 16px; background:#fff;
+    box-shadow:var(--shadow); position:relative; overflow:hidden;
+  }
+  .glossary-step::before {
+    content:""; position:absolute; left:0; top:0; bottom:0; width:4px; background:var(--orange-500);
   }
   .glossary-step .n {
     display:inline-flex; align-items:center; justify-content:center;
@@ -629,17 +671,15 @@
   .glossary-step p { margin:0; font-size:12.5px; color:#8a93a3; line-height:1.45; }
 
   /* ---------- Governance ---------- */
-  .gov-pane { text-align:left; width:99%; margin:0 auto; }
-  .gov-pane-hd { margin-bottom:16px; }
-  .gov-pane-hd h1 { margin:0 0 6px; font-size:22px; font-weight:800; color:var(--ink-900); }
-  .gov-pane-hd p { margin:0; font-size:13.5px; color:#8a93a3; }
+  .gov-pane { text-align:left; width:99%; margin:0 auto; display:flex; flex-direction:column; gap:14px; }
+  #govHome { display:flex; flex-direction:column; gap:14px; }
   .gov-grid {
     display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:14px;
   }
   .gov-tile {
     appearance:none; width:100%; text-align:left; font:inherit;
-    border:1px solid var(--gray-200); border-radius:var(--radius); background:#fff;
-    padding:22px 20px; cursor:pointer;
+    border:1px solid var(--gray-200); border-radius:14px; background:#fff;
+    padding:22px 20px; cursor:pointer; box-shadow:var(--shadow);
     transition:border-color .15s, box-shadow .15s, transform .15s;
   }
   .gov-tile:hover {
@@ -783,6 +823,158 @@
     font-size:12px; font-weight:700; padding:4px 10px; border-radius:999px;
     background:var(--gray-100); color:var(--navy-700);
   }
+  .gov-model-cols {
+    margin-top:8px; display:flex; flex-direction:column; gap:4px;
+  }
+  .gov-model-col {
+    display:flex; flex-wrap:wrap; align-items:center; gap:6px;
+    font-size:12px; color:var(--ink-900); line-height:1.35;
+  }
+  .gov-model-col .col-name { font-weight:700; font-family:ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .gov-model-col .col-type { color:#8a93a3; font-family:ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .gov-model-tag {
+    font-size:10px; font-weight:800; letter-spacing:.03em; text-transform:uppercase;
+    padding:2px 6px; border-radius:999px; background:var(--gray-100); color:#5b6575;
+  }
+  .gov-model-tag.pk { background:rgba(255,103,31,.14); color:var(--orange-500); }
+  .gov-model-tag.fk { background:rgba(47,109,180,.12); color:#2f6db4; }
+  .gov-model-tag.uq { background:rgba(31,169,113,.12); color:var(--ok); }
+  .gov-model-tag.nn { background:rgba(138,147,163,.16); color:#5b6575; }
+  .gov-model-tag.ck { background:rgba(120,80,180,.12); color:#6b46a8; }
+  .gov-model-constraints {
+    margin-top:6px; font-size:11.5px; color:#8a93a3; line-height:1.4;
+  }
+
+  /* ---------- Insights KPI dashboards ---------- */
+  .rpt-pane { text-align:left; width:99%; margin:0 auto; display:flex; flex-direction:column; gap:14px; }
+  .rpt-filters {
+    background:#fff; border:1px solid var(--gray-200); border-radius:14px; padding:16px 18px;
+    box-shadow:var(--shadow);
+  }
+  .rpt-filter-grid {
+    display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px;
+  }
+  @media (max-width:980px) {
+    .rpt-filter-grid { grid-template-columns:1fr 1fr; }
+  }
+  @media (max-width:640px) {
+    .rpt-filter-grid { grid-template-columns:1fr; }
+  }
+  .rpt-filter-actions {
+    display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-top:14px;
+  }
+  .rpt-status { font-size:12.5px; color:#8a93a3; }
+  .rpt-empty {
+    background:#fff; border:1px dashed #c9d7ea; border-radius:14px; padding:28px 22px;
+    color:#5b6575; font-size:14px; text-align:center;
+  }
+  .rpt-dashboard { display:flex; flex-direction:column; gap:14px; }
+  .rpt-kpi-row {
+    display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px;
+  }
+  @media (max-width:980px) {
+    .rpt-kpi-row { grid-template-columns:1fr 1fr; }
+  }
+  .rpt-kpi {
+    background:#fff; border:1px solid var(--gray-200); border-radius:14px; padding:16px 16px 14px;
+    box-shadow:var(--shadow); position:relative; overflow:hidden;
+  }
+  .rpt-kpi::before {
+    content:""; position:absolute; left:0; top:0; bottom:0; width:4px; background:var(--orange-500);
+  }
+  .rpt-kpi .lbl {
+    margin:0; font-size:11px; font-weight:800; letter-spacing:.06em; text-transform:uppercase;
+    color:#8a93a3;
+  }
+  .rpt-kpi .val {
+    margin:8px 0 4px; font-size:28px; font-weight:800; color:var(--navy-700); letter-spacing:-.02em;
+  }
+  .rpt-kpi .sub { margin:0; font-size:12px; color:#8a93a3; }
+  .rpt-kpi.accent .val { color:var(--orange-500); }
+  .rpt-slice-bar {
+    display:flex; flex-direction:column; gap:10px;
+    background:#fff; border:1px solid var(--gray-200); border-radius:14px; padding:12px 14px;
+  }
+  .rpt-slice-row {
+    display:flex; flex-wrap:wrap; align-items:center; gap:10px;
+  }
+  .rpt-slice-label {
+    font-size:11px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--navy-700);
+  }
+  .rpt-slice-modes { display:flex; flex-wrap:wrap; gap:6px; }
+  .rpt-mode {
+    border:1px solid #c9d7ea; background:#fff; color:var(--navy-700);
+    font-size:12px; font-weight:700; padding:6px 12px; border-radius:8px; cursor:pointer;
+  }
+  .rpt-mode:hover { border-color:var(--navy-700); }
+  .rpt-mode.active {
+    background:var(--navy-700); border-color:var(--navy-700); color:#fff;
+  }
+  .rpt-chips { display:flex; flex-wrap:wrap; gap:8px; }
+  .rpt-chip {
+    border:1px solid #c9d7ea; background:#f3f7fc; color:var(--navy-700);
+    font-size:12px; font-weight:700; padding:6px 12px; border-radius:999px; cursor:pointer;
+  }
+  .rpt-chip:hover { border-color:var(--orange-500); }
+  .rpt-chip.active {
+    background:var(--orange-500); border-color:var(--orange-500); color:#fff;
+  }
+  .rpt-charts {
+    display:grid; grid-template-columns:1.1fr 1fr; gap:12px;
+  }
+  .rpt-charts-secondary { grid-template-columns:1fr 1fr; }
+  @media (max-width:980px) {
+    .rpt-charts, .rpt-charts-secondary { grid-template-columns:1fr; }
+  }
+  .rpt-card {
+    background:#fff; border:1px solid var(--gray-200); border-radius:14px; padding:16px;
+    box-shadow:var(--shadow);
+  }
+  .rpt-card-hd h2 {
+    margin:0 0 4px; font-size:15px; font-weight:800; color:var(--ink-900);
+  }
+  .rpt-card-hd p { margin:0 0 12px; font-size:12.5px; color:#8a93a3; }
+  .rpt-chart-wrap { min-height:220px; }
+  .rpt-chart-wrap svg { width:100%; height:220px; display:block; }
+  .rpt-table-wrap { overflow:auto; }
+  .rpt-table { width:100%; border-collapse:collapse; font-size:13px; }
+  .rpt-table th, .rpt-table td {
+    padding:10px 12px; border-bottom:1px solid var(--gray-200); text-align:left;
+  }
+  .rpt-table th {
+    font-size:11px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:#8a93a3;
+    background:var(--gray-100);
+  }
+  .rpt-table .nm { font-weight:700; color:var(--navy-700); }
+  .rpt-table .num { text-align:right; font-variant-numeric:tabular-nums; }
+  .rpt-legend {
+    display:flex; flex-wrap:wrap; gap:10px 14px; margin-top:8px; font-size:11.5px; color:#5b6575;
+  }
+  .rpt-legend i {
+    display:inline-block; width:10px; height:10px; border-radius:2px; margin-right:6px; vertical-align:middle;
+  }
+  .rpt-c360 {
+    display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px;
+  }
+  @media (max-width:720px) {
+    .rpt-c360 { grid-template-columns:1fr; }
+  }
+  .rpt-c360-block {
+    background:linear-gradient(180deg, #f7fafc 0%, #fff 100%);
+    border:1px solid #e4ebf4; border-radius:12px; padding:12px;
+  }
+  .rpt-c360-block h3 {
+    margin:0 0 8px; font-size:11px; font-weight:800; letter-spacing:.06em;
+    text-transform:uppercase; color:var(--navy-700);
+  }
+  .rpt-c360-stat {
+    display:flex; justify-content:space-between; gap:8px;
+    font-size:12.5px; padding:5px 0; border-bottom:1px solid #eef2f7;
+  }
+  .rpt-c360-stat:last-child { border-bottom:0; }
+  .rpt-c360-stat .k { color:#5b6575; }
+  .rpt-c360-stat .v { font-weight:700; color:var(--ink-900); }
+  .rpt-muted { color:#8a93a3; font-size:13px; padding:12px 4px; }
 </style>
 </head>
 <body>
@@ -813,13 +1005,13 @@
       <a href="#" class="active" data-view="assets" aria-current="page"><span class="ic" aria-hidden="true"><i data-lucide="layers"></i></span>Assets</a>
       <a href="#" data-view="connectors"><span class="ic" aria-hidden="true"><i data-lucide="unplug"></i></span>Connectors</a>
       <a href="#" data-view="etl"><span class="ic" aria-hidden="true"><i data-lucide="arrow-left-right"></i></span>ETL/ELT</a>
-      <a href="#" data-view="insights"><span class="ic" aria-hidden="true"><i data-lucide="sparkles"></i></span>Insights</a>
+      <a href="#" data-view="reporting"><span class="ic" aria-hidden="true"><i data-lucide="sparkles"></i></span>Insights</a>
     </div>
     <div class="grp" style="margin-top:14px">
       <a href="#" data-view="glossary"><span class="ic" aria-hidden="true"><i data-lucide="book-text"></i></span>Glossary</a>
       <a href="#" data-view="governance"><span class="ic" aria-hidden="true"><i data-lucide="scale"></i></span>Governance</a>
       <a href="#" data-view="admin"><span class="ic" aria-hidden="true"><i data-lucide="shield-check"></i></span>Admin</a>
-      <a href="#"><span class="ic" aria-hidden="true"><i data-lucide="chart-column"></i></span>Reporting</a>
+      <a href="#" data-view="insights"><span class="ic" aria-hidden="true"><i data-lucide="chart-column"></i></span>Reporting</a>
     </div>
     <div class="grp bottom">
       <a href="#"><span class="ic" aria-hidden="true"><i data-lucide="headset"></i></span>Support</a>
@@ -830,8 +1022,12 @@
   <!-- ===== Body ===== -->
   <main class="body">
     <div id="view-assets" class="assets-pane">
-      <section class="hero">
-        <h1><span>☀️</span> <span id="assetsGreeting">Good day, Admin!</span></h1>
+      <section class="acl-hero with-search" aria-label="Assets">
+        <div class="acl-hero-copy">
+          <h1 id="assetsGreeting">Good day, Admin!</h1>
+          <p>Search and explore governed data assets across your connectors.</p>
+        </div>
+        <div class="acl-hero-mark" aria-hidden="true"></div>
         <div class="searchwrap">
           <div class="searchbar">
             <span class="mk">DataHive</span>
@@ -902,14 +1098,18 @@
     </div>
 
     <div id="view-sql" class="sql-pane hidden">
-      <div class="sql-pane-hd">
-        <h1>Insights</h1>
-      </div>
+      <section class="acl-hero" aria-label="Reporting">
+        <div class="acl-hero-copy">
+          <h1>Reporting</h1>
+          <p>Run governed SQL against your catalog — explore schemas, tables, and query results in one workbench.</p>
+        </div>
+        <div class="acl-hero-mark" aria-hidden="true"></div>
+      </section>
       <div class="sql-workbench">
         <aside class="sql-tree-panel" aria-label="Database catalog">
           <div class="sql-tree-hd">
             <span>Catalog</span>
-            <select id="sqlConnectorSelect" class="sql-connector-select" aria-label="Insights connector" title="Which connection Insights uses for catalog and queries">
+            <select id="sqlConnectorSelect" class="sql-connector-select" aria-label="Reporting connector" title="Which connection Reporting uses for catalog and queries">
               <option value="all">All connectors</option>
             </select>
           </div>
@@ -936,6 +1136,13 @@
 
     <div id="view-connectors" class="hidden">
     <div class="stage">
+      <section class="acl-hero" aria-label="Connectors">
+        <div class="acl-hero-copy">
+          <h1>Connectors</h1>
+          <p>Connect cloud and database platforms, validate access, and manage your data estate endpoints.</p>
+        </div>
+        <div class="acl-hero-mark" aria-hidden="true"></div>
+      </section>
       <section class="instr-card">
         <div class="instr-hd"><h2>Pre-requisites &amp; Configuration Instructions</h2></div>
         <div class="instr-bd">
@@ -961,10 +1168,13 @@
     </div>
 
     <div id="view-etl" class="etl-pane hidden">
-      <div class="etl-pane-hd">
-        <h1>ETL / ELT</h1>
-        <p>Select source and destination, choose SQL / Python / PySpark, then generate a transformation script.</p>
-      </div>
+      <section class="acl-hero" aria-label="ETL / ELT">
+        <div class="acl-hero-copy">
+          <h1>ETL / ELT</h1>
+          <p>Select source and destination, choose SQL / Python / PySpark, then generate a transformation script.</p>
+        </div>
+        <div class="acl-hero-mark" aria-hidden="true"></div>
+      </section>
 
       <section class="etl-card" aria-labelledby="etlFormTitle">
         <div class="etl-hd"><h2 id="etlFormTitle">New pipeline</h2></div>
@@ -1102,10 +1312,13 @@
     </div>
 
     <div id="view-glossary" class="glossary-pane hidden">
-      <div class="glossary-pane-hd">
-        <h1>Glossary</h1>
-        <p>Define business metadata once and apply it to assets across AWS, Azure, GCP, Snowflake, Postgres, and other connectors.</p>
-      </div>
+      <section class="acl-hero" aria-label="Glossary">
+        <div class="acl-hero-copy">
+          <h1>Glossary</h1>
+          <p>Define business metadata once and apply it to assets across AWS, Azure, GCP, Snowflake, Databricks, Postgres, and other connectors.</p>
+        </div>
+        <div class="acl-hero-mark" aria-hidden="true"></div>
+      </section>
 
       <div class="glossary-steps" aria-label="Glossary workflow">
         <div class="glossary-step">
@@ -1179,7 +1392,7 @@
         </div>
       </section>
 
-      <section class="etl-card" aria-labelledby="glossaryTermsTitle">
+      <section class="etl-card hidden" aria-labelledby="glossaryTermsTitle" hidden>
         <div class="etl-hd">
           <h2 id="glossaryTermsTitle">Registered terms</h2>
           <span class="count" id="glossaryTermsCount" style="font-size:12px;font-weight:700;color:#8a93a3;background:var(--gray-100);border-radius:999px;padding:3px 10px">0</span>
@@ -1192,10 +1405,13 @@
 
     <div id="view-governance" class="gov-pane hidden">
       <div id="govHome">
-        <div class="gov-pane-hd">
-          <h1>Governance</h1>
-          <p>Monitor quality, trace lineage, and track cloud spend across your data estate.</p>
-        </div>
+        <section class="acl-hero" aria-label="Governance">
+          <div class="acl-hero-copy">
+            <h1>Governance</h1>
+            <p>Monitor quality, trace lineage, and track cloud spend across your data estate.</p>
+          </div>
+          <div class="acl-hero-mark" aria-hidden="true"></div>
+        </section>
         <div class="gov-grid" role="list" aria-label="Governance areas">
           <button type="button" class="gov-tile" role="listitem" data-gov="data-quality">
             <span class="gic" aria-hidden="true"><i data-lucide="badge-check"></i></span>
@@ -1308,7 +1524,7 @@
 
         <div class="gov-model-panel hidden" id="govModelStep2">
           <h3>Proposed dimensional model</h3>
-          <p class="lead" id="govModelProposalLead">Review and adjust the proposed dimensions, facts, and views.</p>
+          <p class="lead" id="govModelProposalLead">Review entities with primary keys, foreign keys, constraints, and typed columns before generating DDL.</p>
           <div class="gov-model-summary" id="govModelSummary"></div>
           <div id="govModelProposalList" class="gov-model-list"></div>
           <div class="gov-model-actions">
@@ -1318,8 +1534,8 @@
         </div>
 
         <div class="gov-model-panel hidden" id="govModelStep3">
-          <h3>DDL scripts</h3>
-          <p class="lead">Generated from your confirmed proposal. Edit before copying or downloading.</p>
+          <h3>DDL &amp; load scripts</h3>
+          <p class="lead">Includes CREATE TABLE with PK/FK/UNIQUE/CHECK, indexes, typed columns, and casted load SQL. Edit before copying or downloading.</p>
           <div class="gov-model-actions" style="margin-top:0;margin-bottom:10px">
             <button type="button" class="btn btn-ghost" id="govModelBackToProposalBtn">← Proposal</button>
             <button type="button" class="btn btn-ghost" id="govModelCopyDdlBtn">Copy DDL</button>
@@ -1331,10 +1547,13 @@
     </div>
 
     <div id="view-admin" class="admin-pane hidden">
-      <div class="admin-pane-hd">
-        <h1>Admin</h1>
-        <p>Manage user groups, personas, and users for DataHive access and personalisation.</p>
-      </div>
+      <section class="acl-hero" aria-label="Admin">
+        <div class="acl-hero-copy">
+          <h1>Admin</h1>
+          <p>Manage user groups, personas, and users for DataHive access and personalisation.</p>
+        </div>
+        <div class="acl-hero-mark" aria-hidden="true"></div>
+      </section>
 
       <div class="admin-tabs" role="tablist" aria-label="Admin sections">
         <button type="button" class="admin-tab active" role="tab" aria-selected="true" data-admin-tab="groups">User Groups</button>
@@ -1386,6 +1605,102 @@
           <div id="adminUsersBody"></div>
         </div>
       </section>
+    </div>
+
+    <div id="view-reporting" class="rpt-pane hidden">
+      <section class="acl-hero" aria-label="Insights">
+        <div class="acl-hero-copy">
+          <h1>Insights</h1>
+          <p>Business KPI dashboards — Customer 360, sales trends, and delivery-channel performance — scoped by connection, database, and schema.</p>
+        </div>
+        <div class="acl-hero-mark" aria-hidden="true"></div>
+      </section>
+
+      <section class="rpt-filters" aria-label="Dashboard scope">
+        <div class="rpt-filter-grid">
+          <div class="field" style="margin:0">
+            <label for="rptConnection">Connection <span class="req">*</span></label>
+            <select id="rptConnection">
+              <option value="">Select connection…</option>
+            </select>
+          </div>
+          <div class="field" style="margin:0">
+            <label for="rptDatabase">Database <span class="req">*</span></label>
+            <select id="rptDatabase" disabled>
+              <option value="">Select connection first…</option>
+            </select>
+          </div>
+          <div class="field" style="margin:0">
+            <label for="rptSchema">Schema <span class="req">*</span></label>
+            <select id="rptSchema" disabled>
+              <option value="">Select database first…</option>
+            </select>
+          </div>
+        </div>
+        <div class="rpt-filter-actions">
+          <button type="button" class="btn btn-primary" id="rptApplyBtn" disabled>Apply dashboard</button>
+          <button type="button" class="btn btn-ghost" id="rptResetBtn">Reset</button>
+          <span class="rpt-status" id="rptStatus" aria-live="polite"></span>
+        </div>
+        <div class="err hidden" id="rptError" style="margin-top:10px"></div>
+      </section>
+
+      <div id="rptEmpty" class="rpt-empty">
+        Select a <strong>connection</strong>, <strong>database</strong>, and <strong>schema</strong>, then apply to load Customer 360, sales, and delivery KPIs.
+      </div>
+
+      <div id="rptDashboard" class="rpt-dashboard hidden">
+        <div class="rpt-kpi-row" id="rptKpiRow"></div>
+        <div class="rpt-slice-bar" aria-label="Slice and dice">
+          <div class="rpt-slice-row">
+            <span class="rpt-slice-label">Slice by</span>
+            <div class="rpt-slice-modes" id="rptSliceModes" role="group" aria-label="Slice dimension"></div>
+          </div>
+          <div class="rpt-slice-row">
+            <span class="rpt-slice-label">Dice</span>
+            <div class="rpt-chips" id="rptChips" role="group" aria-label="Slice values"></div>
+          </div>
+        </div>
+        <div class="rpt-charts">
+          <section class="rpt-card">
+            <div class="rpt-card-hd">
+              <h2 id="rptBarTitle">Mode of delivery</h2>
+              <p id="rptBarHint">Preferred channel / fulfillment mix</p>
+            </div>
+            <div class="rpt-chart-wrap" id="rptBarChart"></div>
+          </section>
+          <section class="rpt-card">
+            <div class="rpt-card-hd">
+              <h2>Sales trend</h2>
+              <p id="rptTrendHint">Monthly revenue from account transactions</p>
+            </div>
+            <div class="rpt-chart-wrap" id="rptTrendChart"></div>
+          </section>
+        </div>
+        <div class="rpt-charts rpt-charts-secondary">
+          <section class="rpt-card">
+            <div class="rpt-card-hd">
+              <h2>Customer 360</h2>
+              <p id="rptC360Hint">Profile coverage across geo, channel, and loyalty</p>
+            </div>
+            <div id="rptC360" class="rpt-c360"></div>
+          </section>
+          <section class="rpt-card">
+            <div class="rpt-card-hd">
+              <h2>Top products</h2>
+              <p id="rptProductsHint">Revenue leaders from order lines</p>
+            </div>
+            <div class="rpt-table-wrap" id="rptProducts"></div>
+          </section>
+        </div>
+        <section class="rpt-card">
+          <div class="rpt-card-hd">
+            <h2 id="rptDetailTitle">Customer sample</h2>
+            <p id="rptDetailHint">Records contributing to the active dice selection</p>
+          </div>
+          <div class="rpt-table-wrap" id="rptTable"></div>
+        </section>
+      </div>
     </div>
   </main>
 </div>
@@ -1554,6 +1869,7 @@
 <script src="save-connector.js"></script>
 <script src="assets.js"></script>
 <script src="sql-explorer.js"></script>
+<script src="reporting.js"></script>
 <script>
 if (window.lucide && typeof lucide.createIcons === "function") {
   lucide.createIcons({ attrs: { "stroke-width": "1.75", "aria-hidden": "true" } });
@@ -1688,6 +2004,41 @@ const CLOUDS = {
     hint: "Configure Snowflake connectivity",
     accessKeyLabel: "Username",
     secretKeyLabel: "Password"
+  },
+  databricks: {
+    id: "databricks",
+    type: "databricks",
+    name: "Databricks",
+    short: "Databricks",
+    logo: "../images/logos/databricks.svg",
+    lead: "Provide workspace credentials and the Databricks services you want DataHive to use when fetching assets.",
+    accountLabel: "Workspace URL",
+    accountPlaceholder: "https://dbc-xxxxxxxx-xxxx.cloud.databricks.com",
+    namePlaceholder: "Prod Databricks — Lakehouse",
+    scopeLabel: "Catalog / schema scope",
+    scopePlaceholder: "main.*, analytics.silver (optional filter)",
+    scopeHelp: "Optional allow-list of Unity Catalog catalogs, schemas, or warehouse IDs.",
+    regions: [
+      "us-east-1", "us-west-2", "us-east-2", "eu-west-1", "eu-central-1",
+      "ap-southeast-1", "ap-southeast-2", "ap-south-1", "eastus", "westeurope"
+    ],
+    auth: [
+      { value: "api_key", label: "Personal access token (PAT)" },
+      { value: "service_principal", label: "Service principal (Client ID + Secret)" },
+      { value: "oauth2", label: "OAuth 2.0 (Client ID + Secret)" }
+    ],
+    apis: [
+      { value: "unity_catalog", label: "Unity Catalog", checked: true },
+      { value: "sql_warehouses", label: "SQL warehouses", checked: true },
+      { value: "clusters", label: "Clusters", checked: true },
+      { value: "jobs", label: "Jobs" },
+      { value: "dbfs", label: "DBFS / Volumes" }
+    ],
+    saLabel: "",
+    saHelp: "",
+    saPlaceholder: "",
+    hint: "Configure Databricks connectivity",
+    apiKeyLabel: "Personal access token"
   },
   upload: {
     id: "upload",
@@ -1932,7 +2283,8 @@ function configureForm(cloud){
     $("#cf_client_id_label").innerHTML = 'OAuth Client ID <span class="req">*</span>';
     $("#cf_client_secret_label").innerHTML = 'Client secret <span class="req">*</span>';
   }
-  $("#cf_api_key_label").innerHTML = 'API key <span class="req">*</span>';
+  $("#cf_api_key_label").innerHTML =
+    (cloud.apiKeyLabel || "API key") + ' <span class="req">*</span>';
 
   const accessKeyLabel = cloud.accessKeyLabel || "Access key ID";
   const secretKeyLabel = cloud.secretKeyLabel || "Secret access key";
@@ -2490,7 +2842,9 @@ form.addEventListener("submit", async (e)=>{
         return showError("Private key should be PEM format (BEGIN PRIVATE KEY).");
       }
     } else if (authType === "api_key") {
-      if (!$("#cf_api_key").value.trim() && !keepSecrets) return showError("API key is required.");
+      if (!$("#cf_api_key").value.trim() && !keepSecrets) {
+        return showError((cloud.apiKeyLabel || "API key") + " is required.");
+      }
     } else if (authType === "oauth2" || authType === "service_principal") {
       if (!$("#cf_client_id").value.trim()) {
         return showError("Client ID is required.");
@@ -3368,6 +3722,8 @@ document.querySelectorAll("nav.rail a[data-view]").forEach((a) => {
     if (governanceView) governanceView.classList.toggle("hidden", view !== "governance");
     const adminView = $("#view-admin");
     if (adminView) adminView.classList.toggle("hidden", view !== "admin");
+    const reportingView = $("#view-reporting");
+    if (reportingView) reportingView.classList.toggle("hidden", view !== "reporting");
     if (view === "assets") initAssetsView();
     if (view === "insights" && typeof DataHiveSqlExplorer !== "undefined") {
       DataHiveSqlExplorer.init();
@@ -3376,6 +3732,9 @@ document.querySelectorAll("nav.rail a[data-view]").forEach((a) => {
     if (view === "glossary") initGlossaryView();
     if (view === "governance") initGovernanceView();
     if (view === "admin") initAdminView();
+    if (view === "reporting" && typeof DataHiveReporting !== "undefined") {
+      DataHiveReporting.init();
+    }
   });
 });
 
@@ -5593,7 +5952,6 @@ function bindGlossaryEvents() {
         clearGlossarySelection();
         if ($("#glossaryNotes")) $("#glossaryNotes").value = "";
         await refreshGlossaryList();
-        await refreshGlossaryTerms();
       } catch (err) {
         showGlossaryError(err && err.message ? err.message : String(err));
       } finally {
@@ -5607,7 +5965,6 @@ function bindGlossaryEvents() {
 async function initGlossaryView() {
   bindGlossaryEvents();
   await refreshGlossaryList();
-  await refreshGlossaryTerms();
 }
 
 const LINEAGE_LAYERS = {
@@ -5633,8 +5990,8 @@ const LINEAGE_DEMO_GRAPH = {
     { id: "gd_360", layer: "gold", title: "customer_360", sub: "dhpoc-gold" },
     { id: "gd_usage", layer: "gold", title: "usage_daily", sub: "dhpoc-gold" },
     { id: "gd_ar", layer: "gold", title: "ar_aging", sub: "dhpoc-gold" },
-    { id: "ui_insights", layer: "consume", title: "Insights", sub: "SQL workbench" },
-    { id: "ui_dash", layer: "consume", title: "Exec dashboard", sub: "Reporting" },
+    { id: "ui_insights", layer: "consume", title: "Reporting", sub: "SQL workbench" },
+    { id: "ui_dash", layer: "consume", title: "Exec dashboard", sub: "Insights" },
   ],
   edges: [
     ["src_crm", "br_customer"],
@@ -6344,126 +6701,400 @@ function filterModelSchemasForDatabase(database) {
   fillModelTargetSchemaSelect(allSchemas.length ? allSchemas : filtered, database);
 }
 
-function proposeDimensionalModel(scope) {
-  const sourceSchema = scope.schema;
-  const targetSchema = scope.targetSchema || "gold";
-  const layer = modelLayerFromSchema(sourceSchema) || modelLayerFromSchema(scope.database);
-  const tables = modelState.catalogItems
-    .filter((a) => String(a.schema || "").toLowerCase() === sourceSchema.toLowerCase())
-    .map((a) => String(a.name || ""))
-    .filter(Boolean);
+function quoteModelIdent(name) {
+  return '"' + String(name || "").replace(/"/g, '""') + '"';
+}
 
+function modelPlatformOf(scope) {
+  const conn = modelState.connectors.find((c) => c.id === (scope && scope.connectorId));
+  return String((conn && (conn.platform || conn.cloud)) || "postgres").toLowerCase();
+}
+
+function modelTypes(platform) {
+  const sf = platform === "snowflake";
+  return {
+    platform: sf ? "snowflake" : "postgres",
+    sk: sf ? "NUMBER(38,0) IDENTITY START 1 INCREMENT 1" : "BIGSERIAL",
+    bigint: sf ? "NUMBER(38,0)" : "BIGINT",
+    int: sf ? "NUMBER(10,0)" : "INTEGER",
+    smallint: sf ? "NUMBER(5,0)" : "SMALLINT",
+    text: sf ? "VARCHAR(16777216)" : "TEXT",
+    varchar: (n) => (sf ? "VARCHAR(" + n + ")" : "VARCHAR(" + n + ")"),
+    bool: "BOOLEAN",
+    date: "DATE",
+    ts: sf ? "TIMESTAMP_NTZ" : "TIMESTAMP",
+    num: (p, s) => (sf ? "NUMBER(" + p + "," + s + ")" : "NUMERIC(" + p + "," + s + ")"),
+    json: sf ? "VARIANT" : "JSONB",
+    trueLit: sf ? "TRUE" : "TRUE",
+  };
+}
+
+function modelCol(name, type, opts) {
+  opts = opts || {};
+  return {
+    name: name,
+    type: type,
+    pk: !!opts.pk,
+    fk: opts.fk || null, // { table, column }
+    unique: !!opts.unique,
+    notNull: opts.notNull !== false && (!!opts.pk || !!opts.unique || !!opts.notNull),
+    check: opts.check || null,
+    default: opts.default != null ? opts.default : null,
+    castFrom: opts.castFrom || null, // source expression for load SQL
+    note: opts.note || "",
+  };
+}
+
+function attachModelSpec(obj, cols, extras) {
+  extras = extras || {};
+  obj.columns = cols;
+  obj.primary_key = cols.filter((c) => c.pk).map((c) => c.name);
+  obj.foreign_keys = cols
+    .filter((c) => c.fk)
+    .map((c) => ({
+      column: c.name,
+      ref_table: c.fk.table,
+      ref_column: c.fk.column,
+    }));
+  obj.unique_keys = (extras.uniqueKeys || []).concat(
+    cols.filter((c) => c.unique && !c.pk).map((c) => [c.name])
+  );
+  obj.checks = cols.filter((c) => c.check).map((c) => ({ column: c.name, expr: c.check }));
+  if (extras.checks) obj.checks = obj.checks.concat(extras.checks);
+  obj.indexes = extras.indexes || [];
+  obj.cluster_by = extras.clusterBy || [];
+  obj.load = extras.load || null;
+  return obj;
+}
+
+function buildStandardModelObjects(scope, types, tables) {
   const has = (re) => tables.some((t) => re.test(t));
+  const sourceSchema = scope.schema;
   const proposal = [];
 
-  // Core conformed dimensions
-  proposal.push({
-    id: "dim_date",
-    kind: "dimension",
-    name: "dim_date",
-    selected: true,
-    grain: "One row per calendar date",
-    source: "generated",
-    note: "Conformed date dimension for all facts",
-  });
-  proposal.push({
-    id: "dim_customer",
-    kind: "dimension",
-    name: "dim_customer",
-    selected: true,
-    grain: "One row per customer_id",
-    source: has(/customer/i) ? "customer table(s)" : sourceSchema + ".*",
-    note: "Hub dimension for customer-centric analytics",
-  });
-  if (has(/geo|tower|household|address|region/i) || layer !== "bronze") {
-    proposal.push({
-      id: "dim_geography",
-      kind: "dimension",
-      name: "dim_geography",
-      selected: true,
-      grain: "Surrogate geo_key",
-      source: "customer / tower / household attributes",
-      note: "City, state, zip, country, region",
-    });
+  proposal.push(
+    attachModelSpec(
+      {
+        id: "dim_date",
+        kind: "dimension",
+        name: "dim_date",
+        selected: true,
+        grain: "One row per calendar date",
+        source: "generated calendar",
+        note: "Conformed date dimension · PK date_key",
+      },
+      [
+        modelCol("date_key", types.date, { pk: true, notNull: true }),
+        modelCol("day_of_week", types.smallint, { notNull: true, check: "day_of_week BETWEEN 1 AND 7" }),
+        modelCol("week_of_year", types.smallint, { notNull: true }),
+        modelCol("month_num", types.smallint, { notNull: true, check: "month_num BETWEEN 1 AND 12" }),
+        modelCol("quarter_num", types.smallint, { notNull: true, check: "quarter_num BETWEEN 1 AND 4" }),
+        modelCol("year_num", types.int, { notNull: true }),
+        modelCol("is_weekend", types.bool, { notNull: true, default: "FALSE" }),
+        modelCol("_dh_loaded_at", types.ts, { notNull: true, default: "CURRENT_TIMESTAMP" }),
+      ],
+      { indexes: [["year_num", "month_num"]], clusterBy: ["date_key"] }
+    )
+  );
+
+  proposal.push(
+    attachModelSpec(
+      {
+        id: "dim_customer",
+        kind: "dimension",
+        name: "dim_customer",
+        selected: true,
+        grain: "One row per customer_id (SCD2)",
+        source: has(/customer/i) ? "customer table(s)" : sourceSchema + ".*",
+        note: "Hub dimension · surrogate PK + natural key UNIQUE",
+      },
+      [
+        modelCol("customer_key", types.sk, { pk: true, notNull: true }),
+        modelCol("customer_id", types.varchar(64), {
+          unique: true,
+          notNull: true,
+          castFrom: "CAST(src.customer_id AS " + types.varchar(64) + ")",
+        }),
+        modelCol("customer_nm", types.varchar(256), {
+          castFrom: "CAST(COALESCE(src.customer_nm, src.first_name || ' ' || src.last_name) AS " + types.varchar(256) + ")",
+        }),
+        modelCol("email", types.varchar(320), { castFrom: "LOWER(CAST(src.email AS " + types.varchar(320) + "))" }),
+        modelCol("phone", types.varchar(64), { castFrom: "CAST(src.phone AS " + types.varchar(64) + ")" }),
+        modelCol("segment", types.varchar(64), { castFrom: "CAST(src.segment AS " + types.varchar(64) + ")" }),
+        modelCol("account_status", types.varchar(64), {
+          castFrom: "CAST(src.account_status AS " + types.varchar(64) + ")",
+        }),
+        modelCol("city", types.varchar(128), { castFrom: "CAST(src.city AS " + types.varchar(128) + ")" }),
+        modelCol("state", types.varchar(64), { castFrom: "CAST(src.state AS " + types.varchar(64) + ")" }),
+        modelCol("country", types.varchar(64), {
+          notNull: true,
+          default: "'US'",
+          castFrom: "CAST(COALESCE(src.country, 'US') AS " + types.varchar(64) + ")",
+        }),
+        modelCol("effective_from", types.ts, { notNull: true, default: "CURRENT_TIMESTAMP" }),
+        modelCol("effective_to", types.ts, {}),
+        modelCol("is_current", types.bool, {
+          notNull: true,
+          default: types.trueLit,
+          check: "is_current IN (TRUE, FALSE)",
+        }),
+        modelCol("_dh_loaded_at", types.ts, { notNull: true, default: "CURRENT_TIMESTAMP" }),
+        modelCol("_dh_source_system", types.varchar(64), { notNull: true }),
+      ],
+      {
+        uniqueKeys: [["customer_id", "effective_from"]],
+        indexes: [["customer_id"], ["is_current"]],
+        clusterBy: ["customer_id"],
+        load: {
+          sourceHint: "customer%",
+          naturalKey: "customer_id",
+        },
+      }
+    )
+  );
+
+  if (has(/geo|tower|household|address|region|store/i) || modelLayerFromSchema(sourceSchema) !== "bronze") {
+    proposal.push(
+      attachModelSpec(
+        {
+          id: "dim_geography",
+          kind: "dimension",
+          name: "dim_geography",
+          selected: true,
+          grain: "Surrogate geo_key",
+          source: "address / store / region attributes",
+          note: "Location conformed dimension",
+        },
+        [
+          modelCol("geo_key", types.sk, { pk: true, notNull: true }),
+          modelCol("city", types.varchar(128), { notNull: true }),
+          modelCol("state", types.varchar(64), { notNull: true }),
+          modelCol("zip", types.varchar(32), {}),
+          modelCol("country", types.varchar(64), { notNull: true, default: "'US'" }),
+          modelCol("region", types.varchar(64), {}),
+          modelCol("_dh_loaded_at", types.ts, { notNull: true, default: "CURRENT_TIMESTAMP" }),
+        ],
+        { uniqueKeys: [["city", "state", "zip", "country"]], indexes: [["state", "city"]] }
+      )
+    );
   }
-  if (has(/plan|package|product|contract/i)) {
-    proposal.push({
-      id: "dim_product",
-      kind: "dimension",
-      name: "dim_product",
-      selected: true,
-      grain: "One row per plan/package",
-      source: "plan / package tables",
-      note: "Conformed product dimension",
-    });
+
+  if (has(/plan|package|product|contract|employee/i)) {
+    proposal.push(
+      attachModelSpec(
+        {
+          id: "dim_product",
+          kind: "dimension",
+          name: "dim_product",
+          selected: true,
+          grain: "One row per product/plan",
+          source: "product / plan / package tables",
+          note: "Conformed product dimension",
+        },
+        [
+          modelCol("product_key", types.sk, { pk: true, notNull: true }),
+          modelCol("product_id", types.varchar(64), { unique: true, notNull: true }),
+          modelCol("product_name", types.varchar(256), { notNull: true }),
+          modelCol("product_type", types.varchar(64), {}),
+          modelCol("monthly_fee_usd", types.num(12, 2), { check: "monthly_fee_usd IS NULL OR monthly_fee_usd >= 0" }),
+          modelCol("_dh_loaded_at", types.ts, { notNull: true, default: "CURRENT_TIMESTAMP" }),
+        ],
+        { indexes: [["product_type"]] }
+      )
+    );
   }
+
   if (has(/channel|ticket|ivr|case/i)) {
-    proposal.push({
-      id: "dim_channel",
-      kind: "dimension",
-      name: "dim_channel",
-      selected: true,
-      grain: "One row per channel code",
-      source: "care / interaction tables",
-      note: "Care vs sales channel",
-    });
+    proposal.push(
+      attachModelSpec(
+        {
+          id: "dim_channel",
+          kind: "dimension",
+          name: "dim_channel",
+          selected: true,
+          grain: "One row per channel code",
+          source: "care / interaction tables",
+          note: "Channel conformed dimension",
+        },
+        [
+          modelCol("channel_key", types.sk, { pk: true, notNull: true }),
+          modelCol("channel_code", types.varchar(64), { unique: true, notNull: true }),
+          modelCol("channel_name", types.varchar(128), { notNull: true }),
+          modelCol("channel_group", types.varchar(64), {}),
+          modelCol("_dh_loaded_at", types.ts, { notNull: true, default: "CURRENT_TIMESTAMP" }),
+        ]
+      )
+    );
   }
 
-  // Facts inferred from source tables
-  if (has(/invoice|payment|billing|ar_/i)) {
-    proposal.push({
-      id: "fact_invoice",
-      kind: "fact",
-      name: "fact_invoice",
-      selected: true,
-      grain: "One row per invoice_id",
-      source: "invoice / billing tables",
-      note: "Measures: amount_due, tax, total · FKs: customer, date",
-    });
+  if (has(/invoice|payment|billing|ar_|order|sales/i)) {
+    proposal.push(
+      attachModelSpec(
+        {
+          id: "fact_invoice",
+          kind: "fact",
+          name: "fact_invoice",
+          selected: true,
+          grain: "One row per invoice_id",
+          source: "invoice / billing / sales tables",
+          note: "Degenerate invoice_id · FKs to customer + date",
+        },
+        [
+          modelCol("invoice_key", types.sk, { pk: true, notNull: true }),
+          modelCol("invoice_id", types.varchar(64), { unique: true, notNull: true }),
+          modelCol("customer_key", types.bigint, {
+            notNull: true,
+            fk: { table: "dim_customer", column: "customer_key" },
+          }),
+          modelCol("date_key", types.date, {
+            notNull: true,
+            fk: { table: "dim_date", column: "date_key" },
+          }),
+          modelCol("amount_due", types.num(14, 2), {
+            notNull: true,
+            default: "0",
+            check: "amount_due >= 0",
+            castFrom: "CAST(src.amount_due AS " + types.num(14, 2) + ")",
+          }),
+          modelCol("tax_amount", types.num(14, 2), {
+            notNull: true,
+            default: "0",
+            check: "tax_amount >= 0",
+          }),
+          modelCol("total_amount", types.num(14, 2), {
+            notNull: true,
+            default: "0",
+            check: "total_amount >= 0",
+          }),
+          modelCol("_dh_loaded_at", types.ts, { notNull: true, default: "CURRENT_TIMESTAMP" }),
+          modelCol("_dh_source_system", types.varchar(64), { notNull: true }),
+        ],
+        {
+          indexes: [["customer_key", "date_key"], ["date_key"]],
+          clusterBy: ["date_key", "customer_key"],
+          checks: [{ expr: "total_amount >= amount_due" }],
+        }
+      )
+    );
   }
+
   if (has(/cdr|call|usage|bandwidth|qoe|session/i)) {
-    proposal.push({
-      id: "fact_usage_daily",
-      kind: "fact",
-      name: "fact_usage_daily",
-      selected: true,
-      grain: "Customer + usage_date",
-      source: "usage / CDR / bandwidth tables",
-      note: "Measures: duration, data_used · FKs: customer, date, geography",
-    });
-  }
-  if (has(/ticket|case|dispatch|ivr/i)) {
-    proposal.push({
-      id: "fact_support_ticket",
-      kind: "fact",
-      name: "fact_support_ticket",
-      selected: true,
-      grain: "One row per ticket/case",
-      source: "care tables",
-      note: "Measures: resolution time · FKs: customer, channel, date",
-    });
-  }
-  if (!proposal.some((p) => p.kind === "fact")) {
-    proposal.push({
-      id: "fact_activity",
-      kind: "fact",
-      name: "fact_" + (layer === "bronze" ? "staging_activity" : "activity"),
-      selected: true,
-      grain: "One row per source business event",
-      source: sourceSchema + " tables",
-      note: "Generic activity fact until domain tables are richer",
-    });
+    proposal.push(
+      attachModelSpec(
+        {
+          id: "fact_usage_daily",
+          kind: "fact",
+          name: "fact_usage_daily",
+          selected: true,
+          grain: "Customer + usage_date",
+          source: "usage / CDR tables",
+          note: "Additive measures · FKs customer/date/geo",
+        },
+        [
+          modelCol("usage_key", types.sk, { pk: true, notNull: true }),
+          modelCol("customer_key", types.bigint, {
+            notNull: true,
+            fk: { table: "dim_customer", column: "customer_key" },
+          }),
+          modelCol("date_key", types.date, {
+            notNull: true,
+            fk: { table: "dim_date", column: "date_key" },
+          }),
+          modelCol("geo_key", types.bigint, { fk: { table: "dim_geography", column: "geo_key" } }),
+          modelCol("duration_sec", types.bigint, { notNull: true, default: "0", check: "duration_sec >= 0" }),
+          modelCol("data_used_gb", types.num(14, 4), {
+            notNull: true,
+            default: "0",
+            check: "data_used_gb >= 0",
+          }),
+          modelCol("event_count", types.bigint, { notNull: true, default: "0", check: "event_count >= 0" }),
+          modelCol("_dh_loaded_at", types.ts, { notNull: true, default: "CURRENT_TIMESTAMP" }),
+        ],
+        {
+          uniqueKeys: [["customer_key", "date_key"]],
+          indexes: [["date_key"], ["customer_key"]],
+          clusterBy: ["date_key"],
+        }
+      )
+    );
   }
 
-  // Views / marts
+  if (has(/ticket|case|dispatch|ivr/i)) {
+    proposal.push(
+      attachModelSpec(
+        {
+          id: "fact_support_ticket",
+          kind: "fact",
+          name: "fact_support_ticket",
+          selected: true,
+          grain: "One row per ticket/case",
+          source: "care / ticket tables",
+          note: "Semi-additive resolution metrics",
+        },
+        [
+          modelCol("ticket_key", types.sk, { pk: true, notNull: true }),
+          modelCol("ticket_id", types.varchar(64), { unique: true, notNull: true }),
+          modelCol("customer_key", types.bigint, {
+            notNull: true,
+            fk: { table: "dim_customer", column: "customer_key" },
+          }),
+          modelCol("channel_key", types.bigint, { fk: { table: "dim_channel", column: "channel_key" } }),
+          modelCol("date_key", types.date, {
+            notNull: true,
+            fk: { table: "dim_date", column: "date_key" },
+          }),
+          modelCol("resolution_sec", types.bigint, { check: "resolution_sec IS NULL OR resolution_sec >= 0" }),
+          modelCol("priority", types.varchar(32), {}),
+          modelCol("_dh_loaded_at", types.ts, { notNull: true, default: "CURRENT_TIMESTAMP" }),
+        ],
+        { indexes: [["customer_key"], ["date_key", "priority"]] }
+      )
+    );
+  }
+
+  if (!proposal.some((p) => p.kind === "fact")) {
+    const layer = modelLayerFromSchema(sourceSchema) || modelLayerFromSchema(scope.database);
+    proposal.push(
+      attachModelSpec(
+        {
+          id: "fact_activity",
+          kind: "fact",
+          name: "fact_" + (layer === "bronze" ? "staging_activity" : "activity"),
+          selected: true,
+          grain: "One row per source business event",
+          source: sourceSchema + " tables",
+          note: "Generic activity fact until domain tables are richer",
+        },
+        [
+          modelCol("fact_key", types.sk, { pk: true, notNull: true }),
+          modelCol("customer_key", types.bigint, { fk: { table: "dim_customer", column: "customer_key" } }),
+          modelCol("date_key", types.date, {
+            notNull: true,
+            fk: { table: "dim_date", column: "date_key" },
+          }),
+          modelCol("measure_value", types.num(18, 4), { notNull: true, default: "0" }),
+          modelCol("source_ref", types.varchar(256), {}),
+          modelCol("_dh_loaded_at", types.ts, { notNull: true, default: "CURRENT_TIMESTAMP" }),
+        ],
+        { indexes: [["date_key"], ["customer_key"]] }
+      )
+    );
+  }
+
   proposal.push({
     id: "vw_customer_360",
     kind: "view",
     name: "vw_customer_360",
     selected: true,
-    grain: "One row per customer (current)",
-    source: "dim_customer + latest facts",
-    note: "Serving view for analysts / Insights",
+    grain: "One row per current customer",
+    source: "dim_customer (+ optional facts)",
+    note: "Serving view · filters is_current = TRUE",
+    columns: [],
+    primary_key: ["customer_id"],
+    foreign_keys: [],
+    unique_keys: [],
+    checks: [],
+    indexes: [],
   });
   proposal.push({
     id: "vw_daily_kpi",
@@ -6472,7 +7103,13 @@ function proposeDimensionalModel(scope) {
     selected: true,
     grain: "Date-level KPIs",
     source: "facts aggregated by dim_date",
-    note: "Executive daily metrics",
+    note: "Cast/aggregate measures for executives",
+    columns: [],
+    primary_key: ["date_key"],
+    foreign_keys: [],
+    unique_keys: [],
+    checks: [],
+    indexes: [],
   });
   if (proposal.some((p) => p.id === "fact_invoice")) {
     proposal.push({
@@ -6482,16 +7119,94 @@ function proposeDimensionalModel(scope) {
       selected: true,
       grain: "Month + segment",
       source: "fact_invoice",
-      note: "Monthly revenue mart",
+      note: "Monthly revenue mart with typed aggregates",
+      columns: [],
+      primary_key: ["month_start", "segment"],
+      foreign_keys: [],
+      unique_keys: [],
+      checks: [],
+      indexes: [],
     });
   }
 
-  // Attach scope metadata for DDL
   proposal.forEach((p) => {
-    p.target_schema = targetSchema;
+    p.target_schema = scope.targetSchema;
     p.source_schema = sourceSchema;
+    p.platform = types.platform;
   });
   return proposal;
+}
+
+async function enrichProposalFromSourceStructures(scope, proposal) {
+  if (typeof DataHiveAssets === "undefined" || !scope.connectorId) return proposal;
+  const sourceTables = modelState.catalogItems
+    .filter(
+      (a) =>
+        String(a.schema || "").toLowerCase() === String(scope.schema || "").toLowerCase() &&
+        a.name &&
+        String(a.type || "Table") !== "Schema"
+    )
+    .slice(0, 12);
+  const structures = {};
+  await Promise.all(
+    sourceTables.map(async (t) => {
+      try {
+        const st = await DataHiveAssets.structure(scope.schema, t.name, scope.connectorId);
+        structures[String(t.name).toLowerCase()] = st;
+      } catch (_err) {
+        /* optional enrichment */
+      }
+    })
+  );
+
+  const customerTbl = Object.keys(structures).find((n) => /customer/i.test(n));
+  if (customerTbl && structures[customerTbl] && structures[customerTbl].columns) {
+    const dim = proposal.find((p) => p.id === "dim_customer");
+    if (dim) {
+      const srcCols = structures[customerTbl].columns || [];
+      const srcPk = srcCols.filter((c) => c.primary_key).map((c) => c.name);
+      dim.source = scope.schema + "." + customerTbl;
+      dim.source_columns = srcCols.map((c) => ({
+        name: c.name,
+        type: c.type,
+        primary_key: !!c.primary_key,
+        nullable: c.nullable !== false,
+      }));
+      if (srcPk.length) {
+        dim.note =
+          (dim.note || "") +
+          " · source PK: " +
+          srcPk.join(", ") +
+          " mapped to natural key / SCD2";
+      }
+      // Align casts to real source column names when present.
+      const byLower = {};
+      srcCols.forEach((c) => {
+        byLower[String(c.name).toLowerCase()] = c.name;
+      });
+      (dim.columns || []).forEach((col) => {
+        const srcName = byLower[col.name.toLowerCase()];
+        if (srcName && col.castFrom) {
+          col.castFrom = col.castFrom.replace(
+            new RegExp("src\\." + col.name, "ig"),
+            "src." + quoteModelIdent(srcName).replace(/"/g, "")
+          );
+          // simpler: rebuild cast using actual source ident
+          col.castFrom = "CAST(src." + srcName + " AS " + col.type + ")";
+        }
+      });
+    }
+  }
+  return proposal;
+}
+
+function proposeDimensionalModel(scope) {
+  const tables = modelState.catalogItems
+    .filter((a) => String(a.schema || "").toLowerCase() === String(scope.schema || "").toLowerCase())
+    .map((a) => String(a.name || ""))
+    .filter(Boolean);
+  const types = modelTypes(modelPlatformOf(scope));
+  return buildStandardModelObjects(scope, types, tables);
 }
 
 function renderModelProposal() {
@@ -6502,16 +7217,25 @@ function renderModelProposal() {
   const dims = items.filter((p) => p.kind === "dimension" && p.selected).length;
   const facts = items.filter((p) => p.kind === "fact" && p.selected).length;
   const views = items.filter((p) => p.kind === "view" && p.selected).length;
+  const pkCount = items
+    .filter((p) => p.selected)
+    .reduce((n, p) => n + ((p.primary_key && p.primary_key.length) || 0), 0);
+  const fkCount = items
+    .filter((p) => p.selected)
+    .reduce((n, p) => n + ((p.foreign_keys && p.foreign_keys.length) || 0), 0);
   if (summary) {
     summary.innerHTML =
       '<span class="chip">' + dims + " dimensions</span>" +
       '<span class="chip">' + facts + " facts</span>" +
-      '<span class="chip">' + views + " views</span>";
+      '<span class="chip">' + views + " views</span>" +
+      '<span class="chip">' + pkCount + " PK cols</span>" +
+      '<span class="chip">' + fkCount + " FKs</span>";
   }
   const connector = $("#govModelConnector");
   const schema = $("#govModelSchema");
   const database = $("#govModelDatabase");
   const target = $("#govModelTargetSchema");
+  const platform = modelPlatformOf(collectModelScope());
   if (lead) {
     lead.textContent =
       "Scope: " +
@@ -6522,11 +7246,58 @@ function renderModelProposal() {
       ((schema && schema.value) || "—") +
       " → target " +
       ((target && target.value) || "gold") +
-      ". Uncheck objects to exclude them from DDL.";
+      " · dialect " +
+      platform +
+      ". Review PK/FK/types; uncheck objects to exclude from DDL.";
   }
   if (!list) return;
   list.innerHTML = items
     .map((p) => {
+      const cols = (p.columns || []).slice(0, 14);
+      const colHtml = cols.length
+        ? '<div class="gov-model-cols">' +
+          cols
+            .map((c) => {
+              const tags = [];
+              if (c.pk) tags.push('<span class="gov-model-tag pk">PK</span>');
+              if (c.fk) tags.push('<span class="gov-model-tag fk">FK → ' + escapeHtml(c.fk.table) + "</span>");
+              if (c.unique) tags.push('<span class="gov-model-tag uq">UQ</span>');
+              if (c.notNull) tags.push('<span class="gov-model-tag nn">NN</span>');
+              if (c.check) tags.push('<span class="gov-model-tag ck">CHECK</span>');
+              return (
+                '<div class="gov-model-col">' +
+                '<span class="col-name">' +
+                escapeHtml(c.name) +
+                "</span>" +
+                '<span class="col-type">' +
+                escapeHtml(c.type) +
+                "</span>" +
+                tags.join("") +
+                "</div>"
+              );
+            })
+            .join("") +
+          (p.columns.length > cols.length
+            ? '<div class="gov-model-col"><span class="col-type">+' +
+              (p.columns.length - cols.length) +
+              " more columns…</span></div>"
+            : "") +
+          "</div>"
+        : "";
+      const fkList = (p.foreign_keys || [])
+        .map((f) => f.column + " → " + f.ref_table + "." + f.ref_column)
+        .join("; ");
+      const uqList = (p.unique_keys || []).map((u) => (Array.isArray(u) ? u.join(", ") : u)).join(" | ");
+      const constraintHtml =
+        fkList || uqList || (p.primary_key && p.primary_key.length)
+          ? '<div class="gov-model-constraints">' +
+            (p.primary_key && p.primary_key.length
+              ? "<div>PK: " + escapeHtml(p.primary_key.join(", ")) + "</div>"
+              : "") +
+            (uqList ? "<div>UNIQUE: " + escapeHtml(uqList) + "</div>" : "") +
+            (fkList ? "<div>FK: " + escapeHtml(fkList) + "</div>" : "") +
+            "</div>"
+          : "";
       return (
         '<label class="gov-model-item">' +
         '<input type="checkbox" data-model-obj="' +
@@ -6543,6 +7314,8 @@ function renderModelProposal() {
         (p.source ? " · source: " + escapeHtml(p.source) : "") +
         (p.note ? " — " + escapeHtml(p.note) : "") +
         "</div>" +
+        colHtml +
+        constraintHtml +
         '<span class="kind">' +
         escapeHtml(p.kind) +
         "</span>" +
@@ -6552,201 +7325,217 @@ function renderModelProposal() {
     .join("");
 }
 
-function quoteModelIdent(name) {
-  return '"' + String(name || "").replace(/"/g, '""') + '"';
+function modelFqName(schema, name) {
+  return quoteModelIdent(schema) + "." + quoteModelIdent(name);
+}
+
+function renderModelColumnDdl(col, platform) {
+  let line = "  " + quoteModelIdent(col.name) + " " + col.type;
+  // IDENTITY/BIGSERIAL already imply key generation; avoid duplicate NULL specs awkwardly
+  if (col.notNull && !/IDENTITY|BIGSERIAL/i.test(col.type)) line += " NOT NULL";
+  if (col.default != null && !col.pk) line += " DEFAULT " + col.default;
+  return line;
 }
 
 function generateModelDdl(proposal, scope) {
   const target = scope.targetSchema || "gold";
   const source = scope.schema;
+  const platform = modelPlatformOf(scope);
+  const types = modelTypes(platform);
   const selected = proposal.filter((p) => p.selected);
+  const selectedIds = new Set(selected.map((p) => p.id));
   const lines = [
-    "-- DataHive dimensional model DDL",
+    "-- DataHive dimensional model DDL + load skeleton",
     "-- Connector : " + scope.connectorName,
+    "-- Platform  : " + platform,
     "-- Database/layer : " + scope.database,
     "-- Source schema : " + source,
     "-- Target schema : " + target,
-    "-- Generated     : " + new Date().toISOString(),
-    "",
-    "CREATE SCHEMA IF NOT EXISTS " + quoteModelIdent(target) + ";",
+    "-- Includes  : PK, FK, UNIQUE, CHECK, indexes/clustering, typed columns, casted loads",
+    "-- Generated : " + new Date().toISOString(),
     "",
   ];
+  if (platform === "snowflake") {
+    lines.push(
+      "-- Ensure you are in the right database before running:",
+      "-- USE DATABASE " + quoteModelIdent(scope.database || "SALES_DB") + ";",
+      "CREATE SCHEMA IF NOT EXISTS " + quoteModelIdent(target) + ";",
+      ""
+    );
+  } else {
+    lines.push("CREATE SCHEMA IF NOT EXISTS " + quoteModelIdent(target) + ";", "");
+  }
 
+  // CREATE TABLES
   selected
-    .filter((p) => p.kind === "dimension")
+    .filter((p) => p.kind === "dimension" || p.kind === "fact")
     .forEach((p) => {
-      lines.push("-- Dimension: " + p.name + " (" + p.grain + ")");
-      if (p.id === "dim_date") {
-        lines.push(
-          "CREATE TABLE IF NOT EXISTS " + quoteModelIdent(target) + "." + quoteModelIdent(p.name) + " (",
-          "  date_key        DATE PRIMARY KEY,",
-          "  day_of_week     SMALLINT,",
-          "  week_of_year    SMALLINT,",
-          "  month_num       SMALLINT,",
-          "  quarter_num     SMALLINT,",
-          "  year_num        INTEGER,",
-          "  is_weekend      BOOLEAN",
-          ");",
-          ""
+      const cols = p.columns || [];
+      lines.push("-- ------------------------------------------------------------");
+      lines.push("-- " + p.kind.toUpperCase() + ": " + p.name + " (" + p.grain + ")");
+      if (p.source) lines.push("-- Source: " + p.source);
+      lines.push("CREATE TABLE IF NOT EXISTS " + modelFqName(target, p.name) + " (");
+      const body = cols.map((c) => renderModelColumnDdl(c, platform));
+      // table-level PK
+      if (p.primary_key && p.primary_key.length) {
+        body.push(
+          "  CONSTRAINT " +
+            quoteModelIdent("pk_" + p.name) +
+            " PRIMARY KEY (" +
+            p.primary_key.map(quoteModelIdent).join(", ") +
+            ")"
         );
-      } else if (p.id === "dim_customer") {
-        lines.push(
-          "CREATE TABLE IF NOT EXISTS " + quoteModelIdent(target) + "." + quoteModelIdent(p.name) + " (",
-          "  customer_key    BIGSERIAL PRIMARY KEY,",
-          "  customer_id     TEXT NOT NULL UNIQUE,",
-          "  customer_nm     TEXT,",
-          "  segment         TEXT,",
-          "  account_status  TEXT,",
-          "  city            TEXT,",
-          "  state           TEXT,",
-          "  country         TEXT,",
-          "  effective_from  TIMESTAMP,",
-          "  effective_to    TIMESTAMP,",
-          "  is_current      BOOLEAN DEFAULT TRUE",
-          ");",
-          ""
+      }
+      (p.unique_keys || []).forEach((uq, i) => {
+        const colsU = Array.isArray(uq) ? uq : [uq];
+        body.push(
+          "  CONSTRAINT " +
+            quoteModelIdent("uq_" + p.name + "_" + (i + 1)) +
+            " UNIQUE (" +
+            colsU.map(quoteModelIdent).join(", ") +
+            ")"
         );
-      } else if (p.id === "dim_geography") {
-        lines.push(
-          "CREATE TABLE IF NOT EXISTS " + quoteModelIdent(target) + "." + quoteModelIdent(p.name) + " (",
-          "  geo_key         BIGSERIAL PRIMARY KEY,",
-          "  city            TEXT,",
-          "  state           TEXT,",
-          "  zip             TEXT,",
-          "  country         TEXT,",
-          "  region          TEXT",
-          ");",
-          ""
+      });
+      (p.checks || []).forEach((ck, i) => {
+        const expr = typeof ck === "string" ? ck : ck.expr;
+        if (!expr) return;
+        body.push(
+          "  CONSTRAINT " +
+            quoteModelIdent("ck_" + p.name + "_" + (i + 1)) +
+            " CHECK (" +
+            expr +
+            ")"
         );
-      } else if (p.id === "dim_product") {
+      });
+      lines.push(body.join(",\n"));
+      lines.push(");");
+      lines.push("");
+    });
+
+  // Foreign keys (after all tables exist)
+  lines.push("-- Foreign keys (added after tables so create order is safe)");
+  selected
+    .filter((p) => p.kind === "dimension" || p.kind === "fact")
+    .forEach((p) => {
+      (p.foreign_keys || []).forEach((fk, i) => {
+        if (!selectedIds.has(fk.ref_table) && !selected.some((x) => x.name === fk.ref_table)) {
+          lines.push(
+            "-- skipped FK " +
+              p.name +
+              "." +
+              fk.column +
+              " → " +
+              fk.ref_table +
+              " (target not selected)"
+          );
+          return;
+        }
+        const cname = "fk_" + p.name + "_" + fk.column;
         lines.push(
-          "CREATE TABLE IF NOT EXISTS " + quoteModelIdent(target) + "." + quoteModelIdent(p.name) + " (",
-          "  product_key     BIGSERIAL PRIMARY KEY,",
-          "  product_id      TEXT NOT NULL UNIQUE,",
-          "  product_name    TEXT,",
-          "  product_type    TEXT,",
-          "  monthly_fee_usd NUMERIC(12,2)",
-          ");",
-          ""
+          "ALTER TABLE " +
+            modelFqName(target, p.name) +
+            " ADD CONSTRAINT " +
+            quoteModelIdent(cname) +
+            " FOREIGN KEY (" +
+            quoteModelIdent(fk.column) +
+            ") REFERENCES " +
+            modelFqName(target, fk.ref_table) +
+            " (" +
+            quoteModelIdent(fk.ref_column) +
+            ");"
         );
-      } else if (p.id === "dim_channel") {
+      });
+    });
+  lines.push("");
+
+  // Indexes / clustering
+  lines.push("-- Indexes / clustering");
+  selected
+    .filter((p) => p.kind === "dimension" || p.kind === "fact")
+    .forEach((p) => {
+      (p.indexes || []).forEach((idx, i) => {
+        const cols = Array.isArray(idx) ? idx : [idx];
+        const iname = "ix_" + p.name + "_" + (i + 1);
+        if (platform === "snowflake") {
+          lines.push(
+            "-- Snowflake: consider CLUSTER BY / search optimization instead of B-tree indexes"
+          );
+          lines.push(
+            "-- ALTER TABLE " +
+              modelFqName(target, p.name) +
+              " CLUSTER BY (" +
+              cols.map(quoteModelIdent).join(", ") +
+              ");"
+          );
+        } else {
+          lines.push(
+            "CREATE INDEX IF NOT EXISTS " +
+              quoteModelIdent(iname) +
+              " ON " +
+              modelFqName(target, p.name) +
+              " (" +
+              cols.map(quoteModelIdent).join(", ") +
+              ");"
+          );
+        }
+      });
+      if (platform === "snowflake" && p.cluster_by && p.cluster_by.length) {
         lines.push(
-          "CREATE TABLE IF NOT EXISTS " + quoteModelIdent(target) + "." + quoteModelIdent(p.name) + " (",
-          "  channel_key     BIGSERIAL PRIMARY KEY,",
-          "  channel_code    TEXT NOT NULL UNIQUE,",
-          "  channel_name    TEXT,",
-          "  channel_group   TEXT",
-          ");",
-          ""
-        );
-      } else {
-        lines.push(
-          "CREATE TABLE IF NOT EXISTS " + quoteModelIdent(target) + "." + quoteModelIdent(p.name) + " (",
-          "  " + p.name.replace(/^dim_/, "") + "_key BIGSERIAL PRIMARY KEY,",
-          "  business_key    TEXT,",
-          "  attributes      JSONB",
-          ");",
-          ""
+          "ALTER TABLE " +
+            modelFqName(target, p.name) +
+            " CLUSTER BY (" +
+            p.cluster_by.map(quoteModelIdent).join(", ") +
+            ");"
         );
       }
     });
+  lines.push("");
 
-  selected
-    .filter((p) => p.kind === "fact")
-    .forEach((p) => {
-      lines.push("-- Fact: " + p.name + " (" + p.grain + ")");
-      if (p.id === "fact_invoice") {
-        lines.push(
-          "CREATE TABLE IF NOT EXISTS " + quoteModelIdent(target) + "." + quoteModelIdent(p.name) + " (",
-          "  invoice_key     BIGSERIAL PRIMARY KEY,",
-          "  invoice_id      TEXT NOT NULL,",
-          "  customer_key    BIGINT REFERENCES " + quoteModelIdent(target) + ".\"dim_customer\"(customer_key),",
-          "  date_key        DATE REFERENCES " + quoteModelIdent(target) + ".\"dim_date\"(date_key),",
-          "  amount_due      NUMERIC(14,2),",
-          "  tax_amount      NUMERIC(14,2),",
-          "  total_amount    NUMERIC(14,2)",
-          ");",
-          ""
-        );
-      } else if (p.id === "fact_usage_daily") {
-        lines.push(
-          "CREATE TABLE IF NOT EXISTS " + quoteModelIdent(target) + "." + quoteModelIdent(p.name) + " (",
-          "  usage_key       BIGSERIAL PRIMARY KEY,",
-          "  customer_key    BIGINT REFERENCES " + quoteModelIdent(target) + ".\"dim_customer\"(customer_key),",
-          "  date_key        DATE REFERENCES " + quoteModelIdent(target) + ".\"dim_date\"(date_key),",
-          "  geo_key         BIGINT,",
-          "  duration_sec    BIGINT,",
-          "  data_used_gb    NUMERIC(14,4),",
-          "  event_count     BIGINT",
-          ");",
-          ""
-        );
-      } else if (p.id === "fact_support_ticket") {
-        lines.push(
-          "CREATE TABLE IF NOT EXISTS " + quoteModelIdent(target) + "." + quoteModelIdent(p.name) + " (",
-          "  ticket_key      BIGSERIAL PRIMARY KEY,",
-          "  ticket_id       TEXT NOT NULL,",
-          "  customer_key    BIGINT REFERENCES " + quoteModelIdent(target) + ".\"dim_customer\"(customer_key),",
-          "  channel_key     BIGINT,",
-          "  date_key        DATE REFERENCES " + quoteModelIdent(target) + ".\"dim_date\"(date_key),",
-          "  resolution_sec  BIGINT,",
-          "  priority        TEXT",
-          ");",
-          ""
-        );
-      } else {
-        lines.push(
-          "CREATE TABLE IF NOT EXISTS " + quoteModelIdent(target) + "." + quoteModelIdent(p.name) + " (",
-          "  fact_key        BIGSERIAL PRIMARY KEY,",
-          "  customer_key    BIGINT,",
-          "  date_key        DATE,",
-          "  measure_value   NUMERIC(18,4),",
-          "  source_ref      TEXT",
-          ");",
-          ""
-        );
-      }
-    });
-
+  // Views
   selected
     .filter((p) => p.kind === "view")
     .forEach((p) => {
-      lines.push("-- View: " + p.name + " (" + p.grain + ")");
+      lines.push("-- VIEW: " + p.name + " (" + p.grain + ")");
       if (p.id === "vw_customer_360") {
         lines.push(
-          "CREATE OR REPLACE VIEW " + quoteModelIdent(target) + "." + quoteModelIdent(p.name) + " AS",
+          "CREATE OR REPLACE VIEW " + modelFqName(target, p.name) + " AS",
           "SELECT",
           "  c.customer_id,",
           "  c.customer_nm,",
+          "  c.email,",
           "  c.segment,",
           "  c.account_status,",
           "  c.city,",
           "  c.state,",
-          "  c.country",
-          "FROM " + quoteModelIdent(target) + ".\"dim_customer\" c",
+          "  c.country,",
+          "  c.effective_from,",
+          "  c.is_current",
+          "FROM " + modelFqName(target, "dim_customer") + " c",
           "WHERE c.is_current = TRUE;",
           ""
         );
       } else if (p.id === "vw_daily_kpi") {
-        const usage = selected.some((x) => x.id === "fact_usage_daily" && x.selected);
-        const invoice = selected.some((x) => x.id === "fact_invoice" && x.selected);
+        const usage = selected.some((x) => x.id === "fact_usage_daily");
+        const invoice = selected.some((x) => x.id === "fact_invoice");
+        lines.push("CREATE OR REPLACE VIEW " + modelFqName(target, p.name) + " AS");
+        lines.push("SELECT");
+        lines.push("  d.date_key,");
         lines.push(
-          "CREATE OR REPLACE VIEW " + quoteModelIdent(target) + "." + quoteModelIdent(p.name) + " AS",
-          "SELECT",
-          "  d.date_key,",
           usage
-            ? "  COALESCE(u.events, 0) AS usage_events,"
-            : "  0::BIGINT AS usage_events,",
-          invoice
-            ? "  COALESCE(i.revenue, 0) AS revenue_amount"
-            : "  0::NUMERIC AS revenue_amount",
-          "FROM " + quoteModelIdent(target) + ".\"dim_date\" d"
+            ? "  CAST(COALESCE(u.events, 0) AS " + types.bigint + ") AS usage_events,"
+            : "  CAST(0 AS " + types.bigint + ") AS usage_events,"
         );
+        lines.push(
+          invoice
+            ? "  CAST(COALESCE(i.revenue, 0) AS " + types.num(18, 2) + ") AS revenue_amount"
+            : "  CAST(0 AS " + types.num(18, 2) + ") AS revenue_amount"
+        );
+        lines.push("FROM " + modelFqName(target, "dim_date") + " d");
         if (usage) {
           lines.push(
             "LEFT JOIN (",
             "  SELECT date_key, SUM(event_count) AS events",
-            "  FROM " + quoteModelIdent(target) + ".\"fact_usage_daily\"",
+            "  FROM " + modelFqName(target, "fact_usage_daily"),
             "  GROUP BY date_key",
             ") u ON u.date_key = d.date_key"
           );
@@ -6755,41 +7544,100 @@ function generateModelDdl(proposal, scope) {
           lines.push(
             "LEFT JOIN (",
             "  SELECT date_key, SUM(total_amount) AS revenue",
-            "  FROM " + quoteModelIdent(target) + ".\"fact_invoice\"",
+            "  FROM " + modelFqName(target, "fact_invoice"),
             "  GROUP BY date_key",
             ") i ON i.date_key = d.date_key"
           );
         }
         lines.push(";", "");
       } else if (p.id === "vw_revenue_monthly") {
+        const monthExpr =
+          platform === "snowflake"
+            ? "DATE_TRUNC('MONTH', d.date_key)::DATE"
+            : "date_trunc('month', d.date_key)::date";
         lines.push(
-          "CREATE OR REPLACE VIEW " + quoteModelIdent(target) + "." + quoteModelIdent(p.name) + " AS",
+          "CREATE OR REPLACE VIEW " + modelFqName(target, p.name) + " AS",
           "SELECT",
-          "  date_trunc('month', d.date_key)::date AS month_start,",
+          "  " + monthExpr + " AS month_start,",
           "  c.segment,",
-          "  SUM(f.total_amount) AS revenue_amount,",
-          "  COUNT(*) AS invoice_count",
-          "FROM " + quoteModelIdent(target) + ".\"fact_invoice\" f",
-          "JOIN " + quoteModelIdent(target) + ".\"dim_date\" d ON d.date_key = f.date_key",
-          "JOIN " + quoteModelIdent(target) + ".\"dim_customer\" c ON c.customer_key = f.customer_key",
+          "  CAST(SUM(f.total_amount) AS " + types.num(18, 2) + ") AS revenue_amount,",
+          "  CAST(COUNT(*) AS " + types.bigint + ") AS invoice_count",
+          "FROM " + modelFqName(target, "fact_invoice") + " f",
+          "JOIN " + modelFqName(target, "dim_date") + " d ON d.date_key = f.date_key",
+          "JOIN " + modelFqName(target, "dim_customer") + " c ON c.customer_key = f.customer_key",
           "GROUP BY 1, 2;",
           ""
         );
       } else {
         lines.push(
-          "CREATE OR REPLACE VIEW " + quoteModelIdent(target) + "." + quoteModelIdent(p.name) + " AS",
-          "SELECT 1 AS placeholder WHERE FALSE;",
+          "CREATE OR REPLACE VIEW " + modelFqName(target, p.name) + " AS",
+          "SELECT CAST(1 AS " + types.int + ") AS placeholder WHERE 1 = 0;",
           ""
         );
       }
     });
 
+  // Load / cast skeletons
+  lines.push("-- ============================================================");
+  lines.push("-- Load skeletons with explicit type casting (edit source tables)");
+  lines.push("-- Order: dimensions (date → hubs) → facts → views refresh automatically");
+  lines.push("-- ============================================================");
+  selected
+    .filter((p) => p.kind === "dimension" || p.kind === "fact")
+    .forEach((p) => {
+      if (p.id === "dim_date") {
+        lines.push(
+          "-- Seed dim_date (example 2-year window) — platform: " + platform,
+          "-- INSERT INTO " + modelFqName(target, "dim_date"),
+          "-- (date_key, day_of_week, week_of_year, month_num, quarter_num, year_num, is_weekend)",
+          "-- SELECT ... calendar generator ...;",
+          ""
+        );
+        return;
+      }
+      const castCols = (p.columns || []).filter(
+        (c) => !c.pk && c.name !== "_dh_loaded_at" && !/IDENTITY|BIGSERIAL/i.test(c.type)
+      );
+      if (!castCols.length) return;
+      lines.push("-- Load " + p.name + " from " + (p.source || source + ".<table>"));
+      lines.push(
+        "-- INSERT INTO " +
+          modelFqName(target, p.name) +
+          " (" +
+          castCols.map((c) => quoteModelIdent(c.name)).join(", ") +
+          ")"
+      );
+      lines.push("-- SELECT");
+      castCols.forEach((c, idx) => {
+        const expr =
+          c.castFrom ||
+          "CAST(src." + c.name + " AS " + c.type + ")";
+        const alias = quoteModelIdent(c.name);
+        lines.push(
+          "--   " +
+            expr +
+            " AS " +
+            alias +
+            (idx < castCols.length - 1 ? "," : "")
+        );
+      });
+      lines.push(
+        "-- FROM " +
+          quoteModelIdent(source) +
+          ".<source_table> src",
+        "-- WHERE 1 = 1;",
+        ""
+      );
+    });
+
   lines.push(
-    "-- Optional: seed dim_date for the next 5 years",
-    "-- INSERT INTO " + quoteModelIdent(target) + ".\"dim_date\" ...",
-    "",
-    "-- Suggested load order: dimensions → facts → refresh views",
-    "-- Source tables consulted from " + quoteModelIdent(source) + ".*"
+    "-- Validation checklist",
+    "-- 1) Every table has a PRIMARY KEY",
+    "-- 2) Fact FK columns reference dimension PKs",
+    "-- 3) Natural keys have UNIQUE constraints",
+    "-- 4) Measures/status columns have CHECK constraints where applicable",
+    "-- 5) Load SQL uses explicit CAST / TRY_CAST for type safety",
+    "-- 6) Prefer TRY_CAST on Snowflake dirty RAW sources"
   );
   return lines.join("\n");
 }
@@ -6813,6 +7661,7 @@ function collectModelScope() {
     database,
     schema,
     targetSchema,
+    platform: String((connector && (connector.platform || connector.cloud)) || "postgres").toLowerCase(),
   };
 }
 
@@ -7090,16 +7939,28 @@ function bindGovernanceEvents() {
 
   const proposeBtn = $("#govModelProposeBtn");
   if (proposeBtn) {
-    proposeBtn.addEventListener("click", () => {
+    proposeBtn.addEventListener("click", async () => {
       const scope = collectModelScope();
       if (!scope.connectorId) return showModelError("Select a connector.");
       if (!scope.database) return showModelError("Select a database / layer.");
       if (!scope.schema) return showModelError("Select a schema.");
       if (!scope.targetSchema) return showModelError("Select a target model schema.");
       showModelError("");
-      modelState.proposal = proposeDimensionalModel(scope);
-      renderModelProposal();
-      setModelStep(2);
+      proposeBtn.disabled = true;
+      const prevLabel = proposeBtn.textContent;
+      proposeBtn.textContent = "Analyzing source…";
+      try {
+        let proposal = proposeDimensionalModel(scope);
+        proposal = await enrichProposalFromSourceStructures(scope, proposal);
+        modelState.proposal = proposal;
+        renderModelProposal();
+        setModelStep(2);
+      } catch (err) {
+        showModelError(err && err.message ? err.message : String(err));
+      } finally {
+        proposeBtn.disabled = false;
+        proposeBtn.textContent = prevLabel || "Propose data model";
+      }
     });
   }
 

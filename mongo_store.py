@@ -208,6 +208,7 @@ def find_connector_by_platform(platform: str) -> dict[str, Any] | None:
         "postgresql": "postgres",
         "pg": "postgres",
         "local": "postgres",
+        "dbx": "databricks",
     }
     text = aliases.get(text, text)
     variants = {text}
@@ -215,6 +216,8 @@ def find_connector_by_platform(platform: str) -> dict[str, Any] | None:
         variants.update({"postgresql", "pg", "local"})
     if text == "gcp":
         variants.update({"google", "bigquery"})
+    if text == "databricks":
+        variants.update({"dbx"})
     try:
         cursor = (
             connectors_collection()

@@ -38,6 +38,8 @@ PLATFORM_ALIASES = {
     "pg": "postgres",
     "local postgres": "postgres",
     "local_postgres": "postgres",
+    "dbx": "databricks",
+    "databricks workspace": "databricks",
 }
 # When spreadsheet `connection` is just a platform label (e.g. "Snowflake").
 PLATFORM_CONNECTION_LABELS = frozenset(
@@ -54,6 +56,8 @@ PLATFORM_CONNECTION_LABELS = frozenset(
         "pg",
         "local",
         "local postgres",
+        "databricks",
+        "dbx",
     }
 )
 
