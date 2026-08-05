@@ -194,6 +194,56 @@ def find_connector_by_name(name: str) -> dict[str, Any] | None:
     return item
 
 
+def find_connector_by_platform(platform: str) -> dict[str, Any] | None:
+    """Return the most recently saved connector for a cloud/platform (e.g. snowflake)."""
+    text = (platform or "").strip().lower()
+    if not text:
+        return None
+    aliases = {
+        "google": "gcp",
+        "google_cloud": "gcp",
+        "bigquery": "gcp",
+        "s3": "aws",
+        "redshift": "aws",
+        "postgresql": "postgres",
+        "pg": "postgres",
+        "local": "postgres",
+    }
+    text = aliases.get(text, text)
+    variants = {text}
+    if text == "postgres":
+        variants.update({"postgresql", "pg", "local"})
+    if text == "gcp":
+        variants.update({"google", "bigquery"})
+    try:
+        cursor = (
+            connectors_collection()
+            .find(
+                {
+                    "$or": [
+                        {"cloud": {"$regex": f"^({'|'.join(re.escape(v) for v in variants)})$", "$options": "i"}},
+                        {
+                            "connector_type": {
+                                "$regex": f"^({'|'.join(re.escape(v) for v in variants)})$",
+                                "$options": "i",
+                            }
+                        },
+                    ]
+                }
+            )
+            .sort([("_id", -1)])
+            .limit(1)
+        )
+        doc = next(cursor, None)
+    except PyMongoError as exc:
+        raise RuntimeError(f"MongoDB connector lookup failed: {exc}") from exc
+    if not doc:
+        return None
+    item = dict(doc)
+    item["id"] = str(item.pop("_id"))
+    return item
+
+
 def upsert_asset_glossary_term(doc: dict[str, Any]) -> str:
     """Upsert one column glossary term into asset_glossary."""
     _ensure_asset_glossary_indexes()

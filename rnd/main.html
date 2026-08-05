@@ -1109,7 +1109,7 @@
         <div class="glossary-step">
           <div class="n">3</div>
           <h3>Upload back</h3>
-          <p>Terms land in the shared glossary registry; Postgres assets also sync column comments.</p>
+          <p>Terms land in the shared glossary registry; Postgres and Snowflake also sync table/column comments in the source system.</p>
         </div>
       </div>
 
@@ -5505,7 +5505,7 @@ function bindGlossaryEvents() {
         const msg =
           'Uploaded "' + (data.file_name || glossarySelectedFile.name) + '". ' +
           "Registry updated: " + (apply.registry_updated != null ? apply.registry_updated : (apply.updated || 0)) +
-          ", Postgres synced: " + (apply.source_synced != null ? apply.source_synced : 0) +
+          ", source synced: " + (apply.source_synced != null ? apply.source_synced : 0) +
           ", platforms: " + platforms +
           (apply.failed ? (", failed: " + apply.failed) : "") +
           (apply.skipped ? (", skipped: " + apply.skipped) : "") + ".";
