@@ -1056,6 +1056,7 @@
                 <option value="python">Python</option>
                 <option value="pyspark">PySpark</option>
               </select>
+              <div class="help" id="etl_language_help">For Snowflake stage → RAW, SQL/Python use native COPY INTO (PySpark is not required).</div>
             </div>
 
             <div class="field">
@@ -4237,43 +4238,53 @@ function generateEtlSqlScript(ctx) {
   return lines.join("\n");
 }
 
+function generateSnowflakeStageIngestPython(ctx, opts) {
+  const sql = generateSnowflakeStageIngestSql(ctx);
+  const label = (opts && opts.viaLabel) || "Python";
+  return [
+    '"""DataHive generated Snowflake stage → RAW table load (' + label + ").",
+    "Pipeline : " + ctx.name,
+    "Source  : " + ctx.sourceLabel + " [" + ctx.sourceType + "] → " + ctx.sourceObject,
+    "Target  : " + ctx.targetLabel + " [" + ctx.targetType + "] → " + ctx.targetObject,
+    "",
+    "Uses snowflake-connector-python to run DDL + COPY INTO.",
+    "PySpark is not required for internal Snowflake stage loads.",
+    '"""',
+    "from __future__ import annotations",
+    "",
+    "import snowflake.connector",
+    "",
+    "SQL_SCRIPT = " + JSON.stringify(sql),
+    "",
+    "",
+    "def main() -> None:",
+    "    # Fill connection from connector_dtls / env — do not hardcode secrets.",
+    "    conn = snowflake.connector.connect(",
+    "        account=\"...\",",
+    "        user=\"...\",",
+    "        password=\"...\",",
+    "        warehouse=\"DEV_WH\",",
+    "        database=\"SALES_DB\",",
+    "        schema=\"RAW\",",
+    "    )",
+    "    try:",
+    "        with conn.cursor() as cur:",
+    "            for stmt in [s.strip() for s in SQL_SCRIPT.split(\";\") if s.strip()]:",
+    "                cur.execute(stmt)",
+    "                print(\"OK:\", stmt.splitlines()[0][:120])",
+    "    finally:",
+    "        conn.close()",
+    "",
+    "",
+    'if __name__ == "__main__":',
+    "    main()",
+    "",
+  ].join("\n");
+}
+
 function generateEtlPythonScript(ctx) {
   if (ctx.sourceKind === "stage_file" || ctx.isStageIngest) {
-    const sql = generateSnowflakeStageIngestSql(ctx);
-    return [
-      '"""DataHive generated Snowflake stage → RAW table load (Python).',
-      "Executes the DDL + COPY INTO script via snowflake-connector-python.",
-      '"""',
-      "from __future__ import annotations",
-      "",
-      "import snowflake.connector",
-      "",
-      "SQL_SCRIPT = " + JSON.stringify(sql),
-      "",
-      "",
-      "def main() -> None:",
-      "    # Fill connection from connector_dtls / env — do not hardcode secrets.",
-      "    conn = snowflake.connector.connect(",
-      "        account=\"...\",",
-      "        user=\"...\",",
-      "        password=\"...\",",
-      "        warehouse=\"DEV_WH\",",
-      "        database=\"SALES_DB\",",
-      "        schema=\"RAW\",",
-      "    )",
-      "    try:",
-      "        with conn.cursor() as cur:",
-      "            for stmt in [s.strip() for s in SQL_SCRIPT.split(\";\") if s.strip()]:",
-      "                cur.execute(stmt)",
-      "                print(\"OK:\", stmt.splitlines()[0][:120])",
-      "    finally:",
-      "        conn.close()",
-      "",
-      "",
-      'if __name__ == "__main__":',
-      "    main()",
-      "",
-    ].join("\n");
+    return generateSnowflakeStageIngestPython(ctx, { viaLabel: "Python" });
   }
   const src = ctx.sourceObject;
   const tgt = ctx.targetObject;
@@ -4351,6 +4362,12 @@ function generateEtlPythonScript(ctx) {
 }
 
 function generateEtlPySparkScript(ctx) {
+  // Internal Snowflake stage → RAW uses COPY INTO; Spark is the wrong engine.
+  if (ctx.sourceKind === "stage_file" || ctx.isStageIngest) {
+    return generateSnowflakeStageIngestPython(ctx, {
+      viaLabel: "Python · Snowflake COPY (not PySpark)",
+    });
+  }
   const src = ctx.sourceObject;
   const tgt = ctx.targetObject;
   const srcFormat =
@@ -4374,6 +4391,9 @@ function generateEtlPySparkScript(ctx) {
     "Pipeline : " + ctx.name,
     "Source  : " + ctx.sourceLabel + " [" + ctx.sourceType + "] → " + src,
     "Target  : " + ctx.targetLabel + " [" + ctx.targetType + "] → " + tgt,
+    "",
+    "Requires: pip install pyspark  (and a Spark runtime).",
+    "For Snowflake stage → RAW loads, use Language = SQL or Python instead.",
     '"""',
     "from pyspark.sql import SparkSession",
     "from pyspark.sql import functions as F",
@@ -4730,9 +4750,31 @@ function generateEtlTransformationScript() {
     }
   }
   let script = "";
-  if (ctx.language === "python") script = generateEtlPythonScript(ctx);
-  else if (ctx.language === "pyspark") script = generateEtlPySparkScript(ctx);
-  else script = generateEtlSqlScript(ctx);
+  let languageLabel = ctx.language.toUpperCase();
+  if (ctx.sourceKind === "stage_file" || ctx.isStageIngest) {
+    // Always native Snowflake DDL + COPY INTO for stage landing.
+    if (ctx.language === "sql") {
+      script = generateEtlSqlScript(ctx);
+      languageLabel = "SQL · Snowflake COPY";
+    } else {
+      script = generateSnowflakeStageIngestPython(ctx, {
+        viaLabel:
+          ctx.language === "pyspark"
+            ? "Python · Snowflake COPY (not PySpark)"
+            : "Python",
+      });
+      languageLabel =
+        ctx.language === "pyspark"
+          ? "PYTHON · Snowflake COPY (PySpark not used)"
+          : "PYTHON · Snowflake COPY";
+    }
+  } else if (ctx.language === "python") {
+    script = generateEtlPythonScript(ctx);
+  } else if (ctx.language === "pyspark") {
+    script = generateEtlPySparkScript(ctx);
+  } else {
+    script = generateEtlSqlScript(ctx);
+  }
 
   etlGeneratedScript = script;
   const editor = $("#etlScriptEditor");
@@ -4744,7 +4786,7 @@ function generateEtlTransformationScript() {
       " → " +
       etlPlatformLabel(ctx.targetType) +
       " · " +
-      ctx.language.toUpperCase();
+      languageLabel;
   }
   const meta = $("#etlScriptMeta");
   if (meta) {
@@ -5003,7 +5045,24 @@ function bindEtlEvents() {
   if (sourceKind) {
     sourceKind.addEventListener("change", () => {
       updateEtlSourceKindUi();
-      if (sourceKind.value === "stage_file") loadEtlSnowflakeStages();
+      if (sourceKind.value === "stage_file") {
+        loadEtlSnowflakeStages();
+        // Stage landing is native Snowflake COPY — default away from PySpark.
+        if ($("#etl_language") && $("#etl_language").value === "pyspark") {
+          $("#etl_language").value = "sql";
+        }
+        const langHelp = $("#etl_language_help");
+        if (langHelp) {
+          langHelp.textContent =
+            "Stage → RAW always generates Snowflake DDL + COPY INTO. PySpark is not used.";
+        }
+      } else {
+        const langHelp = $("#etl_language_help");
+        if (langHelp) {
+          langHelp.textContent =
+            "For Snowflake stage → RAW, SQL/Python use native COPY INTO (PySpark is not required).";
+        }
+      }
     });
   }
   const stageSel = $("#etl_source_stage");
