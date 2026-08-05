@@ -690,25 +690,31 @@ def list_stage_files_for_doc(
 
 
 def ensure_raw_stage_grant_sql(database: str = "SALES_DB", schema: str = "RAW") -> str:
-    return (
-        f"-- Run as ACCOUNTADMIN (schema owner). SYSADMIN does NOT inherit these privileges.\n"
-        f"USE ROLE ACCOUNTADMIN;\n"
-        f"USE DATABASE {database};\n"
-        f"USE SCHEMA {schema};\n"
-        f"-- Only if the stage truly does not exist yet:\n"
-        f"CREATE STAGE IF NOT EXISTS RAW_STAGE\n"
-        f"  DIRECTORY = (ENABLE = TRUE)\n"
-        f"  COMMENT = 'DataHive landing stage for files loaded into {database}.{schema}';\n"
-        f"-- Required for connector users (SDEVELOPER / DHENG / DATA_ENGINEER):\n"
-        f"GRANT USAGE ON DATABASE {database} TO ROLE DATA_ENGINEER;\n"
-        f"GRANT USAGE ON SCHEMA {database}.{schema} TO ROLE DATA_ENGINEER;\n"
-        f"GRANT READ, WRITE ON STAGE {database}.{schema}.RAW_STAGE TO ROLE DATA_ENGINEER;\n"
-        f"GRANT USAGE ON DATABASE {database} TO ROLE SYSADMIN;\n"
-        f"GRANT USAGE, CREATE STAGE ON SCHEMA {database}.{schema} TO ROLE SYSADMIN;\n"
-        f"GRANT READ, WRITE ON STAGE {database}.{schema}.RAW_STAGE TO ROLE SYSADMIN;\n"
-        f"-- Optional: let DATA_ENGINEER create stages too\n"
-        f"-- GRANT CREATE STAGE ON SCHEMA {database}.{schema} TO ROLE DATA_ENGINEER;"
-    )
+    """Grants for stage LIST + ETL (CREATE FILE FORMAT / TABLE / COPY INTO)."""
+    roles = ("DEV_ADMIN_ROLE", "DATA_ENGINEER", "SYSADMIN")
+    lines = [
+        f"-- Run as ACCOUNTADMIN (schema owner). SYSADMIN does NOT inherit these privileges.",
+        f"USE ROLE ACCOUNTADMIN;",
+        f"USE DATABASE {database};",
+        f"USE SCHEMA {schema};",
+        f"-- Only if the stage truly does not exist yet:",
+        f"CREATE STAGE IF NOT EXISTS RAW_STAGE",
+        f"  DIRECTORY = (ENABLE = TRUE)",
+        f"  COMMENT = 'DataHive landing stage for files loaded into {database}.{schema}';",
+        f"",
+    ]
+    for role in roles:
+        lines.extend(
+            [
+                f"-- {role}: stage read + RAW ETL (file format / table / copy)",
+                f"GRANT USAGE ON DATABASE {database} TO ROLE {role};",
+                f"GRANT USAGE ON SCHEMA {database}.{schema} TO ROLE {role};",
+                f"GRANT CREATE TABLE, CREATE FILE FORMAT, CREATE STAGE ON SCHEMA {database}.{schema} TO ROLE {role};",
+                f"GRANT READ, WRITE ON STAGE {database}.{schema}.RAW_STAGE TO ROLE {role};",
+                f"",
+            ]
+        )
+    return "\n".join(lines)
 
 
 def ensure_raw_stage_for_doc(doc: dict[str, Any]) -> dict[str, Any]:

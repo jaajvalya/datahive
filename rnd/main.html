@@ -5030,16 +5030,15 @@ function bindEtlEvents() {
             /* keep raw */
           }
           if (!msg) {
-            if (/CREATE STAGE|Insufficient privileges/i.test(raw)) {
+            if (/CREATE (STAGE|FILE FORMAT|TABLE)|Insufficient privileges/i.test(raw)) {
               msg =
-                "DATA_ENGINEER can USE SALES_DB.RAW but cannot CREATE STAGE.\n\n" +
-                "Ask an admin to run:\n" +
+                "Connector role can USE SALES_DB.RAW but lacks create privileges for ETL.\n\n" +
+                "Ask ACCOUNTADMIN to run:\n" +
                 "USE ROLE ACCOUNTADMIN;\n" +
-                "USE DATABASE SALES_DB; USE SCHEMA RAW;\n" +
-                "CREATE STAGE IF NOT EXISTS RAW_STAGE DIRECTORY = (ENABLE = TRUE);\n" +
-                "GRANT READ, WRITE ON STAGE SALES_DB.RAW.RAW_STAGE TO ROLE DATA_ENGINEER;\n" +
-                "GRANT CREATE STAGE ON SCHEMA SALES_DB.RAW TO ROLE DATA_ENGINEER;\n\n" +
-                "Until then, select stage \"~\" (user stage) in ETL, PUT files there, and generate the load script.";
+                "GRANT USAGE ON DATABASE SALES_DB TO ROLE DEV_ADMIN_ROLE;\n" +
+                "GRANT USAGE ON SCHEMA SALES_DB.RAW TO ROLE DEV_ADMIN_ROLE;\n" +
+                "GRANT CREATE TABLE, CREATE FILE FORMAT, CREATE STAGE ON SCHEMA SALES_DB.RAW TO ROLE DEV_ADMIN_ROLE;\n" +
+                "GRANT READ, WRITE ON STAGE SALES_DB.RAW.RAW_STAGE TO ROLE DEV_ADMIN_ROLE;";
             } else {
               msg = "Could not ensure RAW_STAGE: " + raw;
             }
