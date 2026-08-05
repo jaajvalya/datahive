@@ -142,7 +142,35 @@
   }
   .recent-table tr:last-child td { border-bottom: none; }
   .recent-table .nm { font-weight: 600; color: var(--ink-900); }
+  .recent-table .rc-actions {
+    display:flex; flex-wrap:wrap; gap:6px; white-space:nowrap;
+  }
+  .recent-table .rc-actions .btn {
+    padding:5px 10px; font-size:12px; border-radius:8px;
+  }
+  .recent-table .rc-actions .btn-danger {
+    color:#b42318; border:1px solid #f3c6c2; background:#fff5f4;
+  }
+  .recent-table .rc-actions .btn-danger:hover {
+    background:#ffe8e6; border-color:#e8a39d;
+  }
+  .recent-table .rc-actions .btn-test {
+    color:var(--navy-700); border:1px solid #c9d7ea; background:#f3f7fc;
+  }
+  .recent-table .rc-actions .btn-test:hover {
+    background:#e8f0fa; border-color:#9eb6d4;
+  }
+  .recent-table .rc-actions .btn:disabled {
+    opacity:.55; cursor:wait;
+  }
+  .recent-table .rc-conn-status {
+    font-size:12px; font-weight:600; line-height:1.35; max-width:220px;
+  }
+  .recent-table .rc-conn-status.ok { color:#0f7a45; }
+  .recent-table .rc-conn-status.err { color:#b42318; }
+  .recent-table .rc-conn-status.pending { color:#8a93a3; font-weight:500; }
   .recent-empty { padding: 18px 22px; color: #8a93a3; font-size: 13px; }
+  .secret-keep-hint { font-size:12px; color:#8a93a3; margin-top:4px; }
 
   .panel {
     margin:22px auto 0; width:99%; max-width:none; text-align:left; background:var(--white);
@@ -1916,14 +1944,51 @@ function toggleAuth(type, cloud = CLOUDS[activeCloud]){
   }
 }
 
+function setSecretKeepHints(isEdit) {
+  const hint =
+    "Leave blank to keep the saved secret. Enter a new value only if you want to replace it.";
+  [
+    ["#cf_sa_help", true],
+    ["#cf_api_key", false],
+    ["#cf_secret_access_key", false],
+    ["#cf_client_secret", false],
+  ].forEach(([sel, isHelp]) => {
+    const el = $(sel);
+    if (!el) return;
+    if (isHelp) {
+      if (!el.dataset.baseHelp) el.dataset.baseHelp = el.textContent || "";
+      el.textContent = isEdit ? hint : el.dataset.baseHelp;
+      return;
+    }
+    const wrap = el.closest(".field");
+    if (!wrap) return;
+    let tip = wrap.querySelector(".secret-keep-hint");
+    if (isEdit) {
+      if (!tip) {
+        tip = document.createElement("div");
+        tip.className = "secret-keep-hint";
+        wrap.appendChild(tip);
+      }
+      tip.textContent = hint;
+    } else if (tip) {
+      tip.remove();
+    }
+  });
+}
+
 function openPanel(cloudId){
   const cloud = CLOUDS[cloudId];
   activeCloud = cloudId;
+  editingConnectorId = null;
+  editingConnectorMeta = null;
   form.reset();
   configureForm(cloud);
+  setSecretKeepHints(false);
   errBox.classList.add("hidden");
   modalOverlay.classList.remove("hidden");
   document.body.style.overflow = "hidden";
+  $("#panelTitle").textContent = "API connectivity";
+  $("#submitBtn").textContent = cloud.mode === "upload" ? "Upload & ingest" : "Connect & fetch";
 
   $$(".cloud-btn").forEach(btn => {
     const open = btn.dataset.cloud === cloudId;
@@ -1938,11 +2003,200 @@ function openPanel(cloudId){
   $("#cf_display_name").focus();
 }
 
+async function openPanelForEdit(connectorId) {
+  if (!connectorId) return;
+  if (typeof fetchConnectorById !== "function") {
+    showError("Connector edit API is unavailable. Hard-refresh the page.", true);
+    return;
+  }
+  try {
+    const data = await fetchConnectorById(connectorId);
+    const item = (data && data.item) || null;
+    if (!item) throw new Error("Connector not found.");
+    const cloudId = item.cloud || Object.keys(CLOUDS).find((k) => CLOUDS[k].type === item.connector_type);
+    const cloud = CLOUDS[cloudId];
+    if (!cloud) throw new Error("Unknown connector platform: " + (item.cloud || item.connector_type));
+
+    editingConnectorId = connectorId;
+    editingConnectorMeta = item;
+    activeCloud = cloudId;
+    form.reset();
+    configureForm(cloud);
+    setSecretKeepHints(true);
+
+    $("#cf_display_name").value = item.display_name || "";
+    if ($("#cf_account_id")) $("#cf_account_id").value = item.account_id || "";
+    if ($("#cf_region") && item.region) {
+      const regionSel = $("#cf_region");
+      if (![...regionSel.options].some((o) => o.value === item.region)) {
+        const opt = document.createElement("option");
+        opt.value = item.region;
+        opt.textContent = item.region;
+        regionSel.appendChild(opt);
+      }
+      regionSel.value = item.region;
+    }
+    if ($("#cf_auth_type") && item.auth_type) {
+      $("#cf_auth_type").value = item.auth_type;
+      toggleAuth(item.auth_type);
+    }
+    if ($("#cf_scope")) $("#cf_scope").value = item.dataset_scope || "";
+    if ($("#cf_tenant_id")) $("#cf_tenant_id").value = item.tenant_id || "";
+    if ($("#cf_resource_group")) $("#cf_resource_group").value = item.resource_group || "";
+    if ($("#cf_access_key_id")) $("#cf_access_key_id").value = item.access_key_id || "";
+    if ($("#cf_client_id")) $("#cf_client_id").value = item.client_id || "";
+    if ($("#cf_role_arn")) $("#cf_role_arn").value = item.role_arn || "";
+    if ($("#cf_upload_format") && item.upload_format) $("#cf_upload_format").value = item.upload_format;
+    if ($("#cf_upload_notes")) $("#cf_upload_notes").value = item.upload_notes || "";
+
+    const apis = Array.isArray(item.apis) ? item.apis : [];
+    $$('input[name="apis"]').forEach((el) => {
+      el.checked = apis.includes(el.value);
+    });
+
+    // Secrets are never returned — leave blank intentionally.
+    ["#cf_api_key", "#cf_secret_access_key", "#cf_client_secret", "#cf_sa_json"].forEach((sel) => {
+      if ($(sel)) $(sel).value = "";
+    });
+
+    errBox.classList.add("hidden");
+    modalOverlay.classList.remove("hidden");
+    document.body.style.overflow = "hidden";
+    $("#panelTitle").textContent = "Edit connection";
+    $("#submitBtn").textContent = "Validate & update";
+
+    $$(".cloud-btn").forEach((btn) => {
+      const open = btn.dataset.cloud === cloudId;
+      const c = CLOUDS[btn.dataset.cloud];
+      btn.classList.toggle("open", open);
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+      btn.querySelector(".hint").textContent = open
+        ? "Updating saved connection"
+        : (c.hint || "Configure API connectivity");
+    });
+    $("#cf_display_name").focus();
+  } catch (err) {
+    showError(
+      "Could not open connector for edit: " + (err && err.message ? err.message : err),
+      true
+    );
+  }
+}
+
+async function deleteConnectorById(connectorId, displayName) {
+  if (!connectorId) return;
+  if (typeof deleteConnectorFromMongo !== "function") {
+    showError("Connector delete API is unavailable. Hard-refresh the page.", true);
+    return;
+  }
+  const label = displayName || connectorId;
+  if (!window.confirm('Delete connector "' + label + '"? This cannot be undone.')) {
+    return;
+  }
+  try {
+    await deleteConnectorFromMongo(connectorId);
+    if (editingConnectorId === connectorId) closePanel();
+    showStatus(
+      {
+        cloud: (editingConnectorMeta && editingConnectorMeta.cloud) || "",
+        display_name: label,
+        connection_status: "deleted",
+      },
+      "Connector deleted",
+      "ok"
+    );
+    await renderRecentConnections();
+    if (typeof refreshAssetsCatalog === "function") {
+      try { await refreshAssetsCatalog(); } catch (_e) { /* ignore */ }
+    }
+  } catch (err) {
+    showError(
+      "Could not delete connector: " + (err && err.message ? err.message : err),
+      true
+    );
+  }
+}
+
+function setRecentConnectivityStatus(connectorId, kind, message) {
+  const cell = document.querySelector(
+    '.rc-conn-status[data-connector-id="' + CSS.escape(connectorId) + '"]'
+  );
+  if (!cell) return;
+  cell.className = "rc-conn-status" + (kind ? " " + kind : "");
+  cell.textContent = message || "—";
+  cell.title = message || "";
+}
+
+async function testSavedConnectorConnectivity(connectorId, displayName, triggerBtn) {
+  if (!connectorId) return;
+  if (typeof testConnectorConnection !== "function") {
+    showError("Connection test API is unavailable. Hard-refresh the page.", true);
+    return;
+  }
+  const label = displayName || connectorId;
+  const btn = triggerBtn || null;
+  const prevLabel = btn ? btn.textContent : "";
+  if (btn) {
+    btn.disabled = true;
+    btn.textContent = "Testing…";
+  }
+  setRecentConnectivityStatus(connectorId, "pending", "Checking connectivity…");
+
+  try {
+    // Uses saved encrypted credentials server-side — no need to re-enter secrets.
+    const result = await testConnectorConnection({ connector_id: connectorId });
+    const detailBits = [];
+    const details = (result && result.details) || {};
+    if (details.current_user) detailBits.push("user " + details.current_user);
+    if (details.current_account) detailBits.push("account " + details.current_account);
+    if (details.database) detailBits.push(details.database);
+    if (details.arn) detailBits.push(details.arn);
+    if (details.client_email) detailBits.push(details.client_email);
+    const msg =
+      (result && result.message ? result.message : "Connection successful") +
+      (detailBits.length ? " · " + detailBits.join(" · ") : "");
+    setRecentConnectivityStatus(connectorId, "ok", msg);
+    showStatus(
+      {
+        cloud: details.platform || "",
+        display_name: label,
+        account_id: details.account || details.current_account || "",
+        region: details.region || "",
+        auth_type: details.auth_type || "",
+        apis: [],
+        connection_status: "validated",
+      },
+      "Connectivity OK",
+      "ok",
+      { ok: true, id: connectorId }
+    );
+  } catch (err) {
+    const raw = err && err.message ? err.message : String(err);
+    setRecentConnectivityStatus(connectorId, "err", raw);
+    showStatus(
+      {
+        display_name: label,
+        connection_status: "failed",
+      },
+      "Connectivity failed",
+      "err"
+    );
+  } finally {
+    if (btn) {
+      btn.disabled = false;
+      btn.textContent = prevLabel || "Test";
+    }
+  }
+}
+
 function closePanel(){
   modalOverlay.classList.add("hidden");
   document.body.style.overflow = "";
   activeCloud = null;
+  editingConnectorId = null;
+  editingConnectorMeta = null;
   clearUploadSelection();
+  setSecretKeepHints(false);
   $$(".cloud-btn").forEach(btn => {
     const c = CLOUDS[btn.dataset.cloud];
     btn.classList.remove("open");
@@ -1960,6 +2214,33 @@ document.addEventListener("keydown", (e)=>{
   if (e.key === "Escape" && !modalOverlay.classList.contains("hidden")) closePanel();
 });
 $("#cf_auth_type").addEventListener("change", (e)=> toggleAuth(e.target.value));
+
+const recentBody = $("#recentConnectionsBody");
+if (recentBody) {
+  recentBody.addEventListener("click", (e) => {
+    const testBtn = e.target.closest(".rc-test");
+    if (testBtn && testBtn.dataset.connectorId) {
+      e.preventDefault();
+      testSavedConnectorConnectivity(
+        testBtn.dataset.connectorId,
+        testBtn.dataset.connectorName || "",
+        testBtn
+      );
+      return;
+    }
+    const editBtn = e.target.closest(".rc-edit");
+    if (editBtn && editBtn.dataset.connectorId) {
+      e.preventDefault();
+      openPanelForEdit(editBtn.dataset.connectorId);
+      return;
+    }
+    const delBtn = e.target.closest(".rc-delete");
+    if (delBtn && delBtn.dataset.connectorId) {
+      e.preventDefault();
+      deleteConnectorById(delBtn.dataset.connectorId, delBtn.dataset.connectorName || "");
+    }
+  });
+}
 
 function formatSavedAt(iso){
   if (!iso) return "—";
@@ -1979,7 +2260,9 @@ function cellText(val){
   return escapeHtml(String(val));
 }
 
-const RECENT_CONNECTIONS_LIMIT = 5;
+const RECENT_CONNECTIONS_LIMIT = 20;
+let editingConnectorId = null;
+let editingConnectorMeta = null;
 
 function renderRecentConnectionsFromItems(items) {
   const body = $("#recentConnectionsBody");
@@ -1993,6 +2276,7 @@ function paintRecentConnectionsTable(body, items) {
     return;
   }
   const rows = items.map(function (it) {
+      const id = it.id || "";
       const notes = it.upload_notes
         ? '<span title="' + escapeHtml(it.upload_notes) + '">' +
           escapeHtml(String(it.upload_notes).length > 48
@@ -2000,16 +2284,41 @@ function paintRecentConnectionsTable(body, items) {
             : it.upload_notes) +
           "</span>"
         : "—";
+      const nameAttr = escapeHtml(it.display_name || id);
+      const actions = id
+        ? '<div class="rc-actions">' +
+          '<button type="button" class="btn btn-test rc-test" data-connector-id="' +
+          escapeHtml(id) +
+          '" data-connector-name="' +
+          nameAttr +
+          '" title="Test connectivity with saved credentials">Test</button>' +
+          '<button type="button" class="btn btn-ghost rc-edit" data-connector-id="' +
+          escapeHtml(id) +
+          '">Edit</button>' +
+          '<button type="button" class="btn btn-danger rc-delete" data-connector-id="' +
+          escapeHtml(id) +
+          '" data-connector-name="' +
+          nameAttr +
+          '">Delete</button>' +
+          "</div>"
+        : "—";
+      const statusCell = id
+        ? '<td class="rc-conn-status pending" data-connector-id="' +
+          escapeHtml(id) +
+          '">Not tested</td>'
+        : "<td>—</td>";
       return (
-        "<tr>" +
+        "<tr data-connector-id=\"" + escapeHtml(id) + "\">" +
         "<td>" + cloudLabel(it.cloud) + "</td>" +
         "<td>" + cellText(it.connector_type) + "</td>" +
         '<td class="nm">' + cellText(it.display_name) + "</td>" +
         "<td>" + cellText(it.mode) + "</td>" +
-        "<td>" + cellText(it.region) + "</td>" +
+        "<td>" + cellText(it.region || it.account_id) + "</td>" +
         "<td>" + notes + "</td>" +
         "<td>" + cellText(it.user) + "</td>" +
-        "<td>" + formatSavedAt(it.saved_at) + "</td>" +
+        "<td>" + formatSavedAt(it.updated_at || it.saved_at) + "</td>" +
+        statusCell +
+        "<td>" + actions + "</td>" +
         "</tr>"
       );
     }).join("");
@@ -2017,7 +2326,8 @@ function paintRecentConnectionsTable(body, items) {
     '<table class="recent-table" aria-label="Recent Connections">' +
     "<thead><tr>" +
     "<th>Cloud</th><th>Connector type</th><th>Display name</th><th>Mode</th>" +
-    "<th>Region</th><th>Upload notes</th><th>User</th><th>Saved at</th>" +
+    "<th>Region / account</th><th>Upload notes</th><th>User</th><th>Updated</th>" +
+    "<th>Connectivity</th><th>Actions</th>" +
     "</tr></thead><tbody>" +
     rows +
     "</tbody></table>";
@@ -2110,45 +2420,60 @@ form.addEventListener("submit", async (e)=>{
       return showError("Tenant ID is required.");
     }
 
+    const isEdit = Boolean(editingConnectorId);
+    const keepSecrets = isEdit; // blank secrets mean "keep existing" on update
+
     if (authType === "service_account") {
       const raw = $("#cf_sa_json").value.trim();
-      if (!raw) return showError("Paste a service account JSON key.");
-      try {
-        const parsed = JSON.parse(raw);
-        if (cloud.id === "gcp" && parsed.type && parsed.type !== "service_account") {
-          return showError('JSON "type" should be "service_account".');
+      if (!raw && !keepSecrets) return showError("Paste a service account JSON key.");
+      if (raw) {
+        try {
+          const parsed = JSON.parse(raw);
+          if (cloud.id === "gcp" && parsed.type && parsed.type !== "service_account") {
+            return showError('JSON "type" should be "service_account".');
+          }
+        } catch {
+          return showError("Service account JSON is not valid JSON.");
         }
-      } catch {
-        return showError("Service account JSON is not valid JSON.");
       }
     } else if (authType === "key_pair") {
       if (!$("#cf_access_key_id").value.trim()) {
         return showError((cloud.accessKeyLabel || "Username") + " is required.");
       }
       const raw = $("#cf_sa_json").value.trim();
-      if (!raw) return showError("Private key (PEM) is required.");
-      if (!/BEGIN ([A-Z ]*PRIVATE KEY|RSA PRIVATE KEY)/.test(raw)) {
+      if (!raw && !keepSecrets) return showError("Private key (PEM) is required.");
+      if (raw && !/BEGIN ([A-Z ]*PRIVATE KEY|RSA PRIVATE KEY)/.test(raw)) {
         return showError("Private key should be PEM format (BEGIN PRIVATE KEY).");
       }
     } else if (authType === "api_key") {
-      if (!$("#cf_api_key").value.trim()) return showError("API key is required.");
+      if (!$("#cf_api_key").value.trim() && !keepSecrets) return showError("API key is required.");
     } else if (authType === "oauth2" || authType === "service_principal") {
-      if (!$("#cf_client_id").value.trim() || !$("#cf_client_secret").value.trim()) {
-        return showError("Client ID and secret are required.");
+      if (!$("#cf_client_id").value.trim()) {
+        return showError("Client ID is required.");
+      }
+      if (!$("#cf_client_secret").value.trim() && !keepSecrets) {
+        return showError("Client secret is required.");
       }
     } else if (authType === "access_keys") {
-      if (!$("#cf_access_key_id").value.trim() || !$("#cf_secret_access_key").value.trim()) {
-        return showError("Access key ID and secret access key are required.");
+      if (!$("#cf_access_key_id").value.trim()) {
+        return showError("Access key ID is required.");
+      }
+      if (!$("#cf_secret_access_key").value.trim() && !keepSecrets) {
+        return showError("Secret access key is required.");
       }
     } else if (authType === "password") {
-      if (!$("#cf_access_key_id").value.trim() || !$("#cf_secret_access_key").value.trim()) {
-        return showError((cloud.accessKeyLabel || "Username") + " and " +
-          (cloud.secretKeyLabel || "password").toLowerCase() + " are required.");
+      if (!$("#cf_access_key_id").value.trim()) {
+        return showError((cloud.accessKeyLabel || "Username") + " is required.");
+      }
+      if (!$("#cf_secret_access_key").value.trim() && !keepSecrets) {
+        return showError((cloud.secretKeyLabel || "Password") + " is required.");
       }
     } else if (authType === "iam_role" || authType === "assume_role") {
       if (!$("#cf_role_arn").value.trim()) return showError("IAM role ARN is required.");
     } else if (authType === "client_certificate") {
-      if (!$("#cf_sa_json").value.trim()) return showError("Client certificate / JSON is required.");
+      if (!$("#cf_sa_json").value.trim() && !keepSecrets) {
+        return showError("Client certificate / JSON is required.");
+      }
     }
 
     payload = {
@@ -2173,8 +2498,13 @@ form.addEventListener("submit", async (e)=>{
   }
 
   const btn = $("#submitBtn");
-  const busyLabel = cloud.mode === "upload" ? "Uploading…" : "Connecting…";
-  const idleLabel = cloud.mode === "upload" ? "Upload & ingest" : "Connect & fetch";
+  const isEdit = Boolean(editingConnectorId);
+  const busyLabel = cloud.mode === "upload" ? "Uploading…" : "Validating…";
+  const idleLabel = isEdit
+    ? "Validate & update"
+    : cloud.mode === "upload"
+      ? "Upload & ingest"
+      : "Connect & fetch";
   btn.disabled = true;
   btn.textContent = busyLabel;
 
@@ -2182,10 +2512,34 @@ form.addEventListener("submit", async (e)=>{
     if (typeof saveConnectorToMongo !== "function") {
       throw new Error("save-connector.js is not loaded.");
     }
-    const saveResult = await saveConnectorToMongo(
-      payload,
-      cloud.mode === "upload" ? selectedUploadFile : null
-    );
+    if (typeof testConnectorConnection !== "function") {
+      throw new Error("save-connector.js is missing connection test support. Hard-refresh the page.");
+    }
+
+    // Live handshake with the target system before persisting credentials.
+    if (cloud.mode !== "upload") {
+      btn.textContent = "Validating connection…";
+      const testPayload = Object.assign({}, payload);
+      if (isEdit) testPayload.connector_id = editingConnectorId;
+      const testResult = await testConnectorConnection(testPayload);
+      payload.connection_status = "validated";
+      payload.validation_message = (testResult && testResult.message) || "Connection validated";
+      payload.validation_details = (testResult && testResult.details) || {};
+    }
+
+    btn.textContent = isEdit ? "Updating…" : cloud.mode === "upload" ? "Uploading…" : "Saving…";
+    let saveResult;
+    if (isEdit) {
+      if (typeof updateConnectorInMongo !== "function") {
+        throw new Error("Connector update API is unavailable. Hard-refresh the page.");
+      }
+      saveResult = await updateConnectorInMongo(editingConnectorId, payload);
+    } else {
+      saveResult = await saveConnectorToMongo(
+        payload,
+        cloud.mode === "upload" ? selectedUploadFile : null
+      );
+    }
 
     try {
       const toStore = {
@@ -2210,15 +2564,23 @@ form.addEventListener("submit", async (e)=>{
     } catch { /* ignore quota */ }
 
     closePanel();
-    const statusLabel =
-      cloud.mode === "upload" ? "Uploaded — ingest queued" : "Connected — fetch queued";
+    const statusLabel = isEdit
+      ? "Validated & updated"
+      : cloud.mode === "upload"
+        ? "Uploaded — ingest queued"
+        : "Validated & connected — fetch queued";
     showStatus(
-      Object.assign({}, payload, { connection_status: saveResult.connection_status || "connected" }),
+      Object.assign({}, payload, {
+        connection_status: saveResult.connection_status || payload.connection_status || "connected",
+      }),
       statusLabel,
       "ok",
       saveResult
     );
     renderRecentConnections();
+    if (typeof refreshAssetsCatalog === "function") {
+      try { await refreshAssetsCatalog(); } catch (_e) { /* ignore */ }
+    }
 
     console.info("[Source] connection configured", {
       cloud: payload.cloud,
@@ -2230,20 +2592,25 @@ form.addEventListener("submit", async (e)=>{
       file_name: payload.file_name
     });
   } catch (err) {
-    const msg =
-      "Could not save connector to MongoDB: " + (err && err.message ? err.message : err);
+    const raw = err && err.message ? err.message : String(err);
+    const isValidation =
+      /authentication failed|connection failed|is required|not installed|OAuth|invalid/i.test(raw) &&
+      !/MongoDB|save connector/i.test(raw);
+    const msg = isValidation
+      ? "Connection validation failed: " + raw
+      : "Could not save connector to MongoDB: " + raw;
     if (typeof logConnectionFailure === "function") {
       await logConnectionFailure({
         message: msg,
-        event: "connection.save_failed",
-        error_type: "save",
+        event: isValidation ? "connection.validate_failed" : "connection.save_failed",
+        error_type: isValidation ? "auth" : "save",
         context: connectionLogContext(payload, { connection_status: "failed" })
       });
     }
     showError(msg, true);
     showStatus(
       Object.assign({}, payload, { connection_status: "failed" }),
-      "Connection failed",
+      isValidation ? "Validation failed" : "Connection failed",
       "err"
     );
   } finally {

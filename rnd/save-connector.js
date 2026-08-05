@@ -21,6 +21,7 @@
   }
 
   var API_URL = connectorApiBase() + "/api/connectors";
+  var TEST_API_URL = connectorApiBase() + "/api/connectors/test";
   var UPLOAD_API_URL = connectorApiBase() + "/api/connectors/upload";
   var CONNECTION_LOGS_URL = connectorApiBase() + "/api/connection-logs";
   var HEALTH_URL = connectorApiBase() + "/health";
@@ -154,9 +155,61 @@
       file_type: payload.file_type || null,
       upload_format: payload.upload_format || null,
       upload_notes: payload.upload_notes || null,
-      connection_status: "connected",
+      connection_status: payload.connection_status || "connected",
+      validation_message: payload.validation_message || null,
       saved_at: new Date().toISOString()
     };
+  }
+
+  /**
+   * Live-validate connector credentials against the target system.
+   * @param {object} payload - Form payload (or { connector_id })
+   * @returns {Promise<{ok:boolean,validated:boolean,message?:string,details?:object}>}
+   */
+  async function testConnectorConnection(payload) {
+    if (!payload || typeof payload !== "object") {
+      throw new Error("Missing connector payload.");
+    }
+    var res;
+    try {
+      res = await fetch(TEST_API_URL, {
+        method: "POST",
+        headers: requestHeaders({ "Content-Type": "application/json" }),
+        body: JSON.stringify(payload)
+      });
+    } catch (networkErr) {
+      await logConnectionFailure({
+        message:
+          networkErr && networkErr.message ? networkErr.message : String(networkErr),
+        event: "connection.validate_failed",
+        error_type: "network",
+        context: {
+          cloud: payload.cloud,
+          mode: payload.mode,
+          display_name: payload.display_name,
+          connector_type: payload.connector_type,
+          connection_status: "failed"
+        }
+      });
+      throw networkErr;
+    }
+
+    var bodyText = await res.text();
+    var data = null;
+    try {
+      data = bodyText ? JSON.parse(bodyText) : null;
+    } catch {
+      data = { raw: bodyText };
+    }
+    if (!res.ok) {
+      var msg =
+        (data && (data.detail || data.error || data.message)) ||
+        bodyText ||
+        "HTTP " + res.status;
+      var errText = typeof msg === "string" ? msg : JSON.stringify(msg);
+      throw new Error(errText);
+    }
+    return data;
   }
 
   /**
@@ -265,6 +318,72 @@
     return data;
   }
 
+  async function parseJsonResponse(res) {
+    var bodyText = await res.text();
+    var data = null;
+    try {
+      data = bodyText ? JSON.parse(bodyText) : null;
+    } catch {
+      data = { raw: bodyText };
+    }
+    if (!res.ok) {
+      var msg =
+        (data && (data.detail || data.error || data.message)) ||
+        bodyText ||
+        "HTTP " + res.status;
+      throw new Error(typeof msg === "string" ? msg : JSON.stringify(msg));
+    }
+    return data;
+  }
+
+  /**
+   * Fetch one connector (public fields only) for edit.
+   * @param {string} connectorId
+   */
+  async function fetchConnectorById(connectorId) {
+    if (!connectorId) throw new Error("Missing connector id.");
+    var res = await fetch(API_URL + "/" + encodeURIComponent(connectorId), {
+      headers: requestHeaders()
+    });
+    return parseJsonResponse(res);
+  }
+
+  /**
+   * Update an existing connector. Blank secret fields keep prior values server-side.
+   * @param {string} connectorId
+   * @param {object} payload
+   */
+  async function updateConnectorInMongo(connectorId, payload) {
+    if (!connectorId) throw new Error("Missing connector id.");
+    if (!payload || typeof payload !== "object") {
+      throw new Error("Missing connector payload.");
+    }
+    var document = buildConnectorDocument(payload);
+    var res = await fetch(API_URL + "/" + encodeURIComponent(connectorId), {
+      method: "PUT",
+      headers: requestHeaders({ "Content-Type": "application/json" }),
+      body: JSON.stringify(document)
+    });
+    var data = await parseJsonResponse(res);
+    console.info("[save-connector] updated connector_dtls", data);
+    return data;
+  }
+
+  /**
+   * Delete a saved connector.
+   * @param {string} connectorId
+   */
+  async function deleteConnectorFromMongo(connectorId) {
+    if (!connectorId) throw new Error("Missing connector id.");
+    var res = await fetch(API_URL + "/" + encodeURIComponent(connectorId), {
+      method: "DELETE",
+      headers: requestHeaders()
+    });
+    var data = await parseJsonResponse(res);
+    console.info("[save-connector] deleted connector_dtls", data);
+    return data;
+  }
+
   /**
    * Fetch recent connectors from MongoDB (connector_dtls via connector API / MONGO_URI).
    * @param {number} limit
@@ -318,7 +437,11 @@
   }
 
   global.buildConnectorDocument = buildConnectorDocument;
+  global.testConnectorConnection = testConnectorConnection;
   global.saveConnectorToMongo = saveConnectorToMongo;
+  global.updateConnectorInMongo = updateConnectorInMongo;
+  global.deleteConnectorFromMongo = deleteConnectorFromMongo;
+  global.fetchConnectorById = fetchConnectorById;
   global.fetchRecentConnectors = fetchRecentConnectors;
   global.logConnectionFailure = logConnectionFailure;
   global.logConnectionSuccess = logConnectionSuccess;

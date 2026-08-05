@@ -357,6 +357,93 @@ def insert_connector_document(doc: dict[str, Any]) -> str:
     return str(result.inserted_id)
 
 
+def update_connector_document(connector_id: str, updates: dict[str, Any]) -> dict[str, Any]:
+    """
+    Update a connector_dtls document.
+    Blank/omitted secret fields keep the previously saved secrets.
+    """
+    from bson import ObjectId
+    from bson.errors import InvalidId
+
+    try:
+        oid = ObjectId(connector_id)
+    except InvalidId as exc:
+        raise ValueError(f"Invalid connector id: {connector_id}") from exc
+
+    existing = get_connector_document(connector_id, with_secrets=True)
+    if not existing:
+        raise LookupError(f"Connector not found: {connector_id}")
+
+    merged = dict(existing)
+    # Never let callers rewrite identity / ciphertext directly.
+    protected = {
+        "id",
+        "_id",
+        "credentials_ciphertext",
+        "credentials_encrypted",
+        "credentials_keys",
+        "saved_at",
+        "created_at",
+    }
+    for key, value in (updates or {}).items():
+        if key in protected:
+            continue
+        merged[key] = value
+
+    # Preserve prior secrets when the form leaves secret inputs blank.
+    for key in credential_crypto.SENSITIVE_CONNECTOR_KEYS:
+        new_val = updates.get(key) if isinstance(updates, dict) else None
+        if new_val is None or (isinstance(new_val, str) and not new_val.strip()):
+            if key in existing and existing.get(key) not in (None, ""):
+                merged[key] = existing[key]
+        else:
+            merged[key] = new_val
+
+    # Drop sealed ciphertext so seal rebuilds from merged plaintext secrets.
+    merged.pop("credentials_ciphertext", None)
+    merged.pop("credentials_encrypted", None)
+    merged.pop("credentials_keys", None)
+    merged.pop("id", None)
+
+    try:
+        sealed = credential_crypto.seal_connector_document(merged)
+    except RuntimeError as exc:
+        raise RuntimeError(f"Credential encryption failed: {exc}") from exc
+
+    sealed["updated_at"] = datetime.now(timezone.utc).isoformat()
+    sealed.setdefault("saved_at", existing.get("saved_at") or sealed["updated_at"])
+
+    try:
+        result = connectors_collection().replace_one({"_id": oid}, sealed)
+    except PyMongoError as exc:
+        raise RuntimeError(f"MongoDB update failed: {exc}") from exc
+    if result.matched_count == 0:
+        raise LookupError(f"Connector not found: {connector_id}")
+
+    public = dict(sealed)
+    for key in credential_crypto.SENSITIVE_CONNECTOR_KEYS:
+        public.pop(key, None)
+    public.pop("credentials_ciphertext", None)
+    public["id"] = connector_id
+    return public
+
+
+def delete_connector_document(connector_id: str) -> bool:
+    """Delete a connector_dtls document. Returns True if a document was removed."""
+    from bson import ObjectId
+    from bson.errors import InvalidId
+
+    try:
+        oid = ObjectId(connector_id)
+    except InvalidId as exc:
+        raise ValueError(f"Invalid connector id: {connector_id}") from exc
+    try:
+        result = connectors_collection().delete_one({"_id": oid})
+    except PyMongoError as exc:
+        raise RuntimeError(f"MongoDB delete failed: {exc}") from exc
+    return bool(result.deleted_count)
+
+
 def get_connector_document(connector_id: str, *, with_secrets: bool = False) -> dict[str, Any] | None:
     """Load a connector_dtls document. Set with_secrets=True only for server-side auth."""
     from bson import ObjectId

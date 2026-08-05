@@ -36,6 +36,7 @@ if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
 import asset_catalog  # noqa: E402
+import connection_validator  # noqa: E402
 import glossary_store  # noqa: E402
 import mongo_store  # noqa: E402
 import postgres_store  # noqa: E402
@@ -305,23 +306,58 @@ _RECENT_CONNECTOR_FIELDS = (
     "display_name",
     "mode",
     "region",
+    "account_id",
+    "auth_type",
+    "dataset_scope",
+    "apis",
+    "tenant_id",
+    "resource_group",
+    "access_key_id",
+    "client_id",
+    "role_arn",
+    "file_name",
+    "upload_format",
     "upload_notes",
+    "connection_status",
+    "credentials_encrypted",
+    "credentials_keys",
     "user",
     "saved_at",
+    "updated_at",
 )
 
 
+def _public_connector_item(doc: dict[str, Any]) -> dict[str, Any]:
+    """Return a client-safe connector document (never includes secret values)."""
+    item = dict(doc)
+    if "_id" in item and "id" not in item:
+        item["id"] = str(item.pop("_id"))
+    elif "_id" in item:
+        item.pop("_id", None)
+    for key in (
+        "api_key",
+        "client_secret",
+        "secret_access_key",
+        "service_account_json",
+        "password",
+        "private_key",
+        "credentials_ciphertext",
+    ):
+        item.pop(key, None)
+    return item
+
+
 def _fetch_recent_connectors(limit: int) -> list[dict[str, Any]]:
-    capped = min(max(limit, 1), 20)
+    capped = min(max(limit, 1), 50)
     projection = {field: 1 for field in _RECENT_CONNECTOR_FIELDS}
-    projection["_id"] = 0
+    projection["_id"] = 1
     cursor = (
         get_collection()
         .find({}, projection)
-        .sort([("saved_at", -1), ("_id", -1)])
+        .sort([("updated_at", -1), ("saved_at", -1), ("_id", -1)])
         .limit(capped)
     )
-    return list(cursor)
+    return [_public_connector_item(doc) for doc in cursor]
 
 
 @app.get("/health")
@@ -751,6 +787,100 @@ def create_connection_log(body: ConnectionLogIn, request: Request) -> dict[str, 
     return {"ok": True}
 
 
+@app.post("/api/connectors/test")
+def test_connector(request: Request, payload: dict[str, Any] = Body(...)) -> dict[str, Any]:
+    """
+    Validate connector credentials with a live handshake before save.
+    Accepts the same form payload as POST /api/connectors, or
+    `{ "connector_id": "<id>" }` to re-test a saved connector.
+    """
+    if not payload:
+        raise HTTPException(status_code=400, detail="Empty payload")
+
+    test_payload = dict(payload)
+    connector_id = str(test_payload.pop("connector_id", "") or "").strip()
+    if connector_id:
+        try:
+            doc = mongo_store.get_connector_document(connector_id, with_secrets=True)
+        except ValueError as exc:
+            raise HTTPException(status_code=422, detail=str(exc)) from exc
+        except RuntimeError as exc:
+            raise HTTPException(status_code=503, detail=str(exc)) from exc
+        if not doc:
+            raise HTTPException(status_code=404, detail=f"Connector not found: {connector_id}")
+        # Overlay any explicit fields from the request (non-secret overrides).
+        for key, value in payload.items():
+            if key == "connector_id":
+                continue
+            if value is not None and value != "":
+                doc[key] = value
+        test_payload = doc
+
+    user = _resolve_user(request)
+    cloud = str(test_payload.get("cloud") or test_payload.get("connector_type") or "")
+    try:
+        result = connection_validator.validate_connector(test_payload)
+    except connection_validator.ConnectionValidationError as exc:
+        log_connection_failure(
+            user,
+            str(exc),
+            event="connection.validate_failed",
+            error_type=exc.error_type or "auth",
+            context={
+                "cloud": cloud,
+                "platform": exc.platform,
+                "display_name": test_payload.get("display_name"),
+                "account_id": test_payload.get("account_id"),
+                "auth_type": test_payload.get("auth_type"),
+                "connector_id": connector_id or None,
+                "connection_status": "failed",
+            },
+        )
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+    except ValueError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+    except Exception as exc:  # noqa: BLE001
+        log_connection_failure(
+            user,
+            str(exc),
+            event="connection.validate_error",
+            error_type="server",
+            context={
+                "cloud": cloud,
+                "display_name": test_payload.get("display_name"),
+                "connector_id": connector_id or None,
+            },
+        )
+        raise HTTPException(
+            status_code=503,
+            detail=f"Connection validation failed: {exc}",
+        ) from exc
+
+    mongo_store.log_connection_event(
+        user,
+        result.get("message") or "Connection validated",
+        outcome="success",
+        event="connection.validated",
+        context={
+            "cloud": cloud,
+            "platform": result.get("platform"),
+            "display_name": test_payload.get("display_name"),
+            "account_id": test_payload.get("account_id"),
+            "auth_type": test_payload.get("auth_type"),
+            "connector_id": connector_id or None,
+            "connection_status": "validated",
+            "details": result.get("details") or {},
+        },
+    )
+    return {
+        "ok": True,
+        "validated": True,
+        "platform": result.get("platform"),
+        "message": result.get("message"),
+        "details": result.get("details") or {},
+    }
+
+
 @app.post("/api/connectors")
 def save_connector(payload: dict[str, Any] = Body(...)) -> dict[str, Any]:
     if not payload:
@@ -759,13 +889,109 @@ def save_connector(payload: dict[str, Any] = Body(...)) -> dict[str, Any]:
 
 
 @app.get("/api/connectors/recent")
-def list_recent_connectors(limit: int = 5) -> dict[str, Any]:
+def list_recent_connectors(limit: int = 20) -> dict[str, Any]:
     """Return the newest saved connectors from MongoDB (db/collection from repo `.env` MONGO_URI)."""
     try:
         items = _fetch_recent_connectors(limit)
     except Exception as exc:  # noqa: BLE001
         raise HTTPException(status_code=503, detail=f"MongoDB read failed: {exc}") from exc
     return {"ok": True, "items": items, "db": DB_NAME, "collection": COLLECTION}
+
+
+@app.get("/api/connectors/{connector_id}")
+def get_connector(connector_id: str) -> dict[str, Any]:
+    """Return a saved connector for editing. Secrets are never included."""
+    try:
+        doc = mongo_store.get_connector_document(connector_id, with_secrets=False)
+    except ValueError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+    except RuntimeError as exc:
+        raise HTTPException(status_code=503, detail=str(exc)) from exc
+    if not doc:
+        raise HTTPException(status_code=404, detail=f"Connector not found: {connector_id}")
+    return {"ok": True, "item": _public_connector_item(doc)}
+
+
+@app.put("/api/connectors/{connector_id}")
+def update_connector(
+    connector_id: str,
+    request: Request,
+    payload: dict[str, Any] = Body(...),
+) -> dict[str, Any]:
+    """Update a saved connector. Blank secret fields keep existing values."""
+    if not payload:
+        raise HTTPException(status_code=400, detail="Empty payload")
+    user = _resolve_user(request)
+    try:
+        updated = mongo_store.update_connector_document(connector_id, dict(payload))
+    except ValueError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+    except LookupError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+    except RuntimeError as exc:
+        raise HTTPException(status_code=503, detail=str(exc)) from exc
+
+    try:
+        mongo_store.log_connection_event(
+            user,
+            f"Connector updated — {DB_NAME}.{COLLECTION}",
+            outcome="success",
+            event="connection.updated",
+            context={
+                **mongo_store.connector_summary_context(updated),
+                "connector_id": connector_id,
+                "connection_status": updated.get("connection_status"),
+                "db": DB_NAME,
+                "collection": COLLECTION,
+            },
+        )
+    except RuntimeError as exc:
+        log.error("connection_logs write after connector update failed: %s", exc)
+
+    return {
+        "ok": True,
+        "id": connector_id,
+        "db": DB_NAME,
+        "collection": COLLECTION,
+        "connection_status": updated.get("connection_status"),
+        "item": _public_connector_item(updated),
+    }
+
+
+@app.delete("/api/connectors/{connector_id}")
+def delete_connector(connector_id: str, request: Request) -> dict[str, Any]:
+    """Delete a saved connector from connector_dtls."""
+    user = _resolve_user(request)
+    summary: dict[str, Any] = {"connector_id": connector_id}
+    try:
+        existing = mongo_store.get_connector_document(connector_id, with_secrets=False)
+        if existing:
+            summary.update(mongo_store.connector_summary_context(existing))
+        deleted = mongo_store.delete_connector_document(connector_id)
+    except ValueError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+    except RuntimeError as exc:
+        raise HTTPException(status_code=503, detail=str(exc)) from exc
+    if not deleted:
+        raise HTTPException(status_code=404, detail=f"Connector not found: {connector_id}")
+
+    try:
+        mongo_store.log_connection_event(
+            user,
+            f"Connector deleted — {DB_NAME}.{COLLECTION}",
+            outcome="success",
+            event="connection.deleted",
+            context={
+                **summary,
+                "db": DB_NAME,
+                "collection": COLLECTION,
+                "connection_status": "deleted",
+            },
+        )
+    except RuntimeError as exc:
+        log.error("connection_logs write after connector delete failed: %s", exc)
+
+    return {"ok": True, "id": connector_id, "deleted": True}
 
 
 @app.get("/api/connectors/{connector_id}/auth-ready")
