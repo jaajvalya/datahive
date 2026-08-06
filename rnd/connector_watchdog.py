@@ -32,7 +32,7 @@ _API_SCRIPT = _RND_DIR / "connector_api.py"
 _HOST = "127.0.0.1"
 _API_PORT = 5055
 _WATCHDOG_PORT = 5056
-_IDLE_SECONDS = 45
+_IDLE_SECONDS = 180
 _POLL_SECONDS = 8
 
 log = logging.getLogger("datahive.connector_watchdog")
@@ -167,14 +167,13 @@ def _tab_id(request: Request) -> str:
 
 
 def _reap_idle_tabs() -> None:
+    """Drop stale tab presence. Do not stop the API — local R&D expects :5055 to stay up."""
     global _tabs
     now = time.time()
     with _lock:
         for tid, seen in list(_tabs.items()):
             if now - seen > _IDLE_SECONDS:
                 del _tabs[tid]
-        if not _tabs:
-            _stop_api()
 
 
 def _supervisor_loop() -> None:

@@ -128,9 +128,15 @@
 
   ensureConnectorApi().then(function (ok) {
     if (!ok) {
+      var isMac =
+        typeof navigator !== "undefined" &&
+        /Mac|iPhone|iPad/i.test(navigator.platform || navigator.userAgent || "");
       console.warn(
-        "[datahive] Local connector API unavailable. Start the UI via rnd/Open DataHive UI.bat " +
-          "or run: pythonw rnd/connector_watchdog.py"
+        isMac
+          ? "[datahive] Local connector API unavailable. Start via rnd/Open DataHive UI.command " +
+              "or run: rnd/.venv/bin/python rnd/connector_watchdog.py"
+          : "[datahive] Local connector API unavailable. Start the UI via rnd/Open DataHive UI.bat " +
+              "or run: pythonw rnd/connector_watchdog.py"
       );
       return;
     }

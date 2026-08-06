@@ -570,6 +570,143 @@ def _validate_aws(payload: dict[str, Any]) -> dict[str, Any]:
         ) from exc
 
 
+def _google_oauth_post(form: dict[str, str]) -> dict[str, Any]:
+    """POST to Google's OAuth token endpoint; returns JSON body or raises HTTPError."""
+    import urllib.parse
+    import urllib.request
+
+    body = urllib.parse.urlencode(form).encode("utf-8")
+    req = urllib.request.Request(
+        "https://oauth2.googleapis.com/token",
+        data=body,
+        headers={"Content-Type": "application/x-www-form-urlencoded"},
+        method="POST",
+    )
+    with urllib.request.urlopen(req, timeout=20) as resp:  # noqa: S310
+        return json.loads(resp.read().decode("utf-8"))
+
+
+def _validate_gcp_oauth(payload: dict[str, Any], *, project: str) -> dict[str, Any]:
+    """Validate GCP OAuth client credentials (optional refresh token for live token)."""
+    import urllib.error
+
+    client_id = _norm(payload.get("client_id"))
+    client_secret = _norm(payload.get("client_secret"))
+    if not client_id or not client_secret:
+        raise ConnectionValidationError(
+            "GCP OAuth client ID and secret are required.",
+            platform="gcp",
+            error_type="validation",
+        )
+
+    refresh = _norm(payload.get("refresh_token") or payload.get("api_key"))
+    if refresh:
+        try:
+            data = _google_oauth_post(
+                {
+                    "client_id": client_id,
+                    "client_secret": client_secret,
+                    "refresh_token": refresh,
+                    "grant_type": "refresh_token",
+                }
+            )
+        except urllib.error.HTTPError as exc:
+            raw = exc.read().decode("utf-8", errors="replace")
+            try:
+                err_body = json.loads(raw)
+            except json.JSONDecodeError:
+                err_body = {}
+            detail = err_body.get("error_description") or err_body.get("error") or raw
+            raise ConnectionValidationError(
+                f"GCP OAuth refresh failed: {_safe_error(Exception(detail))}",
+                platform="gcp",
+                error_type="auth",
+            ) from exc
+        except Exception as exc:  # noqa: BLE001
+            raise ConnectionValidationError(
+                f"GCP OAuth validation failed: {_safe_error(exc)}",
+                platform="gcp",
+                error_type="auth",
+            ) from exc
+
+        if not data.get("access_token"):
+            raise ConnectionValidationError(
+                "GCP OAuth token refresh did not return an access token.",
+                platform="gcp",
+                error_type="auth",
+            )
+        return {
+            "ok": True,
+            "platform": "gcp",
+            "message": "GCP OAuth refresh succeeded",
+            "details": {
+                "project": project,
+                "auth_type": "oauth2",
+                "token_type": data.get("token_type"),
+            },
+        }
+
+    # Client ID + secret alone cannot finish a user consent flow. Probe Google's
+    # token endpoint with a dummy authorization code: invalid_client means the
+    # pair is wrong; invalid_grant / redirect_uri_mismatch means the client was
+    # accepted.
+    try:
+        _google_oauth_post(
+            {
+                "client_id": client_id,
+                "client_secret": client_secret,
+                "code": "datahive_validation_probe",
+                "grant_type": "authorization_code",
+                "redirect_uri": "http://localhost",
+            }
+        )
+        # Extremely unlikely with a dummy code — treat as success if it somehow works.
+        return {
+            "ok": True,
+            "platform": "gcp",
+            "message": "GCP OAuth client accepted",
+            "details": {"project": project, "auth_type": "oauth2"},
+        }
+    except urllib.error.HTTPError as exc:
+        raw = exc.read().decode("utf-8", errors="replace")
+        try:
+            err_body = json.loads(raw)
+        except json.JSONDecodeError:
+            err_body = {}
+        err = _norm(err_body.get("error")).lower()
+        if err == "invalid_client":
+            raise ConnectionValidationError(
+                "GCP OAuth client ID or secret is invalid.",
+                platform="gcp",
+                error_type="auth",
+            ) from exc
+        if err in {"invalid_grant", "redirect_uri_mismatch", "invalid_request", "unauthorized_client"}:
+            return {
+                "ok": True,
+                "platform": "gcp",
+                "message": "GCP OAuth client ID and secret accepted",
+                "details": {
+                    "project": project,
+                    "auth_type": "oauth2",
+                    "probe": err,
+                },
+            }
+        detail = err_body.get("error_description") or err_body.get("error") or raw
+        raise ConnectionValidationError(
+            f"GCP OAuth validation failed: {_safe_error(Exception(detail))}",
+            platform="gcp",
+            error_type="auth",
+        ) from exc
+    except ConnectionValidationError:
+        raise
+    except Exception as exc:  # noqa: BLE001
+        raise ConnectionValidationError(
+            f"GCP OAuth validation failed: {_safe_error(exc)}",
+            platform="gcp",
+            error_type="auth",
+        ) from exc
+
+
 def _validate_gcp(payload: dict[str, Any]) -> dict[str, Any]:
     auth_type = _norm(payload.get("auth_type")).lower() or "service_account"
     project = _norm(payload.get("account_id"))
@@ -618,6 +755,9 @@ def _validate_gcp(payload: dict[str, Any]) -> dict[str, Any]:
                 platform="gcp",
                 error_type="auth",
             ) from exc
+
+    if auth_type == "oauth2":
+        return _validate_gcp_oauth(payload, project=project)
 
     sa_raw = _norm(payload.get("service_account_json"))
     if not sa_raw:
@@ -811,35 +951,23 @@ def _validate_google_drive(payload: dict[str, Any]) -> dict[str, Any]:
             platform="googledrive",
             error_type="validation",
         )
-    # OAuth client credentials alone cannot finish a user consent flow here.
-    # Confirm the client exists by hitting Google's token endpoint with an
-    # intentionally invalid grant and accepting only "invalid_grant"/unauthorized_client shapes
-    # that prove the client id/secret pair is recognized — better: try refresh if api_key holds refresh token.
-    refresh = _norm(payload.get("api_key") or payload.get("refresh_token"))
+    refresh = _norm(payload.get("refresh_token") or payload.get("api_key"))
     if not refresh:
         raise ConnectionValidationError(
-            "Google Drive OAuth needs a refresh token (paste into API key) to validate live, "
+            "Google Drive OAuth needs a refresh token to validate live, "
             "or use service account auth.",
             platform="googledrive",
             error_type="validation",
         )
-    body = (
-        f"client_id={client_id}"
-        f"&client_secret={client_secret}"
-        f"&refresh_token={refresh}"
-        f"&grant_type=refresh_token"
-    ).encode("utf-8")
     try:
-        import urllib.request
-
-        req = urllib.request.Request(
-            "https://oauth2.googleapis.com/token",
-            data=body,
-            headers={"Content-Type": "application/x-www-form-urlencoded"},
-            method="POST",
+        data = _google_oauth_post(
+            {
+                "client_id": client_id,
+                "client_secret": client_secret,
+                "refresh_token": refresh,
+                "grant_type": "refresh_token",
+            }
         )
-        with urllib.request.urlopen(req, timeout=20) as resp:  # noqa: S310
-            data = json.loads(resp.read().decode("utf-8"))
         if not data.get("access_token"):
             raise ConnectionValidationError(
                 "Google Drive token refresh did not return an access token.",

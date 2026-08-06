@@ -30,6 +30,7 @@
   var SENSITIVE_KEYS = {
     api_key: true,
     client_secret: true,
+    refresh_token: true,
     secret_access_key: true,
     service_account_json: true,
     password: true,
@@ -146,6 +147,7 @@
       api_key: payload.api_key || null,
       client_id: payload.client_id || null,
       client_secret: payload.client_secret || null,
+      refresh_token: payload.refresh_token || null,
       service_account_json: payload.service_account_json || null,
       access_key_id: payload.access_key_id || null,
       secret_access_key: payload.secret_access_key || null,

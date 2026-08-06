@@ -28,6 +28,7 @@ from typing import Any
 from fastapi import Body, FastAPI, File, Form, HTTPException, Request, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field, model_validator
 
 _RND_DIR = Path(__file__).resolve().parent
@@ -37,6 +38,7 @@ if str(_REPO_ROOT) not in sys.path:
 
 import asset_catalog  # noqa: E402
 import connection_validator  # noqa: E402
+import data_quality  # noqa: E402
 import glossary_store  # noqa: E402
 import mongo_store  # noqa: E402
 import postgres_store  # noqa: E402
@@ -75,6 +77,12 @@ class SqlQueryIn(BaseModel):
     schema: str | None = None
     table: str | None = None
     connector_id: str | None = None
+
+
+class DataQualityRunIn(BaseModel):
+    connector_id: str = Field(..., min_length=1)
+    schema: str = Field(..., min_length=1)
+    tables: list[str] = Field(..., min_length=1, max_length=12)
 
 
 class ConnectionLogIn(BaseModel):
@@ -339,6 +347,7 @@ def _public_connector_item(doc: dict[str, Any]) -> dict[str, Any]:
     for key in (
         "api_key",
         "client_secret",
+        "refresh_token",
         "secret_access_key",
         "service_account_json",
         "password",
@@ -1023,6 +1032,80 @@ def sql_query(body: SqlQueryIn, request: Request) -> dict[str, Any]:
         )
 
 
+@app.post("/api/data-quality/run")
+def run_data_quality(body: DataQualityRunIn, request: Request) -> dict[str, Any]:
+    """Profile selected tables and return DQ score, checks, and issue dashboard data."""
+    user = _resolve_user(request)
+    role = _resolve_role(request)
+    connector_id = (body.connector_id or "").strip()
+    schema = (body.schema or "").strip()
+    tables = [str(t).strip() for t in (body.tables or []) if str(t).strip()]
+
+    platform = "postgres"
+    snowflake_doc: dict[str, Any] | None = None
+    if connector_id and connector_id not in ("all", asset_catalog.LOCAL_POSTGRES_ID):
+        if not str(connector_id).startswith("glossary:"):
+            try:
+                conn_doc = mongo_store.get_connector_document(
+                    connector_id, with_secrets=False
+                )
+            except Exception:  # noqa: BLE001
+                conn_doc = None
+            if conn_doc:
+                cloud = str(
+                    conn_doc.get("cloud") or conn_doc.get("connector_type") or ""
+                ).lower()
+                if cloud == "snowflake":
+                    platform = "snowflake"
+                    snowflake_doc = snowflake_catalog.load_connector_doc(connector_id)
+
+    def get_structure(sch: str, table: str) -> dict[str, Any]:
+        if platform == "snowflake" and snowflake_doc is not None:
+            return snowflake_catalog.table_structure_for_doc(snowflake_doc, sch, table)
+        if connector_id in ("", "all", asset_catalog.LOCAL_POSTGRES_ID):
+            return postgres_store.table_structure(sch.split(".")[-1], table)
+        try:
+            return asset_catalog.connector_structure(
+                user,
+                role=role,
+                connector_id=connector_id,
+                schema=sch,
+                table=table,
+            )
+        except Exception:  # noqa: BLE001
+            return postgres_store.table_structure(sch.split(".")[-1], table)
+
+    def execute(sql: str) -> dict[str, Any]:
+        if platform == "snowflake" and snowflake_doc is not None:
+            return snowflake_catalog.execute_sql_query_for_doc(
+                snowflake_doc, sql, max_rows=5000
+            )
+        return postgres_store.execute_sql_query(sql, max_rows=5000)
+
+    try:
+        return data_quality.run_data_quality(
+            connector_id=connector_id or asset_catalog.LOCAL_POSTGRES_ID,
+            schema=schema,
+            tables=tables,
+            platform=platform,
+            get_structure=get_structure,
+            execute=execute,
+        )
+    except data_quality.DataQualityError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+    except ValueError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(
+            status_code=503, detail=f"Data quality run failed: {exc}"
+        ) from exc
+
+
+@app.get("/api/data-quality/logic")
+def data_quality_logic() -> dict[str, Any]:
+    return data_quality.score_logic_docs()
+
+
 @app.post("/api/connection-logs")
 def create_connection_log(body: ConnectionLogIn, request: Request) -> dict[str, bool]:
     try:
@@ -1579,6 +1662,42 @@ def download_glossary_upload(stored_name: str) -> FileResponse:
         filename=safe.split("_", 1)[-1] if "_" in safe else safe,
         media_type="application/octet-stream",
     )
+
+
+# Serve the R&D UI over HTTP so the browser can reach this API.
+# Opening main.html as file:// often yields "Failed to fetch" (blocked localhost).
+_IMAGES_DIR = _REPO_ROOT / "images"
+_UI_ASSET_RE = re.compile(
+    r"^[A-Za-z0-9._-]+\.(html|js|css|svg|png|jpg|jpeg|webp|ico|map|woff2?|ttf)$"
+)
+
+
+@app.get("/", include_in_schema=False)
+def serve_ui_index() -> FileResponse:
+    path = _RND_DIR / "main.html"
+    if not path.is_file():
+        raise HTTPException(status_code=404, detail="UI not found.")
+    return FileResponse(path, media_type="text/html")
+
+
+@app.get("/main.html", include_in_schema=False)
+def serve_ui_main() -> FileResponse:
+    return serve_ui_index()
+
+
+@app.get("/{filename}", include_in_schema=False)
+def serve_ui_asset(filename: str) -> FileResponse:
+    reserved = {"docs", "redoc", "openapi.json", "health", "favicon.ico"}
+    if filename in reserved or not _UI_ASSET_RE.match(filename):
+        raise HTTPException(status_code=404, detail="Not found.")
+    path = (_RND_DIR / filename).resolve()
+    if not str(path).startswith(str(_RND_DIR.resolve())) or not path.is_file():
+        raise HTTPException(status_code=404, detail="Not found.")
+    return FileResponse(path)
+
+
+if _IMAGES_DIR.is_dir():
+    app.mount("/images", StaticFiles(directory=str(_IMAGES_DIR)), name="images")
 
 
 if __name__ == "__main__":

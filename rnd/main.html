@@ -4,6 +4,30 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>ACL DataHive</title>
+<script>
+/* file:// blocks fetch to localhost — bounce to the HTTP UI when the API is up. */
+(function () {
+  try {
+    if (location.protocol !== "file:") return;
+    var target = "http://127.0.0.1:5055/" + (location.hash || "");
+    var ctrl = typeof AbortController !== "undefined" ? new AbortController() : null;
+    var timer = setTimeout(function () {
+      if (ctrl) ctrl.abort();
+    }, 1200);
+    fetch("http://127.0.0.1:5055/health", {
+      cache: "no-store",
+      signal: ctrl ? ctrl.signal : undefined,
+    })
+      .then(function (res) {
+        clearTimeout(timer);
+        if (res && res.ok) location.replace(target);
+      })
+      .catch(function () {
+        clearTimeout(timer);
+      });
+  } catch (_err) {}
+})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -856,6 +880,134 @@
     margin-top:6px; font-size:11.5px; color:#8a93a3; line-height:1.4;
   }
 
+  /* ---------- Governance: Data Quality ---------- */
+  .gov-dq { display:flex; flex-direction:column; gap:14px; }
+  .gov-dq-toolbar {
+    display:flex; flex-wrap:wrap; align-items:center; gap:10px;
+  }
+  .gov-dq-toolbar h2 {
+    margin:0; font-size:16px; font-weight:800; color:var(--ink-900); flex:1; min-width:140px;
+  }
+  .gov-dq-toolbar .hint { font-size:12.5px; color:#8a93a3; }
+  .gov-dq-filters {
+    display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:12px;
+    padding:12px 14px; border:1px solid var(--gray-200); border-radius:10px; background:#fafbfd;
+  }
+  .gov-dq-filters .field { margin:0; }
+  .gov-dq-filters label { font-size:12.5px; }
+  .gov-dq-filters select, .gov-dq-filters .dq-tables {
+    width:100%; padding:8px 10px; border:1px solid var(--gray-200); border-radius:8px;
+    background:#fff; color:var(--ink-900); font-size:13px;
+  }
+  .gov-dq-filters select:disabled, .gov-dq-filters .dq-tables:disabled { opacity:.55; background:#f3f5f8; }
+  .gov-dq-filters .dq-tables { min-height:120px; }
+  .gov-dq-actions { display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+  .gov-dq-dash {
+    display:grid; grid-template-columns:220px 1fr; gap:14px;
+  }
+  @media (max-width:860px) {
+    .gov-dq-dash { grid-template-columns:1fr; }
+  }
+  .gov-dq-scorecard {
+    border:1px solid var(--gray-200); border-radius:14px; background:#fff;
+    padding:20px 18px; box-shadow:var(--shadow); text-align:center;
+  }
+  .gov-dq-scorecard .label {
+    font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:#8a93a3;
+  }
+  .gov-dq-score {
+    margin:8px 0 4px; font-size:48px; font-weight:800; line-height:1; color:var(--navy-700);
+  }
+  .gov-dq-score.grade-A { color:var(--ok); }
+  .gov-dq-score.grade-B { color:#2f8f5b; }
+  .gov-dq-score.grade-C { color:#c98512; }
+  .gov-dq-score.grade-D { color:var(--orange-500); }
+  .gov-dq-score.grade-F { color:#E4572E; }
+  .gov-dq-grade {
+    display:inline-flex; align-items:center; justify-content:center;
+    min-width:36px; height:28px; padding:0 10px; border-radius:999px;
+    font-size:13px; font-weight:800; background:var(--gray-100); color:var(--ink-900);
+  }
+  .gov-dq-formula {
+    margin-top:14px; text-align:left; font-size:12px; color:#5b6575; line-height:1.45;
+    padding-top:12px; border-top:1px solid var(--gray-200);
+  }
+  .gov-dq-formula code {
+    display:block; margin-top:6px; padding:8px 10px; border-radius:8px;
+    background:#0f1724; color:#e8eef8; font-size:11px; line-height:1.4; white-space:normal;
+  }
+  .gov-dq-dims {
+    display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:10px;
+  }
+  .gov-dq-dim {
+    border:1px solid var(--gray-200); border-radius:12px; background:#fff;
+    padding:12px 14px; box-shadow:var(--shadow);
+  }
+  .gov-dq-dim .nm { font-size:11px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:#8a93a3; }
+  .gov-dq-dim .val { margin-top:6px; font-size:22px; font-weight:800; color:var(--ink-900); }
+  .gov-dq-dim .bar {
+    margin-top:8px; height:6px; border-radius:999px; background:var(--gray-100); overflow:hidden;
+  }
+  .gov-dq-dim .bar > i {
+    display:block; height:100%; border-radius:999px; background:var(--blue-600);
+  }
+  .gov-dq-issue-summary {
+    display:flex; flex-wrap:wrap; gap:8px; margin:0;
+  }
+  .gov-dq-pill {
+    font-size:12px; font-weight:700; padding:4px 10px; border-radius:999px;
+    background:var(--gray-100); color:var(--ink-900);
+  }
+  .gov-dq-pill.critical { background:var(--err-bg); color:#E4572E; }
+  .gov-dq-pill.high { background:#ffe8d9; color:var(--orange-500); }
+  .gov-dq-pill.medium { background:var(--warn-bg); color:#a67c00; }
+  .gov-dq-pill.ok { background:rgba(31,169,113,.12); color:var(--ok); }
+  .gov-dq-panel {
+    border:1px solid var(--gray-200); border-radius:14px; background:#fff;
+    padding:16px 18px; box-shadow:var(--shadow);
+  }
+  .gov-dq-panel h3 { margin:0 0 10px; font-size:14px; font-weight:800; color:var(--ink-900); }
+  .gov-dq-issues { display:flex; flex-direction:column; gap:8px; max-height:360px; overflow:auto; }
+  .gov-dq-issue {
+    display:grid; grid-template-columns:72px 1fr; gap:10px; align-items:start;
+    padding:10px 12px; border:1px solid var(--gray-200); border-radius:10px; background:#fafbfd;
+  }
+  .gov-dq-issue .sev {
+    font-size:10px; font-weight:800; letter-spacing:.04em; text-transform:uppercase;
+    padding:3px 6px; border-radius:999px; text-align:center; background:var(--gray-100);
+  }
+  .gov-dq-issue .sev.critical { background:var(--err-bg); color:#E4572E; }
+  .gov-dq-issue .sev.high { background:#ffe8d9; color:var(--orange-500); }
+  .gov-dq-issue .sev.medium { background:var(--warn-bg); color:#a67c00; }
+  .gov-dq-issue .title { font-size:13px; font-weight:800; color:var(--ink-900); }
+  .gov-dq-issue .detail { margin-top:3px; font-size:12px; color:#8a93a3; line-height:1.4; }
+  .gov-dq-table-wrap { overflow:auto; }
+  .gov-dq-table {
+    width:100%; border-collapse:collapse; font-size:12.5px;
+  }
+  .gov-dq-table th, .gov-dq-table td {
+    padding:8px 10px; border-bottom:1px solid var(--gray-200); text-align:left; vertical-align:top;
+  }
+  .gov-dq-table th {
+    font-size:11px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:#8a93a3;
+    background:#fafbfd; position:sticky; top:0;
+  }
+  .gov-dq-status {
+    display:inline-block; font-size:10px; font-weight:800; letter-spacing:.03em; text-transform:uppercase;
+    padding:2px 7px; border-radius:999px;
+  }
+  .gov-dq-status.pass { background:rgba(31,169,113,.12); color:var(--ok); }
+  .gov-dq-status.warn { background:var(--warn-bg); color:#a67c00; }
+  .gov-dq-status.fail { background:var(--err-bg); color:#E4572E; }
+  .gov-dq-logic {
+    font-size:12.5px; color:#5b6575; line-height:1.5;
+  }
+  .gov-dq-logic ul { margin:8px 0 0; padding-left:18px; }
+  .gov-dq-logic li { margin:4px 0; }
+  .gov-dq-empty {
+    padding:28px; text-align:center; color:#8a93a3; font-size:13.5px; line-height:1.5;
+  }
+
   /* ---------- Insights KPI dashboards ---------- */
   .rpt-pane { text-align:left; width:99%; margin:0 auto; display:flex; flex-direction:column; gap:14px; }
   .rpt-filters {
@@ -1447,6 +1599,86 @@
         </div>
       </div>
 
+      <div id="govQuality" class="gov-dq hidden" aria-label="Data quality dashboard">
+        <div class="gov-dq-toolbar">
+          <button type="button" class="btn btn-ghost" id="govDqBackBtn">← Back</button>
+          <h2>Data Quality</h2>
+          <span class="hint">Select connector, layer / schema, and tables — then run basic quality checks</span>
+        </div>
+        <div class="gov-dq-filters" aria-label="Data quality scope">
+          <div class="field">
+            <label for="govDqConnector">Connector <span class="req">*</span></label>
+            <select id="govDqConnector">
+              <option value="">Select connector…</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="govDqSchema">Layer / schema <span class="req">*</span></label>
+            <select id="govDqSchema" disabled>
+              <option value="">Select connector first…</option>
+            </select>
+          </div>
+          <div class="field" style="grid-column:span 2">
+            <label for="govDqTables">Tables <span class="req">*</span></label>
+            <select id="govDqTables" class="dq-tables" multiple disabled size="6"></select>
+            <div class="help">Hold Ctrl/Cmd to select multiple (max 12).</div>
+          </div>
+        </div>
+        <div class="gov-dq-actions">
+          <button type="button" class="btn btn-primary" id="govDqRunBtn" disabled>Run quality checks</button>
+          <span class="hint" id="govDqStatus"></span>
+        </div>
+        <div class="err hidden" id="govDqError"></div>
+
+        <div id="govDqResults" class="hidden">
+          <div class="gov-dq-dash">
+            <div class="gov-dq-scorecard">
+              <div class="label">Data quality score</div>
+              <div class="gov-dq-score" id="govDqScore">—</div>
+              <div class="gov-dq-grade" id="govDqGrade">—</div>
+              <div class="gov-dq-formula">
+                Weighted score
+                <code id="govDqFormula">DQ = 0.35×Completeness + 0.25×Uniqueness + 0.20×Validity + 0.10×Schema + 0.10×Volume</code>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <div class="gov-dq-dims" id="govDqDims"></div>
+              <div class="gov-dq-issue-summary" id="govDqIssueSummary"></div>
+            </div>
+          </div>
+
+          <div class="gov-dq-panel" style="margin-top:4px">
+            <h3>Issues dashboard</h3>
+            <div class="gov-dq-issues" id="govDqIssues">
+              <div class="gov-dq-empty">No issues yet — run checks to populate the dashboard.</div>
+            </div>
+          </div>
+
+          <div class="gov-dq-panel">
+            <h3>Check results by table</h3>
+            <div class="gov-dq-table-wrap">
+              <table class="gov-dq-table" id="govDqChecksTable">
+                <thead>
+                  <tr>
+                    <th>Table</th>
+                    <th>Check</th>
+                    <th>Dimension</th>
+                    <th>Status</th>
+                    <th>Detail</th>
+                  </tr>
+                </thead>
+                <tbody id="govDqChecksBody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="gov-dq-panel">
+            <h3>Score calculation &amp; logic</h3>
+            <div class="gov-dq-logic" id="govDqLogic"></div>
+          </div>
+        </div>
+      </div>
+
       <div id="govLineage" class="gov-lineage hidden" aria-label="Data lineage map">
         <div class="gov-lineage-toolbar">
           <button type="button" class="btn btn-ghost" id="govLineageBackBtn">← Back</button>
@@ -1470,8 +1702,8 @@
         </div>
         <div class="gov-lineage-legend" aria-hidden="true">
           <span><i style="background:#3375B3"></i> Source</span>
-          <span><i style="background:#0056A7"></i> Bronze</span>
-          <span><i style="background:#046BD2"></i> Silver</span>
+          <span><i style="background:#0056A7"></i> Bronze / Raw</span>
+          <span><i style="background:#046BD2"></i> Silver / Enriched</span>
           <span><i style="background:#FF671F"></i> Gold</span>
           <span><i style="background:#1FA971"></i> Consumption</span>
         </div>
@@ -1828,6 +2060,12 @@
                   <label for="cf_client_secret" id="cf_client_secret_label">Client secret <span class="req">*</span></label>
                   <input id="cf_client_secret" name="client_secret" type="password" maxlength="4096" autocomplete="off" />
                 </div>
+              </div>
+
+              <div class="field hidden" id="group_refresh_token">
+                <label for="cf_refresh_token" id="cf_refresh_token_label">Refresh token</label>
+                <input id="cf_refresh_token" name="refresh_token" type="password" maxlength="4096" autocomplete="off" />
+                <div class="help" id="cf_refresh_token_help">Optional. Paste a Google refresh token for a full live token check.</div>
               </div>
 
               <div class="field hidden" id="group_role_arn">
@@ -2332,12 +2570,22 @@ function toggleAuth(type, cloud = CLOUDS[activeCloud]){
   const showOauth = type === "oauth2" || type === "service_principal";
   const showAccessKeys = type === "access_keys" || type === "password" || type === "key_pair";
   const showRole = type === "iam_role" || type === "assume_role";
+  const googleOauth = showOauth && (cloud.id === "gcp" || cloud.id === "googledrive");
+  const refreshRequired = showOauth && cloud.id === "googledrive";
 
   $("#group_sa").classList.toggle("hidden", !showSa);
   $("#group_api_key").classList.toggle("hidden", !showApiKey);
   $("#group_oauth").classList.toggle("hidden", !showOauth);
   $("#group_access_keys").classList.toggle("hidden", !showAccessKeys);
   $("#group_role_arn").classList.toggle("hidden", !showRole);
+  $("#group_refresh_token").classList.toggle("hidden", !googleOauth);
+  if (googleOauth) {
+    const req = refreshRequired ? ' <span class="req">*</span>' : "";
+    $("#cf_refresh_token_label").innerHTML = "Refresh token" + req;
+    $("#cf_refresh_token_help").textContent = refreshRequired
+      ? "Required for Google Drive OAuth. Paste the refresh token from your OAuth consent flow."
+      : "Optional. Paste a Google refresh token for a full live token check; otherwise Client ID + Secret are verified.";
+  }
 
   // Key-pair needs username + private key; password field optional (encrypted key passphrase).
   const secretField = $("#cf_secret_access_key");
@@ -2371,6 +2619,7 @@ function setSecretKeepHints(isEdit) {
     ["#cf_api_key", false],
     ["#cf_secret_access_key", false],
     ["#cf_client_secret", false],
+    ["#cf_refresh_token", false],
   ].forEach(([sel, isHelp]) => {
     const el = $(sel);
     if (!el) return;
@@ -2474,7 +2723,7 @@ async function openPanelForEdit(connectorId) {
     });
 
     // Secrets are never returned — leave blank intentionally.
-    ["#cf_api_key", "#cf_secret_access_key", "#cf_client_secret", "#cf_sa_json"].forEach((sel) => {
+    ["#cf_api_key", "#cf_secret_access_key", "#cf_client_secret", "#cf_refresh_token", "#cf_sa_json"].forEach((sel) => {
       if ($(sel)) $(sel).value = "";
     });
 
@@ -2881,6 +3130,13 @@ form.addEventListener("submit", async (e)=>{
       if (!$("#cf_client_secret").value.trim() && !keepSecrets) {
         return showError("Client secret is required.");
       }
+      if (
+        cloud.id === "googledrive" &&
+        !$("#cf_refresh_token").value.trim() &&
+        !keepSecrets
+      ) {
+        return showError("Refresh token is required for Google Drive OAuth.");
+      }
     } else if (authType === "access_keys") {
       if (!$("#cf_access_key_id").value.trim()) {
         return showError("Access key ID is required.");
@@ -2917,6 +3173,7 @@ form.addEventListener("submit", async (e)=>{
       api_key: $("#cf_api_key").value,
       client_id: $("#cf_client_id").value,
       client_secret: $("#cf_client_secret").value,
+      refresh_token: $("#cf_refresh_token") ? $("#cf_refresh_token").value : "",
       service_account_json: $("#cf_sa_json").value,
       access_key_id: $("#cf_access_key_id").value,
       secret_access_key: $("#cf_secret_access_key").value,
@@ -3892,11 +4149,24 @@ document.addEventListener("keydown", (e) => {
       renderRecentConnections();
     }
   } else {
+    const isMac =
+      typeof navigator !== "undefined" &&
+      /Mac|iPhone|iPad/i.test(navigator.platform || navigator.userAgent || "");
+    const viaFile =
+      typeof location !== "undefined" && String(location.protocol || "") === "file:";
+    const startHint = isMac
+      ? "double-click <code>rnd/Open DataHive UI.command</code> (opens " +
+        "<code>http://127.0.0.1:5055/</code>), or run " +
+        "<code>rnd/.venv/bin/python rnd/connector_watchdog.py</code>"
+      : "open <code>rnd/Open DataHive UI.bat</code>, or run " +
+        "<code>pythonw rnd/connector_watchdog.py</code>";
     banner.innerHTML =
       "Connector API is not reachable — connections will not be saved to MongoDB. " +
-      "The UI usually starts it automatically when opened via " +
-      "<code>Open DataHive UI.bat</code>; or run " +
-      "<code>pythonw rnd/connector_watchdog.py</code> in the background" +
+      (viaFile
+        ? "You opened this page as <code>file://</code>, which blocks API calls. "
+        : "") +
+      "Start the API via " +
+      startHint +
       (health && health.detail ? " (" + escapeHtml(health.detail) + ")" : "");
     banner.classList.remove("hidden");
     renderRecentConnections();
@@ -6058,9 +6328,11 @@ function showGovernanceHome() {
   const home = $("#govHome");
   const lineage = $("#govLineage");
   const modeling = $("#govModeling");
+  const quality = $("#govQuality");
   if (home) home.classList.remove("hidden");
   if (lineage) lineage.classList.add("hidden");
   if (modeling) modeling.classList.add("hidden");
+  if (quality) quality.classList.add("hidden");
   lineageSelectedId = null;
   modelState.step = 1;
 }
@@ -6069,13 +6341,464 @@ async function showLineageMap() {
   const home = $("#govHome");
   const lineage = $("#govLineage");
   const modeling = $("#govModeling");
+  const quality = $("#govQuality");
   if (home) home.classList.add("hidden");
   if (modeling) modeling.classList.add("hidden");
+  if (quality) quality.classList.add("hidden");
   if (lineage) lineage.classList.remove("hidden");
   await loadLineageConnectors();
   refreshLineageView();
   if (window.lucide && typeof lucide.createIcons === "function") {
     lucide.createIcons({ attrs: { "stroke-width": "1.75", "aria-hidden": "true" } });
+  }
+}
+
+/* ---------- Governance: Data Quality ---------- */
+const dqState = {
+  connectors: [],
+  catalogItems: [],
+  schemas: [],
+  connectorId: "",
+  schema: "",
+  result: null,
+};
+
+function showDqError(msg) {
+  const el = $("#govDqError");
+  if (!el) return;
+  if (!msg) {
+    el.classList.add("hidden");
+    el.textContent = "";
+    return;
+  }
+  el.textContent = msg;
+  el.classList.remove("hidden");
+}
+
+async function showDataQuality() {
+  const home = $("#govHome");
+  const lineage = $("#govLineage");
+  const modeling = $("#govModeling");
+  const quality = $("#govQuality");
+  if (home) home.classList.add("hidden");
+  if (lineage) lineage.classList.add("hidden");
+  if (modeling) modeling.classList.add("hidden");
+  if (quality) quality.classList.remove("hidden");
+  showDqError("");
+  const status = $("#govDqStatus");
+  if (status) status.textContent = "";
+  await loadDqConnectors();
+  if (window.lucide && typeof lucide.createIcons === "function") {
+    lucide.createIcons({ attrs: { "stroke-width": "1.75", "aria-hidden": "true" } });
+  }
+}
+
+async function loadDqConnectors() {
+  const sel = $("#govDqConnector");
+  if (!sel) return;
+  const prev = dqState.connectorId || sel.value || "";
+  sel.innerHTML = '<option value="">Loading connectors…</option>';
+  try {
+    if (typeof ensureDataHiveConnectorApi === "function") {
+      await ensureDataHiveConnectorApi();
+    }
+    if (typeof DataHiveAssets === "undefined") throw new Error("Assets API not loaded");
+    const data = await DataHiveAssets.connectors();
+    dqState.connectors = data.items || [];
+  } catch (_err) {
+    dqState.connectors = [
+      {
+        id: "local-postgres",
+        display_name: "Local Postgres",
+        platform: "postgres",
+      },
+    ];
+  }
+  sel.innerHTML =
+    '<option value="">Select connector…</option>' +
+    dqState.connectors
+      .map((c) => {
+        const label =
+          (c.display_name || c.id) +
+          (c.platform || c.cloud ? " · " + (c.platform || c.cloud) : "");
+        return (
+          '<option value="' +
+          escapeHtml(c.id) +
+          '">' +
+          escapeHtml(label) +
+          "</option>"
+        );
+      })
+      .join("");
+  if (prev && [...sel.options].some((o) => o.value === prev)) {
+    sel.value = prev;
+    dqState.connectorId = prev;
+    await onDqConnectorChange({ keepSchema: true });
+  } else {
+    dqState.connectorId = "";
+    dqState.schema = "";
+    dqState.catalogItems = [];
+    fillDqSchemaSelect([]);
+    fillDqTablesSelect([]);
+  }
+}
+
+function fillDqSchemaSelect(schemas, preferred) {
+  const sel = $("#govDqSchema");
+  if (!sel) return;
+  const list = (schemas || []).filter(Boolean);
+  if (!list.length) {
+    sel.disabled = true;
+    sel.innerHTML = '<option value="">Select connector first…</option>';
+    return;
+  }
+  const prev = preferred || dqState.schema || sel.value || "";
+  sel.disabled = false;
+  sel.innerHTML =
+    '<option value="">Select layer / schema…</option>' +
+    list.map((s) => '<option value="' + escapeHtml(s) + '">' + escapeHtml(s) + "</option>").join("");
+  if (prev && [...sel.options].some((o) => o.value === prev)) sel.value = prev;
+}
+
+function fillDqTablesSelect(tables) {
+  const sel = $("#govDqTables");
+  const runBtn = $("#govDqRunBtn");
+  if (!sel) return;
+  const list = (tables || []).filter(Boolean);
+  if (!list.length) {
+    sel.disabled = true;
+    sel.innerHTML = "";
+    if (runBtn) runBtn.disabled = true;
+    return;
+  }
+  sel.disabled = false;
+  sel.innerHTML = list
+    .map((t) => '<option value="' + escapeHtml(t) + '">' + escapeHtml(t) + "</option>")
+    .join("");
+  if (runBtn) runBtn.disabled = false;
+}
+
+async function onDqConnectorChange(opts) {
+  const keepSchema = opts && opts.keepSchema;
+  const connectorId = ($("#govDqConnector") && $("#govDqConnector").value) || "";
+  dqState.connectorId = connectorId;
+  if (!keepSchema) dqState.schema = "";
+  dqState.catalogItems = [];
+  const results = $("#govDqResults");
+  if (results) results.classList.add("hidden");
+  showDqError("");
+  if (!connectorId) {
+    fillDqSchemaSelect([]);
+    fillDqTablesSelect([]);
+    return;
+  }
+  fillDqSchemaSelect([], keepSchema ? dqState.schema : "");
+  fillDqTablesSelect([]);
+  try {
+    if (typeof DataHiveAssets === "undefined") throw new Error("Assets API not loaded");
+    const catalog = await DataHiveAssets.catalog(connectorId);
+    dqState.catalogItems = catalog.items || [];
+    const schemas = catalog.schemas || [
+      ...new Set(dqState.catalogItems.map((i) => i.schema).filter(Boolean)),
+    ];
+    // Prefer medallion / raw / enriched style schemas first.
+    const ranked = [...schemas].sort((a, b) => {
+      const rank = (s) => {
+        const x = String(s).toLowerCase();
+        if (x.includes("raw") || x.includes("bronze")) return 0;
+        if (x.includes("enriched") || x.includes("silver")) return 1;
+        if (x.includes("gold") || x.includes("mart")) return 2;
+        return 3;
+      };
+      return rank(a) - rank(b) || String(a).localeCompare(String(b));
+    });
+    dqState.schemas = ranked;
+    fillDqSchemaSelect(ranked, keepSchema ? dqState.schema : "");
+    if (keepSchema && dqState.schema) await onDqSchemaChange();
+  } catch (err) {
+    showDqError(err && err.message ? err.message : String(err));
+    fillDqSchemaSelect([]);
+  }
+}
+
+async function onDqSchemaChange() {
+  const schema = ($("#govDqSchema") && $("#govDqSchema").value) || "";
+  dqState.schema = schema;
+  const results = $("#govDqResults");
+  if (results) results.classList.add("hidden");
+  showDqError("");
+  if (!schema) {
+    fillDqTablesSelect([]);
+    return;
+  }
+  const schemaLc = schema.toLowerCase();
+  const short = schemaLc.indexOf(".") >= 0 ? schemaLc.split(".").pop() : schemaLc;
+  let tables = dqState.catalogItems
+    .filter((a) => {
+      if (!a || !a.name) return false;
+      if (String(a.type || "") === "Schema") return false;
+      const sch = String(a.schema || "").toLowerCase();
+      return sch === schemaLc || sch === short || sch.endsWith("." + short);
+    })
+    .map((a) => String(a.name));
+  if (!tables.length && typeof DataHiveAssets !== "undefined") {
+    try {
+      const data = await DataHiveAssets.tables(schema, dqState.connectorId);
+      tables = (data.items || data.tables || []).map((t) =>
+        typeof t === "string" ? t : t.name || t.table || ""
+      );
+    } catch (_err) {
+      /* catalog already tried */
+    }
+  }
+  tables = [...new Set(tables.filter(Boolean))].sort((a, b) => a.localeCompare(b));
+  fillDqTablesSelect(tables);
+}
+
+function selectedDqTables() {
+  const sel = $("#govDqTables");
+  if (!sel) return [];
+  return [...sel.selectedOptions].map((o) => o.value).filter(Boolean).slice(0, 12);
+}
+
+function connectorApiBaseUrl() {
+  if (window.DATAHIVE_CONNECTOR_API) {
+    return String(window.DATAHIVE_CONNECTOR_API).replace(/\/$/, "");
+  }
+  const host =
+    window.location && window.location.hostname ? window.location.hostname : "127.0.0.1";
+  return "http://" + host + ":5055";
+}
+
+async function runDataQualityChecks() {
+  const connectorId = dqState.connectorId || ($("#govDqConnector") && $("#govDqConnector").value) || "";
+  const schema = dqState.schema || ($("#govDqSchema") && $("#govDqSchema").value) || "";
+  const tables = selectedDqTables();
+  showDqError("");
+  if (!connectorId) return showDqError("Select a connector.");
+  if (!schema) return showDqError("Select a layer / schema.");
+  if (!tables.length) return showDqError("Select at least one table.");
+
+  const runBtn = $("#govDqRunBtn");
+  const status = $("#govDqStatus");
+  const prev = runBtn ? runBtn.textContent : "";
+  if (runBtn) {
+    runBtn.disabled = true;
+    runBtn.textContent = "Running…";
+  }
+  if (status) status.textContent = "Profiling " + tables.length + " table(s)…";
+
+  try {
+    if (typeof ensureDataHiveConnectorApi === "function") {
+      const ok = await ensureDataHiveConnectorApi();
+      if (!ok) throw new Error("Connector API is not reachable.");
+    }
+    const res = await fetch(connectorApiBaseUrl() + "/api/data-quality/run", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-DataHive-User":
+          (typeof getDataHiveUser === "function" && getDataHiveUser()) || "unknown",
+      },
+      body: JSON.stringify({ connector_id: connectorId, schema, tables }),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      throw new Error(
+        (data && (data.detail || data.message)) || "Data quality run failed (HTTP " + res.status + ")"
+      );
+    }
+    dqState.result = data;
+    renderDqDashboard(data);
+    if (status) {
+      status.textContent =
+        "Last run · score " + data.score + " (" + data.grade + ") · " +
+        (data.issue_summary && data.issue_summary.total != null
+          ? data.issue_summary.total + " issue(s)"
+          : "done");
+    }
+  } catch (err) {
+    showDqError(err && err.message ? err.message : String(err));
+    if (status) status.textContent = "";
+  } finally {
+    if (runBtn) {
+      runBtn.disabled = false;
+      runBtn.textContent = prev || "Run quality checks";
+    }
+  }
+}
+
+function renderDqDashboard(data) {
+  const wrap = $("#govDqResults");
+  if (!wrap) return;
+  wrap.classList.remove("hidden");
+
+  const scoreEl = $("#govDqScore");
+  const gradeEl = $("#govDqGrade");
+  if (scoreEl) {
+    scoreEl.textContent = data.score != null ? String(data.score) : "—";
+    scoreEl.className = "gov-dq-score grade-" + (data.grade || "F");
+  }
+  if (gradeEl) gradeEl.textContent = "Grade " + (data.grade || "—");
+
+  const formula = $("#govDqFormula");
+  if (formula && data.logic && data.logic.formula) {
+    formula.textContent = data.logic.formula;
+  }
+
+  const dims = data.dimensions || {};
+  const dimsEl = $("#govDqDims");
+  if (dimsEl) {
+    const order = ["completeness", "uniqueness", "validity", "schema", "volume"];
+    dimsEl.innerHTML = order
+      .map((k) => {
+        const v = dims[k] != null ? Number(dims[k]) : 0;
+        const w = (data.logic && data.logic.weights && data.logic.weights[k]) || 0;
+        return (
+          '<div class="gov-dq-dim">' +
+          '<div class="nm">' +
+          escapeHtml(k) +
+          " · " +
+          Math.round(w * 100) +
+          "%</div>" +
+          '<div class="val">' +
+          v.toFixed(1) +
+          "</div>" +
+          '<div class="bar"><i style="width:' +
+          Math.max(0, Math.min(100, v)) +
+          '%"></i></div>' +
+          "</div>"
+        );
+      })
+      .join("");
+  }
+
+  const summary = data.issue_summary || {};
+  const sumEl = $("#govDqIssueSummary");
+  if (sumEl) {
+    const total = summary.total || 0;
+    sumEl.innerHTML =
+      '<span class="gov-dq-pill ' +
+      (total === 0 ? "ok" : "") +
+      '">' +
+      total +
+      " issue(s)</span>" +
+      '<span class="gov-dq-pill critical">' +
+      (summary.critical || 0) +
+      " critical</span>" +
+      '<span class="gov-dq-pill high">' +
+      (summary.high || 0) +
+      " high</span>" +
+      '<span class="gov-dq-pill medium">' +
+      (summary.medium || 0) +
+      " medium</span>";
+  }
+
+  const issuesEl = $("#govDqIssues");
+  if (issuesEl) {
+    const issues = data.issues || [];
+    if (!issues.length) {
+      issuesEl.innerHTML =
+        '<div class="gov-dq-empty">No issues found across the selected tables.</div>';
+    } else {
+      issuesEl.innerHTML = issues
+        .map((i) => {
+          return (
+            '<div class="gov-dq-issue">' +
+            '<div class="sev ' +
+            escapeHtml(i.severity || "info") +
+            '">' +
+            escapeHtml(i.severity || "info") +
+            "</div>" +
+            "<div>" +
+            '<div class="title">' +
+            escapeHtml(i.table ? i.table + " · " : "") +
+            escapeHtml(i.title || "Issue") +
+            "</div>" +
+            '<div class="detail">' +
+            escapeHtml(i.detail || "") +
+            (i.category ? " · " + escapeHtml(i.category) : "") +
+            "</div>" +
+            "</div></div>"
+          );
+        })
+        .join("");
+    }
+  }
+
+  const body = $("#govDqChecksBody");
+  if (body) {
+    const rows = [];
+    (data.tables_results || []).forEach((tr) => {
+      (tr.checks || []).forEach((ch) => {
+        rows.push(
+          "<tr>" +
+            "<td>" +
+            escapeHtml(tr.table) +
+            "<div style='color:#8a93a3;font-size:11px'>score " +
+            (tr.score != null ? tr.score : "—") +
+            " · " +
+            escapeHtml(tr.grade || "") +
+            "</div></td>" +
+            "<td>" +
+            escapeHtml(ch.name || ch.id || "") +
+            "</td>" +
+            "<td>" +
+            escapeHtml(ch.dimension || "") +
+            "</td>" +
+            "<td><span class='gov-dq-status " +
+            escapeHtml(ch.status || "") +
+            "'>" +
+            escapeHtml(ch.status || "") +
+            "</span></td>" +
+            "<td>" +
+            escapeHtml(ch.detail || "") +
+            "</td>" +
+            "</tr>"
+        );
+      });
+      if (!(tr.checks || []).length && tr.error) {
+        rows.push(
+          "<tr><td>" +
+            escapeHtml(tr.table) +
+            "</td><td colspan='4'><span class='gov-dq-status fail'>error</span> " +
+            escapeHtml(tr.error) +
+            "</td></tr>"
+        );
+      }
+    });
+    body.innerHTML = rows.length
+      ? rows.join("")
+      : "<tr><td colspan='5'>No checks returned.</td></tr>";
+  }
+
+  const logicEl = $("#govDqLogic");
+  if (logicEl && data.logic) {
+    const dimsDoc = data.logic.dimensions || {};
+    const grades = data.logic.grades || {};
+    logicEl.innerHTML =
+      "<p><strong>Formula:</strong> " +
+      escapeHtml(data.logic.formula || "") +
+      "</p>" +
+      "<p><strong>Dimension logic</strong></p><ul>" +
+      Object.keys(dimsDoc)
+        .map(
+          (k) =>
+            "<li><strong>" +
+            escapeHtml(k) +
+            ":</strong> " +
+            escapeHtml(dimsDoc[k]) +
+            "</li>"
+        )
+        .join("") +
+      "</ul>" +
+      "<p><strong>Grades:</strong> " +
+      Object.keys(grades)
+        .map((g) => escapeHtml(g) + " = " + escapeHtml(grades[g]))
+        .join(" · ") +
+      "</p>" +
+      "<p>Checks include row volume, null rates, primary-key uniqueness, empty strings on text columns, and schema PK presence. " +
+      "Per-table scores are averaged equally into the estate score for the selected tables.</p>";
   }
 }
 
@@ -6120,7 +6843,7 @@ function lineageScopeMeta(platform) {
   }
   return {
     label: "Layer / schema",
-    help: "Medallion layers (bronze / silver / gold) or schemas for this connection.",
+    help: "Medallion layers (raw / bronze / enriched / silver / gold) or schemas for this connection.",
     empty: "Select connector first…",
     placeholder: "Select layer / schema…",
   };
@@ -6245,18 +6968,18 @@ function collectLineageScopeOptions(connector, catalogItems, schemas) {
 
   // Platform-aware defaults so the dropdown is useful even with sparse catalogs.
   if (platform === "aws" || platform === "amazonwebservices") {
-    ["s3://raw", "s3://bronze", "s3://silver", "s3://gold", "glue:default"].forEach(add);
+    ["s3://raw", "s3://bronze", "s3://silver", "s3://gold", "s3://enriched", "glue:default"].forEach(add);
   } else if (platform === "gcp" || platform === "googlecloud") {
-    ["raw", "bronze", "silver", "gold"].forEach(add);
+    ["raw", "bronze", "silver", "enriched", "gold"].forEach(add);
   } else if (platform === "azure" || platform === "microsoftazure") {
-    ["landing", "bronze", "silver", "gold"].forEach(add);
+    ["landing", "bronze", "silver", "enriched", "gold"].forEach(add);
   } else if (platform === "snowflake") {
-    ["RAW", "BRONZE", "SILVER", "GOLD", "@STAGE_LANDING"].forEach(add);
-    ["bronze", "silver", "gold"].forEach((layer) => {
+    ["RAW", "BRONZE", "SILVER", "ENRICHED", "GOLD", "@STAGE_LANDING"].forEach(add);
+    ["bronze", "silver", "enriched", "gold", "raw"].forEach((layer) => {
       if ((schemas || []).some((s) => String(s).toLowerCase().includes(layer))) add(layer);
     });
   } else {
-    ["bronze", "silver", "gold", "source"].forEach(add);
+    ["raw", "bronze", "silver", "enriched", "gold", "source"].forEach(add);
     if (connector && connector.id === "local-postgres") add("datahivepoc");
   }
 
@@ -6308,22 +7031,128 @@ function lineageInferLayer(assetOrName) {
       assetOrName ||
       ""
   ).toLowerCase();
-  if (s.includes("bronze") || s.includes("raw") || s.includes("landing")) return "bronze";
-  if (s.includes("silver") || s.includes("curated") || s.includes("cleansed")) return "silver";
+  // Prefer later medallion layers first so names like "raw_enriched" resolve correctly.
   if (s.includes("consume") || s.includes("dashboard") || s.includes("report")) return "consume";
   if (s.includes("gold") || s.includes("mart")) return "gold";
+  if (
+    s.includes("silver") ||
+    s.includes("curated") ||
+    s.includes("cleansed") ||
+    s.includes("enriched") ||
+    s.includes("enrich")
+  ) {
+    return "silver";
+  }
+  if (s.includes("bronze") || s.includes("raw") || s.includes("landing")) return "bronze";
   if (s.includes("source") || s.includes("stage") || s.startsWith("@") || s.startsWith("s3://")) {
     return "source";
   }
+  // Dimensional / mart objects without a layer keyword still belong in silver.
+  const name = String(
+    (assetOrName && (assetOrName.name || assetOrName.table || assetOrName.title)) || ""
+  ).toLowerCase();
+  if (/^(dim_|fact_|vw_)/.test(name)) return "silver";
   return "bronze";
 }
 
+function lineageStemEntity(key) {
+  let s = String(key || "");
+  if (s.length > 4 && s.endsWith("ies")) return s.slice(0, -3) + "y";
+  if (s.length > 4 && s.endsWith("ses")) return s.slice(0, -2);
+  if (s.length > 3 && s.endsWith("s") && !s.endsWith("ss")) return s.slice(0, -1);
+  return s;
+}
+
 function lineageNormalizeKey(name) {
-  return String(name || "")
+  const cleaned = String(name || "")
     .toLowerCase()
-    .replace(/^(dh_|test_|stg_|raw_|fact_|dim_)/, "")
-    .replace(/(_tbl|_raw|_curated|_score|_daily|_aging)$/, "")
+    .replace(/^(dh_|test_|stg_|raw_|src_|fact_|dim_|vw_)/, "")
+    .replace(/(_tbl|_table|_raw|_curated|_enriched|_score|_daily|_aging|_view)$/, "")
     .replace(/[^a-z0-9]+/g, "");
+  return lineageStemEntity(cleaned);
+}
+
+/** Multiple match keys so CUSTOMERS ↔ dim_customer and invoice_raw ↔ fact_invoice connect. */
+function lineageEntityKeys(name) {
+  const keys = new Set();
+  const add = (v) => {
+    const k = String(v || "").toLowerCase().replace(/[^a-z0-9]+/g, "");
+    if (!k || k.length < 3) return;
+    keys.add(k);
+    keys.add(lineageStemEntity(k));
+    if (!k.endsWith("s") && k.length > 2) keys.add(k + "s");
+    if (k.endsWith("y") && k.length > 3) keys.add(k.slice(0, -1) + "ies");
+  };
+  const stripped = String(name || "")
+    .toLowerCase()
+    .replace(/^(dh_|test_|stg_|raw_|src_|fact_|dim_|vw_)/, "")
+    .replace(/(_tbl|_table|_raw|_curated|_enriched|_score|_daily|_aging|_view)$/, "")
+    .replace(/[^a-z0-9]+/g, "");
+  add(stripped);
+  // Tokenize so DH_POC_CUSTOMERS and dim_customer share the "customer" key.
+  String(name || "")
+    .toLowerCase()
+    .split(/[^a-z0-9]+/)
+    .forEach((tok) => {
+      const clean = tok.replace(/^(dh|test|stg|raw|src|fact|dim|vw|poc)+/, "");
+      if (clean.length >= 4) add(clean);
+      else if (tok.length >= 4) add(tok);
+    });
+  return [...keys].filter(Boolean);
+}
+
+const MODEL_LINEAGE_STORAGE_KEY = "datahive.modelLineage";
+
+function loadModelLineageEdges() {
+  try {
+    const raw = localStorage.getItem(MODEL_LINEAGE_STORAGE_KEY);
+    const parsed = raw ? JSON.parse(raw) : [];
+    return Array.isArray(parsed) ? parsed : [];
+  } catch (_err) {
+    return [];
+  }
+}
+
+function saveModelLineageEdges(edges) {
+  try {
+    localStorage.setItem(MODEL_LINEAGE_STORAGE_KEY, JSON.stringify((edges || []).slice(-300)));
+  } catch (_err) {
+    /* ignore quota / private mode */
+  }
+}
+
+function lineageSchemaAliases(schema) {
+  const s = String(schema || "").toLowerCase().trim();
+  if (!s) return [];
+  const aliases = new Set([s]);
+  if (s.indexOf(".") >= 0) aliases.add(s.split(".").pop());
+  return [...aliases];
+}
+
+function lineageAssetInScope(asset, scopeLc, scopeLayer) {
+  const fields = [
+    asset.database,
+    asset.schema,
+    asset.bucket,
+    asset.stage,
+    asset.container,
+    asset.dataset,
+    asset.name,
+  ]
+    .map((x) => String(x || "").toLowerCase())
+    .filter(Boolean);
+  if (fields.some((f) => f === scopeLc || f.includes(scopeLc) || scopeLc.includes(f))) {
+    return true;
+  }
+  // When a medallion keyword is selected (e.g. enriched), keep upstream/downstream
+  // layers so RAW → ENRICHED edges remain visible.
+  if (!scopeLayer || scopeLayer === "source" || scopeLayer === "consume") return false;
+  const assetLayer = lineageInferLayer(asset);
+  const order = ["source", "bronze", "silver", "gold", "consume"];
+  const selectedIdx = order.indexOf(scopeLayer);
+  const assetIdx = order.indexOf(assetLayer);
+  if (selectedIdx < 0 || assetIdx < 0) return false;
+  return Math.abs(assetIdx - selectedIdx) <= 1 || assetIdx < selectedIdx;
 }
 
 function buildLineageGraphFromCatalog(connector, scope, items) {
@@ -6331,12 +7160,10 @@ function buildLineageGraphFromCatalog(connector, scope, items) {
   const scopeVal = String(scope || "");
   const allScopes = scopeVal === "__all__";
   const scopeLc = scopeVal.toLowerCase();
+  const scopeLayer = allScopes || !scopeVal ? "" : lineageInferLayer(scopeVal);
   const filtered = (items || []).filter((a) => {
     if (allScopes || !scopeVal) return true;
-    const fields = [a.database, a.schema, a.bucket, a.stage, a.container, a.dataset, a.name]
-      .map((x) => String(x || "").toLowerCase())
-      .filter(Boolean);
-    return fields.some((f) => f === scopeLc || f.includes(scopeLc) || scopeLc.includes(f));
+    return lineageAssetInScope(a, scopeLc, scopeLayer);
   });
 
   if (!filtered.length) {
@@ -6346,18 +7173,36 @@ function buildLineageGraphFromCatalog(connector, scope, items) {
 
   const nodes = [];
   const byKeyLayer = {};
-  filtered.slice(0, 40).forEach((a, idx) => {
+  const bySchemaTable = {};
+  const registerSchemaTable = (schema, table, id) => {
+    const nm = String(table || "").toLowerCase();
+    if (!nm) return;
+    lineageSchemaAliases(schema).forEach((sch) => {
+      bySchemaTable[sch + "\0" + nm] = id;
+    });
+  };
+
+  filtered.slice(0, 80).forEach((a, idx) => {
     const layer = lineageInferLayer(a);
     const title = a.name || a.table || a.id || "asset_" + (idx + 1);
     const sub =
       a.schema || a.database || a.bucket || a.stage || a.container || connLabel;
     const id = "n_" + layer + "_" + idx + "_" + lineageNormalizeKey(title).slice(0, 24);
-    const node = { id, layer, title, sub: String(sub) };
+    const node = {
+      id,
+      layer,
+      title,
+      sub: String(sub),
+      schema: String(a.schema || ""),
+      name: String(title),
+    };
     nodes.push(node);
-    const key = lineageNormalizeKey(title);
-    if (key) {
-      (byKeyLayer[key] = byKeyLayer[key] || {})[layer] = id;
-    }
+    registerSchemaTable(a.schema, title, id);
+    lineageEntityKeys(title).forEach((key) => {
+      const bucket = (byKeyLayer[key] = byKeyLayer[key] || {});
+      const list = (bucket[layer] = bucket[layer] || []);
+      if (list.indexOf(id) < 0) list.push(id);
+    });
   });
 
   // Seed a source node for the selected scope when tracing a single landing zone.
@@ -6371,30 +7216,76 @@ function buildLineageGraphFromCatalog(connector, scope, items) {
   }
 
   const edges = [];
+  const edgeSet = new Set();
+  const addEdge = (fromId, toId) => {
+    if (!fromId || !toId || fromId === toId) return;
+    const key = fromId + "->" + toId;
+    if (edgeSet.has(key)) return;
+    edgeSet.add(key);
+    edges.push([fromId, toId]);
+  };
+
   const layerFlow = ["source", "bronze", "silver", "gold", "consume"];
   Object.keys(byKeyLayer).forEach((key) => {
     const map = byKeyLayer[key];
     for (let i = 0; i < layerFlow.length - 1; i++) {
-      const a = map[layerFlow[i]];
-      const b = map[layerFlow[i + 1]];
-      if (a && b) edges.push([a, b]);
+      const lefts = map[layerFlow[i]] || [];
+      const rights = map[layerFlow[i + 1]] || [];
+      lefts.forEach((a) => rights.forEach((b) => addEdge(a, b)));
     }
   });
+
+  // Real edges recorded when Data Modeling generates DDL/ingest (RAW → ENRICHED, FK, views).
+  const connectorId = (connector && connector.id) || "";
+  loadModelLineageEdges()
+    .filter((e) => !e.connectorId || e.connectorId === connectorId)
+    .forEach((e) => {
+      const fromName = String(e.fromTable || "").toLowerCase();
+      const toName = String(e.toTable || "").toLowerCase();
+      if (!fromName || !toName) return;
+      let fromId = null;
+      let toId = null;
+      lineageSchemaAliases(e.fromSchema).some((sch) => {
+        fromId = bySchemaTable[sch + "\0" + fromName];
+        return !!fromId;
+      });
+      lineageSchemaAliases(e.toSchema).some((sch) => {
+        toId = bySchemaTable[sch + "\0" + toName];
+        return !!toId;
+      });
+      // Fall back to entity-key match across layers when schema casing differs.
+      if (!fromId) {
+        const keys = lineageEntityKeys(e.fromTable);
+        for (let i = 0; i < keys.length && !fromId; i++) {
+          const map = byKeyLayer[keys[i]] || {};
+          fromId = (map.bronze || map.source || map.silver || [])[0] || null;
+        }
+      }
+      if (!toId) {
+        const keys = lineageEntityKeys(e.toTable);
+        for (let i = 0; i < keys.length && !toId; i++) {
+          const map = byKeyLayer[keys[i]] || {};
+          toId = (map.silver || map.gold || map.bronze || [])[0] || null;
+        }
+      }
+      addEdge(fromId, toId);
+    });
+
   if (nodes.some((n) => n.id === "src_scope")) {
     nodes
       .filter((n) => n.layer === "bronze")
       .slice(0, 6)
-      .forEach((n) => edges.push(["src_scope", n.id]));
+      .forEach((n) => addEdge("src_scope", n.id));
   }
 
-  // If same-name edges are sparse, connect adjacent layers by position.
+  // If same-name / recorded edges are still sparse, connect adjacent layers by position.
   if (edges.length < 2) {
     for (let i = 0; i < layerFlow.length - 1; i++) {
       const left = nodes.filter((n) => n.layer === layerFlow[i]);
       const right = nodes.filter((n) => n.layer === layerFlow[i + 1]);
       left.slice(0, 4).forEach((ln, idx) => {
         const rn = right[idx % Math.max(right.length, 1)];
-        if (rn) edges.push([ln.id, rn.id]);
+        if (rn) addEdge(ln.id, rn.id);
       });
     }
   }
@@ -6514,8 +7405,10 @@ async function showDataModeling() {
   const home = $("#govHome");
   const lineage = $("#govLineage");
   const modeling = $("#govModeling");
+  const quality = $("#govQuality");
   if (home) home.classList.add("hidden");
   if (lineage) lineage.classList.add("hidden");
+  if (quality) quality.classList.add("hidden");
   if (modeling) modeling.classList.remove("hidden");
   setModelStep(1);
   showModelError("");
@@ -6566,10 +7459,81 @@ async function loadModelConnectors() {
 
 function modelLayerFromSchema(schema) {
   const s = String(schema || "").toLowerCase();
-  if (s.includes("bronze")) return "bronze";
-  if (s.includes("silver")) return "silver";
-  if (s.includes("gold")) return "gold";
+  if (s.includes("gold") || s.includes("mart")) return "gold";
+  if (s.includes("silver") || s.includes("enriched") || s.includes("curated")) return "silver";
+  if (s.includes("bronze") || s.includes("raw") || s.includes("landing")) return "bronze";
   return "warehouse";
+}
+
+/** Persist RAW/source → ENRICHED/dim-fact-view edges for the lineage map. */
+function recordModelLineage(proposal, scope) {
+  const sourceSchema = String((scope && scope.schema) || "");
+  const targetSchema = String((scope && scope.targetSchema) || "gold");
+  const connectorId = String((scope && scope.connectorId) || "");
+  const selected = (proposal || []).filter((p) => p && p.selected);
+  if (!selected.length || !targetSchema) return;
+
+  const targetLc = targetSchema.toLowerCase();
+  const kept = loadModelLineageEdges().filter(
+    (e) =>
+      !(
+        String(e.connectorId || "") === connectorId &&
+        String(e.toSchema || "").toLowerCase() === targetLc
+      )
+  );
+  const seen = new Set(
+    kept.map(
+      (e) =>
+        [e.connectorId, e.fromSchema, e.fromTable, e.toSchema, e.toTable]
+          .map((x) => String(x || "").toLowerCase())
+          .join("\0")
+    )
+  );
+  const pushEdge = (fromSchema, fromTable, toSchema, toTable) => {
+    if (!fromTable || !toTable) return;
+    const edge = {
+      connectorId,
+      fromSchema: String(fromSchema || ""),
+      fromTable: String(fromTable),
+      toSchema: String(toSchema || ""),
+      toTable: String(toTable),
+      recordedAt: new Date().toISOString(),
+    };
+    const key = [connectorId, edge.fromSchema, edge.fromTable, edge.toSchema, edge.toTable]
+      .map((x) => String(x || "").toLowerCase())
+      .join("\0");
+    if (seen.has(key)) return;
+    seen.add(key);
+    kept.push(edge);
+  };
+
+  const selectedNames = new Set(selected.map((p) => p.name || p.id).filter(Boolean));
+  const viewDeps = {
+    vw_customer_360: ["dim_customer"],
+    vw_daily_kpi: ["dim_date", "fact_usage_daily", "fact_invoice"],
+    vw_revenue_monthly: ["fact_invoice", "dim_date", "dim_customer"],
+  };
+
+  selected.forEach((p) => {
+    if (p.kind === "dimension" || p.kind === "fact") {
+      const srcTable =
+        typeof modelResolveSourceTable === "function"
+          ? modelResolveSourceTable(p, scope)
+          : p.source_table || null;
+      if (srcTable) pushEdge(sourceSchema, srcTable, targetSchema, p.name);
+    }
+    (p.foreign_keys || []).forEach((fk) => {
+      const ref = fk && fk.ref_table;
+      if (ref && selectedNames.has(ref)) pushEdge(targetSchema, ref, targetSchema, p.name);
+    });
+    if (p.kind === "view") {
+      (viewDeps[p.id] || []).forEach((dep) => {
+        if (selectedNames.has(dep)) pushEdge(targetSchema, dep, targetSchema, p.name);
+      });
+    }
+  });
+
+  saveModelLineageEdges(kept);
 }
 
 async function onModelConnectorChange() {
@@ -6596,7 +7560,7 @@ async function onModelConnectorChange() {
       const conn = modelState.connectors.find((c) => c.id === connectorId);
       if (conn && conn.dataset_scope) dbs.add(String(conn.dataset_scope).split(/[,;\n]/)[0].trim());
       if (connectorId === "local-postgres") dbs.add("datahivepoc");
-      ["bronze", "silver", "gold"].forEach((layer) => {
+      ["raw", "bronze", "silver", "enriched", "gold"].forEach((layer) => {
         if (schemas.some((s) => String(s).toLowerCase().includes(layer))) dbs.add(layer);
       });
       if (!dbs.size) dbs.add("default");
@@ -6648,19 +7612,32 @@ function suggestedTargetSchemas(sourceSchemas, database) {
   const db = String(database || "").toLowerCase();
   const existing = (sourceSchemas || []).map((s) => String(s)).filter(Boolean);
   const defaults = [];
-  if (db.includes("bronze") || db === "bronze") {
-    defaults.push("silver", "dhpoc-silver", "gold", "dhpoc-gold");
-  } else if (db.includes("silver") || db === "silver") {
-    defaults.push("gold", "dhpoc-gold", "analytics_mart");
+  if (db.includes("bronze") || db.includes("raw") || db === "bronze" || db === "raw") {
+    defaults.push("enriched", "ENRICHED", "silver", "dhpoc-silver", "gold", "dhpoc-gold");
+  } else if (db.includes("silver") || db.includes("enriched") || db === "silver") {
+    defaults.push("gold", "dhpoc-gold", "mart", "analytics_mart");
   } else if (db.includes("gold") || db === "gold") {
     defaults.push("gold_mart", "analytics_mart", "gold", "dhpoc-gold");
   } else {
-    defaults.push("gold", "dhpoc-gold", "silver", "dhpoc-silver", "analytics_mart");
+    defaults.push(
+      "enriched",
+      "ENRICHED",
+      "gold",
+      "dhpoc-gold",
+      "silver",
+      "dhpoc-silver",
+      "analytics_mart"
+    );
   }
-  // Prefer gold-like schemas already present in the catalog.
+  // Prefer enriched / silver / gold schemas already present in the catalog.
   existing.forEach((s) => {
     const sl = s.toLowerCase();
-    if (sl.includes("gold") || sl.includes("mart") || sl.includes("silver")) {
+    if (
+      sl.includes("enriched") ||
+      sl.includes("gold") ||
+      sl.includes("mart") ||
+      sl.includes("silver")
+    ) {
       defaults.unshift(s);
     }
   });
@@ -6678,13 +7655,25 @@ function suggestedTargetSchemas(sourceSchemas, database) {
 function preferredTargetSchema(options, database) {
   const db = String(database || "").toLowerCase();
   const pick = (pred) => options.find((s) => pred(String(s).toLowerCase()));
-  if (db.includes("bronze") || db === "bronze") {
-    return pick((s) => s.includes("silver")) || pick((s) => s.includes("gold")) || options[0] || "";
+  if (db.includes("bronze") || db.includes("raw") || db === "bronze" || db === "raw") {
+    return (
+      pick((s) => s.includes("enriched")) ||
+      pick((s) => s.includes("silver")) ||
+      pick((s) => s.includes("gold")) ||
+      options[0] ||
+      ""
+    );
   }
   if (db.includes("gold") || db === "gold") {
     return pick((s) => s.includes("mart")) || pick((s) => s === "gold" || s.includes("gold")) || options[0] || "";
   }
-  return pick((s) => s.includes("gold")) || pick((s) => s.includes("mart")) || options[0] || "";
+  return (
+    pick((s) => s.includes("gold")) ||
+    pick((s) => s.includes("mart")) ||
+    pick((s) => s.includes("enriched")) ||
+    options[0] ||
+    ""
+  );
 }
 
 function fillModelTargetSchemaSelect(sourceSchemas, database, preferred) {
@@ -6714,8 +7703,8 @@ function filterModelSchemasForDatabase(database) {
   ];
   let filtered = allSchemas;
   if (db && db !== "default") {
-    // Layer filters (bronze/silver/gold) match schema names; otherwise match database field.
-    const layerMatch = ["bronze", "silver", "gold"].includes(db);
+    // Layer filters match schema names; otherwise match database field.
+    const layerMatch = ["raw", "bronze", "silver", "enriched", "gold"].includes(db);
     filtered = allSchemas.filter((s) => {
       const sl = String(s).toLowerCase();
       if (layerMatch) return sl.includes(db);
@@ -6835,7 +7824,7 @@ function buildStandardModelObjects(scope, types, tables) {
         name: "dim_customer",
         selected: true,
         grain: "One row per customer_id (SCD2)",
-        source: has(/customer/i) ? "customer table(s)" : sourceSchema + ".*",
+        source: has(/customer|cutomer/i) ? "customer table(s)" : "customer source (unresolved)",
         note: "Hub dimension · surrogate PK + natural key UNIQUE",
       },
       [
@@ -6876,7 +7865,7 @@ function buildStandardModelObjects(scope, types, tables) {
         indexes: [["customer_id"], ["is_current"]],
         clusterBy: ["customer_id"],
         load: {
-          sourceHint: "customer%",
+          sourceHint: "customer%|cutomer%",
           naturalKey: "customer_id",
         },
       }
@@ -7049,7 +8038,7 @@ function buildStandardModelObjects(scope, types, tables) {
         {
           indexes: [["customer_key", "date_key"], ["date_key"]],
           clusterBy: ["date_key", "customer_key"],
-          checks: [{ expr: "total_amount >= amount_due" }],
+          checks: [{ expr: "total_amount >= amount_due", column: "total_amount" }],
           load: {
             sourceHint: "account%|order%|sales%|invoice%|billing%",
             naturalKey: "invoice_id",
@@ -7443,6 +8432,30 @@ function renderModelColumnDdl(col, platform) {
   return line;
 }
 
+function modelTargetSchemaExists(scope, targetSchema) {
+  const target = String(targetSchema || "").toLowerCase();
+  if (!target) return false;
+  const targetShort = target.indexOf(".") >= 0 ? target.split(".").pop() : target;
+  const schemas = new Set();
+  (modelState.catalogItems || []).forEach((a) => {
+    if (a && a.schema) schemas.add(String(a.schema).toLowerCase());
+  });
+  // Also treat selected source schema list from UI options if present
+  const schemaSel = $("#govModelTargetSchema");
+  if (schemaSel) {
+    Array.from(schemaSel.options || []).forEach((opt) => {
+      if (opt && opt.value) schemas.add(String(opt.value).toLowerCase());
+    });
+  }
+  for (const s of schemas) {
+    if (!s) continue;
+    if (s === target) return true;
+    const short = s.indexOf(".") >= 0 ? s.split(".").pop() : s;
+    if (short === targetShort) return true;
+  }
+  return false;
+}
+
 function generateModelDdl(proposal, scope) {
   const target = scope.targetSchema || "gold";
   const source = scope.schema;
@@ -7461,15 +8474,37 @@ function generateModelDdl(proposal, scope) {
     "-- Generated : " + new Date().toISOString(),
     "",
   ];
+  const targetExists = modelTargetSchemaExists(scope, target);
+  const dbName = scope.database || (String(target).indexOf(".") >= 0 ? String(target).split(".")[0] : "");
   if (platform === "snowflake") {
+    lines.push("-- Ensure session context before running:");
+    if (dbName) {
+      lines.push("USE DATABASE " + quoteModelIdent(dbName) + ";");
+    }
+    if (targetExists) {
+      lines.push(
+        "USE SCHEMA " + quoteModelIdent(String(target).indexOf(".") >= 0 ? String(target).split(".").pop() : target) + ";",
+        "-- Target schema already exists — CREATE SCHEMA skipped (avoids CREATE SCHEMA privilege)."
+      );
+    } else {
+      lines.push(
+        "-- Target schema was not found in catalog. Either pick an existing schema as Target,",
+        "-- or have ACCOUNTADMIN grant CREATE SCHEMA, then uncomment:",
+        "-- GRANT USAGE ON DATABASE " + quoteModelIdent(dbName || "SALES_DB") + " TO ROLE DEV_ADMIN_ROLE;",
+        "-- GRANT CREATE SCHEMA ON DATABASE " + quoteModelIdent(dbName || "SALES_DB") + " TO ROLE DEV_ADMIN_ROLE;",
+        "-- CREATE SCHEMA IF NOT EXISTS " + quoteModelIdent(target) + ";",
+        "-- Until then, create tables only in a schema your role can write (e.g. RAW)."
+      );
+    }
+    lines.push("");
+  } else if (!targetExists) {
     lines.push(
-      "-- Ensure you are in the right database before running:",
-      "-- USE DATABASE " + quoteModelIdent(scope.database || "SALES_DB") + ";",
-      "CREATE SCHEMA IF NOT EXISTS " + quoteModelIdent(target) + ";",
+      "-- CREATE SCHEMA IF NOT EXISTS " + quoteModelIdent(target) + ";",
+      "-- Uncomment above if the target schema does not exist yet.",
       ""
     );
   } else {
-    lines.push("CREATE SCHEMA IF NOT EXISTS " + quoteModelIdent(target) + ";", "");
+    lines.push("-- Target schema exists: " + target, "");
   }
 
   // CREATE TABLES
@@ -7503,8 +8538,22 @@ function generateModelDdl(proposal, scope) {
         );
       });
       (p.checks || []).forEach((ck, i) => {
-        const expr = typeof ck === "string" ? ck : ck.expr;
+        let expr = typeof ck === "string" ? ck : ck.expr;
         if (!expr) return;
+        // Quote every known column ref so CHECK matches quoted DDL idents
+        // (Snowflake folds unquoted total_amount → TOTAL_AMOUNT).
+        const colNames = (cols || []).map((c) => c.name).filter(Boolean);
+        if (ck && ck.column && colNames.indexOf(ck.column) < 0) colNames.push(ck.column);
+        colNames
+          .slice()
+          .sort((a, b) => b.length - a.length)
+          .forEach((cn) => {
+            const re = new RegExp(
+              "\\b" + String(cn).replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\b",
+              "g"
+            );
+            expr = expr.replace(re, quoteModelIdent(cn));
+          });
         body.push(
           "  CONSTRAINT " +
             quoteModelIdent("ck_" + p.name + "_" + (i + 1)) +
@@ -7518,8 +8567,8 @@ function generateModelDdl(proposal, scope) {
       lines.push("");
     });
 
-  // Foreign keys (after all tables exist)
-  lines.push("-- Foreign keys (added after tables so create order is safe)");
+  // Foreign keys (after all tables exist) — re-run safe per platform
+  lines.push("-- Foreign keys (re-run safe)");
   selected
     .filter((p) => p.kind === "dimension" || p.kind === "fact")
     .forEach((p) => {
@@ -7537,19 +8586,35 @@ function generateModelDdl(proposal, scope) {
           return;
         }
         const cname = "fk_" + p.name + "_" + fk.column;
-        lines.push(
+        const fqTable = modelFqName(target, p.name);
+        const addFk =
           "ALTER TABLE " +
-            modelFqName(target, p.name) +
-            " ADD CONSTRAINT " +
-            quoteModelIdent(cname) +
-            " FOREIGN KEY (" +
-            quoteModelIdent(fk.column) +
-            ") REFERENCES " +
-            modelFqName(target, fk.ref_table) +
-            " (" +
-            quoteModelIdent(fk.ref_column) +
-            ");"
-        );
+          fqTable +
+          " ADD CONSTRAINT " +
+          quoteModelIdent(cname) +
+          " FOREIGN KEY (" +
+          quoteModelIdent(fk.column) +
+          ") REFERENCES " +
+          modelFqName(target, fk.ref_table) +
+          " (" +
+          quoteModelIdent(fk.ref_column) +
+          ");";
+        if (platform === "snowflake") {
+          // Snowflake has no DROP CONSTRAINT IF EXISTS — use scripting exception handler.
+          lines.push(
+            "BEGIN",
+            "  ALTER TABLE " + fqTable + " DROP CONSTRAINT " + quoteModelIdent(cname) + ";",
+            "EXCEPTION",
+            "  WHEN OTHER THEN NULL;",
+            "END;",
+            addFk
+          );
+        } else {
+          lines.push(
+            "ALTER TABLE " + fqTable + " DROP CONSTRAINT IF EXISTS " + quoteModelIdent(cname) + ";",
+            addFk
+          );
+        }
       });
     });
   lines.push("");
@@ -7606,18 +8671,18 @@ function generateModelDdl(proposal, scope) {
         lines.push(
           "CREATE OR REPLACE VIEW " + modelFqName(target, p.name) + " AS",
           "SELECT",
-          "  c.customer_id,",
-          "  c.customer_nm,",
-          "  c.email,",
-          "  c.segment,",
-          "  c.account_status,",
-          "  c.city,",
-          "  c.state,",
-          "  c.country,",
-          "  c.effective_from,",
-          "  c.is_current",
+          "  c." + quoteModelIdent("customer_id") + ",",
+          "  c." + quoteModelIdent("customer_nm") + ",",
+          "  c." + quoteModelIdent("email") + ",",
+          "  c." + quoteModelIdent("segment") + ",",
+          "  c." + quoteModelIdent("account_status") + ",",
+          "  c." + quoteModelIdent("city") + ",",
+          "  c." + quoteModelIdent("state") + ",",
+          "  c." + quoteModelIdent("country") + ",",
+          "  c." + quoteModelIdent("effective_from") + ",",
+          "  c." + quoteModelIdent("is_current"),
           "FROM " + modelFqName(target, "dim_customer") + " c",
-          "WHERE c.is_current = TRUE;",
+          "WHERE c." + quoteModelIdent("is_current") + " = TRUE;",
           ""
         );
       } else if (p.id === "vw_daily_kpi") {
@@ -7625,7 +8690,7 @@ function generateModelDdl(proposal, scope) {
         const invoice = selected.some((x) => x.id === "fact_invoice");
         lines.push("CREATE OR REPLACE VIEW " + modelFqName(target, p.name) + " AS");
         lines.push("SELECT");
-        lines.push("  d.date_key,");
+        lines.push("  d." + quoteModelIdent("date_key") + ",");
         lines.push(
           usage
             ? "  CAST(COALESCE(u.events, 0) AS " + types.bigint + ") AS usage_events,"
@@ -7640,37 +8705,65 @@ function generateModelDdl(proposal, scope) {
         if (usage) {
           lines.push(
             "LEFT JOIN (",
-            "  SELECT date_key, SUM(event_count) AS events",
+            "  SELECT " +
+              quoteModelIdent("date_key") +
+              ", SUM(" +
+              quoteModelIdent("event_count") +
+              ") AS events",
             "  FROM " + modelFqName(target, "fact_usage_daily"),
-            "  GROUP BY date_key",
-            ") u ON u.date_key = d.date_key"
+            "  GROUP BY 1",
+            ") u ON u." +
+              quoteModelIdent("date_key") +
+              " = d." +
+              quoteModelIdent("date_key")
           );
         }
         if (invoice) {
           lines.push(
             "LEFT JOIN (",
-            "  SELECT date_key, SUM(total_amount) AS revenue",
+            "  SELECT " +
+              quoteModelIdent("date_key") +
+              ", SUM(" +
+              quoteModelIdent("total_amount") +
+              ") AS revenue",
             "  FROM " + modelFqName(target, "fact_invoice"),
-            "  GROUP BY date_key",
-            ") i ON i.date_key = d.date_key"
+            "  GROUP BY 1",
+            ") i ON i." +
+              quoteModelIdent("date_key") +
+              " = d." +
+              quoteModelIdent("date_key")
           );
         }
         lines.push(";", "");
       } else if (p.id === "vw_revenue_monthly") {
         const monthExpr =
           platform === "snowflake"
-            ? "DATE_TRUNC('MONTH', d.date_key)::DATE"
-            : "date_trunc('month', d.date_key)::date";
+            ? "DATE_TRUNC('MONTH', d." + quoteModelIdent("date_key") + ")::DATE"
+            : "date_trunc('month', d." + quoteModelIdent("date_key") + ")::date";
         lines.push(
           "CREATE OR REPLACE VIEW " + modelFqName(target, p.name) + " AS",
           "SELECT",
           "  " + monthExpr + " AS month_start,",
-          "  c.segment,",
-          "  CAST(SUM(f.total_amount) AS " + types.num(18, 2) + ") AS revenue_amount,",
+          "  c." + quoteModelIdent("segment") + ",",
+          "  CAST(SUM(f." +
+            quoteModelIdent("total_amount") +
+            ") AS " +
+            types.num(18, 2) +
+            ") AS revenue_amount,",
           "  CAST(COUNT(*) AS " + types.bigint + ") AS invoice_count",
           "FROM " + modelFqName(target, "fact_invoice") + " f",
-          "JOIN " + modelFqName(target, "dim_date") + " d ON d.date_key = f.date_key",
-          "JOIN " + modelFqName(target, "dim_customer") + " c ON c.customer_key = f.customer_key",
+          "JOIN " +
+            modelFqName(target, "dim_date") +
+            " d ON d." +
+            quoteModelIdent("date_key") +
+            " = f." +
+            quoteModelIdent("date_key"),
+          "JOIN " +
+            modelFqName(target, "dim_customer") +
+            " c ON c." +
+            quoteModelIdent("customer_key") +
+            " = f." +
+            quoteModelIdent("customer_key"),
           "GROUP BY 1, 2;",
           ""
         );
@@ -7700,12 +8793,24 @@ function generateModelDdl(proposal, scope) {
   return lines.join("\n");
 }
 
+function modelIsValidSourceTableName(name) {
+  const n = String(name || "").trim();
+  if (!n) return false;
+  if (n === "*" || n === "%" || n === "." || n.indexOf("*") >= 0) return false;
+  if (/\s/.test(n)) return false;
+  // Skip model objects already landed in the same schema
+  if (/^(dim_|fact_|vw_)/i.test(n)) return false;
+  if (/^(CURATED|ENRICHED|MART)$/i.test(n)) return false;
+  return /^[A-Za-z_][A-Za-z0-9_$]*$/.test(n);
+}
+
 function modelSourceTableNames(scope) {
   const schema = String((scope && scope.schema) || "").toLowerCase();
   return (modelState.catalogItems || [])
     .filter((a) => {
       if (!a || !a.name) return false;
       if (String(a.type || "") === "Schema") return false;
+      if (!modelIsValidSourceTableName(a.name)) return false;
       const sch = String(a.schema || "").toLowerCase();
       if (sch === schema) return true;
       const short = schema.indexOf(".") >= 0 ? schema.split(".").pop() : schema;
@@ -7725,8 +8830,9 @@ function modelMatchSourceTable(tables, hint) {
     const pat = parts[i]
       .replace(/[.+?^${}()|[\]\\]/g, "\\$&")
       .replace(/%/g, ".*");
+    if (pat === ".*" || pat === "") continue;
     const re = new RegExp(pat, "i");
-    const hit = tables.find((t) => re.test(t));
+    const hit = tables.find((t) => modelIsValidSourceTableName(t) && re.test(t));
     if (hit) return hit;
   }
   return null;
@@ -7735,7 +8841,9 @@ function modelMatchSourceTable(tables, hint) {
 function modelSourceFqName(scope, tableName) {
   const platform = modelPlatformOf(scope);
   const schema = String(scope.schema || "");
-  if (!tableName) return quoteModelIdent(schema) + ".<source_table>";
+  if (!modelIsValidSourceTableName(tableName)) {
+    return "-- <set source table in " + schema + ">";
+  }
   if (platform === "snowflake") {
     if (schema.indexOf(".") >= 0) {
       return schema
@@ -7758,9 +8866,15 @@ function modelSourceFqName(scope, tableName) {
 }
 
 function modelResolveSourceTable(obj, scope) {
+  if (obj && modelIsValidSourceTableName(obj.source_table)) {
+    return obj.source_table;
+  }
+  // Only treat obj.source as FQN when the last segment is a real table name
+  // (never "SALES_DB.RAW.*" style placeholders).
   if (obj && obj.source && /\./.test(obj.source) && !/\s/.test(obj.source)) {
-    const parts = obj.source.split(".");
-    return parts[parts.length - 1];
+    const parts = String(obj.source).split(".").filter(Boolean);
+    const last = parts[parts.length - 1];
+    if (modelIsValidSourceTableName(last)) return last;
   }
   const tables = modelSourceTableNames(scope);
   const hint =
@@ -7772,11 +8886,13 @@ function modelResolveSourceTable(obj, scope) {
         : obj && obj.id === "dim_geography"
           ? "store%|geo%|address%|region%"
           : obj && obj.id === "dim_channel"
-            ? "customer%|channel%"
+            ? "customer%|cutomer%|channel%"
             : obj && obj.kind === "fact"
               ? "account%|order%|sales%|invoice%|usage%|ticket%|cdr%"
               : "");
-  return modelMatchSourceTable(tables, hint) || (tables[0] || null);
+  const matched = modelMatchSourceTable(tables, hint);
+  if (matched) return matched;
+  return null;
 }
 
 function modelCastExpr(col, platform) {
@@ -7847,44 +8963,68 @@ function generateModelIngestionScript(proposal, scope) {
     lines.push("-- ------------------------------------------------------------");
     lines.push("-- Seed dim_date (730-day window ending today)");
     lines.push("-- ------------------------------------------------------------");
+    const dateCols = [
+      "date_key",
+      "day_of_week",
+      "week_of_year",
+      "month_num",
+      "quarter_num",
+      "year_num",
+      "is_weekend",
+      "_dh_loaded_at",
+    ];
     if (platform === "snowflake") {
+      // Quote column idents to match DDL ("day_of_week"), not Snowflake's uppercase fold (DAY_OF_WEEK).
       lines.push(
         "INSERT INTO " + modelFqName(target, "dim_date"),
-        "  (date_key, day_of_week, week_of_year, month_num, quarter_num, year_num, is_weekend, _dh_loaded_at)",
+        "  (" + dateCols.map(quoteModelIdent).join(", ") + ")",
         "SELECT",
-        "  d.date_key,",
-        "  DAYOFWEEKISO(d.date_key) AS day_of_week,",
-        "  WEEKISO(d.date_key) AS week_of_year,",
-        "  MONTH(d.date_key) AS month_num,",
-        "  QUARTER(d.date_key) AS quarter_num,",
-        "  YEAR(d.date_key) AS year_num,",
-        "  IFF(DAYOFWEEKISO(d.date_key) IN (6, 7), TRUE, FALSE) AS is_weekend,",
-        "  CURRENT_TIMESTAMP AS _dh_loaded_at",
+        "  d." + quoteModelIdent("date_key") + ",",
+        "  DAYOFWEEKISO(d." + quoteModelIdent("date_key") + ") AS " + quoteModelIdent("day_of_week") + ",",
+        "  WEEKISO(d." + quoteModelIdent("date_key") + ") AS " + quoteModelIdent("week_of_year") + ",",
+        "  MONTH(d." + quoteModelIdent("date_key") + ") AS " + quoteModelIdent("month_num") + ",",
+        "  QUARTER(d." + quoteModelIdent("date_key") + ") AS " + quoteModelIdent("quarter_num") + ",",
+        "  YEAR(d." + quoteModelIdent("date_key") + ") AS " + quoteModelIdent("year_num") + ",",
+        "  IFF(DAYOFWEEKISO(d." +
+          quoteModelIdent("date_key") +
+          ") IN (6, 7), TRUE, FALSE) AS " +
+          quoteModelIdent("is_weekend") +
+          ",",
+        "  CURRENT_TIMESTAMP AS " + quoteModelIdent("_dh_loaded_at"),
         "FROM (",
-        "  SELECT DATEADD('day', -SEQ4(), CURRENT_DATE()) AS date_key",
+        "  SELECT DATEADD('day', -SEQ4(), CURRENT_DATE()) AS " + quoteModelIdent("date_key"),
         "  FROM TABLE(GENERATOR(ROWCOUNT => 730))",
         ") d",
         "WHERE NOT EXISTS (",
-        "  SELECT 1 FROM " + modelFqName(target, "dim_date") + " x WHERE x.date_key = d.date_key",
+        "  SELECT 1 FROM " +
+          modelFqName(target, "dim_date") +
+          " x WHERE x." +
+          quoteModelIdent("date_key") +
+          " = d." +
+          quoteModelIdent("date_key"),
         ");",
         ""
       );
     } else {
       lines.push(
         "INSERT INTO " + modelFqName(target, "dim_date"),
-        "  (date_key, day_of_week, week_of_year, month_num, quarter_num, year_num, is_weekend, _dh_loaded_at)",
+        "  (" + dateCols.map(quoteModelIdent).join(", ") + ")",
         "SELECT",
-        "  d::date AS date_key,",
-        "  EXTRACT(ISODOW FROM d)::smallint AS day_of_week,",
-        "  EXTRACT(WEEK FROM d)::smallint AS week_of_year,",
-        "  EXTRACT(MONTH FROM d)::smallint AS month_num,",
-        "  EXTRACT(QUARTER FROM d)::smallint AS quarter_num,",
-        "  EXTRACT(YEAR FROM d)::integer AS year_num,",
-        "  (EXTRACT(ISODOW FROM d) IN (6, 7)) AS is_weekend,",
-        "  CURRENT_TIMESTAMP AS _dh_loaded_at",
+        "  d::date AS " + quoteModelIdent("date_key") + ",",
+        "  EXTRACT(ISODOW FROM d)::smallint AS " + quoteModelIdent("day_of_week") + ",",
+        "  EXTRACT(WEEK FROM d)::smallint AS " + quoteModelIdent("week_of_year") + ",",
+        "  EXTRACT(MONTH FROM d)::smallint AS " + quoteModelIdent("month_num") + ",",
+        "  EXTRACT(QUARTER FROM d)::smallint AS " + quoteModelIdent("quarter_num") + ",",
+        "  EXTRACT(YEAR FROM d)::integer AS " + quoteModelIdent("year_num") + ",",
+        "  (EXTRACT(ISODOW FROM d) IN (6, 7)) AS " + quoteModelIdent("is_weekend") + ",",
+        "  CURRENT_TIMESTAMP AS " + quoteModelIdent("_dh_loaded_at"),
         "FROM generate_series(CURRENT_DATE - 729, CURRENT_DATE, '1 day'::interval) AS g(d)",
         "WHERE NOT EXISTS (",
-        "  SELECT 1 FROM " + modelFqName(target, "dim_date") + " x WHERE x.date_key = d::date",
+        "  SELECT 1 FROM " +
+          modelFqName(target, "dim_date") +
+          " x WHERE x." +
+          quoteModelIdent("date_key") +
+          " = d::date",
         ");",
         ""
       );
@@ -7907,7 +9047,12 @@ function generateModelIngestionScript(proposal, scope) {
       lines.push("-- Ingest " + p.name + (srcTable ? " ← " + srcFq : " ← (set source table)"));
       lines.push("-- ------------------------------------------------------------");
       if (!srcTable) {
-        lines.push("-- WARNING: no source table matched for " + p.name + ". Edit FROM clause.");
+        lines.push(
+          "-- WARNING: no source table matched for " + p.name + ".",
+          "-- Set load.sourceHint / source_table, then regenerate ingestion.",
+          ""
+        );
+        return;
       }
 
       if (p.id === "dim_channel") {
@@ -7927,7 +9072,7 @@ function generateModelIngestionScript(proposal, scope) {
           "WHERE " + (platform === "snowflake" ? "src.PREFERRED_CHANNEL" : "src.preferred_channel") + " IS NOT NULL",
           "  AND NOT EXISTS (",
           "    SELECT 1 FROM " + modelFqName(target, p.name) + " d",
-          "    WHERE d.channel_code = " + channelExpr,
+          "    WHERE d." + quoteModelIdent("channel_code") + " = " + channelExpr,
           "  );",
           ""
         );
@@ -7951,7 +9096,9 @@ function generateModelIngestionScript(proposal, scope) {
             quoteModelIdent(naturalKey) +
             " = src." +
             quoteModelIdent(naturalKey) +
-            (insertCols.indexOf("is_current") >= 0 ? " AND tgt.is_current = TRUE" : "")
+            (insertCols.indexOf("is_current") >= 0
+              ? " AND tgt." + quoteModelIdent("is_current") + " = TRUE"
+              : "")
         );
         if (updateCols.length) {
           lines.push("WHEN MATCHED THEN UPDATE SET");
@@ -8014,7 +9161,12 @@ function generateModelIngestionScript(proposal, scope) {
       lines.push("-- Ingest " + p.name + (srcTable ? " ← " + srcFq : " ← (set source table)"));
       lines.push("-- ------------------------------------------------------------");
       if (!srcTable) {
-        lines.push("-- WARNING: no source table matched for " + p.name + ". Edit FROM clause.");
+        lines.push(
+          "-- WARNING: no source table matched for " + p.name + ".",
+          "-- Set load.sourceHint / source_table, then regenerate ingestion.",
+          ""
+        );
+        return;
       }
 
       const dateExprParts = dateCols.map((c) =>
@@ -8040,16 +9192,16 @@ function generateModelIngestionScript(proposal, scope) {
           selectExprs.push("CURRENT_TIMESTAMP");
         } else if (c.name === "_dh_source_system") {
           selectExprs.push(sourceSystemLit);
-        } else if (c.name === "customer_key") {
-          selectExprs.push("c.customer_key");
+        } else         if (c.name === "customer_key") {
+          selectExprs.push("c." + quoteModelIdent("customer_key"));
         } else if (c.name === "date_key") {
           selectExprs.push(dateKeyExpr);
         } else if (c.name === "geo_key") {
-          selectExprs.push("g.geo_key");
+          selectExprs.push("g." + quoteModelIdent("geo_key"));
         } else if (c.name === "channel_key") {
-          selectExprs.push("ch.channel_key");
+          selectExprs.push("ch." + quoteModelIdent("channel_key"));
         } else if (c.name === "product_key") {
-          selectExprs.push("pr.product_key");
+          selectExprs.push("pr." + quoteModelIdent("product_key"));
         } else {
           selectExprs.push(modelCastExpr(c, platform));
         }
@@ -8073,25 +9225,31 @@ function generateModelIngestionScript(proposal, scope) {
           "LEFT JOIN " +
             modelFqName(target, "dim_customer") +
             " c",
-          "  ON c.customer_id = CAST(" +
+          "  ON c." +
+            quoteModelIdent("customer_id") +
+            " = CAST(" +
             custSrc +
             " AS " +
             types.varchar(64) +
             ")" +
             (selected.some((x) => x.id === "dim_customer")
-              ? " AND c.is_current = TRUE"
+              ? " AND c." + quoteModelIdent("is_current") + " = TRUE"
               : "")
         );
       }
       if (insertCols.indexOf("geo_key") >= 0 && selected.some((x) => x.id === "dim_geography")) {
         lines.push(
           "LEFT JOIN " + modelFqName(target, "dim_geography") + " g",
-          "  ON g.city = CAST(src." +
+          "  ON g." +
+            quoteModelIdent("city") +
+            " = CAST(src." +
             (platform === "snowflake" ? "CITY" : "city") +
             " AS " +
             types.varchar(128) +
             ")",
-          " AND g.state = CAST(src." +
+          " AND g." +
+            quoteModelIdent("state") +
+            " = CAST(src." +
             (platform === "snowflake" ? "STATE" : "state") +
             " AS " +
             types.varchar(64) +
@@ -8101,7 +9259,9 @@ function generateModelIngestionScript(proposal, scope) {
       if (insertCols.indexOf("channel_key") >= 0 && selected.some((x) => x.id === "dim_channel")) {
         lines.push(
           "LEFT JOIN " + modelFqName(target, "dim_channel") + " ch",
-          "  ON ch.channel_code = CAST(src." +
+          "  ON ch." +
+            quoteModelIdent("channel_code") +
+            " = CAST(src." +
             (platform === "snowflake" ? "PREFERRED_CHANNEL" : "preferred_channel") +
             " AS " +
             types.varchar(64) +
@@ -8146,8 +9306,17 @@ function generateModelIngestionScript(proposal, scope) {
       "-- Orphan fact checks (customer_key)",
       "SELECT 'fact_orphans_customer' AS check_name, COUNT(*) AS n",
       "FROM " + modelFqName(target, firstFact.name) + " f",
-      "LEFT JOIN " + modelFqName(target, "dim_customer") + " c ON c.customer_key = f.customer_key",
-      "WHERE f.customer_key IS NOT NULL AND c.customer_key IS NULL;"
+      "LEFT JOIN " +
+        modelFqName(target, "dim_customer") +
+        " c ON c." +
+        quoteModelIdent("customer_key") +
+        " = f." +
+        quoteModelIdent("customer_key"),
+      "WHERE f." +
+        quoteModelIdent("customer_key") +
+        " IS NOT NULL AND c." +
+        quoteModelIdent("customer_key") +
+        " IS NULL;"
     );
   }
 
@@ -8397,6 +9566,11 @@ function bindGovernanceEvents() {
 
   view.addEventListener("click", (e) => {
     const tile = e.target.closest(".gov-tile");
+    if (tile && tile.dataset.gov === "data-quality") {
+      e.preventDefault();
+      showDataQuality().catch((err) => console.warn("[dq]", err));
+      return;
+    }
     if (tile && tile.dataset.gov === "data-lineage") {
       e.preventDefault();
       showLineageMap().catch((err) => console.warn("[lineage]", err));
@@ -8419,6 +9593,12 @@ function bindGovernanceEvents() {
       showGovernanceHome();
       return;
     }
+    const backDq = e.target.closest("#govDqBackBtn");
+    if (backDq) {
+      e.preventDefault();
+      showGovernanceHome();
+      return;
+    }
     const node = e.target.closest(".node");
     if (node && node.dataset.nodeId) {
       lineageSelectedId =
@@ -8436,6 +9616,25 @@ function bindGovernanceEvents() {
   const lineageScopeSel = $("#govLineageScope");
   if (lineageScopeSel) {
     lineageScopeSel.addEventListener("change", () => onLineageScopeChange());
+  }
+
+  const dqConnectorSel = $("#govDqConnector");
+  if (dqConnectorSel) {
+    dqConnectorSel.addEventListener("change", () => {
+      onDqConnectorChange().catch((err) => console.warn("[dq]", err));
+    });
+  }
+  const dqSchemaSel = $("#govDqSchema");
+  if (dqSchemaSel) {
+    dqSchemaSel.addEventListener("change", () => {
+      onDqSchemaChange().catch((err) => console.warn("[dq]", err));
+    });
+  }
+  const dqRunBtn = $("#govDqRunBtn");
+  if (dqRunBtn) {
+    dqRunBtn.addEventListener("click", () => {
+      runDataQualityChecks().catch((err) => console.warn("[dq]", err));
+    });
   }
 
   const connectorSel = $("#govModelConnector");
@@ -8509,6 +9708,7 @@ function bindGovernanceEvents() {
       const scope = collectModelScope();
       modelState.ddl = generateModelDdl(modelState.proposal, scope);
       modelState.ingest = generateModelIngestionScript(modelState.proposal, scope);
+      recordModelLineage(modelState.proposal, scope);
       const editor = $("#govModelDdlEditor");
       if (editor) editor.value = modelState.ddl;
       const ingestEditor = $("#govModelIngestEditor");

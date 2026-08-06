@@ -32,6 +32,7 @@ _SENSITIVE_LOG_KEYS = frozenset(
     {
         "api_key",
         "client_secret",
+        "refresh_token",
         "secret_access_key",
         "service_account_json",
         "password",
