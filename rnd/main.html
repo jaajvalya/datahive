@@ -1357,7 +1357,7 @@
                     <option value="">Select source connector…</option>
                   </select>
                 </div>
-                <div class="field">
+                <div class="field" id="etl_source_conn_wrap">
                   <label for="etl_source_conn">Source connection <span class="req">*</span></label>
                   <select id="etl_source_conn" required disabled>
                     <option value="">Select a source connector first…</option>
@@ -1367,10 +1367,29 @@
                 <div class="field" id="etl_source_kind_wrap">
                   <label for="etl_source_kind">Source kind</label>
                   <select id="etl_source_kind">
-                    <option value="object">Table / object</option>
+                    <option value="object">Table / object / URI</option>
+                    <option value="local_file">Local file upload</option>
                     <option value="stage_file">Snowflake stage file</option>
                   </select>
-                  <div class="help">Use stage file to land files from RAW_STAGE into RAW tables.</div>
+                  <div class="help" id="etl_source_kind_help">Upload a local CSV/JSON/Parquet, point at a table/URI, or load from a Snowflake stage.</div>
+                </div>
+                <div class="field hidden" id="etl_local_upload_wrap">
+                  <label>Local file <span class="req">*</span></label>
+                  <div class="uploadzone" id="etlUploadDropzone" tabindex="0" role="button" aria-label="Upload local ETL source file">
+                    <img class="upimg" src="../images/upload.png" alt="" width="64" height="64" />
+                    <div class="uptext">Click to upload or drag &amp; drop</div>
+                    <div class="uphint">CSV, Excel, JSON, or Parquet — up to 50 MB</div>
+                  </div>
+                  <input type="file" id="etlUploadFileInput" class="hidden" accept=".csv,.xlsx,.xls,.json,.parquet,.tsv,.txt,.jsonl,.ndjson" />
+                  <div id="etlUploadSelected" class="selectedfile hidden">
+                    <img class="sf-icon" src="../images/upload.png" alt="" width="28" height="28" />
+                    <div class="sf-meta">
+                      <div class="sf-name" id="etlUploadSelectedName"></div>
+                      <div class="sf-size" id="etlUploadSelectedSize"></div>
+                    </div>
+                    <button type="button" class="icon-btn" id="etlUploadClearBtn" aria-label="Remove selected file">✕</button>
+                  </div>
+                  <div class="help">File is stored under <code>rnd/UPLOAD/</code> and used as the pipeline source.</div>
                 </div>
                 <div class="field hidden" id="etl_stage_wrap">
                   <label for="etl_source_stage">Stage</label>
@@ -1388,12 +1407,12 @@
                   <select id="etl_source_file" disabled>
                     <option value="">Select a stage first…</option>
                   </select>
-                  <div class="help">Files listed from the selected stage (CSV / JSON / Parquet).</div>
+                  <div class="help">Files listed from the selected stage (CSV / JSON / Parquet). Nested JSON is flattened into tabular RAW columns.</div>
                 </div>
                 <div class="field" style="margin-bottom:0" id="etl_source_object_wrap">
                   <label for="etl_source_object">Source object</label>
-                  <input id="etl_source_object" maxlength="512" placeholder="e.g. bronze.customers or @SALES_DB.RAW.RAW_STAGE/file.csv" />
-                  <div class="help" id="etl_source_object_help">Schema.table, dataset.table, stage path, or file used in the generated script.</div>
+                  <input id="etl_source_object" maxlength="512" placeholder="e.g. gs://bucket/folder/file.json or bronze.customers" />
+                  <div class="help" id="etl_source_object_help">For GCP files use gs://bucket/folder/file.json. Also supports schema.table, stage path, or other connector objects.</div>
                 </div>
               </div>
 
@@ -1429,7 +1448,7 @@
                 <option value="python">Python</option>
                 <option value="pyspark">PySpark</option>
               </select>
-              <div class="help" id="etl_language_help">For Snowflake stage → RAW, SQL/Python use native COPY INTO (PySpark is not required).</div>
+              <div class="help" id="etl_language_help">Snowflake stage → COPY INTO. GCS gs://…json → flatten nested JSON to tabular (Python recommended). JSON/JSONL nested objects/arrays become columns.</div>
             </div>
 
             <div class="field">
@@ -4649,6 +4668,7 @@ let etlConnections = [];
 let etlPipelines = [];
 let etlBound = false;
 let etlGeneratedScript = "";
+let etlLocalUpload = null; // { file_name, source_object, absolute_path, ext, file_size }
 
 function etlConnectorOptions() {
   const clouds = Object.values(CLOUDS).filter((c) => c.mode !== "upload");
@@ -4662,7 +4682,58 @@ function etlConnectorOptions() {
       mode: "local",
     });
   }
+  // Local file upload appears via Source kind; also list it as a source connector.
+  if (!clouds.some((c) => c.id === "upload") && CLOUDS.upload) {
+    clouds.push(CLOUDS.upload);
+  }
   return clouds;
+}
+
+function etlApiBaseUrl() {
+  if (typeof connectorApiBaseUrl === "function") return connectorApiBaseUrl();
+  if (typeof glossaryApiBase === "function") return glossaryApiBase();
+  const host = location.hostname || "127.0.0.1";
+  return "http://" + host + ":5055";
+}
+
+function clearEtlLocalUpload() {
+  etlLocalUpload = null;
+  const input = $("#etlUploadFileInput");
+  if (input) input.value = "";
+  const selected = $("#etlUploadSelected");
+  const zone = $("#etlUploadDropzone");
+  if (selected) selected.classList.add("hidden");
+  if (zone) zone.classList.remove("hidden");
+  if ($("#etlUploadSelectedName")) $("#etlUploadSelectedName").textContent = "";
+  if ($("#etlUploadSelectedSize")) $("#etlUploadSelectedSize").textContent = "";
+}
+
+function showEtlLocalUploadSelected(meta) {
+  etlLocalUpload = meta;
+  if ($("#etlUploadSelectedName")) $("#etlUploadSelectedName").textContent = meta.file_name || meta.source_object || "file";
+  if ($("#etlUploadSelectedSize")) {
+    $("#etlUploadSelectedSize").textContent =
+      (meta.file_size != null ? formatBytes(meta.file_size) + " · " : "") +
+      (meta.source_object || "");
+  }
+  if ($("#etlUploadSelected")) $("#etlUploadSelected").classList.remove("hidden");
+  if ($("#etlUploadDropzone")) $("#etlUploadDropzone").classList.add("hidden");
+  if ($("#etl_source_object")) $("#etl_source_object").value = meta.source_object || meta.absolute_path || "";
+  if ($("#etl_target_object") && !$("#etl_target_object").value.trim()) {
+    const stem = etlSuggestTableFromFile(meta.file_name || "file");
+    const tgtType = ($("#etl_target_type") && $("#etl_target_type").value) || "";
+    if (tgtType === "snowflake") {
+      $("#etl_target_object").value = "SALES_DB.RAW." + stem;
+    } else if (tgtType === "gcp") {
+      $("#etl_target_object").value = "my-project.raw_dataset." + stem.toLowerCase();
+    } else {
+      $("#etl_target_object").value = stem.toLowerCase();
+    }
+  }
+  if ($("#etl_name") && !$("#etl_name").value.trim()) {
+    $("#etl_name").value =
+      "local_" + etlSuggestTableFromFile(meta.file_name || "file").toLowerCase() + "_ingest";
+  }
 }
 
 function selectedEtlLanguage() {
@@ -4693,16 +4764,45 @@ function etlQuoteIdent(name, dialect) {
 function etlDefaultObject(kind, cloudId) {
   if (kind === "source") {
     if (cloudId === "aws") return "s3://my-bucket/raw/customers/";
-    if (cloudId === "gcp") return "project.dataset.raw_customers";
+    if (cloudId === "gcp") return "gs://my-bucket/folder/data.json";
     if (cloudId === "azure") return "abfss://container@account.dfs.core.windows.net/raw/customers/";
     if (cloudId === "snowflake") return "RAW.BRONZE.CUSTOMERS";
     return "dhpoc-bronze.test_customer_tbl";
   }
   if (cloudId === "aws") return "s3://my-bucket/curated/customers/";
-  if (cloudId === "gcp") return "project.dataset.silver_customers";
+  if (cloudId === "gcp") return "my-project.raw_dataset.flattened_table";
   if (cloudId === "azure") return "abfss://container@account.dfs.core.windows.net/curated/customers/";
   if (cloudId === "snowflake") return "ANALYTICS.SILVER.CUSTOMERS";
   return "dhpoc-silver.dh_customer";
+}
+
+function etlIsGcsUri(uri) {
+  return /^gs:\/\//i.test(String(uri || "").trim());
+}
+
+function etlUriFileExt(uri) {
+  const path = String(uri || "").split("?")[0];
+  const base = path.split("/").pop() || "";
+  if (!base || base.endsWith("/")) return "";
+  const cleaned = base.replace(/\.(gz|zip)$/i, "");
+  const m = cleaned.match(/\.([A-Za-z0-9]+)$/);
+  return m ? m[1].toLowerCase() : "";
+}
+
+function etlIsGcsJsonSource(ctx) {
+  const src = String((ctx && ctx.sourceObject) || "").trim();
+  if (!etlIsGcsUri(src)) return false;
+  const ext = etlUriFileExt(src);
+  // Explicit JSON/JSONL file, or a folder prefix (ends with /) treated as JSON landing
+  return !ext || etlIsJsonFileExt(ext);
+}
+
+function etlIsLocalUploadSource(ctx) {
+  return (
+    (ctx && ctx.sourceKind === "local_file") ||
+    (ctx && ctx.isLocalUpload) ||
+    /^UPLOAD\//i.test(String((ctx && ctx.sourceObject) || ""))
+  );
 }
 
 function etlSqlDialect(cloudId) {
@@ -4735,7 +4835,7 @@ function etlFileFormatSpec(ext) {
     return {
       name: "DH_JSON_FF",
       ddl: "TYPE = JSON STRIP_OUTER_ARRAY = TRUE",
-      copyOptions: "MATCH_BY_COLUMN_NAME = CASE_INSENSITIVE",
+      copyOptions: "",
     };
   }
   if (e === "tsv") {
@@ -4755,55 +4855,220 @@ function etlFileFormatSpec(ext) {
   };
 }
 
-function generateSnowflakeStageIngestSql(ctx) {
+function etlIsJsonFileExt(ext) {
+  const e = String(ext || "")
+    .toLowerCase()
+    .replace(/^\./, "");
+  return e === "json" || e === "jsonl" || e === "ndjson";
+}
+
+function etlStageResolveExt(ctx) {
+  const filePath = ctx.stageFilePath || String(ctx.sourceObject || "").replace(/^@[^/]+\//, "");
+  const fromCtx = String(ctx.stageFileExt || "").toLowerCase().replace(/^\./, "");
+  if (fromCtx) return fromCtx;
+  const base = String(filePath || "").split("/").pop() || "";
+  const cleaned = base.replace(/\.(gz|zip)$/i, "");
+  const m = cleaned.match(/\.([A-Za-z0-9]+)$/);
+  return m ? m[1].toLowerCase() : "csv";
+}
+
+function etlStageTargetParts(ctx) {
   const stageFqn = (ctx.stageFqn || "SALES_DB.RAW.RAW_STAGE").replace(/^@/, "");
-  const filePath = ctx.stageFilePath || ctx.sourceObject.replace(/^@[^/]+\//, "");
+  const filePath = ctx.stageFilePath || String(ctx.sourceObject || "").replace(/^@[^/]+\//, "");
   const location = "@" + stageFqn + "/" + String(filePath).replace(/^\//, "");
-  const target = ctx.targetObject || ("SALES_DB.RAW." + etlSuggestTableFromFile(filePath));
-  const parts = target.split(".");
+  const target = ctx.targetObject || "SALES_DB.RAW." + etlSuggestTableFromFile(filePath);
+  const parts = String(target).split(".");
   const database = parts.length >= 3 ? parts[0] : "SALES_DB";
   const schema = parts.length >= 2 ? parts[parts.length - 2] : "RAW";
   const table = parts[parts.length - 1] || etlSuggestTableFromFile(filePath);
   const fqTable = database + "." + schema + "." + table;
-  const ff = etlFileFormatSpec(ctx.stageFileExt || (filePath.split(".").pop() || "csv"));
-  const copyOpts = ff.copyOptions ? "\n  " + ff.copyOptions : "";
+  const ext = etlStageResolveExt(ctx);
+  const ff = etlFileFormatSpec(ext);
+  return {
+    stageFqn,
+    filePath,
+    location,
+    database,
+    schema,
+    table,
+    fqTable,
+    ext,
+    ff,
+    sourceFileSql: String(filePath).replace(/'/g, "''"),
+  };
+}
+
+function generateSnowflakeJsonFlattenSql(ctx) {
+  const p = etlStageTargetParts(ctx);
+  const landing = p.fqTable + "_LANDING";
+  const flat = p.fqTable + "_FLAT";
+  const ffFqn = p.database + "." + p.schema + "." + p.ff.name;
+
+  return [
+    "-- DataHive generated Snowflake ELT",
+    "-- Pipeline : " + ctx.name,
+    "-- Pattern  : Nested JSON → flatten → tabular RAW",
+    "-- Source   : " + p.location,
+    "-- Target   : " + p.fqTable + " (wide) + " + flat + " (long)",
+    "-- Notes    : " + (ctx.notes || "n/a"),
+    "--",
+    "-- Steps:",
+    "--   1) Land each JSON document as VARIANT",
+    "--   2) Recursively FLATTEN nested objects/arrays to leaf scalars",
+    "--   3) Aggregate array leaves, then PIVOT into a wide tabular table",
+    "",
+    "USE WAREHOUSE DEV_WH;",
+    "USE DATABASE " + p.database + ";",
+    "USE SCHEMA " + p.schema + ";",
+    "",
+    "-- 1) JSON file format (outer array → one row per document)",
+    "CREATE OR REPLACE FILE FORMAT " + ffFqn,
+    "  " + p.ff.ddl + ";",
+    "",
+    "-- 2) VARIANT landing (preserves full nested document)",
+    "CREATE OR REPLACE TABLE " + landing + " (",
+    "  doc VARIANT,",
+    "  _dh_ingested_at TIMESTAMP_NTZ DEFAULT CURRENT_TIMESTAMP(),",
+    "  _dh_source_file VARCHAR",
+    ");",
+    "",
+    "COPY INTO " + landing + " (doc)",
+    "  FROM '" + p.location + "'",
+    "  FILE_FORMAT = (FORMAT_NAME = '" + ffFqn + "')",
+    "  ON_ERROR = 'ABORT_STATEMENT';",
+    "",
+    "UPDATE " + landing,
+    "SET _dh_ingested_at = COALESCE(_dh_ingested_at, CURRENT_TIMESTAMP()),",
+    "    _dh_source_file = COALESCE(_dh_source_file, '" + p.sourceFileSql + "')",
+    "WHERE _dh_ingested_at IS NULL OR _dh_source_file IS NULL;",
+    "",
+    "-- 3) Long tabular form — one row per scalar leaf (nested paths flattened)",
+    "--    Array indices are stripped so citations[0], citations[1] → column CITATIONS",
+    "CREATE OR REPLACE TABLE " + flat + " AS",
+    "SELECT *",
+    "FROM (",
+    "  SELECT",
+    "    f.seq AS _dh_doc_seq,",
+    "    UPPER(",
+    "      REGEXP_REPLACE(",
+    "        REGEXP_REPLACE(REPLACE(COALESCE(f.path, TO_VARCHAR(f.key)), '.', '__'), '\\\\[\\\\d+\\\\]', ''),",
+    "        '[^A-Za-z0-9_]',",
+    "        '_'",
+    "      )",
+    "    ) AS column_name,",
+    "    TO_VARCHAR(f.value) AS column_value,",
+    "    TYPEOF(f.value) AS value_type,",
+    "    l._dh_ingested_at,",
+    "    l._dh_source_file",
+    "  FROM " + landing + " AS l,",
+    "  LATERAL FLATTEN(INPUT => l.doc, RECURSIVE => TRUE, OUTER => TRUE) AS f",
+    "  WHERE NOT IS_OBJECT(f.value)",
+    "    AND NOT IS_ARRAY(f.value)",
+    ") AS leaves",
+    "WHERE column_name IS NOT NULL",
+    "  AND column_name <> '';",
+    "",
+    "-- 4) Wide tabular table (one row per JSON document)",
+    "--    Dynamic PIVOT builds columns from discovered nested paths.",
+    "EXECUTE IMMEDIATE $$",
+    "DECLARE",
+    "  col_list STRING;",
+    "  stmt STRING;",
+    "BEGIN",
+    "  SELECT LISTAGG('''' || column_name || '''', ', ')",
+    "           WITHIN GROUP (ORDER BY column_name)",
+    "    INTO col_list",
+    "  FROM (",
+    "    SELECT column_name",
+    "    FROM " + flat,
+    "    WHERE column_name IS NOT NULL",
+    "    GROUP BY column_name",
+    "    ORDER BY column_name",
+    "    LIMIT 300",
+    "  );",
+    "",
+    "  IF (col_list IS NULL OR LENGTH(col_list) = 0) THEN",
+    "    stmt := 'CREATE OR REPLACE TABLE " + p.fqTable + " (",
+    "      _dh_doc_seq NUMBER,",
+    "      _dh_ingested_at TIMESTAMP_NTZ,",
+    "      _dh_source_file VARCHAR",
+    "    )';",
+    "    EXECUTE IMMEDIATE stmt;",
+    "  ELSE",
+    "    stmt := 'CREATE OR REPLACE TABLE " + p.fqTable + " AS",
+    "      SELECT *",
+    "      FROM (",
+    "        SELECT",
+    "          _dh_doc_seq,",
+    "          _dh_ingested_at,",
+    "          _dh_source_file,",
+    "          column_name,",
+    "          LISTAGG(column_value, '' | '') WITHIN GROUP (ORDER BY column_value) AS column_value",
+    "        FROM " + flat + "",
+    "        GROUP BY _dh_doc_seq, _dh_ingested_at, _dh_source_file, column_name",
+    "      )",
+    "      PIVOT (MAX(column_value) FOR column_name IN (' || col_list || '))';",
+    "    EXECUTE IMMEDIATE stmt;",
+    "  END IF;",
+    "END;",
+    "$$;",
+    "",
+    "-- 5) Validate",
+    "SELECT COUNT(*) AS landing_docs FROM " + landing + ";",
+    "SELECT COUNT(*) AS flat_leaves FROM " + flat + ";",
+    "SELECT COUNT(*) AS wide_rows FROM " + p.fqTable + ";",
+    "SELECT * FROM " + p.fqTable + " LIMIT 20;",
+    "",
+    "-- Optional: keep only the wide table",
+    "-- DROP TABLE IF EXISTS " + flat + ";",
+    "-- DROP TABLE IF EXISTS " + landing + ";",
+    "",
+  ].join("\n");
+}
+
+function generateSnowflakeStageIngestSql(ctx) {
+  const p = etlStageTargetParts(ctx);
+  if (etlIsJsonFileExt(p.ext)) {
+    return generateSnowflakeJsonFlattenSql(ctx);
+  }
+  const copyOpts = p.ff.copyOptions ? "\n  " + p.ff.copyOptions : "";
 
   return [
     "-- DataHive generated Snowflake ELT",
     "-- Pipeline : " + ctx.name,
     "-- Pattern  : Stage file → RAW table (DDL + ingestion)",
-    "-- Source   : " + location,
-    "-- Target   : " + fqTable,
+    "-- Source   : " + p.location,
+    "-- Target   : " + p.fqTable,
     "-- Notes    : " + (ctx.notes || "n/a"),
     "",
     "USE WAREHOUSE DEV_WH;",
-    "USE DATABASE " + database + ";",
-    "USE SCHEMA " + schema + ";",
+    "USE DATABASE " + p.database + ";",
+    "USE SCHEMA " + p.schema + ";",
     "",
     "-- 1) File format for this landing file",
     "-- PARSE_HEADER=TRUE so INFER_SCHEMA uses CSV header names (not C1/C2/C3).",
-    "CREATE OR REPLACE FILE FORMAT " + database + "." + schema + "." + ff.name,
-    "  " + ff.ddl + ";",
+    "CREATE OR REPLACE FILE FORMAT " + p.database + "." + p.schema + "." + p.ff.name,
+    "  " + p.ff.ddl + ";",
     "",
     "-- 2) DDL — infer columns from the stage file (Snowflake INFER_SCHEMA)",
-    "CREATE TABLE IF NOT EXISTS " + fqTable,
+    "CREATE TABLE IF NOT EXISTS " + p.fqTable,
     "  USING TEMPLATE (",
     "    SELECT ARRAY_AGG(OBJECT_CONSTRUCT(*))",
     "    FROM TABLE(",
     "      INFER_SCHEMA(",
-    "        LOCATION => '" + location + "',",
-    "        FILE_FORMAT => '" + database + "." + schema + "." + ff.name + "',",
+    "        LOCATION => '" + p.location + "',",
+    "        FILE_FORMAT => '" + p.database + "." + p.schema + "." + p.ff.name + "',",
     "        IGNORE_CASE => TRUE",
     "      )",
     "    )",
     "  );",
     "",
     "-- If the table already exists with C1/C2/C3 columns, drop/rename it first:",
-    "-- DROP TABLE IF EXISTS " + fqTable + ";",
+    "-- DROP TABLE IF EXISTS " + p.fqTable + ";",
     "-- then re-run the CREATE TABLE USING TEMPLATE above.",
     "",
     "-- Fallback DDL if INFER_SCHEMA is unavailable / file empty:",
-    "-- CREATE TABLE IF NOT EXISTS " + fqTable + " (",
+    "-- CREATE TABLE IF NOT EXISTS " + p.fqTable + " (",
     "--   col1 VARCHAR,",
     "--   col2 VARCHAR,",
     "--   _dh_ingested_at TIMESTAMP_NTZ DEFAULT CURRENT_TIMESTAMP(),",
@@ -4811,22 +5076,470 @@ function generateSnowflakeStageIngestSql(ctx) {
     "-- );",
     "",
     "-- 3) Data ingestion from stage (MATCH_BY_COLUMN_NAME required with PARSE_HEADER)",
-    "COPY INTO " + fqTable,
-    "  FROM '" + location + "'",
-    "  FILE_FORMAT = (FORMAT_NAME = '" + database + "." + schema + "." + ff.name + "')",
+    "COPY INTO " + p.fqTable,
+    "  FROM '" + p.location + "'",
+    "  FILE_FORMAT = (FORMAT_NAME = '" + p.database + "." + p.schema + "." + p.ff.name + "')",
     "  ON_ERROR = 'ABORT_STATEMENT'" + copyOpts + ";",
     "",
     "-- 4) Optional lineage / audit columns (run once if not inferred)",
-    "ALTER TABLE " + fqTable + " ADD COLUMN IF NOT EXISTS _dh_ingested_at TIMESTAMP_NTZ;",
-    "ALTER TABLE " + fqTable + " ADD COLUMN IF NOT EXISTS _dh_source_file VARCHAR;",
-    "UPDATE " + fqTable,
+    "ALTER TABLE " + p.fqTable + " ADD COLUMN IF NOT EXISTS _dh_ingested_at TIMESTAMP_NTZ;",
+    "ALTER TABLE " + p.fqTable + " ADD COLUMN IF NOT EXISTS _dh_source_file VARCHAR;",
+    "UPDATE " + p.fqTable,
     "SET _dh_ingested_at = COALESCE(_dh_ingested_at, CURRENT_TIMESTAMP()),",
-    "    _dh_source_file = COALESCE(_dh_source_file, '" + String(filePath).replace(/'/g, "''") + "')",
+    "    _dh_source_file = COALESCE(_dh_source_file, '" + p.sourceFileSql + "')",
     "WHERE _dh_ingested_at IS NULL OR _dh_source_file IS NULL;",
     "",
     "-- 5) Validate",
-    "SELECT COUNT(*) AS row_count FROM " + fqTable + ";",
-    "SELECT * FROM " + fqTable + " LIMIT 20;",
+    "SELECT COUNT(*) AS row_count FROM " + p.fqTable + ";",
+    "SELECT * FROM " + p.fqTable + " LIMIT 20;",
+    "",
+  ].join("\n");
+}
+
+function generateGcsJsonFlattenSql(ctx) {
+  const src = String(ctx.sourceObject || "").trim();
+  const tgt = String(ctx.targetObject || "").trim() || "my-project.raw_dataset.flattened_table";
+  const uris = src.endsWith("/") ? src + "*.json" : src;
+  const tableName = etlSuggestTableFromFile(src).toLowerCase();
+  const landing = tgt.includes(".") ? tgt : "my-project.raw_dataset." + tableName;
+  return [
+    "-- DataHive generated BigQuery ELT",
+    "-- Pipeline : " + ctx.name,
+    "-- Pattern  : GCS JSON (bucket/folder) → flatten → tabular table",
+    "-- Source   : " + src,
+    "-- Target   : " + landing,
+    "-- Notes    : " + (ctx.notes || "n/a"),
+    "--",
+    "-- Tip: NDJSON (one JSON object per line) loads most reliably.",
+    "--      A single JSON array file is better handled with Language = Python.",
+    "",
+    "-- 1) External table over the GCS object / folder",
+    "CREATE OR REPLACE EXTERNAL TABLE `" + landing + "_ext`",
+    "OPTIONS (",
+    "  format = 'JSON',",
+    "  uris = ['" + uris.replace(/'/g, "\\'") + "']",
+    ");",
+    "",
+    "-- 2) Land into a managed table (STRUCT/ARRAY kept for nested fields)",
+    "CREATE OR REPLACE TABLE `" + landing + "_landing` AS",
+    "SELECT * FROM `" + landing + "_ext`;",
+    "",
+    "-- 3) Flatten nested JSON to wide tabular columns",
+    "--    BigQuery keeps nested fields as RECORD/ARRAY. For deep/unknown nesting,",
+    "--    regenerate with Language = Python (pandas.json_normalize).",
+    "--    Example one-level flatten / array unnest (edit field names):",
+    "--",
+    "-- CREATE OR REPLACE TABLE `" + landing + "` AS",
+    "-- SELECT",
+    "--   * EXCEPT(nested_col, tags),",
+    "--   nested_col.city AS nested_col_city,",
+    "--   tag",
+    "-- FROM `" + landing + "_landing`",
+    "-- LEFT JOIN UNNEST(tags) AS tag;",
+    "",
+    "-- Default: promote landing → final table (top-level columns already tabular)",
+    "CREATE OR REPLACE TABLE `" + landing + "` AS",
+    "SELECT * FROM `" + landing + "_landing`;",
+    "",
+    "-- 4) Validate",
+    "SELECT COUNT(*) AS row_count FROM `" + landing + "`;",
+    "SELECT * FROM `" + landing + "` LIMIT 20;",
+    "",
+  ].join("\n");
+}
+
+function generateGcsJsonFlattenPython(ctx) {
+  const src = String(ctx.sourceObject || "").trim();
+  const tgt = String(ctx.targetObject || "").trim() || "my-project.raw_dataset.flattened_table";
+  return [
+    '"""DataHive generated GCS nested-JSON flatten → tabular table.',
+    "Pipeline : " + ctx.name,
+    "Source  : " + src,
+    "Target  : " + tgt,
+    "",
+    "Downloads JSON from a GCS bucket/folder, flattens nested objects/arrays",
+    "with pandas.json_normalize, then writes a wide tabular table.",
+    "",
+    "Auth: GOOGLE_APPLICATION_CREDENTIALS or gcloud ADC from your GCP connector.",
+    '"""',
+    "from __future__ import annotations",
+    "",
+    "import json",
+    "import os",
+    "import re",
+    "import tempfile",
+    "from datetime import datetime, timezone",
+    "from pathlib import Path",
+    "from typing import Any",
+    "",
+    "import pandas as pd",
+    "from google.cloud import storage",
+    "",
+    "SOURCE_URI = " + JSON.stringify(src),
+    "TARGET_OBJECT = " + JSON.stringify(tgt),
+    "TARGET_CONNECTOR = " + JSON.stringify(ctx.targetType || "gcp"),
+    "",
+    "",
+    "def parse_gs_uri(uri: str) -> tuple[str, str]:",
+    "    m = re.match(r\"^gs://([^/]+)/?(.*)$\", uri.strip())",
+    "    if not m:",
+    "        raise ValueError(f\"Expected gs://bucket/path, got: {uri}\")",
+    "    return m.group(1), m.group(2)",
+    "",
+    "",
+    "def _as_records(payload: Any) -> list[dict[str, Any]]:",
+    "    if payload is None:",
+    "        return []",
+    "    if isinstance(payload, list):",
+    "        return [x if isinstance(x, dict) else {\"value\": x} for x in payload]",
+    "    if isinstance(payload, dict):",
+    "        for key in (\"data\", \"records\", \"items\", \"results\", \"rows\"):",
+    "            if isinstance(payload.get(key), list):",
+    "                return _as_records(payload[key])",
+    "        return [payload]",
+    "    return [{\"value\": payload}]",
+    "",
+    "",
+    "def flatten_records(records: list[dict[str, Any]], source_file: str) -> pd.DataFrame:",
+    "    if not records:",
+    "        return pd.DataFrame()",
+    "    df = pd.json_normalize(records, sep=\"__\")",
+    "    for col in list(df.columns):",
+    "        sample = df[col]",
+    "        if sample.map(lambda v: isinstance(v, (list, dict))).any():",
+    "            df[col] = sample.map(",
+    "                lambda v: json.dumps(v, ensure_ascii=False)",
+    "                if isinstance(v, (list, dict))",
+    "                else v",
+    "            )",
+    "    df.columns = [",
+    "        re.sub(r\"[^A-Za-z0-9_]+\", \"_\", str(c)).strip(\"_\").upper()",
+    "        for c in df.columns",
+    "    ]",
+    "    df[\"_DH_INGESTED_AT\"] = datetime.now(timezone.utc).isoformat()",
+    "    df[\"_DH_SOURCE_FILE\"] = source_file",
+    "    return df",
+    "",
+    "",
+    "def list_gcs_json_blobs(client: storage.Client, bucket_name: str, prefix: str):",
+    "    bucket = client.bucket(bucket_name)",
+    "    if prefix and not prefix.endswith(\"/\") and \".\" in Path(prefix).name:",
+    "        blob = bucket.blob(prefix)",
+    "        if not blob.exists(client):",
+    "            raise FileNotFoundError(f\"gs://{bucket_name}/{prefix} not found\")",
+    "        return [blob]",
+    "    blobs = [",
+    "        b",
+    "        for b in client.list_blobs(bucket_name, prefix=prefix or None)",
+    "        if not b.name.endswith(\"/\")",
+    "        and re.search(r\"\\.(json|jsonl|ndjson)(\\.(gz))?$\", b.name, re.I)",
+    "    ]",
+    "    if not blobs:",
+    "        raise FileNotFoundError(",
+    "            f\"No JSON files under gs://{bucket_name}/{prefix}\"",
+    "        )",
+    "    return blobs",
+    "",
+    "",
+    "def load_records_from_gcs() -> tuple[list[dict[str, Any]], str]:",
+    "    bucket_name, prefix = parse_gs_uri(SOURCE_URI)",
+    "    client = storage.Client()  # uses ADC / GOOGLE_APPLICATION_CREDENTIALS",
+    "    blobs = list_gcs_json_blobs(client, bucket_name, prefix)",
+    "    records: list[dict[str, Any]] = []",
+    "    sources: list[str] = []",
+    "    with tempfile.TemporaryDirectory(prefix=\"datahive_gcs_\") as tmp:",
+    "        for blob in blobs:",
+    "            local = Path(tmp) / Path(blob.name).name",
+    "            blob.download_to_filename(local.as_posix())",
+    "            text = local.read_text(encoding=\"utf-8\").strip()",
+    "            if not text:",
+    "                continue",
+    "            sources.append(f\"gs://{bucket_name}/{blob.name}\")",
+    "            if \"\\n\" in text and not text.lstrip().startswith(\"[\"):",
+    "                for line in text.splitlines():",
+    "                    line = line.strip()",
+    "                    if line:",
+    "                        records.extend(_as_records(json.loads(line)))",
+    "            else:",
+    "                records.extend(_as_records(json.loads(text)))",
+    "    return records, \";\".join(sources[:5]) + (\"…\" if len(sources) > 5 else \"\")",
+    "",
+    "",
+    "def write_target(df: pd.DataFrame) -> None:",
+    "    if TARGET_CONNECTOR in {\"gcp\", \"googlecloud\"} or re.match(",
+    "        r\"^[A-Za-z0-9_\\-]+\\.[A-Za-z0-9_\\-]+\\.[A-Za-z0-9_\\-]+$\", TARGET_OBJECT",
+    "    ):",
+    "        # project.dataset.table",
+    "        import pandas_gbq",
+    "",
+    "        project, dataset, table = TARGET_OBJECT.split(\".\", 2)",
+    "        pandas_gbq.to_gbq(",
+    "            df,",
+    "            destination_table=f\"{dataset}.{table}\",",
+    "            project_id=project,",
+    "            if_exists=\"replace\",",
+    "        )",
+    "        print(f\"Wrote {len(df)} rows to BigQuery {TARGET_OBJECT}\")",
+    "        return",
+    "    if TARGET_CONNECTOR == \"snowflake\" or TARGET_OBJECT.upper().startswith(\"SALES_DB.\"):",
+    "        import snowflake.connector",
+    "        from snowflake.connector.pandas_tools import write_pandas",
+    "",
+    "        parts = TARGET_OBJECT.split(\".\")",
+    "        database = parts[0] if len(parts) >= 3 else \"SALES_DB\"",
+    "        schema = parts[-2] if len(parts) >= 2 else \"RAW\"",
+    "        table = parts[-1]",
+    "        conn = snowflake.connector.connect(",
+    "            account=os.environ.get(\"SNOWFLAKE_ACCOUNT\", \"...\"),",
+    "            user=os.environ.get(\"SNOWFLAKE_USER\", \"...\"),",
+    "            password=os.environ.get(\"SNOWFLAKE_PASSWORD\", \"...\"),",
+    "            warehouse=os.environ.get(\"SNOWFLAKE_WAREHOUSE\", \"DEV_WH\"),",
+    "            database=database,",
+    "            schema=schema,",
+    "        )",
+    "        try:",
+    "            write_pandas(",
+    "                conn, df, table_name=table, database=database, schema=schema,",
+    "                auto_create_table=True, overwrite=True, quote_identifiers=False,",
+    "            )",
+    "            print(f\"Wrote {len(df)} rows to Snowflake {database}.{schema}.{table}\")",
+    "        finally:",
+    "            conn.close()",
+    "        return",
+    "    if TARGET_OBJECT.startswith(\"gs://\"):",
+    "        # Write flattened parquet next to / under the target GCS prefix",
+    "        out = TARGET_OBJECT.rstrip(\"/\") + \"/flattened.parquet\"",
+    "        bucket_name, prefix = parse_gs_uri(out)",
+    "        with tempfile.TemporaryDirectory(prefix=\"datahive_out_\") as tmp:",
+    "            local = Path(tmp) / \"flattened.parquet\"",
+    "            df.to_parquet(local, index=False)",
+    "            storage.Client().bucket(bucket_name).blob(prefix).upload_from_filename(",
+    "                local.as_posix()",
+    "            )",
+    "        print(f\"Wrote {len(df)} rows to {out}\")",
+    "        return",
+    "    raise NotImplementedError(",
+    "        f\"Wire write path for target={TARGET_OBJECT!r} connector={TARGET_CONNECTOR!r}\"",
+    "    )",
+    "",
+    "",
+    "def main() -> None:",
+    "    records, source_file = load_records_from_gcs()",
+    "    df = flatten_records(records, source_file)",
+    "    if df.empty:",
+    "        raise SystemExit(\"No JSON records found to flatten under \" + SOURCE_URI)",
+    "    print(f\"Flattened {len(records)} JSON docs → {len(df)} tabular rows\")",
+    "    write_target(df)",
+    "",
+    "",
+    'if __name__ == "__main__":',
+    "    main()",
+    "",
+  ].join("\n");
+}
+
+function generateLocalFileEtlPython(ctx) {
+  const src = String(ctx.sourceObject || (etlLocalUpload && etlLocalUpload.source_object) || "").trim();
+  const abs = String((ctx.localAbsolutePath || (etlLocalUpload && etlLocalUpload.absolute_path) || "")).trim();
+  const tgt = String(ctx.targetObject || "").trim() || "SALES_DB.RAW.LOCAL_FILE";
+  const ext = etlUriFileExt(src) || (etlLocalUpload && etlLocalUpload.ext) || "";
+  const isJson = etlIsJsonFileExt(ext);
+  return [
+    '"""DataHive generated local-file → tabular load.',
+    "Pipeline : " + ctx.name,
+    "Source  : " + src,
+    "Target  : " + tgt + " [" + (ctx.targetType || "") + "]",
+    "",
+    isJson
+      ? "JSON/JSONL is flattened with pandas.json_normalize (nested → columns)."
+      : "Tabular file is loaded with pandas, then written to the destination.",
+    '"""',
+    "from __future__ import annotations",
+    "",
+    "import json",
+    "import os",
+    "import re",
+    "from datetime import datetime, timezone",
+    "from pathlib import Path",
+    "from typing import Any",
+    "",
+    "import pandas as pd",
+    "",
+    "SOURCE_RELATIVE = " + JSON.stringify(src),
+    "SOURCE_ABSOLUTE = " + JSON.stringify(abs),
+    "TARGET_OBJECT = " + JSON.stringify(tgt),
+    "TARGET_CONNECTOR = " + JSON.stringify(ctx.targetType || ""),
+    "",
+    "",
+    "def resolve_source_path() -> Path:",
+    "    candidates = []",
+    "    if SOURCE_ABSOLUTE:",
+    "        candidates.append(Path(SOURCE_ABSOLUTE))",
+    "    if SOURCE_RELATIVE:",
+    "        rel = Path(SOURCE_RELATIVE)",
+    "        candidates.append(rel)",
+    "        # Common layouts: repo root / rnd/",
+    "        candidates.append(Path(__file__).resolve().parent / rel)",
+    "        candidates.append(Path(__file__).resolve().parent / \"rnd\" / rel)",
+    "        candidates.append(Path.cwd() / rel)",
+    "        candidates.append(Path.cwd() / \"rnd\" / rel)",
+    "    env = os.environ.get(\"DATAHIVE_UPLOAD_DIR\")",
+    "    if env and SOURCE_RELATIVE:",
+    "        candidates.append(Path(env) / Path(SOURCE_RELATIVE).name)",
+    "    for p in candidates:",
+    "        if p and p.is_file():",
+    "            return p",
+    "    raise FileNotFoundError(",
+    "        \"Local upload not found. Tried: \" + \", \".join(str(p) for p in candidates if p)",
+    "    )",
+    "",
+    "",
+    "def _as_records(payload: Any) -> list[dict[str, Any]]:",
+    "    if payload is None:",
+    "        return []",
+    "    if isinstance(payload, list):",
+    "        return [x if isinstance(x, dict) else {\"value\": x} for x in payload]",
+    "    if isinstance(payload, dict):",
+    "        for key in (\"data\", \"records\", \"items\", \"results\", \"rows\"):",
+    "            if isinstance(payload.get(key), list):",
+    "                return _as_records(payload[key])",
+    "        return [payload]",
+    "    return [{\"value\": payload}]",
+    "",
+    "",
+    "def read_source() -> pd.DataFrame:",
+    "    path = resolve_source_path()",
+    "    suffix = path.suffix.lower()",
+    "    if suffix in {\".json\", \".jsonl\", \".ndjson\"}:",
+    "        text = path.read_text(encoding=\"utf-8\").strip()",
+    "        records: list[dict[str, Any]] = []",
+    "        if \"\\n\" in text and not text.lstrip().startswith(\"[\"):",
+    "            for line in text.splitlines():",
+    "                line = line.strip()",
+    "                if line:",
+    "                    records.extend(_as_records(json.loads(line)))",
+    "        else:",
+    "            records.extend(_as_records(json.loads(text)))",
+    "        if not records:",
+    "            return pd.DataFrame()",
+    "        df = pd.json_normalize(records, sep=\"__\")",
+    "        for col in list(df.columns):",
+    "            sample = df[col]",
+    "            if sample.map(lambda v: isinstance(v, (list, dict))).any():",
+    "                df[col] = sample.map(",
+    "                    lambda v: json.dumps(v, ensure_ascii=False)",
+    "                    if isinstance(v, (list, dict))",
+    "                    else v",
+    "                )",
+    "    elif suffix in {\".xlsx\", \".xls\"}:",
+    "        df = pd.read_excel(path)",
+    "    elif suffix == \".parquet\":",
+    "        df = pd.read_parquet(path)",
+    "    elif suffix == \".tsv\":",
+    "        df = pd.read_csv(path, sep=\"\\t\")",
+    "    else:",
+    "        df = pd.read_csv(path)",
+    "    df.columns = [",
+    "        re.sub(r\"[^A-Za-z0-9_]+\", \"_\", str(c)).strip(\"_\").upper()",
+    "        for c in df.columns",
+    "    ]",
+    "    df[\"_DH_INGESTED_AT\"] = datetime.now(timezone.utc).isoformat()",
+    "    df[\"_DH_SOURCE_FILE\"] = str(path)",
+    "    return df",
+    "",
+    "",
+    "def write_target(df: pd.DataFrame) -> None:",
+    "    if TARGET_CONNECTOR in {\"gcp\", \"googlecloud\"} or re.match(",
+    "        r\"^[A-Za-z0-9_\\-]+\\.[A-Za-z0-9_\\-]+\\.[A-Za-z0-9_\\-]+$\", TARGET_OBJECT",
+    "    ):",
+    "        import pandas_gbq",
+    "",
+    "        project, dataset, table = TARGET_OBJECT.split(\".\", 2)",
+    "        pandas_gbq.to_gbq(",
+    "            df,",
+    "            destination_table=f\"{dataset}.{table}\",",
+    "            project_id=project,",
+    "            if_exists=\"replace\",",
+    "        )",
+    "        print(f\"Wrote {len(df)} rows to BigQuery {TARGET_OBJECT}\")",
+    "        return",
+    "    if TARGET_CONNECTOR == \"snowflake\" or \".\" in TARGET_OBJECT:",
+    "        import snowflake.connector",
+    "        from snowflake.connector.pandas_tools import write_pandas",
+    "",
+    "        parts = TARGET_OBJECT.split(\".\")",
+    "        database = parts[0] if len(parts) >= 3 else \"SALES_DB\"",
+    "        schema = parts[-2] if len(parts) >= 2 else \"RAW\"",
+    "        table = parts[-1]",
+    "        conn = snowflake.connector.connect(",
+    "            account=os.environ.get(\"SNOWFLAKE_ACCOUNT\", \"...\"),",
+    "            user=os.environ.get(\"SNOWFLAKE_USER\", \"...\"),",
+    "            password=os.environ.get(\"SNOWFLAKE_PASSWORD\", \"...\"),",
+    "            warehouse=os.environ.get(\"SNOWFLAKE_WAREHOUSE\", \"DEV_WH\"),",
+    "            database=database,",
+    "            schema=schema,",
+    "        )",
+    "        try:",
+    "            write_pandas(",
+    "                conn, df, table_name=table, database=database, schema=schema,",
+    "                auto_create_table=True, overwrite=True, quote_identifiers=False,",
+    "            )",
+    "            print(f\"Wrote {len(df)} rows to Snowflake {database}.{schema}.{table}\")",
+    "        finally:",
+    "            conn.close()",
+    "        return",
+    "    if TARGET_CONNECTOR == \"postgres\":",
+    "        from sqlalchemy import create_engine",
+    "",
+    "        engine = create_engine(os.environ.get(",
+    "            \"POSTGRES_CONNINFO\",",
+    "            \"postgresql+psycopg://postgres:postgres@localhost:5432/datahivepoc\",",
+    "        ))",
+    "        df.to_sql(TARGET_OBJECT, engine, if_exists=\"replace\", index=False)",
+    "        print(f\"Wrote {len(df)} rows to Postgres {TARGET_OBJECT}\")",
+    "        return",
+    "    out = Path(TARGET_OBJECT)",
+    "    if out.suffix.lower() == \".parquet\" or TARGET_OBJECT.endswith(\"/\"):",
+    "        dest = out if out.suffix else out / \"flattened.parquet\"",
+    "        dest.parent.mkdir(parents=True, exist_ok=True)",
+    "        df.to_parquet(dest, index=False)",
+    "        print(f\"Wrote {len(df)} rows to {dest}\")",
+    "        return",
+    "    raise NotImplementedError(",
+    "        f\"Wire write path for target={TARGET_OBJECT!r} connector={TARGET_CONNECTOR!r}\"",
+    "    )",
+    "",
+    "",
+    "def main() -> None:",
+    "    df = read_source()",
+    "    if df.empty:",
+    "        raise SystemExit(\"No rows loaded from \" + SOURCE_RELATIVE)",
+    "    print(f\"Loaded {len(df)} tabular rows from local file\")",
+    "    write_target(df)",
+    "",
+    "",
+    'if __name__ == "__main__":',
+    "    main()",
+    "",
+  ].join("\n");
+}
+
+function generateLocalFileEtlSql(ctx) {
+  const src = String(ctx.sourceObject || "").trim();
+  const tgt = String(ctx.targetObject || "SALES_DB.RAW.LOCAL_FILE").trim();
+  return [
+    "-- DataHive generated local-file ELT notes",
+    "-- Pipeline : " + ctx.name,
+    "-- Source   : " + src + " (local upload under rnd/UPLOAD/)",
+    "-- Target   : " + tgt,
+    "--",
+    "-- Local files cannot be read directly by Snowflake/BigQuery SQL.",
+    "-- Regenerate with Language = Python to flatten JSON and load the table,",
+    "-- or PUT the file to a stage / GCS bucket first, then use stage / gs:// source.",
+    "",
+    "-- Example after staging to Snowflake:",
+    "-- PUT file:///" + src.replace(/\\/g, "/") + " @SALES_DB.RAW.RAW_STAGE AUTO_COMPRESS=FALSE OVERWRITE=TRUE;",
+    "-- Then switch Source kind to \"Snowflake stage file\" and generate again.",
     "",
   ].join("\n");
 }
@@ -4834,6 +5547,12 @@ function generateSnowflakeStageIngestSql(ctx) {
 function generateEtlSqlScript(ctx) {
   if (ctx.sourceKind === "stage_file" || ctx.isStageIngest) {
     return generateSnowflakeStageIngestSql(ctx);
+  }
+  if (etlIsLocalUploadSource(ctx)) {
+    return generateLocalFileEtlSql(ctx);
+  }
+  if (etlIsGcsJsonSource(ctx)) {
+    return generateGcsJsonFlattenSql(ctx);
   }
   const srcDialect = etlSqlDialect(ctx.sourceType);
   const tgtDialect = etlSqlDialect(ctx.targetType);
@@ -4896,7 +5615,161 @@ function generateEtlSqlScript(ctx) {
   return lines.join("\n");
 }
 
+function generateSnowflakeJsonFlattenPython(ctx) {
+  const p = etlStageTargetParts(ctx);
+  return [
+    '"""DataHive generated Snowflake nested-JSON flatten → tabular RAW.',
+    "Pipeline : " + ctx.name,
+    "Source  : " + p.location,
+    "Target  : " + p.fqTable,
+    "",
+    "Reads JSON from the Snowflake stage, flattens nested objects/arrays with",
+    "pandas.json_normalize, and loads a wide tabular table via write_pandas.",
+    '"""',
+    "from __future__ import annotations",
+    "",
+    "import json",
+    "import os",
+    "import tempfile",
+    "from datetime import datetime, timezone",
+    "from pathlib import Path",
+    "from typing import Any",
+    "",
+    "import pandas as pd",
+    "import snowflake.connector",
+    "from snowflake.connector.pandas_tools import write_pandas",
+    "",
+    "STAGE_LOCATION = " + JSON.stringify(p.location),
+    "TARGET_DATABASE = " + JSON.stringify(p.database),
+    "TARGET_SCHEMA = " + JSON.stringify(p.schema),
+    "TARGET_TABLE = " + JSON.stringify(p.table),
+    "SOURCE_FILE = " + JSON.stringify(p.filePath),
+    "",
+    "",
+    "def connect():",
+    "    # Fill from connector_dtls / env — do not hardcode secrets.",
+    "    return snowflake.connector.connect(",
+    '        account=os.environ.get("SNOWFLAKE_ACCOUNT", "..."),',
+    '        user=os.environ.get("SNOWFLAKE_USER", "..."),',
+    '        password=os.environ.get("SNOWFLAKE_PASSWORD", "..."),',
+    '        warehouse=os.environ.get("SNOWFLAKE_WAREHOUSE", "DEV_WH"),',
+    "        database=TARGET_DATABASE,",
+    "        schema=TARGET_SCHEMA,",
+    "    )",
+    "",
+    "",
+    "def _as_records(payload: Any) -> list[dict[str, Any]]:",
+    "    if payload is None:",
+    "        return []",
+    "    if isinstance(payload, list):",
+    "        return [x if isinstance(x, dict) else {\"value\": x} for x in payload]",
+    "    if isinstance(payload, dict):",
+    "        for key in (\"data\", \"records\", \"items\", \"results\", \"rows\"):",
+    "            if isinstance(payload.get(key), list):",
+    "                return _as_records(payload[key])",
+    "        return [payload]",
+    "    return [{\"value\": payload}]",
+    "",
+    "",
+    "def flatten_records(records: list[dict[str, Any]]) -> pd.DataFrame:",
+    "    if not records:",
+    "        return pd.DataFrame()",
+    "    df = pd.json_normalize(records, sep=\"__\")",
+    "    for col in list(df.columns):",
+    "        sample = df[col]",
+    "        if sample.map(lambda v: isinstance(v, (list, dict))).any():",
+    "            df[col] = sample.map(",
+    "                lambda v: json.dumps(v, ensure_ascii=False)",
+    "                if isinstance(v, (list, dict))",
+    "                else v",
+    "            )",
+    "    df.columns = [",
+    "        str(c)",
+    "        .replace(\".\", \"__\")",
+    "        .replace(\" \", \"_\")",
+    "        .replace(\"-\", \"_\")",
+    "        .upper()",
+    "        for c in df.columns",
+    "    ]",
+    "    df[\"_DH_INGESTED_AT\"] = datetime.now(timezone.utc).isoformat()",
+    "    df[\"_DH_SOURCE_FILE\"] = SOURCE_FILE",
+    "    return df",
+    "",
+    "",
+    "def download_stage_json(conn) -> list[dict[str, Any]]:",
+    "    with tempfile.TemporaryDirectory(prefix=\"datahive_json_\") as tmp:",
+    "        local_dir = Path(tmp)",
+    "        with conn.cursor() as cur:",
+    "            cur.execute(\"USE DATABASE IDENTIFIER(%s)\", (TARGET_DATABASE,))",
+    "            cur.execute(\"USE SCHEMA IDENTIFIER(%s)\", (TARGET_SCHEMA,))",
+    "            cur.execute(f\"GET {STAGE_LOCATION} file://{local_dir.as_posix()}/\")",
+    "        files = sorted(",
+    "            [",
+    "                *local_dir.glob(\"*.json\"),",
+    "                *local_dir.glob(\"*.jsonl\"),",
+    "                *local_dir.glob(\"*.ndjson\"),",
+    "                *local_dir.glob(\"*\")",
+    "            ]",
+    "        )",
+    "        seen = set()",
+    "        unique_files = []",
+    "        for f in files:",
+    "            if f.is_file() and f.resolve() not in seen:",
+    "                seen.add(f.resolve())",
+    "                unique_files.append(f)",
+    "        records: list[dict[str, Any]] = []",
+    "        for path in unique_files:",
+    "            text = path.read_text(encoding=\"utf-8\").strip()",
+    "            if not text:",
+    "                continue",
+    "            if \"\\n\" in text and not text.lstrip().startswith(\"[\"):",
+    "                for line in text.splitlines():",
+    "                    line = line.strip()",
+    "                    if not line:",
+    "                        continue",
+    "                    records.extend(_as_records(json.loads(line)))",
+    "            else:",
+    "                records.extend(_as_records(json.loads(text)))",
+    "        return records",
+    "",
+    "",
+    "def main() -> None:",
+    "    conn = connect()",
+    "    try:",
+    "        records = download_stage_json(conn)",
+    "        df = flatten_records(records)",
+    "        if df.empty:",
+    "            raise SystemExit(\"No JSON records found to flatten.\")",
+    "        ok, nchunks, nrows, _ = write_pandas(",
+    "            conn,",
+    "            df,",
+    "            table_name=TARGET_TABLE,",
+    "            database=TARGET_DATABASE,",
+    "            schema=TARGET_SCHEMA,",
+    "            auto_create_table=True,",
+    "            overwrite=True,",
+    "            quote_identifiers=False,",
+    "        )",
+    "        print(",
+    "            f\"Flattened {len(records)} JSON docs → {nrows} tabular rows \"",
+    "            f\"into {TARGET_DATABASE}.{TARGET_SCHEMA}.{TARGET_TABLE} \"",
+    "            f\"(ok={ok}, chunks={nchunks})\"",
+    "        )",
+    "    finally:",
+    "        conn.close()",
+    "",
+    "",
+    'if __name__ == "__main__":',
+    "    main()",
+    "",
+  ].join("\n");
+}
+
 function generateSnowflakeStageIngestPython(ctx, opts) {
+  const p = etlStageTargetParts(ctx);
+  if (etlIsJsonFileExt(p.ext)) {
+    return generateSnowflakeJsonFlattenPython(ctx);
+  }
   const sql = generateSnowflakeStageIngestSql(ctx);
   const label = (opts && opts.viaLabel) || "Python";
   return [
@@ -4944,6 +5817,12 @@ function generateEtlPythonScript(ctx) {
   if (ctx.sourceKind === "stage_file" || ctx.isStageIngest) {
     return generateSnowflakeStageIngestPython(ctx, { viaLabel: "Python" });
   }
+  if (etlIsLocalUploadSource(ctx)) {
+    return generateLocalFileEtlPython(ctx);
+  }
+  if (etlIsGcsJsonSource(ctx)) {
+    return generateGcsJsonFlattenPython(ctx);
+  }
   const src = ctx.sourceObject;
   const tgt = ctx.targetObject;
   return [
@@ -4969,8 +5848,8 @@ function generateEtlPythonScript(ctx) {
     "    if SOURCE_CONNECTOR in {\"aws\"} or SOURCE_OBJECT.startswith(\"s3://\"):",
     "        # Example: df = pd.read_parquet(SOURCE_OBJECT)",
     "        raise NotImplementedError(\"Wire AWS credentials from connector_dtls here\")",
-    "    if SOURCE_CONNECTOR in {\"gcp\"}:",
-    "        # Example: pandas-gbq / bigquery.Client",
+    "    if SOURCE_CONNECTOR in {\"gcp\"} or SOURCE_OBJECT.startswith(\"gs://\"):",
+    "        # For JSON in GCS use Source object = gs://bucket/folder/file.json",
     "        raise NotImplementedError(\"Wire GCP credentials from connector_dtls here\")",
     "    if SOURCE_CONNECTOR in {\"azure\"}:",
     "        raise NotImplementedError(\"Wire Azure credentials from connector_dtls here\")",
@@ -5025,6 +5904,13 @@ function generateEtlPySparkScript(ctx) {
     return generateSnowflakeStageIngestPython(ctx, {
       viaLabel: "Python · Snowflake COPY (not PySpark)",
     });
+  }
+  if (etlIsLocalUploadSource(ctx)) {
+    return generateLocalFileEtlPython(ctx);
+  }
+  // Nested JSON from GCS is flattened with pandas, not Spark.
+  if (etlIsGcsJsonSource(ctx)) {
+    return generateGcsJsonFlattenPython(ctx);
   }
   const src = ctx.sourceObject;
   const tgt = ctx.targetObject;
@@ -5181,13 +6067,24 @@ function buildEtlScriptContext() {
   const isStageIngest =
     sourceKind === "stage_file" ||
     (sourceType === "snowflake" && String(sourceObject).startsWith("@"));
+  const isLocalUpload = sourceKind === "local_file" || /^UPLOAD\//i.test(sourceObject);
+  if (isLocalUpload && etlLocalUpload && etlLocalUpload.source_object) {
+    sourceObject = etlLocalUpload.source_object;
+  }
+  if (isLocalUpload && !sourceType) {
+    // synthetic source connector for local uploads
+  }
   return {
     name,
-    sourceType,
+    sourceType: isLocalUpload && !sourceType ? "upload" : sourceType,
     targetType,
-    sourceConnKey,
+    sourceConnKey: isLocalUpload ? "__local_file__" : sourceConnKey,
     targetConnKey,
-    sourceLabel: srcConn ? connectionLabel(srcConn) : sourceConnKey || etlPlatformLabel(sourceType),
+    sourceLabel: isLocalUpload
+      ? (etlLocalUpload && etlLocalUpload.file_name) || sourceObject || "Local file"
+      : srcConn
+        ? connectionLabel(srcConn)
+        : sourceConnKey || etlPlatformLabel(sourceType),
     targetLabel: tgtConn ? connectionLabel(tgtConn) : targetConnKey || etlPlatformLabel(targetType),
     sourceObject,
     targetObject,
@@ -5196,6 +6093,9 @@ function buildEtlScriptContext() {
     stageFilePath,
     stageFileExt,
     isStageIngest,
+    isLocalUpload,
+    localAbsolutePath: (etlLocalUpload && etlLocalUpload.absolute_path) || "",
+    localFileExt: (etlLocalUpload && etlLocalUpload.ext) || etlUriFileExt(sourceObject),
     notes: ($("#etl_notes").value || "").trim(),
     language: selectedEtlLanguage(),
   };
@@ -5214,19 +6114,76 @@ function updateEtlSourceKindUi() {
   const kindWrap = $("#etl_source_kind_wrap");
   const stageWrap = $("#etl_stage_wrap");
   const fileWrap = $("#etl_stage_file_wrap");
+  const localWrap = $("#etl_local_upload_wrap");
+  const connWrap = $("#etl_source_conn_wrap");
+  const typeField = $("#etl_source_type") && $("#etl_source_type").closest(".field");
+  const kind = (kindSel && kindSel.value) || "object";
   const isSnowflake = sourceType === "snowflake";
-  if (kindWrap) kindWrap.classList.toggle("hidden", !isSnowflake);
-  if (!isSnowflake && kindSel) kindSel.value = "object";
-  const stageMode = isSnowflake && kindSel && kindSel.value === "stage_file";
-  if (stageWrap) stageWrap.classList.toggle("hidden", !stageMode);
-  if (fileWrap) fileWrap.classList.toggle("hidden", !stageMode);
+  const localMode = kind === "local_file";
+  const stageMode = kind === "stage_file";
+
+  if (kindWrap) kindWrap.classList.remove("hidden");
+
+  // Stage file only makes sense for Snowflake sources.
+  if (stageMode && !isSnowflake && kindSel) {
+    // keep selection; user must pick Snowflake as source connector
+  }
+  if (stageWrap) stageWrap.classList.toggle("hidden", !(stageMode && isSnowflake));
+  if (fileWrap) fileWrap.classList.toggle("hidden", !(stageMode && isSnowflake));
+  if (localWrap) localWrap.classList.toggle("hidden", !localMode);
+  if (connWrap) connWrap.classList.toggle("hidden", localMode);
+  if (typeField) {
+    // Keep connector visible for local files so destination pairing stays clear,
+    // but auto-select File Upload when entering local mode.
+    if (localMode && $("#etl_source_type") && !$("#etl_source_type").value) {
+      $("#etl_source_type").value = "upload";
+    }
+  }
+  if (localMode) {
+    const srcConn = $("#etl_source_conn");
+    if (srcConn) {
+      srcConn.required = false;
+      srcConn.disabled = false;
+      srcConn.innerHTML =
+        '<option value="__local_file__" selected>Local uploaded file</option>';
+    }
+  } else {
+    const srcConn = $("#etl_source_conn");
+    if (srcConn) {
+      srcConn.required = true;
+      // Restore normal connection list when leaving local-file mode.
+      if (srcConn.value === "__local_file__" || srcConn.querySelector('option[value="__local_file__"]')) {
+        fillEtlConnectionSelect(srcConn, sourceType, "");
+      }
+    }
+  }
+
+  const kindHelp = $("#etl_source_kind_help");
+  if (kindHelp) {
+    if (localMode) {
+      kindHelp.textContent = "Upload a local CSV, Excel, JSON, or Parquet file as the pipeline source.";
+    } else if (stageMode) {
+      kindHelp.textContent = "Load a file from a Snowflake stage into a RAW table.";
+    } else {
+      kindHelp.textContent =
+        "Point at a table, BigQuery dataset.table, gs:// URI, or other connector object.";
+    }
+  }
+
   const help = $("#etl_source_object_help");
   if (help) {
-    help.textContent = stageMode
-      ? "Auto-filled from the selected stage file. Used in COPY INTO LOCATION."
-      : "Schema.table, dataset.table, or path used in the generated script.";
+    if (localMode) {
+      help.textContent = "Filled automatically after upload (rnd/UPLOAD/…).";
+    } else if (stageMode) {
+      help.textContent = "Auto-filled from the selected stage file. Used in COPY INTO LOCATION.";
+    } else if (sourceType === "gcp") {
+      help.textContent =
+        "GCS JSON: gs://bucket/folder/file.json (or gs://bucket/folder/). BigQuery table: project.dataset.table.";
+    } else {
+      help.textContent = "Schema.table, dataset.table, or path used in the generated script.";
+    }
   }
-  if (stageMode) {
+  if (stageMode && isSnowflake) {
     if ($("#etl_target_type") && !$("#etl_target_type").value) {
       $("#etl_target_type").value = "snowflake";
       fillEtlConnectionSelect($("#etl_target_conn"), "snowflake", $("#etl_source_conn").value);
@@ -5234,6 +6191,94 @@ function updateEtlSourceKindUi() {
     if ($("#etl_target_conn") && !$("#etl_target_conn").value && $("#etl_source_conn").value) {
       $("#etl_target_conn").value = $("#etl_source_conn").value;
     }
+  }
+}
+
+async function uploadEtlLocalFile(file) {
+  if (!file) return;
+  if (!/\.(csv|tsv|txt|xlsx|xls|json|jsonl|ndjson|parquet)$/i.test(file.name)) {
+    return showEtlError("Please choose a CSV, Excel, JSON, or Parquet file.");
+  }
+  if (file.size > 50 * 1024 * 1024) {
+    return showEtlError("File is too large. Maximum size is 50 MB.");
+  }
+  showEtlOk("Uploading " + file.name + "…");
+  try {
+    const fd = new FormData();
+    fd.append("file", file, file.name);
+    const res = await fetch(etlApiBaseUrl() + "/api/etl/upload", {
+      method: "POST",
+      body: fd,
+      headers: { "X-DataHive-User": "etl-upload" },
+    });
+    const text = await res.text();
+    let data = {};
+    try {
+      data = text ? JSON.parse(text) : {};
+    } catch (_e) {
+      data = { detail: text };
+    }
+    if (!res.ok) {
+      throw new Error(
+        (data && (data.detail || data.message)) || "Upload failed (HTTP " + res.status + ")"
+      );
+    }
+    showEtlLocalUploadSelected({
+      file_name: data.file_name || file.name,
+      source_object: data.source_object || data.upload_relative_path,
+      absolute_path: data.absolute_path || "",
+      ext: data.ext || (file.name.split(".").pop() || "").toLowerCase(),
+      file_size: data.file_size != null ? data.file_size : file.size,
+    });
+    if ($("#etl_source_type")) $("#etl_source_type").value = "upload";
+    updateEtlSourceKindUi();
+    showEtlOk("Uploaded " + (data.file_name || file.name) + " → " + (data.source_object || ""));
+  } catch (err) {
+    clearEtlLocalUpload();
+    showEtlError(
+      "Local file upload failed: " +
+        (err && err.message ? err.message : err) +
+        ". Is the Connector API running on :5055?"
+    );
+  }
+}
+
+function bindEtlLocalUploadUi() {
+  const zone = $("#etlUploadDropzone");
+  const input = $("#etlUploadFileInput");
+  const clearBtn = $("#etlUploadClearBtn");
+  if (!zone || !input || zone.dataset.bound === "1") return;
+  zone.dataset.bound = "1";
+  zone.addEventListener("click", () => input.click());
+  zone.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      input.click();
+    }
+  });
+  input.addEventListener("change", (e) => uploadEtlLocalFile(e.target.files && e.target.files[0]));
+  ["dragenter", "dragover"].forEach((ev) =>
+    zone.addEventListener(ev, (e) => {
+      e.preventDefault();
+      zone.classList.add("dragover");
+    })
+  );
+  ["dragleave", "drop"].forEach((ev) =>
+    zone.addEventListener(ev, (e) => {
+      e.preventDefault();
+      zone.classList.remove("dragover");
+    })
+  );
+  zone.addEventListener("drop", (e) => {
+    const f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+    uploadEtlLocalFile(f);
+  });
+  if (clearBtn) {
+    clearBtn.addEventListener("click", () => {
+      clearEtlLocalUpload();
+      if ($("#etl_source_object")) $("#etl_source_object").value = "";
+      showEtlOk("Local file cleared.");
+    });
   }
 }
 
@@ -5381,7 +6426,7 @@ function applyEtlStageFileSelection() {
 
 function generateEtlTransformationScript() {
   const ctx = buildEtlScriptContext();
-  if (!ctx.sourceType) {
+  if (!ctx.isLocalUpload && !ctx.sourceType) {
     showEtlError("Select a source connector before generating a script.");
     return null;
   }
@@ -5389,7 +6434,10 @@ function generateEtlTransformationScript() {
     showEtlError("Select a destination connector before generating a script.");
     return null;
   }
-  if (!ctx.sourceConnKey || ctx.sourceConnKey === "__configure__") {
+  if (
+    !ctx.isLocalUpload &&
+    (!ctx.sourceConnKey || ctx.sourceConnKey === "__configure__")
+  ) {
     showEtlError("Select a source connection before generating a script.");
     return null;
   }
@@ -5397,7 +6445,17 @@ function generateEtlTransformationScript() {
     showEtlError("Select a destination connection before generating a script.");
     return null;
   }
+  if (ctx.sourceKind === "local_file" || ctx.isLocalUpload) {
+    if (!ctx.sourceObject && !(etlLocalUpload && etlLocalUpload.source_object)) {
+      showEtlError("Upload a local file before generating a script.");
+      return null;
+    }
+  }
   if (ctx.sourceKind === "stage_file") {
+    if (ctx.sourceType !== "snowflake") {
+      showEtlError("Snowflake stage file requires Source connector = Snowflake.");
+      return null;
+    }
     if (!ctx.stageFqn) {
       showEtlError("Select a Snowflake stage (e.g. SALES_DB.RAW.RAW_STAGE).");
       return null;
@@ -5409,11 +6467,25 @@ function generateEtlTransformationScript() {
   }
   let script = "";
   let languageLabel = ctx.language.toUpperCase();
-  if (ctx.sourceKind === "stage_file" || ctx.isStageIngest) {
-    // Always native Snowflake DDL + COPY INTO for stage landing.
+  if (ctx.sourceKind === "local_file" || ctx.isLocalUpload) {
+    if (ctx.language === "sql") {
+      script = generateLocalFileEtlSql(ctx);
+      languageLabel = "SQL · local file notes (use Python to load)";
+    } else {
+      script = generateLocalFileEtlPython(ctx);
+      languageLabel =
+        etlIsJsonFileExt(ctx.localFileExt || etlUriFileExt(ctx.sourceObject))
+          ? "PYTHON · local JSON flatten → tabular"
+          : "PYTHON · local file → tabular";
+    }
+  } else if (ctx.sourceKind === "stage_file" || ctx.isStageIngest) {
+    const jsonStage = etlIsJsonFileExt(etlStageResolveExt(ctx));
+    // Native Snowflake DDL + COPY for CSV/Parquet; nested JSON is flattened to tabular RAW.
     if (ctx.language === "sql") {
       script = generateEtlSqlScript(ctx);
-      languageLabel = "SQL · Snowflake COPY";
+      languageLabel = jsonStage
+        ? "SQL · JSON flatten → tabular"
+        : "SQL · Snowflake COPY";
     } else {
       script = generateSnowflakeStageIngestPython(ctx, {
         viaLabel:
@@ -5421,10 +6493,28 @@ function generateEtlTransformationScript() {
             ? "Python · Snowflake COPY (not PySpark)"
             : "Python",
       });
+      if (jsonStage) {
+        languageLabel =
+          ctx.language === "pyspark"
+            ? "PYTHON · JSON flatten (PySpark not used)"
+            : "PYTHON · JSON flatten → tabular";
+      } else {
+        languageLabel =
+          ctx.language === "pyspark"
+            ? "PYTHON · Snowflake COPY (PySpark not used)"
+            : "PYTHON · Snowflake COPY";
+      }
+    }
+  } else if (etlIsGcsJsonSource(ctx)) {
+    if (ctx.language === "sql") {
+      script = generateGcsJsonFlattenSql(ctx);
+      languageLabel = "SQL · GCS JSON → BigQuery";
+    } else {
+      script = generateGcsJsonFlattenPython(ctx);
       languageLabel =
         ctx.language === "pyspark"
-          ? "PYTHON · Snowflake COPY (PySpark not used)"
-          : "PYTHON · Snowflake COPY";
+          ? "PYTHON · GCS JSON flatten (PySpark not used)"
+          : "PYTHON · GCS JSON flatten → tabular";
     }
   } else if (ctx.language === "python") {
     script = generateEtlPythonScript(ctx);
@@ -5478,21 +6568,32 @@ function saveEtlPipelines() {
 }
 
 function fillEtlConnectorSelects() {
-  const opts =
-    '<option value="">Select connector…</option>' +
-    etlConnectorOptions().map((c) =>
-      '<option value="' + escapeHtml(c.id) + '">' + escapeHtml(c.name) + "</option>"
-    ).join("");
+  const all = etlConnectorOptions();
+  const srcOpts =
+    '<option value="">Select source connector…</option>' +
+    all
+      .map((c) =>
+        '<option value="' + escapeHtml(c.id) + '">' + escapeHtml(c.name) + "</option>"
+      )
+      .join("");
+  const tgtOpts =
+    '<option value="">Select target connector…</option>' +
+    all
+      .filter((c) => c.id !== "upload")
+      .map((c) =>
+        '<option value="' + escapeHtml(c.id) + '">' + escapeHtml(c.name) + "</option>"
+      )
+      .join("");
   const src = $("#etl_source_type");
   const tgt = $("#etl_target_type");
   if (src) {
     const prev = src.value;
-    src.innerHTML = opts.replace("Select connector…", "Select source connector…");
+    src.innerHTML = srcOpts;
     if (prev) src.value = prev;
   }
   if (tgt) {
     const prev = tgt.value;
-    tgt.innerHTML = opts.replace("Select connector…", "Select target connector…");
+    tgt.innerHTML = tgtOpts;
     if (prev) tgt.value = prev;
   }
 }
@@ -5620,6 +6721,7 @@ function resetEtlForm() {
     $("#etl_source_file").disabled = true;
     $("#etl_source_file").innerHTML = '<option value="">Select a stage first…</option>';
   }
+  clearEtlLocalUpload();
   updateEtlSourceKindUi();
   etlGeneratedScript = "";
   if ($("#etlScriptEditor")) $("#etlScriptEditor").value = "";
@@ -5699,27 +6801,39 @@ function bindEtlEvents() {
     }
   });
 
+  bindEtlLocalUploadUi();
+
   const sourceKind = $("#etl_source_kind");
   if (sourceKind) {
     sourceKind.addEventListener("change", () => {
       updateEtlSourceKindUi();
-      if (sourceKind.value === "stage_file") {
+      const langHelp = $("#etl_language_help");
+      if (sourceKind.value === "local_file") {
+        if ($("#etl_source_type") && !$("#etl_source_type").value) {
+          $("#etl_source_type").value = "upload";
+        }
+        if ($("#etl_language") && $("#etl_language").value === "sql") {
+          $("#etl_language").value = "python";
+        }
+        if (langHelp) {
+          langHelp.textContent =
+            "Local uploads use Python to load (JSON is flattened to tabular columns).";
+        }
+      } else if (sourceKind.value === "stage_file") {
+        if ($("#etl_source_type")) $("#etl_source_type").value = "snowflake";
+        fillEtlConnectionSelect($("#etl_source_conn"), "snowflake", "");
         loadEtlSnowflakeStages();
         // Stage landing is native Snowflake COPY — default away from PySpark.
         if ($("#etl_language") && $("#etl_language").value === "pyspark") {
           $("#etl_language").value = "sql";
         }
-        const langHelp = $("#etl_language_help");
         if (langHelp) {
           langHelp.textContent =
             "Stage → RAW always generates Snowflake DDL + COPY INTO. PySpark is not used.";
         }
-      } else {
-        const langHelp = $("#etl_language_help");
-        if (langHelp) {
-          langHelp.textContent =
-            "For Snowflake stage → RAW, SQL/Python use native COPY INTO (PySpark is not required).";
-        }
+      } else if (langHelp) {
+        langHelp.textContent =
+          "Snowflake stage → COPY INTO. GCS gs://…json or local upload → flatten nested JSON (Python recommended).";
       }
     });
   }
@@ -5882,16 +6996,22 @@ function bindEtlEvents() {
     const targetObject =
       ($("#etl_target_object").value || "").trim() || etlDefaultObject("target", targetType);
 
+    const sourceKindVal = ($("#etl_source_kind") && $("#etl_source_kind").value) || "object";
+    const localUploadMode = sourceKindVal === "local_file";
+
     if (!name) return showEtlError("Pipeline name is required.");
-    if (!sourceType) return showEtlError("Select a source connector.");
+    if (!localUploadMode && !sourceType) return showEtlError("Select a source connector.");
     if (!targetType) return showEtlError("Select a destination connector.");
-    if (!sourceConnKey || sourceConnKey === "__configure__") {
+    if (localUploadMode && !(etlLocalUpload && etlLocalUpload.source_object) && !sourceObject) {
+      return showEtlError("Upload a local file before saving the pipeline.");
+    }
+    if (!localUploadMode && (!sourceConnKey || sourceConnKey === "__configure__")) {
       return showEtlError("Select a source connection. Save one under Connectors if the list is empty.");
     }
     if (!targetConnKey || targetConnKey === "__configure__") {
       return showEtlError("Select a destination connection. Save one under Connectors if the list is empty.");
     }
-    if (sourceConnKey === targetConnKey) {
+    if (!localUploadMode && sourceConnKey === targetConnKey) {
       return showEtlError("Source and destination connections must be different.");
     }
 
@@ -5905,17 +7025,24 @@ function bindEtlEvents() {
     const srcConn = findEtlConnection(sourceConnKey);
     const tgtConn = findEtlConnection(targetConnKey);
     const now = new Date().toISOString();
+    const resolvedSourceObject =
+      (localUploadMode && etlLocalUpload && etlLocalUpload.source_object) || sourceObject;
     etlPipelines.unshift({
       id: "etl-" + Math.random().toString(36).slice(2, 9),
       name,
-      source_type: sourceType,
+      source_type: localUploadMode ? "upload" : sourceType,
       target_type: targetType,
-      source_conn_id: sourceConnKey,
+      source_conn_id: localUploadMode ? "__local_file__" : sourceConnKey,
       target_conn_id: targetConnKey,
-      source_label: srcConn ? connectionLabel(srcConn) : sourceConnKey,
+      source_label: localUploadMode
+        ? (etlLocalUpload && etlLocalUpload.file_name) || "Local file"
+        : srcConn
+          ? connectionLabel(srcConn)
+          : sourceConnKey,
       target_label: tgtConn ? connectionLabel(tgtConn) : targetConnKey,
-      source_object: sourceObject,
+      source_object: resolvedSourceObject,
       target_object: targetObject,
+      source_kind: sourceKindVal,
       language,
       script,
       notes,

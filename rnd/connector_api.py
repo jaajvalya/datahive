@@ -52,7 +52,7 @@ GLOSSARY_TEMPLATE_PATH = _RND_DIR / "templates" / "glossary_template.xlsx"
 MAX_UPLOAD_BYTES = 50 * 1024 * 1024
 MAX_GLOSSARY_BYTES = 10 * 1024 * 1024
 ALLOWED_UPLOAD_SUFFIXES = frozenset(
-    {".csv", ".tsv", ".txt", ".xlsx", ".xls", ".json", ".parquet"}
+    {".csv", ".tsv", ".txt", ".xlsx", ".xls", ".json", ".jsonl", ".ndjson", ".parquet"}
 )
 ALLOWED_GLOSSARY_SUFFIXES = frozenset({".xlsx", ".xls", ".csv"})
 
@@ -1525,6 +1525,37 @@ async def save_connector_upload(
     result["upload_relative_path"] = doc["upload_relative_path"]
     result["stored_file_name"] = stored_name
     return result
+
+
+@app.post("/api/etl/upload")
+async def upload_etl_local_file(
+    file: UploadFile = File(...),
+) -> dict[str, Any]:
+    """Store a local file for ETL/ELT source (no connector document required)."""
+    original_name = file.filename or "upload"
+    suffix = Path(original_name).suffix.lower()
+    if suffix not in ALLOWED_UPLOAD_SUFFIXES:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Unsupported file type {suffix or '(none)'}. Use CSV, Excel, JSON, or Parquet.",
+        )
+
+    _ensure_upload_dir()
+    stored_name = _safe_stored_name(original_name)
+    dest = UPLOAD_DIR / stored_name
+    bytes_written = await _write_upload_file(file, dest)
+    rel = f"UPLOAD/{stored_name}"
+    return {
+        "ok": True,
+        "file_name": original_name,
+        "stored_file_name": stored_name,
+        "upload_relative_path": rel,
+        "source_object": rel,
+        "absolute_path": str(dest.resolve()),
+        "file_size": bytes_written,
+        "ext": suffix.lstrip("."),
+        "file_type": file.content_type or "",
+    }
 
 
 @app.get("/api/glossary/template")
