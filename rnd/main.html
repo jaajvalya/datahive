@@ -2093,35 +2093,18 @@
                 <div class="help">Role DataHive should assume in your AWS account.</div>
               </div>
 
-              <div id="group_rdbms" class="hidden">
-                <div class="row2" style="margin-bottom:12px">
+              <div id="group_db_host" class="hidden">
+                <div class="row2" style="margin-bottom:0">
                   <div class="field" style="margin-bottom:0">
-                    <label for="cf_rdbms_engine">Database engine <span class="req">*</span></label>
-                    <select id="cf_rdbms_engine" name="engine">
-                      <option value="postgresql">PostgreSQL</option>
-                      <option value="mysql">MySQL</option>
-                      <option value="mariadb">MariaDB</option>
-                      <option value="sqlserver">Microsoft SQL Server</option>
-                      <option value="oracle">Oracle</option>
-                      <option value="db2">IBM Db2</option>
-                      <option value="other">Other (JDBC / ODBC URL)</option>
-                    </select>
+                    <label for="cf_db_port">Port <span class="req">*</span></label>
+                    <input id="cf_db_port" name="port" maxlength="8" inputmode="numeric" placeholder="5432" autocomplete="off" />
                   </div>
                   <div class="field" style="margin-bottom:0">
-                    <label for="cf_rdbms_port">Port <span class="req">*</span></label>
-                    <input id="cf_rdbms_port" name="port" maxlength="8" inputmode="numeric" placeholder="5432" autocomplete="off" />
+                    <label for="cf_db_database">Database name <span class="req">*</span></label>
+                    <input id="cf_db_database" name="database" maxlength="256" placeholder="analytics" autocomplete="off" />
                   </div>
                 </div>
-                <div class="field">
-                  <label for="cf_rdbms_database">Database / service name <span class="req">*</span></label>
-                  <input id="cf_rdbms_database" name="database" maxlength="256" placeholder="analytics" autocomplete="off" />
-                  <div class="help" id="cf_rdbms_database_help">Database name (Postgres/MySQL/SQL Server) or Oracle service name / SID.</div>
-                </div>
-                <div class="field hidden" id="group_rdbms_url">
-                  <label for="cf_rdbms_url">Connection URL <span class="req">*</span></label>
-                  <input id="cf_rdbms_url" name="jdbc_url" maxlength="2048" placeholder="postgresql://user:pass@host:5432/db or jdbc:…" autocomplete="off" />
-                  <div class="help">For Other engines, paste a SQLAlchemy-style URL or JDBC URL. Username/password above still apply when not embedded.</div>
-                </div>
+                <div class="help" id="cf_db_host_help" style="margin-top:8px">Host is above. Default ports: PostgreSQL 5432 · SQL Server 1433 · MongoDB 27017.</div>
               </div>
 
               <div class="field" id="group_apis">
@@ -2357,19 +2340,20 @@ const CLOUDS = {
     hint: "Configure Databricks connectivity",
     apiKeyLabel: "Personal access token"
   },
-  rdbms: {
-    id: "rdbms",
-    type: "rdbms",
-    mode: "rdbms",
-    name: "On-premises RDBMS",
-    short: "RDBMS",
-    logo: "../images/logos/rdbms.svg",
-    lead: "Connect any on-premises relational database (PostgreSQL, MySQL, SQL Server, Oracle, Db2, and more) over host/port credentials.",
+  postgresql: {
+    id: "postgresql",
+    type: "postgresql",
+    mode: "database",
+    engine: "postgresql",
+    name: "PostgreSQL",
+    short: "PostgreSQL",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg",
+    lead: "Connect a PostgreSQL database (on-premises or self-hosted) using host, port, database name, and credentials.",
     accountLabel: "Host / IP",
     accountPlaceholder: "db.corp.local or 10.0.1.25",
-    namePlaceholder: "Prod Postgres — Analytics",
+    namePlaceholder: "Prod PostgreSQL — Analytics",
     scopeLabel: "Schema scope",
-    scopePlaceholder: "public, sales, dbo (optional filter)",
+    scopePlaceholder: "public, sales (optional filter)",
     scopeHelp: "Optional allow-list of schemas or object patterns to catalog.",
     regions: ["on-prem"],
     auth: [
@@ -2382,18 +2366,72 @@ const CLOUDS = {
     saLabel: "",
     saHelp: "",
     saPlaceholder: "",
-    hint: "Configure on-prem database connectivity",
+    hint: "Configure PostgreSQL connectivity",
     accessKeyLabel: "Username",
     secretKeyLabel: "Password",
-    defaultPortByEngine: {
-      postgresql: "5432",
-      mysql: "3306",
-      mariadb: "3306",
-      sqlserver: "1433",
-      oracle: "1521",
-      db2: "50000",
-      other: ""
-    }
+    defaultPort: "5432"
+  },
+  sqlserver: {
+    id: "sqlserver",
+    type: "sqlserver",
+    mode: "database",
+    engine: "sqlserver",
+    name: "SQL Server",
+    short: "SQL Server",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/microsoftsqlserver/microsoftsqlserver-original.svg",
+    lead: "Connect a Microsoft SQL Server database (on-premises or self-hosted) using host, port, database name, and credentials.",
+    accountLabel: "Host / IP",
+    accountPlaceholder: "sql.corp.local or 10.0.1.40",
+    namePlaceholder: "Prod SQL Server — Analytics",
+    scopeLabel: "Schema scope",
+    scopePlaceholder: "dbo, sales (optional filter)",
+    scopeHelp: "Optional allow-list of schemas or object patterns to catalog.",
+    regions: ["on-prem"],
+    auth: [
+      { value: "password", label: "Username + password" }
+    ],
+    apis: [
+      { value: "tables", label: "Tables & views", checked: true },
+      { value: "schemas", label: "Schemas", checked: true }
+    ],
+    saLabel: "",
+    saHelp: "",
+    saPlaceholder: "",
+    hint: "Configure SQL Server connectivity",
+    accessKeyLabel: "Username",
+    secretKeyLabel: "Password",
+    defaultPort: "1433"
+  },
+  mongodb: {
+    id: "mongodb",
+    type: "mongodb",
+    mode: "database",
+    engine: "mongodb",
+    name: "MongoDB",
+    short: "MongoDB",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg",
+    lead: "Connect a MongoDB database (on-premises, Atlas, or self-hosted) using host, port, database name, and credentials.",
+    accountLabel: "Host / IP",
+    accountPlaceholder: "mongo.corp.local or cluster0.xxxxx.mongodb.net",
+    namePlaceholder: "Prod MongoDB — Analytics",
+    scopeLabel: "Collection scope",
+    scopePlaceholder: "customers, orders (optional filter)",
+    scopeHelp: "Optional allow-list of collections or name patterns to catalog.",
+    regions: ["on-prem"],
+    auth: [
+      { value: "password", label: "Username + password" }
+    ],
+    apis: [
+      { value: "collections", label: "Collections", checked: true },
+      { value: "databases", label: "Databases", checked: true }
+    ],
+    saLabel: "",
+    saHelp: "",
+    saPlaceholder: "",
+    hint: "Configure MongoDB connectivity",
+    accessKeyLabel: "Username",
+    secretKeyLabel: "Password",
+    defaultPort: "27017"
   },
   upload: {
     id: "upload",
@@ -2595,40 +2633,42 @@ function fillSelect(sel, options, selected){
   }).join("");
 }
 
-function rdbmsDefaultPort(engine, cloud) {
-  const map = (cloud && cloud.defaultPortByEngine) || {};
-  return map[engine] || map.postgresql || "5432";
+function isDatabaseCloud(cloud) {
+  return !!(
+    cloud &&
+    (cloud.mode === "database" ||
+      cloud.id === "postgresql" ||
+      cloud.id === "sqlserver" ||
+      cloud.id === "mongodb" ||
+      cloud.id === "rdbms")
+  );
 }
 
-function syncRdbmsEngineUi(cloud) {
-  if (!cloud || cloud.id !== "rdbms") return;
-  const engine = ($("#cf_rdbms_engine") && $("#cf_rdbms_engine").value) || "postgresql";
-  const portEl = $("#cf_rdbms_port");
-  if (portEl && (!portEl.value.trim() || Object.values(cloud.defaultPortByEngine || {}).includes(portEl.value.trim()))) {
-    portEl.value = rdbmsDefaultPort(engine, cloud);
-  }
-  const urlWrap = $("#group_rdbms_url");
-  if (urlWrap) urlWrap.classList.toggle("hidden", engine !== "other");
-  const dbHelp = $("#cf_rdbms_database_help");
-  if (dbHelp) {
-    if (engine === "oracle") {
-      dbHelp.textContent = "Oracle service name or SID (e.g. ORCL / XEPDB1).";
-    } else if (engine === "other") {
-      dbHelp.textContent = "Logical database name for cataloging (optional if embedded in the URL).";
-    } else {
-      dbHelp.textContent = "Database name to connect and catalog.";
-    }
-  }
+function dbCloudEngine(cloud) {
+  if (!cloud) return "postgresql";
+  if (cloud.engine) return cloud.engine;
+  if (cloud.id === "sqlserver") return "sqlserver";
+  if (cloud.id === "mongodb") return "mongodb";
+  if (cloud.id === "postgresql" || cloud.id === "postgres") return "postgresql";
+  return "postgresql";
+}
+
+function dbDefaultPort(cloud) {
+  if (cloud && cloud.defaultPort) return String(cloud.defaultPort);
+  const engine = dbCloudEngine(cloud);
+  if (engine === "sqlserver") return "1433";
+  if (engine === "mongodb") return "27017";
+  return "5432";
 }
 
 function configureForm(cloud){
   const isUpload = cloud.mode === "upload";
-  const isRdbms = cloud.id === "rdbms" || cloud.mode === "rdbms";
+  const isDb = isDatabaseCloud(cloud);
   $("#panelLogo").src = cloud.logo;
   $("#panelTitle").textContent = isUpload
     ? "File upload"
-    : isRdbms
-      ? "On-premises RDBMS connectivity"
+    : isDb
+      ? cloud.short + " connectivity"
       : (cloud.short + " API connectivity");
   $("#panelLead").textContent = cloud.lead;
   $("#cf_display_name").placeholder = cloud.namePlaceholder;
@@ -2645,7 +2685,7 @@ function configureForm(cloud){
   $("#cf_scope_label").textContent = cloud.scopeLabel;
   $("#cf_scope").placeholder = cloud.scopePlaceholder;
   $("#cf_scope_help").textContent = cloud.scopeHelp;
-  $("#cf_apis_label").textContent = isRdbms
+  $("#cf_apis_label").textContent = isDb
     ? "Objects to catalog"
     : "APIs / services to fetch from";
 
@@ -2659,18 +2699,26 @@ function configureForm(cloud){
   const needsTenant = !!cloud.needsTenant || cloud.id === "azure";
   $("#group_azure_extra").classList.toggle("hidden", !needsTenant);
   $("#group_resource_group").classList.toggle("hidden", cloud.id !== "azure");
-  $("#group_rdbms").classList.toggle("hidden", !isRdbms);
-  // Region is not meaningful for on-prem host/port connections.
+  if ($("#group_db_host")) $("#group_db_host").classList.toggle("hidden", !isDb);
+  // Region is not meaningful for host/port database connections.
   const regionField = $("#cf_region") ? $("#cf_region").closest(".field") : null;
-  if (regionField) regionField.classList.toggle("hidden", isRdbms);
+  if (regionField) regionField.classList.toggle("hidden", isDb);
   if ($("#group_apis")) $("#group_apis").classList.toggle("hidden", false);
 
-  if (isRdbms) {
-    if ($("#cf_rdbms_engine")) $("#cf_rdbms_engine").value = "postgresql";
-    if ($("#cf_rdbms_port")) $("#cf_rdbms_port").value = rdbmsDefaultPort("postgresql", cloud);
-    if ($("#cf_rdbms_database")) $("#cf_rdbms_database").value = "";
-    if ($("#cf_rdbms_url")) $("#cf_rdbms_url").value = "";
-    syncRdbmsEngineUi(cloud);
+  if (isDb) {
+    if ($("#cf_db_port")) $("#cf_db_port").value = dbDefaultPort(cloud);
+    if ($("#cf_db_database")) $("#cf_db_database").value = "";
+    const help = $("#cf_db_host_help");
+    if (help) {
+      if (cloud.id === "sqlserver") {
+        help.textContent = "Use the SQL Server host or instance. Default port is 1433.";
+      } else if (cloud.id === "mongodb") {
+        help.textContent =
+          "Use the MongoDB host or Atlas hostname. Default port is 27017. Database is the auth/catalog DB name.";
+      } else {
+        help.textContent = "Use the PostgreSQL host. Default port is 5432.";
+      }
+    }
   }
 
   $("#cf_sa_label").innerHTML = (cloud.saLabel || "Credential JSON") + ' <span class="req">*</span>';
@@ -2816,7 +2864,11 @@ async function openPanelForEdit(connectorId) {
     const data = await fetchConnectorById(connectorId);
     const item = (data && data.item) || null;
     if (!item) throw new Error("Connector not found.");
-    const cloudId = item.cloud || Object.keys(CLOUDS).find((k) => CLOUDS[k].type === item.connector_type);
+    let cloudId = item.cloud || Object.keys(CLOUDS).find((k) => CLOUDS[k].type === item.connector_type);
+    // Legacy generic RDBMS → dedicated PostgreSQL / SQL Server tiles
+    if (cloudId === "rdbms" || item.connector_type === "rdbms") {
+      cloudId = item.engine === "sqlserver" || item.engine === "mssql" ? "sqlserver" : "postgresql";
+    }
     const cloud = CLOUDS[cloudId];
     if (!cloud) throw new Error("Unknown connector platform: " + (item.cloud || item.connector_type));
 
@@ -2851,22 +2903,16 @@ async function openPanelForEdit(connectorId) {
     if ($("#cf_role_arn")) $("#cf_role_arn").value = item.role_arn || "";
     if ($("#cf_upload_format") && item.upload_format) $("#cf_upload_format").value = item.upload_format;
     if ($("#cf_upload_notes")) $("#cf_upload_notes").value = item.upload_notes || "";
-    if (cloud.id === "rdbms" || cloud.mode === "rdbms") {
-      if ($("#cf_rdbms_engine")) {
-        $("#cf_rdbms_engine").value = item.engine || "postgresql";
+    if (isDatabaseCloud(cloud)) {
+      if ($("#cf_db_port")) {
+        $("#cf_db_port").value = item.port || dbDefaultPort(cloud);
       }
-      if ($("#cf_rdbms_port")) {
-        $("#cf_rdbms_port").value =
-          item.port || rdbmsDefaultPort(item.engine || "postgresql", cloud);
+      if ($("#cf_db_database")) {
+        $("#cf_db_database").value = item.database || "";
       }
-      if ($("#cf_rdbms_database")) {
-        $("#cf_rdbms_database").value = item.database || "";
-      }
-      if ($("#cf_rdbms_url")) $("#cf_rdbms_url").value = item.jdbc_url || "";
       if ($("#cf_account_id") && !item.account_id && item.host) {
         $("#cf_account_id").value = item.host;
       }
-      syncRdbmsEngineUi(cloud);
     }
 
     const apis = Array.isArray(item.apis) ? item.apis : [];
@@ -3036,11 +3082,6 @@ document.addEventListener("keydown", (e)=>{
   if (e.key === "Escape" && !modalOverlay.classList.contains("hidden")) closePanel();
 });
 $("#cf_auth_type").addEventListener("change", (e)=> toggleAuth(e.target.value));
-if ($("#cf_rdbms_engine")) {
-  $("#cf_rdbms_engine").addEventListener("change", () => {
-    syncRdbmsEngineUi(CLOUDS[activeCloud] || CLOUDS.rdbms);
-  });
-}
 
 const recentBody = $("#recentConnectionsBody");
 if (recentBody) {
@@ -3253,21 +3294,21 @@ form.addEventListener("submit", async (e)=>{
       return showError("Tenant ID is required.");
     }
 
-    const isRdbms = cloud.id === "rdbms" || cloud.mode === "rdbms";
+    const isDb = isDatabaseCloud(cloud);
     let engine = "";
     let port = "";
     let database = "";
-    let jdbcUrl = "";
-    if (isRdbms) {
-      engine = ($("#cf_rdbms_engine") && $("#cf_rdbms_engine").value) || "postgresql";
-      port = ($("#cf_rdbms_port") && $("#cf_rdbms_port").value.trim()) || rdbmsDefaultPort(engine, cloud);
-      database = ($("#cf_rdbms_database") && $("#cf_rdbms_database").value.trim()) || "";
-      jdbcUrl = ($("#cf_rdbms_url") && $("#cf_rdbms_url").value.trim()) || "";
+    if (isDb) {
+      engine = dbCloudEngine(cloud);
+      port = ($("#cf_db_port") && $("#cf_db_port").value.trim()) || dbDefaultPort(cloud);
+      database = ($("#cf_db_database") && $("#cf_db_database").value.trim()) || "";
       if (!/^\d+$/.test(port)) return showError("Port must be a number.");
-      if (engine === "other") {
-        if (!jdbcUrl) return showError("Connection URL is required for Other engines.");
-      } else if (!database) {
-        return showError("Database / service name is required.");
+      if (!database) {
+        return showError(
+          cloud.id === "mongodb"
+            ? "Database name is required (auth / catalog database)."
+            : "Database name is required."
+        );
       }
     }
 
@@ -3339,10 +3380,10 @@ form.addEventListener("submit", async (e)=>{
     payload = {
       connector_type: cloud.type,
       cloud: cloud.id,
-      mode: isRdbms ? "rdbms" : (cloud.mode || "cloud"),
+      mode: isDb ? "database" : (cloud.mode || "cloud"),
       display_name: displayName,
       account_id: accountId,
-      region: isRdbms ? "on-prem" : region,
+      region: isDb ? "on-prem" : region,
       auth_type: authType,
       apis,
       dataset_scope: scope,
@@ -3356,11 +3397,10 @@ form.addEventListener("submit", async (e)=>{
       access_key_id: $("#cf_access_key_id").value,
       secret_access_key: $("#cf_secret_access_key").value,
       role_arn: $("#cf_role_arn").value,
-      host: isRdbms ? accountId : "",
-      port: isRdbms ? port : "",
-      database: isRdbms ? database : "",
-      engine: isRdbms ? engine : "",
-      jdbc_url: isRdbms ? jdbcUrl : ""
+      host: isDb ? accountId : "",
+      port: isDb ? port : "",
+      database: isDb ? database : "",
+      engine: isDb ? engine : ""
     };
   }
 
@@ -3517,10 +3557,23 @@ function showStatus(payload, pillText, pillKind, saveResult){
         ? "<br><strong>Notes:</strong> " + escapeHtml(payload.upload_notes)
         : "") +
       mongoLine;
-  } else if (payload.mode === "rdbms" || payload.cloud === "rdbms") {
+  } else if (
+    payload.mode === "database" ||
+    payload.cloud === "postgresql" ||
+    payload.cloud === "sqlserver" ||
+    payload.cloud === "mongodb" ||
+    payload.cloud === "rdbms"
+  ) {
+    const dbLabel =
+      payload.cloud === "sqlserver"
+        ? "SQL Server"
+        : payload.cloud === "mongodb" || payload.engine === "mongodb"
+          ? "MongoDB"
+          : payload.cloud === "postgresql" || payload.engine === "postgresql"
+            ? "PostgreSQL"
+            : (cloud && cloud.short) || "Database";
     $("#statusMeta").innerHTML =
-      "<strong>Source:</strong> On-premises RDBMS" +
-      " · <strong>Engine:</strong> " + escapeHtml(payload.engine || "postgresql") +
+      "<strong>Source:</strong> " + escapeHtml(dbLabel) +
       "<br><strong>Host:</strong> " + escapeHtml(payload.host || payload.account_id || "") +
       " · <strong>Port:</strong> " + escapeHtml(String(payload.port || "")) +
       " · <strong>Database:</strong> " + escapeHtml(payload.database || "") +

@@ -54,7 +54,18 @@ def validate_connector(payload: dict[str, Any]) -> dict[str, Any]:
         return _validate_snowflake(payload)
     if platform in {"databricks", "dbx"}:
         return _validate_databricks(payload)
+    if platform in {"sqlserver", "mssql"}:
+        merged = dict(payload)
+        merged["engine"] = "sqlserver"
+        return _validate_rdbms(merged)
+    if platform in {"mongodb", "mongo"}:
+        return _validate_mongodb(payload)
     if platform in {"postgres", "postgresql", "pg", "local-postgres"}:
+        # Dedicated PostgreSQL connector (host/port/db) vs local DataHive Postgres fallback.
+        if _norm(payload.get("host") or payload.get("account_id")) or _norm(payload.get("database")):
+            merged = dict(payload)
+            merged["engine"] = "postgresql"
+            return _validate_rdbms(merged)
         return _validate_postgres(payload)
     if platform in {"rdbms", "onprem", "on-prem", "database"}:
         return _validate_rdbms(payload)
@@ -488,6 +499,109 @@ def _validate_postgres(payload: dict[str, Any]) -> dict[str, Any]:
         ) from exc
 
 
+def _validate_mongodb(payload: dict[str, Any]) -> dict[str, Any]:
+    """Live-validate a MongoDB connection (on-prem / Atlas / self-hosted)."""
+    try:
+        from pymongo import MongoClient
+        from pymongo.errors import PyMongoError
+    except ImportError as exc:
+        raise ConnectionValidationError(
+            "pymongo is not installed. Run: pip install pymongo",
+            platform="mongodb",
+            error_type="dependency",
+        ) from exc
+
+    host = _norm(payload.get("host") or payload.get("account_id"))
+    port_raw = _norm(payload.get("port") or "27017") or "27017"
+    database = _norm(payload.get("database")) or "admin"
+    user = _norm(payload.get("access_key_id") or payload.get("username") or payload.get("user"))
+    password = _norm(payload.get("secret_access_key") or payload.get("password"))
+    uri = _norm(payload.get("jdbc_url") or payload.get("connection_uri") or payload.get("mongodb_uri"))
+
+    if uri:
+        try:
+            client = MongoClient(uri, serverSelectionTimeoutMS=8000)
+            info = client.admin.command("ping")
+            server = client.server_info()
+            client.close()
+            return {
+                "ok": True,
+                "platform": "mongodb",
+                "message": "MongoDB connection successful",
+                "details": {
+                    "engine": "mongodb",
+                    "via": "uri",
+                    "version": str(server.get("version", ""))[:40],
+                    "ping": info.get("ok"),
+                },
+            }
+        except Exception as exc:  # noqa: BLE001
+            raise ConnectionValidationError(
+                f"MongoDB URI connection failed: {_safe_error(exc)}",
+                platform="mongodb",
+                error_type="auth",
+            ) from exc
+
+    if not host:
+        raise ConnectionValidationError(
+            "Host / IP is required for MongoDB.",
+            platform="mongodb",
+            error_type="validation",
+        )
+    try:
+        port = int(port_raw)
+    except ValueError as exc:
+        raise ConnectionValidationError(
+            "Port must be a number.",
+            platform="mongodb",
+            error_type="validation",
+        ) from exc
+
+    kwargs: dict[str, Any] = {
+        "host": host,
+        "port": port,
+        "serverSelectionTimeoutMS": 8000,
+        "connectTimeoutMS": 8000,
+    }
+    if user:
+        kwargs["username"] = user
+        kwargs["password"] = password or ""
+        kwargs["authSource"] = database
+
+    try:
+        client = MongoClient(**kwargs)
+        info = client.admin.command("ping")
+        server = client.server_info()
+        # Touch the named database so authSource / privileges are exercised.
+        _ = client[database].list_collection_names(max_time_ms=5000)
+        client.close()
+        return {
+            "ok": True,
+            "platform": "mongodb",
+            "message": "MongoDB connection successful",
+            "details": {
+                "engine": "mongodb",
+                "host": host,
+                "port": port,
+                "database": database,
+                "version": str(server.get("version", ""))[:40],
+                "ping": info.get("ok"),
+            },
+        }
+    except PyMongoError as exc:
+        raise ConnectionValidationError(
+            f"MongoDB connection failed: {_safe_error(exc)}",
+            platform="mongodb",
+            error_type="auth",
+        ) from exc
+    except Exception as exc:  # noqa: BLE001
+        raise ConnectionValidationError(
+            f"MongoDB connection failed: {_safe_error(exc)}",
+            platform="mongodb",
+            error_type="auth",
+        ) from exc
+
+
 _RDBMS_DEFAULT_PORTS = {
     "postgresql": 5432,
     "postgres": 5432,
@@ -497,6 +611,7 @@ _RDBMS_DEFAULT_PORTS = {
     "mssql": 1433,
     "oracle": 1521,
     "db2": 50000,
+    "mongodb": 27017,
 }
 
 
