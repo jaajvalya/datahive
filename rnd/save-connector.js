@@ -35,6 +35,7 @@
     service_account_json: true,
     password: true,
     private_key: true,
+    jdbc_url: true,
     credentials_ciphertext: true
   };
 
@@ -152,6 +153,11 @@
       access_key_id: payload.access_key_id || null,
       secret_access_key: payload.secret_access_key || null,
       role_arn: payload.role_arn || null,
+      host: payload.host || null,
+      port: payload.port || null,
+      database: payload.database || null,
+      engine: payload.engine || null,
+      jdbc_url: payload.jdbc_url || null,
       file_name: payload.file_name || null,
       file_size: payload.file_size != null ? payload.file_size : null,
       file_type: payload.file_type || null,

@@ -26,6 +26,7 @@ SENSITIVE_CONNECTOR_KEYS = (
     "service_account_json",
     "password",
     "private_key",
+    "jdbc_url",
 )
 
 

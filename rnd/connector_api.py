@@ -325,6 +325,10 @@ _RECENT_CONNECTOR_FIELDS = (
     "access_key_id",
     "client_id",
     "role_arn",
+    "host",
+    "port",
+    "database",
+    "engine",
     "file_name",
     "upload_format",
     "upload_notes",
@@ -352,6 +356,7 @@ def _public_connector_item(doc: dict[str, Any]) -> dict[str, Any]:
         "service_account_json",
         "password",
         "private_key",
+        "jdbc_url",
         "credentials_ciphertext",
     ):
         item.pop(key, None)

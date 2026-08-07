@@ -37,6 +37,7 @@ _SENSITIVE_LOG_KEYS = frozenset(
         "service_account_json",
         "password",
         "private_key",
+        "jdbc_url",
         "credentials_ciphertext",
     }
 )

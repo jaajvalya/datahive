@@ -9,3 +9,10 @@ cryptography>=43.0
 snowflake-connector-python>=3.12
 boto3>=1.35
 google-auth>=2.35
+# Optional on-prem RDBMS drivers (install what you need):
+# pymysql>=1.1
+# pymssql>=2.2
+# pyodbc>=5.1
+# oracledb>=2.4
+# ibm_db>=3.2
+# sqlalchemy>=2.0
